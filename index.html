@@ -760,6 +760,42 @@ table.gb{border-collapse:separate;border-spacing:0;font-size:14px;min-width:100%
 .score-row:nth-child(odd){background:var(--surface-2)}
 .score-row b{font:500 16px var(--f-head);white-space:nowrap}
 .score-card .prog-bar i{display:block;height:100%}
+/* ---------- แดชบอร์ด ---------- */
+.dash-grid{grid-template-columns:1.55fr 1fr}
+.bars{display:flex;flex-direction:column;gap:6px}
+.bar-row{display:grid;grid-template-columns:70px 1fr 48px 64px;gap:12px;align-items:center;padding:7px 10px;border-radius:14px;border:1px solid transparent;background:none;cursor:pointer;text-align:left;font:inherit;color:inherit;transition:background .15s}
+.bar-row:hover{background:rgba(255,255,255,.45)}
+[data-theme=dark] .bar-row:hover{background:rgba(255,255,255,.05)}
+.bar-row.on{background:var(--glass-strong);border-color:var(--glass-line);box-shadow:var(--glass-hi),0 6px 16px -10px rgba(60,40,160,.5)}
+.bar-lbl{font:500 15px var(--f-head)}
+.bar-track{height:14px;border-radius:99px;background:rgba(120,110,190,.14);overflow:hidden;display:flex;box-shadow:inset 0 1px 2px rgba(40,30,90,.12)}
+.bar-track i,.legend i{display:block;height:100%}
+.bar-track .g,.legend .g{background:linear-gradient(90deg,#12a17f,#2bc79a)}
+.bar-track .p,.legend .p{background:linear-gradient(90deg,#ff9f1c,#ffc15e)}
+.bar-track .r,.legend .r{background:linear-gradient(90deg,#ee3d68,#ff7a93)}
+.bar-pct{font:600 16px var(--f-head);text-align:right;font-variant-numeric:tabular-nums}
+.bar-sub{font-size:12.5px;color:var(--muted);text-align:right;font-variant-numeric:tabular-nums}
+.legend{display:flex;gap:14px;flex-wrap:wrap;font-size:12.5px;margin-top:12px;color:var(--muted);align-items:center}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.legend i{width:12px;height:12px;border-radius:4px;background:rgba(120,110,190,.2)}
+.mini-prog{display:flex;align-items:center;gap:8px}
+.mini-prog span{flex:1;height:8px;border-radius:99px;background:rgba(120,110,190,.15);overflow:hidden;min-width:60px}
+.mini-prog i{display:block;height:100%;background:var(--grad)}
+.mini-prog b{font-size:13px;font-variant-numeric:tabular-nums}
+.feed{display:flex;flex-direction:column;padding:6px}
+.feed-item{display:flex;gap:10px;align-items:center;padding:9px 10px;border-radius:14px;text-decoration:none;color:inherit}
+.feed-item:hover{background:rgba(255,255,255,.45)}
+[data-theme=dark] .feed-item:hover{background:rgba(255,255,255,.05)}
+.feed-ava,.miss-no{width:34px;height:34px;border-radius:12px;display:grid;place-items:center;font:600 15px var(--f-head);flex:none;background:var(--primary-soft);color:var(--primary)}
+.miss-list{display:flex;flex-direction:column;max-height:420px;overflow:auto;padding:6px}
+.miss{display:flex;gap:10px;align-items:center;padding:8px 10px;border-radius:14px}
+.miss:nth-child(odd){background:rgba(255,255,255,.3)}
+[data-theme=dark] .miss:nth-child(odd){background:rgba(255,255,255,.03)}
+.miss b{font-weight:600;font-size:14.5px}
+.miss-n{min-width:30px;height:30px;border-radius:10px;display:grid;place-items:center;font:600 15px var(--f-head);background:var(--accent-soft);color:color-mix(in srgb,var(--accent) 75%,var(--ink))}
+.miss-n.bad{background:var(--danger-soft);color:var(--danger)}
+@media (max-width:1000px){.dash-grid{grid-template-columns:1fr}}
+@media (max-width:520px){.bar-row{grid-template-columns:58px 1fr 42px}.bar-sub{display:none}}
 
 </style>
 </head>
@@ -1253,51 +1289,7 @@ function viewLogin() {
   </div>`;
 }
 
-/* ---------- แดชบอร์ด ---------- */
-function viewDashboard() {
-  const term = Q.currentTerm();
-  const subs = Q.subjectsOfTerm(term?.id);
-  const taught = new Set(subs.flatMap(s => Q.subjectClassIds(s.id)));
-  const nStu = store.students.filter(s => s.active !== false).length;
-  const phases = [
-    ['ล็อกอินครู · วิชา · ห้อง · อัปโหลดรายชื่อ', 'ใช้งานได้แล้ว'],
-    ['สร้างงาน · นักเรียนส่งไฟล์ · หน้าตรวจให้คะแนน', 'ใช้งานได้แล้ว'],
-    ['ตารางคะแนนรายห้อง', 'ใช้งานได้แล้ว'],
-    ['แดชบอร์ดสรุปการส่งงาน', 'กราฟรายห้อง รายชื่อคนค้างส่ง'],
-    ['ระบบข้อสอบ + ส่งลิงก์ LINE + QR', 'ตรวจปรนัยอัตโนมัติ'],
-    ['ปรับดีไซน์ มือถือ ทดสอบกับห้องจริง', ''],
-  ];
-  return `
-  <div class="page-head"><div><h2>สวัสดีครับ ${esc(store.teacher.name)}</h2><p>ภาคเรียนที่ ${esc(Q.termLabel(term))}</p></div></div>
-  <div class="stats">
-    <div class="card stat"><div class="lbl">${ic('book')}วิชาที่สอน</div><div class="val">${thaiNum(subs.length)}</div><div class="sub">ภาคเรียนนี้</div></div>
-    <div class="card stat"><div class="lbl">${ic('grid')}ห้องเรียน</div><div class="val">${thaiNum(store.classrooms.length)}</div><div class="sub">สอน ${thaiNum(taught.size)} ห้องในเทอมนี้</div></div>
-    <div class="card stat"><div class="lbl">${ic('users')}นักเรียน</div><div class="val">${thaiNum(nStu)}</div><div class="sub">ทุกห้องรวมกัน</div></div>
-    <a class="card stat" href="#assignments" style="text-decoration:none;color:inherit"><div class="lbl">${ic('check')}งานรอตรวจ</div><div class="val" style="color:${pendingCount() ? 'var(--accent)' : 'inherit'}">${thaiNum(pendingCount())}</div><div class="sub">ไฟล์ที่นักเรียนส่งมาแล้วยังไม่ได้ตรวจ</div></a>
-  </div>
-  <div class="dash-grid">
-    <div class="stack">
-      <div class="card">
-        <div class="card-h"><h3>วิชาที่สอนภาคเรียนนี้</h3><span class="spacer"></span><a class="btn sm" href="#subjects">จัดการวิชา</a></div>
-        ${subs.length ? `<div class="tbl-wrap"><table class="tbl"><thead><tr><th>วิชา</th><th>ห้อง</th><th style="text-align:right">นักเรียน</th></tr></thead><tbody>
-          ${subs.map(s => { const cids = Q.subjectClassIds(s.id); const n = cids.reduce((a, c) => a + Q.students(c).length, 0);
-            return `<tr><td><span style="display:inline-block;width:9px;height:9px;border-radius:50%;background:${esc(s.color)};margin-right:8px"></span><b>${esc(s.name)}</b> <span class="muted small">${esc(s.code)}</span></td>
-            <td><div class="chips">${cids.map(c => `<span class="chip">${esc(db.get('classrooms', c)?.name)}</span>`).join('') || '<span class="muted small">ยังไม่เลือกห้อง</span>'}</div></td>
-            <td style="text-align:right" class="num">${thaiNum(n)}</td></tr>`; }).join('')}
-        </tbody></table></div>` : `<div class="empty">${ic('book')}<b>ยังไม่มีวิชาในภาคเรียนนี้</b><a class="btn primary sm" href="#subjects" style="margin-top:8px">${ic('plus')}เพิ่มวิชา</a></div>`}
-      </div>
-      <div class="card">
-        <div class="card-h"><h3>การส่งงานแต่ละห้อง</h3></div>
-        <div class="empty">${ic('chart')}<b>เร็วๆ นี้ (เฟส 4)</b>กราฟเปรียบเทียบการส่งงานของแต่ละห้อง<br>และรายชื่อนักเรียนที่ค้างส่งจะแสดงตรงนี้</div>
-      </div>
-    </div>
-    <div class="card">
-      <div class="card-h"><h3>ความคืบหน้าการสร้างระบบ</h3></div>
-      <div class="card-b"><ol class="phases">${phases.map((p, i) => `<li class="${i <= 2 ? 'now' : ''}"><span class="dot">${i + 1}</span><div><b>${p[0]}</b><span>${p[1]}</span></div></li>`).join('')}</ol></div>
-    </div>
-  </div>`;
-}
-
+/* แดชบอร์ดอยู่ใน dashboard.js */
 /* ---------- วิชา ---------- */
 function viewSubjects() {
   const tid = ui.termId || Q.currentTerm()?.id;
@@ -2888,6 +2880,159 @@ function studentScoresHTML() {
 Object.assign(ACT, {
   'stu-tab': el => { stuState.tab = el.dataset.t; if (el.dataset.t === 'score') stuState.scores = null; render(); },
 });
+
+/* =====================================================================
+   เฟส 4: แดชบอร์ดสรุปการส่งงาน
+   ===================================================================== */
+I.bell = '<path d="M6 8a6 6 0 1 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.9 1.9 0 0 0 3.4 0"/>';
+I.spark = '<path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/>';
+
+function timeAgo(iso) {
+  const s = (Date.now() - new Date(iso)) / 1000;
+  if (s < 60) return 'เมื่อสักครู่';
+  if (s < 3600) return `${Math.floor(s / 60)} นาทีที่แล้ว`;
+  if (s < 86400) return `${Math.floor(s / 3600)} ชั่วโมงที่แล้ว`;
+  if (s < 86400 * 7) return `${Math.floor(s / 86400)} วันที่แล้ว`;
+  return fmtDate(iso);
+}
+const DB = {
+  termAssignments(subjectId) {
+    const subs = new Set(Q.subjectsOfTerm(Q.currentTerm()?.id).map(s => s.id));
+    return store.assignments.filter(a => subs.has(a.subject_id) && (!subjectId || a.subject_id === subjectId));
+  },
+  classStats(cid, asgs) {
+    const studs = Q.students(cid).filter(s => s.active !== false);
+    const ids = new Set(studs.map(s => s.id));
+    let slots = 0, graded = 0, pending = 0, returned = 0;
+    asgs.forEach(a => {
+      if (!store.assignment_classes.some(x => x.assignment_id === a.id && x.classroom_id === cid)) return;
+      slots += studs.length;
+      A.subs(a.id).forEach(s => {
+        if (!ids.has(s.student_id)) return;
+        if (s.status === 'graded') graded++; else if (s.status === 'returned') returned++; else pending++;
+      });
+    });
+    const done = graded + pending;
+    return { slots, graded, pending, returned, done, missing: slots - done - returned, pct: slots ? done / slots * 100 : null };
+  },
+  missingByStudent(cid, asgs) {
+    const list = asgs.filter(a => store.assignment_classes.some(x => x.assignment_id === a.id && x.classroom_id === cid));
+    return Q.students(cid).filter(s => s.active !== false).map(s => {
+      const miss = list.filter(a => { const sub = A.sub(a.id, s.id); return !sub || sub.status === 'returned'; });
+      return { s, miss, overdue: miss.filter(a => isPast(a.due_at)) };
+    }).filter(x => x.miss.length).sort((a, b) => b.overdue.length - a.overdue.length || b.miss.length - a.miss.length || a.s.number - b.s.number);
+  },
+};
+
+function viewDashboard() {
+  pruneLocal();
+  if (!ui.subsLoadedAt || Date.now() - ui.subsLoadedAt > 20000) {
+    ui.subsLoadedAt = Date.now();
+    refreshAllSubs().then(() => { if (ui.route === 'dashboard') render(); }).catch(() => {});
+  }
+  const term = Q.currentTerm();
+  const subs = Q.subjectsOfTerm(term?.id);
+  if (ui.dbSubject && !subs.some(s => s.id === ui.dbSubject)) ui.dbSubject = '';
+  const asgs = DB.termAssignments(ui.dbSubject);
+  const allAsgs = DB.termAssignments('');
+  const taught = [...new Set(subs.filter(s => !ui.dbSubject || s.id === ui.dbSubject).flatMap(s => Q.subjectClassIds(s.id)))]
+    .map(id => db.get('classrooms', id)).filter(Boolean).sort((a, b) => a.name.localeCompare(b.name, 'th', { numeric: true }));
+  const nStu = new Set(subs.flatMap(s => Q.subjectClassIds(s.id))).size;
+  const rows = taught.map(c => ({ c, st: DB.classStats(c.id, asgs) }));
+  const total = rows.reduce((a, r) => ({ slots: a.slots + r.st.slots, done: a.done + r.st.done }), { slots: 0, done: 0 });
+  const overallPct = total.slots ? total.done / total.slots * 100 : null;
+  if (!taught.some(c => c.id === ui.dbCid)) ui.dbCid = rows.slice().sort((a, b) => (a.st.pct ?? 101) - (b.st.pct ?? 101))[0]?.c.id || null;
+  const recent = store.submissions.filter(s => s.status !== 'graded' && allAsgs.some(a => a.id === s.assignment_id))
+    .sort((a, b) => (b.submitted_at || '').localeCompare(a.submitted_at || '')).slice(0, 8);
+  const hour = new Date().getHours();
+  const hello = hour < 12 ? 'อรุณสวัสดิ์' : hour < 17 ? 'สวัสดีตอนบ่าย' : 'สวัสดีตอนเย็น';
+  return `
+  <div class="page-head"><div><h2>${hello} ${esc(store.teacher.name)} ☀️</h2><p>ภาคเรียนที่ ${esc(Q.termLabel(term))} · ${new Date().toLocaleDateString('th-TH', { weekday: 'long', day: 'numeric', month: 'long' })}</p></div><span class="spacer"></span>
+    <a class="btn" href="#assignments">${ic('plus')}สร้างงาน</a></div>
+  <div class="stats">
+    <div class="card stat"><div class="lbl">${ic('book')}วิชาที่สอน</div><div class="val">${thaiNum(subs.length)}</div><div class="sub">${thaiNum(nStu)} ห้อง · ${thaiNum(allAsgs.length)} งาน</div></div>
+    <div class="card stat"><div class="lbl">${ic('chart')}ส่งงานแล้ว</div><div class="val">${overallPct == null ? '–' : overallPct.toFixed(0) + '%'}</div><div class="sub">${thaiNum(total.done)} จาก ${thaiNum(total.slots)} ชิ้นที่ต้องส่ง</div></div>
+    <div class="card stat"><div class="lbl">${ic('bell')}ยังไม่ส่ง</div><div class="val">${thaiNum(rows.reduce((a, r) => a + r.st.missing + r.st.returned, 0))}</div><div class="sub">รวมงานที่ครูส่งคืนให้แก้</div></div>
+    <a class="card stat" href="#assignments" style="text-decoration:none;color:inherit"><div class="lbl">${ic('check')}งานรอตรวจ</div><div class="val" style="color:${pendingCount() ? 'var(--accent)' : 'inherit'}">${thaiNum(pendingCount())}</div><div class="sub">กดเพื่อไปตรวจงาน →</div></a>
+  </div>
+  ${!subs.length ? `<div class="card"><div class="empty">${ic('book')}<b>เริ่มต้นใช้งาน</b>1) อัปโหลดรายชื่อ → 2) เพิ่มวิชาและเลือกห้อง → 3) สร้างงาน → 4) ส่งลิงก์ให้นักเรียน<br><a class="btn primary" href="#classes" style="margin-top:12px">${ic('upload')}เริ่มจากอัปโหลดรายชื่อ</a></div></div>` : `
+  <div class="dash-grid">
+    <div class="stack">
+      <div class="card">
+        <div class="card-h"><h3>📊 การส่งงานแต่ละห้อง</h3><span class="spacer"></span>
+          <select class="input" style="width:auto;padding:6px 12px" data-chg="db-subject" aria-label="กรองวิชา"><option value="">ทุกวิชา</option>${subs.map(s => `<option value="${s.id}" ${s.id === ui.dbSubject ? 'selected' : ''}>${esc(s.name)}</option>`).join('')}</select></div>
+        <div class="card-b">
+          ${!asgs.length ? `<div class="empty" style="padding:20px">${ic('inbox')}<b>ยังไม่มีงาน${ui.dbSubject ? 'ในวิชานี้' : ''}</b><a class="btn primary sm" href="#assignments" style="margin-top:8px">${ic('plus')}สร้างงาน</a></div>`
+          : `<div class="bars">${rows.map(({ c, st }) => `
+            <button class="bar-row ${c.id === ui.dbCid ? 'on' : ''}" data-act="db-cls" data-id="${c.id}" title="ดูรายชื่อค้างส่งห้อง ${esc(c.name)}">
+              <span class="bar-lbl">${esc(c.name)}</span>
+              <span class="bar-track">${st.slots ? `<i class="g" style="width:${st.graded / st.slots * 100}%"></i><i class="p" style="width:${st.pending / st.slots * 100}%"></i><i class="r" style="width:${st.returned / st.slots * 100}%"></i>` : ''}</span>
+              <span class="bar-pct">${st.pct == null ? '–' : st.pct.toFixed(0) + '%'}</span>
+              <span class="bar-sub">${st.slots ? `${st.done}/${st.slots}` : 'ไม่มีงาน'}</span>
+            </button>`).join('')}</div>
+            <div class="legend"><span><i class="g"></i>ตรวจแล้ว</span><span><i class="p"></i>รอตรวจ</span><span><i class="r"></i>ส่งคืนให้แก้</span><span><i></i>ยังไม่ส่ง</span><span class="muted">· กดที่ห้องเพื่อดูคนค้างส่ง</span></div>`}
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-h"><h3>📝 งานล่าสุด</h3><span class="spacer"></span><a class="btn sm ghost" href="#assignments">ดูทั้งหมด →</a></div>
+        ${allAsgs.length ? `<div class="tbl-wrap"><table class="tbl"><thead><tr><th>งาน</th><th>กำหนดส่ง</th><th style="min-width:160px">ส่งแล้ว</th><th class="act"></th></tr></thead><tbody>
+          ${allAsgs.slice().sort((a, b) => (b.created_at || '').localeCompare(a.created_at || '')).slice(0, 6).map(a => { const st = A.stats(a.id); const pct = st.total ? st.sent / st.total * 100 : 0;
+            return `<tr><td><b>${esc(a.title)}</b><div class="small muted">${esc(db.get('subjects', a.subject_id)?.name)}</div></td>
+              <td class="small ${isPast(a.due_at) ? 'due-late' : ''}">${a.due_at ? fmtDate(a.due_at) : 'ไม่กำหนด'}</td>
+              <td><div class="mini-prog"><span><i style="width:${pct}%"></i></span><b>${st.sent}/${st.total}</b></div>${st.pending ? `<span class="small" style="color:var(--accent)">รอตรวจ ${st.pending}</span>` : ''}</td>
+              <td class="act"><a class="btn sm ${st.pending ? 'primary' : ''}" href="#grade-${a.id}">ตรวจ</a></td></tr>`; }).join('')}
+        </tbody></table></div>` : `<div class="empty">${ic('inbox')}<b>ยังไม่มีงาน</b></div>`}
+      </div>
+    </div>
+    <div class="stack">
+      ${dashMissingCard(asgs)}
+      <div class="card">
+        <div class="card-h"><h3>📥 ส่งเข้ามาล่าสุด</h3></div>
+        ${recent.length ? `<div class="feed">${recent.map(s => { const st = db.get('students', s.student_id), a = db.get('assignments', s.assignment_id);
+          if (!st || !a) return '';
+          return `<a class="feed-item" href="#grade-${a.id}"><span class="feed-ava">${esc((st.first_name || '?')[0])}</span><div style="min-width:0;flex:1"><b>${esc(st.first_name)} ${esc(st.last_name || '')}</b> <span class="muted small">${esc(db.get('classrooms', st.classroom_id)?.name)} · เลขที่ ${st.number}</span>
+            <div class="small muted" style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${s.status === 'late' ? '⏰ ส่งช้า · ' : s.status === 'returned' ? '🔁 ส่งคืนแล้ว · ' : ''}${esc(a.title)}</div></div><span class="small muted" style="white-space:nowrap">${timeAgo(s.submitted_at)}</span></a>`; }).join('')}</div>`
+        : `<div class="empty" style="padding:22px">${ic('inbox')}<b>ยังไม่มีงานใหม่</b>เมื่อนักเรียนส่งงาน จะแสดงที่นี่</div>`}
+      </div>
+    </div>
+  </div>`}`;
+}
+function dashMissingCard(asgs) {
+  const c = ui.dbCid && db.get('classrooms', ui.dbCid);
+  if (!c || !asgs.length) return '';
+  const list = DB.missingByStudent(c.id, asgs);
+  const onlyOver = ui.dbOverdue;
+  const shown = onlyOver ? list.filter(x => x.overdue.length) : list;
+  return `<div class="card">
+    <div class="card-h"><h3>🔔 ค้างส่ง · ${esc(c.name)}</h3><span class="spacer"></span><span class="chip ${shown.length ? 'bad' : 'ok'}">${shown.length} คน</span></div>
+    <div class="toolbar" style="gap:8px"><div class="seg"><button class="${!onlyOver ? 'on' : ''}" data-act="db-over" data-v="0">ทั้งหมด</button><button class="${onlyOver ? 'on' : ''}" data-act="db-over" data-v="1">เลยกำหนด</button></div>
+      <span class="spacer"></span>${shown.length ? `<button class="btn sm" data-act="db-copy">${ic('copy')}คัดลอก</button><button class="btn sm line" data-act="db-line"><span class="line-logo">LINE</span>เตือน</button>` : ''}</div>
+    ${shown.length ? `<div class="miss-list">${shown.slice(0, 40).map(({ s, miss, overdue }) => `
+      <div class="miss"><span class="miss-no">${s.number}</span><div style="min-width:0;flex:1"><b>${esc(Q.fullName(s))}</b>
+        <div class="chips" style="margin-top:3px">${miss.slice(0, 3).map(a => `<span class="chip ${isPast(a.due_at) ? 'bad' : ''}" title="${esc(a.title)}">${esc(a.title.length > 18 ? a.title.slice(0, 18) + '…' : a.title)}</span>`).join('')}${miss.length > 3 ? `<span class="chip">+${miss.length - 3}</span>` : ''}</div></div>
+        <span class="miss-n ${overdue.length ? 'bad' : ''}">${miss.length}</span></div>`).join('')}${shown.length > 40 ? `<div class="small muted" style="padding:8px 4px">…และอีก ${shown.length - 40} คน</div>` : ''}</div>`
+    : `<div class="empty" style="padding:22px"><div style="font-size:36px">🎉</div><b>${onlyOver ? 'ไม่มีใครค้างงานที่เลยกำหนด' : 'ส่งครบทุกคน!'}</b></div>`}
+  </div>`;
+}
+function missingText() {
+  const c = db.get('classrooms', ui.dbCid);
+  const asgs = DB.termAssignments(ui.dbSubject);
+  let list = DB.missingByStudent(c.id, asgs);
+  if (ui.dbOverdue) list = list.filter(x => x.overdue.length);
+  const subj = ui.dbSubject ? ` วิชา${db.get('subjects', ui.dbSubject)?.name}` : '';
+  return `📌 รายชื่อค้างส่งงาน ${c.name}${subj}\n` + list.map(({ s, miss }) => `เลขที่ ${s.number} ${s.first_name} — ${miss.map(a => a.title).join(', ')}`).join('\n') + `\n\n👉 ส่งงานที่: ${studentLink()}`;
+}
+Object.assign(ACT, {
+  'db-cls': el => { ui.dbCid = el.dataset.id; render(); },
+  'db-over': el => { ui.dbOverdue = el.dataset.v === '1'; render(); },
+  'db-copy': async () => toast(await copyText(missingText()) ? 'คัดลอกรายชื่อค้างส่งแล้ว วางในกลุ่ม LINE ได้เลย' : 'คัดลอกไม่สำเร็จ', false),
+  'db-line': () => {
+    const text = missingText();
+    const mobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+    window.open(mobile ? `https://line.me/R/share?text=${encodeURIComponent(text)}` : `https://social-plugins.line.me/lineit/share?url=${encodeURIComponent(studentLink())}&text=${encodeURIComponent(text)}`, '_blank', 'noopener');
+  },
+});
+Object.assign(CHG, { 'db-subject': el => { ui.dbSubject = el.value; ui.dbCid = null; render(); } });
 
 </script>
 </body>
