@@ -1122,7 +1122,7 @@ document.addEventListener('submit', async e => {
       const data = await q(sb.auth.signInWithPassword({ email: String(fd.get('email')).trim(), password: fd.get('password') }));
       session = data.session; setTeacher(data.user);
       booting = true; render();
-      try { await loadAll(); } finally { booting = false; }
+      try { await loadAll(); } catch (err) { console.error(err); } finally { booting = false; }
       if (location.hash !== '#dashboard') location.hash = 'dashboard'; else route();
     }
     if (f.dataset.form === 'stu') {
