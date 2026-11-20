@@ -3,10 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>ห้องเรียนครู</title>
+<title>ห้องเรียนครูปลื้ม</title>
+<meta name="theme-color" content="#6d4dff">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%236d4dff'/%3E%3Ctext x='32' y='44' font-size='34' text-anchor='middle' fill='%23ffd23f' font-family='sans-serif' font-weight='700'%3E%E0%B8%9B%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Anuphan:wght@500;600;700&family=IBM+Plex+Sans+Thai:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Mitr:wght@400;500;600&family=IBM+Plex+Sans+Thai+Looped:wght@400;500;600;700&family=IBM+Plex+Sans+Thai:wght@400;500;600&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <style>
@@ -325,6 +327,209 @@ a.btn{text-decoration:none}
 details>summary{list-style:none}
 details>summary::-webkit-details-marker{display:none}
 .fmt code{background:var(--surface);border:1px solid var(--line);border-radius:4px;padding:0 4px;font-size:12.5px}
+
+/* =====================================================================
+   ธีม "ห้องเรียนครูปลื้ม" — สดใส โค้งมน แบบวัยรุ่น
+   ===================================================================== */
+:root{
+  --bg:#f6f3ff;--surface:#fff;--surface-2:#f7f4ff;--ink:#231b40;--muted:#6c6690;--line:#e7e1f8;
+  --primary:#6d4dff;--primary-2:#ff5fa2;--primary-ink:#fff;--primary-soft:#efeaff;
+  --accent:#ff9f1c;--accent-soft:#fff1dc;--mint:#14b8a6;--mint-soft:#d9f7f2;--sky:#38a3ff;--sky-soft:#e1f1ff;--pink-soft:#ffe6f1;--sun:#ffd23f;
+  --danger:#ee3d68;--danger-soft:#ffe4ec;--ok:#12a17f;--ok-soft:#dcf6ee;
+  --side:#4b2fd0;--side-ink:#fff;--side-muted:#d9d0ff;--side-hover:rgba(255,255,255,.14);--side-active:#ffd23f;
+  --shadow:0 1px 0 rgba(35,27,64,.03),0 12px 32px -14px rgba(84,56,200,.28);
+  --shadow-pop:0 6px 0 -1px rgba(77,52,190,.18),0 16px 30px -12px rgba(84,56,200,.35);
+  --r:22px;--r-sm:13px;
+  --f-head:'Mitr','IBM Plex Sans Thai Looped',system-ui,sans-serif;
+  --f-body:'IBM Plex Sans Thai Looped','IBM Plex Sans Thai',system-ui,sans-serif;
+  --grad:linear-gradient(135deg,#6d4dff 0%,#a34bff 55%,#ff5fa2 100%);
+}
+[data-theme=dark]{
+  --bg:#13101f;--surface:#1c1730;--surface-2:#231d3b;--ink:#f2eefe;--muted:#a69fc8;--line:#2f2852;
+  --primary:#9a85ff;--primary-ink:#140f26;--primary-soft:#2b2353;
+  --accent:#ffb347;--accent-soft:#3a2b17;--mint-soft:#163a35;--sky-soft:#16304a;--pink-soft:#3d1a2d;
+  --danger:#ff6b8e;--danger-soft:#3d1a26;--ok:#3fd3a9;--ok-soft:#163a30;
+  --side:#1a1433;--side-hover:rgba(255,255,255,.07);
+  --shadow:0 1px 0 rgba(0,0,0,.3),0 14px 34px -14px rgba(0,0,0,.6);
+  --shadow-pop:0 6px 0 -1px rgba(0,0,0,.45),0 16px 30px -12px rgba(0,0,0,.6);
+  --grad:linear-gradient(135deg,#7b5cff 0%,#a855f7 55%,#ec4899 100%);
+}
+body{background:
+  radial-gradient(900px 500px at 105% -10%,color-mix(in srgb,var(--primary-2) 16%,transparent),transparent 60%),
+  radial-gradient(800px 500px at -10% 110%,color-mix(in srgb,var(--sky) 14%,transparent),transparent 60%),
+  var(--bg);background-attachment:fixed}
+h1,h2,h3,h4{font-weight:500;letter-spacing:-.005em}
+.btn{border-radius:12px;font-weight:500;transition:transform .12s,box-shadow .15s,background .15s,filter .15s}
+.btn:active{transform:translateY(1px) scale(.98)}
+.btn.primary{background:var(--grad);border:0;color:#fff;box-shadow:0 8px 18px -8px color-mix(in srgb,var(--primary) 70%,transparent)}
+.btn.primary:hover{filter:brightness(1.06) saturate(1.05);transform:translateY(-1px)}
+.btn.big{padding:13px 18px;font:500 17px var(--f-head);border-radius:15px}
+.input{border-radius:12px;border-width:1.5px}
+.input.big{padding:12px 14px;font-size:17px}
+.input:focus{box-shadow:0 0 0 4px var(--primary-soft)}
+.card{border-radius:var(--r);border-color:var(--line)}
+.chip{border-radius:99px;font-weight:500}
+.chip.pri{background:var(--primary-soft);color:var(--primary)}
+
+/* แถบเมนูข้าง */
+.side{background:linear-gradient(170deg,#4b2fd0 0%,#6d4dff 55%,#9a4dff 100%)}
+[data-theme=dark] .side{background:linear-gradient(170deg,#1a1433,#211845 60%,#2a1a50)}
+.brand-mark{background:linear-gradient(135deg,#ffd23f,#ff8fb8);color:#3b1d6e;border-radius:14px;transform:rotate(-6deg);font:600 21px var(--f-head);box-shadow:0 6px 14px -6px rgba(0,0,0,.35)}
+.brand b{font:500 18px var(--f-head)}
+.nav-item{border-radius:12px;font-weight:500}
+.nav-item.active{background:rgba(255,255,255,.18);box-shadow:none}
+.nav-item.active svg{color:var(--side-active)}
+.nav-item .soon{background:rgba(255,255,255,.16);color:#fff}
+.side-foot{border-top-color:rgba(255,255,255,.18)}
+.top{background:color-mix(in srgb,var(--bg) 78%,transparent)}
+.top h1{font:500 20px var(--f-head)}
+.page-head h2{font-size:26px}
+
+/* การ์ดสถิติ */
+.stat .lbl svg{width:30px;height:30px;padding:6px;border-radius:10px;background:var(--primary-soft);color:var(--primary)}
+.stats .stat:nth-child(2) .lbl svg{background:var(--sky-soft);color:var(--sky)}
+.stats .stat:nth-child(3) .lbl svg{background:var(--mint-soft);color:var(--mint)}
+.stats .stat:nth-child(4) .lbl svg{background:var(--accent-soft);color:var(--accent)}
+.stat .val{font:500 34px/1.15 var(--f-head)}
+.stat{transition:transform .15s}
+a.stat:hover{transform:translateY(-2px)}
+.phases li.now .dot{background:var(--grad);border-color:transparent}
+.phases li.now b{color:var(--primary)}
+.subj{transition:transform .15s}
+.subj:hover{transform:translateY(-2px)}
+.subj-top{height:8px}
+.cls-item.active{background:var(--primary-soft)}
+.tab.on{background:var(--grad);border-color:transparent;color:#fff}
+.seg{border-radius:12px}
+.seg button.on{background:var(--grad);color:#fff}
+.modal{border-radius:24px}
+.modal-h h3{font:500 20px var(--f-head)}
+.toast{border-radius:14px;font-weight:500;background:#231b40;color:#fff;box-shadow:0 10px 24px -8px rgba(0,0,0,.4)}
+.toast.err{background:var(--danger)}
+
+/* หน้าเข้าสู่ระบบ */
+.auth-art{background:var(--grad)}
+.auth-art h1{font:500 42px/1.25 var(--f-head);color:#fff}
+.auth-art p{color:rgba(255,255,255,.85);font-size:16px}
+.auth-art .hl{background:#ffd23f;color:#3b1d6e;padding:0 10px;border-radius:12px;display:inline-block;transform:rotate(-2deg)}
+.auth-feat div{background:rgba(255,255,255,.14);border-radius:16px;backdrop-filter:blur(4px)}
+.auth-feat b{color:#fff}
+.deco{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.deco span{position:absolute;font-size:44px;opacity:.9;animation:float 6s ease-in-out infinite;filter:drop-shadow(0 8px 10px rgba(0,0,0,.18))}
+.deco span:nth-child(1){top:12%;right:10%}
+.deco span:nth-child(2){top:40%;right:22%;animation-delay:-1.5s;font-size:36px}
+.deco span:nth-child(3){bottom:30%;right:6%;animation-delay:-3s}
+.deco span:nth-child(4){top:60%;right:30%;animation-delay:-2s;font-size:34px}
+.deco span:nth-child(5){top:22%;left:56%;animation-delay:-4s;font-size:28px}
+.deco span:nth-child(6){top:7%;left:44%;animation-delay:-.7s;font-size:30px;opacity:.7}
+@keyframes float{50%{transform:translateY(-12px) rotate(6deg)}}
+.stu-cta{display:flex;align-items:center;gap:14px;padding:16px 18px;border-radius:18px;background:linear-gradient(135deg,#fff3c4,#ffd9ea);color:#3b1d6e;text-decoration:none;box-shadow:var(--shadow-pop);transition:transform .15s}
+.stu-cta:hover{transform:translateY(-2px) rotate(-.5deg)}
+.stu-cta .em{font-size:34px}
+.stu-cta b{font:500 18px var(--f-head);display:block}
+.stu-cta small{opacity:.75}
+.stu-cta .arr{margin-left:auto;font-size:22px}
+.or{display:flex;align-items:center;gap:10px;color:var(--muted);font-size:13.5px;margin:4px 0}
+.or::before,.or::after{content:'';flex:1;height:1px;background:var(--line)}
+
+/* ===== โซนนักเรียน ===== */
+.stu{background:transparent}
+.stu-login{position:relative;padding-top:44px;margin-top:28px}
+.stu-hi{position:absolute;top:-32px;left:50%;transform:translateX(-50%);width:68px;height:68px;border-radius:22px;background:var(--grad);display:grid;place-items:center;font-size:34px;box-shadow:var(--shadow-pop);animation:wave 2.4s ease-in-out infinite}
+@keyframes wave{0%,60%,100%{transform:translateX(-50%) rotate(0)}70%{transform:translateX(-50%) rotate(-12deg)}80%{transform:translateX(-50%) rotate(10deg)}90%{transform:translateX(-50%) rotate(-6deg)}}
+.stu-banner{position:relative;overflow:hidden;border-radius:24px;padding:20px 20px 18px;background:var(--grad);color:#fff;box-shadow:var(--shadow-pop)}
+.stu-banner::after{content:'';position:absolute;right:-40px;top:-40px;width:160px;height:160px;border-radius:50%;background:rgba(255,255,255,.12)}
+.stu-banner h2{font:500 24px var(--f-head);color:#fff}
+.stu-banner .pills{display:flex;gap:6px;margin-top:6px;flex-wrap:wrap}
+.stu-banner .pill{background:rgba(255,255,255,.2);border-radius:99px;padding:2px 12px;font-size:13.5px}
+.stu-banner .acts{position:absolute;top:14px;right:14px;display:flex;gap:6px;z-index:3}
+.stu-banner .row{padding-right:110px}
+.stu-banner .acts .btn{background:rgba(255,255,255,.2);border:0;color:#fff}
+.stu-banner .acts .btn:hover{background:rgba(255,255,255,.3)}
+.stu-banner .ava{width:52px;height:52px;border-radius:16px;background:#fff;color:var(--primary);display:grid;place-items:center;font:600 24px var(--f-head);transform:rotate(-5deg);flex:none}
+.counters{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.counter{border-radius:18px;padding:12px 14px;display:flex;align-items:center;gap:10px;background:var(--surface);border:1px solid var(--line);box-shadow:var(--shadow)}
+.counter .em{font-size:26px}
+.counter b{font:500 26px/1 var(--f-head);display:block}
+.counter small{color:var(--muted);font-size:12.5px}
+.counter.todo{background:linear-gradient(135deg,var(--pink-soft),var(--surface))}
+.counter.wait{background:linear-gradient(135deg,var(--accent-soft),var(--surface))}
+.counter.done{background:linear-gradient(135deg,var(--mint-soft),var(--surface))}
+.sec-title{font:500 17px var(--f-head);margin:6px 2px -4px;display:flex;align-items:center;gap:8px}
+.sa{border-radius:22px;transition:transform .15s,box-shadow .15s;border-width:1.5px}
+.sa:hover{transform:translateY(-2px)}
+.sa.open{border-color:color-mix(in srgb,var(--primary) 45%,var(--line))}
+.sa-h{padding:16px 18px;gap:14px}
+.sa-h:hover{background:transparent}
+.sa-ico{width:46px;height:46px;border-radius:15px;display:grid;place-items:center;font-size:22px;flex:none}
+.sa-title{font:500 17px var(--f-head);line-height:1.35}
+.sa-tag{display:inline-block;font-size:12px;font-weight:600;padding:1px 9px;border-radius:99px;margin-bottom:3px}
+.badge{display:inline-flex;align-items:center;gap:5px;padding:5px 11px;border-radius:99px;font-size:13px;font-weight:600;white-space:nowrap}
+.badge.todo{background:var(--pink-soft);color:var(--danger)}
+.badge.wait{background:var(--accent-soft);color:color-mix(in srgb,var(--accent) 70%,var(--ink))}
+.badge.ret{background:var(--danger-soft);color:var(--danger)}
+.badge.late{background:var(--danger-soft);color:var(--danger)}
+.score-bubble{display:flex;flex-direction:column;align-items:center;justify-content:center;width:62px;height:62px;border-radius:20px;background:linear-gradient(135deg,#ffd23f,#ff9f1c);color:#3b1d6e;box-shadow:0 8px 16px -8px rgba(255,159,28,.8);transform:rotate(4deg);flex:none}
+.score-bubble b{font:600 22px/1 var(--f-head)}
+.score-bubble small{font-size:11px;font-weight:600;opacity:.8}
+.sa-b{padding:0 18px 18px 18px;gap:14px}
+.desc{background:var(--surface-2);border-radius:14px;padding:12px 14px}
+.fb{border-radius:16px 16px 16px 4px;padding:12px 14px;background:var(--primary-soft);position:relative}
+.fb b{font-family:var(--f-head);font-weight:500}
+.fb.ret{background:var(--danger-soft)}
+.fb.star{background:linear-gradient(135deg,var(--mint-soft),var(--primary-soft))}
+.lbl-sm{font:500 14px var(--f-head);color:var(--muted);margin-bottom:-6px}
+
+/* ไทล์ไฟล์ + พรีวิว */
+.tiles{display:grid;grid-template-columns:repeat(auto-fill,minmax(132px,1fr));gap:10px}
+.tile{position:relative;border-radius:16px;overflow:hidden;background:var(--surface);border:1.5px solid var(--line);box-shadow:var(--shadow);animation:pop .25s}
+.tile .th{aspect-ratio:4/3;display:grid;place-items:center;background:var(--surface-2);position:relative;overflow:hidden}
+.tile .th img{width:100%;height:100%;object-fit:cover;display:block}
+.tile .th .play{position:absolute;width:34px;height:34px;border-radius:50%;background:rgba(0,0,0,.55);color:#fff;display:grid;place-items:center;font-size:14px}
+.tile .ext{font:600 22px var(--f-head);letter-spacing:.02em;padding:6px 12px;border-radius:12px;color:#fff}
+.tile .ext.k-image{background:#38a3ff}.tile .ext.k-video{background:#ff5fa2}.tile .ext.k-audio{background:#14b8a6}.tile .ext.k-document{background:#6d4dff}
+.tile .ext.e-pdf{background:#ee3d68}.tile .ext.e-doc,.tile .ext.e-docx{background:#2b6cdf}.tile .ext.e-ppt,.tile .ext.e-pptx{background:#e5641e}.tile .ext.e-xls,.tile .ext.e-xlsx,.tile .ext.e-csv{background:#12a17f}.tile .ext.e-zip,.tile .ext.e-rar{background:#8a6d3b}
+.tile .meta{padding:7px 9px 8px;display:flex;flex-direction:column;gap:2px;min-width:0}
+.tile .nm{font-size:13px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tile .sub{display:flex;gap:6px;align-items:center;font-size:11.5px;color:var(--muted)}
+.tile .ext-pill{font-weight:700;font-size:10.5px;padding:0 6px;border-radius:6px;background:var(--primary-soft);color:var(--primary);text-transform:uppercase}
+.tile .rm{position:absolute;top:6px;right:6px;width:28px;height:28px;border-radius:50%;border:0;background:rgba(255,255,255,.92);color:var(--danger);display:grid;place-items:center;cursor:pointer;box-shadow:0 2px 6px rgba(0,0,0,.2);font-size:15px;line-height:1}
+.tile .rm:hover{transform:scale(1.08)}
+.tile .state{position:absolute;inset:0;display:grid;place-items:center;background:rgba(35,27,64,.45);color:#fff;font-size:28px;backdrop-filter:blur(1px)}
+.tile .state .spin{width:30px;height:30px;border-width:3px;border-color:rgba(255,255,255,.35);border-top-color:#fff}
+.tile.ok .state{background:rgba(18,161,127,.55)}
+.tile.bad{border-color:var(--danger)}
+.tile.bad .state{background:rgba(238,61,104,.6)}
+.tile .err{font-size:11.5px;color:var(--danger);font-weight:600}
+.tile.sent::after{content:'✓ ส่งแล้ว';position:absolute;top:6px;left:6px;font-size:11px;font-weight:700;background:var(--ok);color:#fff;border-radius:99px;padding:1px 8px}
+.drop.cute{border:2.5px dashed color-mix(in srgb,var(--primary) 35%,var(--line));border-radius:20px;background:var(--surface-2);padding:20px;display:flex;flex-direction:column;align-items:center;gap:2px}
+.drop.cute:hover,.drop.cute.over{background:var(--primary-soft);border-color:var(--primary)}
+.drop.cute .em{font-size:34px;animation:float 3s ease-in-out infinite}
+.drop.cute b{font:500 17px var(--f-head);margin:4px 0 0}
+.send-bar{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.send-bar .btn.primary{flex:1;justify-content:center}
+.confetti{position:fixed;inset:0;pointer-events:none;z-index:70;overflow:hidden}
+.confetti i{position:absolute;top:-30px;font-style:normal;font-size:24px;animation:fall 1.8s ease-in forwards}
+@keyframes fall{to{transform:translateY(110vh) rotate(540deg);opacity:.2}}
+.lock-note{display:flex;gap:10px;align-items:center;padding:12px 14px;border-radius:16px;background:var(--surface-2);font-size:14px}
+.lock-note .em{font-size:22px}
+
+/* ตารางตรวจงาน: รูปย่อ */
+.mini-th{display:inline-flex;gap:4px;vertical-align:middle}
+.mini-th img,.mini-th span{width:30px;height:30px;border-radius:8px;object-fit:cover;border:1px solid var(--line);display:inline-grid;place-items:center;font-size:9px;font-weight:700;color:#fff}
+@media (max-width:820px){
+  .auth-art h1{font-size:30px}
+  .deco span{font-size:30px}
+  .counters{gap:6px}
+  .counter{padding:10px;flex-direction:column;text-align:center;gap:2px}
+  .counter .em{font-size:22px}
+  .tiles{grid-template-columns:repeat(2,1fr)}
+  .stu-banner{padding-top:58px}
+  .stu-banner .row{padding-right:0}
+  .auth-art .deco{display:none}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+.tab.on .muted{color:rgba(255,255,255,.85)}
 
 </style>
 </head>
@@ -757,7 +962,7 @@ const TITLES = { dashboard: 'แดชบอร์ด', subjects: 'วิชา'
 function render() {
   const root = $('#app');
   if (ui.route === 'student') { root.innerHTML = viewStudent(); return; }
-  if (booting) { root.innerHTML = `<div class="stu" style="justify-content:center"><div class="brand"><div class="brand-mark">ค</div><div><b>ห้องเรียนครู</b><small style="color:var(--muted)">กำลังโหลดข้อมูล…</small></div></div></div>`; return; }
+  if (booting) { root.innerHTML = `<div class="stu" style="justify-content:center"><div class="brand"><div class="brand-mark">ป</div><div><b>ห้องเรียนครูปลื้ม</b><small style="color:var(--muted)">กำลังโหลดข้อมูล…</small></div></div></div>`; return; }
   if (!session) { root.innerHTML = viewLogin(); return; }
   const base = ui.route.startsWith('grade-') ? 'grade' : ui.route;
   if (!TITLES[base]) ui.route = 'dashboard';
@@ -767,7 +972,7 @@ function render() {
   root.innerHTML = `
   <div class="shell">
     <aside class="side ${ui.sideOpen ? 'open' : ''}">
-      <div class="brand"><div class="brand-mark">ค</div><div><b>ห้องเรียนครู</b><small>ส่งงาน · คะแนน · ข้อสอบ</small></div></div>
+      <div class="brand"><div class="brand-mark">ป</div><div><b>ห้องเรียนครูปลื้ม</b><small>ส่งงาน · คะแนน · ข้อสอบ</small></div></div>
       ${NAV.map(n => n.group ? `<div class="nav-group">${n.group}</div>` :
         `<a class="nav-item ${navOn === n.id ? 'active' : ''}" href="#${n.id}">${ic(n.icon)}<span>${n.label}</span>${n.soon ? `<span class="soon">${n.soon}</span>` : ''}</a>`).join('')}
       <div class="side-foot">ภาคเรียน ${esc(Q.termLabel(Q.currentTerm()))}</div>
@@ -784,7 +989,7 @@ function render() {
         <button class="btn ghost icon" data-act="logout" aria-label="ออกจากระบบ" title="ออกจากระบบ">${ic('logout')}</button>
       </header>
       <main class="content">${(views[base] || viewDashboard)()}</main>
-      <div class="credit">ระบบห้องเรียนออนไลน์ · ${esc(store.teacher.name)}</div>
+      <div class="credit">ห้องเรียนครูปลื้ม · ทำด้วยใจ 💜 · ${esc(store.teacher.name)}</div>
     </div>
   </div>`;
 }
@@ -793,22 +998,25 @@ function render() {
 function viewLogin() {
   return `
   <div class="auth">
-    <section class="auth-art"><div class="lines"></div>
-      <div class="brand" style="position:relative"><div class="brand-mark">ค</div><div><b>ห้องเรียนครู</b><small>ระบบส่งงานและคะแนนออนไลน์</small></div></div>
-      <div style="position:relative"><h1>ตรวจงาน ลงคะแนน ออกข้อสอบ จบในที่เดียว</h1><p>นักเรียนส่งงานได้ทั้งรูป คลิป เสียง และเอกสาร ครูตรวจและให้คะแนนรายคน ดูภาพรวมแต่ละห้องได้ทันที</p></div>
+    <section class="auth-art">
+      <div class="deco" aria-hidden="true"><span>📚</span><span>✏️</span><span>🎨</span><span>🎧</span><span>⭐</span><span>💡</span></div>
+      <div class="brand" style="position:relative"><div class="brand-mark">ป</div><div><b>ห้องเรียนครูปลื้ม</b><small>ส่งงาน · ดูคะแนน · ทำข้อสอบ</small></div></div>
+      <div style="position:relative"><h1>ส่งงานง่าย<br>ตรวจไว <span class="hl">ได้คะแนนชัวร์</span> ✨</h1><p>รูป คลิป เสียง เอกสาร ส่งจากมือถือได้หมด ครูตรวจเสร็จเห็นคะแนนทันที</p></div>
       <div class="auth-feat">
-        <div><b>ส่งงานรายคน</b>แยกไฟล์ตามเลขที่</div><div><b>ตารางคะแนน</b>แยกห้อง แก้ได้อิสระ</div>
-        <div><b>ข้อสอบออนไลน์</b>ส่งลิงก์ทาง LINE</div><div><b>แดชบอร์ด</b>สรุปการส่งงานรายห้อง</div>
+        <div><b>📤 ส่งงานรายคน</b>แยกไฟล์ตามเลขที่</div><div><b>📊 ตารางคะแนน</b>แยกห้อง แก้ได้อิสระ</div>
+        <div><b>📝 ข้อสอบออนไลน์</b>ส่งลิงก์ทาง LINE</div><div><b>🏆 แดชบอร์ด</b>ดูภาพรวมทุกห้อง</div>
       </div>
     </section>
     <section class="auth-form">
-      <form class="auth-card stack" data-form="login">
-        <div><h2>เข้าสู่ระบบสำหรับครู</h2><p class="muted" style="margin:0">ใช้อีเมลและรหัสผ่านของครู</p></div>
-        <label class="field"><span>อีเมล</span><input class="input" type="email" name="email" placeholder="teacher@school.ac.th" required autocomplete="username"></label>
-        <label class="field"><span>รหัสผ่าน</span><input class="input" type="password" name="password" required autocomplete="current-password"></label>
-        <button class="btn primary" style="justify-content:center;padding:11px">เข้าสู่ระบบ</button>
-        <a href="#student" class="small" style="text-align:center">นักเรียน? เข้าหน้าส่งงาน/ทำข้อสอบที่นี่</a>
-      </form>
+      <div class="auth-card stack">
+        <a href="#student" class="stu-cta"><span class="em">🎒</span><div><b>นักเรียน มาส่งงานตรงนี้!</b><small>ส่งงาน · ดูคะแนน · ทำข้อสอบ</small></div><span class="arr">→</span></a>
+        <div class="or"><span>หรือ เข้าสู่ระบบสำหรับครู</span></div>
+        <form class="stack" data-form="login">
+          <label class="field"><span>อีเมล</span><input class="input" type="email" name="email" placeholder="teacher@school.ac.th" required autocomplete="username"></label>
+          <label class="field"><span>รหัสผ่าน</span><input class="input" type="password" name="password" required autocomplete="current-password"></label>
+          <button class="btn primary" style="justify-content:center;padding:12px">เข้าสู่ระบบ</button>
+        </form>
+      </div>
     </section>
   </div>`;
 }
@@ -1232,14 +1440,14 @@ function viewStudent() {
   const cls = stuState.classes || [];
   const w = v ? 680 : 440;
   return `<div class="stu">
-    <div class="row" style="width:min(${w}px,100%);margin-bottom:18px"><div class="brand" style="padding:0"><div class="brand-mark">ค</div><div><b>ห้องเรียนครู</b><small style="color:var(--muted)">สำหรับนักเรียน</small></div></div><span class="spacer"></span>
+    <div class="row" style="width:min(${w}px,100%);margin-bottom:18px"><div class="brand" style="padding:0"><div class="brand-mark">ป</div><div><b>ห้องเรียนครูปลื้ม</b><small style="color:var(--muted)">โซนนักเรียน ✨</small></div></div><span class="spacer"></span>
       <button class="btn ghost icon" data-act="theme" aria-label="สลับธีม">${ic(theme === 'dark' ? 'sun' : 'moon')}</button></div>
-    ${v ? studentHome(v) : `<div class="card stu-card"><form class="stack" data-form="stu">
-        <div><h2 style="font-size:22px">เข้าห้องเรียน</h2><p class="muted" style="margin:0">เลือกห้อง แล้วกรอกเลขที่และเลขประจำตัวนักเรียน</p></div>
-        <label class="field"><span>ห้อง</span><select class="input" name="cid" required ${stuState.classes ? '' : 'disabled'}><option value="">${stuState.classes ? '— เลือกห้อง —' : 'กำลังโหลดรายชื่อห้อง…'}</option>${cls.map(c => `<option value="${c.id}">${esc(c.name)}</option>`).join('')}</select></label>
-        <div class="grid2"><label class="field"><span>เลขที่</span><input class="input" type="number" min="1" name="num" required inputmode="numeric"></label>
-          <label class="field"><span>เลขประจำตัวนักเรียน</span><input class="input" name="code" required inputmode="numeric" autocomplete="off"></label></div>
-        <button class="btn primary" style="justify-content:center;padding:11px">ยืนยันตัวตน</button>
+    ${v ? studentHome(v) : `<div class="card stu-card stu-login"><div class="stu-hi">👋</div><form class="stack" data-form="stu">
+        <div style="text-align:center"><h2 style="font-size:26px">สวัสดี! มาส่งงานกัน</h2><p class="muted" style="margin:2px 0 0">เลือกห้อง แล้วกรอกเลขที่กับเลขประจำตัวนักเรียน</p></div>
+        <label class="field"><span>🏫 ห้อง</span><select class="input big" name="cid" required ${stuState.classes ? '' : 'disabled'}><option value="">${stuState.classes ? 'เลือกห้องของฉัน' : 'กำลังโหลดรายชื่อห้อง…'}</option>${cls.map(c => `<option value="${c.id}">${esc(c.name)}</option>`).join('')}</select></label>
+        <div class="grid2"><label class="field"><span>🔢 เลขที่</span><input class="input big" type="number" min="1" name="num" required inputmode="numeric" placeholder="เช่น 7"></label>
+          <label class="field"><span>🪪 เลขประจำตัว</span><input class="input big" name="code" required inputmode="numeric" autocomplete="off" placeholder="เช่น 25101"></label></div>
+        <button class="btn primary big" style="justify-content:center">ไปกันเลย 🚀</button>
       </form></div>`}
     ${session ? `<a href="#dashboard" class="small" style="margin-top:16px">← กลับหน้าครู</a>` : `<a href="#dashboard" class="small" style="margin-top:16px">ครู? เข้าสู่ระบบที่นี่</a>`}
   </div>`;
@@ -1295,7 +1503,7 @@ const ACT = {
     if (n) return toast(`ภาคเรียนนี้มี ${n} วิชา ย้ายหรือลบวิชาก่อน`, true);
     confirmBox('ลบภาคเรียน', `ลบภาคเรียน ${Q.termLabel(t)}?`, 'ลบ', async () => { await db.removeIds('terms', [t.id]); render(); }); },
   'pw-open': pwModal,
-  'stu-out': () => { stuState.verified = null; stuState.asg = null; stuState.open = null; try { sessionStorage.removeItem('cr-student'); } catch (e) {} render(); },
+  'stu-out': () => { if (stuState.uploading) return; stuState.verified = null; stuState.asg = null; stuState.open = null; stuState.staged = {}; try { sessionStorage.removeItem('cr-student'); } catch (e) {} render(); },
 };
 const CHG = {
   'term-filter': el => { ui.termId = el.value; render(); },
@@ -1644,12 +1852,11 @@ function gradeSummary(aid) {
 }
 function gradeRowHTML(a, s, sub, filesReady) {
   const files = sub ? A.filesOf(a.id, sub.id) : [];
-  const kinds = [...new Set(files.map(f => f.kind))];
   return `<tr id="gr-${s.id}" class="${s.active === false ? 'inactive' : ''}">
     <td class="num">${s.number}</td><td>${esc(Q.fullName(s))}</td>
     <td class="gr-st">${statusChip(sub?.status)}</td>
     <td class="small muted">${sub && files.length ? fmtDate(sub.submitted_at) : '—'}</td>
-    <td>${sub ? (filesReady ? (files.length ? `<span class="kinds">${kinds.map(k => ic(KIND_ICON[k] || 'file')).join('')}</span> ${files.length}` : '<span class="muted small">ไม่มีไฟล์</span>') : '<span class="spin"></span>') : '—'}</td>
+    <td>${sub ? (filesReady ? (files.length ? `<span class="mini-th">${files.slice(0, 3).map(f => f.thumb ? `<img src="${esc(f.thumb)}" alt="">` : `<span class="k-${f.kind}" style="background:${({ image: '#38a3ff', video: '#ff5fa2', audio: '#14b8a6' })[f.kind] || '#6d4dff'}">${esc((fileExt(f.file_name) || '?').slice(0, 4).toUpperCase())}</span>`).join('')}</span> ${files.length > 3 ? `+${files.length - 3}` : ''}` : '<span class="muted small">ไม่มีไฟล์</span>') : '<span class="spin"></span>') : '—'}</td>
     <td style="text-align:right"><input class="input score-in" type="number" step="0.5" min="0" inputmode="decimal" value="${sub?.score ?? ''}" data-chg="quick-score" data-sid="${s.id}" aria-label="คะแนน ${esc(s.first_name)}"></td>
     <td class="act"><button class="btn sm ${sub && sub.status !== 'graded' && files.length ? 'primary' : ''}" data-act="grade-open" data-sid="${s.id}">${ic('eye')}ตรวจ</button></td></tr>`;
 }
@@ -1775,54 +1982,7 @@ function nextGrader(order, sid) {
   else { closeModal(); render(); toast('ตรวจครบทุกคนในรายการนี้แล้ว'); }
 }
 
-/* =====================================================================
-   หน้านักเรียน: งานของฉัน + อัปโหลด
-   ===================================================================== */
-Object.assign(stuState, { asg: null, open: null, uploading: false, loadingAsg: false });
-async function loadStudentAsg() {
-  const v = stuState.verified; if (!v || stuState.loadingAsg) return;
-  stuState.loadingAsg = true;
-  try { stuState.asg = await q(sb.rpc('student_assignments', { p_student_id: v.student_id, p_code: v.code })); }
-  catch (e) { if (/STUDENT_INVALID/.test(e.message || '')) { stuState.verified = null; try { sessionStorage.removeItem('cr-student'); } catch (x) {} } stuState.asg = stuState.asg || []; }
-  stuState.loadingAsg = false;
-  if (ui.route === 'student') render();
-}
-function canSubmit(a) { return a.is_open && a.status !== 'graded' && !(isPast(a.due_at) && !a.allow_late); }
-function studentHome(v) {
-  if (!v.code) { stuState.verified = null; setTimeout(render); return ''; }
-  if (!stuState.asg) { loadStudentAsg(); }
-  const list = stuState.asg || [];
-  const cnt = { todo: list.filter(a => !a.status || a.status === 'returned').length, sent: list.filter(a => a.status === 'submitted' || a.status === 'late').length, done: list.filter(a => a.status === 'graded').length };
-  const initial = (v.full_name.replace(/^(เด็กชาย|เด็กหญิง|นางสาว|นาย|นาง|ด\.ช\.|ด\.ญ\.|น\.ส\.)\s*/, '') || '?')[0];
-  return `<div class="stu-wrap">
-    <div class="card stu-head"><div class="avatar">${esc(initial)}</div><div style="min-width:0"><h2 style="font-size:19px">${esc(v.full_name)}</h2><div class="small muted">${esc(v.classroom_name)} · เลขที่ ${v.number}</div></div><span class="spacer"></span>
-      <button class="btn ghost icon" data-act="stu-reload" aria-label="โหลดใหม่" title="โหลดใหม่">${ic('refresh')}</button><button class="btn sm" data-act="stu-out">ออก</button></div>
-    ${stuState.asg ? `<div class="stu-sum"><span class="chip bad">ยังไม่ส่ง/ต้องแก้ ${cnt.todo}</span><span class="chip warn">รอตรวจ ${cnt.sent}</span><span class="chip ok">ตรวจแล้ว ${cnt.done}</span></div>
-      ${list.length ? list.map(studentAsgCard).join('') : `<div class="card"><div class="empty">${ic('inbox')}<b>ยังไม่มีงาน</b>เมื่อครูสั่งงาน งานจะแสดงที่นี่</div></div>`}`
-    : `<div class="card"><div class="empty"><span class="spin" style="display:inline-block"></span><br>กำลังโหลดงาน…</div></div>`}
-  </div>`;
-}
-function studentAsgCard(a) {
-  const open = stuState.open === a.id;
-  const can = canSubmit(a);
-  const late = isPast(a.due_at);
-  const sub = a.status === 'graded' ? `<span class="sa-score">${+a.score}<span class="muted small">/${+a.max_score}</span></span>` : statusChip(a.status, false);
-  return `<div class="card sa">
-    <button class="sa-h" data-act="stu-toggle" data-id="${a.id}" aria-expanded="${open}"><span class="sa-dot" style="background:${esc(a.subject_color || 'var(--primary)')}"></span>
-      <div style="flex:1;min-width:0"><div class="sa-sub">${esc(a.subject_name)}</div><div class="sa-title">${esc(a.title)}</div>
-        <div class="sa-sub ${late && !a.status ? 'due-late' : ''}">${esc(dueText(a.due_at))}</div></div>${sub}</button>
-    ${open ? `<div class="sa-b">
-      ${a.description ? `<div class="desc">${esc(a.description)}</div>` : ''}
-      ${a.feedback ? `<div class="fb ${a.status === 'returned' ? 'ret' : ''}"><b>${a.status === 'returned' ? 'ครูส่งคืนให้แก้:' : 'ความเห็นจากครู:'}</b> ${esc(a.feedback)}</div>` : ''}
-      ${a.files.length ? `<div class="flist">${a.files.map(f => `<div class="fitem">${ic(KIND_ICON[f.kind] || 'file')}<span class="nm">${esc(f.file_name)}</span><span class="small muted">${fmtSize(f.size_bytes)}</span>${can ? `<button class="btn ghost icon" data-act="stu-rm" data-id="${f.id}" aria-label="ลบไฟล์ ${esc(f.file_name)}" style="color:var(--danger)">${ic('trash')}</button>` : ''}</div>`).join('')}</div>` : ''}
-      ${can ? `<label class="drop sm" data-drop="${a.id}">${ic('upload')}<b>${a.files.length ? 'แนบไฟล์เพิ่ม' : 'แนบไฟล์ส่งงาน'}</b><span class="small muted">รับ: ${a.accept_types.map(k => KIND_LABEL[k]).join(', ')} · ไม่เกิน ${a.max_file_mb} MB ต่อไฟล์ · เลือกได้หลายไฟล์</span>
-          <input type="file" multiple hidden accept="${a.accept_types.map(k => KIND_ACCEPT[k]).join(',')}" data-chg="stu-files" data-id="${a.id}"></label>
-        <div id="upl-${a.id}" class="stack" style="gap:6px"></div>
-        ${a.files.length ? '<div class="small muted">ไฟล์ด้านบนส่งถึงครูแล้ว ไม่ต้องกดส่งซ้ำ</div>' : ''}`
-      : `<div class="note">${a.status === 'graded' ? 'ครูตรวจงานนี้แล้ว' : !a.is_open ? 'ครูปิดรับงานนี้แล้ว' : 'เลยกำหนดส่งแล้ว งานนี้ไม่รับส่งช้า'}</div>`}
-    </div>` : ''}
-  </div>`;
-}
+/* ---------- ตัวช่วยไฟล์ของนักเรียน ---------- */
 function detectKind(file) {
   const t = file.type || '';
   if (t.startsWith('image/')) return 'image';
@@ -1843,34 +2003,6 @@ async function compressImage(file) {
     return new File([blob], file.name.replace(/\.[^.]+$/, '') + '.jpg', { type: 'image/jpeg' });
   } catch (e) { return file; }
 }
-async function studentUpload(aid, fileList) {
-  const v = stuState.verified, a = (stuState.asg || []).find(x => x.id === aid);
-  if (!v || !a || stuState.uploading) return;
-  stuState.uploading = true;
-  const box = $(`#upl-${aid}`);
-  let ok = 0;
-  for (const original of fileList) {
-    const line = document.createElement('div'); line.className = 'upl-line';
-    line.innerHTML = `<span class="spin"></span><span>${esc(original.name)} — กำลังเตรียมไฟล์…</span>`; box?.appendChild(line);
-    const say = (txt, bad) => { line.innerHTML = `${bad ? `<span style="color:var(--danger)">✕</span>` : '<span style="color:var(--ok)">✓</span>'}<span>${esc(original.name)} — ${esc(txt)}</span>`; };
-    try {
-      const kind = detectKind(original);
-      if (!a.accept_types.includes(kind)) { say(`งานนี้ไม่รับไฟล์${KIND_LABEL[kind]}`, true); continue; }
-      const file = kind === 'image' ? await compressImage(original) : original;
-      if (file.size > a.max_file_mb * 1024 * 1024) { say(`ไฟล์ใหญ่ ${fmtSize(file.size)} เกิน ${a.max_file_mb} MB${kind === 'video' ? ' ลองตัดคลิปให้สั้นลงหรือลดความละเอียด' : ''}`, true); continue; }
-      line.querySelector('span:last-child').textContent = `${original.name} — กำลังอัปโหลด (${fmtSize(file.size)})…`;
-      const path = await q(sb.rpc('student_begin_upload', { p_student_id: v.student_id, p_code: v.code, p_assignment_id: aid, p_file_name: file.name, p_mime: file.type || 'application/octet-stream', p_size: file.size, p_kind: kind }));
-      await q(sb.storage.from('submissions').upload(path, file, { contentType: file.type || 'application/octet-stream', upsert: false }));
-      await q(sb.rpc('student_finish_upload', { p_student_id: v.student_id, p_code: v.code, p_path: path }));
-      say('ส่งแล้ว'); ok++;
-    } catch (e) { say(errMsg(e), true); }
-  }
-  stuState.uploading = false;
-  if (ok) {
-    toast(`ส่งงานแล้ว ${ok} ไฟล์`);
-    setTimeout(async () => { stuState.asg = null; await loadStudentAsg(); }, 900);
-  }
-}
 
 /* ---------- เหตุการณ์เฟส 2 ---------- */
 Object.assign(ACT, {
@@ -1889,6 +2021,8 @@ Object.assign(ACT, {
     } catch (e) { el.disabled = false; }
   },
   'fb-quick': el => { const t = $('#modal-root [name=feedback]'); t.value = (t.value.trim() ? t.value.trim() + ' ' : '') + el.dataset.t; t.focus(); },
+  'stu-send': el => studentSend(el.dataset.id),
+  'stu-unstage': el => { const l = stuState.staged[el.dataset.a] || []; stuState.staged[el.dataset.a] = l.filter(x => x.key !== el.dataset.k); render(); },
   'stu-toggle': el => { if (stuState.uploading) return; stuState.open = stuState.open === el.dataset.id ? null : el.dataset.id; render(); },
   'stu-reload': () => { if (stuState.uploading) return; stuState.asg = null; render(); },
   'stu-rm': el => { const v = stuState.verified;
@@ -1900,11 +2034,189 @@ Object.assign(CHG, {
   'asg-filter': el => { ui.asgSubject = el.value; render(); },
   'asg-subject': el => { $('#asg-cls').innerHTML = asgClassChecks(el.value, null); },
   'quick-score': el => quickScore(el),
-  'stu-files': el => { const files = [...el.files]; el.value = ''; if (files.length) studentUpload(el.dataset.id, files); },
+  'stu-files': el => { const files = [...el.files]; el.value = ''; if (files.length) stageFiles(el.dataset.id, files); },
 });
 document.addEventListener('dragover', e => { const d = e.target.closest?.('[data-drop]'); if (d) { e.preventDefault(); d.classList.add('over'); } });
 document.addEventListener('dragleave', e => { const d = e.target.closest?.('[data-drop]'); if (d) d.classList.remove('over'); });
-document.addEventListener('drop', e => { const d = e.target.closest?.('[data-drop]'); if (d) { e.preventDefault(); d.classList.remove('over'); if (e.dataTransfer.files.length) studentUpload(d.dataset.drop, [...e.dataTransfer.files]); } });
+document.addEventListener('drop', e => { const d = e.target.closest?.('[data-drop]'); if (d) { e.preventDefault(); d.classList.remove('over'); if (e.dataTransfer.files.length && !stuState.uploading) stageFiles(d.dataset.drop, [...e.dataTransfer.files]); } });
+
+/* =====================================================================
+   โซนนักเรียน (ธีมครูปลื้ม): งานของฉัน · เลือกไฟล์ + พรีวิว · ส่งงาน
+   ===================================================================== */
+Object.assign(stuState, { asg: null, open: null, uploading: false, loadingAsg: false, staged: {} });
+const fileExt = name => ((String(name).match(/\.([a-z0-9]{1,6})$/i) || [])[1] || '').toLowerCase();
+
+async function loadStudentAsg() {
+  const v = stuState.verified; if (!v || stuState.loadingAsg) return;
+  stuState.loadingAsg = true;
+  try { stuState.asg = await q(sb.rpc('student_assignments', { p_student_id: v.student_id, p_code: v.code })); }
+  catch (e) { if (/STUDENT_INVALID/.test(e.message || '')) { stuState.verified = null; try { sessionStorage.removeItem('cr-student'); } catch (x) {} } stuState.asg = stuState.asg || []; }
+  stuState.loadingAsg = false;
+  if (ui.route === 'student') render();
+}
+function canSubmit(a) { return a.is_open && a.status !== 'graded' && !(isPast(a.due_at) && !a.allow_late); }
+function asgGroup(a) {
+  if (a.status === 'returned') return 'todo';
+  if (a.status === 'graded') return 'done';
+  if (a.status === 'submitted' || a.status === 'late') return 'wait';
+  return canSubmit(a) ? 'todo' : 'closed';
+}
+
+/* ---------- รูปย่อ (เก็บไว้ในฐานข้อมูล ครูและนักเรียนเห็นได้โดยไม่ต้องโหลดไฟล์จริง) ---------- */
+function canvasThumb(src, w, h) {
+  const scale = Math.min(1, 360 / Math.max(w, h));
+  const c = document.createElement('canvas'); c.width = Math.max(1, Math.round(w * scale)); c.height = Math.max(1, Math.round(h * scale));
+  const ctx = c.getContext('2d'); ctx.fillStyle = '#fff'; ctx.fillRect(0, 0, c.width, c.height); ctx.drawImage(src, 0, 0, c.width, c.height);
+  const url = c.toDataURL('image/jpeg', 0.72);
+  return url.length < 70000 ? url : c.toDataURL('image/jpeg', 0.5);
+}
+async function makeThumb(file, kind) {
+  try {
+    if (kind === 'image' && window.createImageBitmap) {
+      const bmp = await createImageBitmap(file);
+      return canvasThumb(bmp, bmp.width, bmp.height);
+    }
+    if (kind === 'video') {
+      return await new Promise(resolve => {
+        const v = document.createElement('video'); const url = URL.createObjectURL(file);
+        let done = false; const finish = r => { if (done) return; done = true; URL.revokeObjectURL(url); resolve(r); };
+        v.muted = true; v.playsInline = true; v.preload = 'metadata'; v.src = url;
+        v.onloadeddata = () => { v.currentTime = Math.min(1, (v.duration || 2) / 3); };
+        v.onseeked = () => { try { finish(canvasThumb(v, v.videoWidth, v.videoHeight)); } catch (e) { finish(null); } };
+        v.onerror = () => finish(null);
+        setTimeout(() => finish(null), 5000);
+      });
+    }
+  } catch (e) {}
+  return null;
+}
+
+/* ---------- ไทล์ไฟล์ ---------- */
+function tileHTML({ name, size, kind, thumb, rm, state, err, sent }) {
+  const ext = fileExt(name);
+  const th = thumb ? `<img src="${esc(thumb)}" alt="">${kind === 'video' ? '<span class="play">▶</span>' : ''}`
+    : `<span class="ext k-${kind} e-${esc(ext)}">${esc((ext || KIND_LABEL[kind] || 'ไฟล์').toUpperCase().slice(0, 5))}</span>`;
+  const st = state === 'up' ? '<div class="state"><span class="spin"></span></div>' : state === 'ok' ? '<div class="state">✓</div>' : state === 'bad' ? '<div class="state">!</div>' : '';
+  return `<div class="tile ${state || ''} ${sent ? 'sent' : ''}"><div class="th">${th}${st}</div>
+    <div class="meta"><span class="nm" title="${esc(name)}">${esc(name.replace(/\.[^.]+$/, '') || name)}</span>
+      <span class="sub"><span class="ext-pill">.${esc(ext || '?')}</span>${size != null ? `<span>${fmtSize(size)}</span>` : ''}</span>
+      ${err ? `<span class="err">${esc(err)}</span>` : ''}</div>
+    ${rm ? `<button class="rm" ${rm} aria-label="เอาไฟล์ ${esc(name)} ออก">✕</button>` : ''}</div>`;
+}
+
+/* ---------- หน้า ---------- */
+function studentHome(v) {
+  if (!v.code) { stuState.verified = null; setTimeout(render); return ''; }
+  if (!stuState.asg) loadStudentAsg();
+  const list = stuState.asg || [];
+  const first = v.full_name.replace(/^(เด็กชาย|เด็กหญิง|นางสาว|นาย|นาง|ด\.ช\.|ด\.ญ\.|น\.ส\.)\s*/, '').split(' ')[0] || v.full_name;
+  const groups = { todo: [], wait: [], done: [], closed: [] };
+  list.forEach(a => groups[asgGroup(a)].push(a));
+  const byDue = (a, b) => (a.due_at || '9999').localeCompare(b.due_at || '9999');
+  groups.todo.sort(byDue); groups.wait.sort(byDue);
+  const sec = (key, title) => groups[key].length ? `<div class="sec-title">${title} <span class="chip">${groups[key].length}</span></div>${groups[key].map(studentAsgCard).join('')}` : '';
+  return `<div class="stu-wrap">
+    <div class="stu-banner"><div class="acts"><button class="btn icon sm" data-act="stu-reload" aria-label="โหลดใหม่" title="โหลดใหม่">${ic('refresh')}</button><button class="btn sm" data-act="stu-out">ออก</button></div>
+      <div class="row" style="gap:14px;position:relative;z-index:1"><div class="ava">${esc(first[0] || '?')}</div><div style="min-width:0"><h2>สวัสดี ${esc(first)}! 👋</h2>
+        <div class="pills"><span class="pill">🏫 ${esc(v.classroom_name)}</span><span class="pill">เลขที่ ${v.number}</span></div></div></div></div>
+    ${stuState.asg ? `<div class="counters">
+        <div class="counter todo"><span class="em">📝</span><div><b>${groups.todo.length}</b><small>ต้องส่ง/แก้</small></div></div>
+        <div class="counter wait"><span class="em">⏳</span><div><b>${groups.wait.length}</b><small>รอครูตรวจ</small></div></div>
+        <div class="counter done"><span class="em">🌟</span><div><b>${groups.done.length}</b><small>ตรวจแล้ว</small></div></div></div>
+      ${list.length ? sec('todo', '📌 งานที่ต้องทำ') + sec('wait', '⏳ ส่งแล้ว รอครูตรวจ') + sec('done', '🌟 ตรวจแล้ว') + sec('closed', '🔒 ปิดรับแล้ว')
+        : `<div class="card"><div class="empty"><div style="font-size:44px">🎉</div><b>ยังไม่มีงาน เย้!</b>เมื่อครูปลื้มสั่งงาน งานจะโผล่ตรงนี้</div></div>`}`
+    : `<div class="card"><div class="empty"><span class="spin" style="display:inline-block;width:26px;height:26px"></span><br>กำลังโหลดงาน…</div></div>`}
+  </div>`;
+}
+function studentBadge(a) {
+  if (a.status === 'graded') return `<div class="score-bubble"><b>${+a.score}</b><small>/${+a.max_score}</small></div>`;
+  if (a.status === 'returned') return '<span class="badge ret">🔁 ครูให้แก้</span>';
+  if (a.status === 'late') return '<span class="badge wait">⏳ ส่งช้า รอตรวจ</span>';
+  if (a.status === 'submitted') return '<span class="badge wait">⏳ รอตรวจ</span>';
+  if (!canSubmit(a)) return '<span class="badge late">🔒 ปิดรับ</span>';
+  return isPast(a.due_at) ? '<span class="badge late">⏰ เลยกำหนด</span>' : '<span class="badge todo">📝 ยังไม่ส่ง</span>';
+}
+function studentAsgCard(a) {
+  const open = stuState.open === a.id;
+  const can = canSubmit(a);
+  const g = asgGroup(a);
+  const emoji = { todo: a.status === 'returned' ? '🔁' : '📝', wait: '⏳', done: '🌟', closed: '🔒' }[g];
+  const color = a.subject_color || '#6d4dff';
+  const staged = stuState.staged[a.id] || [];
+  const pendingStaged = staged.filter(x => x.state !== 'ok');
+  return `<div class="card sa ${open ? 'open' : ''}">
+    <button class="sa-h" data-act="stu-toggle" data-id="${a.id}" aria-expanded="${open}">
+      <span class="sa-ico" style="background:${esc(color)}22">${emoji}</span>
+      <div style="flex:1;min-width:0"><span class="sa-tag" style="background:${esc(color)}1f;color:${esc(color)}">${esc(a.subject_name)}</span>
+        <div class="sa-title">${esc(a.title)}</div>
+        <div class="sa-sub ${isPast(a.due_at) && !a.status ? 'due-late' : ''}">⏰ ${esc(dueText(a.due_at))}</div></div>
+      ${studentBadge(a)}</button>
+    ${open ? `<div class="sa-b">
+      ${a.description ? `<div class="desc">${esc(a.description)}</div>` : ''}
+      ${a.feedback ? `<div class="fb ${a.status === 'returned' ? 'ret' : 'star'}"><b>💬 ${a.status === 'returned' ? 'ครูปลื้มให้แก้ตรงนี้นะ:' : 'ครูปลื้มบอกว่า:'}</b><br>${esc(a.feedback)}</div>` : ''}
+      ${a.files.length ? `<div class="lbl-sm">📦 ไฟล์ที่ส่งแล้ว (${a.files.length})</div><div class="tiles">${a.files.map(f => tileHTML({ name: f.file_name, size: f.size_bytes, kind: f.kind, thumb: f.thumb, sent: true, rm: can ? `data-act="stu-rm" data-id="${f.id}"` : '' })).join('')}</div>` : ''}
+      ${can ? `
+        ${staged.length ? `<div class="lbl-sm">🧺 ไฟล์ที่เลือกไว้ (${staged.length})</div><div class="tiles">${staged.map(x => tileHTML({ name: x.name, size: x.size, kind: x.kind, thumb: x.thumb, state: x.state, err: x.err, rm: x.state === 'up' ? '' : `data-act="stu-unstage" data-a="${a.id}" data-k="${x.key}"` })).join('')}</div>` : ''}
+        <label class="drop cute" data-drop="${a.id}"><span class="em">📎</span><b>${staged.length || a.files.length ? 'เพิ่มไฟล์อีก' : 'แตะเพื่อเลือกไฟล์ หรือลากมาวาง'}</b>
+          <span class="small muted">รับ ${a.accept_types.map(k => KIND_LABEL[k]).join(' · ')} · ไม่เกิน ${a.max_file_mb} MB/ไฟล์</span>
+          <input type="file" multiple hidden accept="${a.accept_types.map(k => KIND_ACCEPT[k]).join(',')}" data-chg="stu-files" data-id="${a.id}"></label>
+        ${pendingStaged.length ? `<div class="send-bar"><button class="btn primary big" data-act="stu-send" data-id="${a.id}" ${stuState.uploading ? 'disabled' : ''}>${stuState.uploading ? '<span class="spin" style="border-top-color:#fff"></span> กำลังส่ง…' : `🚀 ส่งงานเลย (${pendingStaged.filter(x => x.state !== 'bad').length || pendingStaged.length} ไฟล์)`}</button></div>` : ''}`
+      : `<div class="lock-note"><span class="em">${a.status === 'graded' ? '🌟' : '🔒'}</span>${a.status === 'graded' ? 'ครูตรวจงานนี้แล้ว เก่งมาก!' : !a.is_open ? 'ครูปิดรับงานนี้แล้ว' : 'เลยกำหนดส่งแล้ว งานนี้ไม่รับส่งช้า'}</div>`}
+    </div>` : ''}
+  </div>`;
+}
+
+/* ---------- เลือกไฟล์ / ส่งงาน ---------- */
+function stageFiles(aid, files) {
+  const a = (stuState.asg || []).find(x => x.id === aid); if (!a) return;
+  const list = stuState.staged[aid] = stuState.staged[aid] || [];
+  for (const f of files) {
+    const kind = detectKind(f);
+    const item = { key: uid(), file: f, name: f.name, size: f.size, kind, thumb: null, state: '', err: '' };
+    if (!a.accept_types.includes(kind)) { item.state = 'bad'; item.err = `งานนี้ไม่รับ${KIND_LABEL[kind]}`; }
+    else if (kind !== 'image' && f.size > a.max_file_mb * 1024 * 1024) { item.state = 'bad'; item.err = `ใหญ่เกิน ${a.max_file_mb} MB${kind === 'video' ? ' ลองตัดคลิปให้สั้นลง' : ''}`; }
+    list.push(item);
+    makeThumb(f, kind).then(t => { item.thumb = t; if (ui.route === 'student') render(); });
+  }
+  stuState.open = aid;
+  render();
+}
+async function studentSend(aid) {
+  const v = stuState.verified, a = (stuState.asg || []).find(x => x.id === aid);
+  const items = (stuState.staged[aid] || []).filter(x => x.state !== 'ok' && x.state !== 'bad');
+  if (!v || !a || stuState.uploading || !items.length) { if (!items.length) toast('ไม่มีไฟล์ที่ส่งได้ ลองเอาไฟล์ที่มี ! ออกแล้วเลือกใหม่', true); return; }
+  stuState.uploading = true; render();
+  let ok = 0;
+  for (const it of items) {
+    it.state = 'up'; it.err = ''; render();
+    try {
+      const file = it.kind === 'image' ? await compressImage(it.file) : it.file;
+      if (file.size > a.max_file_mb * 1024 * 1024) throw new Error(`ใหญ่เกิน ${a.max_file_mb} MB`);
+      if (!it.thumb) it.thumb = await makeThumb(file, it.kind);
+      const path = await q(sb.rpc('student_begin_upload', { p_student_id: v.student_id, p_code: v.code, p_assignment_id: aid, p_file_name: file.name, p_mime: file.type || 'application/octet-stream', p_size: file.size, p_kind: it.kind }));
+      await q(sb.storage.from('submissions').upload(path, file, { contentType: file.type || 'application/octet-stream', upsert: false }));
+      await q(sb.rpc('student_finish_upload', { p_student_id: v.student_id, p_code: v.code, p_path: path, p_thumb: it.thumb }));
+      it.state = 'ok'; it.size = file.size; ok++;
+    } catch (e) { it.state = 'bad'; it.err = /ใหญ่เกิน/.test(e.message || '') ? e.message : errMsg(e); }
+    render();
+  }
+  stuState.uploading = false;
+  if (ok) {
+    confetti(); toast(`ส่งงานสำเร็จ ${ok} ไฟล์ 🎉`);
+    stuState.staged[aid] = (stuState.staged[aid] || []).filter(x => x.state !== 'ok');
+    stuState.asg = null; await loadStudentAsg(); stuState.open = aid; render();
+  } else render();
+}
+function confetti() {
+  const box = document.createElement('div'); box.className = 'confetti';
+  const em = ['🎉', '⭐', '✨', '💜', '🌟', '🎊', '💖'];
+  for (let i = 0; i < 28; i++) {
+    const s = document.createElement('i'); s.textContent = em[i % em.length];
+    s.style.left = Math.random() * 100 + 'vw'; s.style.animationDelay = Math.random() * .5 + 's'; s.style.fontSize = 16 + Math.random() * 18 + 'px';
+    box.appendChild(s);
+  }
+  document.body.appendChild(box); setTimeout(() => box.remove(), 2600);
+}
 
 </script>
 </body>
