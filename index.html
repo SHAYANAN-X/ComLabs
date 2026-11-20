@@ -702,6 +702,64 @@ body{background:
   :root{--glass:rgba(255,255,255,.94);--glass-strong:#fff}
   [data-theme=dark]{--glass:rgba(34,30,58,.96);--glass-strong:#2c2848}
 }
+/* ตัวเลือกห้อง */
+.picker{padding:14px 18px;margin-bottom:16px;display:flex;flex-direction:column;gap:12px}
+.picker-row{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.picker-lbl{font:500 14px var(--f-head);color:var(--muted);width:72px;flex:none}
+.seg.wrap{flex-wrap:wrap}
+.room-chips{display:flex;gap:8px;flex-wrap:wrap}
+.room-chip{display:flex;flex-direction:column;align-items:center;min-width:72px;padding:7px 12px;border-radius:16px;cursor:pointer;background:var(--glass);border:1px solid var(--glass-line);box-shadow:var(--glass-hi),0 4px 12px -8px rgba(40,30,110,.4);transition:transform .15s}
+.room-chip:hover{transform:translateY(-1px)}
+.room-chip b{font:500 16px var(--f-head)}
+.room-chip small{font-size:11.5px;color:var(--muted)}
+.room-chip.on{background:linear-gradient(180deg,rgba(116,96,255,.92),rgba(79,92,255,.92));color:#fff;border-color:rgba(255,255,255,.35)}
+.room-chip.on small{color:rgba(255,255,255,.85)}
+@media (max-width:820px){.picker-lbl{width:auto}}
+/* ---------- ตารางคะแนน ---------- */
+.gb-wrap{overflow:auto;max-height:calc(100vh - 260px);border-top:1px solid var(--glass-edge)}
+table.gb{border-collapse:separate;border-spacing:0;font-size:14px;min-width:100%}
+.gb th,.gb td{border-bottom:1px solid var(--glass-edge);border-right:1px solid var(--glass-edge);padding:0;white-space:nowrap;background:var(--surface)}
+[data-theme=dark] .gb th,[data-theme=dark] .gb td{background:#1d1832}
+.gb thead th{position:sticky;top:0;z-index:2;background:color-mix(in srgb,var(--surface) 88%,var(--primary-soft));font-weight:600;font-size:12.5px;color:var(--muted);padding:8px 10px;text-align:left;vertical-align:bottom}
+.gb tfoot td{position:sticky;bottom:0;z-index:2;background:color-mix(in srgb,var(--surface) 85%,var(--primary-soft));font-weight:600;padding:8px 10px;font-size:13px}
+.gb .gb-sticky{position:sticky;z-index:1}
+.gb thead .gb-sticky,.gb tfoot .gb-sticky{z-index:3}
+.gb .gb-no{left:0;width:56px;min-width:56px;text-align:center;padding:6px 8px;font-variant-numeric:tabular-nums}
+.gb .gb-name{left:56px;min-width:200px;max-width:260px;padding:6px 12px;overflow:hidden;text-overflow:ellipsis;box-shadow:6px 0 10px -8px rgba(40,30,110,.35)}
+.gb tbody tr:hover td{background:color-mix(in srgb,var(--surface) 80%,var(--primary-soft))}
+.gb tr.inactive td{color:var(--muted)}
+.gcol{min-width:118px;max-width:170px;position:relative}
+.gcol .gh{display:flex;flex-direction:column;gap:2px;padding-right:22px}
+.gcol .gt{color:var(--ink);font:500 13.5px var(--f-head);white-space:normal;line-height:1.25;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.gcol .gm{font-weight:500;font-size:11.5px;white-space:normal}
+.gcol.assignment{box-shadow:inset 0 3px 0 var(--primary)}
+.gcol.manual{box-shadow:inset 0 3px 0 var(--accent)}
+.gb-menu{position:absolute;top:6px;right:4px;width:24px;height:24px;border:0;border-radius:8px;background:transparent;color:var(--muted);cursor:pointer;display:grid;place-items:center}
+.gb-menu:hover{background:var(--primary-soft);color:var(--primary)}
+.gb-menu svg{width:16px;height:16px}
+.gcell-td{text-align:center}
+.gcell{width:100%;min-width:70px;border:0;background:transparent;padding:9px 8px;text-align:center;font:500 15px var(--f-body);font-variant-numeric:tabular-nums;color:var(--ink);outline:none;border-radius:0;transition:background .2s}
+.gcell:focus{background:rgba(91,77,255,.12);box-shadow:inset 0 0 0 2px var(--primary)}
+.gcell::placeholder{color:color-mix(in srgb,var(--muted) 60%,transparent)}
+.gcell.pend::placeholder{color:var(--accent);font-size:12px;font-weight:600}
+.gcell.over{color:var(--danger);font-weight:700}
+.gcell.saving{background:rgba(255,179,71,.18)}
+.gcell.saved{background:rgba(18,161,127,.18)}
+.gb-tot{text-align:center;padding:6px 10px!important;min-width:64px;font-variant-numeric:tabular-nums;font-weight:600;color:var(--ink)!important}
+.gb-tot small{display:block;font-weight:500;color:var(--muted)}
+.gb-avg{text-align:center;color:var(--muted)}
+.grade{display:inline-grid;place-items:center;min-width:34px;height:26px;border-radius:9px;font:600 14px var(--f-head);background:var(--surface-2);color:var(--muted)}
+.grade.g4{background:var(--ok-soft);color:var(--ok)}.grade.g35,.grade.g3{background:var(--mint-soft);color:var(--mint)}
+.grade.g25,.grade.g2{background:var(--sky-soft);color:var(--sky)}.grade.g15,.grade.g1{background:var(--accent-soft);color:color-mix(in srgb,var(--accent) 75%,var(--ink))}
+.grade.g0{background:var(--danger-soft);color:var(--danger)}
+/* นักเรียน: คะแนนของฉัน */
+.stu-tabs{align-self:center}
+.stu-tabs button{font:500 15px var(--f-head);padding:8px 18px}
+.score-list{display:flex;flex-direction:column;gap:2px}
+.score-row{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:9px 12px;border-radius:12px;font-size:14.5px}
+.score-row:nth-child(odd){background:var(--surface-2)}
+.score-row b{font:500 16px var(--f-head);white-space:nowrap}
+.score-card .prog-bar i{display:block;height:100%}
 
 </style>
 </head>
@@ -991,7 +1049,7 @@ const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBh
 const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
 /* ข้อมูลที่โหลดมาจากเซิร์ฟเวอร์ (แคชไว้ในหน้าเว็บ) */
-const store = { terms: [], classrooms: [], students: [], subjects: [], subject_classes: [], assignments: [], assignment_classes: [], submissions: [], files: {}, teacher: { name: 'ครูผู้สอน', email: '' } };
+const store = { terms: [], classrooms: [], students: [], subjects: [], subject_classes: [], assignments: [], assignment_classes: [], submissions: [], grade_columns: [], grade_entries: [], files: {}, teacher: { name: 'ครูผู้สอน', email: '' } };
 
 function errMsg(e) {
   const m = (e && (e.message || e.error_description)) || String(e);
@@ -1034,11 +1092,12 @@ function thaiTermNow() {
   return { year: m >= 11 ? be : be - 1, semester: 2 };
 }
 async function loadAll() {
-  const [terms, classrooms, students, subjects, subject_classes, assignments, assignment_classes, submissions] = await Promise.all([
+  const [terms, classrooms, students, subjects, subject_classes, assignments, assignment_classes, submissions, grade_columns, grade_entries] = await Promise.all([
     fetchAll('terms'), fetchAll('classrooms'), fetchAll('students'), fetchAll('subjects'), fetchAll('subject_classes', 'subject_id'),
     fetchAll('assignments'), fetchAll('assignment_classes', 'assignment_id'), fetchAll('submissions', 'submitted_at'),
+    fetchAll('grade_columns'), fetchAll('grade_entries', 'column_id'),
   ]);
-  Object.assign(store, { terms, classrooms, students, subjects, subject_classes, assignments, assignment_classes, submissions, files: {} });
+  Object.assign(store, { terms, classrooms, students, subjects, subject_classes, assignments, assignment_classes, submissions, grade_columns, grade_entries, files: {} });
   if (!store.terms.length) {
     const t = await q(sb.from('terms').insert({ ...thaiTermNow(), is_current: true }).select().single());
     store.terms.push(t);
@@ -1124,7 +1183,7 @@ const NAV = [
   { id: 'classes', label: 'ห้องเรียนและรายชื่อ', icon: 'users' },
   { group: 'การเรียนการสอน' },
   { id: 'assignments', label: 'งานและตรวจงาน', icon: 'inbox' },
-  { id: 'gradebook', label: 'ตารางคะแนน', icon: 'table', soon: 'เฟส 3' },
+  { id: 'gradebook', label: 'ตารางคะแนน', icon: 'table' },
   { id: 'exams', label: 'ข้อสอบ', icon: 'quiz', soon: 'เฟส 5' },
   { group: 'ระบบ' },
   { id: 'settings', label: 'ตั้งค่า', icon: 'gear' },
@@ -1139,7 +1198,7 @@ function render() {
   const base = ui.route.startsWith('grade-') ? 'grade' : ui.route;
   if (!TITLES[base]) ui.route = 'dashboard';
   const theme = document.documentElement.dataset.theme;
-  const views = { dashboard: viewDashboard, subjects: viewSubjects, classes: viewClasses, settings: viewSettings, assignments: viewAssignments, grade: viewGrade, gradebook: viewSoon, exams: viewSoon };
+  const views = { dashboard: viewDashboard, subjects: viewSubjects, classes: viewClasses, settings: viewSettings, assignments: viewAssignments, grade: viewGrade, gradebook: viewGradebook, exams: viewSoon };
   const navOn = base === 'grade' ? 'assignments' : base;
   root.innerHTML = `
   <div class="shell">
@@ -1203,7 +1262,7 @@ function viewDashboard() {
   const phases = [
     ['ล็อกอินครู · วิชา · ห้อง · อัปโหลดรายชื่อ', 'ใช้งานได้แล้ว'],
     ['สร้างงาน · นักเรียนส่งไฟล์ · หน้าตรวจให้คะแนน', 'ใช้งานได้แล้ว'],
-    ['ตารางคะแนนรายห้อง', 'เพิ่ม/ลบคอลัมน์ แก้ได้ ส่งออก Excel'],
+    ['ตารางคะแนนรายห้อง', 'ใช้งานได้แล้ว'],
     ['แดชบอร์ดสรุปการส่งงาน', 'กราฟรายห้อง รายชื่อคนค้างส่ง'],
     ['ระบบข้อสอบ + ส่งลิงก์ LINE + QR', 'ตรวจปรนัยอัตโนมัติ'],
     ['ปรับดีไซน์ มือถือ ทดสอบกับห้องจริง', ''],
@@ -1234,7 +1293,7 @@ function viewDashboard() {
     </div>
     <div class="card">
       <div class="card-h"><h3>ความคืบหน้าการสร้างระบบ</h3></div>
-      <div class="card-b"><ol class="phases">${phases.map((p, i) => `<li class="${i <= 1 ? 'now' : ''}"><span class="dot">${i + 1}</span><div><b>${p[0]}</b><span>${p[1]}</span></div></li>`).join('')}</ol></div>
+      <div class="card-b"><ol class="phases">${phases.map((p, i) => `<li class="${i <= 2 ? 'now' : ''}"><span class="dot">${i + 1}</span><div><b>${p[0]}</b><span>${p[1]}</span></div></li>`).join('')}</ol></div>
     </div>
   </div>`;
 }
@@ -1300,22 +1359,35 @@ async function saveSubject() {
 }
 
 /* ---------- ห้องเรียนและรายชื่อ ---------- */
+function levelOf(name) { const m = String(name).match(/^(.*?)\s*\/\s*\d+$/); return m ? m[1].trim() : 'อื่นๆ'; }
 function viewClasses() {
   const cls = Q.classrooms();
-  if (!cls.find(c => c.id === ui.cid)) ui.cid = cls[0]?.id || null;
+  if (ui.cid && !cls.find(c => c.id === ui.cid)) ui.cid = null;
   const cur = ui.cid && db.get('classrooms', ui.cid);
+  if (cur) ui.clsLevel = levelOf(cur.name);
+  const levels = [...new Set(cls.map(c => levelOf(c.name)))];
+  const lv = ui.clsLevel && levels.includes(ui.clsLevel) ? ui.clsLevel : '';
+  const shown = lv ? cls.filter(c => levelOf(c.name) === lv) : cls;
+  const total = store.students.filter(s => s.active !== false).length;
   return `
-  <div class="page-head"><div><h2>ห้องเรียนและรายชื่อ</h2><p>อัปโหลดรายชื่อจาก Excel ได้ทีละหลายห้อง (1 ชีต = 1 ห้อง) หรือเพิ่ม/แก้ไขเองได้</p></div><span class="spacer"></span>
+  <div class="page-head"><div><h2>ห้องเรียนและรายชื่อ</h2><p>${thaiNum(cls.length)} ห้อง · นักเรียน ${thaiNum(total)} คน</p></div><span class="spacer"></span>
     <button class="btn" data-act="class-new">${ic('plus')}เพิ่มห้อง</button>
     <button class="btn primary" data-act="import-open">${ic('upload')}อัปโหลดรายชื่อ</button>
   </div>
-  ${cls.length ? `<div class="two-pane">
-    <div class="card cls-list">${cls.map(c => { const n = Q.students(c.id).length;
-      return `<button class="cls-item ${c.id === ui.cid ? 'active' : ''}" data-act="class-pick" data-id="${c.id}"><div style="min-width:0"><div class="cls-name">${esc(c.name)}</div><div class="cls-sub">${esc(c.homeroom_teacher || 'ไม่ระบุครูที่ปรึกษา')}</div></div><span class="cls-count">${thaiNum(n)} คน</span></button>`; }).join('')}
+  ${cls.length ? `
+  <div class="card picker">
+    <div class="picker-row">
+      <span class="picker-lbl">ระดับชั้น</span>
+      <div class="seg wrap">${['', ...levels].map(l => `<button class="${l === lv ? 'on' : ''}" data-act="cls-level" data-l="${esc(l)}">${l ? esc(l) : 'ทั้งหมด'}</button>`).join('')}</div>
     </div>
-    ${cur ? classPanel(cur) : ''}
-  </div>`
-  : `<div class="card"><div class="empty">${ic('users')}<b>ยังไม่มีห้องเรียน</b>อัปโหลดไฟล์รายชื่อ Excel ที่โรงเรียนใช้อยู่ได้เลย ระบบจะสร้างห้องให้ตามชื่อชีต<br>
+    <div class="picker-row">
+      <span class="picker-lbl">ห้อง</span>
+      ${lv ? `<div class="room-chips">${shown.map(c => `<button class="room-chip ${c.id === ui.cid ? 'on' : ''}" data-act="class-pick" data-id="${c.id}"><b>${esc(c.name)}</b><small>${thaiNum(Q.students(c.id).length)} คน</small></button>`).join('')}</div>`
+      : `<select class="input" style="max-width:320px" data-chg="cls-select" aria-label="เลือกห้อง"><option value="">— เลือกห้อง —</option>${shown.map(c => `<option value="${c.id}" ${c.id === ui.cid ? 'selected' : ''}>${esc(c.name)} · ${thaiNum(Q.students(c.id).length)} คน</option>`).join('')}</select>`}
+    </div>
+  </div>
+  ${cur ? classPanel(cur) : `<div class="card"><div class="empty"><div style="font-size:40px">👆</div><b>เลือกห้องเพื่อดูรายชื่อนักเรียน</b>${lv ? `ระดับชั้น ${esc(lv)} มี ${thaiNum(shown.length)} ห้อง` : 'เลือกระดับชั้นด้านบน หรือเลือกห้องจากรายการ'}</div></div>`}`
+  : `<div class="card"><div class="empty">${ic('users')}<b>ยังไม่มีห้องเรียน</b>อัปโหลดไฟล์รายชื่อที่โรงเรียนใช้อยู่ได้เลย ระบบจะแยกห้องและเลขที่ให้อัตโนมัติ<br>
      <button class="btn primary" data-act="import-open" style="margin-top:12px">${ic('upload')}อัปโหลดรายชื่อ</button></div></div>`}`;
 }
 function classPanel(c) {
@@ -1525,7 +1597,7 @@ async function doImport() {
     await loadAll().catch(() => {}); ui.cid = lastId || ui.cid; closeModal(); render();
     return;
   }
-  ui.cid = lastId; ui.sel.clear(); closeModal(); render();
+  ui.cid = inc.length === 1 ? lastId : null; ui.clsLevel = inc.length === 1 ? ui.clsLevel : ''; ui.sel.clear(); closeModal(); render();
   toast(`นำเข้าแล้ว: เพิ่ม ${added} คน${updated ? ` · อัปเดต ${updated} คน` : ''}${rooms ? ` · สร้างห้องใหม่ ${rooms} ห้อง` : ''}`);
 }
 
@@ -1647,6 +1719,7 @@ const ACT = {
     confirmBox('ลบวิชา', `ลบวิชา <b>${esc(s.name)}</b>? งาน คะแนน และข้อสอบของวิชานี้จะถูกลบด้วย`, 'ลบวิชา', async () => {
       await db.removeIds('subjects', [s.id]); store.subject_classes = store.subject_classes.filter(x => x.subject_id !== s.id); render(); toast('ลบวิชาแล้ว'); }); },
   'pick-color': el => { modalCtx.color = el.dataset.c; $$('#modal-root .swatch').forEach(s => s.classList.toggle('on', s === el)); },
+  'cls-level': el => { ui.clsLevel = el.dataset.l; ui.cid = null; ui.sel.clear(); ui.q = ''; render(); },
   'class-pick': el => { ui.cid = el.dataset.id; ui.sel.clear(); ui.q = ''; render(); },
   'class-new': () => classModal(null),
   'class-edit': el => classModal(db.get('classrooms', el.dataset.id)),
@@ -1676,9 +1749,10 @@ const ACT = {
     if (n) return toast(`ภาคเรียนนี้มี ${n} วิชา ย้ายหรือลบวิชาก่อน`, true);
     confirmBox('ลบภาคเรียน', `ลบภาคเรียน ${Q.termLabel(t)}?`, 'ลบ', async () => { await db.removeIds('terms', [t.id]); render(); }); },
   'pw-open': pwModal,
-  'stu-out': () => { if (stuState.uploading) return; stuState.verified = null; stuState.asg = null; stuState.open = null; stuState.staged = {}; try { sessionStorage.removeItem('cr-student'); } catch (e) {} render(); },
+  'stu-out': () => { if (stuState.uploading) return; stuState.verified = null; stuState.asg = null; stuState.scores = null; stuState.tab = 'work'; stuState.open = null; stuState.staged = {}; try { sessionStorage.removeItem('cr-student'); } catch (e) {} render(); },
 };
 const CHG = {
+  'cls-select': el => { ui.cid = el.value || null; ui.sel.clear(); ui.q = ''; render(); },
   'term-filter': el => { ui.termId = el.value; render(); },
   sel: el => { el.checked ? ui.sel.add(el.dataset.id) : ui.sel.delete(el.dataset.id); render(); },
   'sel-all': el => { const vis = $$('#stu-tbl tbody tr:not([hidden])').map(r => r.dataset.row); vis.forEach(id => el.checked ? ui.sel.add(id) : ui.sel.delete(id)); render(); },
@@ -1967,6 +2041,8 @@ async function saveAssignment() {
   store.assignment_classes = store.assignment_classes.filter(x => x.assignment_id !== id);
   const rows = await q(sb.from('assignment_classes').insert(cls.map(c => ({ assignment_id: id, classroom_id: c }))).select());
   store.assignment_classes.push(...rows);
+  const gc = store.grade_columns.find(c => c.assignment_id === id);
+  if (gc && gc.title !== title) { try { await db.update('grade_columns', gc.id, { title }); } catch (e) {} }
   closeModal(); render(); toast(wasNew ? 'สร้างงานแล้ว' : 'บันทึกงานแล้ว');
 }
 async function deleteAssignment(a) {
@@ -2296,7 +2372,8 @@ function studentHome(v) {
     <div class="stu-banner"><div class="acts"><button class="btn icon sm" data-act="stu-reload" aria-label="โหลดใหม่" title="โหลดใหม่">${ic('refresh')}</button><button class="btn sm" data-act="stu-out">ออก</button></div>
       <div class="row" style="gap:14px;position:relative;z-index:1"><div class="ava">${esc(first[0] || '?')}</div><div style="min-width:0"><h2>สวัสดี ${esc(first)}! 👋</h2>
         <div class="pills"><span class="pill">🏫 ${esc(v.classroom_name)}</span><span class="pill">เลขที่ ${v.number}</span></div></div></div></div>
-    ${stuState.asg ? `<div class="counters">
+    <div class="seg stu-tabs"><button class="${stuState.tab !== 'score' ? 'on' : ''}" data-act="stu-tab" data-t="work">📝 งานของฉัน</button><button class="${stuState.tab === 'score' ? 'on' : ''}" data-act="stu-tab" data-t="score">📊 คะแนนของฉัน</button></div>
+    ${stuState.tab === 'score' ? studentScoresHTML() : stuState.asg ? `<div class="counters">
         <div class="counter todo"><span class="em">📝</span><div><b>${groups.todo.length}</b><small>ต้องส่ง/แก้</small></div></div>
         <div class="counter wait"><span class="em">⏳</span><div><b>${groups.wait.length}</b><small>รอครูตรวจ</small></div></div>
         <div class="counter done"><span class="em">🌟</span><div><b>${groups.done.length}</b><small>ตรวจแล้ว</small></div></div></div>
@@ -2479,6 +2556,337 @@ Object.assign(ACT, {
     window.open(href, '_blank', 'noopener');
   },
   'share-present': presentQR,
+});
+
+/* =====================================================================
+   เฟส 3: ตารางคะแนนรายห้อง
+   - คอลัมน์ "งาน" สร้างอัตโนมัติจากงานของวิชา (คะแนนเชื่อมกับหน้าตรวจงาน)
+   - คอลัมน์ "กรอกเอง" เพิ่ม/ลบ/แก้ชื่อ/คะแนนเต็ม/ย้าย/ซ่อนได้ ใช้ทุกห้องหรือเฉพาะห้อง
+   - รวม · ร้อยละ · เกรด · ค่าเฉลี่ย · ส่งออก Excel
+   ===================================================================== */
+I.dl = '<path d="M12 4v11M7 10l5 5 5-5"/><path d="M4 18v1a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-1"/>';
+I.dots = '<circle cx="5" cy="12" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="19" cy="12" r="1.6"/>';
+I.eyeoff = '<path d="M3 3l18 18M10.6 6.2A9.8 9.8 0 0 1 12 6c6.5 0 10 6 10 6a17 17 0 0 1-3.2 3.9M6.6 6.7C3.8 8.5 2 12 2 12s3.5 6 10 6a9.7 9.7 0 0 0 4.4-1"/><path d="M9.9 9.9a3 3 0 0 0 4.2 4.2"/>';
+const GB_PRESETS = [['จิตพิสัย', 10], ['สอบกลางภาค', 20], ['สอบปลายภาค', 30], ['ทดสอบย่อย', 10], ['คะแนนพิเศษ', 5], ['เข้าเรียน', 10]];
+
+function thaiGrade(pct) {
+  if (pct == null || isNaN(pct)) return '–';
+  return pct >= 80 ? '4' : pct >= 75 ? '3.5' : pct >= 70 ? '3' : pct >= 65 ? '2.5' : pct >= 60 ? '2' : pct >= 55 ? '1.5' : pct >= 50 ? '1' : '0';
+}
+const GB = {
+  cols(sid, cid, withHidden) {
+    const assigned = new Set(store.assignment_classes.filter(x => x.classroom_id === cid).map(x => x.assignment_id));
+    const live = new Set(store.assignments.map(a => a.id));
+    return store.grade_columns.filter(c => c.subject_id === sid && (!c.classroom_id || c.classroom_id === cid)
+      && (c.source !== 'assignment' || (live.has(c.assignment_id) && assigned.has(c.assignment_id)))
+      && (withHidden || !c.hidden))
+      .sort((a, b) => (a.sort_order - b.sort_order) || (a.created_at || '').localeCompare(b.created_at || ''));
+  },
+  max(c) { if (c.source === 'assignment') { const a = db.get('assignments', c.assignment_id); return +(a?.max_score ?? c.max_score); } return +c.max_score; },
+  entry: (colId, sid) => store.grade_entries.find(e => e.column_id === colId && e.student_id === sid),
+  score(c, sid) {
+    if (c.source === 'assignment') { const s = A.sub(c.assignment_id, sid); return { v: s?.score ?? null, st: s?.status || null }; }
+    const e = GB.entry(c.id, sid); return { v: e?.score ?? null, st: null };
+  },
+  roster(cid, cols) {
+    const ids = new Set();
+    cols.forEach(c => store.grade_entries.forEach(e => { if (e.column_id === c.id) ids.add(e.student_id); }));
+    return Q.students(cid).filter(s => s.active !== false || ids.has(s.id));
+  },
+  total(cols, sid) {
+    let sum = 0, max = 0;
+    cols.forEach(c => { const m = GB.max(c); if (m > 0) { max += m; sum += +(GB.score(c, sid).v || 0); } });
+    const pct = max ? sum / max * 100 : null;
+    return { sum: Math.round(sum * 100) / 100, max, pct };
+  },
+};
+async function syncAssignmentColumns(subjectId) {
+  const have = new Set(store.grade_columns.map(c => c.assignment_id).filter(Boolean));
+  const missing = store.assignments.filter(a => a.subject_id === subjectId && !have.has(a.id))
+    .sort((a, b) => (a.created_at || '').localeCompare(b.created_at || ''));
+  if (!missing.length) return false;
+  const base = Math.max(0, ...store.grade_columns.filter(c => c.subject_id === subjectId).map(c => c.sort_order || 0));
+  const rows = missing.map((a, i) => ({ subject_id: subjectId, title: a.title, max_score: a.max_score, source: 'assignment', assignment_id: a.id, sort_order: base + (i + 1) * 10 }));
+  const out = await q(sb.from('grade_columns').upsert(rows, { onConflict: 'assignment_id', ignoreDuplicates: true }).select());
+  const ids = new Set(store.grade_columns.map(c => c.id));
+  out.forEach(r => { if (!ids.has(r.id)) store.grade_columns.push(r); });
+  return true;
+}
+
+/* ---------- หน้า ---------- */
+function viewGradebook() {
+  pruneLocal();
+  const term = Q.currentTerm();
+  const subs = Q.subjectsOfTerm(term?.id);
+  if (!subs.some(s => s.id === ui.gbSubject)) ui.gbSubject = subs[0]?.id || null;
+  const sj = ui.gbSubject && db.get('subjects', ui.gbSubject);
+  if (!sj) return `<div class="card"><div class="empty">${ic('table')}<b>ยังไม่มีวิชาในภาคเรียนนี้</b>เพิ่มวิชาและห้องที่สอนก่อน<br><a class="btn primary" href="#subjects" style="margin-top:12px">${ic('plus')}เพิ่มวิชา</a></div></div>`;
+  const cids = Q.subjectClassIds(sj.id).sort((x, y) => (db.get('classrooms', x)?.name || '').localeCompare(db.get('classrooms', y)?.name || '', 'th', { numeric: true }));
+  if (!cids.includes(ui.gbCid)) ui.gbCid = cids[0] || null;
+  if (ui.gbSynced !== sj.id) {
+    ui.gbSynced = sj.id;
+    Promise.all([syncAssignmentColumns(sj.id), refreshAllSubs()]).then(() => { if (ui.route === 'gradebook') render(); }).catch(() => {});
+  }
+  const cid = ui.gbCid;
+  const head = `
+  <div class="page-head"><div><h2>ตารางคะแนน</h2><p>คะแนนงานดึงมาจากหน้าตรวจงานให้อัตโนมัติ · แก้คะแนนในช่องได้เลย บันทึกทันที</p></div><span class="spacer"></span>
+    <select class="input" style="width:auto" data-chg="gb-subject" aria-label="วิชา">${subs.map(s => `<option value="${s.id}" ${s.id === sj.id ? 'selected' : ''}>${esc(s.name)}${s.code ? ` (${esc(s.code)})` : ''}</option>`).join('')}</select>
+  </div>`;
+  if (!cid) return head + `<div class="card"><div class="empty">${ic('users')}<b>วิชานี้ยังไม่ได้เลือกห้องที่สอน</b><a class="btn" href="#subjects" style="margin-top:10px">ไปที่หน้าวิชา</a></div></div>`;
+  const cols = GB.cols(sj.id, cid);
+  const hidden = GB.cols(sj.id, cid, true).filter(c => c.hidden);
+  const studs = GB.roster(cid, cols);
+  const totalMax = cols.reduce((a, c) => a + (GB.max(c) || 0), 0);
+  return head + `
+  <div class="card">
+    <div class="toolbar" style="gap:10px">
+      <div class="tabs">${cids.map(c => `<button class="tab ${c === cid ? 'on' : ''}" data-act="gb-cls" data-id="${c}">${esc(db.get('classrooms', c)?.name)}</button>`).join('')}</div>
+      <span class="spacer"></span>
+      ${hidden.length ? `<button class="btn sm ghost" data-act="gb-hidden">${ic('eyeoff')}ซ่อนอยู่ ${hidden.length}</button>` : ''}
+      <button class="btn sm" data-act="gb-export" data-all="0">${ic('dl')}Excel ห้องนี้</button>
+      <button class="btn sm" data-act="gb-export" data-all="1">${ic('dl')}ทุกห้อง</button>
+      <button class="btn sm primary" data-act="gb-add">${ic('plus')}เพิ่มคอลัมน์</button>
+    </div>
+    <div class="toolbar small muted" style="background:transparent">${thaiNum(studs.length)} คน · ${thaiNum(cols.length)} คอลัมน์ · คะแนนเต็มรวม ${thaiNum(totalMax)} · ช่องว่างนับเป็น 0 · กด Enter หรือ ↑↓ เพื่อเลื่อนช่อง</div>
+    ${studs.length ? `<div class="gb-wrap"><table class="gb" id="gb">
+      <thead><tr><th class="gb-sticky gb-no">เลขที่</th><th class="gb-sticky gb-name">ชื่อ - สกุล</th>
+        ${cols.map((c, i) => `<th class="gcol ${c.source}"><div class="gh"><span class="gt" title="${esc(c.title)}">${esc(c.title)}</span>
+          <span class="gm">${c.source === 'assignment' ? '📝' : '✏️'} เต็ม ${+GB.max(c)}${c.classroom_id ? ' · เฉพาะห้อง' : ''}${c.visible_to_students ? '' : ' · ซ่อนจากนักเรียน'}</span></div>
+          <button class="gb-menu" data-act="gb-col" data-id="${c.id}" aria-label="ตั้งค่าคอลัมน์ ${esc(c.title)}">${ic('dots')}</button></th>`).join('')}
+        <th class="gb-tot">รวม<small>/${+totalMax}</small></th><th class="gb-tot">ร้อยละ</th><th class="gb-tot">เกรด</th></tr></thead>
+      <tbody>${studs.map(s => gbRowHTML(s, cols)).join('')}</tbody>
+      <tfoot>${gbFootHTML(studs, cols)}</tfoot>
+    </table></div>`
+    : `<div class="empty">${ic('users')}<b>ห้องนี้ยังไม่มีนักเรียน</b></div>`}
+    ${!cols.length ? `<div class="empty" style="padding-top:0">ยังไม่มีคอลัมน์คะแนน — สร้างงานที่หน้า "งานและตรวจงาน" หรือกด "เพิ่มคอลัมน์" (เช่น จิตพิสัย สอบกลางภาค)</div>` : ''}
+  </div>`;
+}
+function gbRowHTML(s, cols) {
+  const t = GB.total(cols, s.id);
+  return `<tr data-sid="${s.id}" class="${s.active === false ? 'inactive' : ''}"><td class="gb-sticky gb-no">${s.number}</td><td class="gb-sticky gb-name">${esc(Q.fullName(s))}</td>
+    ${cols.map((c, ci) => { const { v, st } = GB.score(c, s.id); const m = GB.max(c);
+      const pend = v == null && (st === 'submitted' || st === 'late');
+      return `<td class="gcell-td"><input class="gcell ${v != null && v > m ? 'over' : ''} ${pend ? 'pend' : ''}" data-chg="gb-cell" data-c="${c.id}" data-s="${s.id}" data-ci="${ci}" value="${v ?? ''}" placeholder="${pend ? 'รอตรวจ' : '–'}" inputmode="decimal" aria-label="${esc(c.title)} ${esc(s.first_name)}"></td>`; }).join('')}
+    ${gbTotCells(t)}</tr>`;
+}
+function gbTotCells(t) {
+  const g = thaiGrade(t.pct);
+  return `<td class="gb-tot gb-sum">${t.max ? thaiNum(t.sum) : '–'}</td><td class="gb-tot gb-pct">${t.pct == null ? '–' : t.pct.toFixed(1)}</td><td class="gb-tot"><span class="grade g${String(g).replace('.', '')}">${g}</span></td>`;
+}
+function gbFootHTML(studs, cols) {
+  const avg = c => { const vals = studs.map(s => GB.score(c, s.id).v).filter(v => v != null); return vals.length ? (vals.reduce((a, b) => a + +b, 0) / vals.length).toFixed(1) : '–'; };
+  const pcts = studs.map(s => GB.total(cols, s.id).pct).filter(p => p != null);
+  const avgPct = pcts.length ? pcts.reduce((a, b) => a + b, 0) / pcts.length : null;
+  return `<tr><td class="gb-sticky gb-no"></td><td class="gb-sticky gb-name"><b>ค่าเฉลี่ย</b></td>${cols.map(c => `<td class="gb-avg">${avg(c)}</td>`).join('')}<td class="gb-tot"></td><td class="gb-tot">${avgPct == null ? '–' : avgPct.toFixed(1)}</td><td class="gb-tot">${thaiGrade(avgPct)}</td></tr>`;
+}
+function gbRefreshRow(sid) {
+  const cols = GB.cols(ui.gbSubject, ui.gbCid);
+  const tr = $(`#gb tr[data-sid="${sid}"]`); if (!tr) return;
+  const tds = tr.querySelectorAll('td.gb-tot');
+  const tmp = document.createElement('tbody'); tmp.innerHTML = `<tr>${gbTotCells(GB.total(cols, sid))}</tr>`;
+  tmp.querySelectorAll('td').forEach((td, i) => { if (tds[i]) tds[i].replaceWith(td); });
+  const studs = GB.roster(ui.gbCid, cols);
+  const tf = $('#gb tfoot'); if (tf) tf.innerHTML = gbFootHTML(studs, cols);
+}
+async function gbSaveCell(el) {
+  const c = db.get('grade_columns', el.dataset.c), sid = el.dataset.s;
+  const raw = el.value.trim();
+  const old = GB.score(c, sid).v;
+  let v = null;
+  if (raw !== '') {
+    v = parseFloat(raw.replace(',', '.'));
+    if (!(v >= 0)) { el.value = old ?? ''; return toast('คะแนนไม่ถูกต้อง', true); }
+  }
+  if (v === old || (v == null && old == null)) return;
+  el.classList.add('saving');
+  try {
+    if (c.source === 'assignment') {
+      const ex = A.sub(c.assignment_id, sid);
+      if (v == null) { if (ex) await saveScore(c.assignment_id, sid, null, undefined, A.filesOf(c.assignment_id, ex.id).length ? 'submitted' : 'returned'); }
+      else await saveScore(c.assignment_id, sid, v, undefined, 'graded');
+    } else if (v == null) {
+      await q(sb.from('grade_entries').delete().eq('column_id', c.id).eq('student_id', sid));
+      store.grade_entries = store.grade_entries.filter(e => !(e.column_id === c.id && e.student_id === sid));
+    } else {
+      const r = await q(sb.from('grade_entries').upsert({ column_id: c.id, student_id: sid, score: v, updated_at: new Date().toISOString() }, { onConflict: 'column_id,student_id' }).select().single());
+      store.grade_entries = store.grade_entries.filter(e => !(e.column_id === c.id && e.student_id === sid)); store.grade_entries.push(r);
+    }
+  } catch (e) { el.value = old ?? ''; el.classList.remove('saving'); return; }
+  el.classList.remove('saving', 'pend'); el.classList.toggle('over', v != null && v > GB.max(c));
+  el.classList.add('saved'); setTimeout(() => el.classList.remove('saved'), 700);
+  if (v != null && v > GB.max(c)) toast(`คะแนนเกินคะแนนเต็ม (${GB.max(c)}) — บันทึกให้แล้ว`);
+  gbRefreshRow(sid);
+}
+document.addEventListener('keydown', e => {
+  const el = e.target.closest?.('.gcell'); if (!el) return;
+  const move = dr => {
+    const tr = el.closest('tr'); let row = dr > 0 ? tr.nextElementSibling : tr.previousElementSibling;
+    const next = row?.querySelector(`.gcell[data-ci="${el.dataset.ci}"]`);
+    if (next) { e.preventDefault(); el.blur(); next.focus(); next.select(); }
+  };
+  if (e.key === 'Enter' || e.key === 'ArrowDown') move(1);
+  else if (e.key === 'ArrowUp') move(-1);
+});
+document.addEventListener('focusin', e => { if (e.target.classList?.contains('gcell')) setTimeout(() => e.target.select(), 0); });
+
+/* ---------- จัดการคอลัมน์ ---------- */
+function gbAddModal() {
+  const room = db.get('classrooms', ui.gbCid)?.name;
+  openModal({
+    title: 'เพิ่มคอลัมน์คะแนน',
+    body: `<div class="stack">
+      <div class="quick">${GB_PRESETS.map(([t, m]) => `<button type="button" data-act="gb-preset" data-t="${t}" data-m="${m}">${t} (${m})</button>`).join('')}</div>
+      <div class="grid2" style="grid-template-columns:1fr 140px"><label class="field"><span>ชื่อคอลัมน์ *</span><input class="input" name="title" placeholder="เช่น จิตพิสัย"></label>
+        <label class="field"><span>คะแนนเต็ม *</span><input class="input" type="number" min="0.5" step="0.5" name="max_score" value="10"></label></div>
+      <div class="radio-row">
+        <label class="radio"><input type="radio" name="scope" value="all" checked><div><b>ทุกห้องในวิชานี้</b><div class="small muted">ทุกห้องมีคอลัมน์นี้</div></div></label>
+        <label class="radio"><input type="radio" name="scope" value="one"><div><b>เฉพาะห้อง ${esc(room)}</b><div class="small muted">ห้องอื่นไม่เห็นคอลัมน์นี้</div></div></label>
+      </div>
+      <label class="check" style="width:fit-content"><input type="checkbox" name="visible" checked>ให้นักเรียนเห็นคะแนนคอลัมน์นี้</label>
+    </div>`,
+    actions: [{ label: 'ยกเลิก', onClick: closeModal }, { label: 'เพิ่มคอลัมน์', kind: 'primary', onClick: async () => {
+      const title = mval('title'), max = parseFloat(mval('max_score'));
+      if (!title) return toast('กรุณาตั้งชื่อคอลัมน์', true);
+      if (!(max > 0)) return toast('คะแนนเต็มต้องมากกว่า 0', true);
+      const scope = $('#modal-root input[name=scope]:checked').value;
+      const sort = Math.max(0, ...store.grade_columns.filter(c => c.subject_id === ui.gbSubject).map(c => c.sort_order || 0)) + 10;
+      await db.insert('grade_columns', { subject_id: ui.gbSubject, classroom_id: scope === 'one' ? ui.gbCid : null, title, max_score: max, source: 'manual', sort_order: sort, visible_to_students: $('#modal-root [name=visible]').checked });
+      closeModal(); render(); toast('เพิ่มคอลัมน์แล้ว');
+    } }],
+  });
+}
+function gbColModal(c) {
+  const isA = c.source === 'assignment';
+  const a = isA && db.get('assignments', c.assignment_id);
+  openModal({
+    title: 'ตั้งค่าคอลัมน์', ctx: { colId: c.id },
+    body: `<div class="stack">
+      ${isA ? `<div class="note">📝 คอลัมน์นี้มาจากงาน "<b>${esc(a?.title)}</b>" — คะแนนเต็มแก้ได้ที่หน้างาน</div>` : ''}
+      <div class="grid2" style="grid-template-columns:1fr 140px"><label class="field"><span>ชื่อคอลัมน์</span><input class="input" name="title" value="${esc(c.title)}"></label>
+        <label class="field"><span>คะแนนเต็ม</span><input class="input" type="number" min="0.5" step="0.5" name="max_score" value="${+GB.max(c)}" ${isA ? 'disabled' : ''}></label></div>
+      <label class="check" style="width:fit-content"><input type="checkbox" name="visible" ${c.visible_to_students ? 'checked' : ''}>ให้นักเรียนเห็นคะแนนคอลัมน์นี้</label>
+      <div class="row" style="flex-wrap:wrap;gap:8px"><span class="small muted">ตำแหน่ง</span>
+        <button class="btn sm" data-act="gb-move" data-d="-1">← ย้ายซ้าย</button><button class="btn sm" data-act="gb-move" data-d="1">ย้ายขวา →</button></div>
+      <div class="row" style="flex-wrap:wrap;gap:8px"><span class="small muted">อื่นๆ</span>
+        <button class="btn sm" data-act="gb-hide">${ic('eyeoff')}ซ่อนจากตาราง (ไม่นับคะแนน)</button>
+        ${isA ? '' : `<button class="btn sm danger" data-act="gb-del">${ic('trash')}ลบคอลัมน์</button>`}</div>
+    </div>`,
+    actions: [{ label: 'ปิด', onClick: closeModal }, { label: 'บันทึก', kind: 'primary', onClick: async () => {
+      const title = mval('title'); if (!title) return toast('ชื่อคอลัมน์ห้ามว่าง', true);
+      const patch = { title, visible_to_students: $('#modal-root [name=visible]').checked };
+      if (!isA) { const m = parseFloat(mval('max_score')); if (!(m > 0)) return toast('คะแนนเต็มต้องมากกว่า 0', true); patch.max_score = m; }
+      await db.update('grade_columns', c.id, patch); closeModal(); render(); toast('บันทึกแล้ว');
+    } }],
+  });
+}
+async function gbMove(dir) {
+  const c = db.get('grade_columns', modalCtx.colId);
+  const list = GB.cols(ui.gbSubject, ui.gbCid);
+  const i = list.findIndex(x => x.id === c.id), j = i + dir;
+  if (j < 0 || j >= list.length) return toast(dir < 0 ? 'อยู่ซ้ายสุดแล้ว' : 'อยู่ขวาสุดแล้ว');
+  [list[i], list[j]] = [list[j], list[i]];
+  const all = store.grade_columns.filter(x => x.subject_id === ui.gbSubject);
+  const others = all.filter(x => !list.includes(x)).sort((a, b) => a.sort_order - b.sort_order);
+  const order = [...list, ...others];
+  const changed = order.map((x, k) => ({ x, so: (k + 1) * 10 })).filter(({ x, so }) => x.sort_order !== so);
+  for (const { x, so } of changed) { await q(sb.from('grade_columns').update({ sort_order: so }).eq('id', x.id)); x.sort_order = so; }
+  render(); toast(dir < 0 ? 'ย้ายไปทางซ้ายแล้ว' : 'ย้ายไปทางขวาแล้ว');
+}
+function gbHiddenModal() {
+  const hidden = GB.cols(ui.gbSubject, ui.gbCid, true).filter(c => c.hidden);
+  openModal({
+    title: 'คอลัมน์ที่ซ่อนไว้',
+    body: hidden.length ? `<div class="stack">${hidden.map(c => `<div class="row" style="gap:10px"><span>${c.source === 'assignment' ? '📝' : '✏️'}</span><span style="flex:1">${esc(c.title)} <span class="muted small">เต็ม ${+GB.max(c)}</span></span><button class="btn sm" data-act="gb-unhide" data-id="${c.id}">แสดง</button></div>`).join('')}</div>` : '<p class="muted">ไม่มีคอลัมน์ที่ซ่อนไว้</p>',
+    actions: [{ label: 'ปิด', onClick: closeModal }],
+  });
+}
+
+/* ---------- ส่งออก Excel ---------- */
+function gbSheetRows(sid, cid) {
+  const cols = GB.cols(sid, cid);
+  const studs = GB.roster(cid, cols);
+  const header = ['เลขที่', 'เลขประจำตัว', 'ชื่อ - สกุล', ...cols.map(c => `${c.title} (${GB.max(c)})`), `รวม (${cols.reduce((a, c) => a + GB.max(c), 0)})`, 'ร้อยละ', 'เกรด'];
+  const rows = studs.map(s => { const t = GB.total(cols, s.id);
+    return [s.number, s.student_code, Q.fullName(s), ...cols.map(c => GB.score(c, s.id).v ?? ''), t.sum, t.pct == null ? '' : Math.round(t.pct * 10) / 10, thaiGrade(t.pct)]; });
+  return [header, ...rows];
+}
+function gbExport(all) {
+  const sj = db.get('subjects', ui.gbSubject);
+  const cids = all ? Q.subjectClassIds(sj.id).sort((x, y) => (db.get('classrooms', x)?.name || '').localeCompare(db.get('classrooms', y)?.name || '', 'th', { numeric: true })) : [ui.gbCid];
+  const fname = `คะแนน_${sj.name}${all ? '' : '_' + db.get('classrooms', ui.gbCid).name}`.replace(/[\\/:*?"<>|]/g, '-');
+  if (window.XLSX) {
+    const wb = XLSX.utils.book_new();
+    const used = new Set();
+    cids.forEach(cid => {
+      const rows = gbSheetRows(sj.id, cid);
+      const ws = XLSX.utils.aoa_to_sheet([[`${sj.name} ${sj.code || ''} · ห้อง ${db.get('classrooms', cid).name} · ภาคเรียน ${Q.termLabel(Q.currentTerm())}`], [], ...rows]);
+      ws['!cols'] = rows[0].map((h, i) => ({ wch: i === 2 ? 28 : Math.max(8, Math.min(24, String(h).length + 2)) }));
+      let name = db.get('classrooms', cid).name.replace(/[\\/?*[\]:]/g, '-').slice(0, 31) || 'ห้อง';
+      while (used.has(name)) name = name.slice(0, 28) + '_' + used.size;
+      used.add(name);
+      XLSX.utils.book_append_sheet(wb, ws, name);
+    });
+    XLSX.writeFile(wb, fname + '.xlsx');
+  } else {
+    const rows = cids.flatMap(cid => [[`ห้อง ${db.get('classrooms', cid).name}`], ...gbSheetRows(sj.id, cid), []]);
+    const csv = '﻿' + rows.map(r => r.map(v => `"${String(v).replace(/"/g, '""')}"`).join(',')).join('\r\n');
+    const a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([csv], { type: 'text/csv' })); a.download = fname + '.csv'; a.click();
+  }
+  toast('กำลังดาวน์โหลดไฟล์คะแนน');
+}
+
+Object.assign(ACT, {
+  'gb-cls': el => { ui.gbCid = el.dataset.id; render(); },
+  'gb-add': gbAddModal,
+  'gb-preset': el => { $('#modal-root [name=title]').value = el.dataset.t; $('#modal-root [name=max_score]').value = el.dataset.m; },
+  'gb-col': el => gbColModal(db.get('grade_columns', el.dataset.id)),
+  'gb-move': el => gbMove(+el.dataset.d),
+  'gb-hide': async () => { await db.update('grade_columns', modalCtx.colId, { hidden: true }); closeModal(); render(); toast('ซ่อนคอลัมน์แล้ว (กด "ซ่อนอยู่" เพื่อแสดงกลับ)'); },
+  'gb-unhide': async el => { await db.update('grade_columns', el.dataset.id, { hidden: false }); closeModal(); render(); toast('แสดงคอลัมน์แล้ว'); },
+  'gb-hidden': gbHiddenModal,
+  'gb-del': () => { const c = db.get('grade_columns', modalCtx.colId);
+    confirmBox('ลบคอลัมน์', `ลบคอลัมน์ <b>${esc(c.title)}</b> และคะแนนทุกคนในคอลัมน์นี้? ลบแล้วกู้คืนไม่ได้`, 'ลบคอลัมน์', async () => {
+      await db.removeIds('grade_columns', [c.id]); store.grade_entries = store.grade_entries.filter(e => e.column_id !== c.id); render(); toast('ลบคอลัมน์แล้ว'); }); },
+  'gb-export': el => gbExport(el.dataset.all === '1'),
+});
+Object.assign(CHG, {
+  'gb-subject': el => { ui.gbSubject = el.value; ui.gbCid = null; render(); },
+  'gb-cell': el => gbSaveCell(el),
+});
+
+/* =====================================================================
+   ฝั่งนักเรียน: คะแนนของฉัน
+   ===================================================================== */
+async function loadStudentScores() {
+  const v = stuState.verified; if (!v || stuState.loadingScores) return;
+  stuState.loadingScores = true;
+  try { stuState.scores = await q(sb.rpc('student_scores', { p_student_id: v.student_id, p_code: v.code })); }
+  catch (e) { stuState.scores = []; }
+  stuState.loadingScores = false;
+  if (isStudentRoute()) render();
+}
+function studentScoresHTML() {
+  if (!stuState.scores) { loadStudentScores(); return `<div class="card"><div class="empty"><span class="spin" style="display:inline-block;width:26px;height:26px"></span><br>กำลังโหลดคะแนน…</div></div>`; }
+  if (!stuState.scores.length) return `<div class="card"><div class="empty"><div style="font-size:44px">📊</div><b>ยังไม่มีคะแนน</b>เมื่อครูให้คะแนน คะแนนจะแสดงที่นี่</div></div>`;
+  return stuState.scores.map(sj => {
+    let sum = 0, max = 0;
+    sj.columns.forEach(c => { if (+c.max_score > 0) { max += +c.max_score; sum += +(c.score || 0); } });
+    const pct = max ? sum / max * 100 : null;
+    const g = thaiGrade(pct);
+    const color = sj.color || '#6d4dff';
+    return `<div class="card sa score-card">
+      <div class="sa-h" style="cursor:default"><span class="sa-ico" style="background:${esc(color)}22">📊</span>
+        <div style="flex:1;min-width:0"><span class="sa-tag" style="background:${esc(color)}1f;color:${esc(color)}">${esc(sj.code || 'วิชา')}</span><div class="sa-title">${esc(sj.name)}</div>
+          <div class="sa-sub">รวม <b style="color:var(--ink)">${Math.round(sum * 100) / 100}</b> / ${max} คะแนน${pct != null ? ` · ${pct.toFixed(1)}%` : ''}</div>
+          <div class="prog-bar" style="max-width:none;margin-top:6px"><i style="width:${pct ? Math.min(100, pct) : 0}%;background:var(--grad)"></i></div></div>
+        <div class="score-bubble"><b>${g}</b><small>เกรด*</small></div></div>
+      <div class="sa-b"><div class="score-list">${sj.columns.map(c => `<div class="score-row"><span>${c.source === 'assignment' ? '📝' : '✏️'} ${esc(c.title)}</span><b>${c.score == null ? '<span class="muted">–</span>' : +c.score}<span class="muted small"> / ${+c.max_score}</span></b></div>`).join('') || '<span class="muted small">ยังไม่มีคอลัมน์คะแนน</span>'}</div>
+        <div class="small muted">* เกรดคำนวณจากคะแนนที่มีตอนนี้ (ช่องที่ยังไม่มีคะแนนนับเป็น 0) เกรดจริงขึ้นกับครูผู้สอน</div></div>
+    </div>`;
+  }).join('');
+}
+Object.assign(ACT, {
+  'stu-tab': el => { stuState.tab = el.dataset.t; if (el.dataset.t === 'score') stuState.scores = null; render(); },
 });
 
 </script>
