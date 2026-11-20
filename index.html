@@ -319,6 +319,12 @@ textarea.input{resize:vertical;min-height:90px}
 .chip svg{width:13px;height:13px}
 .check svg{width:16px;height:16px;color:var(--muted)}
 a.btn{text-decoration:none}
+.map-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:10px}
+.map-grid .field{font-size:13px}
+.map-grid select.input,.map-grid input.input{padding:6px 8px;font-size:13.5px}
+details>summary{list-style:none}
+details>summary::-webkit-details-marker{display:none}
+.fmt code{background:var(--surface);border:1px solid var(--line);border-radius:4px;padding:0 4px;font-size:12.5px}
 
 </style>
 </head>
@@ -327,118 +333,40 @@ a.btn{text-decoration:none}
 <div id="modal-root"></div>
 <div class="toasts" id="toasts" aria-live="polite"></div>
 <script>
-/* ===== ตัวอ่านไฟล์รายชื่อนักเรียน (Excel/CSV) =====
-   รับ rows = array ของแถว (แต่ละแถวเป็น array ของเซลล์) จาก 1 ชีต
-   คืน { name, homeroom, students:[{number,student_code,prefix,first_name,last_name}], warnings:[] } */
+/* ===== ตัวอ่านไฟล์รายชื่อนักเรียน (CSV / Excel) =====
+   - อ่าน CSV ได้ทั้ง UTF-8 และภาษาไทยแบบ Windows (TIS-620 / windows-874)
+   - หาแถวหัวตารางเอง แยกนักเรียนตาม "ห้อง" จากคอลัมน์ห้อง/ชั้น หรือจากบรรทัดหัวเรื่อง หรือจากชื่อชีต
+   - ครูเปลี่ยนการจับคู่คอลัมน์เองได้ (mapping) */
 const RosterParser = (() => {
-  const PREFIXES = ['เด็กชาย','เด็กหญิง','ด.ช.','ด.ญ.','ดช.','ดญ.','นางสาว','น.ส.','นาย','นาง'];
-  const norm = v => String(v ?? '').replace(/\s+/g, ' ').trim();
-  const flat = v => norm(v).replace(/\s|\.|-/g, '').toLowerCase();
+  const PREFIXES = ['เด็กชาย', 'เด็กหญิง', 'ด.ช.', 'ด.ญ.', 'ดช.', 'ดญ.', 'นางสาว', 'น.ส.', 'นาย', 'นาง', 'Mr.', 'Miss', 'Mrs.', 'Ms.'];
+  const norm = v => String(v ?? '').replace(/ /g, ' ').replace(/\s+/g, ' ').trim();
+  const flat = v => norm(v).replace(/[\s.\-_/()*:：]/g, '').toLowerCase();
+  const FIELDS = ['classroom', 'level', 'room', 'number', 'code', 'prefix', 'first', 'last', 'full'];
+  const FIELD_LABEL = { classroom: 'ห้อง (เช่น ม.1/1)', level: 'ระดับชั้น (เช่น ม.1)', room: 'ห้องที่ (เช่น 1)', number: 'เลขที่', code: 'เลขประจำตัวนักเรียน', prefix: 'คำนำหน้า', first: 'ชื่อ', last: 'นามสกุล', full: 'ชื่อ-สกุล (รวมช่องเดียว)' };
 
-  function splitPrefix(text) {
-    let t = norm(text);
-    for (const p of PREFIXES) {
-      if (t.startsWith(p)) return { prefix: p, rest: norm(t.slice(p.length)) };
+  /* ---------- อ่านไฟล์ ---------- */
+  function decodeText(buf) {
+    const bytes = new Uint8Array(buf);
+    if (bytes[0] === 0xFF && bytes[1] === 0xFE) return new TextDecoder('utf-16le').decode(bytes);
+    try { return new TextDecoder('utf-8', { fatal: true }).decode(bytes).replace(/^﻿/, ''); }
+    catch (e) {
+      try { return new TextDecoder('windows-874').decode(bytes); } catch (e2) { return new TextDecoder('utf-8').decode(bytes); }
     }
-    return { prefix: '', rest: t };
   }
-
-  function cellToCode(v) {
-    if (v === null || v === undefined) return '';
-    if (typeof v === 'number') return String(Math.round(v));
-    return norm(v).replace(/\.0$/, '');
-  }
-
-  function detectColumns(row) {
-    const cols = {};
-    row.forEach((c, i) => {
-      const f = flat(c);
-      if (!f) return;
-      if (cols.number === undefined && (f === 'เลขที่' || f === 'ที่' || f === 'no' || f === 'เลขที่นักเรียน')) cols.number = i;
-      else if (cols.code === undefined && (f.includes('เลขประจำตัว') || f.includes('รหัสนักเรียน') || f.includes('เลขที่ประจำตัว') || f === 'รหัส' || f === 'studentid' || f === 'id')) cols.code = i;
-      else if (cols.prefix === undefined && f.includes('คำนำหน้า')) cols.prefix = i;
-      else if (cols.full === undefined && f.includes('ชื่อ') && f.includes('สกุล')) cols.full = i;
-      else if (cols.last === undefined && (f === 'นามสกุล' || f === 'สกุล' || f === 'lastname' || f === 'surname')) cols.last = i;
-      else if (cols.first === undefined && (f === 'ชื่อ' || f === 'firstname' || f === 'name' || f === 'ชื่อนักเรียน')) cols.first = i;
-    });
-    return cols;
-  }
-
-  function parseSheet(sheetName, rows) {
-    const warnings = [];
-    let headerIdx = -1, cols = null;
-    for (let r = 0; r < Math.min(rows.length, 20); r++) {
-      const c = detectColumns(rows[r] || []);
-      if (c.number !== undefined && (c.first !== undefined || c.full !== undefined)) { headerIdx = r; cols = c; break; }
-    }
-    // หาชื่อครูที่ปรึกษาจากแถวด้านบนหัวตาราง
-    let homeroom = '';
-    const topEnd = headerIdx >= 0 ? headerIdx : Math.min(rows.length, 6);
-    for (let r = 0; r < topEnd; r++) {
-      const line = (rows[r] || []).map(norm).filter(Boolean).join(' ');
-      const m = line.match(/ครูที่ปรึกษา\s*[:：]?\s*(.+)/);
-      if (m) { homeroom = norm(m[1]); break; }
-    }
-    // ชื่อห้องจากหัวกระดาษ เช่น "ม.3/3" หรือ "มัธยมศึกษาปีที่ 3/3"
-    let titleRoom = '';
-    for (let r = 0; r < topEnd && !titleRoom; r++) {
-      const line = (rows[r] || []).map(norm).join(' ');
-      const m = line.match(/ม\.\s*(\d+)\s*[\/-]\s*(\d+)/) || line.match(/มัธยมศึกษาปีที่\s*(\d+)\s*[\/-]\s*(\d+)/);
-      if (m) titleRoom = `ม.${m[1]}/${m[2]}`;
-    }
-    const looksLikeRoom = /ม\.?\s*\d/.test(sheetName);
-    const name = (!looksLikeRoom && titleRoom) ? titleRoom : norm(sheetName);
-    if (headerIdx < 0) {
-      return { name, homeroom, students: [], warnings: ['ไม่พบหัวตารางที่มีคำว่า "เลขที่" และ "ชื่อ" ในชีตนี้'] };
-    }
-    if (cols.code === undefined) warnings.push('ไม่พบคอลัมน์เลขประจำตัวนักเรียน นักเรียนจะยังยืนยันตัวตนไม่ได้จนกว่าจะเติม');
-
-    const students = [];
-    const seen = new Set();
-    for (let r = headerIdx + 1; r < rows.length; r++) {
-      const row = rows[r] || [];
-      const num = parseInt(String(row[cols.number] ?? '').replace(/[^\d]/g, ''), 10);
-      if (!Number.isFinite(num)) continue;
-      let prefix = cols.prefix !== undefined ? norm(row[cols.prefix]) : '';
-      let first = '', last = '';
-      if (cols.full !== undefined && cols.first === undefined) {
-        const sp = splitPrefix(row[cols.full]);
-        if (!prefix) prefix = sp.prefix;
-        const parts = sp.rest.split(' ');
-        first = parts.shift() || '';
-        last = parts.join(' ');
-      } else {
-        const sp = splitPrefix(row[cols.first]);
-        if (!prefix) prefix = sp.prefix;
-        first = sp.rest;
-        last = cols.last !== undefined ? norm(row[cols.last]) : '';
-      }
-      if (!first) continue;
-      if (seen.has(num)) warnings.push(`เลขที่ ${num} ซ้ำกัน (ใช้แถวแรก)`);
-      if (seen.has(num)) continue;
-      seen.add(num);
-      const code = cols.code !== undefined ? cellToCode(row[cols.code]) : '';
-      students.push({ number: num, student_code: code, prefix, first_name: first, last_name: last });
-    }
-    const noCode = students.filter(s => !s.student_code).length;
-    if (cols.code !== undefined && noCode) warnings.push(`${noCode} คนไม่มีเลขประจำตัว`);
-    if (!students.length) warnings.push('ไม่พบรายชื่อนักเรียนใต้หัวตาราง');
-    students.sort((a, b) => a.number - b.number);
-    return { name, homeroom, students, warnings };
-  }
-
-  // CSV สำรอง กรณีโหลดไลบรารี Excel ไม่ได้
   function parseCSV(text) {
-    const rows = []; let row = [], cell = '', q = false;
     text = text.replace(/^﻿/, '');
+    const first = text.split(/\r?\n/).slice(0, 5).join('\n');
+    const count = ch => (first.match(new RegExp('\\' + ch, 'g')) || []).length;
+    const delim = [',', '\t', ';', '|'].sort((a, b) => count(b) - count(a))[0];
+    const rows = []; let row = [], cell = '', q = false;
     for (let i = 0; i < text.length; i++) {
       const ch = text[i];
       if (q) {
         if (ch === '"' && text[i + 1] === '"') { cell += '"'; i++; }
         else if (ch === '"') q = false;
         else cell += ch;
-      } else if (ch === '"') q = true;
-      else if (ch === ',') { row.push(cell); cell = ''; }
+      } else if (ch === '"' && cell === '') q = true;
+      else if (ch === delim) { row.push(cell); cell = ''; }
       else if (ch === '\n' || ch === '\r') {
         if (ch === '\r' && text[i + 1] === '\n') i++;
         row.push(cell); rows.push(row); row = []; cell = '';
@@ -448,7 +376,192 @@ const RosterParser = (() => {
     return rows;
   }
 
-  return { parseSheet, parseCSV, splitPrefix };
+  /* ---------- ห้องเรียน ---------- */
+  // แปลงข้อความเป็นชื่อห้องมาตรฐาน เช่น "ม.1/1" (คืน '' ถ้าไม่ใช่)
+  function normClass(v, strict) {
+    let s = norm(v);
+    if (!s) return '';
+    s = s.replace(/มัธยมศึกษาปีที่|ชั้นมัธยมศึกษาปีที่|มัธยมปีที่/g, 'ม.').replace(/ประถมศึกษาปีที่|ชั้นประถมศึกษาปีที่/g, 'ป.')
+         .replace(/^ชั้น\s*/, '').replace(/^M\.?\s*/i, 'ม.').replace(/^P\.?\s*/i, 'ป.');
+    let m = s.match(/(ม|ป|ปวช|ปวส)\.?\s*(\d{1,2})\s*[\/\-\\.]\s*(\d{1,2})/);
+    if (m) return `${m[1]}.${+m[2]}/${+m[3]}`;
+    if (!strict) {
+      m = s.match(/^(\d{1,2})\s*[\/\-]\s*(\d{1,2})$/);
+      if (m) return `ม.${+m[1]}/${+m[2]}`;
+    }
+    return '';
+  }
+  function combineLevelRoom(level, room) {
+    const L = norm(level), R = norm(room).replace(/^ห้อง\s*/, '');
+    if (!L && !R) return '';
+    const full = normClass(`${L}/${R}`) || normClass(L);
+    if (full) return full;
+    const lm = L.match(/(ม|ป)\.?\s*(\d{1,2})/) || L.match(/^(\d{1,2})$/);
+    const rm = R.match(/(\d{1,2})/);
+    if (lm && rm) return `${lm.length === 3 ? lm[1] : 'ม'}.${+(lm[2] || lm[1])}/${+rm[1]}`;
+    return [L, R].filter(Boolean).join('/');
+  }
+
+  /* ---------- หัวตาราง ---------- */
+  function guessField(h) {
+    const f = flat(h);
+    if (!f) return null;
+    if (f.includes('ประชาชน') || f.includes('บัตร') || f.includes('เบอร์') || f.includes('โทร') || f.includes('ที่อยู่') || f.includes('วันเกิด') || f.includes('อายุ')) return null;
+    if (['เลขที่', 'เลขที่นักเรียน', 'no', 'number'].includes(f)) return 'number';
+    if (['ที่', 'ลำดับ', 'ลำดับที่'].includes(f)) return 'number_alt';
+    if (f.includes('เลขประจำตัว') || f.includes('รหัสนักเรียน') || f === 'รหัส' || f === 'studentid' || f === 'id' || f === 'เลขที่ประจำตัว') return 'code';
+    if (f.includes('คำนำหน้า') || f === 'prefix' || f === 'title') return 'prefix';
+    if (f.includes('ชื่อ') && f.includes('สกุล')) return 'full';
+    if (f === 'นามสกุล' || f === 'สกุล' || f === 'lastname' || f === 'surname') return 'last';
+    if (f === 'ชื่อ' || f === 'firstname' || f === 'name' || f === 'ชื่อนักเรียน' || f === 'ชื่อจริง') return 'first';
+    if (['ชั้นห้อง', 'ชั้น/ห้อง', 'ห้องเรียน', 'class', 'classroom', 'ชั้นเรียน', 'ระดับชั้นห้อง'].includes(f)) return 'classroom';
+    if (['ระดับชั้น', 'ชั้น', 'ชั้นปี', 'ระดับ', 'level', 'grade'].includes(f)) return 'level';
+    if (['ห้อง', 'room', 'ห้องที่'].includes(f)) return 'room';
+    return null;
+  }
+  function findHeader(rows) {
+    let best = -1, bestScore = 0;
+    for (let r = 0; r < Math.min(rows.length, 40); r++) {
+      const fields = new Set((rows[r] || []).map(guessField).filter(Boolean).map(f => f === 'number_alt' ? 'number' : f));
+      const hasName = fields.has('first') || fields.has('full');
+      const score = fields.size + (hasName ? 2 : 0) + (fields.has('number') ? 1 : 0);
+      if (hasName && score > bestScore) { best = r; bestScore = score; }
+    }
+    return best;
+  }
+  function autoMapping(header) {
+    const map = {};
+    header.forEach((h, i) => { const f = guessField(h); if (f && map[f] === undefined) map[f] = i; });
+    if (map.number === undefined && map.number_alt !== undefined) map.number = map.number_alt;
+    delete map.number_alt;
+    if (map.full !== undefined && map.first !== undefined) delete map.full;
+    // ถ้าคอลัมน์ "ชั้น" มีค่าแบบ ม.1/1 ครบอยู่แล้ว ให้ถือเป็นคอลัมน์ห้อง
+    return map;
+  }
+  function refineMapping(rows, headerIdx, map) {
+    if (map.level !== undefined && map.room === undefined && map.classroom === undefined) {
+      const vals = rows.slice(headerIdx + 1, headerIdx + 30).map(r => (r || [])[map.level]).filter(v => norm(v));
+      if (vals.length && vals.filter(v => normClass(v)).length >= vals.length * 0.6) { map.classroom = map.level; delete map.level; }
+    }
+    if (map.room !== undefined && map.level === undefined && map.classroom === undefined) {
+      const vals = rows.slice(headerIdx + 1, headerIdx + 30).map(r => (r || [])[map.room]).filter(v => norm(v));
+      if (vals.length && vals.filter(v => normClass(v)).length >= vals.length * 0.6) { map.classroom = map.room; delete map.room; }
+    }
+    return map;
+  }
+
+  function splitPrefix(text) {
+    const t = norm(text);
+    for (const p of PREFIXES) if (t.startsWith(p)) return { prefix: p, rest: norm(t.slice(p.length)) };
+    return { prefix: '', rest: t };
+  }
+  function cellToCode(v) {
+    if (v === null || v === undefined) return '';
+    if (typeof v === 'number') return String(Math.round(v));
+    return norm(v).replace(/\.0+$/, '').replace(/\s/g, '');
+  }
+  function homeroomFrom(line) {
+    const m = line.match(/(?:ครูที่ปรึกษา|ครูประจำชั้น)\s*[:：]?\s*(.+)/);
+    return m ? norm(m[1]).replace(/\s*(?:เลขที่|ที่)\s.*$/, '') : '';
+  }
+
+  /* ---------- แปลงทั้งไฟล์ ----------
+     sources: [{ name, rows }]  (1 ชีต = 1 source, CSV = 1 source)
+     คืน { sources:[{name, headerIdx, header, mapping}], groups:[...] } */
+  function analyze(sources) {
+    return sources.map(src => {
+      const headerIdx = findHeader(src.rows);
+      const header = headerIdx >= 0 ? src.rows[headerIdx].map(norm) : [];
+      const mapping = headerIdx >= 0 ? refineMapping(src.rows, headerIdx, autoMapping(header)) : {};
+      return { ...src, headerIdx, header, mapping };
+    });
+  }
+  function setHeader(src, idx) {
+    const header = (src.rows[idx] || []).map(norm);
+    return { ...src, headerIdx: idx, header, mapping: refineMapping(src.rows, idx, autoMapping(header)) };
+  }
+  function extract(analyzed) {
+    const groups = new Map();
+    const get = name => {
+      if (!groups.has(name)) groups.set(name, { name, homeroom: '', students: [], warnings: [], seen: new Map() });
+      return groups.get(name);
+    };
+    const global = [];
+    for (const src of analyzed) {
+      const { rows, headerIdx, mapping: m } = src;
+      if (headerIdx < 0) { global.push(`ชีต "${src.name}": ไม่พบแถวหัวตารางที่มีคำว่า "ชื่อ"`); continue; }
+      if (m.first === undefined && m.full === undefined) { global.push(`ชีต "${src.name}": ยังไม่ได้เลือกคอลัมน์ชื่อ`); continue; }
+      const hasClassCol = m.classroom !== undefined || m.level !== undefined || m.room !== undefined;
+      // ห้องจากหัวกระดาษ / ชื่อชีต
+      let current = '', homeroom = '';
+      for (let r = 0; r < headerIdx; r++) {
+        const line = (rows[r] || []).map(norm).filter(Boolean).join(' ');
+        current = current || normClass(line, true);
+        homeroom = homeroom || homeroomFrom(line);
+      }
+      if (!current) current = normClass(src.name) || norm(src.name);
+      let rowsWithoutClass = 0;
+      for (let r = headerIdx + 1; r < rows.length; r++) {
+        const row = rows[r] || [];
+        const cells = row.map(norm);
+        const line = cells.filter(Boolean).join(' ');
+        if (!line) continue;
+        // แถวหัวเรื่องห้องที่คั่นกลางไฟล์ เช่น "ชั้นมัธยมศึกษาปีที่ 1/2"
+        const numRaw = m.number !== undefined ? cells[m.number] : '';
+        const nm = String(numRaw).trim().match(/^(\d{1,3})\s*\.?$/);
+        const num = nm ? parseInt(nm[1], 10) : NaN;
+        if (!Number.isFinite(num)) {
+          const c = normClass(line, true);
+          if (c && !hasClassCol) current = c;
+          const h = homeroomFrom(line); if (h && !hasClassCol) get(current).homeroom = h;
+          continue;
+        }
+        if (m.number !== undefined && cells[m.number] && flat(cells[m.number]) === 'เลขที่') continue; // หัวตารางซ้ำ
+        let cls = current;
+        if (m.classroom !== undefined) cls = normClass(cells[m.classroom]) || cells[m.classroom] || current;
+        else if (m.level !== undefined || m.room !== undefined) cls = combineLevelRoom(m.level !== undefined ? cells[m.level] : '', m.room !== undefined ? cells[m.room] : '') || current;
+        if (!cls) { rowsWithoutClass++; continue; }
+        let prefix = m.prefix !== undefined ? cells[m.prefix] : '';
+        let first = '', last = '';
+        if (m.full !== undefined && m.first === undefined) {
+          const sp = splitPrefix(cells[m.full]);
+          if (!prefix) prefix = sp.prefix;
+          const parts = sp.rest.split(' ');
+          first = parts.shift() || ''; last = parts.join(' ');
+        } else {
+          const sp = splitPrefix(cells[m.first]);
+          if (!prefix) prefix = sp.prefix;
+          first = sp.rest;
+          last = m.last !== undefined ? cells[m.last] : '';
+          if (!last && first.includes(' ') && m.last === undefined) { const p = first.split(' '); first = p.shift(); last = p.join(' '); }
+        }
+        if (!first) continue;
+        const g = get(cls);
+        if (!g.homeroom && homeroom && !hasClassCol) g.homeroom = homeroom;
+        if (g.seen.has(num)) { g.warnings.push(`เลขที่ ${num} ซ้ำ (${g.seen.get(num)} กับ ${first}) ใช้แถวแรก`); continue; }
+        g.seen.set(num, first);
+        g.students.push({ number: num, student_code: m.code !== undefined ? cellToCode(row[m.code]) : '', prefix, first_name: first, last_name: last });
+      }
+      if (rowsWithoutClass) global.push(`ชีต "${src.name}": ${rowsWithoutClass} แถวไม่รู้ว่าอยู่ห้องไหน`);
+    }
+    const list = [...groups.values()].filter(g => g.students.length).map(g => {
+      g.students.sort((a, b) => a.number - b.number);
+      const noCode = g.students.filter(s => !s.student_code).length;
+      if (noCode) g.warnings.unshift(`${noCode} คนไม่มีเลขประจำตัว (นักเรียนจะยืนยันตัวตนไม่ได้จนกว่าจะเติม)`);
+      delete g.seen;
+      return g;
+    }).sort((a, b) => a.name.localeCompare(b.name, 'th', { numeric: true }));
+    return { groups: list, warnings: global };
+  }
+
+  // ใช้กับโค้ดเดิม: 1 ชีต
+  function parseSheet(name, rows) {
+    const r = extract(analyze([{ name, rows }]));
+    const g = r.groups[0] || { name, homeroom: '', students: [], warnings: [] };
+    return { ...g, warnings: [...r.warnings, ...g.warnings] };
+  }
+
+  return { decodeText, parseCSV, analyze, setHeader, extract, parseSheet, splitPrefix, normClass, FIELDS, FIELD_LABEL };
 })();
 if (typeof module !== 'undefined') module.exports = RosterParser;
 
@@ -913,11 +1026,16 @@ function importModal() {
   openModal({
     title: 'อัปโหลดรายชื่อนักเรียน', wide: true, ctx: { step: 1 },
     body: `<div class="stack">
-      <label class="drop" id="drop">${ic('upload')}<b>ลากไฟล์มาวาง หรือคลิกเพื่อเลือกไฟล์</b><span class="muted small">รองรับ .xlsx .xls .csv · ไฟล์ Excel หลายชีตจะนำเข้าเป็นหลายห้อง (1 ชีต = 1 ห้อง)</span>
-        <input type="file" accept=".xlsx,.xls,.csv" data-chg="import-file" hidden></label>
-      <div class="fmt"><b>รูปแบบไฟล์ที่อ่านได้</b> — ระบบจะหาแถวหัวตารางที่มีคำว่า <b>เลขที่</b> และ <b>ชื่อ</b> เอง ข้อความด้านบน เช่น ชื่อโรงเรียนหรือ "ครูที่ปรึกษา: …" ไม่ต้องลบออก
-        <table><tr><th>เลขที่</th><th>เลขประจำตัว</th><th>คำนำหน้า</th><th>ชื่อ</th><th>นามสกุล</th></tr><tr><td>1</td><td>25101</td><td>เด็กชาย</td><td>ก้องภพ</td><td>ใจดี</td></tr></table>
-        คอลัมน์ "ชื่อ-สกุล" รวมช่องเดียวก็ได้ ระบบจะแยกคำนำหน้า ชื่อ และนามสกุลให้ · ชื่อชีตจะใช้เป็นชื่อห้อง (แก้ได้ในขั้นต่อไป)</div>
+      <label class="drop" id="drop">${ic('upload')}<b>ลากไฟล์มาวาง หรือคลิกเพื่อเลือกไฟล์</b><span class="muted small">รองรับ .csv .xlsx .xls · ไฟล์เดียวมีหลายห้องได้ ระบบจะแยกห้องและเลขที่ให้อัตโนมัติ</span>
+        <input type="file" accept=".xlsx,.xls,.csv,.txt" data-chg="import-file" hidden></label>
+      <div class="fmt"><b>ระบบอ่านไฟล์ได้หลายแบบ</b> และหาแถวหัวตารางเอง ไม่ต้องลบหัวกระดาษออก:
+        <ul style="margin:6px 0 0;padding-left:18px">
+          <li><b>ไฟล์รวมทุกห้อง</b> มีคอลัมน์ห้อง เช่น <code>ชั้น</code> = ม.1/1 หรือแยกเป็น <code>ระดับชั้น</code> + <code>ห้อง</code></li>
+          <li><b>ไฟล์ที่มีหลายห้องต่อกัน</b> คั่นด้วยบรรทัด "ชั้นมัธยมศึกษาปีที่ 1/2"</li>
+          <li><b>Excel แบบ 1 ชีต = 1 ห้อง</b> ใช้ชื่อชีตเป็นชื่อห้อง (ม.1-1 → ม.1/1)</li>
+        </ul>
+        <table><tr><th>ชั้น</th><th>เลขที่</th><th>เลขประจำตัว</th><th>คำนำหน้า</th><th>ชื่อ</th><th>นามสกุล</th></tr><tr><td>ม.1/1</td><td>1</td><td>25101</td><td>เด็กชาย</td><td>ก้องภพ</td><td>ใจดี</td></tr></table>
+        อ่าน CSV ภาษาไทยได้ทั้งแบบ UTF-8 และแบบที่บันทึกจาก Excel (Windows) · คอลัมน์ "เลขประจำตัวประชาชน" จะไม่ถูกใช้</div>
     </div>`,
   });
   const drop = $('#drop');
@@ -927,42 +1045,64 @@ function importModal() {
 }
 async function readRosterFile(file) {
   const ext = file.name.split('.').pop().toLowerCase();
-  if (ext === 'csv') return [RosterParser.parseSheet(file.name.replace(/\.csv$/i, ''), RosterParser.parseCSV(await file.text()))];
-  if (!window.XLSX) throw new Error('โหลดตัวอ่าน Excel ไม่สำเร็จ ลองบันทึกไฟล์เป็น .csv (UTF-8) แล้วอัปโหลดอีกครั้ง');
-  const wb = XLSX.read(await file.arrayBuffer(), { type: 'array' });
-  return wb.SheetNames.map(n => RosterParser.parseSheet(n, XLSX.utils.sheet_to_json(wb.Sheets[n], { header: 1, defval: '', raw: true })));
+  const buf = await file.arrayBuffer();
+  if (ext === 'csv' || ext === 'txt') return [{ name: file.name.replace(/\.(csv|txt)$/i, ''), rows: RosterParser.parseCSV(RosterParser.decodeText(buf)) }];
+  if (!window.XLSX) throw new Error('โหลดตัวอ่าน Excel ไม่สำเร็จ ลองบันทึกไฟล์เป็น .csv แล้วอัปโหลดอีกครั้ง');
+  const wb = XLSX.read(buf, { type: 'array' });
+  return wb.SheetNames.map(n => ({ name: n, rows: XLSX.utils.sheet_to_json(wb.Sheets[n], { header: 1, defval: '', raw: true, blankrows: true }) }))
+    .filter(s => s.rows.some(r => r.some(c => String(c).trim())));
 }
 async function handleImportFile(file) {
-  let sheets;
-  try { sheets = await readRosterFile(file); } catch (e) { toast(e.message || 'อ่านไฟล์ไม่สำเร็จ', true); return; }
-  sheets.forEach(s => { s.include = s.students.length > 0; });
-  if (!sheets.some(s => s.include)) { toast('ไม่พบรายชื่อนักเรียนในไฟล์นี้', true); }
-  importPreview(sheets, file.name);
+  let sources;
+  try { sources = await readRosterFile(file); } catch (e) { toast(e.message || 'อ่านไฟล์ไม่สำเร็จ', true); return; }
+  if (!sources.length) return toast('ไฟล์นี้ว่างเปล่า', true);
+  importPreview(RosterParser.analyze(sources), file.name, 'merge');
 }
 function importTarget(name) { return store.classrooms.find(c => c.name === name.trim()); }
-function importPreview(sheets, fname) {
-  const total = sheets.filter(s => s.include).reduce((a, s) => a + s.students.length, 0);
+function colLetter(i) { let s = ''; i++; while (i > 0) { const m = (i - 1) % 26; s = String.fromCharCode(65 + m) + s; i = Math.floor((i - 1) / 26); } return s; }
+function mappingUI(src, si) {
+  const sample = c => { for (let r = src.headerIdx + 1; r < Math.min(src.rows.length, src.headerIdx + 8); r++) { const v = String((src.rows[r] || [])[c] ?? '').trim(); if (v) return v.length > 18 ? v.slice(0, 18) + '…' : v; } return ''; };
+  const ncol = Math.max(src.header.length, ...src.rows.slice(src.headerIdx, src.headerIdx + 10).map(r => (r || []).length));
+  const opts = sel => `<option value="">— ไม่มี —</option>` + Array.from({ length: ncol }, (_, c) => `<option value="${c}" ${sel === c ? 'selected' : ''}>${colLetter(c)}: ${esc(src.header[c] || '(ไม่มีหัว)')}${sample(c) ? ` · เช่น ${esc(sample(c))}` : ''}</option>`).join('');
+  const fields = ['classroom', 'level', 'room', 'number', 'code', 'prefix', 'first', 'last', 'full'];
+  return `<div class="map-grid">
+    <label class="field"><span>แถวหัวตาราง (แถวที่)</span><input class="input" type="number" min="1" value="${src.headerIdx + 1}" data-chg="imp-header" data-s="${si}"></label>
+    ${fields.map(f => `<label class="field"><span>${RosterParser.FIELD_LABEL[f]}${f === 'number' || f === 'first' ? ' *' : ''}</span><select class="input" data-chg="imp-map" data-s="${si}" data-f="${f}">${opts(src.mapping[f])}</select></label>`).join('')}
+  </div>`;
+}
+function importPreview(analyzed, fname, mode) {
+  const { groups, warnings } = RosterParser.extract(analyzed);
+  const prev = modalCtx?.sheets || [];
+  groups.forEach(g => { const p = prev.find(x => x.orig === g.name); g.orig = g.name; g.include = p ? p.include : true; if (p && p.name !== p.orig) g.name = p.name; });
+  const total = groups.filter(s => s.include).reduce((a, s) => a + s.students.length, 0);
+  const needMap = !groups.length || warnings.length;
   openModal({
-    title: 'ตรวจสอบก่อนนำเข้า', wide: true, ctx: { sheets, fname },
+    title: 'ตรวจสอบก่อนนำเข้า', wide: true, ctx: { sheets: groups, analyzed, fname, mode },
     body: `<div class="stack">
-      <div class="row" style="flex-wrap:wrap"><span class="chip pri">${ic('file')}${esc(fname)}</span><span class="small muted">${thaiNum(sheets.length)} ชีต · จะนำเข้า <b id="imp-total">${thaiNum(total)}</b> คน</span><span class="spacer"></span>
-        <button class="btn sm" data-act="imp-slash" title="เช่น ม.1-1 → ม.1/1">เปลี่ยน "-" ในชื่อห้องเป็น "/"</button></div>
+      <div class="row" style="flex-wrap:wrap"><span class="chip pri">${ic('file')}${esc(fname)}</span>
+        <span class="small">พบ <b>${thaiNum(groups.length)}</b> ห้อง · จะนำเข้า <b id="imp-total">${thaiNum(total)}</b> คน</span></div>
+      ${warnings.length ? `<div class="note"><ul class="warn-list" style="margin:0">${warnings.map(w => `<li>${esc(w)}</li>`).join('')}</ul></div>` : ''}
+      <details class="sheet" ${needMap ? 'open' : ''}><summary class="sheet-h" style="cursor:pointer"><b>การจับคู่คอลัมน์</b><span class="small muted">ระบบเลือกให้อัตโนมัติ ถ้าผิดเปลี่ยนได้ที่นี่ แล้วรายชื่อด้านล่างจะอัปเดตทันที</span></summary>
+        <div class="sheet-b stack">${analyzed.map((src, si) => `${analyzed.length > 1 ? `<b class="small">ชีต: ${esc(src.name)}</b>` : ''}${mappingUI(src, si)}`).join('<hr style="border:0;border-top:1px solid var(--line);width:100%">')}</div></details>
       <datalist id="cls-names">${Q.classrooms().map(c => `<option value="${esc(c.name)}">`).join('')}</datalist>
-      <div>${sheets.map((s, i) => { const t = importTarget(s.name);
+      <div>${groups.map((s, i) => { const t = importTarget(s.name);
         return `<div class="sheet"><div class="sheet-h">
-          <input type="checkbox" data-chg="imp-inc" data-i="${i}" ${s.include ? 'checked' : ''} ${s.students.length ? '' : 'disabled'} aria-label="นำเข้าชีต ${esc(s.name)}">
+          <input type="checkbox" data-chg="imp-inc" data-i="${i}" ${s.include ? 'checked' : ''} aria-label="นำเข้าห้อง ${esc(s.name)}">
           <label class="row" style="gap:8px"><span class="small muted">ห้อง</span><input class="input" list="cls-names" value="${esc(s.name)}" data-inp="imp-name" data-i="${i}"></label>
-          <span class="small" id="imp-tgt-${i}">${t ? '<span class="chip warn">มีห้องนี้แล้ว · จะอัปเดต</span>' : '<span class="chip ok">สร้างห้องใหม่</span>'}</span>
+          <span class="small" id="imp-tgt-${i}">${t ? `<span class="chip warn">มีห้องนี้แล้ว (${Q.students(t.id).length} คน) · จะอัปเดต</span>` : '<span class="chip ok">สร้างห้องใหม่</span>'}</span>
           <span class="spacer"></span><b>${thaiNum(s.students.length)} คน</b></div>
           <div class="sheet-b">
             ${s.homeroom ? `<div class="small">ครูที่ปรึกษา: ${esc(s.homeroom)}</div>` : ''}
-            ${s.students.length ? `<div class="small muted" style="margin-top:4px">${s.students.slice(0, 4).map(x => `${x.number}. ${esc(x.prefix + x.first_name + ' ' + x.last_name)}${x.student_code ? ` <span class="code-mask">(${esc(x.student_code)})</span>` : ''}`).join(' · ')}${s.students.length > 4 ? ' …' : ''}</div>` : ''}
             ${s.warnings.length ? `<ul class="warn-list">${s.warnings.map(w => `<li>${esc(w)}</li>`).join('')}</ul>` : ''}
-          </div></div>`; }).join('')}</div>
+            <details><summary class="small" style="cursor:pointer;color:var(--primary);margin-top:4px">ดูรายชื่อทั้งหมด</summary>
+              <div class="tbl-wrap" style="max-height:300px;margin-top:6px"><table class="tbl"><thead><tr><th>เลขที่</th><th>เลขประจำตัว</th><th>คำนำหน้า</th><th>ชื่อ</th><th>นามสกุล</th></tr></thead><tbody>
+              ${s.students.map(x => `<tr><td class="num">${x.number}</td><td class="code-mask">${esc(x.student_code) || '<span class="chip warn">ไม่มี</span>'}</td><td>${esc(x.prefix)}</td><td>${esc(x.first_name)}</td><td>${esc(x.last_name)}</td></tr>`).join('')}
+              </tbody></table></div></details>
+          </div></div>`; }).join('') || `<div class="empty">${ic('users')}<b>ยังแยกรายชื่อไม่ได้</b>ตรวจสอบ "การจับคู่คอลัมน์" ด้านบน: ต้องมีคอลัมน์ <b>เลขที่</b> และ <b>ชื่อ</b> (หรือชื่อ-สกุล)</div>`}</div>
       <div class="field"><span class="muted" style="font-weight:500">ถ้าห้องนี้มีรายชื่ออยู่แล้ว</span>
         <div class="radio-row">
-          <label class="radio"><input type="radio" name="mode" value="merge" checked><div><b>อัปเดตตามเลขที่</b><div class="small muted">เลขที่ตรงกันจะแก้ข้อมูล เลขที่ใหม่จะเพิ่ม คนเดิมที่ไม่มีในไฟล์ยังอยู่</div></div></label>
-          <label class="radio"><input type="radio" name="mode" value="replace"><div><b>แทนที่ทั้งห้อง</b><div class="small muted">ลบรายชื่อเดิมของห้องนั้นแล้วใช้ตามไฟล์ใหม่ทั้งหมด <b style="color:var(--danger)">งานและคะแนนของคนเดิมจะถูกลบด้วย</b></div></div></label>
+          <label class="radio"><input type="radio" name="mode" value="merge" ${mode !== 'replace' ? 'checked' : ''} data-chg="imp-mode"><div><b>อัปเดตตามเลขที่</b><div class="small muted">เลขที่ตรงกันจะแก้ข้อมูล เลขที่ใหม่จะเพิ่ม คนเดิมที่ไม่มีในไฟล์ยังอยู่</div></div></label>
+          <label class="radio"><input type="radio" name="mode" value="replace" ${mode === 'replace' ? 'checked' : ''} data-chg="imp-mode"><div><b>แทนที่ทั้งห้อง</b><div class="small muted">ลบรายชื่อเดิมของห้องนั้นแล้วใช้ตามไฟล์ใหม่ทั้งหมด <b style="color:var(--danger)">งานและคะแนนของคนเดิมจะถูกลบด้วย</b></div></div></label>
         </div></div>
     </div>`,
     actions: [{ label: 'เลือกไฟล์ใหม่', onClick: importModal }, { label: 'นำเข้ารายชื่อ', kind: 'primary', onClick: doImport }],
@@ -1145,7 +1285,6 @@ const ACT = {
       await db.removeIds('students', ids); ui.sel.clear(); render(); toast(`ลบ ${ids.length} คนแล้ว`); }); },
   'bulk-clear': () => { ui.sel.clear(); render(); },
   'import-open': importModal,
-  'imp-slash': () => { modalCtx.sheets.forEach(s => { s.name = s.name.replace(/(ม\.\s*\d+)\s*-\s*(\d+)/, '$1/$2'); }); importPreview(modalCtx.sheets, modalCtx.fname); },
   'term-new': termModal,
   'term-current': async el => {
     const id = el.dataset.id;
@@ -1178,6 +1317,13 @@ const CHG = {
     try { await db.update('students', s.id, { [f]: v }); } catch (e) { el.value = old ?? ''; return; }
     el.style.borderColor = 'var(--ok)'; setTimeout(() => { el.style.borderColor = ''; }, 700); },
   'import-file': el => { const f = el.files[0]; if (f) handleImportFile(f); },
+  'imp-map': el => { const src = modalCtx.analyzed[+el.dataset.s]; const f = el.dataset.f;
+    if (el.value === '') delete src.mapping[f]; else src.mapping[f] = +el.value;
+    importPreview(modalCtx.analyzed, modalCtx.fname, modalCtx.mode); },
+  'imp-header': el => { const si = +el.dataset.s; const idx = Math.max(0, (parseInt(el.value, 10) || 1) - 1);
+    modalCtx.analyzed[si] = RosterParser.setHeader(modalCtx.analyzed[si], idx);
+    importPreview(modalCtx.analyzed, modalCtx.fname, modalCtx.mode); },
+  'imp-mode': el => { modalCtx.mode = el.value; },
   'imp-inc': el => { modalCtx.sheets[+el.dataset.i].include = el.checked; updImpTotal(); },
   'teacher-name': async el => { const name = el.value.trim() || 'ครูผู้สอน';
     await q(sb.auth.updateUser({ data: { display_name: name } })); store.teacher.name = name; render(); toast('บันทึกแล้ว'); },
