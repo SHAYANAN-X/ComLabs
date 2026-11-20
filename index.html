@@ -1,0 +1,1159 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ห้องเรียนครู</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anuphan:wght@500;600;700&family=IBM+Plex+Sans+Thai:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<style>
+:root{
+  --bg:#f4f2ec;--surface:#fff;--surface-2:#f9f8f4;--ink:#1c2321;--muted:#5f6a65;--line:#e3e0d6;
+  --primary:#1f6f5c;--primary-ink:#fff;--primary-soft:#e2efea;--accent:#d9952a;--accent-soft:#fbf0dc;
+  --danger:#bf3d2a;--danger-soft:#fbe8e4;--ok:#2f8a4e;--ok-soft:#e3f3e8;
+  --side:#173d33;--side-ink:#e8f1ed;--side-muted:#9fbdb2;--side-hover:#1f4d41;--side-active:#f2c56b;
+  --shadow:0 1px 2px rgba(20,30,25,.06),0 4px 16px rgba(20,30,25,.06);
+  --r:14px;--r-sm:9px;
+  --f-head:'Anuphan','IBM Plex Sans Thai',system-ui,sans-serif;
+  --f-body:'IBM Plex Sans Thai',system-ui,sans-serif;
+  color-scheme:light;
+}
+[data-theme=dark]{
+  --bg:#111513;--surface:#191e1c;--surface-2:#1f2522;--ink:#e8ece9;--muted:#9aa49f;--line:#2b3330;
+  --primary:#4cb394;--primary-ink:#0b1310;--primary-soft:#1b3a31;--accent:#f0b955;--accent-soft:#3a2f1a;
+  --danger:#ef7a64;--danger-soft:#3b211c;--ok:#5fc57f;--ok-soft:#1b3424;
+  --side:#0d1311;--side-ink:#e3ebe7;--side-muted:#7f948b;--side-hover:#18221e;--side-active:#f0b955;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 20px rgba(0,0,0,.25);
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%}
+body{background:var(--bg);color:var(--ink);font:15px/1.6 var(--f-body);-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{font-family:var(--f-head);margin:0;line-height:1.3;font-weight:600}
+button,input,select,textarea{font:inherit;color:inherit}
+a{color:var(--primary)}
+.muted{color:var(--muted)}
+.small{font-size:13px}
+.hide{display:none!important}
+
+/* ---------- buttons & inputs ---------- */
+.btn{display:inline-flex;align-items:center;gap:7px;border:1px solid var(--line);background:var(--surface);padding:8px 14px;border-radius:var(--r-sm);cursor:pointer;font-weight:500;white-space:nowrap;transition:background .15s,border-color .15s}
+.btn:hover{background:var(--surface-2);border-color:color-mix(in srgb,var(--line) 60%,var(--ink))}
+.btn.primary{background:var(--primary);border-color:var(--primary);color:var(--primary-ink)}
+.btn.primary:hover{filter:brightness(1.07)}
+.btn.danger{color:var(--danger);border-color:color-mix(in srgb,var(--danger) 35%,var(--line))}
+.btn.danger.solid{background:var(--danger);color:#fff;border-color:var(--danger)}
+.btn.ghost{border-color:transparent;background:transparent}
+.btn.ghost:hover{background:var(--surface-2)}
+.btn.sm{padding:5px 10px;font-size:13.5px}
+.btn.icon{padding:7px;width:36px;height:36px;justify-content:center}
+.btn:disabled{opacity:.5;cursor:not-allowed}
+.btn svg{width:17px;height:17px;flex:none}
+.input,select.input,textarea.input{width:100%;padding:9px 12px;border:1px solid var(--line);border-radius:var(--r-sm);background:var(--surface);outline:none;transition:border-color .15s,box-shadow .15s}
+.input:focus{border-color:var(--primary);box-shadow:0 0 0 3px var(--primary-soft)}
+label.field{display:flex;flex-direction:column;gap:5px;font-size:14px;font-weight:500}
+label.field>span{color:var(--muted);font-weight:500}
+.row{display:flex;gap:12px;align-items:center}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.grid3{display:grid;grid-template-columns:100px 1fr 1fr;gap:14px}
+.stack{display:flex;flex-direction:column;gap:14px}
+.spacer{flex:1}
+.chip{display:inline-flex;align-items:center;gap:5px;padding:2px 10px;border-radius:99px;background:var(--surface-2);border:1px solid var(--line);font-size:13px;white-space:nowrap}
+.chip.ok{background:var(--ok-soft);border-color:transparent;color:var(--ok)}
+.chip.warn{background:var(--accent-soft);border-color:transparent;color:color-mix(in srgb,var(--accent) 75%,var(--ink))}
+.chip.bad{background:var(--danger-soft);border-color:transparent;color:var(--danger)}
+.chip.pri{background:var(--primary-soft);border-color:transparent;color:var(--primary)}
+
+/* ---------- shell ---------- */
+.shell{display:grid;grid-template-columns:248px 1fr;min-height:100vh}
+.side{background:var(--side);color:var(--side-ink);padding:20px 14px;display:flex;flex-direction:column;gap:4px;position:sticky;top:0;height:100vh;overflow:auto}
+.brand{display:flex;align-items:center;gap:10px;padding:4px 8px 18px}
+.brand-mark{width:38px;height:38px;border-radius:11px;background:var(--side-active);color:#1b2a24;display:grid;place-items:center;font:700 19px var(--f-head)}
+.brand b{font:600 17px var(--f-head);display:block}
+.brand small{color:var(--side-muted);font-size:12.5px}
+.nav-group{font-size:12px;letter-spacing:.04em;color:var(--side-muted);padding:14px 10px 4px}
+.nav-item{display:flex;align-items:center;gap:11px;padding:9px 10px;border-radius:10px;color:var(--side-ink);text-decoration:none;cursor:pointer;border:0;background:none;width:100%;text-align:left;font-size:15px}
+.nav-item svg{width:19px;height:19px;opacity:.85;flex:none}
+.nav-item:hover{background:var(--side-hover)}
+.nav-item.active{background:var(--side-hover);box-shadow:inset 3px 0 0 var(--side-active)}
+.nav-item.active svg{color:var(--side-active);opacity:1}
+.nav-item .soon{margin-left:auto;font-size:11px;padding:1px 7px;border-radius:99px;background:rgba(255,255,255,.08);color:var(--side-muted)}
+.side-foot{margin-top:auto;padding:14px 10px 0;font-size:12px;color:var(--side-muted);border-top:1px solid rgba(255,255,255,.08)}
+.main{min-width:0;display:flex;flex-direction:column}
+.top{display:flex;align-items:center;gap:10px;padding:14px 28px;border-bottom:1px solid var(--line);background:color-mix(in srgb,var(--bg) 85%,transparent);backdrop-filter:blur(8px);position:sticky;top:0;z-index:5}
+.top h1{font-size:20px}
+.content{padding:26px 28px 40px;max-width:1240px;width:100%}
+.credit{text-align:center;font-size:12.5px;color:var(--muted);padding:18px 0 26px;margin-top:auto}
+.menu-btn{display:none}
+.scrim{display:none}
+
+/* ---------- cards ---------- */
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow)}
+.card-h{display:flex;align-items:center;gap:10px;padding:16px 20px;border-bottom:1px solid var(--line)}
+.card-h h3{font-size:16.5px}
+.card-b{padding:18px 20px}
+.page-head{display:flex;align-items:flex-end;gap:12px;margin-bottom:20px;flex-wrap:wrap}
+.page-head h2{font-size:24px}
+.page-head p{margin:2px 0 0;color:var(--muted)}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:18px}
+.stat{padding:16px 18px}
+.stat .lbl{color:var(--muted);font-size:13.5px;display:flex;align-items:center;gap:7px}
+.stat .lbl svg{width:16px;height:16px}
+.stat .val{font:600 30px/1.2 var(--f-head);margin-top:6px;font-variant-numeric:tabular-nums}
+.stat .sub{font-size:12.5px;color:var(--muted)}
+.dash-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:18px}
+.empty{text-align:center;padding:34px 20px;color:var(--muted)}
+.empty svg{width:42px;height:42px;opacity:.5;margin-bottom:6px}
+.empty b{display:block;color:var(--ink);font:600 16px var(--f-head);margin-bottom:4px}
+
+/* phases */
+.phases{list-style:none;margin:0;padding:0}
+.phases li{display:flex;gap:12px;padding:9px 0;align-items:flex-start}
+.phases .dot{width:26px;height:26px;border-radius:50%;display:grid;place-items:center;font-size:12.5px;font-weight:600;flex:none;border:2px solid var(--line);color:var(--muted)}
+.phases li.now .dot{border-color:var(--primary);background:var(--primary);color:var(--primary-ink)}
+.phases li.now b{color:var(--primary)}
+.phases b{font-weight:600;display:block;font-size:14.5px}
+.phases span{font-size:13px;color:var(--muted)}
+
+/* subjects */
+.subj-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:16px}
+.subj{overflow:hidden;display:flex;flex-direction:column}
+.subj-top{height:6px}
+.subj .card-b{display:flex;flex-direction:column;gap:10px;flex:1}
+.subj-code{font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums}
+.subj h3{font-size:18px}
+.subj-foot{display:flex;align-items:center;gap:6px;padding:10px 14px 10px 20px;border-top:1px solid var(--line);background:var(--surface-2)}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+
+/* classes */
+.two-pane{display:grid;grid-template-columns:270px 1fr;gap:18px;align-items:start}
+.cls-list{padding:8px}
+.cls-item{display:flex;align-items:center;gap:10px;width:100%;padding:10px 12px;border-radius:10px;border:0;background:none;cursor:pointer;text-align:left}
+.cls-item:hover{background:var(--surface-2)}
+.cls-item.active{background:var(--primary-soft)}
+.cls-item.active .cls-name{color:var(--primary)}
+.cls-name{font:600 15.5px var(--f-head)}
+.cls-sub{font-size:12.5px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cls-count{margin-left:auto;font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums}
+.toolbar{display:flex;gap:8px;align-items:center;flex-wrap:wrap;padding:12px 16px;border-bottom:1px solid var(--line)}
+.search{position:relative;flex:1;min-width:180px;max-width:300px}
+.search svg{position:absolute;left:10px;top:50%;transform:translateY(-50%);width:16px;height:16px;color:var(--muted)}
+.search .input{padding-left:33px}
+.bulk{display:flex;gap:8px;align-items:center;padding:9px 16px;background:var(--accent-soft);border-bottom:1px solid var(--line);font-size:14px}
+.tbl-wrap{overflow:auto}
+table.tbl{width:100%;border-collapse:collapse;font-size:14.5px}
+.tbl th{position:sticky;top:0;background:var(--surface-2);text-align:left;font-weight:600;font-size:13px;color:var(--muted);padding:9px 12px;border-bottom:1px solid var(--line);white-space:nowrap}
+.tbl td{padding:8px 12px;border-bottom:1px solid var(--line);vertical-align:middle}
+.tbl tr:hover td{background:color-mix(in srgb,var(--surface-2) 60%,transparent)}
+.tbl tr.inactive td{color:var(--muted)}
+.tbl .num{font-variant-numeric:tabular-nums;width:60px}
+.tbl .act{width:1%;white-space:nowrap;text-align:right}
+.tbl td .input{padding:5px 8px;font-size:14px;min-width:70px}
+.tbl input[type=checkbox]{width:16px;height:16px;accent-color:var(--primary)}
+.code-mask{font-variant-numeric:tabular-nums;letter-spacing:.03em}
+
+/* modal */
+.modal-bg{position:fixed;inset:0;background:rgba(10,18,15,.45);display:grid;place-items:center;padding:20px;z-index:50;animation:fade .15s}
+.modal{background:var(--surface);border-radius:16px;width:min(520px,100%);max-height:calc(100vh - 40px);display:flex;flex-direction:column;box-shadow:0 20px 60px rgba(0,0,0,.25);animation:pop .18s}
+.modal.wide{width:min(860px,100%)}
+.modal-h{display:flex;align-items:center;padding:18px 22px 6px}
+.modal-h h3{font-size:19px}
+.modal-b{padding:14px 22px;overflow:auto}
+.modal-f{display:flex;gap:8px;justify-content:flex-end;padding:14px 22px 18px;border-top:1px solid var(--line)}
+@keyframes fade{from{opacity:0}}
+@keyframes pop{from{opacity:0;transform:translateY(8px) scale(.98)}}
+.swatches{display:flex;gap:8px;flex-wrap:wrap}
+.swatch{width:30px;height:30px;border-radius:50%;border:3px solid var(--surface);box-shadow:0 0 0 1px var(--line);cursor:pointer}
+.swatch.on{box-shadow:0 0 0 2px var(--ink)}
+.checks{display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:8px}
+.check{display:flex;align-items:center;gap:8px;padding:8px 10px;border:1px solid var(--line);border-radius:var(--r-sm);cursor:pointer;font-size:14px}
+.check:has(input:checked){border-color:var(--primary);background:var(--primary-soft)}
+.check input{accent-color:var(--primary)}
+
+/* upload */
+.drop{border:2px dashed var(--line);border-radius:var(--r);padding:30px;text-align:center;cursor:pointer;transition:border-color .15s,background .15s;display:block}
+.drop:hover,.drop.over{border-color:var(--primary);background:var(--primary-soft)}
+.drop svg{width:40px;height:40px;color:var(--primary)}
+.drop b{display:block;font:600 16px var(--f-head);margin:6px 0 2px}
+.fmt{background:var(--surface-2);border:1px solid var(--line);border-radius:var(--r-sm);padding:12px 14px;font-size:13.5px}
+.fmt table{border-collapse:collapse;margin:8px 0;font-size:13px}
+.fmt td,.fmt th{border:1px solid var(--line);padding:3px 9px;background:var(--surface)}
+.sheet{border:1px solid var(--line);border-radius:var(--r-sm);margin-bottom:12px;overflow:hidden}
+.sheet-h{display:flex;gap:12px;align-items:center;padding:10px 14px;background:var(--surface-2);flex-wrap:wrap}
+.sheet-h input[type=checkbox]{width:18px;height:18px;accent-color:var(--primary)}
+.sheet-h .input{width:150px;padding:6px 10px}
+.sheet-b{padding:10px 14px;font-size:13.5px}
+.warn-list{margin:6px 0 0;padding-left:18px;color:color-mix(in srgb,var(--accent) 70%,var(--ink))}
+.radio-row{display:flex;gap:10px;flex-wrap:wrap}
+.radio{display:flex;gap:8px;align-items:flex-start;padding:10px 12px;border:1px solid var(--line);border-radius:var(--r-sm);cursor:pointer;flex:1;min-width:220px;font-size:14px}
+.radio:has(input:checked){border-color:var(--primary);background:var(--primary-soft)}
+.radio input{accent-color:var(--primary);margin-top:4px}
+
+/* toast */
+.toasts{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;gap:8px;z-index:60;align-items:center}
+.toast{background:var(--ink);color:var(--bg);padding:10px 18px;border-radius:99px;font-size:14px;box-shadow:var(--shadow);animation:pop .2s}
+.toast.err{background:var(--danger);color:#fff}
+
+/* login & student */
+.auth{min-height:100vh;display:grid;grid-template-columns:1.1fr 1fr}
+.auth-art{background:var(--side);color:var(--side-ink);padding:48px;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden}
+.auth-art h1{font-size:38px;max-width:420px;line-height:1.25}
+.auth-art p{color:var(--side-muted);max-width:420px}
+.auth-art .lines{position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent 0 37px,rgba(255,255,255,.04) 37px 38px);pointer-events:none}
+.auth-feat{display:grid;grid-template-columns:1fr 1fr;gap:12px;max-width:460px;position:relative}
+.auth-feat div{background:rgba(255,255,255,.06);border-radius:12px;padding:12px 14px;font-size:14px}
+.auth-feat b{display:block;color:var(--side-active);font-family:var(--f-head)}
+.auth-form{display:grid;place-items:center;padding:32px}
+.auth-card{width:min(400px,100%)}
+.auth-card h2{font-size:26px;margin-bottom:4px}
+.note{background:var(--accent-soft);border-radius:var(--r-sm);padding:10px 12px;font-size:13.5px}
+.stu{min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:28px 18px;background:radial-gradient(circle at 20% 0%,var(--primary-soft),transparent 55%),var(--bg)}
+.stu-card{width:min(440px,100%);padding:26px}
+.stu-tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:16px}
+.stu-tile{border:1px solid var(--line);border-radius:12px;padding:14px 8px;text-align:center;font-size:14px;background:var(--surface-2)}
+.stu-tile svg{width:26px;height:26px;color:var(--primary);display:block;margin:0 auto 4px}
+.stu-tile small{display:block;color:var(--muted);font-size:11.5px}
+.avatar{width:54px;height:54px;border-radius:50%;background:var(--primary);color:var(--primary-ink);display:grid;place-items:center;font:600 22px var(--f-head)}
+
+.soon-page{max-width:680px}
+.soon-page ul{padding-left:20px;margin:10px 0 0}
+.soon-page li{margin:4px 0}
+
+@media (max-width:1000px){
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .dash-grid,.two-pane{grid-template-columns:1fr}
+}
+@media (max-width:820px){
+  .shell{grid-template-columns:1fr}
+  .side{position:fixed;left:0;top:0;bottom:0;width:260px;z-index:40;transform:translateX(-100%);transition:transform .2s}
+  .side.open{transform:none}
+  .scrim.open{display:block;position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:30}
+  .menu-btn{display:inline-flex}
+  .top{padding:12px 16px}
+  .content{padding:18px 16px 30px}
+  .auth{grid-template-columns:1fr}
+  .auth-art{padding:28px;gap:20px}
+  .auth-art h1{font-size:28px}
+  .top .hide-sm{display:none}
+  .grid2,.grid3{grid-template-columns:1fr}
+}
+
+</style>
+</head>
+<body>
+<div id="app"></div>
+<div id="modal-root"></div>
+<div class="toasts" id="toasts" aria-live="polite"></div>
+<script>
+/* ===== ตัวอ่านไฟล์รายชื่อนักเรียน (Excel/CSV) =====
+   รับ rows = array ของแถว (แต่ละแถวเป็น array ของเซลล์) จาก 1 ชีต
+   คืน { name, homeroom, students:[{number,student_code,prefix,first_name,last_name}], warnings:[] } */
+const RosterParser = (() => {
+  const PREFIXES = ['เด็กชาย','เด็กหญิง','ด.ช.','ด.ญ.','ดช.','ดญ.','นางสาว','น.ส.','นาย','นาง'];
+  const norm = v => String(v ?? '').replace(/\s+/g, ' ').trim();
+  const flat = v => norm(v).replace(/\s|\.|-/g, '').toLowerCase();
+
+  function splitPrefix(text) {
+    let t = norm(text);
+    for (const p of PREFIXES) {
+      if (t.startsWith(p)) return { prefix: p, rest: norm(t.slice(p.length)) };
+    }
+    return { prefix: '', rest: t };
+  }
+
+  function cellToCode(v) {
+    if (v === null || v === undefined) return '';
+    if (typeof v === 'number') return String(Math.round(v));
+    return norm(v).replace(/\.0$/, '');
+  }
+
+  function detectColumns(row) {
+    const cols = {};
+    row.forEach((c, i) => {
+      const f = flat(c);
+      if (!f) return;
+      if (cols.number === undefined && (f === 'เลขที่' || f === 'ที่' || f === 'no' || f === 'เลขที่นักเรียน')) cols.number = i;
+      else if (cols.code === undefined && (f.includes('เลขประจำตัว') || f.includes('รหัสนักเรียน') || f.includes('เลขที่ประจำตัว') || f === 'รหัส' || f === 'studentid' || f === 'id')) cols.code = i;
+      else if (cols.prefix === undefined && f.includes('คำนำหน้า')) cols.prefix = i;
+      else if (cols.full === undefined && f.includes('ชื่อ') && f.includes('สกุล')) cols.full = i;
+      else if (cols.last === undefined && (f === 'นามสกุล' || f === 'สกุล' || f === 'lastname' || f === 'surname')) cols.last = i;
+      else if (cols.first === undefined && (f === 'ชื่อ' || f === 'firstname' || f === 'name' || f === 'ชื่อนักเรียน')) cols.first = i;
+    });
+    return cols;
+  }
+
+  function parseSheet(sheetName, rows) {
+    const warnings = [];
+    let headerIdx = -1, cols = null;
+    for (let r = 0; r < Math.min(rows.length, 20); r++) {
+      const c = detectColumns(rows[r] || []);
+      if (c.number !== undefined && (c.first !== undefined || c.full !== undefined)) { headerIdx = r; cols = c; break; }
+    }
+    // หาชื่อครูที่ปรึกษาจากแถวด้านบนหัวตาราง
+    let homeroom = '';
+    const topEnd = headerIdx >= 0 ? headerIdx : Math.min(rows.length, 6);
+    for (let r = 0; r < topEnd; r++) {
+      const line = (rows[r] || []).map(norm).filter(Boolean).join(' ');
+      const m = line.match(/ครูที่ปรึกษา\s*[:：]?\s*(.+)/);
+      if (m) { homeroom = norm(m[1]); break; }
+    }
+    // ชื่อห้องจากหัวกระดาษ เช่น "ม.3/3" หรือ "มัธยมศึกษาปีที่ 3/3"
+    let titleRoom = '';
+    for (let r = 0; r < topEnd && !titleRoom; r++) {
+      const line = (rows[r] || []).map(norm).join(' ');
+      const m = line.match(/ม\.\s*(\d+)\s*[\/-]\s*(\d+)/) || line.match(/มัธยมศึกษาปีที่\s*(\d+)\s*[\/-]\s*(\d+)/);
+      if (m) titleRoom = `ม.${m[1]}/${m[2]}`;
+    }
+    const looksLikeRoom = /ม\.?\s*\d/.test(sheetName);
+    const name = (!looksLikeRoom && titleRoom) ? titleRoom : norm(sheetName);
+    if (headerIdx < 0) {
+      return { name, homeroom, students: [], warnings: ['ไม่พบหัวตารางที่มีคำว่า "เลขที่" และ "ชื่อ" ในชีตนี้'] };
+    }
+    if (cols.code === undefined) warnings.push('ไม่พบคอลัมน์เลขประจำตัวนักเรียน นักเรียนจะยังยืนยันตัวตนไม่ได้จนกว่าจะเติม');
+
+    const students = [];
+    const seen = new Set();
+    for (let r = headerIdx + 1; r < rows.length; r++) {
+      const row = rows[r] || [];
+      const num = parseInt(String(row[cols.number] ?? '').replace(/[^\d]/g, ''), 10);
+      if (!Number.isFinite(num)) continue;
+      let prefix = cols.prefix !== undefined ? norm(row[cols.prefix]) : '';
+      let first = '', last = '';
+      if (cols.full !== undefined && cols.first === undefined) {
+        const sp = splitPrefix(row[cols.full]);
+        if (!prefix) prefix = sp.prefix;
+        const parts = sp.rest.split(' ');
+        first = parts.shift() || '';
+        last = parts.join(' ');
+      } else {
+        const sp = splitPrefix(row[cols.first]);
+        if (!prefix) prefix = sp.prefix;
+        first = sp.rest;
+        last = cols.last !== undefined ? norm(row[cols.last]) : '';
+      }
+      if (!first) continue;
+      if (seen.has(num)) warnings.push(`เลขที่ ${num} ซ้ำกัน (ใช้แถวแรก)`);
+      if (seen.has(num)) continue;
+      seen.add(num);
+      const code = cols.code !== undefined ? cellToCode(row[cols.code]) : '';
+      students.push({ number: num, student_code: code, prefix, first_name: first, last_name: last });
+    }
+    const noCode = students.filter(s => !s.student_code).length;
+    if (cols.code !== undefined && noCode) warnings.push(`${noCode} คนไม่มีเลขประจำตัว`);
+    if (!students.length) warnings.push('ไม่พบรายชื่อนักเรียนใต้หัวตาราง');
+    students.sort((a, b) => a.number - b.number);
+    return { name, homeroom, students, warnings };
+  }
+
+  // CSV สำรอง กรณีโหลดไลบรารี Excel ไม่ได้
+  function parseCSV(text) {
+    const rows = []; let row = [], cell = '', q = false;
+    text = text.replace(/^﻿/, '');
+    for (let i = 0; i < text.length; i++) {
+      const ch = text[i];
+      if (q) {
+        if (ch === '"' && text[i + 1] === '"') { cell += '"'; i++; }
+        else if (ch === '"') q = false;
+        else cell += ch;
+      } else if (ch === '"') q = true;
+      else if (ch === ',') { row.push(cell); cell = ''; }
+      else if (ch === '\n' || ch === '\r') {
+        if (ch === '\r' && text[i + 1] === '\n') i++;
+        row.push(cell); rows.push(row); row = []; cell = '';
+      } else cell += ch;
+    }
+    if (cell !== '' || row.length) { row.push(cell); rows.push(row); }
+    return rows;
+  }
+
+  return { parseSheet, parseCSV, splitPrefix };
+})();
+if (typeof module !== 'undefined') module.exports = RosterParser;
+
+</script>
+<script>
+/* =====================================================================
+   ห้องเรียนออนไลน์ — ต้นแบบเฟส 1 (ฝั่งครู + หน้ายืนยันตัวตนนักเรียน)
+   ข้อมูลในต้นแบบนี้เก็บในเบราว์เซอร์ (ชั้น `db`) — เฟสถัดไปจะเปลี่ยน `db`
+   ให้เรียก Supabase แทน โดยหน้าจอไม่ต้องแก้
+   ===================================================================== */
+
+/* ---------- ไอคอน ---------- */
+const I = {
+  home:'<path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/>',
+  book:'<path d="M4 4.5A2.5 2.5 0 0 1 6.5 2H20v17H6.5A2.5 2.5 0 0 0 4 21.5z"/><path d="M4 21.5A2.5 2.5 0 0 1 6.5 19H20v3H6.5"/>',
+  users:'<circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c.8-3.6 3.4-5.5 6.5-5.5s5.7 1.9 6.5 5.5"/><path d="M16 4.5a3.5 3.5 0 0 1 0 7M18 14.8c2 .6 3.2 2.4 3.6 5.2"/>',
+  inbox:'<path d="M3 13h5l1.5 3h5L16 13h5"/><path d="M5.5 5h13L21 13v6a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-6z"/>',
+  check:'<path d="M9 11l3 3 8-8"/><path d="M20 12v7a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h11"/>',
+  table:'<rect x="3" y="4" width="18" height="16" rx="1.5"/><path d="M3 10h18M3 15h18M9 4v16"/>',
+  quiz:'<path d="M9 3h6l1 2h3a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h3z"/><path d="M9 12l2 2 4-4"/>',
+  gear:'<circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/>',
+  plus:'<path d="M12 5v14M5 12h14"/>',
+  upload:'<path d="M12 16V4M7 9l5-5 5 5"/><path d="M4 16v3a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-3"/>',
+  edit:'<path d="M4 20h4L19 9l-4-4L4 16z"/><path d="M14 6l4 4"/>',
+  trash:'<path d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"/>',
+  search:'<circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/>',
+  sun:'<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>',
+  moon:'<path d="M20 14.5A8 8 0 0 1 9.5 4 8 8 0 1 0 20 14.5z"/>',
+  menu:'<path d="M4 6h16M4 12h16M4 18h16"/>',
+  x:'<path d="M6 6l12 12M18 6 6 18"/>',
+  logout:'<path d="M15 4h4a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1h-4M10 17l5-5-5-5M15 12H3"/>',
+  student:'<path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c2 2 10 2 12 0v-5M22 9v6"/>',
+  file:'<path d="M14 3H6a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V8z"/><path d="M14 3v5h5"/>',
+  grid:'<rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/>',
+  move:'<path d="M5 12h14M13 6l6 6-6 6"/>',
+  chart:'<path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/>',
+};
+const ic = (n, cls = '') => `<svg class="${cls}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">${I[n]}</svg>`;
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+const $ = (s, el = document) => el.querySelector(s);
+const $$ = (s, el = document) => [...el.querySelectorAll(s)];
+const uid = () => (crypto.randomUUID ? crypto.randomUUID() : 'id' + Date.now().toString(36) + Math.random().toString(36).slice(2));
+const thaiNum = n => Number(n).toLocaleString('th-TH');
+const COLORS = ['#1f6f5c', '#2f6fed', '#7c4dcc', '#d9534f', '#d9952a', '#0f8aa3', '#c2408a', '#5b6b2e'];
+const PREFIX_OPTS = ['เด็กชาย', 'เด็กหญิง', 'นาย', 'นางสาว'];
+
+/* ---------- การเชื่อมต่อ Supabase ---------- */
+const SUPABASE_URL = 'https://zhmgodcgpjcqgnpsxiob.supabase.co';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpobWdvZGNncGpjcWducHN4aW9iIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTUxNTgyMjMsImV4cCI6MjExMDczNDIyM30.-FR7xWAB350HzrDAgUGb73V_IFp9l4_j8mbhkYaJ0b4';
+const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+/* ข้อมูลที่โหลดมาจากเซิร์ฟเวอร์ (แคชไว้ในหน้าเว็บ) */
+const store = { terms: [], classrooms: [], students: [], subjects: [], subject_classes: [], teacher: { name: 'ครูผู้สอน', email: '' } };
+
+function errMsg(e) {
+  const m = (e && (e.message || e.error_description)) || String(e);
+  if (/Invalid login credentials/i.test(m)) return 'อีเมลหรือรหัสผ่านไม่ถูกต้อง';
+  if (/Email not confirmed/i.test(m)) return 'อีเมลนี้ยังไม่ได้ยืนยัน (ตั้ง Auto Confirm ตอนสร้างผู้ใช้ใน Supabase)';
+  if (/duplicate key|unique/i.test(m)) return 'ข้อมูลซ้ำกับที่มีอยู่แล้ว (เช่น เลขที่ ชื่อห้อง หรือภาคเรียนซ้ำ)';
+  if (/JWT|session|not authenticated/i.test(m)) return 'หมดเวลาการเข้าสู่ระบบ กรุณาเข้าสู่ระบบใหม่';
+  if (/Failed to fetch|NetworkError|network/i.test(m)) return 'เชื่อมต่อเซิร์ฟเวอร์ไม่ได้ ตรวจสอบอินเทอร์เน็ตแล้วลองใหม่';
+  if (/row-level security/i.test(m)) return 'ไม่มีสิทธิ์แก้ไขข้อมูลนี้';
+  if (/Password should be/i.test(m)) return 'รหัสผ่านต้องยาวอย่างน้อย 6 ตัวอักษร';
+  return 'เกิดข้อผิดพลาด: ' + m;
+}
+/* เรียก Supabase: ถ้าผิดพลาดจะแสดงข้อความและโยน error ต่อ */
+async function q(p) {
+  const { data, error } = await p;
+  if (error) { console.error(error); toast(errMsg(error), true); throw error; }
+  return data;
+}
+/* โหลดทั้งตาราง ทีละ 1,000 แถว (Supabase จำกัดต่อครั้ง) */
+async function fetchAll(table, order = 'created_at') {
+  const out = [];
+  for (let from = 0; ; from += 1000) {
+    const rows = await q(sb.from(table).select('*').order(order, { ascending: true }).range(from, from + 999));
+    out.push(...rows);
+    if (rows.length < 1000) break;
+  }
+  return out;
+}
+function thaiTermNow() {
+  const d = new Date(), m = d.getMonth() + 1, be = d.getFullYear() + 543;
+  if (m >= 5 && m <= 10) return { year: be, semester: 1 };
+  return { year: m >= 11 ? be : be - 1, semester: 2 };
+}
+async function loadAll() {
+  const [terms, classrooms, students, subjects, subject_classes] = await Promise.all([
+    fetchAll('terms'), fetchAll('classrooms'), fetchAll('students'), fetchAll('subjects'),
+    (async () => { const out = []; for (let f = 0; ; f += 1000) { const r = await q(sb.from('subject_classes').select('*').range(f, f + 999)); out.push(...r); if (r.length < 1000) break; } return out; })(),
+  ]);
+  Object.assign(store, { terms, classrooms, students, subjects, subject_classes });
+  if (!store.terms.length) {
+    const t = await q(sb.from('terms').insert({ ...thaiTermNow(), is_current: true }).select().single());
+    store.terms.push(t);
+  }
+}
+async function reloadStudents(cid) {
+  const rows = await q(sb.from('students').select('*').eq('classroom_id', cid));
+  store.students = store.students.filter(s => s.classroom_id !== cid).concat(rows);
+}
+function setTeacher(user) {
+  store.teacher.email = user?.email || '';
+  store.teacher.name = user?.user_metadata?.display_name || 'ครูผู้สอน';
+}
+
+const db = {
+  all: t => store[t],
+  get: (t, id) => store[t].find(r => r.id === id),
+  async insert(t, row) { const r = await q(sb.from(t).insert(row).select().single()); store[t].push(r); return r; },
+  async update(t, id, patch) { const r = await q(sb.from(t).update(patch).eq('id', id).select().single()); Object.assign(db.get(t, id) || {}, r); return r; },
+  async removeIds(t, ids) {
+    if (!ids.length) return;
+    for (let i = 0; i < ids.length; i += 200) await q(sb.from(t).delete().in('id', ids.slice(i, i + 200)));
+    store[t] = store[t].filter(r => !ids.includes(r.id));
+  },
+};
+const Q = {
+  currentTerm: () => store.terms.find(t => t.is_current) || store.terms[0],
+  termLabel: t => t ? `${t.semester}/${t.year}` : '—',
+  classrooms: () => [...store.classrooms].sort((a, b) => a.name.localeCompare(b.name, 'th', { numeric: true })),
+  students: cid => store.students.filter(s => s.classroom_id === cid).sort((a, b) => a.number - b.number),
+  subjectClassIds: sid => store.subject_classes.filter(x => x.subject_id === sid).map(x => x.classroom_id),
+  subjectsOfTerm: tid => store.subjects.filter(s => s.term_id === tid),
+  fullName: s => `${s.prefix || ''}${s.first_name} ${s.last_name || ''}`.trim(),
+};
+
+/* ---------- สถานะหน้าจอ ---------- */
+const ui = { route: 'dashboard', cid: null, q: '', sel: new Set(), tableEdit: false, sideOpen: false, termId: null };
+let session = null;
+let booting = true;
+
+/* ---------- ธีม ---------- */
+function getTheme() {
+  try { const t = localStorage.getItem('cr-theme'); if (t) return t; } catch (e) {}
+  return matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+}
+function setTheme(t) { document.documentElement.dataset.theme = t; try { localStorage.setItem('cr-theme', t); } catch (e) {} }
+setTheme(getTheme());
+
+/* ---------- toast / modal ---------- */
+function toast(msg, err) {
+  const box = $('#toasts'); const el = document.createElement('div');
+  el.className = 'toast' + (err ? ' err' : ''); el.textContent = msg; box.appendChild(el);
+  setTimeout(() => el.remove(), 2600);
+}
+let modalCtx = null;
+function openModal({ title, body, actions = [], wide = false, ctx = {} }) {
+  modalCtx = { actions, ...ctx };
+  $('#modal-root').innerHTML = `
+  <div class="modal-bg" data-act="modal-bg">
+    <div class="modal ${wide ? 'wide' : ''}" role="dialog" aria-modal="true" aria-label="${esc(title)}">
+      <div class="modal-h"><h3>${esc(title)}</h3><span class="spacer"></span><button class="btn ghost icon" data-act="modal-close" aria-label="ปิด">${ic('x')}</button></div>
+      <div class="modal-b">${body}</div>
+      ${actions.length ? `<div class="modal-f">${actions.map((a, i) => `<button class="btn ${a.kind || ''}" data-act="modal-action" data-i="${i}">${a.label}</button>`).join('')}</div>` : ''}
+    </div>
+  </div>`;
+  const f = $('#modal-root input:not([type=checkbox]):not([type=radio]):not([type=file]), #modal-root select');
+  if (f) setTimeout(() => f.focus(), 30);
+}
+function closeModal() { $('#modal-root').innerHTML = ''; modalCtx = null; }
+function confirmBox(title, msg, yesLabel, onYes) {
+  openModal({ title, body: `<p style="margin:0">${msg}</p>`, actions: [{ label: 'ยกเลิก', onClick: closeModal }, { label: yesLabel, kind: 'danger solid', onClick: () => { closeModal(); onYes(); } }] });
+}
+const mval = name => { const el = $(`#modal-root [name="${name}"]`); return el ? el.value.trim() : ''; };
+
+/* =====================================================================
+   หน้าจอ
+   ===================================================================== */
+const NAV = [
+  { group: 'ภาพรวม' },
+  { id: 'dashboard', label: 'แดชบอร์ด', icon: 'home' },
+  { group: 'จัดการข้อมูล' },
+  { id: 'subjects', label: 'วิชา', icon: 'book' },
+  { id: 'classes', label: 'ห้องเรียนและรายชื่อ', icon: 'users' },
+  { group: 'การเรียนการสอน' },
+  { id: 'assignments', label: 'งานและตรวจงาน', icon: 'inbox', soon: 'เฟส 2' },
+  { id: 'gradebook', label: 'ตารางคะแนน', icon: 'table', soon: 'เฟส 3' },
+  { id: 'exams', label: 'ข้อสอบ', icon: 'quiz', soon: 'เฟส 5' },
+  { group: 'ระบบ' },
+  { id: 'settings', label: 'ตั้งค่า', icon: 'gear' },
+];
+const TITLES = { dashboard: 'แดชบอร์ด', subjects: 'วิชา', classes: 'ห้องเรียนและรายชื่อ', assignments: 'งานและตรวจงาน', gradebook: 'ตารางคะแนน', exams: 'ข้อสอบ', settings: 'ตั้งค่า' };
+
+function render() {
+  const root = $('#app');
+  if (ui.route === 'student') { root.innerHTML = viewStudent(); return; }
+  if (booting) { root.innerHTML = `<div class="stu" style="justify-content:center"><div class="brand"><div class="brand-mark">ค</div><div><b>ห้องเรียนครู</b><small style="color:var(--muted)">กำลังโหลดข้อมูล…</small></div></div></div>`; return; }
+  if (!session) { root.innerHTML = viewLogin(); return; }
+  if (!TITLES[ui.route]) ui.route = 'dashboard';
+  const theme = document.documentElement.dataset.theme;
+  const views = { dashboard: viewDashboard, subjects: viewSubjects, classes: viewClasses, settings: viewSettings, assignments: viewSoon, gradebook: viewSoon, exams: viewSoon };
+  root.innerHTML = `
+  <div class="shell">
+    <aside class="side ${ui.sideOpen ? 'open' : ''}">
+      <div class="brand"><div class="brand-mark">ค</div><div><b>ห้องเรียนครู</b><small>ส่งงาน · คะแนน · ข้อสอบ</small></div></div>
+      ${NAV.map(n => n.group ? `<div class="nav-group">${n.group}</div>` :
+        `<a class="nav-item ${ui.route === n.id ? 'active' : ''}" href="#${n.id}">${ic(n.icon)}<span>${n.label}</span>${n.soon ? `<span class="soon">${n.soon}</span>` : ''}</a>`).join('')}
+      <div class="side-foot">ภาคเรียน ${esc(Q.termLabel(Q.currentTerm()))}</div>
+    </aside>
+    <div class="scrim ${ui.sideOpen ? 'open' : ''}" data-act="side-close"></div>
+    <div class="main">
+      <header class="top">
+        <button class="btn ghost icon menu-btn" data-act="side-open" aria-label="เมนู">${ic('menu')}</button>
+        <h1>${TITLES[ui.route]}</h1>
+        <span class="spacer"></span>
+        <a class="btn ghost sm hide-sm" href="#student">${ic('student')}หน้านักเรียน</a>
+        <button class="btn ghost icon" data-act="theme" aria-label="สลับธีม" title="สลับธีมสว่าง/มืด">${ic(theme === 'dark' ? 'sun' : 'moon')}</button>
+        <span class="chip hide-sm">${esc(store.teacher.name)}</span>
+        <button class="btn ghost icon" data-act="logout" aria-label="ออกจากระบบ" title="ออกจากระบบ">${ic('logout')}</button>
+      </header>
+      <main class="content">${views[ui.route]()}</main>
+      <div class="credit">ระบบห้องเรียนออนไลน์ · ${esc(store.teacher.name)}</div>
+    </div>
+  </div>`;
+}
+
+/* ---------- ล็อกอินครู ---------- */
+function viewLogin() {
+  return `
+  <div class="auth">
+    <section class="auth-art"><div class="lines"></div>
+      <div class="brand" style="position:relative"><div class="brand-mark">ค</div><div><b>ห้องเรียนครู</b><small>ระบบส่งงานและคะแนนออนไลน์</small></div></div>
+      <div style="position:relative"><h1>ตรวจงาน ลงคะแนน ออกข้อสอบ จบในที่เดียว</h1><p>นักเรียนส่งงานได้ทั้งรูป คลิป เสียง และเอกสาร ครูตรวจและให้คะแนนรายคน ดูภาพรวมแต่ละห้องได้ทันที</p></div>
+      <div class="auth-feat">
+        <div><b>ส่งงานรายคน</b>แยกไฟล์ตามเลขที่</div><div><b>ตารางคะแนน</b>แยกห้อง แก้ได้อิสระ</div>
+        <div><b>ข้อสอบออนไลน์</b>ส่งลิงก์ทาง LINE</div><div><b>แดชบอร์ด</b>สรุปการส่งงานรายห้อง</div>
+      </div>
+    </section>
+    <section class="auth-form">
+      <form class="auth-card stack" data-form="login">
+        <div><h2>เข้าสู่ระบบสำหรับครู</h2><p class="muted" style="margin:0">ใช้อีเมลและรหัสผ่านของครู</p></div>
+        <label class="field"><span>อีเมล</span><input class="input" type="email" name="email" placeholder="teacher@school.ac.th" required autocomplete="username"></label>
+        <label class="field"><span>รหัสผ่าน</span><input class="input" type="password" name="password" required autocomplete="current-password"></label>
+        <button class="btn primary" style="justify-content:center;padding:11px">เข้าสู่ระบบ</button>
+        <a href="#student" class="small" style="text-align:center">นักเรียน? เข้าหน้าส่งงาน/ทำข้อสอบที่นี่</a>
+      </form>
+    </section>
+  </div>`;
+}
+
+/* ---------- แดชบอร์ด ---------- */
+function viewDashboard() {
+  const term = Q.currentTerm();
+  const subs = Q.subjectsOfTerm(term?.id);
+  const taught = new Set(subs.flatMap(s => Q.subjectClassIds(s.id)));
+  const nStu = store.students.filter(s => s.active !== false).length;
+  const phases = [
+    ['ล็อกอินครู · วิชา · ห้อง · อัปโหลดรายชื่อ', 'ใช้งานได้แล้ว · ต่อ Supabase'],
+    ['สร้างงาน · นักเรียนส่งไฟล์ · หน้าตรวจให้คะแนน', 'รูป คลิป เสียง เอกสาร'],
+    ['ตารางคะแนนรายห้อง', 'เพิ่ม/ลบคอลัมน์ แก้ได้ ส่งออก Excel'],
+    ['แดชบอร์ดสรุปการส่งงาน', 'กราฟรายห้อง รายชื่อคนค้างส่ง'],
+    ['ระบบข้อสอบ + ส่งลิงก์ LINE + QR', 'ตรวจปรนัยอัตโนมัติ'],
+    ['ปรับดีไซน์ มือถือ ทดสอบกับห้องจริง', ''],
+  ];
+  return `
+  <div class="page-head"><div><h2>สวัสดีครับ ${esc(store.teacher.name)}</h2><p>ภาคเรียนที่ ${esc(Q.termLabel(term))}</p></div></div>
+  <div class="stats">
+    <div class="card stat"><div class="lbl">${ic('book')}วิชาที่สอน</div><div class="val">${thaiNum(subs.length)}</div><div class="sub">ภาคเรียนนี้</div></div>
+    <div class="card stat"><div class="lbl">${ic('grid')}ห้องเรียน</div><div class="val">${thaiNum(store.classrooms.length)}</div><div class="sub">สอน ${thaiNum(taught.size)} ห้องในเทอมนี้</div></div>
+    <div class="card stat"><div class="lbl">${ic('users')}นักเรียน</div><div class="val">${thaiNum(nStu)}</div><div class="sub">ทุกห้องรวมกัน</div></div>
+    <div class="card stat"><div class="lbl">${ic('check')}งานรอตรวจ</div><div class="val muted">—</div><div class="sub">เปิดใช้ในเฟส 2</div></div>
+  </div>
+  <div class="dash-grid">
+    <div class="stack">
+      <div class="card">
+        <div class="card-h"><h3>วิชาที่สอนภาคเรียนนี้</h3><span class="spacer"></span><a class="btn sm" href="#subjects">จัดการวิชา</a></div>
+        ${subs.length ? `<div class="tbl-wrap"><table class="tbl"><thead><tr><th>วิชา</th><th>ห้อง</th><th style="text-align:right">นักเรียน</th></tr></thead><tbody>
+          ${subs.map(s => { const cids = Q.subjectClassIds(s.id); const n = cids.reduce((a, c) => a + Q.students(c).length, 0);
+            return `<tr><td><span style="display:inline-block;width:9px;height:9px;border-radius:50%;background:${esc(s.color)};margin-right:8px"></span><b>${esc(s.name)}</b> <span class="muted small">${esc(s.code)}</span></td>
+            <td><div class="chips">${cids.map(c => `<span class="chip">${esc(db.get('classrooms', c)?.name)}</span>`).join('') || '<span class="muted small">ยังไม่เลือกห้อง</span>'}</div></td>
+            <td style="text-align:right" class="num">${thaiNum(n)}</td></tr>`; }).join('')}
+        </tbody></table></div>` : `<div class="empty">${ic('book')}<b>ยังไม่มีวิชาในภาคเรียนนี้</b><a class="btn primary sm" href="#subjects" style="margin-top:8px">${ic('plus')}เพิ่มวิชา</a></div>`}
+      </div>
+      <div class="card">
+        <div class="card-h"><h3>การส่งงานแต่ละห้อง</h3></div>
+        <div class="empty">${ic('chart')}<b>ยังไม่มีงาน</b>เมื่อสร้างงานในเฟส 2 กราฟเปรียบเทียบการส่งงานของแต่ละห้อง<br>และรายชื่อนักเรียนที่ค้างส่งจะแสดงตรงนี้</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-h"><h3>ความคืบหน้าการสร้างระบบ</h3></div>
+      <div class="card-b"><ol class="phases">${phases.map((p, i) => `<li class="${i === 0 ? 'now' : ''}"><span class="dot">${i + 1}</span><div><b>${p[0]}</b><span>${p[1]}</span></div></li>`).join('')}</ol></div>
+    </div>
+  </div>`;
+}
+
+/* ---------- วิชา ---------- */
+function viewSubjects() {
+  const tid = ui.termId || Q.currentTerm()?.id;
+  const subs = Q.subjectsOfTerm(tid);
+  return `
+  <div class="page-head">
+    <div><h2>วิชา</h2><p>กำหนดชื่อวิชาและห้องที่สอนในแต่ละภาคเรียน</p></div><span class="spacer"></span>
+    <select class="input" style="width:auto" data-chg="term-filter" aria-label="ภาคเรียน">
+      ${store.terms.map(t => `<option value="${t.id}" ${t.id === tid ? 'selected' : ''}>ภาคเรียน ${Q.termLabel(t)}${t.is_current ? ' (ปัจจุบัน)' : ''}</option>`).join('')}
+    </select>
+    <button class="btn primary" data-act="subject-new">${ic('plus')}เพิ่มวิชา</button>
+  </div>
+  ${subs.length ? `<div class="subj-grid">${subs.map(s => {
+    const cids = Q.subjectClassIds(s.id); const n = cids.reduce((a, c) => a + Q.students(c).length, 0);
+    return `<article class="card subj"><div class="subj-top" style="background:${esc(s.color)}"></div>
+      <div class="card-b"><div><div class="subj-code">${esc(s.code || 'ไม่มีรหัสวิชา')}</div><h3>${esc(s.name)}</h3></div>
+        <div class="chips">${cids.map(c => `<span class="chip">${esc(db.get('classrooms', c)?.name)}</span>`).join('') || '<span class="muted small">ยังไม่ได้เลือกห้องที่สอน</span>'}</div></div>
+      <div class="subj-foot"><span class="small muted">${thaiNum(cids.length)} ห้อง · ${thaiNum(n)} คน</span><span class="spacer"></span>
+        <button class="btn ghost sm" data-act="subject-edit" data-id="${s.id}">${ic('edit')}แก้ไข</button>
+        <button class="btn ghost icon" data-act="subject-del" data-id="${s.id}" aria-label="ลบวิชา" style="color:var(--danger)">${ic('trash')}</button></div>
+    </article>`; }).join('')}</div>`
+  : `<div class="card"><div class="empty">${ic('book')}<b>ยังไม่มีวิชาในภาคเรียนนี้</b>เพิ่มวิชาแรก แล้วเลือกห้องที่สอน<br><button class="btn primary" data-act="subject-new" style="margin-top:12px">${ic('plus')}เพิ่มวิชา</button></div></div>`}`;
+}
+function subjectModal(s) {
+  const isNew = !s;
+  s = s || { code: '', name: '', color: COLORS[store.subjects.length % COLORS.length], term_id: ui.termId || Q.currentTerm()?.id };
+  const cids = isNew ? [] : Q.subjectClassIds(s.id);
+  const cls = Q.classrooms();
+  openModal({
+    title: isNew ? 'เพิ่มวิชา' : 'แก้ไขวิชา', ctx: { subjectId: s.id, color: s.color },
+    body: `<div class="stack">
+      <div class="grid3" style="grid-template-columns:140px 1fr">
+        <label class="field"><span>รหัสวิชา</span><input class="input" name="code" value="${esc(s.code)}" placeholder="ว23104"></label>
+        <label class="field"><span>ชื่อวิชา *</span><input class="input" name="name" value="${esc(s.name)}" placeholder="วิทยาการคำนวณ"></label>
+      </div>
+      <label class="field"><span>ภาคเรียน</span><select class="input" name="term_id">${store.terms.map(t => `<option value="${t.id}" ${t.id === s.term_id ? 'selected' : ''}>${Q.termLabel(t)}</option>`).join('')}</select></label>
+      <div class="field"><span class="muted" style="font-weight:500">สีประจำวิชา</span><div class="swatches">${COLORS.map(c => `<button type="button" class="swatch ${c === s.color ? 'on' : ''}" style="background:${c}" data-act="pick-color" data-c="${c}" aria-label="สี ${c}"></button>`).join('')}</div></div>
+      <div class="field"><span class="muted" style="font-weight:500">ห้องที่สอน</span>
+        ${cls.length ? `<div class="checks">${cls.map(c => `<label class="check"><input type="checkbox" name="cls" value="${c.id}" ${cids.includes(c.id) ? 'checked' : ''}>${esc(c.name)}</label>`).join('')}</div>`
+        : `<div class="note">ยังไม่มีห้องเรียน เพิ่มห้องหรืออัปโหลดรายชื่อที่เมนู "ห้องเรียนและรายชื่อ" ก่อน</div>`}
+      </div></div>`,
+    actions: [{ label: 'ยกเลิก', onClick: closeModal }, { label: isNew ? 'เพิ่มวิชา' : 'บันทึก', kind: 'primary', onClick: saveSubject }],
+  });
+}
+async function saveSubject() {
+  const name = mval('name');
+  if (!name) { toast('กรุณากรอกชื่อวิชา', true); return; }
+  const data = { code: mval('code'), name, term_id: mval('term_id') || null, color: modalCtx.color };
+  const sel = $$('#modal-root input[name=cls]:checked').map(x => x.value);
+  let id = modalCtx.subjectId;
+  if (id) await db.update('subjects', id, data); else id = (await db.insert('subjects', data)).id;
+  await q(sb.from('subject_classes').delete().eq('subject_id', id));
+  store.subject_classes = store.subject_classes.filter(x => x.subject_id !== id);
+  if (sel.length) {
+    const rows = await q(sb.from('subject_classes').insert(sel.map(c => ({ subject_id: id, classroom_id: c }))).select());
+    store.subject_classes.push(...rows);
+  }
+  closeModal(); render(); toast('บันทึกวิชาแล้ว');
+}
+
+/* ---------- ห้องเรียนและรายชื่อ ---------- */
+function viewClasses() {
+  const cls = Q.classrooms();
+  if (!cls.find(c => c.id === ui.cid)) ui.cid = cls[0]?.id || null;
+  const cur = ui.cid && db.get('classrooms', ui.cid);
+  return `
+  <div class="page-head"><div><h2>ห้องเรียนและรายชื่อ</h2><p>อัปโหลดรายชื่อจาก Excel ได้ทีละหลายห้อง (1 ชีต = 1 ห้อง) หรือเพิ่ม/แก้ไขเองได้</p></div><span class="spacer"></span>
+    <button class="btn" data-act="class-new">${ic('plus')}เพิ่มห้อง</button>
+    <button class="btn primary" data-act="import-open">${ic('upload')}อัปโหลดรายชื่อ</button>
+  </div>
+  ${cls.length ? `<div class="two-pane">
+    <div class="card cls-list">${cls.map(c => { const n = Q.students(c.id).length;
+      return `<button class="cls-item ${c.id === ui.cid ? 'active' : ''}" data-act="class-pick" data-id="${c.id}"><div style="min-width:0"><div class="cls-name">${esc(c.name)}</div><div class="cls-sub">${esc(c.homeroom_teacher || 'ไม่ระบุครูที่ปรึกษา')}</div></div><span class="cls-count">${thaiNum(n)} คน</span></button>`; }).join('')}
+    </div>
+    ${cur ? classPanel(cur) : ''}
+  </div>`
+  : `<div class="card"><div class="empty">${ic('users')}<b>ยังไม่มีห้องเรียน</b>อัปโหลดไฟล์รายชื่อ Excel ที่โรงเรียนใช้อยู่ได้เลย ระบบจะสร้างห้องให้ตามชื่อชีต<br>
+     <button class="btn primary" data-act="import-open" style="margin-top:12px">${ic('upload')}อัปโหลดรายชื่อ</button></div></div>`}`;
+}
+function classPanel(c) {
+  const list = Q.students(c.id);
+  const q = ui.q.toLowerCase();
+  const match = s => !q || `${s.number} ${s.student_code} ${Q.fullName(s)}`.toLowerCase().includes(q);
+  const sel = [...ui.sel].filter(id => list.some(s => s.id === id));
+  const others = Q.classrooms().filter(x => x.id !== c.id);
+  const ed = ui.tableEdit;
+  return `<div class="card" style="min-width:0">
+    <div class="card-h"><div><h3>${esc(c.name)}</h3><div class="small muted">ครูที่ปรึกษา: ${esc(c.homeroom_teacher || '—')} · ${thaiNum(list.length)} คน</div></div><span class="spacer"></span>
+      <button class="btn ghost sm" data-act="class-edit" data-id="${c.id}">${ic('edit')}แก้ไขห้อง</button>
+      <button class="btn ghost icon" data-act="class-del" data-id="${c.id}" aria-label="ลบห้อง" style="color:var(--danger)">${ic('trash')}</button></div>
+    <div class="toolbar">
+      <div class="search">${ic('search')}<input class="input" placeholder="ค้นหา เลขที่ / ชื่อ / เลขประจำตัว" value="${esc(ui.q)}" data-inp="search" aria-label="ค้นหานักเรียน"></div>
+      <span class="spacer"></span>
+      <button class="btn sm ${ed ? 'primary' : ''}" data-act="toggle-edit">${ic('table')}${ed ? 'เสร็จสิ้นการแก้ไข' : 'แก้ไขแบบตาราง'}</button>
+      <button class="btn sm" data-act="student-new">${ic('plus')}เพิ่มนักเรียน</button>
+    </div>
+    ${sel.length ? `<div class="bulk"><b>เลือก ${thaiNum(sel.length)} คน</b><span class="spacer"></span>
+      ${others.length ? `<select class="input" style="width:auto;padding:5px 8px" data-chg="bulk-move" aria-label="ย้ายไปห้อง"><option value="">ย้ายไปห้อง…</option>${others.map(o => `<option value="${o.id}">${esc(o.name)}</option>`).join('')}</select>` : ''}
+      <button class="btn sm danger" data-act="bulk-del">${ic('trash')}ลบที่เลือก</button><button class="btn sm ghost" data-act="bulk-clear">ยกเลิก</button></div>` : ''}
+    ${list.length ? `<div class="tbl-wrap"><table class="tbl" id="stu-tbl"><thead><tr>
+        <th style="width:36px"><input type="checkbox" data-chg="sel-all" aria-label="เลือกทั้งหมด" ${sel.length && sel.length === list.length ? 'checked' : ''}></th>
+        <th>เลขที่</th><th>เลขประจำตัว</th><th>คำนำหน้า</th><th>ชื่อ</th><th>นามสกุล</th><th>สถานะ</th><th class="act"></th></tr></thead><tbody>
+      ${list.map(s => `<tr data-row="${s.id}" class="${s.active === false ? 'inactive' : ''}" ${match(s) ? '' : 'hidden'} data-search="${esc(`${s.number} ${s.student_code} ${Q.fullName(s)}`.toLowerCase())}">
+        <td><input type="checkbox" data-chg="sel" data-id="${s.id}" ${ui.sel.has(s.id) ? 'checked' : ''} aria-label="เลือก ${esc(s.first_name)}"></td>
+        ${ed ? `
+        <td class="num"><input class="input" type="number" min="1" value="${s.number}" data-chg="cell" data-id="${s.id}" data-f="number" style="width:70px"></td>
+        <td><input class="input" value="${esc(s.student_code)}" data-chg="cell" data-id="${s.id}" data-f="student_code" style="width:100px" inputmode="numeric"></td>
+        <td><input class="input" value="${esc(s.prefix)}" data-chg="cell" data-id="${s.id}" data-f="prefix" list="prefixes" style="width:100px"></td>
+        <td><input class="input" value="${esc(s.first_name)}" data-chg="cell" data-id="${s.id}" data-f="first_name"></td>
+        <td><input class="input" value="${esc(s.last_name)}" data-chg="cell" data-id="${s.id}" data-f="last_name"></td>`
+        : `<td class="num">${s.number}</td><td class="code-mask">${esc(s.student_code) || '<span class="chip warn">ไม่มี</span>'}</td><td>${esc(s.prefix)}</td><td>${esc(s.first_name)}</td><td>${esc(s.last_name)}</td>`}
+        <td>${s.active === false ? '<span class="chip">ย้าย/ลาออก</span>' : '<span class="chip ok">กำลังเรียน</span>'}</td>
+        <td class="act"><button class="btn ghost icon" data-act="student-edit" data-id="${s.id}" aria-label="แก้ไข">${ic('edit')}</button><button class="btn ghost icon" data-act="student-del" data-id="${s.id}" aria-label="ลบ" style="color:var(--danger)">${ic('trash')}</button></td>
+      </tr>`).join('')}</tbody></table></div>
+      <datalist id="prefixes">${PREFIX_OPTS.map(p => `<option value="${p}">`).join('')}</datalist>`
+    : `<div class="empty">${ic('users')}<b>ห้องนี้ยังไม่มีนักเรียน</b>เพิ่มทีละคน หรืออัปโหลดไฟล์รายชื่อ</div>`}
+  </div>`;
+}
+function classModal(c) {
+  const isNew = !c;
+  openModal({
+    title: isNew ? 'เพิ่มห้องเรียน' : 'แก้ไขห้องเรียน', ctx: { classId: c?.id },
+    body: `<div class="stack"><label class="field"><span>ชื่อห้อง *</span><input class="input" name="name" value="${esc(c?.name)}" placeholder="ม.3/1"></label>
+      <label class="field"><span>ครูที่ปรึกษา</span><input class="input" name="homeroom_teacher" value="${esc(c?.homeroom_teacher)}" placeholder="ครู…"></label></div>`,
+    actions: [{ label: 'ยกเลิก', onClick: closeModal }, { label: isNew ? 'เพิ่มห้อง' : 'บันทึก', kind: 'primary', onClick: async () => {
+      const name = mval('name'); if (!name) return toast('กรุณากรอกชื่อห้อง', true);
+      if (store.classrooms.some(x => x.name === name && x.id !== modalCtx.classId)) return toast('มีห้องชื่อนี้แล้ว', true);
+      const data = { name, homeroom_teacher: mval('homeroom_teacher') };
+      if (modalCtx.classId) await db.update('classrooms', modalCtx.classId, data); else ui.cid = (await db.insert('classrooms', { ...data, sort_order: 0 })).id;
+      closeModal(); render(); toast('บันทึกห้องแล้ว');
+    } }],
+  });
+}
+function studentModal(s) {
+  const isNew = !s;
+  const list = Q.students(ui.cid);
+  s = s || { number: (list.at(-1)?.number || 0) + 1, student_code: '', prefix: '', first_name: '', last_name: '', classroom_id: ui.cid, active: true };
+  openModal({
+    title: isNew ? 'เพิ่มนักเรียน' : 'แก้ไขข้อมูลนักเรียน', ctx: { studentId: s.id },
+    body: `<div class="stack">
+      <div class="grid2"><label class="field"><span>เลขที่ *</span><input class="input" type="number" min="1" name="number" value="${s.number}"></label>
+        <label class="field"><span>เลขประจำตัวนักเรียน</span><input class="input" name="student_code" value="${esc(s.student_code)}" inputmode="numeric" placeholder="ใช้ยืนยันตัวตน"></label></div>
+      <div class="grid3"><label class="field"><span>คำนำหน้า</span><input class="input" name="prefix" value="${esc(s.prefix)}" list="prefixes-m"><datalist id="prefixes-m">${PREFIX_OPTS.map(p => `<option value="${p}">`).join('')}</datalist></label>
+        <label class="field"><span>ชื่อ *</span><input class="input" name="first_name" value="${esc(s.first_name)}"></label>
+        <label class="field"><span>นามสกุล</span><input class="input" name="last_name" value="${esc(s.last_name)}"></label></div>
+      <div class="grid2"><label class="field"><span>ห้อง</span><select class="input" name="classroom_id">${Q.classrooms().map(c => `<option value="${c.id}" ${c.id === s.classroom_id ? 'selected' : ''}>${esc(c.name)}</option>`).join('')}</select></label>
+        <label class="field"><span>สถานะ</span><select class="input" name="active"><option value="1" ${s.active !== false ? 'selected' : ''}>กำลังเรียน</option><option value="0" ${s.active === false ? 'selected' : ''}>ย้าย/ลาออก</option></select></label></div>
+    </div>`,
+    actions: [{ label: 'ยกเลิก', onClick: closeModal }, { label: isNew ? 'เพิ่มนักเรียน' : 'บันทึก', kind: 'primary', onClick: saveStudent }],
+  });
+}
+async function saveStudent() {
+  const number = parseInt(mval('number'), 10), first = mval('first_name'), cid = mval('classroom_id');
+  if (!Number.isFinite(number) || number < 1) return toast('เลขที่ไม่ถูกต้อง', true);
+  if (!first) return toast('กรุณากรอกชื่อ', true);
+  const dup = store.students.find(x => x.classroom_id === cid && x.number === number && x.id !== modalCtx.studentId);
+  if (dup) return toast(`เลขที่ ${number} มีแล้วในห้องนี้ (${Q.fullName(dup)})`, true);
+  const data = { number, student_code: mval('student_code'), prefix: mval('prefix'), first_name: first, last_name: mval('last_name'), classroom_id: cid, active: mval('active') === '1' };
+  if (!data.student_code) toast('ยังไม่มีเลขประจำตัว นักเรียนคนนี้จะยืนยันตัวตนไม่ได้จนกว่าจะเติม');
+  if (modalCtx.studentId) await db.update('students', modalCtx.studentId, data); else await db.insert('students', data);
+  closeModal(); render(); toast('บันทึกแล้ว');
+}
+
+/* ---------- นำเข้ารายชื่อ ---------- */
+function importModal() {
+  openModal({
+    title: 'อัปโหลดรายชื่อนักเรียน', wide: true, ctx: { step: 1 },
+    body: `<div class="stack">
+      <label class="drop" id="drop">${ic('upload')}<b>ลากไฟล์มาวาง หรือคลิกเพื่อเลือกไฟล์</b><span class="muted small">รองรับ .xlsx .xls .csv · ไฟล์ Excel หลายชีตจะนำเข้าเป็นหลายห้อง (1 ชีต = 1 ห้อง)</span>
+        <input type="file" accept=".xlsx,.xls,.csv" data-chg="import-file" hidden></label>
+      <div class="fmt"><b>รูปแบบไฟล์ที่อ่านได้</b> — ระบบจะหาแถวหัวตารางที่มีคำว่า <b>เลขที่</b> และ <b>ชื่อ</b> เอง ข้อความด้านบน เช่น ชื่อโรงเรียนหรือ "ครูที่ปรึกษา: …" ไม่ต้องลบออก
+        <table><tr><th>เลขที่</th><th>เลขประจำตัว</th><th>คำนำหน้า</th><th>ชื่อ</th><th>นามสกุล</th></tr><tr><td>1</td><td>25101</td><td>เด็กชาย</td><td>ก้องภพ</td><td>ใจดี</td></tr></table>
+        คอลัมน์ "ชื่อ-สกุล" รวมช่องเดียวก็ได้ ระบบจะแยกคำนำหน้า ชื่อ และนามสกุลให้ · ชื่อชีตจะใช้เป็นชื่อห้อง (แก้ได้ในขั้นต่อไป)</div>
+    </div>`,
+  });
+  const drop = $('#drop');
+  ['dragover', 'dragenter'].forEach(ev => drop.addEventListener(ev, e => { e.preventDefault(); drop.classList.add('over'); }));
+  ['dragleave', 'drop'].forEach(ev => drop.addEventListener(ev, e => { e.preventDefault(); drop.classList.remove('over'); }));
+  drop.addEventListener('drop', e => { const f = e.dataTransfer.files[0]; if (f) handleImportFile(f); });
+}
+async function readRosterFile(file) {
+  const ext = file.name.split('.').pop().toLowerCase();
+  if (ext === 'csv') return [RosterParser.parseSheet(file.name.replace(/\.csv$/i, ''), RosterParser.parseCSV(await file.text()))];
+  if (!window.XLSX) throw new Error('โหลดตัวอ่าน Excel ไม่สำเร็จ ลองบันทึกไฟล์เป็น .csv (UTF-8) แล้วอัปโหลดอีกครั้ง');
+  const wb = XLSX.read(await file.arrayBuffer(), { type: 'array' });
+  return wb.SheetNames.map(n => RosterParser.parseSheet(n, XLSX.utils.sheet_to_json(wb.Sheets[n], { header: 1, defval: '', raw: true })));
+}
+async function handleImportFile(file) {
+  let sheets;
+  try { sheets = await readRosterFile(file); } catch (e) { toast(e.message || 'อ่านไฟล์ไม่สำเร็จ', true); return; }
+  sheets.forEach(s => { s.include = s.students.length > 0; });
+  if (!sheets.some(s => s.include)) { toast('ไม่พบรายชื่อนักเรียนในไฟล์นี้', true); }
+  importPreview(sheets, file.name);
+}
+function importTarget(name) { return store.classrooms.find(c => c.name === name.trim()); }
+function importPreview(sheets, fname) {
+  const total = sheets.filter(s => s.include).reduce((a, s) => a + s.students.length, 0);
+  openModal({
+    title: 'ตรวจสอบก่อนนำเข้า', wide: true, ctx: { sheets, fname },
+    body: `<div class="stack">
+      <div class="row" style="flex-wrap:wrap"><span class="chip pri">${ic('file')}${esc(fname)}</span><span class="small muted">${thaiNum(sheets.length)} ชีต · จะนำเข้า <b id="imp-total">${thaiNum(total)}</b> คน</span><span class="spacer"></span>
+        <button class="btn sm" data-act="imp-slash" title="เช่น ม.1-1 → ม.1/1">เปลี่ยน "-" ในชื่อห้องเป็น "/"</button></div>
+      <datalist id="cls-names">${Q.classrooms().map(c => `<option value="${esc(c.name)}">`).join('')}</datalist>
+      <div>${sheets.map((s, i) => { const t = importTarget(s.name);
+        return `<div class="sheet"><div class="sheet-h">
+          <input type="checkbox" data-chg="imp-inc" data-i="${i}" ${s.include ? 'checked' : ''} ${s.students.length ? '' : 'disabled'} aria-label="นำเข้าชีต ${esc(s.name)}">
+          <label class="row" style="gap:8px"><span class="small muted">ห้อง</span><input class="input" list="cls-names" value="${esc(s.name)}" data-inp="imp-name" data-i="${i}"></label>
+          <span class="small" id="imp-tgt-${i}">${t ? '<span class="chip warn">มีห้องนี้แล้ว · จะอัปเดต</span>' : '<span class="chip ok">สร้างห้องใหม่</span>'}</span>
+          <span class="spacer"></span><b>${thaiNum(s.students.length)} คน</b></div>
+          <div class="sheet-b">
+            ${s.homeroom ? `<div class="small">ครูที่ปรึกษา: ${esc(s.homeroom)}</div>` : ''}
+            ${s.students.length ? `<div class="small muted" style="margin-top:4px">${s.students.slice(0, 4).map(x => `${x.number}. ${esc(x.prefix + x.first_name + ' ' + x.last_name)}${x.student_code ? ` <span class="code-mask">(${esc(x.student_code)})</span>` : ''}`).join(' · ')}${s.students.length > 4 ? ' …' : ''}</div>` : ''}
+            ${s.warnings.length ? `<ul class="warn-list">${s.warnings.map(w => `<li>${esc(w)}</li>`).join('')}</ul>` : ''}
+          </div></div>`; }).join('')}</div>
+      <div class="field"><span class="muted" style="font-weight:500">ถ้าห้องนี้มีรายชื่ออยู่แล้ว</span>
+        <div class="radio-row">
+          <label class="radio"><input type="radio" name="mode" value="merge" checked><div><b>อัปเดตตามเลขที่</b><div class="small muted">เลขที่ตรงกันจะแก้ข้อมูล เลขที่ใหม่จะเพิ่ม คนเดิมที่ไม่มีในไฟล์ยังอยู่</div></div></label>
+          <label class="radio"><input type="radio" name="mode" value="replace"><div><b>แทนที่ทั้งห้อง</b><div class="small muted">ลบรายชื่อเดิมของห้องนั้นแล้วใช้ตามไฟล์ใหม่ทั้งหมด <b style="color:var(--danger)">งานและคะแนนของคนเดิมจะถูกลบด้วย</b></div></div></label>
+        </div></div>
+    </div>`,
+    actions: [{ label: 'เลือกไฟล์ใหม่', onClick: importModal }, { label: 'นำเข้ารายชื่อ', kind: 'primary', onClick: doImport }],
+  });
+}
+async function doImport() {
+  const { sheets } = modalCtx;
+  const mode = $('#modal-root input[name=mode]:checked').value;
+  const inc = sheets.filter(s => s.include && s.students.length);
+  if (!inc.length) return toast('ยังไม่ได้เลือกชีตที่จะนำเข้า', true);
+  const names = inc.map(s => s.name.trim());
+  if (names.some(n => !n)) return toast('มีชีตที่ยังไม่ได้ตั้งชื่อห้อง', true);
+  if (new Set(names).size !== names.length) return toast('มีชีตที่ตั้งชื่อห้องซ้ำกัน', true);
+  let added = 0, updated = 0, rooms = 0, lastId = null;
+  try {
+    for (const s of inc) {
+      let c = importTarget(s.name);
+      if (!c) { c = await db.insert('classrooms', { name: s.name.trim(), homeroom_teacher: s.homeroom || null, sort_order: 0 }); rooms++; }
+      else if (s.homeroom && !c.homeroom_teacher) await db.update('classrooms', c.id, { homeroom_teacher: s.homeroom });
+      lastId = c.id;
+      let rows;
+      if (mode === 'replace') {
+        await q(sb.from('students').delete().eq('classroom_id', c.id));
+        rows = s.students.map(st => ({ ...st, classroom_id: c.id, active: true }));
+        added += rows.length;
+      } else {
+        rows = s.students.map(st => {
+          const ex = store.students.find(x => x.classroom_id === c.id && x.number === st.number);
+          if (ex) { updated++; return { ...st, classroom_id: c.id, student_code: st.student_code || ex.student_code, prefix: st.prefix || ex.prefix || '', active: ex.active }; }
+          added++; return { ...st, classroom_id: c.id, active: true };
+        });
+      }
+      for (let i = 0; i < rows.length; i += 500) {
+        await q(sb.from('students').upsert(rows.slice(i, i + 500), { onConflict: 'classroom_id,number' }));
+      }
+      await reloadStudents(c.id);
+    }
+  } catch (e) {
+    await loadAll().catch(() => {}); ui.cid = lastId || ui.cid; closeModal(); render();
+    return;
+  }
+  ui.cid = lastId; ui.sel.clear(); closeModal(); render();
+  toast(`นำเข้าแล้ว: เพิ่ม ${added} คน${updated ? ` · อัปเดต ${updated} คน` : ''}${rooms ? ` · สร้างห้องใหม่ ${rooms} ห้อง` : ''}`);
+}
+
+/* ---------- หน้าที่จะมาในเฟสถัดไป ---------- */
+function viewSoon() {
+  const info = {
+    assignments: ['เฟส 2', 'งานและตรวจงาน', ['สร้างงาน: ชื่องาน คำอธิบาย คะแนนเต็ม วันกำหนดส่ง ห้องที่มอบหมาย ชนิดไฟล์ที่รับ', 'นักเรียนส่งรูป คลิป (ไม่เกิน 50 MB) เสียง เอกสาร แยกรายคน ย่อรูปอัตโนมัติก่อนอัปโหลด', 'หน้าตรวจงาน: ดูไฟล์ในหน้าเดียว ให้คะแนน เขียนความเห็น กด "คนถัดไป"', 'สถานะ: ยังไม่ส่ง / ส่งแล้ว / ส่งช้า / ตรวจแล้ว']],
+    gradebook: ['เฟส 3', 'ตารางคะแนน', ['ตารางแยกตามห้อง หน้าตาคล้าย Excel', 'เพิ่ม ลบ เรียงคอลัมน์ได้อิสระ ทั้งคอลัมน์ทุกห้องหรือเฉพาะห้อง', 'คะแนนจากการตรวจงานและข้อสอบไหลเข้าเอง', 'คอลัมน์รวม และส่งออก Excel', 'นักเรียนเห็นคะแนนของตัวเองทุกช่อง']],
+    exams: ['เฟส 5', 'ข้อสอบ', ['สร้างข้อสอบ ปรนัย ถูก/ผิด เติมคำ อัตนัย พร้อมรูปประกอบ', 'จับเวลา สุ่มข้อ สุ่มตัวเลือก กำหนดจำนวนครั้ง', 'ปุ่มส่งลิงก์ทาง LINE · คัดลอกลิงก์ · QR Code', 'นักเรียนกรอกห้อง เลขที่ และเลขประจำตัวก่อนเริ่มทำ', 'ตรวจปรนัยอัตโนมัติ คะแนนเข้าตารางคะแนนทันที']],
+  }[ui.route];
+  return `<div class="card soon-page"><div class="card-b"><span class="chip pri">${info[0]}</span><h2 style="margin:10px 0 4px">${info[1]}</h2><p class="muted" style="margin:0">ส่วนนี้จะสร้างในขั้นถัดไป สิ่งที่จะมีในหน้านี้:</p><ul>${info[2].map(x => `<li>${x}</li>`).join('')}</ul></div></div>`;
+}
+
+/* ---------- ตั้งค่า ---------- */
+function viewSettings() {
+  const terms = [...store.terms].sort((a, b) => b.year - a.year || b.semester - a.semester);
+  return `
+  <div class="page-head"><div><h2>ตั้งค่า</h2><p>ข้อมูลครูและภาคเรียน</p></div></div>
+  <div class="dash-grid">
+    <div class="stack">
+      <div class="card"><div class="card-h"><h3>ปีการศึกษาและภาคเรียน</h3><span class="spacer"></span><button class="btn sm" data-act="term-new">${ic('plus')}เพิ่มภาคเรียน</button></div>
+        <table class="tbl"><thead><tr><th>ภาคเรียน</th><th>วิชา</th><th>สถานะ</th><th class="act"></th></tr></thead><tbody>
+        ${terms.map(t => `<tr><td><b>${t.semester}/${t.year}</b></td><td>${thaiNum(Q.subjectsOfTerm(t.id).length)}</td>
+          <td>${t.is_current ? '<span class="chip ok">ภาคเรียนปัจจุบัน</span>' : `<button class="btn sm" data-act="term-current" data-id="${t.id}">ตั้งเป็นปัจจุบัน</button>`}</td>
+          <td class="act">${t.is_current ? '' : `<button class="btn ghost icon" data-act="term-del" data-id="${t.id}" aria-label="ลบภาคเรียน" style="color:var(--danger)">${ic('trash')}</button>`}</td></tr>`).join('')}
+        </tbody></table></div>
+    </div>
+    <div class="stack">
+      <div class="card"><div class="card-h"><h3>ข้อมูลครู</h3></div><div class="card-b stack">
+        <label class="field"><span>ชื่อที่แสดง</span><input class="input" value="${esc(store.teacher.name)}" data-chg="teacher-name"></label>
+        <div class="row"><span class="muted small">ธีม</span><span class="spacer"></span><button class="btn sm" data-act="theme">${ic(document.documentElement.dataset.theme === 'dark' ? 'sun' : 'moon')}${document.documentElement.dataset.theme === 'dark' ? 'โหมดสว่าง' : 'โหมดมืด'}</button></div>
+      </div></div>
+      <div class="card"><div class="card-h"><h3>บัญชีผู้ใช้</h3></div><div class="card-b stack">
+        <div class="row"><span class="muted small">อีเมล</span><span class="spacer"></span><b>${esc(store.teacher.email)}</b></div>
+        <button class="btn" data-act="pw-open">${ic('gear')}เปลี่ยนรหัสผ่าน</button>
+      </div></div>
+    </div>
+  </div>`;
+}
+function termModal() {
+  const y = Q.currentTerm()?.year || thaiTermNow().year;
+  openModal({
+    title: 'เพิ่มภาคเรียน',
+    body: `<div class="grid2"><label class="field"><span>ปีการศึกษา (พ.ศ.)</span><input class="input" type="number" name="year" value="${y + 1}"></label>
+      <label class="field"><span>ภาคเรียน</span><select class="input" name="semester"><option>1</option><option>2</option><option value="3">3 (ฤดูร้อน)</option></select></label></div>`,
+    actions: [{ label: 'ยกเลิก', onClick: closeModal }, { label: 'เพิ่ม', kind: 'primary', onClick: async () => {
+      const year = parseInt(mval('year'), 10), semester = parseInt(mval('semester'), 10);
+      if (!(year > 2500)) return toast('ปีการศึกษาไม่ถูกต้อง (พ.ศ.)', true);
+      if (store.terms.some(t => t.year === year && t.semester === semester)) return toast('มีภาคเรียนนี้แล้ว', true);
+      await db.insert('terms', { year, semester, is_current: false }); closeModal(); render(); toast('เพิ่มภาคเรียนแล้ว');
+    } }],
+  });
+}
+function pwModal() {
+  openModal({
+    title: 'เปลี่ยนรหัสผ่าน',
+    body: `<div class="stack"><label class="field"><span>รหัสผ่านใหม่ (อย่างน้อย 8 ตัว)</span><input class="input" type="password" name="pw1" autocomplete="new-password"></label>
+      <label class="field"><span>ยืนยันรหัสผ่านใหม่</span><input class="input" type="password" name="pw2" autocomplete="new-password"></label></div>`,
+    actions: [{ label: 'ยกเลิก', onClick: closeModal }, { label: 'บันทึก', kind: 'primary', onClick: async () => {
+      const a = $('#modal-root [name=pw1]').value, b = $('#modal-root [name=pw2]').value;
+      if (a.length < 8) return toast('รหัสผ่านต้องยาวอย่างน้อย 8 ตัวอักษร', true);
+      if (a !== b) return toast('รหัสผ่านสองช่องไม่ตรงกัน', true);
+      await q(sb.auth.updateUser({ password: a })); closeModal(); toast('เปลี่ยนรหัสผ่านแล้ว');
+    } }],
+  });
+}
+
+/* ---------- หน้านักเรียน (ใช้ฟังก์ชันฝั่งเซิร์ฟเวอร์ ไม่ต้องล็อกอิน) ---------- */
+let stuState = { verified: null, classes: null, loading: false };
+try { stuState.verified = JSON.parse(sessionStorage.getItem('cr-student')); } catch (e) {}
+async function loadStudentClasses() {
+  if (stuState.classes || stuState.loading) return;
+  stuState.loading = true;
+  try {
+    const rows = await q(sb.rpc('public_classrooms'));
+    stuState.classes = rows.sort((a, b) => a.name.localeCompare(b.name, 'th', { numeric: true }));
+  } catch (e) { stuState.classes = []; }
+  stuState.loading = false;
+  if (ui.route === 'student') render();
+}
+function viewStudent() {
+  const theme = document.documentElement.dataset.theme;
+  const v = stuState.verified;
+  if (!v && !stuState.classes) loadStudentClasses();
+  const cls = stuState.classes || [];
+  return `<div class="stu">
+    <div class="row" style="width:min(440px,100%);margin-bottom:18px"><div class="brand" style="padding:0"><div class="brand-mark">ค</div><div><b>ห้องเรียนครู</b><small style="color:var(--muted)">สำหรับนักเรียน</small></div></div><span class="spacer"></span>
+      <button class="btn ghost icon" data-act="theme" aria-label="สลับธีม">${ic(theme === 'dark' ? 'sun' : 'moon')}</button></div>
+    <div class="card stu-card">
+    ${v ? `<div class="row"><div class="avatar">${esc((v.full_name.replace(/^(เด็กชาย|เด็กหญิง|นางสาว|นาย|นาง|ด\.ช\.|ด\.ญ\.|น\.ส\.)/, '') || '?')[0])}</div><div><div class="small muted">ยืนยันตัวตนสำเร็จ</div><h2 style="font-size:20px">${esc(v.full_name)}</h2><div class="small muted">${esc(v.classroom_name)} · เลขที่ ${v.number}</div></div></div>
+      <div class="stu-tiles"><div class="stu-tile">${ic('inbox')}งานของฉัน<small>เร็วๆ นี้</small></div><div class="stu-tile">${ic('quiz')}ข้อสอบ<small>เร็วๆ นี้</small></div><div class="stu-tile">${ic('table')}คะแนนของฉัน<small>เร็วๆ นี้</small></div></div>
+      <button class="btn" style="margin-top:16px;width:100%;justify-content:center" data-act="stu-out">ไม่ใช่ฉัน / ออก</button>`
+    : `<form class="stack" data-form="stu">
+        <div><h2 style="font-size:22px">เข้าห้องเรียน</h2><p class="muted" style="margin:0">เลือกห้อง แล้วกรอกเลขที่และเลขประจำตัวนักเรียน</p></div>
+        <label class="field"><span>ห้อง</span><select class="input" name="cid" required ${stuState.classes ? '' : 'disabled'}><option value="">${stuState.classes ? '— เลือกห้อง —' : 'กำลังโหลดรายชื่อห้อง…'}</option>${cls.map(c => `<option value="${c.id}">${esc(c.name)}</option>`).join('')}</select></label>
+        <div class="grid2"><label class="field"><span>เลขที่</span><input class="input" type="number" min="1" name="num" required inputmode="numeric"></label>
+          <label class="field"><span>เลขประจำตัวนักเรียน</span><input class="input" name="code" required inputmode="numeric" autocomplete="off"></label></div>
+        <button class="btn primary" style="justify-content:center;padding:11px">ยืนยันตัวตน</button>
+      </form>`}
+    </div>
+    ${session ? `<a href="#dashboard" class="small" style="margin-top:16px">← กลับหน้าครู</a>` : `<a href="#dashboard" class="small" style="margin-top:16px">ครู? เข้าสู่ระบบที่นี่</a>`}
+  </div>`;
+}
+
+/* =====================================================================
+   เหตุการณ์ (ใช้ data-act / data-chg / data-inp)
+   ===================================================================== */
+const ACT = {
+  'modal-close': closeModal,
+  'modal-bg': (el, e) => { if (e.target === el) closeModal(); },
+  'modal-action': async el => {
+    const btns = $$('#modal-root .modal-f .btn'); btns.forEach(b => { b.disabled = true; });
+    try { await modalCtx?.actions[+el.dataset.i]?.onClick(); } catch (e) { console.error(e); }
+    btns.forEach(b => { b.disabled = false; });
+  },
+  'side-open': () => { ui.sideOpen = true; render(); },
+  'side-close': () => { ui.sideOpen = false; render(); },
+  theme: () => { setTheme(document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark'); render(); },
+  logout: () => confirmBox('ออกจากระบบ', 'ต้องการออกจากระบบใช่ไหม', 'ออกจากระบบ', async () => { await sb.auth.signOut(); session = null; render(); }),
+  'subject-new': () => subjectModal(null),
+  'subject-edit': el => subjectModal(db.get('subjects', el.dataset.id)),
+  'subject-del': el => { const s = db.get('subjects', el.dataset.id);
+    confirmBox('ลบวิชา', `ลบวิชา <b>${esc(s.name)}</b>? งาน คะแนน และข้อสอบของวิชานี้จะถูกลบด้วย`, 'ลบวิชา', async () => {
+      await db.removeIds('subjects', [s.id]); store.subject_classes = store.subject_classes.filter(x => x.subject_id !== s.id); render(); toast('ลบวิชาแล้ว'); }); },
+  'pick-color': el => { modalCtx.color = el.dataset.c; $$('#modal-root .swatch').forEach(s => s.classList.toggle('on', s === el)); },
+  'class-pick': el => { ui.cid = el.dataset.id; ui.sel.clear(); ui.q = ''; render(); },
+  'class-new': () => classModal(null),
+  'class-edit': el => classModal(db.get('classrooms', el.dataset.id)),
+  'class-del': el => { const c = db.get('classrooms', el.dataset.id); const n = Q.students(c.id).length;
+    confirmBox('ลบห้องเรียน', `ลบห้อง <b>${esc(c.name)}</b> และนักเรียน ${thaiNum(n)} คนในห้องนี้? งานและคะแนนของนักเรียนห้องนี้จะถูกลบด้วย ลบแล้วกู้คืนไม่ได้`, 'ลบห้อง', async () => {
+      await db.removeIds('classrooms', [c.id]);
+      store.students = store.students.filter(x => x.classroom_id !== c.id); store.subject_classes = store.subject_classes.filter(x => x.classroom_id !== c.id);
+      ui.cid = null; render(); toast('ลบห้องแล้ว'); }); },
+  'toggle-edit': () => { ui.tableEdit = !ui.tableEdit; render(); },
+  'student-new': () => studentModal(null),
+  'student-edit': el => studentModal(db.get('students', el.dataset.id)),
+  'student-del': el => { const s = db.get('students', el.dataset.id);
+    confirmBox('ลบนักเรียน', `ลบ <b>${esc(Q.fullName(s))}</b> (เลขที่ ${s.number})? งานและคะแนนของคนนี้จะถูกลบด้วย ถ้านักเรียนย้ายหรือลาออก แนะนำให้เปลี่ยนสถานะแทนการลบ`, 'ลบ', async () => {
+      await db.removeIds('students', [s.id]); ui.sel.delete(s.id); render(); toast('ลบแล้ว'); }); },
+  'bulk-del': () => { const ids = [...ui.sel];
+    confirmBox('ลบนักเรียนที่เลือก', `ลบนักเรียน ${thaiNum(ids.length)} คน? งานและคะแนนของคนเหล่านี้จะถูกลบด้วย ลบแล้วกู้คืนไม่ได้`, 'ลบทั้งหมด', async () => {
+      await db.removeIds('students', ids); ui.sel.clear(); render(); toast(`ลบ ${ids.length} คนแล้ว`); }); },
+  'bulk-clear': () => { ui.sel.clear(); render(); },
+  'import-open': importModal,
+  'imp-slash': () => { modalCtx.sheets.forEach(s => { s.name = s.name.replace(/(ม\.\s*\d+)\s*-\s*(\d+)/, '$1/$2'); }); importPreview(modalCtx.sheets, modalCtx.fname); },
+  'term-new': termModal,
+  'term-current': async el => {
+    const id = el.dataset.id;
+    await q(sb.from('terms').update({ is_current: false }).neq('id', id));
+    await q(sb.from('terms').update({ is_current: true }).eq('id', id));
+    store.terms.forEach(t => { t.is_current = t.id === id; }); ui.termId = null; render(); toast('เปลี่ยนภาคเรียนปัจจุบันแล้ว'); },
+  'term-del': el => { const t = db.get('terms', el.dataset.id); const n = Q.subjectsOfTerm(t.id).length;
+    if (n) return toast(`ภาคเรียนนี้มี ${n} วิชา ย้ายหรือลบวิชาก่อน`, true);
+    confirmBox('ลบภาคเรียน', `ลบภาคเรียน ${Q.termLabel(t)}?`, 'ลบ', async () => { await db.removeIds('terms', [t.id]); render(); }); },
+  'pw-open': pwModal,
+  'stu-out': () => { stuState.verified = null; try { sessionStorage.removeItem('cr-student'); } catch (e) {} render(); },
+};
+const CHG = {
+  'term-filter': el => { ui.termId = el.value; render(); },
+  sel: el => { el.checked ? ui.sel.add(el.dataset.id) : ui.sel.delete(el.dataset.id); render(); },
+  'sel-all': el => { const vis = $$('#stu-tbl tbody tr:not([hidden])').map(r => r.dataset.row); vis.forEach(id => el.checked ? ui.sel.add(id) : ui.sel.delete(id)); render(); },
+  'bulk-move': async el => { const to = el.value; if (!to) return; const ids = [...ui.sel];
+    const taken = new Set(Q.students(to).map(s => s.number));
+    const clash = ids.map(id => db.get('students', id)).filter(s => taken.has(s.number));
+    if (clash.length) { el.value = ''; return toast(`ห้องปลายทางมีเลขที่ ${clash.map(s => s.number).join(', ')} แล้ว แก้เลขที่ก่อนย้าย`, true); }
+    el.disabled = true;
+    try { await q(sb.from('students').update({ classroom_id: to }).in('id', ids)); } catch (e) { el.disabled = false; el.value = ''; return; }
+    ids.forEach(id => { db.get('students', id).classroom_id = to; }); ui.sel.clear(); ui.cid = to; render(); toast(`ย้าย ${ids.length} คนแล้ว`); },
+  cell: async el => { const s = db.get('students', el.dataset.id); const f = el.dataset.f; let v = el.value.trim();
+    if (f === 'number') { v = parseInt(v, 10);
+      if (!Number.isFinite(v) || v < 1) { el.value = s.number; return toast('เลขที่ไม่ถูกต้อง', true); }
+      if (store.students.some(x => x.classroom_id === s.classroom_id && x.number === v && x.id !== s.id)) { el.value = s.number; return toast(`เลขที่ ${v} มีแล้วในห้องนี้`, true); } }
+    if (f === 'first_name' && !v) { el.value = s.first_name; return toast('ชื่อห้ามว่าง', true); }
+    const old = s[f];
+    try { await db.update('students', s.id, { [f]: v }); } catch (e) { el.value = old ?? ''; return; }
+    el.style.borderColor = 'var(--ok)'; setTimeout(() => { el.style.borderColor = ''; }, 700); },
+  'import-file': el => { const f = el.files[0]; if (f) handleImportFile(f); },
+  'imp-inc': el => { modalCtx.sheets[+el.dataset.i].include = el.checked; updImpTotal(); },
+  'teacher-name': async el => { const name = el.value.trim() || 'ครูผู้สอน';
+    await q(sb.auth.updateUser({ data: { display_name: name } })); store.teacher.name = name; render(); toast('บันทึกแล้ว'); },
+};
+const INP = {
+  search: el => { ui.q = el.value; const q = el.value.toLowerCase().trim(); $$('#stu-tbl tbody tr').forEach(r => { r.hidden = !!q && !r.dataset.search.includes(q); }); },
+  'imp-name': el => { const i = +el.dataset.i; modalCtx.sheets[i].name = el.value;
+    $(`#imp-tgt-${i}`).innerHTML = importTarget(el.value) ? '<span class="chip warn">มีห้องนี้แล้ว · จะอัปเดต</span>' : '<span class="chip ok">สร้างห้องใหม่</span>'; },
+};
+function updImpTotal() { const n = modalCtx.sheets.filter(s => s.include).reduce((a, s) => a + s.students.length, 0); $('#imp-total').textContent = thaiNum(n); }
+
+document.addEventListener('click', e => {
+  const t = e.target.closest('[data-act]'); if (!t) return;
+  if (t.dataset.act === 'modal-bg' && e.target !== t) return;
+  if (t.disabled) return;
+  Promise.resolve(ACT[t.dataset.act]?.(t, e)).catch(err => console.error(err));
+});
+document.addEventListener('change', e => { const t = e.target.closest('[data-chg]'); if (t) Promise.resolve(CHG[t.dataset.chg]?.(t, e)).catch(err => console.error(err)); });
+document.addEventListener('input', e => { const t = e.target.closest('[data-inp]'); if (t) INP[t.dataset.inp]?.(t, e); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape' && modalCtx) closeModal(); });
+document.addEventListener('submit', async e => {
+  e.preventDefault();
+  const f = e.target, fd = new FormData(f);
+  const btn = f.querySelector('button.primary'); if (btn) btn.disabled = true;
+  try {
+    if (f.dataset.form === 'login') {
+      const data = await q(sb.auth.signInWithPassword({ email: String(fd.get('email')).trim(), password: fd.get('password') }));
+      session = data.session; setTeacher(data.user);
+      booting = true; render();
+      try { await loadAll(); } finally { booting = false; }
+      if (location.hash !== '#dashboard') location.hash = 'dashboard'; else route();
+    }
+    if (f.dataset.form === 'stu') {
+      const num = parseInt(fd.get('num'), 10), code = String(fd.get('code')).trim();
+      const rows = await q(sb.rpc('student_verify', { p_classroom_id: fd.get('cid'), p_number: num, p_code: code }));
+      if (!rows.length) { toast('ข้อมูลไม่ตรงกัน ตรวจสอบห้อง เลขที่ และเลขประจำตัวอีกครั้ง', true); return; }
+      stuState.verified = { ...rows[0], number: num };
+      try { sessionStorage.setItem('cr-student', JSON.stringify(stuState.verified)); } catch (err) {}
+      render();
+    }
+  } catch (err) { console.error(err); }
+  finally { if (btn && btn.isConnected) btn.disabled = false; }
+});
+function route() { ui.route = location.hash.slice(1) || 'dashboard'; ui.sideOpen = false; closeModal(); render(); window.scrollTo(0, 0); }
+window.addEventListener('hashchange', route);
+sb.auth.onAuthStateChange((event) => {
+  if (event === 'SIGNED_OUT' && session) { session = null; render(); }
+});
+
+/* ---------- เริ่มทำงาน ---------- */
+(async () => {
+  render();
+  try {
+    const { data } = await sb.auth.getSession();
+    session = data.session;
+    if (session) { setTeacher(session.user); await loadAll(); }
+  } catch (e) { console.error(e); }
+  booting = false;
+  route();
+})();
+
+</script>
+</body>
+</html>
