@@ -1529,7 +1529,7 @@ body.stu-bg::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:n
 [data-theme=dark]{--glow:#FFE27A;--glow-shadow:0 0 6px rgba(255,214,10,.55),0 0 18px rgba(255,196,0,.35),0 0 36px rgba(255,170,0,.18)}
 [data-theme=dark] :is(.page-head h2,.hero-txt h2,.stu-banner h2,.auth-art h1,.m-top h1,.side .brand b,.exm-title,.exm-hero h2,.stu-card h2,.pending-card h2,.modal-h h3,.uc-id b,.m-me b){
   color:var(--glow)!important;text-shadow:var(--glow-shadow)}
-[data-theme=dark] :is(.subj h3,.asg-title,.sa-title,.card-h h3,.stat .val,.counter b,.room-chip b,.gb .gb-name,#stu-tbl td:nth-child(3),.gcol .gt){
+[data-theme=dark] :is(.subj h3,.asg-title,.sa-title,.card-h h3,.stat .val,.counter b,.room-chip b,.gb .gb-name,.gcol .gt){
   color:#FFE9A3;text-shadow:0 0 10px rgba(255,214,10,.28)}
 [data-theme=dark] .hero::after{background:linear-gradient(90deg,rgba(11,15,23,.72),rgba(11,15,23,.1) 60%)}
 [data-theme=dark] .stu-banner::before{background:linear-gradient(180deg,rgba(22,27,37,0) 50%,var(--surface))}
@@ -1605,6 +1605,44 @@ body.stu-bg::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:n
 @media (prefers-reduced-motion:reduce){.exm-page,#exm-next.ready,.lc-sec{animation:none}}
 #exm-next{overflow:hidden;white-space:nowrap}
 [data-device=mobile] #exm-next small{display:none}
+
+/* =====================================================================
+   แก้โหมดมืด: ส่วนควบคุมของเบราว์เซอร์ (รายการเลือก ปฏิทิน แถบเลื่อน)
+   ===================================================================== */
+:root{color-scheme:light}
+[data-theme=dark]{color-scheme:dark}
+select option,select optgroup{background:var(--surface);color:var(--ink)}
+[data-theme=dark] select option{background:#1C2230;color:#F1F4FA}
+[data-theme=dark] input::-webkit-calendar-picker-indicator{filter:invert(.85)}
+[data-theme=dark] ::placeholder{color:#7F8AA3}
+[data-theme=dark] ::-webkit-scrollbar{width:10px;height:10px}
+[data-theme=dark] ::-webkit-scrollbar-thumb{background:#3A4458;border-radius:99px;border:2px solid transparent;background-clip:padding-box}
+[data-theme=dark] ::-webkit-scrollbar-track{background:transparent}
+[data-theme=dark][data-device=mobile] .hero::after{background:linear-gradient(180deg,rgba(22,27,37,0) 30%,var(--surface) 64%)}
+/* แถบเปลี่ยนหน้าข้อสอบ: แคปซูลกระจก ไม่ทับคำถามจนอ่านยาก */
+.exm-pager{padding:8px;border-radius:28px;background:var(--bar);-webkit-backdrop-filter:blur(20px) saturate(180%);backdrop-filter:blur(20px) saturate(180%);box-shadow:var(--lg-rim),var(--lg-edge),0 12px 30px -12px rgba(16,24,48,.35)}
+.exm-pager .btn:disabled{opacity:.35}
+
+/* =====================================================================
+   หัวข้อใหญ่: ไล่สีเรืองแสง (ทั้ง 2 โหมด)
+   ===================================================================== */
+:is(.page-head h2,.hero-txt h2,.stu-banner h2,.auth-art h1,.stu-card h2,.pending-card h2){
+  width:fit-content;max-width:100%;padding-bottom:.08em;font-weight:700;letter-spacing:-.012em;
+  background:linear-gradient(100deg,#0A5BFF 0%,#4F5BEA 45%,#9B4DFF 100%);-webkit-background-clip:text;background-clip:text;
+  color:transparent;-webkit-text-fill-color:transparent;text-shadow:none;
+  filter:drop-shadow(0 2px 10px rgba(70,100,255,.28))}
+.page-head h2{font-size:36px}
+.stu-card h2,.pending-card h2{margin-left:auto;margin-right:auto}
+[data-theme=dark] :is(.page-head h2,.hero-txt h2,.stu-banner h2,.auth-art h1,.stu-card h2,.pending-card h2){
+  background:linear-gradient(180deg,#FFF6C4 0%,#FFD84A 50%,#FFB21A 100%);-webkit-background-clip:text;background-clip:text;
+  color:transparent!important;-webkit-text-fill-color:transparent;text-shadow:none;
+  filter:drop-shadow(0 0 6px rgba(255,214,10,.55)) drop-shadow(0 0 18px rgba(255,170,0,.35))}
+[data-device=mobile] .page-head h2{font-size:30px}
+/* มือถือ: ภาพทักทายอยู่ด้านบน ข้อความอยู่ใต้ภาพ ไม่ทับกัน */
+[data-device=mobile] .hero{flex-direction:column;align-items:stretch;min-height:0}
+[data-device=mobile] .hero .art.desk{position:relative;inset:auto;height:190px;width:100%;flex:none}
+[data-device=mobile] .hero::after,[data-theme=dark][data-device=mobile] .hero::after{top:0;bottom:auto;height:190px;background:linear-gradient(180deg,transparent 62%,var(--surface))}
+[data-device=mobile] .hero-txt{padding:6px 18px 18px}
 
 </style>
 </head>
@@ -4138,7 +4176,7 @@ function studentScoresHTML() {
     const g = thaiGrade(pct);
     const color = sj.color || '#2b4acb';
     return `<div class="card sa score-card">
-      <div class="sa-h" style="cursor:default"><span class="sa-ico" style="background:${esc(color)}22">📊</span>
+      <div class="sa-h" style="cursor:default"><span class="sa-ico">${ART.thumb(sj.name || sj.subject_name, color)}<i class="sa-st">📊</i></span>
         <div style="flex:1;min-width:0"><span class="sa-tag" style="background:${esc(color)}1f;color:${esc(color)}">${esc(sj.code || 'วิชา')}</span><div class="sa-title">${esc(sj.name)}</div>
           <div class="sa-sub">รวม <b style="color:var(--ink)">${Math.round(sum * 100) / 100}</b> / ${max} คะแนน${pct != null ? ` · ${pct.toFixed(1)}%` : ''}</div>
           <div class="prog-bar" style="max-width:none;margin-top:6px"><i style="width:${pct ? Math.min(100, pct) : 0}%;background:var(--grad)"></i></div></div>
@@ -4984,7 +5022,7 @@ function studentExamsHTML() {
     const can = x.is_open && (x.in_progress || x.attempts_used < x.max_attempts);
     const badge = x.best_score != null ? `<div class="score-bubble"><b>${+x.best_score}</b><small>/${+x.total_points}</small></div>`
       : x.in_progress ? '<span class="badge wait">⏳ ทำค้างไว้</span>' : x.is_open ? '<span class="badge todo">🟢 เปิดสอบ</span>' : '<span class="badge late">🔒 ปิดสอบ</span>';
-    return `<div class="card sa"><div class="sa-h" style="cursor:default"><span class="sa-ico" style="background:${esc(color)}22">🧪</span>
+    return `<div class="card sa"><div class="sa-h" style="cursor:default"><span class="sa-ico">${ART.thumb(x.subject_name, color)}<i class="sa-st">🧪</i></span>
       <div style="flex:1;min-width:0"><span class="sa-tag" style="background:${esc(color)}1f;color:${esc(color)}">${esc(x.subject_name)}</span><div class="sa-title">${esc(x.title)}</div>
         <div class="sa-sub">${x.n_questions} ข้อ · ${x.time_limit_min ? x.time_limit_min + ' นาที' : 'ไม่จำกัดเวลา'} · ทำแล้ว ${x.attempts_used}/${x.max_attempts} ครั้ง${x.closes_at ? ` · ปิด ${fmtDate(x.closes_at)}` : ''}</div></div>${badge}</div>
       ${can ? `<div class="sa-b"><a class="btn primary" href="#exam-${esc(x.share_code)}" style="justify-content:center">${x.in_progress ? 'ทำต่อ ▶' : x.attempts_used ? 'สอบอีกครั้ง 🔁' : 'เริ่มทำข้อสอบ 🚀'}</a></div>` : ''}</div>`;
