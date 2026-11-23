@@ -1644,6 +1644,147 @@ select option,select optgroup{background:var(--surface);color:var(--ink)}
 [data-device=mobile] .hero::after,[data-theme=dark][data-device=mobile] .hero::after{top:0;bottom:auto;height:190px;background:linear-gradient(180deg,transparent 62%,var(--surface))}
 [data-device=mobile] .hero-txt{padding:6px 18px 18px}
 
+/* =====================================================================
+   เฟส 6: เช็คชื่อ · รูบริก · รายงาน/สำรองข้อมูล
+   ===================================================================== */
+/* ---------- เช็คชื่อ ---------- */
+.att-live{display:grid;grid-template-columns:minmax(300px,380px) 1fr;gap:16px;align-items:start}
+.att-live.closed{grid-template-columns:1fr}
+.att-qr-card{padding:22px;position:sticky;top:76px;display:flex;flex-direction:column;align-items:center}
+.att-qr{width:100%;aspect-ratio:1;display:grid;place-items:center;background:#fff;border-radius:22px;padding:14px;box-shadow:inset 0 0 0 1px var(--line)}
+.att-qr svg{width:100%;height:100%}
+.att-ring{position:relative;width:64px;height:64px;margin-top:-34px;border-radius:50%;background:var(--surface);box-shadow:var(--shadow);display:grid;place-items:center}
+.att-ring svg{position:absolute;inset:4px;width:calc(100% - 8px);height:calc(100% - 8px);transform:rotate(-90deg)}
+.att-ring circle{fill:none;stroke-width:3.2;stroke:var(--fill)}
+.att-ring circle+circle{stroke:var(--primary);stroke-linecap:round;stroke-dasharray:97.4;transition:stroke-dashoffset 1s linear}
+.att-ring span{font:700 20px var(--f-head);font-variant-numeric:tabular-nums}
+.att-roster .card-h{flex-wrap:wrap;gap:6px}
+.att-roster .card-h h3 span{color:var(--ok);font-size:1.25em}
+.att-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px;padding:14px}
+.att-stu{position:relative;display:grid;grid-template-columns:auto 1fr;grid-template-rows:auto auto;gap:0 8px;align-items:center;text-align:left;padding:10px 12px;border:0;border-radius:16px;background:var(--fill);color:var(--ink);cursor:pointer;font:inherit;transition:transform .2s,background .25s}
+.att-stu:hover{transform:translateY(-1px)}
+.att-no{grid-row:span 2;width:30px;height:30px;border-radius:10px;display:grid;place-items:center;background:var(--surface);font:700 13px var(--f-head)}
+.att-nm{font-weight:600;font-size:14.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.att-st{font-size:12.5px;color:var(--muted)}
+.att-st small{opacity:.8}
+.att-stu.s-present{background:var(--ok-soft)}.att-stu.s-present .att-no{background:var(--green);color:#fff}
+.att-stu.s-late{background:var(--accent-soft)}.att-stu.s-late .att-no{background:var(--orange);color:#fff}
+.att-stu.s-absent{background:var(--danger-soft)}.att-stu.s-absent .att-no{background:var(--danger);color:#fff}
+.att-stu.s-leave,.att-stu.s-sick{background:var(--primary-soft)}.att-stu.s-leave .att-no,.att-stu.s-sick .att-no{background:var(--primary);color:#fff}
+.att-stu.pop{animation:att-pop .5s cubic-bezier(.2,1.6,.4,1)}
+@keyframes att-pop{40%{transform:scale(1.06)}}
+.att-pick{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.att-opt{border:0;border-radius:18px;padding:14px 8px;background:var(--fill);color:var(--ink);font:600 15px var(--f-body);cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:4px;transition:transform .15s}
+.att-opt span{font-size:26px}.att-opt:active{transform:scale(.95)}
+.att-opt.on{box-shadow:0 0 0 2.5px var(--primary);background:var(--primary-soft)}
+.att-mx .att-h{font-size:12px;text-align:center;min-width:46px}
+.att-c{text-align:center;font:700 14px var(--f-head);padding:8px 4px!important}
+.att-c.s-present{color:var(--ok)}.att-c.s-late{color:var(--orange)}.att-c.s-absent{color:var(--danger);background:var(--danger-soft)!important}.att-c.s-leave,.att-c.s-sick{color:var(--primary)}
+.att-pct{display:inline-block;padding:2px 10px;border-radius:99px;background:var(--ok-soft);color:var(--ok)}
+.att-pct.low{background:var(--danger-soft);color:var(--danger)}
+.att-present .present-card{max-width:620px}
+.att-present .present-qr{background:#fff;border-radius:24px;padding:16px}
+.att-present-meta{display:flex;justify-content:center;gap:24px;font-size:20px;margin:10px 0}
+.att-present-meta b{font:700 30px var(--f-head);color:var(--primary)}
+.att-present .live-clock{margin-top:6px}
+/* นักเรียนสแกน */
+.chk-card{text-align:center}
+.chk-done{display:flex;flex-direction:column;align-items:center;gap:6px;padding:10px 0}
+.chk-em{font-size:72px;line-height:1;animation:spring-in .5s cubic-bezier(.2,1.4,.35,1)}
+.chk-done h2{font:700 26px var(--f-head);margin:6px 0 0}
+.chk-st{font:700 20px var(--f-head);padding:6px 18px;border-radius:99px;background:var(--ok-soft);color:var(--ok)}
+.chk-done.s-late .chk-st{background:var(--accent-soft);color:var(--accent)}
+.chk-card form{text-align:left}
+
+/* ---------- รูบริก ---------- */
+.rb-sec{border-radius:18px;background:var(--surface-2);padding:12px 14px}
+.rb-h{display:inline-flex;align-items:center;gap:6px;font:600 15px var(--f-head)}
+.rb-h svg,.rb-gh svg{width:18px;height:18px;color:var(--primary)}
+.rb-wrap{overflow-x:auto;margin-top:10px;border-radius:14px}
+.rb-tbl{border-collapse:separate;border-spacing:4px;width:100%;min-width:560px}
+.rb-tbl th{font:600 13px var(--f-body);color:var(--muted);text-align:center;vertical-align:bottom;padding:4px}
+.rb-tbl th small{display:block;font-weight:400;font-size:11.5px}
+.rb-tbl td{vertical-align:top;padding:0}
+.rb-tbl .input{padding:7px 9px;font-size:13.5px;border-radius:10px;min-width:0;width:100%;resize:vertical}
+.rb-tbl .rb-c{width:24%;text-align:left}
+.rb-tbl .rb-w{width:72px}.rb-w .input{text-align:center}.rb-w small{display:block;text-align:center;color:var(--muted)}
+.rb-tbl .rb-x{width:36px}
+.rb-lv{font-weight:600;text-align:center;margin-bottom:3px}
+.rb-pt{text-align:center;width:70px!important;margin:0 auto}
+.rb-tbl.ro{min-width:520px}
+.rb-tbl.ro td{background:var(--surface);border-radius:12px;padding:8px 10px;font-size:13px;line-height:1.5;position:relative}
+.rb-tbl.ro td.rb-c{background:transparent}
+.rb-tbl.ro td.hit{background:var(--primary-soft);box-shadow:inset 0 0 0 2px var(--primary);font-weight:500}
+.rb-mark{position:absolute;top:4px;right:6px;width:20px;height:20px;border-radius:50%;background:var(--primary);color:#fff;display:grid;place-items:center;font-size:12px}
+.rb-stu{margin:10px 0;border-radius:16px;background:var(--surface-2);padding:10px 14px}
+.rb-stu summary{cursor:pointer;font:600 15px var(--f-head);list-style:none}
+.rb-stu summary::-webkit-details-marker{display:none}
+.rb-stu summary small{font-weight:400;color:var(--muted)}
+.rb-grade{border-radius:18px;background:var(--surface-2);padding:12px;margin-bottom:12px;display:flex;flex-direction:column;gap:10px}
+.rb-gh{display:flex;align-items:center;gap:6px;font:600 15px var(--f-head)}
+.rb-row{display:flex;flex-direction:column;gap:6px}
+.rb-rt{font-weight:600;font-size:14px}.rb-rt small{color:var(--muted);font-weight:500}
+.rb-lvls{display:grid;grid-template-columns:repeat(auto-fit,minmax(64px,1fr));gap:6px}
+.rb-lvbtn{border:0;border-radius:12px;padding:7px 4px;background:var(--surface);color:var(--ink);cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:1px;font:inherit;box-shadow:inset 0 0 0 1px var(--line);transition:transform .15s,background .2s}
+.rb-lvbtn b{font-size:13px}.rb-lvbtn span{font:700 15px var(--f-head);color:var(--muted)}
+.rb-lvbtn:active{transform:scale(.95)}
+.rb-lvbtn.on{background:linear-gradient(180deg,#3D93FF,#0A6CF0);color:#fff;box-shadow:0 8px 18px -8px rgba(10,108,240,.8)}
+.rb-lvbtn.on span{color:#fff}
+
+/* ---------- รายงาน / สำรองข้อมูล ---------- */
+.rp-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}
+.rp-card{display:flex;gap:16px;padding:20px}
+.rp-ic{width:52px;height:52px;flex:none;border-radius:16px;display:grid;place-items:center;color:#fff;box-shadow:inset 0 1px 1px rgba(255,255,255,.5),0 8px 18px -8px rgba(16,24,48,.4)}
+.rp-ic svg{width:26px;height:26px}
+.rp-ic.b{background:linear-gradient(145deg,#4DA3FF,#0A6CF0)}.rp-ic.g{background:linear-gradient(145deg,#5EE08A,#1FAF55)}
+.rp-body{display:flex;flex-direction:column;gap:10px;min-width:0;flex:1}
+.rp-body h3{font:700 19px var(--f-head);margin:0}
+.rp-body p{margin:0}
+.rp-last{font-weight:600;font-size:14px;padding:8px 12px;border-radius:12px}
+.rp-last.ok{background:var(--ok-soft);color:var(--ok)}.rp-last.warn{background:var(--accent-soft);color:var(--accent)}
+.rp-prev,.rp-res{border-radius:14px;background:var(--surface-2);padding:12px;display:flex;flex-direction:column;gap:8px;font-size:14px}
+.rp-chips{display:flex;flex-wrap:wrap;gap:6px}
+.rp-doc{padding:18px 22px}
+.rp-head{display:flex;gap:16px;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;margin-bottom:12px}
+.rp-title{font:700 22px var(--f-head)!important;margin:0 0 2px;width:auto!important;background:none!important;-webkit-text-fill-color:currentColor!important;color:var(--ink)!important;filter:none!important}
+.rp-stats{display:flex;gap:8px}
+.rp-stats div{min-width:86px;padding:8px 12px;border-radius:14px;background:var(--surface-2);text-align:center}
+.rp-stats b{display:block;font:700 22px var(--f-head)}.rp-stats small{font-size:12px;color:var(--muted)}
+.rp-dist{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}
+.rp-g{display:flex;align-items:center;gap:6px;padding:4px 10px 4px 4px;border-radius:99px;background:var(--surface-2)}
+.rp-g b{font-family:var(--f-head)}
+.grade.gms{background:linear-gradient(145deg,#8E8BFF,#5E5CE6);color:#fff}
+.grade.g35,.grade.g3{background:linear-gradient(145deg,#6FB6FF,#0A7CFF);color:#fff}
+.grade.g15,.grade.g1{background:linear-gradient(145deg,#FFC46B,#FF9F0A);color:#fff}
+.rp-tbl .rp-num{text-align:center}
+.rp-tbl th small{display:block;font-weight:400}
+.rp-tbl td.bad{color:var(--danger);font-weight:700}
+.rp-foot{margin-top:12px;line-height:1.7}
+.rp-sign{margin-top:28px;text-align:right;line-height:2.1;color:var(--ink)}
+[data-device=mobile] .rp-grid,[data-device=mobile] .att-live{grid-template-columns:1fr}
+[data-device=mobile] .att-qr-card{position:static}
+[data-device=mobile] .att-grid{grid-template-columns:repeat(2,1fr)}
+[data-device=mobile] .rp-card{flex-direction:column}
+[data-device=mobile] .rp-stats{flex-wrap:wrap}
+
+/* พิมพ์รายงาน: แสดงเฉพาะตัวรายงาน */
+@media print{
+  body.printing-report{background:#fff!important;color:#000}
+  body.printing-report *{visibility:hidden;box-shadow:none!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important;animation:none!important}
+  body.printing-report #rp-report .rp-doc,body.printing-report #rp-report .rp-doc *{visibility:visible}
+  body.printing-report #rp-report{position:absolute;left:0;top:0;width:100%;background:#fff!important}
+  body.printing-report #rp-report .card-h{display:none}
+  body.printing-report #emoji-bg,body.printing-report .side,body.printing-report .top{display:none}
+  body.printing-report .rp-doc{padding:0;color:#000}
+  body.printing-report .tbl th,body.printing-report .tbl td{border:1px solid #999!important;padding:4px 6px!important;color:#000;background:#fff!important;position:static}
+  body.printing-report .grade{background:none!important;color:#000!important;padding:0}
+  body.printing-report .rp-stats div,body.printing-report .rp-g{background:none;border:1px solid #bbb}
+  @page{size:A4 landscape;margin:12mm}
+}
+.card-h select.input.sm-sel{width:auto;max-width:220px;flex:none;padding:6px 12px;font-size:14px}
+.card-h h3{white-space:nowrap}
+.rb-lvls{grid-template-columns:repeat(var(--n,4),1fr)}
+
 </style>
 </head>
 <body>
@@ -2233,6 +2374,7 @@ const PERMS = [
   { k: 'assignments', label: 'งานและตรวจงาน', desc: 'สั่งงาน รับไฟล์ ตรวจ ให้คะแนน', icon: 'inbox' },
   { k: 'gradebook', label: 'ตารางคะแนน', desc: 'ลงคะแนน เพิ่มคอลัมน์ ส่งออก Excel', icon: 'table' },
   { k: 'exams', label: 'ข้อสอบ', desc: 'ออกข้อสอบ ส่งลิงก์ ดูผลสอบ', icon: 'quiz' },
+  { k: 'attendance', label: 'เช็คชื่อ', desc: 'เปิด QR เช็คชื่อ สรุปเวลาเรียน', icon: 'attend' },
 ];
 const ME = {
   active: () => store.me?.status === 'active',
@@ -2268,6 +2410,9 @@ async function loadAll() {
     fetchAll('exams'), fetchAll('exam_classes', 'exam_id'), fetchAll('exam_questions', 'sort_order'), fetchAll('exam_attempts', 'started_at'),
   ]);
   Object.assign(store, { terms, classrooms, students, subjects, subject_classes, assignments, assignment_classes, submissions, grade_columns, grade_entries, exams, exam_classes, exam_questions, exam_attempts, exam_answers: [], files: {} });
+  store.attMissing = false;
+  const [as_, ar_, rb_] = await Promise.all([fetchAll('attendance_sessions', 'opened_at'), fetchAll('attendance_records', 'checked_at'), fetchAll('rubrics')].map(p => p.catch(() => null)));
+  store.attMissing = as_ == null; store.attendance_sessions = as_ || []; store.attendance_records = ar_ || []; store.rubrics = rb_ || [];
   if (!store.terms.length && ME.admin()) {
     const t = await q(sb.from('terms').insert({ ...thaiTermNow(), is_current: true }).select().single());
     store.terms.push(t);
@@ -2357,31 +2502,34 @@ const NAV = [
   { id: 'assignments', label: 'งานและตรวจงาน', icon: 'inbox' },
   { id: 'gradebook', label: 'ตารางคะแนน', icon: 'table' },
   { id: 'exams', label: 'ข้อสอบ', icon: 'quiz' },
+  { id: 'attendance', label: 'เช็คชื่อ', icon: 'attend' },
   { group: 'ระบบ' },
+  { id: 'reports', label: 'รายงานและสำรองข้อมูล', icon: 'download' },
   { id: 'users', label: 'ผู้ใช้และสิทธิ์', icon: 'shield', admin: true },
   { id: 'settings', label: 'ตั้งค่า', icon: 'gear' },
 ];
-const ROUTE_PERM = { subjects: 'subjects', assignments: 'assignments', grade: 'assignments', gradebook: 'gradebook', exams: 'exams', examedit: 'exams', examres: 'exams' };
+const ROUTE_PERM = { attendance: 'attendance', attsess: 'attendance', subjects: 'subjects', assignments: 'assignments', grade: 'assignments', gradebook: 'gradebook', exams: 'exams', examedit: 'exams', examres: 'exams' };
 function routeAllowed(base) { if (base === 'users') return ME.admin(); const p = ROUTE_PERM[base]; return !p || ME.can(p); }
 function navItems() {
   const items = NAV.filter(n => n.group || (n.admin ? ME.admin() : routeAllowed(n.id)));
   return items.filter((n, i) => !n.group || (items[i + 1] && !items[i + 1].group));
 }
-const TITLES = { dashboard: 'แดชบอร์ด', subjects: 'วิชา', classes: 'ห้องเรียนและรายชื่อ', assignments: 'งานและตรวจงาน', grade: 'ตรวจงาน', examedit: 'แก้ไขข้อสอบ', examres: 'ผลสอบ', gradebook: 'ตารางคะแนน', exams: 'ข้อสอบ', settings: 'ตั้งค่า', users: 'ผู้ใช้และสิทธิ์' };
+const TITLES = { dashboard: 'แดชบอร์ด', subjects: 'วิชา', classes: 'ห้องเรียนและรายชื่อ', assignments: 'งานและตรวจงาน', grade: 'ตรวจงาน', examedit: 'แก้ไขข้อสอบ', examres: 'ผลสอบ', gradebook: 'ตารางคะแนน', exams: 'ข้อสอบ', settings: 'ตั้งค่า', users: 'ผู้ใช้และสิทธิ์', attendance: 'เช็คชื่อ', attsess: 'เช็คชื่อ', reports: 'รายงานและสำรองข้อมูล' };
 
 function render() {
   const root = $('#app');
   setDevice();
+  if (isCheckinRoute()) { root.innerHTML = viewCheckin(); return; }
   if (isExamTakeRoute()) { root.innerHTML = viewExamTake(); return; }
   if (isStudentRoute()) { root.innerHTML = viewStudent(); return; }
   if (booting) { root.innerHTML = `<div class="stu" style="justify-content:center"><div class="brand"><div class="brand-mark">ป</div><div><b>ห้องเรียนครูปลื้ม</b><small style="color:var(--muted)">กำลังโหลดข้อมูล…</small></div></div></div>`; return; }
   if (!session) { root.innerHTML = viewLogin(); return; }
   if (!ME.active()) { root.innerHTML = viewPending(); return; }
-  let base = ui.route.startsWith('grade-') ? 'grade' : ui.route.startsWith('exam-edit-') ? 'examedit' : ui.route.startsWith('exam-res-') ? 'examres' : ui.route;
+  let base = ui.route.startsWith('att-') ? 'attsess' : ui.route.startsWith('grade-') ? 'grade' : ui.route.startsWith('exam-edit-') ? 'examedit' : ui.route.startsWith('exam-res-') ? 'examres' : ui.route;
   if (!TITLES[base] || !routeAllowed(base)) { ui.route = 'dashboard'; base = 'dashboard'; }
   const theme = document.documentElement.dataset.theme;
-  const views = { dashboard: viewDashboard, subjects: viewSubjects, classes: viewClasses, settings: viewSettings, users: viewUsers, assignments: viewAssignments, grade: viewGrade, gradebook: viewGradebook, exams: viewExams, examedit: viewExamEdit, examres: viewExamResults };
-  const navOn = base === 'grade' ? 'assignments' : (base === 'examedit' || base === 'examres') ? 'exams' : base;
+  const views = { dashboard: viewDashboard, subjects: viewSubjects, classes: viewClasses, settings: viewSettings, users: viewUsers, attendance: viewAttendance, attsess: viewAttSession, reports: viewReports, assignments: viewAssignments, grade: viewGrade, gradebook: viewGradebook, exams: viewExams, examedit: viewExamEdit, examres: viewExamResults };
+  const navOn = base === 'grade' ? 'assignments' : (base === 'examedit' || base === 'examres') ? 'exams' : base === 'attsess' ? 'attendance' : base;
   if (isMobile()) { root.innerHTML = mobileShell(base, navOn, (views[base] || viewDashboard)()); return; }
   root.innerHTML = `
   <div class="shell">
@@ -2907,7 +3055,7 @@ const ACT = {
     if (n) return toast(`ภาคเรียนนี้มี ${n} วิชา ย้ายหรือลบวิชาก่อน`, true);
     confirmBox('ลบภาคเรียน', `ลบภาคเรียน ${Q.termLabel(t)}?`, 'ลบ', async () => { await db.removeIds('terms', [t.id]); render(); }); },
   'pw-open': pwModal,
-  'stu-out': () => { if (stuState.uploading) return; stuState.verified = null; stuState.asg = null; stuState.scores = null; stuState.tab = 'work'; stuState.open = null; stuState.staged = {}; try { sessionStorage.removeItem('cr-student'); } catch (e) {} render(); },
+  'stu-out': () => { if (stuState.uploading) return; stuState.verified = null; stuState.asg = null; stuState.scores = null; stuState.tab = 'work'; stuState.open = null; stuState.staged = {}; try { sessionStorage.removeItem('cr-student'); localStorage.removeItem('cr-student-keep'); } catch (e) {} render(); },
 };
 const CHG = {
   'cls-select': el => { ui.cid = el.value || null; ui.sel.clear(); ui.q = ''; render(); },
@@ -3174,13 +3322,14 @@ function assignmentModal(a) {
   const sid = a?.subject_id || ui.asgSubject || subs[0]?.id;
   a = a || { title: '', description: '', max_score: 10, due_at: null, allow_late: true, is_open: true, accept_types: ['image', 'video', 'audio', 'document'], max_file_mb: 50 };
   openModal({
-    title: isNew ? 'สร้างงาน' : 'แก้ไขงาน', wide: true, ctx: { asgId: a.id },
+    title: isNew ? 'สร้างงาน' : 'แก้ไขงาน', wide: true, ctx: { asgId: a.id, rubric: a.rubric ? rbCopy(a.rubric) : null, hadRubric: !!a.rubric },
     body: `<div class="stack">
       <div class="grid2"><label class="field"><span>วิชา *</span><select class="input" name="subject_id" data-chg="asg-subject">${subs.map(s => `<option value="${s.id}" ${s.id === sid ? 'selected' : ''}>${esc(s.name)}</option>`).join('')}</select></label>
         <label class="field"><span>ชื่องาน *</span><input class="input" name="title" value="${esc(a.title)}" placeholder="ใบงานที่ 1 ออกแบบอัลกอริทึม"></label></div>
       <label class="field"><span>คำอธิบาย / สิ่งที่ต้องส่ง</span><textarea class="input" name="description" rows="3" placeholder="อธิบายงาน เกณฑ์ หรือสิ่งที่นักเรียนต้องแนบ">${esc(a.description)}</textarea></label>
       <div class="grid2" style="grid-template-columns:140px 1fr"><label class="field"><span>คะแนนเต็ม *</span><input class="input" type="number" min="0.5" step="0.5" name="max_score" value="${+a.max_score}"></label>
         <label class="field"><span>กำหนดส่ง (เว้นว่าง = ไม่กำหนด)</span><input class="input" type="datetime-local" name="due_at" value="${toLocalInput(a.due_at)}"></label></div>
+      <div id="rb-sec"></div>
       <div class="field"><span class="muted" style="font-weight:500">ห้องที่มอบหมาย *</span><div id="asg-cls">${asgClassChecks(sid, isNew ? null : A.classIds(a.id))}</div></div>
       <div class="grid2">
         <div class="field"><span class="muted" style="font-weight:500">ชนิดไฟล์ที่รับ *</span><div class="checks">${Object.keys(KIND_LABEL).map(k => `<label class="check"><input type="checkbox" name="kind" value="${k}" ${a.accept_types.includes(k) ? 'checked' : ''}>${ic(KIND_ICON[k])}${KIND_LABEL[k]}</label>`).join('')}</div></div>
@@ -3193,9 +3342,12 @@ function assignmentModal(a) {
     </div>`,
     actions: [{ label: 'ยกเลิก', onClick: closeModal }, { label: isNew ? 'สร้างงาน' : 'บันทึก', kind: 'primary', onClick: saveAssignment }],
   });
+  rbRefresh();
 }
 async function saveAssignment() {
-  const title = mval('title'), max = parseFloat(mval('max_score')), mb = parseInt(mval('max_file_mb'), 10);
+  const rub = modalCtx.rubric;
+  if (rub && !rbValid(rub)) return toast('รูบริก: กรอกชื่อเกณฑ์ ชื่อระดับ และน้ำหนักให้ครบ หรือกด "เอารูบริกออก"', true);
+  const title = mval('title'), max = rub ? rbMax(rub) : parseFloat(mval('max_score')), mb = parseInt(mval('max_file_mb'), 10);
   const cls = $$('#modal-root input[name=acls]:checked').map(x => x.value);
   const kinds = $$('#modal-root input[name=kind]:checked').map(x => x.value);
   const due = mval('due_at');
@@ -3209,6 +3361,7 @@ async function saveAssignment() {
     due_at: due ? new Date(due).toISOString() : null, accept_types: kinds, max_file_mb: mb,
     is_open: $('#modal-root [name=is_open]').checked, allow_late: $('#modal-root [name=allow_late]').checked,
   };
+  if (rub || modalCtx.hadRubric) data.rubric = rub ? rbCopy(rub) : null;
   const wasNew = !modalCtx.asgId;
   let id = modalCtx.asgId;
   if (id) await db.update('assignments', id, data); else id = (await db.insert('assignments', data)).id;
@@ -3289,10 +3442,10 @@ function gradeRowHTML(a, s, sub, filesReady) {
 }
 I.eye = '<path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/>';
 
-async function saveScore(aid, sid, score, feedback, status) {
+async function saveScore(aid, sid, score, feedback, status, extra) {
   const ex = A.sub(aid, sid);
   const now = new Date().toISOString();
-  const patch = { score, status, graded_at: status === 'graded' ? now : null };
+  const patch = { score, status, graded_at: status === 'graded' ? now : null, ...(extra || {}) };
   if (feedback !== undefined) patch.feedback = feedback;
   if (ex) {
     const r = await q(sb.from('submissions').update(patch).eq('id', ex.id).select().single());
@@ -3377,11 +3530,12 @@ function openGrader(sid) {
   const sub = A.sub(aid, sid);
   const files = sub ? A.filesOf(aid, sub.id) : [];
   openModal({
-    title: `เลขที่ ${s.number} · ${Q.fullName(s)}`, wide: true, ctx: { aid, sid, order },
+    title: `เลขที่ ${s.number} · ${Q.fullName(s)}`, wide: true, ctx: { aid, sid, order, rs: { ...(sub?.rubric_scores || {}) } },
     body: `<div class="grader">
       <div class="gv" id="gv">${files.length ? files.map(f => fileViewer(f, signedCache[f.storage_path]?.url)).join('') : `<div class="fv"><div class="ph">${sub ? 'ไม่มีไฟล์แนบ' : 'นักเรียนยังไม่ได้ส่งงานออนไลน์'}<br><span class="small">ถ้าส่งงานแบบอื่น (เช่น ส่งกระดาษ) ให้คะแนนได้เลย</span></div></div>`}</div>
       <div class="gs">
         ${subNoteHTML(sub)}
+        ${rbGraderHTML(a, sub)}
         <div class="row" style="flex-wrap:wrap">${statusChip(sub?.status)}${sub && files.length ? `<span class="small muted">ส่งเมื่อ ${fmtDate(sub.submitted_at)}</span>` : ''}<span class="spacer"></span><span class="small muted">${idx + 1} / ${order.length}</span></div>
         <label class="field"><span>คะแนน</span><div class="big-score"><input class="input" type="number" step="0.5" min="0" name="score" value="${sub?.score ?? ''}" inputmode="decimal"><span class="muted">/ ${+a.max_score}</span></div></label>
         <label class="field"><span>ความเห็นถึงนักเรียน</span><textarea class="input" name="feedback" rows="4" placeholder="นักเรียนจะเห็นข้อความนี้">${esc(sub?.feedback)}</textarea></label>
@@ -3425,7 +3579,7 @@ async function graderSave(mode) {
     const v = parseFloat(raw);
     if (!(v >= 0)) return toast('คะแนนไม่ถูกต้อง', true);
     if (v > +a.max_score) toast(`คะแนนเกินคะแนนเต็ม (${+a.max_score})`);
-    await saveScore(aid, sid, v, feedback, 'graded');
+    await saveScore(aid, sid, v, feedback, 'graded', a.rubric ? { rubric_scores: Object.keys(modalCtx.rs || {}).length ? modalCtx.rs : null } : undefined);
     toast('บันทึกคะแนนแล้ว');
   }
   render();
@@ -3637,6 +3791,7 @@ function studentAsgCard(a) {
       ${studentBadge(a)}</button>
     ${open ? `<div class="sa-b">
       ${a.description ? `<div class="desc">${esc(a.description)}</div>` : ''}
+      ${rbStudentHTML(a)}
       ${a.feedback ? `<div class="fb ${a.status === 'returned' ? 'ret' : 'star'}"><b>💬 ${a.status === 'returned' ? 'ครูปลื้มให้แก้ตรงนี้นะ:' : 'ครูปลื้มบอกว่า:'}</b><br>${esc(a.feedback)}</div>` : ''}
       ${a.files.length ? `<div class="lbl-sm">📦 ไฟล์ที่ส่งแล้ว (${a.files.length})</div><div class="tiles">${a.files.map(f => tileHTML({ name: f.file_name, size: f.size_bytes, kind: f.kind, thumb: f.thumb, sent: true, rm: can ? `data-act="stu-rm" data-id="${f.id}"` : '' })).join('')}</div>` : ''}
       ${can ? `
@@ -5369,6 +5524,630 @@ document.addEventListener('paste', e => {
 });
 
 /* =====================================================================
+   รูบริก (เกณฑ์การให้คะแนน)
+   rubric = { levels:[{label, pts}], criteria:[{title, w, d:[คำอธิบายแต่ละระดับ]}] }
+   rubric_scores (ในงานที่ส่ง) = { "<ลำดับเกณฑ์>": <ลำดับระดับ> }
+   ===================================================================== */
+I.rubric = '<rect x="3" y="4" width="18" height="16" rx="3"/><path d="M3 9h18M3 14.5h18M9 4v16"/>';
+const RB_LEVELS4 = [{ label: 'ดีมาก', pts: 4 }, { label: 'ดี', pts: 3 }, { label: 'พอใช้', pts: 2 }, { label: 'ปรับปรุง', pts: 1 }];
+const RB_LEVELS3 = [{ label: 'ดี', pts: 3 }, { label: 'พอใช้', pts: 2 }, { label: 'ปรับปรุง', pts: 1 }];
+const RB_PRESETS = [
+  { id: 'poster', name: 'โปสเตอร์ / อินโฟกราฟิก', levels: RB_LEVELS4, criteria: [
+    { title: 'เนื้อหาถูกต้อง ครบถ้วน', w: 2, d: ['ถูกต้องครบทุกประเด็น', 'ถูกต้องเกือบครบ', 'ขาดบางประเด็น', 'เนื้อหาไม่ถูกต้อง'] },
+    { title: 'ความคิดสร้างสรรค์', w: 1, d: ['แปลกใหม่ น่าสนใจมาก', 'น่าสนใจ', 'ทั่วไป', 'ไม่มีความคิดของตัวเอง'] },
+    { title: 'การจัดวาง สี ตัวอักษร', w: 1, d: ['สวยงาม อ่านง่ายมาก', 'อ่านง่าย', 'อ่านยากบางส่วน', 'อ่านยาก'] },
+    { title: 'ส่งตรงเวลา', w: 0.5, d: ['ส่งตรงเวลา', 'ช้า 1 วัน', 'ช้า 2–3 วัน', 'ช้ากว่า 3 วัน'] }] },
+  { id: 'web', name: 'งานเว็บไซต์ / โปรแกรม', levels: RB_LEVELS4, criteria: [
+    { title: 'ทำงานได้ถูกต้อง', w: 2, d: ['ทำงานได้ครบทุกส่วน', 'ทำงานได้เกือบครบ', 'ทำงานได้บางส่วน', 'ยังทำงานไม่ได้'] },
+    { title: 'การออกแบบหน้าจอ', w: 1, d: ['สวย ใช้งานง่าย', 'ใช้งานได้ดี', 'ใช้งานได้', 'ใช้งานยาก'] },
+    { title: 'โค้ดเป็นระเบียบ', w: 1, d: ['เป็นระเบียบ มีคำอธิบาย', 'เป็นระเบียบ', 'ค่อนข้างสับสน', 'อ่านไม่ได้'] },
+    { title: 'นำเสนอ / อธิบายงาน', w: 1, d: ['อธิบายได้ชัดเจนมาก', 'อธิบายได้', 'อธิบายได้บางส่วน', 'อธิบายไม่ได้'] }] },
+  { id: 'present', name: 'การนำเสนอหน้าชั้น', levels: RB_LEVELS4, criteria: [
+    { title: 'เนื้อหา', w: 2, d: ['ครบถ้วน ลึกซึ้ง', 'ครบถ้วน', 'ขาดบางส่วน', 'ไม่ครบ'] },
+    { title: 'บุคลิกและน้ำเสียง', w: 1, d: ['มั่นใจ ชัดเจน', 'ชัดเจน', 'ประหม่าบ้าง', 'อ่านจากโน้ตตลอด'] },
+    { title: 'สื่อประกอบ', w: 1, d: ['น่าสนใจมาก', 'เหมาะสม', 'มีแต่ไม่ช่วย', 'ไม่มี'] },
+    { title: 'รักษาเวลา', w: 0.5, d: ['ตรงเวลาพอดี', 'เกินเล็กน้อย', 'เกิน/ขาดมาก', 'ไม่จบ'] }] },
+  { id: 'blank', name: 'ว่าง (สร้างเอง 4 ระดับ)', levels: RB_LEVELS4, criteria: [{ title: '', w: 1, d: ['', '', '', ''] }] },
+];
+const rbCopy = r => JSON.parse(JSON.stringify(r));
+function rbMax(r) { if (!r?.criteria?.length) return 0; const top = Math.max(...r.levels.map(l => +l.pts || 0)); return Math.round(r.criteria.reduce((s, c) => s + top * (+c.w || 0), 0) * 100) / 100; }
+function rbScore(r, sel) { if (!r) return null; let s = 0, n = 0; r.criteria.forEach((c, i) => { const li = sel?.[i]; if (li != null && r.levels[li]) { s += (+r.levels[li].pts || 0) * (+c.w || 0); n++; } }); return n ? Math.round(s * 100) / 100 : null; }
+function rbValid(r) { return r && r.levels.length >= 2 && r.criteria.length >= 1 && r.criteria.every(c => c.title.trim() && +c.w > 0) && r.levels.every(l => l.label.trim() && +l.pts >= 0); }
+
+/* ---------- ในหน้าต่างสร้าง/แก้ไขงาน ---------- */
+function rbSectionHTML() {
+  const r = modalCtx.rubric;
+  return `<div class="rb-sec" id="rb-sec">
+    <div class="row" style="flex-wrap:wrap;gap:8px"><b class="rb-h">${ic('rubric')}เกณฑ์ให้คะแนน (รูบริก)</b>${r ? `<span class="chip pri">${r.criteria.length} เกณฑ์ · เต็ม ${rbMax(r)}</span>` : '<span class="small muted">ไม่บังคับ · ช่วยตรวจเร็วขึ้น นักเรียนรู้ล่วงหน้าว่าต้องทำอะไร</span>'}<span class="spacer"></span>
+      ${r ? `<button type="button" class="btn sm ghost" data-act="rb-off" style="color:var(--danger)">เอารูบริกออก</button>`
+        : `<select class="input sm-sel" data-chg="rb-preset" aria-label="เริ่มจากแบบ"><option value="">+ ใช้รูบริก…</option>${RB_PRESETS.map(p => `<option value="p:${p.id}">${esc(p.name)}</option>`).join('')}${(store.rubrics || []).length ? `<optgroup label="คลังของฉัน">${store.rubrics.map(x => `<option value="l:${x.id}">${esc(x.title)}</option>`).join('')}</optgroup>` : ''}</select>`}</div>
+    ${r ? rbEditorHTML(r) : ''}</div>`;
+}
+function rbEditorHTML(r) {
+  return `<div class="rb-wrap"><table class="rb-tbl"><thead><tr><th class="rb-c">เกณฑ์</th><th class="rb-w">น้ำหนัก</th>
+      ${r.levels.map((l, li) => `<th><input class="input rb-lv" value="${esc(l.label)}" data-inp="rb-lv" data-li="${li}" aria-label="ชื่อระดับ"><input class="input rb-pt" type="number" min="0" step="0.5" value="${l.pts}" data-inp="rb-pt" data-li="${li}" aria-label="คะแนนระดับ"><small>คะแนน</small></th>`).join('')}
+      <th class="rb-x"></th></tr></thead><tbody>
+    ${r.criteria.map((c, ci) => `<tr><td class="rb-c"><textarea class="input" rows="2" placeholder="เช่น ความคิดสร้างสรรค์" data-inp="rb-ct" data-ci="${ci}">${esc(c.title)}</textarea></td>
+      <td class="rb-w"><input class="input" type="number" min="0.5" step="0.5" value="${c.w}" data-inp="rb-w" data-ci="${ci}" aria-label="น้ำหนัก"><small>×</small></td>
+      ${r.levels.map((l, li) => `<td><textarea class="input" rows="2" placeholder="คำอธิบาย (ไม่บังคับ)" data-inp="rb-d" data-ci="${ci}" data-li="${li}">${esc(c.d?.[li] || '')}</textarea></td>`).join('')}
+      <td class="rb-x">${r.criteria.length > 1 ? `<button type="button" class="btn ghost icon sm" data-act="rb-del" data-ci="${ci}" aria-label="ลบเกณฑ์">${ic('x')}</button>` : ''}</td></tr>`).join('')}
+    </tbody></table></div>
+    <div class="row" style="gap:8px;flex-wrap:wrap;margin-top:8px"><button type="button" class="btn sm" data-act="rb-add">${ic('plus')}เพิ่มเกณฑ์</button>
+      <button type="button" class="btn sm ghost" data-act="rb-lvl" data-d="1" ${r.levels.length >= 5 ? 'disabled' : ''}>+ ระดับ</button><button type="button" class="btn sm ghost" data-act="rb-lvl" data-d="-1" ${r.levels.length <= 2 ? 'disabled' : ''}>− ระดับ</button>
+      <span class="spacer"></span><button type="button" class="btn sm ghost" data-act="rb-save-lib">💾 เก็บลงคลังรูบริก</button></div>
+    <div class="small muted" style="margin-top:6px">คะแนนเกณฑ์ = คะแนนระดับ × น้ำหนัก · คะแนนเต็มของงานจะตั้งเป็น <b id="rb-total">${rbMax(r)}</b> อัตโนมัติ</div>`;
+}
+function rbRefresh() {
+  const box = $('#rb-sec'); if (box) box.outerHTML = rbSectionHTML();
+  const ms = $('#modal-root [name=max_score]');
+  if (ms) { const r = modalCtx.rubric; ms.readOnly = !!r; if (r) ms.value = rbMax(r); }
+}
+function rbLive() { const t = $('#rb-total'); if (t) t.textContent = rbMax(modalCtx.rubric); const ms = $('#modal-root [name=max_score]'); if (ms && modalCtx.rubric) ms.value = rbMax(modalCtx.rubric); const ch = $('#rb-sec .chip.pri'); if (ch) ch.textContent = `${modalCtx.rubric.criteria.length} เกณฑ์ · เต็ม ${rbMax(modalCtx.rubric)}`; }
+
+/* ---------- ในหน้าตรวจงาน ---------- */
+function rbGraderHTML(a, sub) {
+  const r = a.rubric; if (!r?.criteria?.length) return '';
+  const sel = sub?.rubric_scores || {};
+  return `<div class="rb-grade"><div class="rb-gh"><b>${ic('rubric')}ตรวจตามรูบริก</b><span class="spacer"></span><span class="chip pri" id="rb-g-total">${rbScore(r, sel) ?? '–'} / ${rbMax(r)}</span></div>
+    ${r.criteria.map((c, ci) => `<div class="rb-row"><div class="rb-rt">${esc(c.title)}${+c.w !== 1 ? ` <small>×${+c.w}</small>` : ''}</div>
+      <div class="rb-lvls" style="--n:${r.levels.length}">${r.levels.map((l, li) => `<button type="button" class="rb-lvbtn ${sel[ci] === li ? 'on' : ''} l${li}" data-act="rb-pick" data-ci="${ci}" data-li="${li}" title="${esc(c.d?.[li] || '')}"><b>${esc(l.label)}</b><span>${+l.pts * +c.w}</span></button>`).join('')}</div></div>`).join('')}
+  </div>`;
+}
+
+/* ---------- ฝั่งนักเรียน ---------- */
+function rbStudentHTML(a) {
+  const r = a.rubric; if (!r?.criteria?.length) return '';
+  const sel = a.rubric_scores || null;
+  return `<details class="rb-stu" ${sel ? 'open' : ''}><summary>📏 เกณฑ์การให้คะแนน${sel ? ' · ผลการประเมิน' : ''} <small>(เต็ม ${rbMax(r)})</small></summary>
+    <div class="rb-wrap"><table class="rb-tbl ro"><thead><tr><th class="rb-c">เกณฑ์</th>${r.levels.map(l => `<th>${esc(l.label)}<small>${+l.pts} คะแนน</small></th>`).join('')}</tr></thead><tbody>
+    ${r.criteria.map((c, ci) => `<tr><td class="rb-c"><b>${esc(c.title)}</b>${+c.w !== 1 ? `<small> ×${+c.w}</small>` : ''}</td>${r.levels.map((l, li) => `<td class="${sel && sel[ci] === li ? 'hit' : ''}">${esc(c.d?.[li] || '')}${sel && sel[ci] === li ? '<span class="rb-mark">✓</span>' : ''}</td>`).join('')}</tr>`).join('')}
+    </tbody></table></div></details>`;
+}
+
+Object.assign(ACT, {
+  'rb-off': () => { modalCtx.rubric = null; rbRefresh(); },
+  'rb-add': () => { const r = modalCtx.rubric; r.criteria.push({ title: '', w: 1, d: r.levels.map(() => '') }); rbRefresh(); },
+  'rb-del': el => { modalCtx.rubric.criteria.splice(+el.dataset.ci, 1); rbRefresh(); },
+  'rb-lvl': el => {
+    const r = modalCtx.rubric, d = +el.dataset.d;
+    if (d > 0 && r.levels.length < 5) { r.levels.push({ label: 'ระดับ ' + (r.levels.length + 1), pts: 0 }); r.criteria.forEach(c => c.d.push('')); }
+    if (d < 0 && r.levels.length > 2) { r.levels.pop(); r.criteria.forEach(c => c.d.pop()); }
+    rbRefresh();
+  },
+  'rb-save-lib': async () => {
+    const r = modalCtx.rubric; if (!rbValid(r)) return toast('กรอกชื่อเกณฑ์และชื่อระดับให้ครบก่อน', true);
+    const title = (mval('title') || 'รูบริก') + ' (' + new Date().toLocaleDateString('th-TH', { day: 'numeric', month: 'short' }) + ')';
+    try { await db.insert('rubrics', { title, data: rbCopy(r) }); toast('เก็บลงคลังรูบริกแล้ว ใช้ซ้ำกับงานอื่นได้'); } catch (e) {}
+  },
+  'rb-pick': el => {
+    const ci = +el.dataset.ci, li = +el.dataset.li, a = db.get('assignments', modalCtx.aid);
+    modalCtx.rs = { ...(modalCtx.rs || {}) }; if (modalCtx.rs[ci] === li) delete modalCtx.rs[ci]; else modalCtx.rs[ci] = li;
+    el.parentElement.querySelectorAll('.rb-lvbtn').forEach(b => b.classList.toggle('on', +b.dataset.li === modalCtx.rs[ci]));
+    const sc = rbScore(a.rubric, modalCtx.rs), inp = $('#modal-root [name=score]'); if (inp) inp.value = sc ?? '';
+    const t = $('#rb-g-total'); if (t) t.textContent = `${sc ?? '–'} / ${rbMax(a.rubric)}`;
+  },
+});
+Object.assign(CHG, {
+  'rb-preset': el => {
+    const v = el.value; if (!v) return;
+    if (v.startsWith('p:')) { const p = RB_PRESETS.find(x => x.id === v.slice(2)); modalCtx.rubric = rbCopy({ levels: p.levels, criteria: p.criteria }); }
+    else { const x = (store.rubrics || []).find(y => y.id === v.slice(2)); if (x) modalCtx.rubric = rbCopy(x.data); }
+    rbRefresh();
+  },
+});
+Object.assign(INP, {
+  'rb-lv': el => { modalCtx.rubric.levels[+el.dataset.li].label = el.value; },
+  'rb-pt': el => { modalCtx.rubric.levels[+el.dataset.li].pts = +el.value || 0; rbLive(); },
+  'rb-ct': el => { modalCtx.rubric.criteria[+el.dataset.ci].title = el.value; },
+  'rb-w': el => { modalCtx.rubric.criteria[+el.dataset.ci].w = +el.value || 0; rbLive(); },
+  'rb-d': el => { const c = modalCtx.rubric.criteria[+el.dataset.ci]; c.d = c.d || []; c.d[+el.dataset.li] = el.value; },
+});
+
+/* =====================================================================
+   เช็คชื่อด้วย QR — ครู: #attendance, #att-<id> · นักเรียน: #checkin-<id>.<token>
+   ===================================================================== */
+I.qr = '<rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><path d="M14 14h3v3M21 14v.01M14 21h7v-4M17.5 17.5h.01"/>';
+I.attend = '<rect x="4" y="3" width="16" height="18" rx="3"/><path d="M8 8h8M8 12h5"/><path d="M9.5 16.5l1.8 1.8 3.7-3.8"/>';
+I.expand = '<path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/>';
+
+const ATT_ST = {
+  present: { t: 'มา', e: '✅', c: 'ok', short: '✓' },
+  late: { t: 'สาย', e: '⏰', c: 'warn', short: 'ส' },
+  absent: { t: 'ขาด', e: '❌', c: 'bad', short: 'ข' },
+  leave: { t: 'ลา', e: '📝', c: 'pri', short: 'ล' },
+  sick: { t: 'ป่วย', e: '🤒', c: 'pri', short: 'ป' },
+};
+const ATT = { timer: null, poll: null, token: null, sid: null, left: 30 };
+store.attendance_sessions = store.attendance_sessions || [];
+store.attendance_records = store.attendance_records || [];
+
+function isCheckinRoute() { return /^checkin-[0-9a-f-]{36}\.[0-9a-f]{6,16}$/i.test(ui.route); }
+function attRecords(sessId) { return store.attendance_records.filter(r => r.session_id === sessId); }
+function attCounts(sessId) {
+  const c = { present: 0, late: 0, absent: 0, leave: 0, sick: 0 };
+  attRecords(sessId).forEach(r => { if (c[r.status] != null) c[r.status]++; });
+  return c;
+}
+function attSessions(cid) { return store.attendance_sessions.filter(s => s.classroom_id === cid).sort((a, b) => (b.session_date + b.opened_at).localeCompare(a.session_date + a.opened_at)); }
+const thDate = d => new Date(d + 'T00:00:00').toLocaleDateString('th-TH', { day: 'numeric', month: 'short' });
+
+/* ---------- หน้ารวม ---------- */
+function viewAttendance() {
+  const cls = [...store.classrooms].sort((a, b) => a.name.localeCompare(b.name, 'th', { numeric: true }));
+  if (!cls.some(c => c.id === ui.attCid)) ui.attCid = cls[0]?.id || null;
+  const c = db.get('classrooms', ui.attCid);
+  const tab = ui.attTab || 'sessions';
+  if (store.attMissing) return `<div class="page-head"><div><h2>เช็คชื่อ</h2></div></div><div class="card"><div class="empty">${ic('lock')}<b>ยังไม่ได้ตั้งค่าระบบเช็คชื่อ</b>รันไฟล์ phase6.sql ใน Supabase ก่อน แล้วรีเฟรชหน้านี้</div></div>`;
+  return `
+  <div class="page-head"><div><h2>เช็คชื่อ</h2><p>นักเรียนสแกน QR ที่เปลี่ยนทุก 30 วินาที · สรุปเวลาเรียนส่งเข้าตารางคะแนนได้</p></div><span class="spacer"></span>
+    ${c ? `<button class="btn primary" data-act="att-new">${ic('qr')}เริ่มเช็คชื่อ</button>` : ''}</div>
+  ${cls.length ? `<div class="card picker"><div class="picker-row"><span class="picker-lbl">ห้อง</span><div class="room-chips">${cls.map(x => {
+    const open = store.attendance_sessions.some(s => s.classroom_id === x.id && s.is_open);
+    return `<button class="room-chip ${x.id === ui.attCid ? 'on' : ''}" data-act="att-cls" data-id="${x.id}"><b>${esc(x.name)}</b><small>${open ? '🟢 กำลังเช็คชื่อ' : `${thaiNum(attSessions(x.id).length)} คาบ`}</small></button>`; }).join('')}</div></div></div>` : ''}
+  ${!c ? `<div class="card"><div class="empty">${ic('users')}<b>ยังไม่มีห้องเรียน</b>เพิ่มรายชื่อนักเรียนก่อน แล้วค่อยเริ่มเช็คชื่อ</div></div>` : `
+  <div class="row" style="margin:4px 0 14px"><div class="seg"><button class="${tab === 'sessions' ? 'on' : ''}" data-act="att-tab" data-t="sessions">คาบเรียน</button><button class="${tab === 'summary' ? 'on' : ''}" data-act="att-tab" data-t="summary">สรุปเวลาเรียน</button></div></div>
+  ${tab === 'sessions' ? attSessionList(c) : attSummary(c)}`}`;
+}
+function attSessionList(c) {
+  const list = attSessions(c.id), n = Q.students(c.id).filter(s => s.active !== false).length;
+  if (!list.length) return `<div class="card"><div class="empty">${ic('attend')}<b>ยังไม่เคยเช็คชื่อห้อง ${esc(c.name)}</b>กด "เริ่มเช็คชื่อ" แล้วเปิด QR บนจอให้นักเรียนสแกน</div></div>`;
+  return `<div class="card"><div class="tbl-wrap"><table class="tbl"><thead><tr><th>วันที่</th><th>คาบ / วิชา</th><th>มา</th><th>สาย</th><th>ขาด</th><th>ลา/ป่วย</th><th>สถานะ</th><th class="act"></th></tr></thead><tbody>
+    ${list.map(s => { const k = attCounts(s.id); const sj = s.subject_id && db.get('subjects', s.subject_id);
+      return `<tr><td class="num">${thDate(s.session_date)}</td><td><b>${esc(s.title || 'คาบเรียน')}</b>${sj ? `<div class="small muted">${esc(sj.name)}</div>` : ''}</td>
+        <td><span class="chip ok">${k.present}</span></td><td><span class="chip warn">${k.late}</span></td><td><span class="chip bad">${s.is_open ? Math.max(0, n - k.present - k.late - k.leave - k.sick - k.absent) + k.absent : k.absent}</span></td><td><span class="chip pri">${k.leave + k.sick}</span></td>
+        <td>${s.is_open ? '<span class="chip ok">🟢 เปิดอยู่</span>' : '<span class="chip">ปิดแล้ว</span>'}</td>
+        <td class="act"><a class="btn sm ${s.is_open ? 'primary' : ''}" href="#att-${s.id}">${s.is_open ? `${ic('qr')}เปิด QR` : 'ดู/แก้ไข'}</a></td></tr>`; }).join('')}
+  </tbody></table></div></div>`;
+}
+function attStudentStats(c) {
+  const sess = attSessions(c.id).filter(s => !s.is_open).reverse();
+  const recs = new Map(); store.attendance_records.forEach(r => recs.set(r.session_id + ':' + r.student_id, r.status));
+  const rows = Q.students(c.id).filter(s => s.active !== false).map(st => {
+    const k = { present: 0, late: 0, absent: 0, leave: 0, sick: 0 };
+    const cells = sess.map(se => { const v = recs.get(se.id + ':' + st.id) || 'absent'; k[v]++; return v; });
+    const pct = sess.length ? (k.present + k.late) / sess.length * 100 : null;
+    return { st, k, cells, pct };
+  });
+  return { sess, rows };
+}
+function attSummary(c) {
+  const { sess, rows } = attStudentStats(c);
+  if (!sess.length) return `<div class="card"><div class="empty">${ic('table')}<b>ยังไม่มีคาบที่ปิดเช็คชื่อแล้ว</b>สรุปจะนับเฉพาะคาบที่กด "ปิดเช็คชื่อ" แล้ว</div></div>`;
+  const low = rows.filter(r => r.pct != null && r.pct < 80).length;
+  return `<div class="card">
+    <div class="card-h"><h3>📊 สรุปเวลาเรียน ${esc(c.name)}</h3><span class="chip">${thaiNum(sess.length)} คาบ</span>${low ? `<span class="chip bad">ต่ำกว่า 80% · ${thaiNum(low)} คน</span>` : '<span class="chip ok">ทุกคนผ่าน 80%</span>'}<span class="spacer"></span>
+      <button class="btn sm" data-act="att-xlsx">${ic('download')}Excel</button><button class="btn sm primary" data-act="att-to-gb">${ic('table')}ส่งเข้าตารางคะแนน</button></div>
+    <div class="gb-wrap"><table class="gb att-mx"><thead><tr><th class="gb-sticky gb-no">เลขที่</th><th class="gb-sticky gb-name">ชื่อ - สกุล</th>
+      ${sess.map(s => `<th class="att-h" title="${esc(s.title || '')}">${thDate(s.session_date)}</th>`).join('')}<th>มา</th><th>สาย</th><th>ขาด</th><th>ลา</th><th>เวลาเรียน</th></tr></thead><tbody>
+      ${rows.map(r => `<tr><td class="gb-sticky gb-no">${r.st.number}</td><td class="gb-sticky gb-name">${esc(Q.fullName(r.st))}</td>
+        ${r.cells.map(v => `<td class="att-c s-${v}">${ATT_ST[v].short}</td>`).join('')}
+        <td class="gb-avg">${r.k.present}</td><td class="gb-avg">${r.k.late}</td><td class="gb-avg">${r.k.absent}</td><td class="gb-avg">${r.k.leave + r.k.sick}</td>
+        <td class="gb-tot"><span class="att-pct ${r.pct < 80 ? 'low' : ''}">${r.pct == null ? '–' : r.pct.toFixed(0) + '%'}</span></td></tr>`).join('')}
+    </tbody></table></div>
+    <div class="card-b small muted">✓ มา · ส สาย · ข ขาด · ล ลา · ป ป่วย — เวลาเรียน = (มา + สาย) ÷ จำนวนคาบ · เกณฑ์มีสิทธิ์สอบ 80%</div></div>`;
+}
+
+/* ---------- เริ่มคาบใหม่ ---------- */
+function attNewModal() {
+  const c = db.get('classrooms', ui.attCid);
+  const subs = store.subjects.filter(s => store.subject_classes.some(x => x.subject_id === s.id && x.classroom_id === c.id));
+  const d = new Date();
+  openModal({
+    title: `เริ่มเช็คชื่อ ${c.name}`,
+    body: `<div class="stack">
+      <label class="field"><span>ชื่อคาบ</span><input class="input" name="title" value="คาบเรียน ${d.toLocaleDateString('th-TH', { day: 'numeric', month: 'short' })}" maxlength="80"></label>
+      <label class="field"><span>วิชา (ไม่บังคับ · ใช้ตอนส่งเวลาเรียนเข้าตารางคะแนน)</span><select class="input" name="subject"><option value="">— ไม่ระบุ —</option>${subs.map(s => `<option value="${s.id}" ${subs.length === 1 ? 'selected' : ''}>${esc(s.name)}</option>`).join('')}</select></label>
+      <label class="field"><span>นับว่ามาสายเมื่อสแกนหลังเริ่มคาบ</span><select class="input" name="late"><option value="10">10 นาที</option><option value="15" selected>15 นาที</option><option value="20">20 นาที</option><option value="30">30 นาที</option><option value="0">ไม่นับสาย</option></select></label>
+      <div class="fmt small">เปิดแล้วจะมี QR ใหญ่ให้ฉายขึ้นจอ รหัสใน QR เปลี่ยนทุก 30 วินาที นักเรียนถ่ายรูปส่งให้เพื่อนที่ไม่ได้มาเรียนไม่ได้</div></div>`,
+    actions: [{ label: 'ยกเลิก', onClick: closeModal }, { label: 'เปิด QR เช็คชื่อ', kind: 'primary', onClick: async () => {
+      const late = +mval('late');
+      const row = { classroom_id: c.id, subject_id: mval('subject') || null, title: mval('title').trim() || 'คาบเรียน', late_after: late ? new Date(Date.now() + late * 60000).toISOString() : null };
+      const s = await db.insert('attendance_sessions', row);
+      closeModal(); location.hash = 'att-' + s.id;
+    } }],
+  });
+}
+
+/* ---------- หน้าคาบ (QR สด + รายชื่อ) ---------- */
+function viewAttSession() {
+  const s = db.get('attendance_sessions', ui.route.slice(4));
+  if (!s) return `<div class="card"><div class="empty">${ic('attend')}<b>ไม่พบคาบนี้</b><a href="#attendance">กลับหน้าเช็คชื่อ</a></div></div>`;
+  ui.attCid = s.classroom_id;
+  const c = db.get('classrooms', s.classroom_id), sj = s.subject_id && db.get('subjects', s.subject_id);
+  const studs = Q.students(c.id).filter(x => x.active !== false);
+  const recs = new Map(attRecords(s.id).map(r => [r.student_id, r]));
+  const k = attCounts(s.id), came = k.present + k.late;
+  attStartLive(s);
+  return `
+  <div class="page-head"><div><a href="#attendance" class="small" style="text-decoration:none">‹ เช็คชื่อทั้งหมด</a><h2 style="margin-top:4px">${esc(s.title || 'คาบเรียน')}</h2><p>${esc(c.name)}${sj ? ' · ' + esc(sj.name) : ''} · ${new Date(s.session_date + 'T00:00:00').toLocaleDateString('th-TH', { weekday: 'long', day: 'numeric', month: 'long' })}${s.late_after ? ` · สายหลัง ${new Date(s.late_after).toLocaleTimeString('th-TH', { hour: '2-digit', minute: '2-digit' })} น.` : ''}</p></div><span class="spacer"></span>
+    ${s.is_open ? `<button class="btn" data-act="att-present">${ic('expand')}ฉายเต็มจอ</button><button class="btn danger solid" data-act="att-close" data-id="${s.id}">ปิดเช็คชื่อ</button>`
+      : `<button class="btn" data-act="att-reopen" data-id="${s.id}">เปิดเช็คชื่ออีกครั้ง</button><button class="btn ghost icon" data-act="att-del" data-id="${s.id}" aria-label="ลบคาบนี้" style="color:var(--danger)">${ic('trash')}</button>`}</div>
+  <div class="att-live ${s.is_open ? '' : 'closed'}">
+    ${s.is_open ? `<div class="card att-qr-card"><div class="att-qr" id="att-qr">${ATT.token && ATT.sid === s.id ? qrSVG(attUrl(s.id, ATT.token), 7) : '<span class="spin"></span>'}</div>
+      <div class="att-ring"><svg viewBox="0 0 36 36"><circle cx="18" cy="18" r="15.5"/><circle id="att-arc" cx="18" cy="18" r="15.5" style="stroke-dashoffset:${(1 - ATT.left / 30) * 97.4}"/></svg><span id="att-left">${Math.ceil(ATT.left)}</span></div>
+      <p class="muted small" style="text-align:center;margin:6px 0 0">สแกนด้วยกล้องมือถือ · QR เปลี่ยนใหม่ทุก 30 วินาที</p></div>` : ''}
+    <div class="card att-roster">
+      <div class="card-h"><h3>มาแล้ว <span id="att-came">${came}</span> / ${studs.length}</h3><span class="spacer"></span>
+        <span class="chip ok">มา ${k.present}</span><span class="chip warn">สาย ${k.late}</span><span class="chip pri">ลา/ป่วย ${k.leave + k.sick}</span>${s.is_open ? '' : `<span class="chip bad">ขาด ${k.absent}</span>`}</div>
+      <div class="att-grid">${studs.map(st => { const r = recs.get(st.id); const v = r?.status;
+        return `<button class="att-stu s-${v || 'none'}" data-act="att-mark" data-sid="${st.id}"><span class="att-no">${st.number}</span><span class="att-nm">${esc(st.first_name)}</span>
+          <span class="att-st">${v ? `${ATT_ST[v].e} ${ATT_ST[v].t}${r.method === 'qr' ? ` <small>${new Date(r.checked_at).toLocaleTimeString('th-TH', { hour: '2-digit', minute: '2-digit' })}</small>` : ''}` : s.is_open ? '<small>รอสแกน</small>' : '—'}</span></button>`; }).join('')}</div>
+      <div class="card-b small muted">แตะชื่อเพื่อเปลี่ยนสถานะเอง เช่น ลา ป่วย หรือคนที่ไม่มีมือถือ${s.is_open ? ' · ตอนกด "ปิดเช็คชื่อ" คนที่ยังไม่สแกนจะถูกบันทึกว่าขาด' : ''}</div>
+    </div>
+  </div>`;
+}
+const attUrl = (id, token) => `${location.origin}${location.pathname}#checkin-${id}.${token}`;
+function attStopLive() { clearTimeout(ATT.timer); clearInterval(ATT.poll); ATT.timer = ATT.poll = null; ATT.sid = null; ATT.token = null; }
+function attStartLive(s) {
+  if (!s.is_open) { if (ATT.sid) attStopLive(); return; }
+  if (ATT.sid === s.id) return;
+  attStopLive(); ATT.sid = s.id;
+  const stillHere = () => ui.route === 'att-' + s.id && ATT.sid === s.id;
+  const refresh = async () => {
+    if (!stillHere()) return attStopLive();
+    try {
+      const r = await q(sb.rpc('teacher_att_token', { p_session: s.id }));
+      ATT.token = r.token; ATT.left = Math.max(2, +r.expires_in || 30); ATT.end = Date.now() + ATT.left * 1000;
+      const box = $('#att-qr'); if (box) box.innerHTML = qrSVG(attUrl(s.id, ATT.token), 7);
+      const pz = $('#att-present-qr'); if (pz) pz.innerHTML = qrSVG(attUrl(s.id, ATT.token), 12);
+      ATT.timer = setTimeout(refresh, ATT.left * 1000 + 150);
+    } catch (e) { ATT.timer = setTimeout(refresh, 5000); }
+  };
+  refresh();
+  ATT.poll = setInterval(async () => {
+    if (!stillHere()) return attStopLive();
+    ATT.left = Math.max(0, (ATT.end - Date.now()) / 1000);
+    const a = $('#att-arc'), l = $('#att-left'), pl = $('#att-present-left');
+    if (a) a.style.strokeDashoffset = (1 - ATT.left / 30) * 97.4; if (l) l.textContent = Math.ceil(ATT.left); if (pl) pl.textContent = Math.ceil(ATT.left);
+    if (Math.round(Date.now() / 1000) % 4) return;
+    try {
+      const rows = await q(sb.from('attendance_records').select('*').eq('session_id', s.id));
+      const before = JSON.stringify(attRecords(s.id).map(r => r.id + r.status).sort());
+      store.attendance_records = store.attendance_records.filter(r => r.session_id !== s.id).concat(rows);
+      if (JSON.stringify(rows.map(r => r.id + r.status).sort()) !== before && stillHere() && !document.querySelector('#modal-root .modal')) {
+        const fresh = rows.filter(r => r.method === 'qr' && !before.includes(r.id)).length;
+        render(); const pc = $('#att-present-came'); if (pc) pc.textContent = attCounts(s.id).present + attCounts(s.id).late;
+        if (fresh) document.querySelectorAll('.att-stu.s-present, .att-stu.s-late').forEach(el => el.classList.add('pop'));
+      }
+    } catch (e) {}
+  }, 1000);
+}
+function attPresent() {
+  const s = db.get('attendance_sessions', ATT.sid); if (!s || !ATT.token) return;
+  const c = db.get('classrooms', s.classroom_id), k = attCounts(s.id);
+  const box = document.createElement('div'); box.className = 'present att-present';
+  box.innerHTML = `<button class="btn icon present-x" aria-label="ปิด">${ic('x')}</button>
+    <div class="present-card"><div class="brand"><div class="brand-mark">ป</div><div><b>ห้องเรียนครูปลื้ม</b><small>สแกนเพื่อเช็คชื่อ</small></div></div>
+      <h2>📋 เช็คชื่อ ${esc(c.name)}</h2><div class="present-qr" id="att-present-qr">${qrSVG(attUrl(s.id, ATT.token), 12)}</div>
+      <div class="att-present-meta"><span>QR ใหม่ใน <b id="att-present-left">${Math.ceil(ATT.left)}</b> วินาที</span><span>มาแล้ว <b id="att-present-came">${k.present + k.late}</b> คน</span></div>
+      ${clockHTML()}</div>`;
+  box.addEventListener('click', e => { if (e.target === box || e.target.closest('.present-x')) box.remove(); });
+  document.addEventListener('keydown', function esc_(e) { if (e.key === 'Escape') { box.remove(); document.removeEventListener('keydown', esc_); } });
+  document.body.appendChild(box);
+  box.requestFullscreen?.().catch(() => {});
+}
+function attMarkMenu(sid) {
+  const s = db.get('attendance_sessions', ATT.sid || ui.route.slice(4)), st = db.get('students', sid);
+  const cur = attRecords(s.id).find(r => r.student_id === sid);
+  openModal({
+    title: `เลขที่ ${st.number} · ${Q.fullName(st)}`,
+    body: `<div class="att-pick">${Object.entries(ATT_ST).map(([k, v]) => `<button class="att-opt ${cur?.status === k ? 'on' : ''} s-${k}" data-act="att-set" data-sid="${sid}" data-v="${k}"><span>${v.e}</span>${v.t}</button>`).join('')}
+      <button class="att-opt clear" data-act="att-set" data-sid="${sid}" data-v="">↺<br>ล้าง</button></div>`,
+    actions: [{ label: 'ปิด', onClick: closeModal }],
+  });
+}
+async function attSet(sid, v) {
+  const sessId = ATT.sid || ui.route.slice(4), cur = attRecords(sessId).find(r => r.student_id === sid);
+  if (!v) { if (cur) { await q(sb.from('attendance_records').delete().eq('id', cur.id)); store.attendance_records = store.attendance_records.filter(r => r.id !== cur.id); } }
+  else {
+    const row = await q(sb.from('attendance_records').upsert({ session_id: sessId, student_id: sid, status: v, method: 'teacher', checked_at: cur?.checked_at || new Date().toISOString() }, { onConflict: 'session_id,student_id' }).select().single());
+    store.attendance_records = store.attendance_records.filter(r => !(r.session_id === sessId && r.student_id === sid)).concat(row);
+  }
+  closeModal(); render();
+}
+async function attClose(id) {
+  const s = db.get('attendance_sessions', id);
+  const have = new Set(attRecords(id).map(r => r.student_id));
+  const missing = Q.students(s.classroom_id).filter(x => x.active !== false && !have.has(x.id));
+  if (missing.length) {
+    const rows = await q(sb.from('attendance_records').upsert(missing.map(x => ({ session_id: id, student_id: x.id, status: 'absent', method: 'auto' })), { onConflict: 'session_id,student_id', ignoreDuplicates: true }).select());
+    store.attendance_records.push(...rows);
+  }
+  await db.update('attendance_sessions', id, { is_open: false, closed_at: new Date().toISOString() });
+  attStopLive(); render(); toast(`ปิดเช็คชื่อแล้ว · ขาด ${missing.length} คน`);
+}
+function attXlsx() {
+  const c = db.get('classrooms', ui.attCid); const { sess, rows } = attStudentStats(c);
+  const head = ['เลขที่', 'ชื่อ - สกุล', ...sess.map(s => `${thDate(s.session_date)} ${s.title || ''}`.trim()), 'มา', 'สาย', 'ขาด', 'ลา/ป่วย', 'เวลาเรียน %'];
+  const data = rows.map(r => [r.st.number, Q.fullName(r.st), ...r.cells.map(v => ATT_ST[v].t), r.k.present, r.k.late, r.k.absent, r.k.leave + r.k.sick, r.pct == null ? '' : +r.pct.toFixed(1)]);
+  const ws = XLSX.utils.aoa_to_sheet([head, ...data]); ws['!cols'] = [{ wch: 6 }, { wch: 26 }];
+  const wb = XLSX.utils.book_new(); XLSX.utils.book_append_sheet(wb, ws, 'เวลาเรียน'); XLSX.writeFile(wb, `เวลาเรียน_${c.name.replace(/[\\/]/g, '-')}.xlsx`);
+}
+function attToGbModal() {
+  const c = db.get('classrooms', ui.attCid);
+  const subs = store.subjects.filter(s => store.subject_classes.some(x => x.subject_id === s.id && x.classroom_id === c.id));
+  if (!subs.length) return toast('ห้องนี้ยังไม่มีวิชา เพิ่มห้องนี้ในหน้า "วิชา" ก่อน', true);
+  openModal({
+    title: 'ส่งเวลาเรียนเข้าตารางคะแนน',
+    body: `<div class="stack">
+      <label class="field"><span>วิชา</span><select class="input" name="subject">${subs.map(s => `<option value="${s.id}">${esc(s.name)}</option>`).join('')}</select></label>
+      <div class="grid2"><label class="field"><span>คะแนนเต็ม</span><input class="input" type="number" name="max" value="10" min="1" step="1"></label>
+      <label class="field"><span>มาสายได้คะแนน</span><select class="input" name="late"><option value="1">เต็ม (เท่ากับมา)</option><option value="0.5">ครึ่งหนึ่ง</option><option value="0">ไม่ได้คะแนน</option></select></label></div>
+      <div class="fmt small">ระบบจะสร้างคอลัมน์ "เวลาเรียน" ของห้อง ${esc(c.name)} ในตารางคะแนน (หรืออัปเดตถ้ามีอยู่แล้ว) คะแนน = คะแนนเต็ม × สัดส่วนคาบที่มาเรียน</div></div>`,
+    actions: [{ label: 'ยกเลิก', onClick: closeModal }, { label: 'ส่งเข้าตารางคะแนน', kind: 'primary', onClick: async () => {
+      const sid = mval('subject'), max = +mval('max') || 10, lw = +mval('late');
+      const { sess, rows } = attStudentStats(c);
+      let col = store.grade_columns.find(g => g.subject_id === sid && g.classroom_id === c.id && g.source === 'manual' && g.title === 'เวลาเรียน');
+      if (!col) col = await db.insert('grade_columns', { subject_id: sid, classroom_id: c.id, title: 'เวลาเรียน', max_score: max, source: 'manual', sort_order: 5, visible_to_students: true });
+      else if (+col.max_score !== max) await db.update('grade_columns', col.id, { max_score: max });
+      const ent = rows.map(r => ({ column_id: col.id, student_id: r.st.id, score: sess.length ? Math.round(max * (r.k.present + r.k.late * lw) / sess.length * 100) / 100 : null }));
+      const out = await q(sb.from('grade_entries').upsert(ent, { onConflict: 'column_id,student_id' }).select());
+      store.grade_entries = store.grade_entries.filter(e => e.column_id !== col.id).concat(out);
+      closeModal(); toast(`ส่งเวลาเรียน ${rows.length} คนเข้าตารางคะแนนแล้ว`);
+    } }],
+  });
+}
+
+/* ---------- ฝั่งนักเรียน: สแกน QR ---------- */
+let CHK = null;
+function viewCheckin() {
+  const key = ui.route;
+  if (!CHK || CHK.key !== key) { CHK = { key, claim: null, err: '', result: null, busy: true }; chkClaim(); }
+  const theme = document.documentElement.dataset.theme;
+  const v = stuState.verified;
+  let body;
+  if (CHK.busy) body = `<div style="text-align:center;padding:30px 0"><span class="spin"></span><p class="muted">กำลังตรวจ QR…</p></div>`;
+  else if (CHK.result) {
+    const st = ATT_ST[CHK.result.status] || ATT_ST.present;
+    body = `<div class="chk-done s-${CHK.result.status}"><div class="chk-em">${st.e}</div><h2>${CHK.result.again ? 'เช็คชื่อไว้แล้ว' : 'เช็คชื่อสำเร็จ!'}</h2>
+      <div class="chk-st">${st.t} · ${new Date(CHK.result.checked_at).toLocaleTimeString('th-TH', { hour: '2-digit', minute: '2-digit' })} น.</div>
+      <p class="muted">${esc(v?.full_name || '')} · ${esc(CHK.claim?.classroom_name || '')}${CHK.claim?.subject_name ? ' · ' + esc(CHK.claim.subject_name) : ''}</p>
+      <a class="btn primary big" href="#student" style="justify-content:center">ไปหน้าส่งงาน 📚</a></div>`;
+  } else if (CHK.err && !CHK.claim) body = `<div class="chk-done bad"><div class="chk-em">⌛</div><h2>${esc(CHK.err)}</h2><p class="muted">สแกน QR บนจออีกครั้ง (QR เปลี่ยนทุก 30 วินาที)</p></div>`;
+  else body = `<div style="text-align:center"><h2 style="font-size:24px">📋 เช็คชื่อ ${esc(CHK.claim.classroom_name)}</h2><p class="muted" style="margin:2px 0 0">${esc(CHK.claim.title || '')}${CHK.claim.subject_name ? ' · ' + esc(CHK.claim.subject_name) : ''}</p></div>
+      ${CHK.err ? `<div class="lock-note"><span class="em">⚠️</span>${esc(CHK.err)}</div>` : ''}
+      <form class="stack" data-form="chk">
+        <div class="grid2"><label class="field"><span>🔢 เลขที่</span><input class="input big" type="number" min="1" name="num" required inputmode="numeric" placeholder="เช่น 7" value="${v && v.classroom_name === CHK.claim.classroom_name ? v.number : ''}"></label>
+        <label class="field"><span>🪪 เลขประจำตัว</span><input class="input big" name="code" required inputmode="numeric" autocomplete="off" placeholder="เช่น 25101"></label></div>
+        <label class="check"><input type="checkbox" name="remember" ${localStorage.getItem('cr-student-keep') ? 'checked' : ''}> จำฉันไว้ในเครื่องนี้ (ครั้งหน้าสแกนแล้วเช็คชื่อได้ทันที)</label>
+        <button class="btn primary big" style="justify-content:center">เช็คชื่อ ✅</button></form>`;
+  return `<div class="stu"><div class="row" style="width:min(440px,100%);margin-bottom:18px"><div class="brand" style="padding:0"><div class="brand-mark">ป</div><div><b>ห้องเรียนครูปลื้ม</b><small style="color:var(--muted)">เช็คชื่อเข้าเรียน 📋</small></div></div><span class="spacer"></span>
+      <button class="btn ghost icon" data-act="theme" aria-label="สลับธีม">${ic(theme === 'dark' ? 'sun' : 'moon')}</button></div>
+    <div class="card stu-card chk-card">${body}</div></div>`;
+}
+const CHK_ERR = { QR_EXPIRED: 'QR หมดอายุแล้ว', SESSION_CLOSED: 'ครูปิดเช็คชื่อคาบนี้แล้ว', SESSION_NOT_FOUND: 'ไม่พบคาบเรียนนี้', WRONG_CLASS: 'คุณไม่ได้อยู่ในห้องนี้', STUDENT_INVALID: 'เลขที่หรือเลขประจำตัวไม่ถูกต้อง' };
+const chkMsg = e => { const m = e?.message || ''; const k = Object.keys(CHK_ERR).find(x => m.includes(x)); return k ? CHK_ERR[k] : errMsg(e); };
+async function chkClaim() {
+  const [id, token] = ui.route.slice(8).split('.');
+  try {
+    const { data, error } = await sb.rpc('student_att_claim', { p_session: id, p_token: token });
+    if (error) throw error;
+    CHK.claim = data;
+    const v = stuState.verified;
+    if (v && v.classroom_name === data.classroom_name) { CHK.busy = false; return chkCheckin(v); }
+  } catch (e) { CHK.err = chkMsg(e); }
+  CHK.busy = false; if (isCheckinRoute()) render();
+}
+async function chkCheckin(v) {
+  CHK.busy = true; render();
+  try {
+    const { data, error } = await sb.rpc('student_att_checkin', { p_student_id: v.student_id, p_code: v.code, p_ticket: CHK.claim.ticket });
+    if (error) throw error;
+    CHK.result = data; CHK.err = '';
+    if (!data.again) confetti();
+  } catch (e) {
+    CHK.err = chkMsg(e);
+    if (/STUDENT_INVALID|WRONG_CLASS/.test(e.message || '')) { stuState.verified = null; try { sessionStorage.removeItem('cr-student'); localStorage.removeItem('cr-student-keep'); } catch (x) {} }
+  }
+  CHK.busy = false; render();
+}
+document.addEventListener('submit', async e => {
+  const f = e.target.closest('form[data-form=chk]'); if (!f) return;
+  e.preventDefault(); e.stopImmediatePropagation();
+  const fd = new FormData(f), num = parseInt(fd.get('num'), 10), code = String(fd.get('code')).trim();
+  try {
+    const { data: rows, error } = await sb.rpc('student_verify', { p_classroom_id: CHK.claim.classroom_id, p_number: num, p_code: code });
+    if (error) throw error;
+    if (!rows?.length) { CHK.err = CHK_ERR.STUDENT_INVALID; return render(); }
+    stuState.verified = { ...rows[0], number: num, code };
+    try { sessionStorage.setItem('cr-student', JSON.stringify(stuState.verified));
+      if (fd.get('remember')) localStorage.setItem('cr-student-keep', JSON.stringify(stuState.verified)); else localStorage.removeItem('cr-student-keep'); } catch (x) {}
+    chkCheckin(stuState.verified);
+  } catch (err) { CHK.err = chkMsg(err); render(); }
+}, true);
+/* จำนักเรียนไว้ในเครื่อง (ถ้าเลือกไว้) */
+if (!stuState.verified) { try { const k = JSON.parse(localStorage.getItem('cr-student-keep')); if (k) stuState.verified = k; } catch (e) {} }
+
+Object.assign(ACT, {
+  'att-cls': el => { ui.attCid = el.dataset.id; render(); },
+  'att-tab': el => { ui.attTab = el.dataset.t; render(); },
+  'att-new': attNewModal,
+  'att-present': attPresent,
+  'att-mark': el => attMarkMenu(el.dataset.sid),
+  'att-set': el => attSet(el.dataset.sid, el.dataset.v),
+  'att-close': el => confirmBox('ปิดเช็คชื่อ', 'ปิดเช็คชื่อคาบนี้? นักเรียนที่ยังไม่สแกนจะถูกบันทึกว่า "ขาด" (แก้ทีหลังได้)', 'ปิดเช็คชื่อ', () => attClose(el.dataset.id)),
+  'att-reopen': async el => { await db.update('attendance_sessions', el.dataset.id, { is_open: true, closed_at: null }); render(); toast('เปิดเช็คชื่ออีกครั้งแล้ว'); },
+  'att-del': el => confirmBox('ลบคาบนี้', 'ลบคาบเรียนนี้และผลเช็คชื่อทั้งหมดของคาบนี้?', 'ลบ', async () => {
+    await db.removeIds('attendance_sessions', [el.dataset.id]); store.attendance_records = store.attendance_records.filter(r => r.session_id !== el.dataset.id); location.hash = 'attendance'; }),
+  'att-xlsx': attXlsx,
+  'att-to-gb': attToGbModal,
+});
+
+/* =====================================================================
+   รายงานสิ้นภาค · สำรองข้อมูล · นำเข้าข้อมูลกลับ
+   ===================================================================== */
+I.download = I.download || '<path d="M12 3v12M7 10l5 5 5-5"/><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/>';
+const BK_TABLES = [
+  // [ตาราง, คีย์หลักสำหรับ on conflict, ตารางกลาง (ผู้ดูแลเท่านั้น)]
+  ['terms', 'id', true], ['classrooms', 'id', true], ['students', 'id', true],
+  ['subjects', 'id'], ['subject_classes', 'subject_id,classroom_id'],
+  ['assignments', 'id'], ['assignment_classes', 'assignment_id,classroom_id'], ['submissions', 'id'], ['submission_files', 'id'],
+  ['exams', 'id'], ['exam_classes', 'exam_id,classroom_id'], ['exam_questions', 'id'], ['exam_attempts', 'id'], ['exam_answers', 'attempt_id,question_id'],
+  ['grade_columns', 'id'], ['grade_entries', 'column_id,student_id'],
+  ['attendance_sessions', 'id'], ['attendance_records', 'id'], ['rubrics', 'id'],
+];
+const BK_NAMES = { terms: 'ภาคเรียน', classrooms: 'ห้องเรียน', students: 'นักเรียน', subjects: 'วิชา', subject_classes: 'วิชา-ห้อง', assignments: 'งาน', assignment_classes: 'งาน-ห้อง', submissions: 'งานที่ส่ง', submission_files: 'ไฟล์ที่ส่ง (ข้อมูลไฟล์)', exams: 'ข้อสอบ', exam_classes: 'ข้อสอบ-ห้อง', exam_questions: 'คำถาม', exam_attempts: 'การสอบ', exam_answers: 'คำตอบ', grade_columns: 'คอลัมน์คะแนน', grade_entries: 'คะแนนที่กรอก', attendance_sessions: 'คาบเช็คชื่อ', attendance_records: 'ผลเช็คชื่อ', rubrics: 'คลังรูบริก' };
+const BK = { busy: false, file: null, result: null };
+const BK_ORDER = { subject_classes: 'subject_id', assignment_classes: 'assignment_id', exam_classes: 'exam_id', grade_entries: 'column_id', exam_answers: 'attempt_id', submissions: 'submitted_at', exam_attempts: 'started_at', exam_questions: 'sort_order', attendance_records: 'checked_at' };
+
+function viewReports() {
+  const last = (() => { try { return localStorage.getItem('cr-last-backup'); } catch (e) { return null; } })();
+  const days = last ? Math.floor((Date.now() - new Date(last)) / 864e5) : null;
+  const term = Q.currentTerm(), subs = Q.subjectsOfTerm(term?.id);
+  if (!subs.some(s => s.id === ui.rpSubject)) ui.rpSubject = subs[0]?.id || null;
+  const cls = ui.rpSubject ? store.classrooms.filter(c => store.subject_classes.some(x => x.subject_id === ui.rpSubject && x.classroom_id === c.id)) : [];
+  if (!cls.some(c => c.id === ui.rpCid)) ui.rpCid = cls[0]?.id || null;
+  return `
+  <div class="page-head"><div><h2>รายงานและสำรองข้อมูล</h2><p>สรุปคะแนนสิ้นภาค · เก็บข้อมูลทั้งหมดไว้ในเครื่อง · ย้ายไปโปรเจกต์ใหม่ได้</p></div></div>
+  <div class="rp-grid">
+    <div class="card rp-card"><div class="rp-ic b">${ic('download')}</div><div class="rp-body"><h3>สำรองข้อมูล</h3>
+      <p class="muted small">ดาวน์โหลดข้อมูลทั้งหมดของคุณ ได้แก่ รายชื่อ วิชา งาน คะแนน ข้อสอบ ผลสอบ และเช็คชื่อ แนะนำให้สำรองทุก 2 สัปดาห์ และก่อนปิดภาคเรียน</p>
+      <div class="rp-last ${days == null || days > 14 ? 'warn' : 'ok'}">${days == null ? '⚠️ ยังไม่เคยสำรองข้อมูลจากเครื่องนี้' : days === 0 ? '✅ สำรองล่าสุดวันนี้' : `${days > 14 ? '⚠️' : '✅'} สำรองล่าสุด ${thaiNum(days)} วันที่แล้ว`}</div>
+      <div class="row" style="gap:8px;flex-wrap:wrap"><button class="btn primary" data-act="bk-json" ${BK.busy ? 'disabled' : ''}>${BK.busy === 'json' ? '<span class="spin" style="border-top-color:#fff"></span> กำลังเตรียม…' : `${ic('download')}ไฟล์สำรอง (.json)`}</button>
+        <button class="btn" data-act="bk-xlsx" ${BK.busy ? 'disabled' : ''}>${BK.busy === 'xlsx' ? '<span class="spin"></span> กำลังเตรียม…' : `${ic('table')}Excel ทุกตาราง`}</button></div>
+      <p class="small muted" style="margin:8px 0 0">ไฟล์ .json ใช้นำเข้ากลับ ส่วน Excel ไว้เปิดอ่าน ไฟล์รูปและวิดีโอที่นักเรียนส่งไม่รวมในไฟล์สำรอง (ยังอยู่ใน Supabase)</p></div></div>
+    <div class="card rp-card"><div class="rp-ic g">${ic('upload')}</div><div class="rp-body"><h3>นำเข้าข้อมูลกลับ</h3>
+      <p class="muted small">ใช้ตอนย้ายไปโปรเจกต์ Supabase ใหม่ หรือกู้ข้อมูลที่ถูกลบ ระบบจะเพิ่มเฉพาะข้อมูลที่ยังไม่มี ไม่เขียนทับของเดิม</p>
+      <label class="btn">${ic('upload')}เลือกไฟล์สำรอง (.json)<input type="file" accept=".json,application/json" data-chg="bk-file" hidden></label>
+      ${BK.file ? bkPreviewHTML() : ''}${BK.result ? `<div class="rp-res">${BK.result}</div>` : ''}</div></div>
+  </div>
+  <div class="card" id="rp-report">
+    <div class="card-h"><h3>📑 รายงานสรุปสิ้นภาค</h3><span class="spacer"></span>
+      ${subs.length ? `<select class="input sm-sel" data-chg="rp-subject" aria-label="วิชา">${subs.map(s => `<option value="${s.id}" ${s.id === ui.rpSubject ? 'selected' : ''}>${esc(s.name)}</option>`).join('')}</select>
+      <select class="input sm-sel" data-chg="rp-cls" aria-label="ห้อง">${cls.map(c => `<option value="${c.id}" ${c.id === ui.rpCid ? 'selected' : ''}>${esc(c.name)}</option>`).join('')}</select>
+      <button class="btn sm" data-act="rp-xlsx" ${ui.rpCid ? '' : 'disabled'}>${ic('download')}Excel</button><button class="btn sm primary" data-act="rp-print" ${ui.rpCid ? '' : 'disabled'}>🖨 พิมพ์ / PDF</button>` : ''}</div>
+    ${!subs.length ? `<div class="empty">${ic('book')}<b>ยังไม่มีวิชาในภาคเรียนนี้</b>เพิ่มวิชาก่อนจึงจะออกรายงานได้</div>` : !ui.rpCid ? `<div class="empty">${ic('users')}<b>วิชานี้ยังไม่มีห้อง</b></div>` : reportHTML(ui.rpSubject, ui.rpCid)}
+  </div>`;
+}
+
+/* ---------- รายงาน ---------- */
+function reportData(sid, cid) {
+  const cols = GB.cols(sid, cid), roster = GB.roster(cid, cols);
+  const asgs = store.assignments.filter(a => a.subject_id === sid && store.assignment_classes.some(x => x.assignment_id === a.id && x.classroom_id === cid));
+  const sess = store.attendance_sessions.filter(s => s.classroom_id === cid && !s.is_open && (!s.subject_id || s.subject_id === sid));
+  const att = new Map(); store.attendance_records.forEach(r => att.set(r.session_id + ':' + r.student_id, r.status));
+  const rows = roster.map(st => {
+    const t = GB.total(cols, st.id);
+    const missing = asgs.filter(a => { const s = A.sub(a.id, st.id); return !s || s.status === 'returned'; }).length;
+    const came = sess.filter(se => ['present', 'late'].includes(att.get(se.id + ':' + st.id))).length;
+    const attPct = sess.length ? came / sess.length * 100 : null;
+    return { st, scores: cols.map(c => GB.score(c, st.id).v), t, grade: thaiGrade(t.pct), missing, attPct, ms: attPct != null && attPct < 80 };
+  });
+  const dist = ['4', '3.5', '3', '2.5', '2', '1.5', '1', '0'].map(g => [g, rows.filter(r => r.grade === g && !r.ms).length]);
+  const avg = rows.length ? rows.reduce((s, r) => s + (r.t.pct || 0), 0) / rows.length : 0;
+  return { cols, rows, asgs, sess, dist, avg };
+}
+function reportHTML(sid, cid) {
+  const sj = db.get('subjects', sid), c = db.get('classrooms', cid), term = Q.currentTerm();
+  const d = reportData(sid, cid);
+  return `<div class="rp-doc">
+    <div class="rp-head"><div><h2 class="rp-title">รายงานผลการเรียน ${esc(sj.code ? sj.code + ' ' : '')}${esc(sj.name)}</h2>
+      <div class="muted">ห้อง ${esc(c.name)} · ภาคเรียนที่ ${esc(Q.termLabel(term))} · ครูผู้สอน ${esc(store.teacher.name)}</div></div>
+      <div class="rp-stats"><div><b>${thaiNum(d.rows.length)}</b><small>นักเรียน</small></div><div><b>${d.avg.toFixed(1)}%</b><small>เฉลี่ยห้อง</small></div><div><b>${thaiNum(d.rows.filter(r => r.missing).length)}</b><small>มีงานค้าง</small></div><div><b>${thaiNum(d.rows.filter(r => r.ms).length)}</b><small>เวลาเรียนไม่ถึง 80%</small></div></div></div>
+    <div class="rp-dist">${d.dist.map(([g, n]) => `<div class="rp-g"><span class="grade g${g.replace('.', '')}">${g}</span><b>${n}</b></div>`).join('')}<div class="rp-g"><span class="grade gms">มส</span><b>${d.rows.filter(r => r.ms).length}</b></div></div>
+    <div class="tbl-wrap"><table class="tbl rp-tbl"><thead><tr><th>เลขที่</th><th>ชื่อ - สกุล</th>${d.cols.map(c2 => `<th class="rp-num" title="${esc(c2.title)}">${esc(c2.title.length > 14 ? c2.title.slice(0, 13) + '…' : c2.title)}<small>/${+GB.max(c2)}</small></th>`).join('')}<th class="rp-num">รวม<small>/${d.rows[0]?.t.max ?? 0}</small></th><th class="rp-num">ร้อยละ</th><th class="rp-num">เกรด</th><th class="rp-num">เวลาเรียน</th><th class="rp-num">งานค้าง</th></tr></thead><tbody>
+      ${d.rows.map(r => `<tr><td class="num">${r.st.number}</td><td>${esc(Q.fullName(r.st))}</td>${r.scores.map(v => `<td class="rp-num">${v ?? '–'}</td>`).join('')}
+        <td class="rp-num"><b>${r.t.sum}</b></td><td class="rp-num">${r.t.pct == null ? '–' : r.t.pct.toFixed(1)}</td><td class="rp-num"><span class="grade g${r.ms ? 'ms' : String(r.grade).replace('.', '')}">${r.ms ? 'มส' : r.grade}</span></td>
+        <td class="rp-num ${r.ms ? 'bad' : ''}">${r.attPct == null ? '–' : r.attPct.toFixed(0) + '%'}</td><td class="rp-num ${r.missing ? 'bad' : ''}">${r.missing || '–'}</td></tr>`).join('')}
+    </tbody></table></div>
+    <div class="rp-foot small muted">เกณฑ์: 80+ = 4 · 75 = 3.5 · 70 = 3 · 65 = 2.5 · 60 = 2 · 55 = 1.5 · 50 = 1 · ต่ำกว่า 50 = 0 · มส = เวลาเรียนไม่ถึง 80% (นับจาก ${thaiNum(d.sess.length)} คาบที่เช็คชื่อ) · งานค้าง = งานที่ยังไม่ส่งหรือถูกส่งคืนให้แก้ จากทั้งหมด ${thaiNum(d.asgs.length)} งาน
+      <div class="rp-sign">ลงชื่อ ........................................ ครูผู้สอน<br>( ${esc(store.teacher.name)} )<br>วันที่ ${new Date().toLocaleDateString('th-TH', { day: 'numeric', month: 'long', year: 'numeric' })}</div></div>
+  </div>`;
+}
+function reportXlsx() {
+  const sj = db.get('subjects', ui.rpSubject), c = db.get('classrooms', ui.rpCid), d = reportData(ui.rpSubject, ui.rpCid);
+  const head = ['เลขที่', 'ชื่อ - สกุล', ...d.cols.map(x => `${x.title} (${+GB.max(x)})`), 'รวม', 'ร้อยละ', 'เกรด', 'เวลาเรียน %', 'งานค้าง'];
+  const rows = d.rows.map(r => [r.st.number, Q.fullName(r.st), ...r.scores.map(v => v ?? ''), r.t.sum, r.t.pct == null ? '' : +r.t.pct.toFixed(2), r.ms ? 'มส' : r.grade, r.attPct == null ? '' : +r.attPct.toFixed(1), r.missing]);
+  const ws = XLSX.utils.aoa_to_sheet([[`รายงานผลการเรียน ${sj.name} ห้อง ${c.name} ภาคเรียน ${Q.termLabel(Q.currentTerm())}`], [], head, ...rows]);
+  ws['!cols'] = [{ wch: 6 }, { wch: 28 }];
+  const wb = XLSX.utils.book_new(); XLSX.utils.book_append_sheet(wb, ws, 'รายงาน'); XLSX.writeFile(wb, `รายงาน_${sj.name}_${c.name}.xlsx`.replace(/[\\/:*?"<>|]/g, '-'));
+}
+
+/* ---------- สำรองข้อมูล ---------- */
+async function bkCollect() {
+  const out = {};
+  for (const [t] of BK_TABLES) {
+    if (t === 'students') { out[t] = store.students.map(s => ({ ...s })); continue; }
+    try { out[t] = await fetchAll(t, BK_ORDER[t]); }
+    catch (e) { out[t] = []; }
+  }
+  if (!ME.admin()) out.students.forEach(s => delete s.student_code);
+  return out;
+}
+function bkStamp() { const d = new Date(), p = n => String(n).padStart(2, '0'); return `${d.getFullYear()}-${p(d.getMonth() + 1)}-${p(d.getDate())}_${p(d.getHours())}${p(d.getMinutes())}`; }
+async function bkJson() {
+  BK.busy = 'json'; render();
+  try {
+    const tables = await bkCollect();
+    const blob = new Blob([JSON.stringify({ app: 'ห้องเรียนครูปลื้ม', version: 1, exported_at: new Date().toISOString(), email: store.teacher.email, role: ME.admin() ? 'admin' : 'teacher', tables })], { type: 'application/json' });
+    const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = `สำรองข้อมูล_ห้องเรียนครูปลื้ม_${bkStamp()}.json`; a.click(); setTimeout(() => URL.revokeObjectURL(a.href), 5000);
+    try { localStorage.setItem('cr-last-backup', new Date().toISOString()); } catch (e) {}
+    toast(`สำรองข้อมูลแล้ว ${Object.values(tables).reduce((s, x) => s + x.length, 0).toLocaleString()} รายการ`);
+  } catch (e) { toast('สำรองข้อมูลไม่สำเร็จ ลองใหม่อีกครั้ง', true); }
+  BK.busy = false; render();
+}
+async function bkXlsx() {
+  BK.busy = 'xlsx'; render();
+  try {
+    const tables = await bkCollect(); const wb = XLSX.utils.book_new();
+    for (const [t] of BK_TABLES) {
+      const rows = (tables[t] || []).map(r => { const o = {}; Object.entries(r).forEach(([k, v]) => { o[k] = v != null && typeof v === 'object' ? JSON.stringify(v) : v; }); delete o.thumb; delete o.secret; return o; });
+      XLSX.utils.book_append_sheet(wb, rows.length ? XLSX.utils.json_to_sheet(rows) : XLSX.utils.aoa_to_sheet([['(ไม่มีข้อมูล)']]), (BK_NAMES[t] || t).slice(0, 31));
+    }
+    XLSX.writeFile(wb, `สำรองข้อมูล_ห้องเรียนครูปลื้ม_${bkStamp()}.xlsx`);
+    try { localStorage.setItem('cr-last-backup', new Date().toISOString()); } catch (e) {}
+    toast('ดาวน์โหลด Excel แล้ว');
+  } catch (e) { toast('สร้างไฟล์ Excel ไม่สำเร็จ', true); }
+  BK.busy = false; render();
+}
+
+/* ---------- นำเข้ากลับ ---------- */
+function bkPreviewHTML() {
+  const f = BK.file, t = f.data.tables;
+  const shared = new Set(BK_TABLES.filter(x => x[2]).map(x => x[0]));
+  return `<div class="rp-prev"><div class="small"><b>${esc(f.name)}</b><br>สำรองเมื่อ ${new Date(f.data.exported_at).toLocaleString('th-TH')} โดย ${esc(f.data.email || '-')}</div>
+    <div class="rp-chips">${BK_TABLES.filter(([k]) => t[k]?.length).map(([k]) => `<span class="chip ${shared.has(k) && !ME.admin() ? '' : 'pri'}">${BK_NAMES[k]} ${t[k].length.toLocaleString()}</span>`).join('')}</div>
+    ${!ME.admin() ? '<div class="small muted">ภาคเรียน ห้อง และรายชื่อนักเรียน ผู้ดูแลเป็นผู้นำเข้า ระบบจะข้ามส่วนนี้</div>' : ''}
+    <div class="row" style="gap:8px"><button class="btn sm ghost" data-act="bk-cancel">ยกเลิก</button><button class="btn sm primary" data-act="bk-restore" ${BK.busy ? 'disabled' : ''}>${BK.busy === 'restore' ? '<span class="spin" style="border-top-color:#fff"></span> กำลังนำเข้า…' : 'นำเข้าข้อมูล'}</button></div></div>`;
+}
+async function bkRestore() {
+  const t = BK.file.data.tables, me = session.user.id, log = [];
+  BK.busy = 'restore'; render();
+  for (const [name, key, shared] of BK_TABLES) {
+    const rows = (t[name] || []).map(r => { const o = { ...r, owner_id: me }; if (name === 'students' && !o.student_code) return null; return o; }).filter(Boolean);
+    if (!rows.length) continue;
+    if (shared && !ME.admin()) { log.push(`⏭ ${BK_NAMES[name]} (ผู้ดูแลเป็นผู้นำเข้า)`); continue; }
+    let ok = 0, err = '';
+    for (let i = 0; i < rows.length; i += 300) {
+      const { error } = await sb.from(name).upsert(rows.slice(i, i + 300), { onConflict: key, ignoreDuplicates: true });
+      if (error) { err = errMsg(error); break; } ok += Math.min(300, rows.length - i);
+    }
+    log.push(err ? `⚠️ ${BK_NAMES[name]}: ${esc(err)}` : `✅ ${BK_NAMES[name]} ${ok.toLocaleString()} รายการ`);
+  }
+  BK.busy = false; BK.file = null; BK.result = log.join('<br>');
+  try { await loadAll(); } catch (e) {}
+  render(); toast('นำเข้าข้อมูลเสร็จแล้ว');
+}
+
+Object.assign(ACT, {
+  'bk-json': bkJson, 'bk-xlsx': bkXlsx,
+  'bk-cancel': () => { BK.file = null; render(); },
+  'bk-restore': () => confirmBox('นำเข้าข้อมูล', 'นำเข้าข้อมูลจากไฟล์สำรอง? ระบบจะเพิ่มเฉพาะรายการที่ยังไม่มี ไม่ลบหรือเขียนทับของเดิม', 'นำเข้า', bkRestore),
+  'rp-xlsx': reportXlsx,
+  'rp-print': () => { document.body.classList.add('printing-report'); setTimeout(() => { window.print(); setTimeout(() => document.body.classList.remove('printing-report'), 300); }, 50); },
+});
+Object.assign(CHG, {
+  'rp-subject': el => { ui.rpSubject = el.value; ui.rpCid = null; render(); },
+  'rp-cls': el => { ui.rpCid = el.value; render(); },
+  'bk-file': async el => {
+    const f = el.files?.[0]; if (!f) return;
+    try { const data = JSON.parse(await f.text()); if (!data?.tables || data.app !== 'ห้องเรียนครูปลื้ม') throw 0; BK.file = { name: f.name, data }; BK.result = null; }
+    catch (e) { toast('ไฟล์นี้ไม่ใช่ไฟล์สำรองของห้องเรียนครูปลื้ม', true); }
+    el.value = ''; render();
+  },
+});
+
+/* =====================================================================
    เวอร์ชันมือถือ — โครงหน้าจอแยกจาก PC
    แถบบนแบบย่อ · แท็บด้านล่าง · แผ่น "เพิ่มเติม" · ตารางเป็นการ์ด · หน้าต่างเลื่อนจากล่าง
    ===================================================================== */
@@ -5380,12 +6159,13 @@ MQ.addEventListener('change', () => { setDevice(); ui.moreOpen = false; ui.sideO
 const M_TAB_ORDER = [
   { id: 'dashboard', label: 'หน้าหลัก', icon: 'home' },
   { id: 'assignments', label: 'งาน', icon: 'inbox' },
-  { id: 'gradebook', label: 'คะแนน', icon: 'table' },
+  { id: 'attendance', label: 'เช็คชื่อ', icon: 'attend' },
   { id: 'exams', label: 'ข้อสอบ', icon: 'quiz' },
+  { id: 'gradebook', label: 'คะแนน', icon: 'table' },
   { id: 'classes', label: 'ห้องเรียน', icon: 'users' },
   { id: 'subjects', label: 'วิชา', icon: 'book' },
 ];
-const M_BACK = { grade: ['assignments', 'งาน'], examedit: ['exams', 'ข้อสอบ'], examres: ['exams', 'ข้อสอบ'] };
+const M_BACK = { attsess: ['attendance', 'เช็คชื่อ'], grade: ['assignments', 'งาน'], examedit: ['exams', 'ข้อสอบ'], examres: ['exams', 'ข้อสอบ'] };
 
 function mobileShell(base, navOn, body) {
   const tabs = M_TAB_ORDER.filter(t => routeAllowed(t.id)).slice(0, 4);
@@ -5486,7 +6266,7 @@ const FX = (() => {
     el.innerHTML = out.join('');
   }
   function syncBg() {
-    const on = typeof isStudentRoute === 'function' && (isStudentRoute() || isExamTakeRoute());
+    const on = typeof isStudentRoute === 'function' && (isStudentRoute() || isExamTakeRoute() || isCheckinRoute());
     document.body.classList.toggle('stu-bg', on);
     if (on) buildEmojiBg();
   }
