@@ -894,6 +894,50 @@ table.gb{border-collapse:separate;border-spacing:0;font-size:14px;min-width:100%
 .fv-del{color:var(--danger)!important;padding:3px 8px!important}
 .fv-del svg{width:14px!important;height:14px!important;color:var(--danger)!important}
 
+/* ---------- ผู้ใช้และสิทธิ์ ---------- */
+.ro-note{display:flex;gap:12px;align-items:flex-start;padding:12px 16px;margin-bottom:16px;border-radius:18px;background:var(--glass);border:1px dashed var(--glass-edge);font-size:14px;-webkit-backdrop-filter:var(--blur);backdrop-filter:var(--blur)}
+.ro-note svg{width:20px;height:20px;flex:none;color:var(--muted);margin-top:2px}
+.ro-note b{display:block;font-family:var(--f-head);font-weight:500}
+.chip svg{width:13px;height:13px;vertical-align:-2px;margin-right:3px}
+.role-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:8px}
+.role-card{display:flex;gap:14px;align-items:flex-start;padding:16px 18px}
+.role-card .rc-ic{font-size:30px;line-height:1}
+.role-card b{display:block;font:500 16px var(--f-head);margin-bottom:2px}
+.role-card small{color:var(--muted);font-size:13px;line-height:1.5}
+.role-card.admin{background:linear-gradient(135deg,rgba(255,210,63,.22),rgba(109,77,255,.12)),var(--glass)}
+.sec-h{font:500 16px var(--f-head);margin:22px 0 10px;display:flex;gap:8px;align-items:center}
+.user-list{display:flex;flex-direction:column;gap:12px}
+.user-card{padding:16px 18px}
+.user-card.pending{border:1.5px solid rgba(245,158,11,.55)}
+.user-card.suspended{opacity:.72}
+.uc-h{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.uc-id{min-width:0}.uc-id b{display:block;font:500 15.5px var(--f-head)}.uc-id small{color:var(--muted);font-size:12.5px}
+.avatar{width:42px;height:42px;border-radius:14px;display:grid;place-items:center;font:600 18px var(--f-head);color:#fff;background:linear-gradient(135deg,#6d4dff,#22b8f0);box-shadow:var(--glass-hi),0 6px 14px -6px rgba(109,77,255,.6);flex:none}
+.avatar.gold{background:linear-gradient(135deg,#ffb347,#ffd23f);color:#5a3d00}
+.uc-note{margin-top:10px}
+.perm-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:8px;margin-top:14px}
+.perm{display:flex;gap:10px;align-items:center;padding:10px 12px;border-radius:14px;background:var(--glass);border:1px solid var(--glass-line);cursor:pointer;transition:background .15s,border-color .15s;position:relative}
+.perm input{position:absolute;opacity:0;pointer-events:none}
+.perm>span:nth-of-type(2){flex:1;min-width:0}
+.perm b{display:block;font-size:14px;font-weight:600}.perm small{color:var(--muted);font-size:12px;line-height:1.35;display:block}
+.perm-ic{width:32px;height:32px;border-radius:10px;display:grid;place-items:center;background:var(--surface-2);flex:none}
+.perm-ic svg{width:17px;height:17px}
+.perm.on{border-color:rgba(109,77,255,.45);background:linear-gradient(135deg,rgba(109,77,255,.12),rgba(34,184,240,.08)),var(--glass)}
+.perm.on .perm-ic{background:#6d4dff;color:#fff}
+.perm .sw{width:38px;height:22px;border-radius:99px;background:rgba(120,120,140,.35);flex:none;position:relative;transition:background .2s}
+.perm .sw::after{content:"";position:absolute;top:2px;left:2px;width:18px;height:18px;border-radius:50%;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.3);transition:transform .2s}
+.perm.on .sw{background:#22c55e}.perm.on .sw::after{transform:translateX(16px)}
+.perm input:focus-visible~.sw{outline:2px solid #6d4dff;outline-offset:2px}
+.perm.dis{cursor:not-allowed;opacity:.6}
+.perm.fixed{cursor:default;border-style:dashed;background:transparent}
+.perm.fixed>svg{width:16px;height:16px;color:var(--muted)}
+.uc-f{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:12px;padding-top:12px;border-top:1px solid var(--glass-line)}
+.uc-f select.input.sm-sel{width:auto;flex:none;max-width:220px;padding:6px 10px;font-size:13px}
+.howto{margin:0 0 14px;padding-left:22px;line-height:1.8}
+.pending-card{max-width:440px;text-align:center;padding:32px 28px}
+.pending-card h2{font-family:var(--f-head);font-weight:500;margin:8px 0 6px}
+@media (max-width:720px){.role-grid{grid-template-columns:1fr}}
+
 </style>
 </head>
 <body>
@@ -1312,8 +1356,11 @@ function errMsg(e) {
   if (/JWT|session|not authenticated/i.test(m)) return 'หมดเวลาการเข้าสู่ระบบ กรุณาเข้าสู่ระบบใหม่';
   if (/Failed to fetch|NetworkError|network/i.test(m)) return 'เชื่อมต่อเซิร์ฟเวอร์ไม่ได้ ตรวจสอบอินเทอร์เน็ตแล้วลองใหม่';
   if (/row-level security/i.test(m)) return 'ไม่มีสิทธิ์แก้ไขข้อมูลนี้';
+  if (/my_profile|admin_student_codes|admin_upsert_students/i.test(m) && /not find|does not exist/i.test(m)) return 'ฐานข้อมูลยังไม่ได้ตั้งค่าระบบสิทธิ์ (รันไฟล์ roles.sql ใน Supabase)';
+  if (/permission denied/i.test(m)) return 'ไม่มีสิทธิ์เข้าถึงข้อมูลนี้';
   if (/Password should be/i.test(m)) return 'รหัสผ่านต้องยาวอย่างน้อย 6 ตัวอักษร';
   const codes = {
+    ADMIN_ONLY: 'เฉพาะผู้ดูแลระบบเท่านั้น', CANNOT_CHANGE_SELF: 'ระงับหรือเปลี่ยนสถานะบัญชีของตัวเองไม่ได้', USER_NOT_FOUND: 'ไม่พบผู้ใช้นี้', BAD_STATUS: 'สถานะไม่ถูกต้อง',
     STUDENT_INVALID: 'ข้อมูลนักเรียนไม่ถูกต้อง กรุณาเข้าห้องเรียนใหม่', ASSIGNMENT_NOT_FOUND: 'ไม่พบงานนี้', ASSIGNMENT_CLOSED: 'ครูปิดรับงานนี้แล้ว',
     PAST_DUE: 'เลยกำหนดส่งแล้ว และงานนี้ไม่รับส่งช้า', TYPE_NOT_ALLOWED: 'งานนี้ไม่รับไฟล์ชนิดนี้', TOO_LARGE: 'ไฟล์ใหญ่เกินกำหนดของงานนี้',
     ALREADY_GRADED: 'ครูตรวจงานนี้แล้ว แก้ไขไม่ได้', TOO_MANY_FILES: 'ส่งได้สูงสุด 10 ไฟล์ต่องาน', TOKEN_INVALID: 'การอัปโหลดหมดเวลา ลองใหม่อีกครั้ง',
@@ -1347,21 +1394,54 @@ function thaiTermNow() {
   if (m >= 5 && m <= 10) return { year: be, semester: 1 };
   return { year: m >= 11 ? be : be - 1, semester: 2 };
 }
+/* ---------- ผู้ใช้และสิทธิ์ ---------- */
+const STU_COLS = 'id,owner_id,classroom_id,number,prefix,first_name,last_name,active,created_at';
+const PERMS = [
+  { k: 'subjects', label: 'วิชา', desc: 'สร้างและแก้ไขรายวิชาของตัวเอง', icon: 'book' },
+  { k: 'assignments', label: 'งานและตรวจงาน', desc: 'สั่งงาน รับไฟล์ ตรวจ ให้คะแนน', icon: 'inbox' },
+  { k: 'gradebook', label: 'ตารางคะแนน', desc: 'ลงคะแนน เพิ่มคอลัมน์ ส่งออก Excel', icon: 'table' },
+  { k: 'exams', label: 'ข้อสอบ', desc: 'ออกข้อสอบ ส่งลิงก์ ดูผลสอบ', icon: 'quiz' },
+];
+const ME = {
+  active: () => store.me?.status === 'active',
+  admin: () => store.me?.role === 'admin' && store.me?.status === 'active',
+  can: p => ME.admin() || (ME.active() && !!store.me?.perms?.[p]),
+};
+async function fetchStudents(cid) {
+  const out = [];
+  for (let from = 0; ; from += 1000) {
+    let qb = sb.from('students').select(STU_COLS).order('created_at', { ascending: true }).range(from, from + 999);
+    if (cid) qb = qb.eq('classroom_id', cid);
+    const rows = await q(qb); out.push(...rows);
+    if (rows.length < 1000) break;
+  }
+  if (ME.admin()) {
+    const codes = await q(sb.rpc('admin_student_codes'));
+    const m = new Map(codes.map(c => [c.id, c.student_code]));
+    out.forEach(r => { r.student_code = m.get(r.id) ?? ''; });
+  } else out.forEach(r => { r.student_code = ''; });
+  return out;
+}
 async function loadAll() {
+  store.setupMissing = false;
+  try { store.me = await q(sb.rpc('my_profile')); }
+  catch (e) { store.me = null; store.setupMissing = true; throw e; }
+  if (store.me?.display_name) store.teacher.name = store.me.display_name;
+  if (!ME.active()) return;
   const [terms, classrooms, students, subjects, subject_classes, assignments, assignment_classes, submissions, grade_columns, grade_entries, exams, exam_classes, exam_questions, exam_attempts] = await Promise.all([
-    fetchAll('terms'), fetchAll('classrooms'), fetchAll('students'), fetchAll('subjects'), fetchAll('subject_classes', 'subject_id'),
+    fetchAll('terms'), fetchAll('classrooms'), fetchStudents(), fetchAll('subjects'), fetchAll('subject_classes', 'subject_id'),
     fetchAll('assignments'), fetchAll('assignment_classes', 'assignment_id'), fetchAll('submissions', 'submitted_at'),
     fetchAll('grade_columns'), fetchAll('grade_entries', 'column_id'),
     fetchAll('exams'), fetchAll('exam_classes', 'exam_id'), fetchAll('exam_questions', 'sort_order'), fetchAll('exam_attempts', 'started_at'),
   ]);
   Object.assign(store, { terms, classrooms, students, subjects, subject_classes, assignments, assignment_classes, submissions, grade_columns, grade_entries, exams, exam_classes, exam_questions, exam_attempts, exam_answers: [], files: {} });
-  if (!store.terms.length) {
+  if (!store.terms.length && ME.admin()) {
     const t = await q(sb.from('terms').insert({ ...thaiTermNow(), is_current: true }).select().single());
     store.terms.push(t);
   }
 }
 async function reloadStudents(cid) {
-  const rows = await q(sb.from('students').select('*').eq('classroom_id', cid));
+  const rows = await fetchStudents(cid);
   store.students = store.students.filter(s => s.classroom_id !== cid).concat(rows);
 }
 function setTeacher(user) {
@@ -1372,8 +1452,10 @@ function setTeacher(user) {
 const db = {
   all: t => store[t],
   get: (t, id) => store[t].find(r => r.id === id),
-  async insert(t, row) { const r = await q(sb.from(t).insert(row).select().single()); store[t].push(r); return r; },
-  async update(t, id, patch) { const r = await q(sb.from(t).update(patch).eq('id', id).select().single()); Object.assign(db.get(t, id) || {}, r); return r; },
+  async insert(t, row) { const r = await q(sb.from(t).insert(row).select(t === 'students' ? STU_COLS : '*').single());
+    if (t === 'students') r.student_code = row.student_code ?? ''; store[t].push(r); return r; },
+  async update(t, id, patch) { const r = await q(sb.from(t).update(patch).eq('id', id).select(t === 'students' ? STU_COLS : '*').single());
+    if (t === 'students') r.student_code = 'student_code' in patch ? patch.student_code : (db.get(t, id)?.student_code ?? ''); Object.assign(db.get(t, id) || {}, r); return r; },
   async removeIds(t, ids) {
     if (!ids.length) return;
     for (let i = 0; i < ids.length; i += 200) await q(sb.from(t).delete().in('id', ids.slice(i, i + 200)));
@@ -1443,9 +1525,16 @@ const NAV = [
   { id: 'gradebook', label: 'ตารางคะแนน', icon: 'table' },
   { id: 'exams', label: 'ข้อสอบ', icon: 'quiz' },
   { group: 'ระบบ' },
+  { id: 'users', label: 'ผู้ใช้และสิทธิ์', icon: 'shield', admin: true },
   { id: 'settings', label: 'ตั้งค่า', icon: 'gear' },
 ];
-const TITLES = { dashboard: 'แดชบอร์ด', subjects: 'วิชา', classes: 'ห้องเรียนและรายชื่อ', assignments: 'งานและตรวจงาน', grade: 'ตรวจงาน', examedit: 'แก้ไขข้อสอบ', examres: 'ผลสอบ', gradebook: 'ตารางคะแนน', exams: 'ข้อสอบ', settings: 'ตั้งค่า' };
+const ROUTE_PERM = { subjects: 'subjects', assignments: 'assignments', grade: 'assignments', gradebook: 'gradebook', exams: 'exams', examedit: 'exams', examres: 'exams' };
+function routeAllowed(base) { if (base === 'users') return ME.admin(); const p = ROUTE_PERM[base]; return !p || ME.can(p); }
+function navItems() {
+  const items = NAV.filter(n => n.group || (n.admin ? ME.admin() : routeAllowed(n.id)));
+  return items.filter((n, i) => !n.group || (items[i + 1] && !items[i + 1].group));
+}
+const TITLES = { dashboard: 'แดชบอร์ด', subjects: 'วิชา', classes: 'ห้องเรียนและรายชื่อ', assignments: 'งานและตรวจงาน', grade: 'ตรวจงาน', examedit: 'แก้ไขข้อสอบ', examres: 'ผลสอบ', gradebook: 'ตารางคะแนน', exams: 'ข้อสอบ', settings: 'ตั้งค่า', users: 'ผู้ใช้และสิทธิ์' };
 
 function render() {
   const root = $('#app');
@@ -1453,16 +1542,17 @@ function render() {
   if (isStudentRoute()) { root.innerHTML = viewStudent(); return; }
   if (booting) { root.innerHTML = `<div class="stu" style="justify-content:center"><div class="brand"><div class="brand-mark">ป</div><div><b>ห้องเรียนครูปลื้ม</b><small style="color:var(--muted)">กำลังโหลดข้อมูล…</small></div></div></div>`; return; }
   if (!session) { root.innerHTML = viewLogin(); return; }
-  const base = ui.route.startsWith('grade-') ? 'grade' : ui.route.startsWith('exam-edit-') ? 'examedit' : ui.route.startsWith('exam-res-') ? 'examres' : ui.route;
-  if (!TITLES[base]) ui.route = 'dashboard';
+  if (!ME.active()) { root.innerHTML = viewPending(); return; }
+  let base = ui.route.startsWith('grade-') ? 'grade' : ui.route.startsWith('exam-edit-') ? 'examedit' : ui.route.startsWith('exam-res-') ? 'examres' : ui.route;
+  if (!TITLES[base] || !routeAllowed(base)) { ui.route = 'dashboard'; base = 'dashboard'; }
   const theme = document.documentElement.dataset.theme;
-  const views = { dashboard: viewDashboard, subjects: viewSubjects, classes: viewClasses, settings: viewSettings, assignments: viewAssignments, grade: viewGrade, gradebook: viewGradebook, exams: viewExams, examedit: viewExamEdit, examres: viewExamResults };
+  const views = { dashboard: viewDashboard, subjects: viewSubjects, classes: viewClasses, settings: viewSettings, users: viewUsers, assignments: viewAssignments, grade: viewGrade, gradebook: viewGradebook, exams: viewExams, examedit: viewExamEdit, examres: viewExamResults };
   const navOn = base === 'grade' ? 'assignments' : (base === 'examedit' || base === 'examres') ? 'exams' : base;
   root.innerHTML = `
   <div class="shell">
     <aside class="side ${ui.sideOpen ? 'open' : ''}">
       <div class="brand"><div class="brand-mark">ป</div><div><b>ห้องเรียนครูปลื้ม</b><small>ส่งงาน · คะแนน · ข้อสอบ</small></div></div>
-      ${NAV.map(n => n.group ? `<div class="nav-group">${n.group}</div>` :
+      ${navItems().map(n => n.group ? `<div class="nav-group">${n.group}</div>` :
         `<a class="nav-item ${navOn === n.id ? 'active' : ''}" href="#${n.id}">${ic(n.icon)}<span>${n.label}</span>${n.soon ? `<span class="soon">${n.soon}</span>` : ''}</a>`).join('')}
       <div class="side-foot">ภาคเรียน ${esc(Q.termLabel(Q.currentTerm()))}</div>
     </aside>
@@ -1475,7 +1565,7 @@ function render() {
         <button class="btn primary sm" data-act="share-open">${ic('link')}<span class="hide-sm">ส่งลิงก์ให้นักเรียน</span></button>
         <a class="btn ghost icon hide-sm" href="#student" title="เปิดหน้านักเรียน" aria-label="เปิดหน้านักเรียน">${ic('student')}</a>
         <button class="btn ghost icon" data-act="theme" aria-label="สลับธีม" title="สลับธีมสว่าง/มืด">${ic(theme === 'dark' ? 'sun' : 'moon')}</button>
-        <span class="chip hide-sm">${esc(store.teacher.name)}</span>
+        <span class="chip hide-sm">${ME.admin() ? '👑 ' : ''}${esc(store.teacher.name)}</span>
         <button class="btn ghost icon" data-act="logout" aria-label="ออกจากระบบ" title="ออกจากระบบ">${ic('logout')}</button>
       </header>
       <main class="content">${(views[base] || viewDashboard)()}</main>
@@ -1585,9 +1675,10 @@ function viewClasses() {
   const total = store.students.filter(s => s.active !== false).length;
   return `
   <div class="page-head"><div><h2>ห้องเรียนและรายชื่อ</h2><p>${thaiNum(cls.length)} ห้อง · นักเรียน ${thaiNum(total)} คน</p></div><span class="spacer"></span>
-    <button class="btn" data-act="class-new">${ic('plus')}เพิ่มห้อง</button>
-    <button class="btn primary" data-act="import-open">${ic('upload')}อัปโหลดรายชื่อ</button>
+    ${ME.admin() ? `<button class="btn" data-act="class-new">${ic('plus')}เพิ่มห้อง</button>
+    <button class="btn primary" data-act="import-open">${ic('upload')}อัปโหลดรายชื่อ</button>` : `<span class="chip">${ic('lock')}ดูได้อย่างเดียว</span>`}
   </div>
+  ${ME.admin() ? '' : `<div class="ro-note">${ic('lock')}<div><b>รายชื่อนักเรียนจัดการโดยผู้ดูแลระบบ</b>ถ้าพบชื่อผิด เลขที่ผิด หรือมีนักเรียนย้ายเข้า-ออก แจ้งผู้ดูแลให้แก้ไข</div></div>`}
   ${cls.length ? `
   <div class="card picker">
     <div class="picker-row">
@@ -1601,8 +1692,9 @@ function viewClasses() {
     </div>
   </div>
   ${cur ? classPanel(cur) : `<div class="card"><div class="empty"><div style="font-size:40px">👆</div><b>เลือกห้องเพื่อดูรายชื่อนักเรียน</b>${lv ? `ระดับชั้น ${esc(lv)} มี ${thaiNum(shown.length)} ห้อง` : 'เลือกระดับชั้นด้านบน หรือเลือกห้องจากรายการ'}</div></div>`}`
-  : `<div class="card"><div class="empty">${ic('users')}<b>ยังไม่มีห้องเรียน</b>อัปโหลดไฟล์รายชื่อที่โรงเรียนใช้อยู่ได้เลย ระบบจะแยกห้องและเลขที่ให้อัตโนมัติ<br>
-     <button class="btn primary" data-act="import-open" style="margin-top:12px">${ic('upload')}อัปโหลดรายชื่อ</button></div></div>`}`;
+  : ME.admin() ? `<div class="card"><div class="empty">${ic('users')}<b>ยังไม่มีห้องเรียน</b>อัปโหลดไฟล์รายชื่อที่โรงเรียนใช้อยู่ได้เลย ระบบจะแยกห้องและเลขที่ให้อัตโนมัติ<br>
+     <button class="btn primary" data-act="import-open" style="margin-top:12px">${ic('upload')}อัปโหลดรายชื่อ</button></div></div>`
+  : `<div class="card"><div class="empty">${ic('users')}<b>ยังไม่มีห้องเรียน</b>รอผู้ดูแลระบบอัปโหลดรายชื่อนักเรียน</div></div>`}`;
 }
 function classPanel(c) {
   const list = Q.students(c.id);
@@ -1610,37 +1702,37 @@ function classPanel(c) {
   const match = s => !q || `${s.number} ${s.student_code} ${Q.fullName(s)}`.toLowerCase().includes(q);
   const sel = [...ui.sel].filter(id => list.some(s => s.id === id));
   const others = Q.classrooms().filter(x => x.id !== c.id);
-  const ed = ui.tableEdit;
+  const adm = ME.admin(); const ed = adm && ui.tableEdit;
   return `<div class="card" style="min-width:0">
     <div class="card-h"><div><h3>${esc(c.name)}</h3><div class="small muted">ครูที่ปรึกษา: ${esc(c.homeroom_teacher || '—')} · ${thaiNum(list.length)} คน</div></div><span class="spacer"></span>
-      <button class="btn ghost sm" data-act="class-edit" data-id="${c.id}">${ic('edit')}แก้ไขห้อง</button>
-      <button class="btn ghost icon" data-act="class-del" data-id="${c.id}" aria-label="ลบห้อง" style="color:var(--danger)">${ic('trash')}</button></div>
+      ${adm ? `<button class="btn ghost sm" data-act="class-edit" data-id="${c.id}">${ic('edit')}แก้ไขห้อง</button>
+      <button class="btn ghost icon" data-act="class-del" data-id="${c.id}" aria-label="ลบห้อง" style="color:var(--danger)">${ic('trash')}</button>` : ''}</div>
     <div class="toolbar">
-      <div class="search">${ic('search')}<input class="input" placeholder="ค้นหา เลขที่ / ชื่อ / เลขประจำตัว" value="${esc(ui.q)}" data-inp="search" aria-label="ค้นหานักเรียน"></div>
+      <div class="search">${ic('search')}<input class="input" placeholder="ค้นหา เลขที่ / ชื่อ${adm ? ' / เลขประจำตัว' : ''}" value="${esc(ui.q)}" data-inp="search" aria-label="ค้นหานักเรียน"></div>
       <span class="spacer"></span>
-      <button class="btn sm ${ed ? 'primary' : ''}" data-act="toggle-edit">${ic('table')}${ed ? 'เสร็จสิ้นการแก้ไข' : 'แก้ไขแบบตาราง'}</button>
-      <button class="btn sm" data-act="student-new">${ic('plus')}เพิ่มนักเรียน</button>
+      ${adm ? `<button class="btn sm ${ed ? 'primary' : ''}" data-act="toggle-edit">${ic('table')}${ed ? 'เสร็จสิ้นการแก้ไข' : 'แก้ไขแบบตาราง'}</button>
+      <button class="btn sm" data-act="student-new">${ic('plus')}เพิ่มนักเรียน</button>` : ''}
     </div>
-    ${sel.length ? `<div class="bulk"><b>เลือก ${thaiNum(sel.length)} คน</b><span class="spacer"></span>
+    ${adm && sel.length ? `<div class="bulk"><b>เลือก ${thaiNum(sel.length)} คน</b><span class="spacer"></span>
       ${others.length ? `<select class="input" style="width:auto;padding:5px 8px" data-chg="bulk-move" aria-label="ย้ายไปห้อง"><option value="">ย้ายไปห้อง…</option>${others.map(o => `<option value="${o.id}">${esc(o.name)}</option>`).join('')}</select>` : ''}
       <button class="btn sm danger" data-act="bulk-del">${ic('trash')}ลบที่เลือก</button><button class="btn sm ghost" data-act="bulk-clear">ยกเลิก</button></div>` : ''}
     ${list.length ? `<div class="tbl-wrap"><table class="tbl" id="stu-tbl"><thead><tr>
-        <th style="width:36px"><input type="checkbox" data-chg="sel-all" aria-label="เลือกทั้งหมด" ${sel.length && sel.length === list.length ? 'checked' : ''}></th>
-        <th>เลขที่</th><th>เลขประจำตัว</th><th>คำนำหน้า</th><th>ชื่อ</th><th>นามสกุล</th><th>สถานะ</th><th class="act"></th></tr></thead><tbody>
+        ${adm ? `<th style="width:36px"><input type="checkbox" data-chg="sel-all" aria-label="เลือกทั้งหมด" ${sel.length && sel.length === list.length ? 'checked' : ''}></th>` : ''}
+        <th>เลขที่</th>${adm ? '<th>เลขประจำตัว</th>' : ''}<th>คำนำหน้า</th><th>ชื่อ</th><th>นามสกุล</th><th>สถานะ</th>${adm ? '<th class="act"></th>' : ''}</tr></thead><tbody>
       ${list.map(s => `<tr data-row="${s.id}" class="${s.active === false ? 'inactive' : ''}" ${match(s) ? '' : 'hidden'} data-search="${esc(`${s.number} ${s.student_code} ${Q.fullName(s)}`.toLowerCase())}">
-        <td><input type="checkbox" data-chg="sel" data-id="${s.id}" ${ui.sel.has(s.id) ? 'checked' : ''} aria-label="เลือก ${esc(s.first_name)}"></td>
+        ${adm ? `<td><input type="checkbox" data-chg="sel" data-id="${s.id}" ${ui.sel.has(s.id) ? 'checked' : ''} aria-label="เลือก ${esc(s.first_name)}"></td>` : ''}
         ${ed ? `
         <td class="num"><input class="input" type="number" min="1" value="${s.number}" data-chg="cell" data-id="${s.id}" data-f="number" style="width:70px"></td>
         <td><input class="input" value="${esc(s.student_code)}" data-chg="cell" data-id="${s.id}" data-f="student_code" style="width:100px" inputmode="numeric"></td>
         <td><input class="input" value="${esc(s.prefix)}" data-chg="cell" data-id="${s.id}" data-f="prefix" list="prefixes" style="width:100px"></td>
         <td><input class="input" value="${esc(s.first_name)}" data-chg="cell" data-id="${s.id}" data-f="first_name"></td>
         <td><input class="input" value="${esc(s.last_name)}" data-chg="cell" data-id="${s.id}" data-f="last_name"></td>`
-        : `<td class="num">${s.number}</td><td class="code-mask">${esc(s.student_code) || '<span class="chip warn">ไม่มี</span>'}</td><td>${esc(s.prefix)}</td><td>${esc(s.first_name)}</td><td>${esc(s.last_name)}</td>`}
+        : `<td class="num">${s.number}</td>${adm ? `<td class="code-mask">${esc(s.student_code) || '<span class="chip warn">ไม่มี</span>'}</td>` : ''}<td>${esc(s.prefix)}</td><td>${esc(s.first_name)}</td><td>${esc(s.last_name)}</td>`}
         <td>${s.active === false ? '<span class="chip">ย้าย/ลาออก</span>' : '<span class="chip ok">กำลังเรียน</span>'}</td>
-        <td class="act"><button class="btn ghost icon" data-act="student-edit" data-id="${s.id}" aria-label="แก้ไข">${ic('edit')}</button><button class="btn ghost icon" data-act="student-del" data-id="${s.id}" aria-label="ลบ" style="color:var(--danger)">${ic('trash')}</button></td>
+        ${adm ? `<td class="act"><button class="btn ghost icon" data-act="student-edit" data-id="${s.id}" aria-label="แก้ไข">${ic('edit')}</button><button class="btn ghost icon" data-act="student-del" data-id="${s.id}" aria-label="ลบ" style="color:var(--danger)">${ic('trash')}</button></td>` : ''}
       </tr>`).join('')}</tbody></table></div>
       <datalist id="prefixes">${PREFIX_OPTS.map(p => `<option value="${p}">`).join('')}</datalist>`
-    : `<div class="empty">${ic('users')}<b>ห้องนี้ยังไม่มีนักเรียน</b>เพิ่มทีละคน หรืออัปโหลดไฟล์รายชื่อ</div>`}
+    : `<div class="empty">${ic('users')}<b>ห้องนี้ยังไม่มีนักเรียน</b>${adm ? 'เพิ่มทีละคน หรืออัปโหลดไฟล์รายชื่อ' : 'รอผู้ดูแลระบบเพิ่มรายชื่อ'}</div>`}
   </div>`;
 }
 function classModal(c) {
@@ -1803,7 +1895,7 @@ async function doImport() {
         });
       }
       for (let i = 0; i < rows.length; i += 500) {
-        await q(sb.from('students').upsert(rows.slice(i, i + 500), { onConflict: 'classroom_id,number' }));
+        await q(sb.rpc('admin_upsert_students', { p_rows: rows.slice(i, i + 500) }));
       }
       await reloadStudents(c.id);
     }
@@ -1832,11 +1924,11 @@ function viewSettings() {
   <div class="page-head"><div><h2>ตั้งค่า</h2><p>ข้อมูลครูและภาคเรียน</p></div></div>
   <div class="dash-grid">
     <div class="stack">
-      <div class="card"><div class="card-h"><h3>ปีการศึกษาและภาคเรียน</h3><span class="spacer"></span><button class="btn sm" data-act="term-new">${ic('plus')}เพิ่มภาคเรียน</button></div>
+      <div class="card"><div class="card-h"><h3>ปีการศึกษาและภาคเรียน</h3><span class="spacer"></span>${ME.admin() ? `<button class="btn sm" data-act="term-new">${ic('plus')}เพิ่มภาคเรียน</button>` : '<span class="chip">ผู้ดูแลเป็นผู้กำหนด</span>'}</div>
         <table class="tbl"><thead><tr><th>ภาคเรียน</th><th>วิชา</th><th>สถานะ</th><th class="act"></th></tr></thead><tbody>
         ${terms.map(t => `<tr><td><b>${t.semester}/${t.year}</b></td><td>${thaiNum(Q.subjectsOfTerm(t.id).length)}</td>
-          <td>${t.is_current ? '<span class="chip ok">ภาคเรียนปัจจุบัน</span>' : `<button class="btn sm" data-act="term-current" data-id="${t.id}">ตั้งเป็นปัจจุบัน</button>`}</td>
-          <td class="act">${t.is_current ? '' : `<button class="btn ghost icon" data-act="term-del" data-id="${t.id}" aria-label="ลบภาคเรียน" style="color:var(--danger)">${ic('trash')}</button>`}</td></tr>`).join('')}
+          <td>${t.is_current ? '<span class="chip ok">ภาคเรียนปัจจุบัน</span>' : ME.admin() ? `<button class="btn sm" data-act="term-current" data-id="${t.id}">ตั้งเป็นปัจจุบัน</button>` : ''}</td>
+          <td class="act">${t.is_current || !ME.admin() ? '' : `<button class="btn ghost icon" data-act="term-del" data-id="${t.id}" aria-label="ลบภาคเรียน" style="color:var(--danger)">${ic('trash')}</button>`}</td></tr>`).join('')}
         </tbody></table></div>
     </div>
     <div class="stack">
@@ -1846,6 +1938,7 @@ function viewSettings() {
       </div></div>
       <div class="card"><div class="card-h"><h3>บัญชีผู้ใช้</h3></div><div class="card-b stack">
         <div class="row"><span class="muted small">อีเมล</span><span class="spacer"></span><b>${esc(store.teacher.email)}</b></div>
+        <div class="row"><span class="muted small">สิทธิ์</span><span class="spacer"></span>${ME.admin() ? '<span class="chip pri">👑 ผู้ดูแลระบบ</span>' : `<span class="chip">ครูผู้ใช้</span>`}</div>
         <button class="btn" data-act="pw-open">${ic('gear')}เปลี่ยนรหัสผ่าน</button>
       </div></div>
     </div>
@@ -1995,7 +2088,8 @@ const CHG = {
   'imp-mode': el => { modalCtx.mode = el.value; },
   'imp-inc': el => { modalCtx.sheets[+el.dataset.i].include = el.checked; updImpTotal(); },
   'teacher-name': async el => { const name = el.value.trim() || 'ครูผู้สอน';
-    await q(sb.auth.updateUser({ data: { display_name: name } })); store.teacher.name = name; render(); toast('บันทึกแล้ว'); },
+    await q(sb.auth.updateUser({ data: { display_name: name } })); await q(sb.rpc('set_my_name', { p_name: name })).catch(() => {});
+    store.teacher.name = name; if (store.me) store.me.display_name = name; render(); toast('บันทึกแล้ว'); },
 };
 const INP = {
   search: el => { ui.q = el.value; const q = el.value.toLowerCase().trim(); $$('#stu-tbl tbody tr').forEach(r => { r.hidden = !!q && !r.dataset.search.includes(q); }); },
@@ -2008,9 +2102,12 @@ document.addEventListener('click', e => {
   const t = e.target.closest('[data-act]'); if (!t) return;
   if (t.dataset.act === 'modal-bg' && e.target !== t) return;
   if (t.disabled) return;
+  if (ADMIN_ACTS.has(t.dataset.act) && !ME.admin()) return toast('เฉพาะผู้ดูแลระบบเท่านั้น', true);
   Promise.resolve(ACT[t.dataset.act]?.(t, e)).catch(err => console.error(err));
 });
-document.addEventListener('change', e => { const t = e.target.closest('[data-chg]'); if (t) Promise.resolve(CHG[t.dataset.chg]?.(t, e)).catch(err => console.error(err)); });
+const ADMIN_ACTS = new Set(['class-new', 'class-edit', 'class-del', 'toggle-edit', 'student-new', 'student-edit', 'student-del', 'bulk-del', 'import-open', 'term-new', 'term-current', 'term-del']);
+const ADMIN_CHG = new Set(['bulk-move', 'cell', 'import-file']);
+document.addEventListener('change', e => { const t = e.target.closest('[data-chg]'); if (t && ADMIN_CHG.has(t.dataset.chg) && !ME.admin()) return toast('เฉพาะผู้ดูแลระบบเท่านั้น', true); if (t) Promise.resolve(CHG[t.dataset.chg]?.(t, e)).catch(err => console.error(err)); });
 document.addEventListener('input', e => { const t = e.target.closest('[data-inp]'); if (t) INP[t.dataset.inp]?.(t, e); });
 document.addEventListener('keydown', e => { if (e.key === 'Escape' && modalCtx) closeModal(); });
 document.addEventListener('submit', async e => {
@@ -3967,6 +4064,130 @@ function studentExamsHTML() {
       ${can ? `<div class="sa-b"><a class="btn primary" href="#exam-${esc(x.share_code)}" style="justify-content:center">${x.in_progress ? 'ทำต่อ ▶' : x.attempts_used ? 'สอบอีกครั้ง 🔁' : 'เริ่มทำข้อสอบ 🚀'}</a></div>` : ''}</div>`;
   }).join('');
 }
+
+/* =====================================================================
+   ผู้ใช้และสิทธิ์ (ผู้ดูแลระบบ) + หน้ารออนุมัติ
+   ===================================================================== */
+I.shield = '<path d="M12 3l8 3v6c0 4.5-3.4 8.3-8 9-4.6-.7-8-4.5-8-9V6z"/><path d="M9 12l2 2 4-4"/>';
+
+const USR = { list: null, loading: false, open: null };
+const PERM_PRESETS = [
+  { id: 'full', label: 'ครูผู้สอน (ทุกเมนู)', perms: { subjects: true, assignments: true, gradebook: true, exams: true } },
+  { id: 'work', label: 'ส่งงาน + คะแนน', perms: { subjects: true, assignments: true, gradebook: true, exams: false } },
+  { id: 'exam', label: 'ข้อสอบอย่างเดียว', perms: { subjects: true, assignments: false, gradebook: false, exams: true } },
+];
+const STATUS_TXT = { active: ['ใช้งานได้', 'ok'], pending: ['รออนุมัติ', 'warn'], suspended: ['ระงับแล้ว', 'bad'] };
+
+async function loadUsers() {
+  if (USR.loading) return; USR.loading = true;
+  try { USR.list = await q(sb.rpc('admin_users')); } catch (e) { USR.list = USR.list || []; }
+  USR.loading = false; if (ui.route === 'users') render();
+}
+function initials(u) { return (u.display_name || u.email || '?').trim().charAt(0).toUpperCase(); }
+function seenTxt(u) { return u.last_seen_at ? `เข้าใช้ล่าสุด ${timeAgo(u.last_seen_at)}` : 'ยังไม่เคยเข้าใช้'; }
+
+function viewUsers() {
+  if (!USR.list) { loadUsers(); return `<div class="card"><div class="empty">กำลังโหลดรายชื่อผู้ใช้…</div></div>`; }
+  const L = USR.list;
+  const pend = L.filter(u => u.status === 'pending'), act = L.filter(u => u.status === 'active' && u.role !== 'admin'), sus = L.filter(u => u.status === 'suspended');
+  return `
+  <div class="page-head"><div><h2>ผู้ใช้และสิทธิ์</h2><p>ครู ${thaiNum(L.length - 1)} คน · ใช้งาน ${thaiNum(act.length)} · รออนุมัติ ${thaiNum(pend.length)}</p></div><span class="spacer"></span>
+    <button class="btn" data-act="usr-reload">${ic('refresh')}รีเฟรช</button>
+    <button class="btn primary" data-act="usr-howto">${ic('plus')}เพิ่มครู</button></div>
+  <div class="role-grid">
+    <div class="card role-card admin"><div class="rc-ic">👑</div><div><b>ผู้ดูแลระบบ (คุณ)</b><small>จัดการรายชื่อนักเรียน ห้องเรียน ภาคเรียน อนุมัติครู และกำหนดสิทธิ์</small></div></div>
+    <div class="card role-card"><div class="rc-ic">🧑‍🏫</div><div><b>ครูผู้ใช้</b><small>ใช้รายชื่อนักเรียนชุดเดียวกันแบบดูอย่างเดียว ไม่เห็นเลขประจำตัวนักเรียน ทำได้เฉพาะเมนูที่คุณเปิดให้ ข้อมูลวิชา งาน คะแนน ข้อสอบ แยกเป็นของแต่ละคน</small></div></div>
+  </div>
+  ${pend.length ? `<h3 class="sec-h">⏳ รออนุมัติ <span class="chip warn">${thaiNum(pend.length)}</span></h3><div class="user-list">${pend.map(userCard).join('')}</div>` : ''}
+  <h3 class="sec-h">ครูที่ใช้งานอยู่</h3>
+  <div class="user-list">${L.filter(u => u.role === 'admin').map(userCard).join('')}${act.map(userCard).join('') || ''}</div>
+  ${!act.length && !pend.length ? `<div class="card"><div class="empty">${ic('users')}<b>ยังไม่มีครูท่านอื่น</b>กด "เพิ่มครู" เพื่อดูวิธีสร้างบัญชีให้ครูท่านอื่น</div></div>` : ''}
+  ${sus.length ? `<h3 class="sec-h">ระงับการใช้งาน</h3><div class="user-list">${sus.map(userCard).join('')}</div>` : ''}`;
+}
+
+function userCard(u) {
+  const me = u.user_id === session?.user?.id, adm = u.role === 'admin';
+  const [st, cls] = STATUS_TXT[u.status] || ['—', ''];
+  const perms = u.perms || {};
+  return `<div class="card user-card ${u.status}">
+    <div class="uc-h">
+      <div class="avatar ${adm ? 'gold' : ''}">${esc(initials(u))}</div>
+      <div class="uc-id"><b>${esc(u.display_name || u.email)}${me ? ' <span class="muted small">(คุณ)</span>' : ''}</b><small>${esc(u.email)} · ${seenTxt(u)}</small></div>
+      <span class="spacer"></span>
+      ${adm ? '<span class="chip pri">👑 ผู้ดูแลระบบ</span>' : `<span class="chip ${cls}">${st}</span>`}
+    </div>
+    ${adm ? `<div class="uc-note small muted">มีสิทธิ์ทุกเมนู และเป็นคนเดียวที่เพิ่ม/ลบรายชื่อนักเรียนได้</div>` : `
+    <div class="perm-grid">${PERMS.map(p => `<label class="perm ${perms[p.k] ? 'on' : ''} ${u.status === 'suspended' ? 'dis' : ''}">
+      <input type="checkbox" data-chg="usr-perm" data-u="${u.user_id}" data-k="${p.k}" ${perms[p.k] ? 'checked' : ''} ${u.status === 'suspended' ? 'disabled' : ''}>
+      <span class="perm-ic">${ic(p.icon)}</span><span><b>${p.label}</b><small>${p.desc}</small></span><span class="sw" aria-hidden="true"></span></label>`).join('')}
+      <div class="perm fixed"><span class="perm-ic">${ic('users')}</span><span><b>รายชื่อนักเรียน</b><small>ดูได้อย่างเดียว (แก้ไขได้เฉพาะผู้ดูแล)</small></span>${ic('lock')}</div>
+    </div>
+    <div class="uc-f">
+      <span class="small muted">วิชา ${thaiNum(u.n_subjects)} · งาน ${thaiNum(u.n_assignments)} · ข้อสอบ ${thaiNum(u.n_exams)}</span>
+      <span class="spacer"></span>
+      ${u.status === 'pending' ? `<select class="input sm-sel" data-chg="usr-preset" data-u="${u.user_id}" aria-label="ชุดสิทธิ์"><option value="">ใช้ชุดสิทธิ์…</option>${PERM_PRESETS.map(p => `<option value="${p.id}">${p.label}</option>`).join('')}</select>
+        <button class="btn sm ghost" data-act="usr-status" data-u="${u.user_id}" data-s="suspended" style="color:var(--danger)">ปฏิเสธ</button>
+        <button class="btn sm primary" data-act="usr-status" data-u="${u.user_id}" data-s="active">✓ อนุมัติ</button>`
+      : u.status === 'active' ? `<select class="input sm-sel" data-chg="usr-preset" data-u="${u.user_id}" aria-label="ชุดสิทธิ์"><option value="">ใช้ชุดสิทธิ์…</option>${PERM_PRESETS.map(p => `<option value="${p.id}">${p.label}</option>`).join('')}</select>
+        <button class="btn sm ghost" data-act="usr-status" data-u="${u.user_id}" data-s="suspended" style="color:var(--danger)">${ic('lock')}ระงับ</button>`
+      : `<button class="btn sm" data-act="usr-status" data-u="${u.user_id}" data-s="active">เปิดใช้งานอีกครั้ง</button>`}
+    </div>`}
+  </div>`;
+}
+
+async function saveUser(uid, patch) {
+  const u = USR.list.find(x => x.user_id === uid); if (!u) return;
+  const next = { status: patch.status ?? u.status, perms: { ...u.perms, ...(patch.perms || {}) } };
+  const r = await q(sb.rpc('admin_set_user', { p_user: uid, p_status: next.status, p_perms: next.perms, p_name: null }));
+  Object.assign(u, { status: r.status, perms: r.perms }); render();
+}
+
+function howtoModal() {
+  openModal({
+    title: 'เพิ่มครูท่านอื่นเข้าระบบ', wide: true,
+    body: `<ol class="howto">
+      <li><b>เปิด Supabase</b> → โปรเจกต์ของห้องเรียนครูปลื้ม → เมนู <b>Authentication</b> → <b>Users</b></li>
+      <li>กด <b>Add user</b> → <b>Create new user</b> ใส่อีเมลและรหัสผ่านของครูท่านนั้น <b>ติ๊ก Auto Confirm User</b> แล้วกด Create</li>
+      <li>กลับมาหน้านี้แล้วกด <b>รีเฟรช</b> ครูคนใหม่จะขึ้นใน "รออนุมัติ"</li>
+      <li>เลือกเมนูที่อนุญาต แล้วกด <b>✓ อนุมัติ</b> จากนั้นแจ้งอีเมล รหัสผ่าน และลิงก์เว็บให้ครูท่านนั้น</li>
+    </ol>
+    <div class="fmt"><b>ครูที่ได้รับอนุมัติจะ:</b> เห็นห้องและรายชื่อนักเรียนชุดเดียวกับคุณ (ไม่เห็นเลขประจำตัว และแก้ไขไม่ได้) สร้างวิชา งาน ข้อสอบ ของตัวเองได้ตามสิทธิ์ ข้อมูลของแต่ละคนไม่ปนกัน
+    นักเรียนใช้ลิงก์เดียวกัน เห็นงานและคะแนนจากครูทุกคนที่สอนห้องของตัวเอง</div>`,
+    actions: [{ label: 'เข้าใจแล้ว', kind: 'primary', onClick: () => { closeModal(); loadUsers(); } }],
+  });
+}
+
+function viewPending() {
+  const st = store.me?.status;
+  const [em, title, msg] = store.setupMissing ? ['🛠️', 'โหลดสิทธิ์ผู้ใช้ไม่สำเร็จ', 'ตรวจสอบอินเทอร์เน็ต หรือถ้าเพิ่งอัปเดตเว็บ ผู้ดูแลต้องรันไฟล์ roles.sql ใน Supabase ก่อน']
+    : st === 'suspended' ? ['🔒', 'บัญชีนี้ถูกระงับการใช้งาน', 'ติดต่อผู้ดูแลระบบ (ครูปลื้ม) หากต้องการใช้งานอีกครั้ง']
+    : ['⏳', 'รอผู้ดูแลระบบอนุมัติ', 'บัญชีของคุณสร้างเรียบร้อยแล้ว แจ้งครูปลื้มให้อนุมัติและเปิดเมนูที่ต้องใช้ จากนั้นกด "ตรวจสอบอีกครั้ง"'];
+  return `<div class="stu" style="justify-content:center"><div class="card pending-card">
+    <div style="font-size:52px">${em}</div><h2>${title}</h2><p class="muted">${msg}</p>
+    <div class="small muted" style="margin-bottom:14px">${esc(store.teacher.email)}</div>
+    <div class="row" style="justify-content:center;gap:8px"><button class="btn" data-act="logout">${ic('logout')}ออกจากระบบ</button><button class="btn primary" data-act="me-recheck">${ic('refresh')}ตรวจสอบอีกครั้ง</button></div>
+  </div></div>`;
+}
+
+Object.assign(ACT, {
+  'usr-reload': () => { USR.list = null; render(); },
+  'usr-howto': howtoModal,
+  'usr-status': el => {
+    const uid = el.dataset.u, s = el.dataset.s, u = USR.list.find(x => x.user_id === uid);
+    const name = esc(u.display_name || u.email);
+    if (s === 'active') return saveUser(uid, { status: 'active' }).then(() => toast(`${u.status === 'active' ? 'อนุมัติ' : 'เปิดใช้งาน'} ${u.display_name || u.email} แล้ว`));
+    confirmBox(u.status === 'pending' ? 'ปฏิเสธคำขอ' : 'ระงับการใช้งาน', `${u.status === 'pending' ? 'ปฏิเสธ' : 'ระงับ'} <b>${name}</b>? ครูท่านนี้จะเข้าใช้ระบบไม่ได้ ข้อมูลที่เคยสร้างไว้ยังอยู่ เปิดใช้งานอีกครั้งได้ภายหลัง`, 'ยืนยัน',
+      () => saveUser(uid, { status: 'suspended' }).then(() => toast('ระงับแล้ว')));
+  },
+  'me-recheck': async () => { booting = true; render(); try { await loadAll(); } catch (e) {} booting = false; route(); },
+});
+Object.assign(CHG, {
+  'usr-perm': async el => { const uid = el.dataset.u, k = el.dataset.k;
+    try { await saveUser(uid, { perms: { [k]: el.checked } }); toast('บันทึกสิทธิ์แล้ว'); } catch (e) { el.checked = !el.checked; } },
+  'usr-preset': async el => { const p = PERM_PRESETS.find(x => x.id === el.value); if (!p) return;
+    try { await saveUser(el.dataset.u, { perms: p.perms }); toast(`ใช้ชุดสิทธิ์ "${p.label}" แล้ว`); } catch (e) { el.value = ''; } },
+});
+I.refresh = '<path d="M20 11a8 8 0 0 0-14.5-4.5L4 8"/><path d="M4 3v5h5"/><path d="M4 13a8 8 0 0 0 14.5 4.5L20 16"/><path d="M20 21v-5h-5"/>';
 
 </script>
 </body>
