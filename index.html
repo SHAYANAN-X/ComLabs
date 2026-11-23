@@ -4,11 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>ห้องเรียนครูปลื้ม</title>
-<meta name="theme-color" content="#172033">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23172033'/%3E%3Ctext x='32' y='44' font-size='34' text-anchor='middle' fill='%23FFE14D' font-family='sans-serif' font-weight='700'%3E%E0%B8%9B%3C/text%3E%3C/svg%3E">
+<meta name="theme-color" content="#EEF3FB">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%232f7cf6'/%3E%3Ctext x='32' y='44' font-size='34' text-anchor='middle' fill='%23ffffff' font-family='sans-serif' font-weight='700'%3E%E0%B8%9B%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=IBM+Plex+Sans+Thai+Looped:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Anuphan:wght@400;500;600;700&family=Noto+Sans+Thai:wght@400;500;600;700&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
@@ -947,206 +947,6 @@ table.gb{border-collapse:separate;border-spacing:0;font-size:14px;min-width:100%
 .uc-msg{margin-top:10px;padding:8px 12px;border-radius:12px;background:var(--surface-2);font-size:13.5px}
 
 /* =====================================================================
-   ห้องเรียนครูปลื้ม · Pro — "สมุดตรวจงานของครู"
-   กระดาษโทนเย็น · หมึกน้ำเงิน · หมึกแดงสำหรับคะแนน · ปากกาเน้นข้อความสีเหลือง
-   (โหลดหลังสุด ทับธีมเดิมทั้งหมด)
-   ===================================================================== */
-:root{
-  --paper:#F3F5F8;--bg:#F3F5F8;--surface:#FFFFFF;--surface-2:#F6F8FB;--ink:#172033;--muted:#5D6A80;--line:#DEE3EB;--line-2:#C9D1DD;
-  --primary:#2B4ACB;--primary-2:#4F6FE8;--primary-ink:#fff;--primary-soft:#E7ECFC;
-  --redpen:#D3263B;--redpen-soft:#FDE8EB;
-  --hl:#FFE14D;--hl-soft:#FFF7CC;
-  --accent:#B7791F;--accent-soft:#FFF3D6;--sun:#FFE14D;
-  --mint:#138A5B;--mint-soft:#E2F4EC;--sky:#2B6FD6;--sky-soft:#E4EFFC;--pink-soft:#FDE8EB;
-  --danger:#B42318;--danger-soft:#FDECEA;--ok:#138A5B;--ok-soft:#E2F4EC;
-  --side:#172033;--side-ink:#E8EDF7;--side-muted:#8F9BB3;--side-hover:rgba(255,255,255,.07);--side-active:#FFE14D;
-  --shadow:0 1px 2px rgba(23,32,51,.05);
-  --shadow-pop:0 12px 32px -12px rgba(23,32,51,.28);
-  --r:14px;--r-sm:10px;
-  --f-head:'Chakra Petch','IBM Plex Sans Thai Looped',system-ui,sans-serif;
-  --f-body:'IBM Plex Sans Thai Looped','IBM Plex Sans Thai',system-ui,sans-serif;
-  --grad:var(--primary);
-  /* ปิดวัสดุกระจกเดิม — เหลือกระดาษเรียบ */
-  --glass:var(--surface);--glass-strong:var(--surface);--glass-line:var(--line);--glass-edge:var(--line);
-  --glass-hi:0 0 0 transparent;--glass-shadow:var(--shadow);--blur:none;
-  /* กระจกจริง ใช้เฉพาะแถบบน/แถบล่าง */
-  --bar:rgba(243,245,248,.78);--bar-line:rgba(23,32,51,.08);
-}
-[data-theme=dark]{
-  --paper:#0E1420;--bg:#0E1420;--surface:#151D2C;--surface-2:#1A2335;--ink:#E6EBF4;--muted:#93A0B8;--line:#263045;--line-2:#34405A;
-  --primary:#7E97FF;--primary-2:#9DB0FF;--primary-ink:#0E1420;--primary-soft:#1D2849;
-  --redpen:#FF6B7D;--redpen-soft:#3A1C24;--hl:#F5D33F;--hl-soft:#3A3315;
-  --accent:#F0B955;--accent-soft:#3A2F1A;--mint-soft:#15332A;--sky-soft:#162A45;--pink-soft:#3A1C24;
-  --danger:#FF7A6B;--danger-soft:#3B1E1B;--ok:#4CC38A;--ok-soft:#15332A;
-  --side:#0A0F19;--side-ink:#E6EBF4;--side-muted:#7D8AA3;
-  --shadow:0 1px 2px rgba(0,0,0,.35);--shadow-pop:0 16px 36px -12px rgba(0,0,0,.7);
-  --glass:var(--surface);--glass-strong:var(--surface);--glass-line:var(--line);--glass-edge:var(--line);
-  --bar:rgba(14,20,32,.76);--bar-line:rgba(255,255,255,.07);
-}
-
-/* ---------- พื้นฐาน ---------- */
-body,[data-theme=dark] body{background:var(--paper);color:var(--ink);font:15px/1.65 var(--f-body)}
-h1,h2,h3,h4{font-family:var(--f-head);font-weight:600;letter-spacing:0;line-height:1.3}
-a{color:var(--primary)}
-:focus-visible{outline:2px solid var(--primary);outline-offset:2px}
-.card,.top,.side,.modal,.counter,.tile,.fmt,.sheet{-webkit-backdrop-filter:none;backdrop-filter:none}
-.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow)}
-.card-h{border-bottom:1px solid var(--line)}
-.card-h h3{font:600 16px var(--f-head)}
-.fmt{background:var(--surface-2);border:1px solid var(--line);border-radius:var(--r-sm);box-shadow:none}
-
-/* ---------- เมนูข้าง: แถบหมึกน้ำเงินเข้ม ---------- */
-.shell{grid-template-columns:244px 1fr}
-.side{position:sticky;top:0;margin:0;height:100vh;border-radius:0;border:0;background:var(--side);color:var(--side-ink);padding:20px 14px;box-shadow:none}
-.side .brand{padding:2px 8px 22px}
-.side .brand b{font:600 17px var(--f-head);color:#fff}
-.side .brand small,.side .nav-group,.side .side-foot{color:var(--side-muted)}
-.brand-mark{width:38px;height:38px;border-radius:10px;background:var(--hl);color:#172033;transform:none;font:700 20px var(--f-head);box-shadow:none}
-.nav-group{font-size:12px;letter-spacing:0;padding:16px 10px 6px}
-.nav-item,.nav-item:hover{border-radius:8px;padding:8px 10px;color:var(--side-ink);font-weight:500;box-shadow:none}
-.nav-item:hover,[data-theme=dark] .nav-item:hover{background:rgba(255,255,255,.06)}
-.nav-item svg{opacity:.7}
-.nav-item.active,[data-theme=dark] .nav-item.active{background:rgba(255,255,255,.09);color:#fff;box-shadow:inset 3px 0 0 var(--hl);font-weight:600}
-.nav-item.active svg,[data-theme=dark] .nav-item.active svg{color:var(--hl);opacity:1}
-.nav-badge{background:var(--hl);color:#172033}
-.side-foot{border-top:1px solid rgba(255,255,255,.08)}
-
-/* ---------- แถบบน: กระจกบาง ---------- */
-.top{position:sticky;top:0;margin:0;border-radius:0;border:0;border-bottom:1px solid var(--bar-line);background:var(--bar);
-  -webkit-backdrop-filter:saturate(180%) blur(18px);backdrop-filter:saturate(180%) blur(18px);padding:12px 28px;box-shadow:none;z-index:6}
-.top h1{font:600 17px var(--f-head)}
-.content{padding:28px 32px 48px;max-width:1240px}
-.credit{color:var(--muted);font-size:12.5px}
-
-/* ---------- ปุ่ม ---------- */
-.btn{border-radius:10px;padding:8px 14px;background:var(--surface);border:1px solid var(--line-2);color:var(--ink);font-weight:500;
-  box-shadow:0 1px 0 rgba(23,32,51,.04);-webkit-backdrop-filter:none;backdrop-filter:none;transition:background .15s,border-color .15s,transform .1s;overflow:visible}
-.btn::before,.btn.primary::before,.btn.line::before,[data-theme=dark] .btn::before{display:none}
-.btn:hover{background:var(--surface-2);border-color:var(--muted);transform:none}
-.btn:active{transform:translateY(1px)}
-.btn.sm{padding:5px 11px;font-size:14px}
-.btn.icon{width:36px;height:36px;padding:0;justify-content:center}
-.btn.ghost{background:transparent;border-color:transparent;box-shadow:none}
-.btn.ghost:hover{background:color-mix(in srgb,var(--ink) 6%,transparent);border-color:transparent;box-shadow:none}
-.btn.primary,.btn.primary:hover{background:var(--primary);border:1px solid var(--primary);color:var(--primary-ink);box-shadow:0 1px 0 rgba(23,32,51,.1);filter:none}
-.btn.primary:hover{background:color-mix(in srgb,var(--primary) 88%,#000)}
-.btn.danger{color:var(--danger)}
-.btn.danger.solid,.btn.danger.solid:hover{background:var(--danger);border-color:var(--danger);color:#fff;box-shadow:none}
-.btn.line,.btn.line:hover{background:#06C755;border-color:#06C755;color:#fff;box-shadow:none}
-.btn:disabled{opacity:.5}
-
-/* ---------- ฟอร์ม ---------- */
-.input,select.input,textarea.input,[data-theme=dark] .input,[data-theme=dark] select.input,[data-theme=dark] textarea.input{
-  background:var(--surface);border:1px solid var(--line-2);border-radius:10px;box-shadow:none}
-.input:focus{border-color:var(--primary);box-shadow:0 0 0 3px color-mix(in srgb,var(--primary) 18%,transparent)}
-.field>span{font-weight:500;font-size:14px}
-.check,.radio,[data-theme=dark] .check,[data-theme=dark] .radio{background:var(--surface);border:1px solid var(--line);border-radius:10px}
-.check:has(input:checked),.radio:has(input:checked){background:var(--primary-soft);border-color:var(--primary)}
-
-/* ---------- ชิป / แท็บ / segmented ---------- */
-.chip,[data-theme=dark] .chip{background:var(--surface-2);border:1px solid var(--line);box-shadow:none;-webkit-backdrop-filter:none;backdrop-filter:none;font-weight:500;font-size:12.5px}
-.chip.ok{background:var(--ok-soft);color:var(--ok);border-color:transparent}
-.chip.warn{background:var(--hl-soft);color:color-mix(in srgb,var(--accent) 80%,var(--ink));border-color:transparent}
-.chip.bad{background:var(--danger-soft);color:var(--danger);border-color:transparent}
-.chip.pri{background:var(--primary-soft);color:var(--primary);border-color:transparent}
-.seg{background:color-mix(in srgb,var(--ink) 6%,transparent);border-radius:10px;padding:3px;box-shadow:none}
-.seg button{border-radius:8px;padding:5px 13px}
-.seg button.on,[data-theme=dark] .seg button.on{background:var(--surface);color:var(--ink);box-shadow:0 1px 3px rgba(23,32,51,.14)}
-.tab{border-radius:10px;background:var(--surface);border:1px solid var(--line);box-shadow:none}
-.tab.on{background:var(--ink);color:var(--paper);border-color:var(--ink);box-shadow:none}
-
-/* ---------- ตาราง: เส้นบรรทัดสมุด ---------- */
-.tbl th,[data-theme=dark] .tbl th{background:var(--surface-2);border-color:var(--line);-webkit-backdrop-filter:none;backdrop-filter:none;font:600 13px var(--f-body);color:var(--muted);letter-spacing:0}
-.tbl td{border-color:var(--line)}
-.tbl tr:hover td,[data-theme=dark] .tbl tr:hover td{background:color-mix(in srgb,var(--primary) 4%,transparent)}
-.tbl .num,.code-mask{font-family:var(--f-head);font-variant-numeric:tabular-nums}
-
-/* ---------- หน้า ---------- */
-.page-head{margin-bottom:22px;align-items:flex-end}
-.page-head h2,.page-head h2:only-child{font:600 26px/1.25 var(--f-head)}
-.page-head p{color:var(--muted);font-size:14.5px}
-.stats{gap:12px}
-.stat{padding:16px 18px;transition:none}
-.stat .lbl{font-size:13.5px}
-.stat .lbl svg,.stats .stat .lbl svg{width:28px;height:28px;padding:6px;border-radius:8px;background:var(--primary-soft);color:var(--primary);box-shadow:none}
-.stat .val{font:600 32px/1.15 var(--f-head);letter-spacing:-.01em}
-.empty b{font:600 16px var(--f-head)}
-
-/* ห้อง / ตัวเลือก */
-.room-chip{border-radius:10px;background:var(--surface);border:1px solid var(--line);box-shadow:none}
-.room-chip:hover{border-color:var(--primary);transform:none}
-.room-chip.on{background:var(--primary);border-color:var(--primary);color:#fff;box-shadow:none}
-.room-chip b{font-family:var(--f-head)}
-.cls-item{border-radius:10px}
-.cls-item.active{background:var(--primary-soft);box-shadow:inset 3px 0 0 var(--primary)}
-.bulk{background:var(--hl-soft);border-radius:10px}
-
-/* ---------- หน้าต่าง ---------- */
-.modal-bg{background:rgba(14,20,32,.42);-webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px)}
-.modal,[data-theme=dark] .modal{background:var(--surface);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow-pop)}
-.modal-h h3{font:600 19px var(--f-head)}
-.modal-f{border-top:1px solid var(--line)}
-.toast{background:var(--ink);color:var(--paper);border:0;border-radius:10px;padding:10px 16px;-webkit-backdrop-filter:none;backdrop-filter:none;box-shadow:var(--shadow-pop)}
-.toast.err{background:var(--danger);color:#fff}
-
-/* ---------- ลายเซ็นของธีม: คะแนนหมึกแดง ---------- */
-.redpen,.gb-tot b,.score-card .big,.exm-score .big{font-family:var(--f-head);color:var(--redpen)}
-.exm-score .big{position:relative;display:inline-block;padding:6px 22px}
-.exm-score .big::after{content:'';position:absolute;inset:-4px -8px;border:2.5px solid var(--redpen);border-radius:52% 48% 55% 45%/58% 46% 54% 42%;transform:rotate(-4deg);opacity:.85;pointer-events:none}
-.grade{font-family:var(--f-head)}
-
-/* ---------- หน้าเข้าสู่ระบบ ---------- */
-.auth-art{background:var(--side);background-image:linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);background-size:28px 28px}
-.auth-art .deco{display:none}
-.auth-art h1{font:600 44px/1.2 var(--f-head);color:#fff;letter-spacing:-.01em}
-.auth-art .hl{background:none;color:inherit;padding:0;transform:none;border-radius:0;display:inline;box-shadow:none}
-.auth-art p{color:var(--side-muted)}
-.auth-feat div{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:10px;-webkit-backdrop-filter:none;backdrop-filter:none}
-.auth-feat b{color:#fff;font-family:var(--f-head)}
-.auth-form{background:var(--paper)}
-.stu-cta{background:var(--surface);border:1px solid var(--line);border-radius:14px;color:var(--ink);box-shadow:var(--shadow)}
-.stu-cta:hover{transform:none;border-color:var(--primary)}
-.stu-cta b{font-family:var(--f-head);font-weight:600}
-.signup-info{background:var(--hl-soft)}
-.linkbtn,[data-theme=dark] .linkbtn{color:var(--primary)}
-
-/* ---------- ฝั่งนักเรียน ---------- */
-.stu{background:var(--paper)}
-.stu-banner{background:var(--side);border-radius:16px;box-shadow:none}
-.stu-banner::after{background:none;border:28px solid rgba(255,225,77,.12);width:200px;height:200px}
-.stu-banner h2{font:600 24px var(--f-head)}
-.stu-banner .ava{background:var(--hl);color:#172033;transform:none;border-radius:12px}
-.stu-hi{background:var(--side);border-radius:16px}
-.counter{border-radius:12px;box-shadow:none;background:var(--surface)}
-.counter.todo{background:var(--surface);box-shadow:inset 3px 0 0 var(--redpen)}
-.counter.wait{background:var(--surface);box-shadow:inset 3px 0 0 var(--hl)}
-.counter.done{background:var(--surface);box-shadow:inset 3px 0 0 var(--ok)}
-.counter b{font:600 26px/1 var(--f-head)}
-.tile{border-radius:12px;border:1px solid var(--line);box-shadow:none}
-
-/* ---------- ผู้ใช้และสิทธิ์ ---------- */
-.role-card.admin{background:var(--surface);box-shadow:inset 4px 0 0 var(--hl)}
-.avatar{background:var(--primary);border-radius:10px;box-shadow:none}
-.avatar.gold{background:var(--hl);color:#172033}
-.perm,.perm.on{background:var(--surface);border-radius:10px}
-.perm.on{border-color:var(--primary);background:var(--primary-soft)}
-.perm.on .perm-ic{background:var(--primary);color:#fff}
-.perm.on .sw{background:var(--ok)}
-.user-card.pending{border-color:color-mix(in srgb,var(--hl) 80%,var(--accent))}
-
-/* แสดงผลแบบลดการเคลื่อนไหว */
-@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
-.tbl input[data-chg=quick-score]{font:600 17px var(--f-head);color:var(--redpen);text-align:center}
-.tbl input[data-chg=quick-score]:placeholder-shown{color:var(--muted)}
-[data-theme=dark] .side,.side{background:var(--side)}
-@media (max-width:820px){
-  .shell{grid-template-columns:1fr}
-  .side{position:fixed;top:0;left:0;bottom:0;height:auto;width:264px;transform:translateX(-105%);z-index:40;transition:transform .2s}
-  .side.open{transform:none}
-  .content{padding:20px 18px 40px}
-}
-
-/* =====================================================================
    เวอร์ชันมือถือ (≤ 760px) — ใช้คู่กับ mobile.js
    ===================================================================== */
 .m-shell{min-height:100vh;min-height:100dvh}
@@ -1245,6 +1045,328 @@ a{color:var(--primary)}
 [data-device=mobile] .auth-feat{display:none}
 [data-device=mobile] .auth-form{padding:20px 16px 40px;align-items:start}
 
+/* =====================================================================
+   ห้องเรียนครูปลื้ม · Liquid Glass (แนว iOS 26)
+   หลัก: ปุ่ม/เมนู = กระจกเหลวลอยบนวอลเปเปอร์สีพาสเทล · เนื้อหา = การ์ดขาวทึบอ่านง่าย
+   ภาพประกอบ: art.js  · โหลดเป็นไฟล์สุดท้าย
+   ===================================================================== */
+:root{
+  --bg:#EEF3FB;--surface:#FFFFFF;--surface-2:#F5F7FB;--ink:#111827;--muted:#5B6478;--line:#E6EAF2;--line-2:#D3DAE6;
+  --fill:rgba(118,128,150,.10);
+  --primary:#0A7CFF;--primary-2:#5AA9FF;--primary-ink:#fff;--primary-soft:#E3F0FF;
+  --indigo:#5E5CE6;--teal:#30B0C7;--green:#34C759;--orange:#FF9F0A;--yellow:#FFD60A;
+  --accent:#C26A00;--accent-soft:#FFF1DB;--sun:#FFD60A;--hl:#FFD60A;--hl-soft:#FFF6CC;
+  --mint:#1F9D55;--mint-soft:#E3F7EA;--sky:#0A7CFF;--sky-soft:#E3F0FF;--pink-soft:#FFE9E3;
+  --danger:#E5383B;--danger-soft:#FDE9E9;--ok:#1F9D55;--ok-soft:#E3F7EA;--redpen:#E5383B;--redpen-soft:#FDE9E9;
+  --side:transparent;--side-ink:var(--ink);--side-muted:var(--muted);--side-hover:var(--fill);--side-active:var(--primary);
+  --r:22px;--r-sm:14px;
+  --shadow:0 1px 2px rgba(16,24,48,.04),0 10px 30px -14px rgba(16,24,48,.16);
+  --shadow-pop:0 24px 60px -20px rgba(16,24,48,.35);
+  --f-head:'Anuphan','Noto Sans Thai',-apple-system,system-ui,sans-serif;
+  --f-body:'Noto Sans Thai','Anuphan',-apple-system,system-ui,sans-serif;
+  --grad:linear-gradient(135deg,#0A7CFF,#5E5CE6);
+  /* กระจกเหลว */
+  --lg:rgba(255,255,255,.46);--lg-strong:rgba(255,255,255,.72);
+  --lg-blur:blur(16px) saturate(190%);
+  --lg-rim:inset 0 0 0 .5px rgba(255,255,255,.75),inset 1.5px 1.5px 1px -1px rgba(255,255,255,1),inset -1px -1px 1px -.5px rgba(255,255,255,.6),inset 0 0 10px rgba(255,255,255,.35);
+  --lg-edge:0 0 0 .5px rgba(16,24,48,.10);
+  --lg-drop:0 1px 2px rgba(16,24,48,.06),0 8px 22px -8px rgba(16,24,48,.22);
+  --bar:rgba(255,255,255,.55);--bar-line:rgba(255,255,255,.7);
+  /* ปิดชุดกระจกเก่า */
+  --glass:var(--surface);--glass-strong:var(--surface);--glass-line:var(--line);--glass-edge:var(--line);--glass-hi:0 0 0 transparent;--glass-shadow:var(--shadow);--blur:none;
+}
+[data-theme=dark]{
+  --bg:#0B0F17;--surface:#161B25;--surface-2:#1C2230;--ink:#F1F4FA;--muted:#9AA3B6;--line:#252C3A;--line-2:#333B4C;
+  --fill:rgba(160,170,200,.12);
+  --primary:#3D9BFF;--primary-2:#7DBBFF;--primary-ink:#fff;--primary-soft:#12294A;
+  --accent:#FFB340;--accent-soft:#3A2A10;--hl-soft:#3A3210;--mint-soft:#12301F;--sky-soft:#12294A;--pink-soft:#3A1F1A;
+  --danger:#FF6467;--danger-soft:#3A1718;--ok:#4AD07A;--ok-soft:#12301F;--redpen:#FF6467;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 12px 30px -14px rgba(0,0,0,.6);--shadow-pop:0 24px 60px -20px rgba(0,0,0,.8);
+  --lg:rgba(60,68,90,.38);--lg-strong:rgba(60,68,90,.62);
+  --lg-rim:inset 0 0 0 .5px rgba(255,255,255,.16),inset 1.5px 1.5px 1px -1px rgba(255,255,255,.35),inset -1px -1px 1px -.5px rgba(255,255,255,.12),inset 0 0 10px rgba(255,255,255,.05);
+  --lg-edge:0 0 0 .5px rgba(0,0,0,.4);
+  --lg-drop:0 1px 2px rgba(0,0,0,.4),0 10px 24px -8px rgba(0,0,0,.6);
+  --bar:rgba(22,27,37,.55);--bar-line:rgba(255,255,255,.08);
+  --glass:var(--surface);--glass-strong:var(--surface);--glass-line:var(--line);--glass-edge:var(--line);
+}
+
+/* ---------- วอลเปเปอร์ ---------- */
+body,[data-theme=dark] body{color:var(--ink);font:15.5px/1.65 var(--f-body);background-color:var(--bg);background-attachment:fixed;
+  background-image:radial-gradient(48vw 48vw at 4% -6%,#CFE2FF,transparent 62%),radial-gradient(40vw 40vw at 100% 6%,#D6F3EC,transparent 62%),
+  radial-gradient(46vw 46vw at 92% 104%,#FFE5CC,transparent 62%),radial-gradient(40vw 40vw at -4% 100%,#E4DDFF,transparent 62%)}
+[data-theme=dark] body{background-image:radial-gradient(48vw 48vw at 4% -6%,#13284D,transparent 62%),radial-gradient(40vw 40vw at 100% 6%,#0F2E2A,transparent 62%),
+  radial-gradient(46vw 46vw at 92% 104%,#33220F,transparent 62%),radial-gradient(40vw 40vw at -4% 100%,#221A44,transparent 62%)}
+h1,h2,h3,h4{font-family:var(--f-head);font-weight:600;letter-spacing:-.005em;line-height:1.3}
+a{color:var(--primary)}
+:focus-visible{outline:2.5px solid var(--primary);outline-offset:2px}
+::selection{background:color-mix(in srgb,var(--primary) 25%,transparent)}
+
+/* ---------- การ์ดเนื้อหา (ทึบ อ่านง่าย) ---------- */
+.card,[data-theme=dark] .card{background:var(--surface);border:0;border-radius:var(--r);box-shadow:var(--shadow);-webkit-backdrop-filter:none;backdrop-filter:none}
+.card-h{border-bottom:1px solid var(--line);padding:16px 20px}
+.card-h h3{font:600 17px var(--f-head)}
+.fmt,.tile,.counter{-webkit-backdrop-filter:none;backdrop-filter:none}
+.fmt{background:var(--surface-2);border:0;border-radius:16px;box-shadow:none}
+.subj-foot,.toolbar[style*="surface-2"],[data-theme=dark] .subj-foot{background:var(--surface-2)!important}
+
+/* =====================================================================
+   ปุ่มกระจกเหลว
+   ===================================================================== */
+.btn{position:relative;isolation:isolate;overflow:hidden;border:0;border-radius:999px;padding:9px 18px;font:500 15px var(--f-body);color:var(--ink);
+  background:var(--lg);-webkit-backdrop-filter:var(--lg-blur);backdrop-filter:var(--lg-blur);
+  box-shadow:var(--lg-rim),var(--lg-edge),var(--lg-drop);
+  transition:transform .35s cubic-bezier(.2,1.4,.4,1),box-shadow .2s,background .2s,filter .2s}
+.btn::before,[data-theme=dark] .btn::before{display:block;content:'';position:absolute;inset:0;border-radius:inherit;pointer-events:none;z-index:-1;opacity:.9;
+  background:radial-gradient(90px circle at var(--mx,30%) var(--my,-10%),rgba(255,255,255,.75),rgba(255,255,255,0) 70%),
+  linear-gradient(180deg,rgba(255,255,255,.35),rgba(255,255,255,0) 55%)}
+[data-theme=dark] .btn::before{background:radial-gradient(90px circle at var(--mx,30%) var(--my,-10%),rgba(255,255,255,.18),rgba(255,255,255,0) 70%),linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,0) 55%)}
+.btn:hover{background:var(--lg-strong);transform:translateY(-1px);border:0}
+.btn:active{transform:scale(.95);filter:brightness(1.06);transition-duration:.12s}
+.btn.sm{padding:6px 14px;font-size:14px}
+.btn.icon{width:40px;height:40px;padding:0;justify-content:center}
+.btn.icon.sm{width:34px;height:34px}
+.btn.ghost{background:transparent;box-shadow:none;-webkit-backdrop-filter:none;backdrop-filter:none}
+.btn.ghost::before{display:none}
+.btn.ghost:hover{background:var(--fill);box-shadow:none}
+/* ปุ่มหลัก: กระจกย้อมสีฟ้า */
+.btn.primary,.btn.primary:hover{color:#fff;background:linear-gradient(180deg,rgba(64,150,255,.96),rgba(10,112,240,.96));
+  box-shadow:inset 0 0 0 .5px rgba(255,255,255,.45),inset 1.5px 1.5px 1px -1px rgba(255,255,255,.9),inset 0 -6px 12px -6px rgba(0,40,120,.35),0 1px 2px rgba(10,80,200,.2),0 10px 24px -10px rgba(10,112,240,.75);filter:none}
+.btn.primary:hover{filter:brightness(1.05) saturate(1.05)}
+.btn.primary::before{background:radial-gradient(90px circle at var(--mx,30%) var(--my,-10%),rgba(255,255,255,.55),rgba(255,255,255,0) 70%),linear-gradient(180deg,rgba(255,255,255,.28),rgba(255,255,255,0) 50%)}
+.btn.danger{color:var(--danger)}
+.btn.danger.solid,.btn.danger.solid:hover{color:#fff;background:linear-gradient(180deg,rgba(255,90,92,.96),rgba(220,40,45,.96));box-shadow:inset 0 0 0 .5px rgba(255,255,255,.4),inset 1.5px 1.5px 1px -1px rgba(255,255,255,.85),0 10px 22px -10px rgba(220,40,45,.75)}
+.btn.line,.btn.line:hover{color:#fff;background:linear-gradient(180deg,rgba(32,214,110,.96),rgba(6,190,80,.96));box-shadow:inset 0 0 0 .5px rgba(255,255,255,.4),inset 1.5px 1.5px 1px -1px rgba(255,255,255,.85),0 10px 22px -10px rgba(6,190,80,.75)}
+.btn:disabled{opacity:.45;transform:none;filter:grayscale(.3)}
+@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){:root{--lg:rgba(255,255,255,.9);--lg-strong:#fff}}
+
+/* ---------- ฟอร์มแบบ iOS ---------- */
+.input,select.input,textarea.input,[data-theme=dark] .input,[data-theme=dark] select.input,[data-theme=dark] textarea.input{
+  background:var(--fill);border:1px solid transparent;border-radius:14px;box-shadow:none;padding:10px 14px}
+.input:focus{background:var(--surface);border-color:var(--primary);box-shadow:0 0 0 4px color-mix(in srgb,var(--primary) 18%,transparent)}
+.field>span{font-weight:500;font-size:14px;color:var(--muted)}
+.check,.radio,[data-theme=dark] .check,[data-theme=dark] .radio{background:var(--fill);border:1px solid transparent;border-radius:14px}
+.check:has(input:checked),.radio:has(input:checked){background:var(--primary-soft);border-color:color-mix(in srgb,var(--primary) 50%,transparent)}
+input[type=checkbox],input[type=radio]{accent-color:var(--primary)}
+
+/* ---------- ชิป / segmented ---------- */
+.chip,[data-theme=dark] .chip{background:var(--fill);border:0;box-shadow:none;-webkit-backdrop-filter:none;backdrop-filter:none;font-weight:500;font-size:12.5px;padding:3px 11px}
+.chip.ok{background:var(--ok-soft);color:var(--ok)}.chip.warn{background:var(--accent-soft);color:var(--accent)}
+.chip.bad{background:var(--danger-soft);color:var(--danger)}.chip.pri{background:var(--primary-soft);color:var(--primary)}
+.seg,[data-theme=dark] .seg{background:var(--fill);border-radius:999px;padding:3px;box-shadow:none}
+.seg button{border-radius:999px;padding:6px 15px;color:var(--muted)}
+.seg button.on,[data-theme=dark] .seg button.on{color:var(--ink);background:var(--lg-strong);-webkit-backdrop-filter:var(--lg-blur);backdrop-filter:var(--lg-blur);box-shadow:var(--lg-rim),var(--lg-edge),0 3px 10px -4px rgba(16,24,48,.3)}
+.tab{border-radius:999px;background:var(--lg);border:0;box-shadow:var(--lg-rim),var(--lg-edge)}
+.tab.on{background:var(--primary);color:#fff;box-shadow:0 8px 18px -8px rgba(10,112,240,.8)}
+
+/* ---------- ตาราง ---------- */
+.tbl th,[data-theme=dark] .tbl th{background:var(--surface-2);border-color:var(--line);-webkit-backdrop-filter:none;backdrop-filter:none;font:600 13px var(--f-body);color:var(--muted)}
+.tbl td{border-color:var(--line)}
+.tbl tr:hover td,[data-theme=dark] .tbl tr:hover td{background:color-mix(in srgb,var(--primary) 4%,transparent)}
+.tbl-wrap{border-radius:0 0 var(--r) var(--r)}
+.tbl input[data-chg=quick-score]{font:700 17px var(--f-head);color:var(--redpen);text-align:center}
+.tbl input[data-chg=quick-score]:placeholder-shown{color:var(--muted)}
+
+/* =====================================================================
+   โครงหน้าจอ PC: เมนูข้างเป็นแผ่นกระจกลอย
+   ===================================================================== */
+.shell{grid-template-columns:272px 1fr}
+.side,[data-theme=dark] .side{position:sticky;top:14px;margin:14px 0 14px 14px;height:calc(100vh - 28px);border-radius:30px;padding:18px 12px;color:var(--ink);border:0;
+  background:var(--bar);-webkit-backdrop-filter:blur(28px) saturate(190%);backdrop-filter:blur(28px) saturate(190%);box-shadow:var(--lg-rim),var(--lg-edge),var(--lg-drop)}
+.side .brand{padding:2px 8px 18px}
+.side .brand b{font:700 17px var(--f-head);color:var(--ink)}
+.side .brand small,.side .nav-group,.side .side-foot{color:var(--muted)}
+.brand-mark{width:40px;height:40px;border-radius:12px;color:#fff;transform:none;font:700 20px var(--f-head);
+  background:linear-gradient(145deg,#4DA3FF,#0A6CF0 60%,#5E5CE6);box-shadow:inset 0 1px 1px rgba(255,255,255,.6),0 6px 14px -6px rgba(10,108,240,.7)}
+.nav-group{font-size:12.5px;padding:14px 12px 6px;letter-spacing:0}
+.nav-item,.nav-item:hover{border-radius:999px;padding:9px 14px;color:var(--ink);font-weight:500;box-shadow:none;transition:background .2s}
+.nav-item:hover,[data-theme=dark] .nav-item:hover{background:var(--fill)}
+.nav-item svg{opacity:.75}
+.nav-item.active,[data-theme=dark] .nav-item.active{background:var(--lg-strong);color:var(--primary);font-weight:600;box-shadow:var(--lg-rim),var(--lg-edge),0 4px 14px -6px rgba(16,24,48,.25)}
+.nav-item.active svg,[data-theme=dark] .nav-item.active svg{color:var(--primary);opacity:1}
+.nav-badge{background:var(--orange);color:#fff}
+.side-foot{border-top:1px solid var(--line)}
+
+/* แถบบน: ไม่มีพื้น ปุ่มกระจกลอยเหนือเนื้อหา */
+.top,[data-theme=dark] .top{position:sticky;top:0;margin:0;border:0;border-radius:0;background:transparent;box-shadow:none;-webkit-backdrop-filter:none;backdrop-filter:none;padding:16px 28px 6px;z-index:8;pointer-events:none}
+.top>*{pointer-events:auto}
+.top h1{font:600 15px var(--f-head);color:var(--muted);opacity:0}
+.top .chip{background:var(--lg);-webkit-backdrop-filter:var(--lg-blur);backdrop-filter:var(--lg-blur);box-shadow:var(--lg-rim),var(--lg-edge);padding:7px 14px;font-size:13.5px}
+.content{padding:8px 32px 48px;max-width:1260px}
+.credit{color:var(--muted);font-size:12.5px}
+
+/* ---------- หัวหน้า: ตัวใหญ่แบบ iOS ---------- */
+.page-head{margin-bottom:22px;align-items:flex-end}
+.page-head h2{font:700 32px/1.2 var(--f-head);letter-spacing:-.01em}
+.page-head p{color:var(--muted);font-size:15px}
+
+/* หน้าแรก: ภาพทักทาย */
+.hero{position:relative;overflow:hidden;min-height:220px;margin-bottom:18px;display:flex;align-items:center;padding:0}
+.hero .art.desk{position:absolute;inset:0;width:100%;height:100%}
+.hero-txt{position:relative;z-index:1;padding:28px 32px;max-width:440px}
+.hero-txt h2{font:700 30px/1.2 var(--f-head);color:#16213A}
+.hero-txt p{margin:6px 0 16px;color:#3B4660;font-size:14.5px}
+[data-theme=dark] .hero-txt h2{color:#fff}[data-theme=dark] .hero-txt p{color:#C9D3EA}
+.hero-acts{display:flex;gap:8px;flex-wrap:wrap}
+.hero::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(255,255,255,.55),rgba(255,255,255,0) 55%);pointer-events:none}
+[data-theme=dark] .hero::after{background:linear-gradient(90deg,rgba(11,15,23,.55),rgba(11,15,23,0) 60%)}
+
+/* สถิติ: ไอคอนสี่เหลี่ยมมนแบบไอคอนแอป */
+.stats{gap:14px}
+.stat{padding:18px 20px;transition:transform .25s}
+.stat:hover{transform:translateY(-2px)}
+.stat .lbl{font-size:14px;color:var(--muted);gap:10px}
+.stat .lbl svg,.stats .stat .lbl svg{width:34px;height:34px;padding:8px;border-radius:10px;color:#fff;box-shadow:inset 0 1px 1px rgba(255,255,255,.5),0 4px 10px -4px rgba(16,24,48,.35);background:linear-gradient(145deg,#4DA3FF,#0A6CF0)}
+.stats .stat:nth-child(2) .lbl svg{background:linear-gradient(145deg,#5EE08A,#1FAF55)}
+.stats .stat:nth-child(3) .lbl svg{background:linear-gradient(145deg,#FFB547,#FF8A00)}
+.stats .stat:nth-child(4) .lbl svg{background:linear-gradient(145deg,#8E8BFF,#5E5CE6)}
+.stat .val{font:700 34px/1.15 var(--f-head);margin-top:10px}
+
+/* ภาพประกอบ */
+.art{display:block}
+.subj-top,[data-theme=dark] .subj-top{height:132px;overflow:hidden}
+.subj-top .art{width:100%;height:100%}
+.subj{transition:transform .25s,box-shadow .25s}
+.subj:hover{transform:translateY(-3px);box-shadow:var(--shadow),0 18px 40px -18px rgba(16,24,48,.3)}
+.subj h3{font:700 19px var(--f-head)}
+.asg-bar,.asg-bar[style]{width:64px;height:64px;flex:none;margin:18px 0 18px 18px;border-radius:18px;overflow:hidden;align-self:flex-start;background:none!important}
+.asg-bar .art{width:100%;height:100%}
+.asg-title{font:600 18px var(--f-head)}
+.empty .art.spot{width:200px;height:auto;margin:0 auto 10px}
+.empty b{font:700 18px var(--f-head);color:var(--ink)}
+.empty{padding:36px 20px}
+
+/* ห้องเรียน */
+.room-chip{border-radius:18px;background:var(--surface);border:0;box-shadow:var(--lg-edge),var(--shadow)}
+.room-chip:hover{transform:translateY(-1px)}
+.room-chip.on{background:linear-gradient(180deg,#3D93FF,#0A6CF0);color:#fff;box-shadow:0 10px 22px -10px rgba(10,108,240,.8)}
+.cls-item{border-radius:14px}
+.cls-item.active{background:var(--primary-soft);box-shadow:none}
+.bulk{background:var(--accent-soft);border-radius:14px}
+.ro-note{background:var(--surface);border:0;border-radius:18px;box-shadow:var(--shadow)}
+
+/* ---------- หน้าต่าง: แผ่นกระจกฝ้า ---------- */
+.modal-bg{background:rgba(10,16,30,.28);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.modal,[data-theme=dark] .modal{background:color-mix(in srgb,var(--surface) 90%,transparent);-webkit-backdrop-filter:blur(30px) saturate(180%);backdrop-filter:blur(30px) saturate(180%);
+  border:0;border-radius:30px;box-shadow:var(--lg-rim),var(--shadow-pop)}
+.modal-h h3{font:700 20px var(--f-head)}
+.modal-f{border-top:1px solid var(--line)}
+.toast,[data-theme=dark] .toast{background:rgba(28,32,44,.78);color:#fff;border:0;border-radius:999px;padding:11px 20px;-webkit-backdrop-filter:blur(20px) saturate(180%);backdrop-filter:blur(20px) saturate(180%);box-shadow:inset 0 0 0 .5px rgba(255,255,255,.18),var(--shadow-pop)}
+.toast.err{background:rgba(220,40,45,.9)}
+
+/* ---------- หน้าเข้าสู่ระบบ ---------- */
+.auth-art,[data-theme=dark] .auth-art{background:linear-gradient(160deg,#DCEBFF,#ECE6FF 55%,#FFEADA);color:var(--ink);padding:44px 48px;gap:22px}
+[data-theme=dark] .auth-art{background:linear-gradient(160deg,#10203F,#1C1838 55%,#2A1D12)}
+.auth-art .lines,.auth-art .deco{display:none}
+.auth-art h1{font:700 46px/1.15 var(--f-head);color:var(--ink);letter-spacing:-.015em}
+.auth-art .hl{background:none;color:inherit;padding:0;transform:none;display:inline;box-shadow:none}
+.auth-art p{color:var(--muted);font-size:16px}
+.auth-scene{position:relative;border-radius:28px;overflow:hidden;box-shadow:var(--lg-rim),0 30px 60px -30px rgba(16,24,48,.5);aspect-ratio:620/200;max-width:560px}
+.auth-scene .art{width:100%;height:100%}
+.auth-feat div{background:var(--lg);-webkit-backdrop-filter:var(--lg-blur);backdrop-filter:var(--lg-blur);border:0;border-radius:18px;box-shadow:var(--lg-rim),var(--lg-edge)}
+.auth-feat b{color:var(--ink);font-family:var(--f-head)}
+.auth-form{background:transparent}
+.auth-card .or span{background:transparent}
+.stu-cta{background:var(--surface);border:0;border-radius:22px;color:var(--ink);box-shadow:var(--shadow)}
+.stu-cta:hover{transform:translateY(-2px)}
+.stu-cta b{font:700 17px var(--f-head)}
+.linkbtn,[data-theme=dark] .linkbtn{color:var(--primary)}
+.signup-info{background:var(--accent-soft);border-radius:14px}
+
+/* ---------- ฝั่งนักเรียน ---------- */
+.stu{background:transparent}
+.stu-login-art{margin:-26px -26px 0;height:150px;overflow:hidden;border-radius:var(--r) var(--r) 0 0}
+.stu-login-art .art{width:100%;height:100%}
+.stu-login{padding-top:0;margin-top:8px;overflow:hidden}
+.stu-hi{position:relative;top:-28px;left:auto;transform:none;margin:0 auto -14px;background:var(--surface);color:inherit;box-shadow:var(--shadow);border-radius:20px}
+.stu-banner,[data-theme=dark] .stu-banner{position:relative;overflow:hidden;background:var(--surface);color:var(--ink);border-radius:26px;box-shadow:var(--shadow);padding:124px 18px 18px}
+.stu-banner::after{display:none}
+.stu-banner>.art{position:absolute;left:0;right:0;top:0;width:100%;height:150px}
+.stu-banner::before{content:'';position:absolute;left:0;right:0;top:0;height:152px;background:linear-gradient(180deg,rgba(255,255,255,0) 55%,var(--surface));z-index:0}
+.stu-banner h2{font:700 24px var(--f-head);color:var(--ink)}
+.stu-banner .pill{background:var(--fill);color:var(--ink)}
+.stu-banner .row{padding-right:0}
+.stu-banner .ava{background:linear-gradient(145deg,#4DA3FF,#0A6CF0);color:#fff;transform:none;border-radius:16px}
+.stu-banner .acts{z-index:2}
+.stu-banner .acts .btn{color:#16213A}
+.stu-banner>.row{position:relative;z-index:1}
+.sa,[data-theme=dark] .sa{border:0;border-radius:22px}
+.sa-ico{position:relative;width:54px;height:54px;border-radius:16px;overflow:visible;background:none!important;font-size:0}
+.sa-ico .art{width:54px;height:54px}
+.sa-st{position:absolute;right:-6px;bottom:-6px;width:24px;height:24px;border-radius:50%;background:var(--surface);display:grid;place-items:center;font:normal 13px/1 system-ui;box-shadow:0 2px 6px rgba(16,24,48,.2)}
+.counter,[data-theme=dark] .counter{border:0;border-radius:20px;box-shadow:var(--shadow);background:var(--surface)}
+.counter.todo,.counter.wait,.counter.done{background:var(--surface)}
+.counter b{font:700 26px/1 var(--f-head)}
+.tile{border:0;border-radius:16px;box-shadow:var(--shadow)}
+.exm-hero{position:relative;overflow:hidden;background:#333!important}
+.exm-hero>.art{position:absolute;inset:0;width:100%;height:100%;z-index:0}
+.exm-hero>*:not(.art){position:relative;z-index:1}
+.exm-score .big{font-family:var(--f-head);color:var(--primary)}
+
+/* ---------- ผู้ใช้และสิทธิ์ ---------- */
+.role-card.admin{background:linear-gradient(135deg,#FFF6D6,#FFFFFF 60%)}
+[data-theme=dark] .role-card.admin{background:linear-gradient(135deg,#3A3210,var(--surface) 60%)}
+.avatar{background:linear-gradient(145deg,#4DA3FF,#0A6CF0);border-radius:14px;box-shadow:inset 0 1px 1px rgba(255,255,255,.5)}
+.avatar.gold{background:linear-gradient(145deg,#FFD66B,#FFAA00);color:#4A3000}
+.perm,.perm.on{background:var(--fill);border:0;border-radius:16px}
+.perm.on{background:var(--primary-soft)}
+.perm.on .perm-ic{background:linear-gradient(145deg,#4DA3FF,#0A6CF0);color:#fff}
+.perm .sw{width:46px;height:28px;background:rgba(120,120,128,.3)}
+.perm .sw::after{width:24px;height:24px;top:2px;left:2px;box-shadow:0 2px 6px rgba(0,0,0,.25)}
+.perm.on .sw{background:var(--green)}.perm.on .sw::after{transform:translateX(18px)}
+.user-card,.user-card.pending{border:0}
+.user-card.pending{box-shadow:var(--shadow),inset 0 0 0 2px color-mix(in srgb,var(--orange) 60%,transparent)}
+.uc-msg{background:var(--fill);border-radius:14px}
+.pending-card .art.spot{width:180px;margin:0 auto 6px}
+
+/* แท็บเล็ต: เมนูข้างเลื่อนออก */
+@media (max-width:820px){
+  .shell{grid-template-columns:1fr}
+  .side,[data-theme=dark] .side{position:fixed;top:12px;left:12px;bottom:12px;height:auto;margin:0;width:270px;transform:translateX(-115%);z-index:40;transition:transform .3s cubic-bezier(.2,.9,.3,1)}
+  .side.open{transform:none}
+  .content{padding:8px 18px 40px}
+  .top h1{opacity:1}
+}
+
+/* =====================================================================
+   มือถือ: แถบแท็บลอยแบบ iOS 26 (หดเมื่อเลื่อนลง)
+   ===================================================================== */
+.m-top{background:transparent;border:0;-webkit-backdrop-filter:none;backdrop-filter:none;padding:calc(10px + env(safe-area-inset-top)) 14px 6px;pointer-events:none}
+.m-top>*{pointer-events:auto}
+.m-top h1{font:700 17px var(--f-head);padding:7px 16px;border-radius:999px;background:var(--lg);-webkit-backdrop-filter:var(--lg-blur);backdrop-filter:var(--lg-blur);box-shadow:var(--lg-rim),var(--lg-edge),var(--lg-drop);opacity:0;transition:opacity .2s}
+.m-shell.scrolled .m-top h1{opacity:1}
+.m-top .brand-mark.sm{box-shadow:var(--lg-drop)}
+.m-shell .content{padding:2px 14px calc(110px + env(safe-area-inset-bottom))}
+.m-tabs,[data-theme=dark] .m-tabs{left:12px;right:12px;bottom:calc(10px + env(safe-area-inset-bottom));padding:6px;border:0;border-radius:34px;
+  background:var(--bar);-webkit-backdrop-filter:blur(24px) saturate(190%);backdrop-filter:blur(24px) saturate(190%);box-shadow:var(--lg-rim),var(--lg-edge),0 12px 30px -10px rgba(16,24,48,.35);
+  transition:transform .35s cubic-bezier(.2,1,.3,1),padding .3s}
+.m-tabs a,.m-tabs button{border-radius:28px;min-height:54px;gap:1px;transition:background .25s,min-height .3s}
+.m-tabs svg{padding:2px;width:24px;height:24px;background:none!important}
+.m-tabs .on{color:var(--primary);background:var(--lg-strong);box-shadow:var(--lg-rim),0 2px 8px -3px rgba(16,24,48,.25)}
+.m-tabs span{transition:opacity .2s,max-height .3s;max-height:20px;overflow:hidden}
+.m-tabs.min{transform:scale(.92) translateY(6px)}
+.m-tabs.min a,.m-tabs.min button{min-height:42px}
+.m-tabs.min span{opacity:0;max-height:0}
+.m-dot{background:var(--orange);border-color:transparent}
+.m-sheet{border-radius:32px 32px 0 0;background:color-mix(in srgb,var(--surface) 88%,transparent);-webkit-backdrop-filter:blur(30px) saturate(180%);backdrop-filter:blur(30px) saturate(180%)}
+.m-grid a{border:0;background:var(--surface);border-radius:20px;box-shadow:var(--shadow)}
+.m-grid a svg{width:40px;height:40px;padding:9px;border-radius:12px;color:#fff;background:linear-gradient(145deg,#4DA3FF,#0A6CF0);box-shadow:inset 0 1px 1px rgba(255,255,255,.5)}
+.m-grid a:nth-child(3n+2) svg{background:linear-gradient(145deg,#8E8BFF,#5E5CE6)}
+.m-grid a:nth-child(3n) svg{background:linear-gradient(145deg,#5BD6E6,#1FA0B8)}
+.m-grid a.on{background:var(--primary-soft)}
+[data-device=mobile] .page-head h2{font-size:30px}
+[data-device=mobile] .hero{min-height:200px;align-items:flex-end}
+[data-device=mobile] .hero .art.desk{height:62%;top:0;bottom:auto}
+[data-device=mobile] .hero::after{background:linear-gradient(180deg,rgba(255,255,255,0) 30%,var(--surface) 62%)}
+[data-device=mobile] .hero-txt{padding:120px 18px 18px;max-width:none}
+[data-device=mobile] .hero-txt h2{font-size:24px;color:var(--ink)}
+[data-device=mobile] .hero-txt p{color:var(--muted)}
+[data-device=mobile] .asg-bar{width:52px;height:52px;margin:14px 0 0 14px;border-radius:15px}
+[data-device=mobile] .auth-art{padding:22px 18px 18px}
+[data-device=mobile] .auth-art h1{font-size:30px}
+[data-device=mobile] .auth-scene{border-radius:22px}
+
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+
 </style>
 </head>
 <body>
@@ -1252,6 +1374,127 @@ a{color:var(--primary)}
 <div id="modal-root"></div>
 <div class="toasts" id="toasts" aria-live="polite"></div>
 <script>
+/* =====================================================================
+   ภาพประกอบ (วาดเองด้วย SVG) — ปกวิชา ภาพหน้าแรก ภาพหน้าว่าง
+   ===================================================================== */
+const ART = (() => {
+  let uid = 0; const id = p => `${p}${++uid}`;
+  const mix = (hex, t, to = '#ffffff') => { // ผสมสี
+    const h = s => s.replace('#', '').padEnd(6, '0'); const a = h(hex), b = h(to);
+    const c = i => Math.round(parseInt(a.substr(i, 2), 16) * (1 - t) + parseInt(b.substr(i, 2), 16) * t).toString(16).padStart(2, '0');
+    return '#' + c(0) + c(2) + c(4);
+  };
+  const safe = c => /^#[0-9a-f]{6}$/i.test(c || '') ? c : '#2f7cf6';
+
+  /* ---------- สัญลักษณ์ประจำวิชา (วาดในกรอบ 100x100, เส้นขาว) ---------- */
+  const MOTIF = {
+    code: `<rect x="14" y="20" width="72" height="48" rx="7"/><path d="M6 76h88l-6 8H12z"/><path d="M40 36l-9 9 9 9M60 36l9 9-9 9M53 33l-6 24"/>`,
+    book: `<path d="M50 28c-10-7-24-8-36-5v52c12-3 26-2 36 5 10-7 24-8 36-5V23c-12-3-26-2-36 5z"/><path d="M50 28v52M24 38c6-1 12 0 17 2M24 50c6-1 12 0 17 2M59 40c5-2 11-3 17-2M59 52c5-2 11-3 17-2"/>`,
+    flask: `<path d="M40 14h20M44 14v22L22 76a8 8 0 0 0 7 12h42a8 8 0 0 0 7-12L56 36V14"/><path d="M31 62h38"/><circle cx="45" cy="72" r="3"/><circle cx="57" cy="78" r="2"/>`,
+    math: `<path d="M18 80L50 22l32 58z"/><path d="M14 30h20M24 20v20M66 26h20M70 40l12 12M82 40L70 52"/><circle cx="50" cy="62" r="8"/>`,
+    globe: `<circle cx="50" cy="50" r="32"/><path d="M18 50h64M50 18c-12 12-12 52 0 64M50 18c12 12 12 52 0 64M24 33h52M24 67h52"/>`,
+    palette: `<path d="M50 16C29 16 14 31 14 50s15 34 33 34c6 0 8-4 6-9-2-6 1-10 7-10h9c10 0 17-7 17-16 0-18-16-33-36-33z"/><circle cx="34" cy="44" r="5"/><circle cx="46" cy="30" r="5"/><circle cx="63" cy="32" r="5"/><circle cx="72" cy="46" r="4"/>`,
+    music: `<path d="M38 70V24l42-8v46"/><circle cx="28" cy="70" r="10"/><circle cx="70" cy="62" r="10"/><path d="M38 36l42-8"/>`,
+    ball: `<circle cx="50" cy="50" r="32"/><path d="M50 30l15 11-6 18H41l-6-18z"/><path d="M50 18v12M65 41l14-6M59 59l9 13M41 59l-9 13M35 41l-14-6"/>`,
+    lang: `<path d="M14 22h50a8 8 0 0 1 8 8v26a8 8 0 0 1-8 8H38l-14 12V64h-2a8 8 0 0 1-8-8z"/><path d="M28 52l8-20 8 20M31 45h10"/><path d="M76 40h10v30h-6v10l-12-10H50"/>`,
+    work: `<path d="M30 16h40v8H30z"/><rect x="20" y="20" width="60" height="68" rx="8"/><path d="M33 44l6 6 10-12M33 66l6 6 10-12M57 46h12M57 68h12"/>`,
+    star: `<path d="M50 14l10 22 24 3-18 17 5 24-21-12-21 12 5-24-18-17 24-3z"/>`,
+  };
+  const KEYS = [
+    [/คอม|วิทยาการคำนวณ|เทคโน|โปรแกรม|coding|web|เว็บ|ดิจิทัล|ai|it\b/i, 'code'],
+    [/คณิต|math|เลข/i, 'math'], [/วิทย|เคมี|ฟิสิกส์|ชีว|sci/i, 'flask'], [/สังคม|ประวัติ|ภูมิ|หน้าที่|พระพุทธ|ศาสนา/i, 'globe'],
+    [/ศิลป|art|วาด|ออกแบบ/i, 'palette'], [/ดนตรี|นาฏ|music/i, 'music'], [/พละ|สุขศึกษา|กีฬา|pe\b/i, 'ball'],
+    [/อังกฤษ|english|จีน|ญี่ปุ่น|เกาหลี|ภาษาต่าง/i, 'lang'], [/ไทย|ภาษา|วรรณ|อ่าน/i, 'book'], [/การงาน|อาชีพ|แนะแนว/i, 'work'],
+  ];
+  const kindOf = name => (KEYS.find(([re]) => re.test(name || '')) || [0, 'star'])[1];
+  const motif = (k, x, y, s, op = 1, sw = 5) => `<g transform="translate(${x} ${y}) scale(${s})" fill="none" stroke="#fff" stroke-width="${sw}" stroke-linecap="round" stroke-linejoin="round" opacity="${op}">${MOTIF[k]}</g>`;
+
+  /* ปกวิชาแบบแบนเนอร์กว้าง */
+  function cover(name, color) {
+    const c = safe(color), k = kindOf(name), g = id('cv');
+    return `<svg class="art cover" viewBox="0 0 320 120" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <defs><linearGradient id="${g}" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="${mix(c, .12)}"/><stop offset="1" stop-color="${mix(c, .38, '#000000')}"/></linearGradient>
+      <radialGradient id="${g}h" cx=".85" cy=".1" r=".7"><stop offset="0" stop-color="#fff" stop-opacity=".45"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient></defs>
+      <rect width="320" height="120" fill="url(#${g})"/><rect width="320" height="120" fill="url(#${g}h)"/>
+      <circle cx="262" cy="98" r="78" fill="#fff" opacity=".10"/><circle cx="300" cy="14" r="34" fill="#fff" opacity=".10"/>
+      <path d="M0 96c60-18 120 10 180-4s100-30 140-14v42H0z" fill="#fff" opacity=".08"/>
+      ${motif(k, 196, 6, 1.06, .95, 4.4)}
+      ${motif('star', 22, 70, .18, .55, 9)}${motif('star', 150, 18, .12, .45, 11)}
+      <circle cx="120" cy="88" r="3" fill="#fff" opacity=".5"/><circle cx="168" cy="96" r="2" fill="#fff" opacity=".5"/>
+    </svg>`;
+  }
+  /* ภาพย่อสี่เหลี่ยม (การ์ดงาน/ข้อสอบ) */
+  function thumb(name, color) {
+    const c = safe(color), k = kindOf(name), g = id('th');
+    return `<svg class="art thumb" viewBox="0 0 100 100" aria-hidden="true"><defs><linearGradient id="${g}" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="${mix(c, .2)}"/><stop offset="1" stop-color="${mix(c, .25, '#000000')}"/></linearGradient></defs>
+      <rect width="100" height="100" rx="24" fill="url(#${g})"/><circle cx="84" cy="10" r="26" fill="#fff" opacity=".14"/>${motif(k, 18, 18, .64, 1, 6.5)}</svg>`;
+  }
+
+  /* ---------- ภาพหน้าแรก: โต๊ะครู ตามช่วงเวลา ---------- */
+  function desk(hour = new Date().getHours(), w = 560) {
+    const t = hour < 11 ? 'am' : hour < 16 ? 'noon' : hour < 19 ? 'pm' : 'night';
+    const sky = { am: ['#FFE3C2', '#BFE0FF'], noon: ['#CDE8FF', '#9FD0FF'], pm: ['#FFD0A8', '#C9B8FF'], night: ['#3B4A8F', '#1C2550'] }[t];
+    const g = id('sk');
+    const sun = t === 'night'
+      ? `<circle cx="470" cy="52" r="20" fill="#FFF4C7"/><circle cx="480" cy="46" r="18" fill="${sky[0]}"/><circle cx="400" cy="30" r="1.6" fill="#fff"/><circle cx="430" cy="70" r="1.2" fill="#fff"/><circle cx="520" cy="80" r="1.4" fill="#fff"/>`
+      : `<circle cx="470" cy="54" r="24" fill="${t === 'pm' ? '#FFB46B' : '#FFD45C'}"/><circle cx="470" cy="54" r="36" fill="#FFD45C" opacity=".22"/>`;
+    return `<svg class="art desk" viewBox="0 0 ${w} 200" preserveAspectRatio="xMaxYMid slice" aria-hidden="true">
+      <defs><linearGradient id="${g}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${sky[1]}"/><stop offset="1" stop-color="${sky[0]}"/></linearGradient></defs>
+      <rect width="${w}" height="200" fill="url(#${g})"/>${sun}
+      <g fill="#fff" opacity="${t === 'night' ? .12 : .75}"><ellipse cx="350" cy="44" rx="34" ry="11"/><ellipse cx="372" cy="36" rx="20" ry="12"/><ellipse cx="190" cy="66" rx="26" ry="8"/></g>
+      <path d="M0 150c90-26 180-6 270-18s200-34 290-10v80H0z" fill="#fff" opacity="${t === 'night' ? .06 : .35}"/>
+      <rect x="250" y="158" width="320" height="10" rx="5" fill="${t === 'night' ? '#55628F' : '#E6B98A'}"/>
+      <rect x="250" y="166" width="320" height="40" fill="${t === 'night' ? '#46527E' : '#D9A877'}"/>
+      <g><rect x="318" y="88" width="104" height="66" rx="8" fill="#2E3650"/><rect x="324" y="94" width="92" height="54" rx="4" fill="${t === 'night' ? '#8FB3FF' : '#E8F2FF'}"/>
+        <rect x="332" y="102" width="40" height="6" rx="3" fill="#2F7CF6"/><rect x="332" y="114" width="64" height="5" rx="2.5" fill="#9DB7E8"/><rect x="332" y="124" width="52" height="5" rx="2.5" fill="#9DB7E8"/><rect x="332" y="134" width="30" height="5" rx="2.5" fill="#34C759"/>
+        <path d="M304 154h132l-8 6H312z" fill="#3B4466"/></g>
+      <g><rect x="452" y="134" width="70" height="10" rx="2" fill="#FF9F0A"/><rect x="456" y="124" width="62" height="10" rx="2" fill="#30B0C7"/><rect x="448" y="144" width="78" height="12" rx="2" fill="#5E5CE6"/></g>
+      <g><path d="M262 120h26l-3 36h-20z" fill="#fff"/><path d="M288 128h6a6 6 0 0 1 0 12h-6" fill="none" stroke="#fff" stroke-width="4"/><path d="M270 110c0-6 6-6 6-12M280 110c0-6 6-6 6-12" stroke="#fff" stroke-width="2.5" fill="none" stroke-linecap="round" opacity=".7"/></g>
+      <g><path d="M535 156h22l-3-22h-16z" fill="#E8875B"/><path d="M546 134c-2-18-14-22-20-22 2 10 8 18 20 22zM546 134c2-20 14-26 22-26-2 12-10 22-22 26zM546 134c0-14 4-24 10-30 2 12-2 24-10 30z" fill="#34C759"/></g>
+    </svg>`;
+  }
+
+  /* ---------- ภาพหน้าว่าง ---------- */
+  const SPOT = {
+    users: `<circle cx="60" cy="52" r="14" fill="#FFD6A5"/><path d="M36 92c2-16 12-24 24-24s22 8 24 24z" fill="#2F7CF6"/>
+      <circle cx="100" cy="46" r="16" fill="#F5C29B"/><path d="M72 92c2-20 14-28 28-28s26 8 28 28z" fill="#5E5CE6"/>
+      <circle cx="140" cy="52" r="14" fill="#FFE0B8"/><path d="M116 92c2-16 12-24 24-24s22 8 24 24z" fill="#30B0C7"/>`,
+    book: `<rect x="44" y="70" width="112" height="16" rx="4" fill="#5E5CE6"/><rect x="52" y="54" width="96" height="16" rx="4" fill="#30B0C7"/><rect x="40" y="38" width="104" height="16" rx="4" fill="#FF9F0A"/>
+      <path d="M132 30l20-8 6 16-20 8z" fill="#FFD45C"/><circle cx="150" cy="22" r="4" fill="#FF6B6B" opacity=".0"/>`,
+    inbox: `<path d="M40 60l18-30h84l18 30v28a6 6 0 0 1-6 6H46a6 6 0 0 1-6-6z" fill="#E8F0FF"/><path d="M40 60h34l6 12h40l6-12h34v28a6 6 0 0 1-6 6H46a6 6 0 0 1-6-6z" fill="#2F7CF6"/>
+      <path d="M96 14l34 12-16 6-4 14-6-12z" fill="#FF9F0A"/>`,
+    quiz: `<rect x="58" y="18" width="84" height="80" rx="10" fill="#fff" stroke="#D5DDEB" stroke-width="2"/><rect x="82" y="12" width="36" height="12" rx="6" fill="#5E5CE6"/>
+      <path d="M72 44l6 6 10-12M72 70l6 6 10-12" fill="none" stroke="#34C759" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><rect x="96" y="42" width="34" height="6" rx="3" fill="#C9D4E8"/><rect x="96" y="68" width="28" height="6" rx="3" fill="#C9D4E8"/>`,
+    check: `<circle cx="100" cy="56" r="34" fill="#34C759"/><path d="M84 56l11 11 21-22" fill="none" stroke="#fff" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M50 30l4 8 8 4-8 4-4 8-4-8-8-4 8-4zM152 70l3 6 6 3-6 3-3 6-3-6-6-3 6-3z" fill="#FFD45C"/>`,
+    party: `<path d="M60 96l26-62 36 36z" fill="#FF9F0A"/><path d="M74 62l24 24M68 78l14 14" stroke="#fff" stroke-width="5"/><circle cx="130" cy="30" r="6" fill="#2F7CF6"/><circle cx="148" cy="56" r="5" fill="#34C759"/><circle cx="112" cy="18" r="4" fill="#5E5CE6"/>
+      <path d="M120 44c8-6 16-2 22-10M100 40c2-10 10-14 10-24" fill="none" stroke="#30B0C7" stroke-width="4" stroke-linecap="round"/>`,
+    wait: `<path d="M72 18h56M72 98h56" stroke="#5E5CE6" stroke-width="8" stroke-linecap="round"/><path d="M78 22c0 22 44 22 44 36s-44 14-44 36h44c0-22-44-22-44-36s44-14 44-36z" fill="#E8F0FF" stroke="#5E5CE6" stroke-width="4"/><path d="M88 86h24l-12-12z" fill="#FF9F0A"/>`,
+    lock: `<rect x="66" y="48" width="68" height="50" rx="12" fill="#5E5CE6"/><path d="M80 48V36a20 20 0 0 1 40 0v12" fill="none" stroke="#5E5CE6" stroke-width="8"/><circle cx="100" cy="72" r="7" fill="#fff"/>`,
+    star: `<path d="M100 18l12 26 28 3-21 20 6 28-25-14-25 14 6-28-21-20 28-3z" fill="#FFD45C"/><circle cx="52" cy="40" r="5" fill="#2F7CF6"/><circle cx="150" cy="86" r="5" fill="#34C759"/>`,
+  };
+  const SPOT_BY_ICON = { users: 'users', book: 'book', inbox: 'inbox', quiz: 'quiz', check: 'check', table: 'quiz', lock: 'lock', upload: 'users' };
+  const SPOT_BY_EMOJI = { '🎉': 'party', '📝': 'quiz', '👆': 'users', '⏳': 'wait', '🔒': 'lock', '🛠️': 'lock', '🧪': 'quiz', '📭': 'inbox', '🌟': 'star' };
+  function spot(kind) {
+    return `<svg class="art spot" viewBox="0 0 200 110" aria-hidden="true"><ellipse cx="100" cy="102" rx="70" ry="6" fill="#1b2a4a" opacity=".07"/>${SPOT[kind] || SPOT.star}</svg>`;
+  }
+  return { cover, thumb, desk, spot, kindOf, SPOT_BY_ICON, SPOT_BY_EMOJI };
+})();
+
+/* แทนไอคอนในหน้าว่างด้วยภาพประกอบ (ทำงานหลังทุกการแสดงผล) */
+function decorateEmpties(root) {
+  root.querySelectorAll('.empty:not([data-art])').forEach(el => {
+    el.dataset.art = '1';
+    const first = el.firstElementChild;
+    if (!first) return;
+    let kind = null;
+    if (first.tagName === 'svg' && first.dataset.i) kind = ART.SPOT_BY_ICON[first.dataset.i] || 'star';
+    else if (first.tagName === 'DIV' && /font-size/.test(first.getAttribute('style') || '')) kind = ART.SPOT_BY_EMOJI[first.textContent.trim()] || 'star';
+    if (!kind) return;
+    first.outerHTML = ART.spot(kind);
+  });
+}
+
 /* ===== ตัวอ่านไฟล์รายชื่อนักเรียน (CSV / Excel) =====
    - อ่าน CSV ได้ทั้ง UTF-8 และภาษาไทยแบบ Windows (TIS-620 / windows-874)
    - หาแถวหัวตารางเอง แยกนักเรียนตาม "ห้อง" จากคอลัมน์ห้อง/ชั้น หรือจากบรรทัดหัวเรื่อง หรือจากชื่อชีต
@@ -1638,13 +1881,13 @@ const I = {
   move:'<path d="M5 12h14M13 6l6 6-6 6"/>',
   chart:'<path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/>',
 };
-const ic = (n, cls = '') => `<svg class="${cls}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">${I[n]}</svg>`;
+const ic = (n, cls = '') => `<svg class="${cls}" data-i="${n}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">${I[n]}</svg>`;
 const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 const $ = (s, el = document) => el.querySelector(s);
 const $$ = (s, el = document) => [...el.querySelectorAll(s)];
 const uid = () => (crypto.randomUUID ? crypto.randomUUID() : 'id' + Date.now().toString(36) + Math.random().toString(36).slice(2));
 const thaiNum = n => Number(n).toLocaleString('th-TH');
-const COLORS = ['#1f6f5c', '#2f6fed', '#7c4dcc', '#d9534f', '#d9952a', '#0f8aa3', '#c2408a', '#5b6b2e'];
+const COLORS = ['#0A7CFF', '#5E5CE6', '#30B0C7', '#34C759', '#FF9F0A', '#FF6B3D', '#AF52DE', '#3F8F6B'];
 const PREFIX_OPTS = ['เด็กชาย', 'เด็กหญิง', 'นาย', 'นางสาว'];
 
 /* ---------- การเชื่อมต่อ Supabase ---------- */
@@ -1894,7 +2137,7 @@ function viewLogin() {
   return `
   <div class="auth">
     <section class="auth-art">
-      <div class="deco" aria-hidden="true"><span>📚</span><span>✏️</span><span>🎨</span><span>🎧</span><span>⭐</span><span>💡</span></div>
+      <div class="auth-scene">${ART.desk(new Date().getHours(), 620)}</div>
       <div class="brand" style="position:relative"><div class="brand-mark">ป</div><div><b>ห้องเรียนครูปลื้ม</b><small>ส่งงาน · ดูคะแนน · ทำข้อสอบ</small></div></div>
       <div style="position:relative"><h1>ส่งงานง่าย<br>ตรวจไว <span class="hl">ได้คะแนนชัวร์</span> ✨</h1><p>รูป คลิป เสียง เอกสาร ส่งจากมือถือได้หมด ครูตรวจเสร็จเห็นคะแนนทันที</p></div>
       <div class="auth-feat">
@@ -1947,7 +2190,7 @@ function viewSubjects() {
   </div>
   ${subs.length ? `<div class="subj-grid">${subs.map(s => {
     const cids = Q.subjectClassIds(s.id); const n = cids.reduce((a, c) => a + Q.students(c).length, 0);
-    return `<article class="card subj"><div class="subj-top" style="background:${esc(s.color)}"></div>
+    return `<article class="card subj"><div class="subj-top">${ART.cover(s.name, s.color)}</div>
       <div class="card-b"><div><div class="subj-code">${esc(s.code || 'ไม่มีรหัสวิชา')}</div><h3>${esc(s.name)}</h3></div>
         <div class="chips">${cids.map(c => `<span class="chip">${esc(db.get('classrooms', c)?.name)}</span>`).join('') || '<span class="muted small">ยังไม่ได้เลือกห้องที่สอน</span>'}</div></div>
       <div class="subj-foot"><span class="small muted">${thaiNum(cids.length)} ห้อง · ${thaiNum(n)} คน</span><span class="spacer"></span>
@@ -2325,7 +2568,7 @@ function viewStudent() {
   return `<div class="stu">
     <div class="row" style="width:min(${w}px,100%);margin-bottom:18px"><div class="brand" style="padding:0"><div class="brand-mark">ป</div><div><b>ห้องเรียนครูปลื้ม</b><small style="color:var(--muted)">โซนนักเรียน ✨</small></div></div><span class="spacer"></span>
       <button class="btn ghost icon" data-act="theme" aria-label="สลับธีม">${ic(theme === 'dark' ? 'sun' : 'moon')}</button></div>
-    ${v ? studentHome(v) : `<div class="card stu-card stu-login"><div class="stu-hi">👋</div><form class="stack" data-form="stu">
+    ${v ? studentHome(v) : `<div class="card stu-card stu-login"><div class="stu-login-art">${ART.desk(new Date().getHours(), 440)}</div><div class="stu-hi">👋</div><form class="stack" data-form="stu">
         <div style="text-align:center"><h2 style="font-size:26px">สวัสดี! มาส่งงานกัน</h2><p class="muted" style="margin:2px 0 0">เลือกห้อง แล้วกรอกเลขที่กับเลขประจำตัวนักเรียน</p></div>
         <label class="field"><span>🏫 ห้อง</span><select class="input big" name="cid" required ${stuState.classes ? '' : 'disabled'}><option value="">${stuState.classes ? 'เลือกห้องของฉัน' : 'กำลังโหลดรายชื่อห้อง…'}</option>${cls.map(c => `<option value="${c.id}">${esc(c.name)}</option>`).join('')}</select></label>
         <div class="grid2"><label class="field"><span>🔢 เลขที่</span><input class="input big" type="number" min="1" name="num" required inputmode="numeric" placeholder="เช่น 7"></label>
@@ -2622,7 +2865,7 @@ function asgCard(a) {
   const st = A.stats(a.id);
   const pct = n => st.total ? (n / st.total * 100).toFixed(1) : 0;
   const late = isPast(a.due_at);
-  return `<article class="card asg"><div class="asg-bar" style="background:${esc(subj?.color || 'var(--primary)')}"></div>
+  return `<article class="card asg"><div class="asg-bar">${ART.thumb(subj?.name, subj?.color)}</div>
     <div class="asg-main">
       <div style="min-width:0">
         <div class="asg-meta"><span>${esc(subj?.name)}</span><span>·</span><span>คะแนนเต็ม ${+a.max_score}</span>${a.is_open ? '' : `<span class="chip">${ic('lock')}ปิดรับแล้ว</span>`}</div>
@@ -3066,7 +3309,7 @@ function studentHome(v) {
   groups.todo.sort(byDue); groups.wait.sort(byDue);
   const sec = (key, title) => groups[key].length ? `<div class="sec-title">${title} <span class="chip">${groups[key].length}</span></div>${groups[key].map(studentAsgCard).join('')}` : '';
   return `<div class="stu-wrap">
-    <div class="stu-banner"><div class="acts"><button class="btn icon sm" data-act="stu-reload" aria-label="โหลดใหม่" title="โหลดใหม่">${ic('refresh')}</button><button class="btn sm" data-act="stu-out">ออก</button></div>
+    <div class="stu-banner">${ART.desk()}<div class="acts"><button class="btn icon sm" data-act="stu-reload" aria-label="โหลดใหม่" title="โหลดใหม่">${ic('refresh')}</button><button class="btn sm" data-act="stu-out">ออก</button></div>
       <div class="row" style="gap:14px;position:relative;z-index:1"><div class="ava">${esc(first[0] || '?')}</div><div style="min-width:0"><h2>สวัสดี ${esc(first)}! 👋</h2>
         <div class="pills"><span class="pill">🏫 ${esc(v.classroom_name)}</span><span class="pill">เลขที่ ${v.number}</span></div></div></div></div>
     <div class="seg stu-tabs">${[['work', '📝 งาน'], ['exam', '🧪 ข้อสอบ'], ['score', '📊 คะแนน']].map(([k, l]) => `<button class="${(stuState.tab || 'work') === k ? 'on' : ''}" data-act="stu-tab" data-t="${k}">${l}</button>`).join('')}</div>
@@ -3097,7 +3340,7 @@ function studentAsgCard(a) {
   const pendingStaged = staged.filter(x => x.state !== 'ok');
   return `<div class="card sa ${open ? 'open' : ''}">
     <button class="sa-h" data-act="stu-toggle" data-id="${a.id}" aria-expanded="${open}">
-      <span class="sa-ico" style="background:${esc(color)}22">${emoji}</span>
+      <span class="sa-ico">${ART.thumb(a.subject_name, color)}<i class="sa-st">${emoji}</i></span>
       <div style="flex:1;min-width:0"><span class="sa-tag" style="background:${esc(color)}1f;color:${esc(color)}">${esc(a.subject_name)}</span>
         <div class="sa-title">${esc(a.title)}</div>
         <div class="sa-sub ${isPast(a.due_at) && !a.status ? 'due-late' : ''}">⏰ ${esc(dueText(a.due_at))}</div></div>
@@ -3668,8 +3911,8 @@ function viewDashboard() {
   const hour = new Date().getHours();
   const hello = hour < 12 ? 'อรุณสวัสดิ์' : hour < 17 ? 'สวัสดีตอนบ่าย' : 'สวัสดีตอนเย็น';
   return `
-  <div class="page-head"><div><h2>${hello} ${esc(store.teacher.name)} ☀️</h2><p>ภาคเรียนที่ ${esc(Q.termLabel(term))} · ${new Date().toLocaleDateString('th-TH', { weekday: 'long', day: 'numeric', month: 'long' })}</p></div><span class="spacer"></span>
-    <a class="btn" href="#assignments">${ic('plus')}สร้างงาน</a></div>
+  <section class="hero card">${ART.desk(hour)}<div class="hero-txt"><h2>${hello}<br>${esc(store.teacher.name)}</h2><p>ภาคเรียนที่ ${esc(Q.termLabel(term))} · ${new Date().toLocaleDateString('th-TH', { weekday: 'long', day: 'numeric', month: 'long' })}</p>
+    <div class="hero-acts">${ME.can('assignments') ? `<a class="btn primary" href="#assignments">${ic('plus')}สร้างงาน</a>` : ''}${pendingCount() && ME.can('assignments') ? `<a class="btn" href="#assignments">${ic('check')}รอตรวจ ${thaiNum(pendingCount())} งาน</a>` : ''}</div></div></section>
   <div class="stats">
     <div class="card stat"><div class="lbl">${ic('book')}วิชาที่สอน</div><div class="val">${thaiNum(subs.length)}</div><div class="sub">${thaiNum(nStu)} ห้อง · ${thaiNum(allAsgs.length)} งาน</div></div>
     <div class="card stat"><div class="lbl">${ic('chart')}ส่งงานแล้ว</div><div class="val">${overallPct == null ? '–' : overallPct.toFixed(0) + '%'}</div><div class="sub">${thaiNum(total.done)} จาก ${thaiNum(total.slots)} ชิ้นที่ต้องส่ง</div></div>
@@ -3813,7 +4056,7 @@ function examCard(e) {
   const live = new Set(EX.attempts(e.id).filter(a => !a.submitted_at && (!a.deadline || new Date(a.deadline) > new Date())).map(a => a.student_id)).size;
   const nq = EX.questions(e.id).length, probs = EX.questions(e.id).filter(q => EX.problems(q)).length;
   const open = e.is_open && (!e.opens_at || new Date(e.opens_at) <= new Date()) && (!e.closes_at || new Date(e.closes_at) > new Date());
-  return `<article class="card asg"><div class="asg-bar" style="background:${esc(subj?.color || 'var(--primary)')}"></div>
+  return `<article class="card asg"><div class="asg-bar">${ART.thumb(subj?.name, subj?.color)}</div>
     <div class="asg-main">
       <div style="min-width:0">
         <div class="asg-meta"><span>${esc(subj?.name)}</span><span>·</span>${open ? '<span class="chip ok">🟢 เปิดสอบอยู่</span>' : '<span class="chip">⏸ ปิดสอบ</span>'}${probs ? `<span class="chip bad">${ic('warn')}${probs} ข้อยังไม่สมบูรณ์</span>` : ''}</div>
@@ -4223,7 +4466,7 @@ function exmLandingHTML() {
   const okClass = v && i.classes.some(c => c.name === v.classroom_name);
   const color = i.subject_color || '#2b4acb';
   return `<div class="card exm-land">
-    <div class="exm-hero" style="--c:${esc(color)}"><span class="sa-tag" style="background:#fff3;color:#fff">${esc(i.subject_name)}</span><h2>${esc(i.title)}</h2>
+    <div class="exm-hero" style="--c:${esc(color)}">${ART.cover(i.subject_name, color)}<span class="sa-tag" style="background:#fff3;color:#fff">${esc(i.subject_name)}</span><h2>${esc(i.title)}</h2>
       <div class="exm-facts"><span>📋 ${i.n_questions} ข้อ</span><span>⭐ ${+i.total_points} คะแนน</span><span>⏱ ${i.time_limit_min ? i.time_limit_min + ' นาที' : 'ไม่จำกัดเวลา'}</span><span>🔁 ทำได้ ${i.max_attempts} ครั้ง</span></div></div>
     <div class="card-b stack">
       ${i.description ? `<div class="desc">${esc(i.description)}</div>` : ''}
@@ -4511,7 +4754,7 @@ function viewPending() {
     : st === 'suspended' ? ['🔒', 'บัญชีนี้ถูกระงับการใช้งาน', 'ติดต่อผู้ดูแลระบบ (ครูปลื้ม) หากต้องการใช้งานอีกครั้ง']
     : ['⏳', 'รอผู้ดูแลระบบอนุมัติ', 'บัญชีของคุณสร้างเรียบร้อยแล้ว แจ้งครูปลื้มให้อนุมัติและเปิดเมนูที่ต้องใช้ จากนั้นกด "ตรวจสอบอีกครั้ง"'];
   return `<div class="stu" style="justify-content:center"><div class="card pending-card">
-    <div style="font-size:52px">${em}</div><h2>${title}</h2><p class="muted">${msg}</p>
+    ${ART.spot(ART.SPOT_BY_EMOJI[em] || 'star')}<h2>${title}</h2><p class="muted">${msg}</p>
     <div class="small muted" style="margin-bottom:14px">${esc(store.teacher.email)}</div>
     <div class="row" style="justify-content:center;gap:8px"><button class="btn" data-act="logout">${ic('logout')}ออกจากระบบ</button><button class="btn primary" data-act="me-recheck">${ic('refresh')}ตรวจสอบอีกครั้ง</button></div>
   </div></div>`;
@@ -4607,7 +4850,7 @@ function labelTables(root) {
 let _lblQueued = false;
 new MutationObserver(() => {
   if (_lblQueued) return; _lblQueued = true;
-  requestAnimationFrame(() => { _lblQueued = false; labelTables(document); });
+  requestAnimationFrame(() => { _lblQueued = false; labelTables(document); decorateEmpties(document); const sh = document.querySelector('.m-shell'); if (sh) sh.classList.toggle('scrolled', window.scrollY > 60); });
 }).observe(document.body, { childList: true, subtree: true });
 
 I.back = '<path d="M15 5l-7 7 7 7"/>';
@@ -4615,6 +4858,21 @@ Object.assign(ACT, {
   'm-more': () => { ui.moreOpen = !ui.moreOpen; render(); },
   'm-more-close': (el, e) => { if (e.target === el) { ui.moreOpen = false; render(); } },
 });
+
+/* ---------- กระจกเหลว: ไฮไลต์ตามนิ้ว/เมาส์ + แถบแท็บหดเมื่อเลื่อน ---------- */
+document.addEventListener('pointermove', e => {
+  const b = e.target.closest?.('.btn'); if (!b) return;
+  const r = b.getBoundingClientRect();
+  b.style.setProperty('--mx', `${e.clientX - r.left}px`); b.style.setProperty('--my', `${e.clientY - r.top}px`);
+}, { passive: true });
+let _lastY = 0;
+function syncScrollUI() {
+  const y = window.scrollY, tabs = document.querySelector('.m-tabs'), sh = document.querySelector('.m-shell');
+  if (sh) sh.classList.toggle('scrolled', y > 60);
+  if (tabs && !ui.moreOpen) tabs.classList.toggle('min', y > 80 && y > _lastY);
+  _lastY = y;
+}
+window.addEventListener('scroll', syncScrollUI, { passive: true });
 
 </script>
 </body>
