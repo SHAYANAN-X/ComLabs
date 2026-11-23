@@ -12,6 +12,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.6.0/mammoth.browser.min.js" defer></script>
 <style>
 :root{
   --bg:#f4f2ec;--surface:#fff;--surface-2:#f9f8f4;--ink:#1c2321;--muted:#5f6a65;--line:#e3e0d6;
@@ -796,6 +797,99 @@ table.gb{border-collapse:separate;border-spacing:0;font-size:14px;min-width:100%
 .miss-n.bad{background:var(--danger-soft);color:var(--danger)}
 @media (max-width:1000px){.dash-grid{grid-template-columns:1fr}}
 @media (max-width:520px){.bar-row{grid-template-columns:58px 1fr 42px}.bar-sub{display:none}}
+/* ---------- ข้อสอบ: ครู ---------- */
+.ex-settings{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;align-items:end}
+.ex-settings .check{height:fit-content}
+.q-head{display:flex;align-items:center;gap:10px;margin:6px 2px 12px;flex-wrap:wrap}
+.q-head h3{font-size:19px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.q-list{display:flex;flex-direction:column;gap:12px}
+.qcard{padding:14px 16px;display:flex;flex-direction:column;gap:10px}
+.qcard.has-prob{border-color:rgba(238,61,104,.45)}
+.q-top{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.q-no{width:32px;height:32px;border-radius:11px;display:grid;place-items:center;flex:none;background:var(--grad);color:#fff;font:600 15px var(--f-head);box-shadow:0 4px 10px -4px rgba(79,92,255,.7)}
+.q-no.sm{width:26px;height:26px;border-radius:9px;font-size:13px}
+.q-type{width:auto!important;padding:6px 10px!important}
+.q-pts{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--muted)}
+.q-pts .input{width:74px;padding:6px 8px;text-align:center}
+.q-prompt{font-size:15.5px;min-height:56px}
+.q-choices{display:flex;flex-direction:column;gap:6px}
+.q-choice{display:flex;gap:8px;align-items:center}
+.q-choice.right .input{border-color:rgba(18,161,127,.6);background:rgba(18,161,127,.08)}
+.q-radio{position:relative;cursor:pointer;flex:none}
+.q-radio input{position:absolute;opacity:0;inset:0;cursor:pointer}
+.q-radio span{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;font:600 15px var(--f-head);border:2px solid rgba(110,100,180,.35);background:var(--glass);transition:all .15s}
+.q-radio input:checked+span{background:linear-gradient(180deg,#2bc79a,#12a17f);border-color:transparent;color:#fff;box-shadow:0 4px 12px -4px rgba(18,161,127,.8)}
+.q-radio input:focus-visible+span{outline:3px solid var(--primary-soft)}
+.tf{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.tf-b{border:1.5px solid rgba(110,100,180,.3);background:var(--glass);border-radius:999px;padding:8px 18px;cursor:pointer;font:500 15px var(--f-head)}
+.tf-b.on.ok{background:var(--ok-soft);border-color:var(--ok);color:var(--ok)}
+.tf-b.on.bad{background:var(--danger-soft);border-color:var(--danger);color:var(--danger)}
+.q-add{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;padding:18px;margin-top:12px;border:2px dashed rgba(110,100,180,.3);border-radius:22px}
+.imp-prev{display:flex;flex-direction:column;gap:6px;max-height:340px;overflow:auto;padding:10px;border-radius:16px;background:rgba(255,255,255,.35);border:1px solid var(--glass-line)}
+[data-theme=dark] .imp-prev{background:rgba(255,255,255,.03)}
+.imp-q{display:flex;gap:10px;align-items:flex-start;padding:6px 4px;border-bottom:1px solid var(--glass-edge)}
+.ans-ok{color:var(--ok);font-weight:700}
+.fmt-pre{background:var(--surface);border-radius:12px;padding:10px 12px;font-size:13px;white-space:pre-wrap;margin:8px 0;font-family:var(--f-body)}
+.sw{font-weight:600;font-variant-numeric:tabular-nums}.sw.warn{color:color-mix(in srgb,var(--accent) 75%,var(--ink))}.sw.bad{color:var(--danger)}
+.item-list{display:flex;flex-direction:column;gap:6px}
+.item{display:flex;gap:10px;align-items:center}
+.item-q{flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:14px}
+.item-bar{display:flex;align-items:center;gap:8px;width:200px;flex:none}
+.item-bar span{flex:1;height:10px;border-radius:99px;background:rgba(120,110,190,.15);overflow:hidden}
+.item-bar i{display:block;height:100%}
+.item-bar b{width:40px;text-align:right;font-variant-numeric:tabular-nums}
+.rv{border-radius:16px;border:1px solid var(--glass-line);background:rgba(255,255,255,.4);overflow:hidden}
+[data-theme=dark] .rv{background:rgba(255,255,255,.03)}
+.rv.ok{box-shadow:inset 4px 0 0 var(--ok)}.rv.bad{box-shadow:inset 4px 0 0 var(--danger)}.rv.essay{box-shadow:inset 4px 0 0 var(--primary)}
+.rv-h{display:flex;gap:10px;align-items:center;padding:10px 12px}
+.rv-h b{font-weight:600;white-space:pre-wrap}
+.rv-b{padding:0 12px 10px 48px;display:flex;flex-direction:column;gap:4px;font-size:14.5px}
+.rv-pt{font:600 15px var(--f-head);white-space:nowrap}
+.rv.ok .rv-pt{color:var(--ok)}.rv.bad .rv-pt{color:var(--danger)}
+.essay-ans{white-space:pre-wrap;background:var(--surface);border-radius:12px;padding:8px 10px;margin-top:4px}
+.gcell.ro{color:var(--primary);cursor:not-allowed}
+/* ---------- ข้อสอบ: นักเรียน ---------- */
+.exm .exm-land,.exm .exm-result,.exm .exm-paper{width:min(760px,100%)}
+.exm-land{overflow:hidden}
+.exm-hero{padding:24px 22px 20px;background:linear-gradient(135deg,var(--c,#6d4dff),#4f6bff 60%,#22b8f0);color:#fff;position:relative}
+.exm-hero h2{font:500 26px/1.3 var(--f-head);color:#fff;margin:6px 0 10px}
+.exm-facts{display:flex;gap:6px;flex-wrap:wrap}
+.exm-facts span{background:rgba(255,255,255,.2);border-radius:99px;padding:3px 12px;font-size:13.5px;backdrop-filter:blur(6px)}
+.rules{background:var(--accent-soft);border-radius:16px;padding:12px 14px;font-size:14px}
+.rules ul{margin:6px 0 0;padding-left:20px}
+.rules li{margin:2px 0}
+.exm-paper{display:flex;flex-direction:column;gap:12px}
+.exm-bar{position:sticky;top:10px;z-index:10;display:flex;gap:10px;align-items:center;padding:10px 12px 10px 18px;border-radius:22px;background:var(--glass-strong);-webkit-backdrop-filter:var(--blur);backdrop-filter:var(--blur);border:1px solid var(--glass-line);box-shadow:var(--glass-hi),var(--glass-shadow)}
+.exm-title{font:500 16px var(--f-head);display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.exm-timer{font:600 18px var(--f-head);font-variant-numeric:tabular-nums;padding:6px 12px;border-radius:999px;background:var(--primary-soft);color:var(--primary);white-space:nowrap}
+.exm-timer.mid{background:var(--accent-soft);color:color-mix(in srgb,var(--accent) 75%,var(--ink))}
+.exm-timer.low{background:var(--danger);color:#fff;animation:pulse 1s infinite}
+@keyframes pulse{50%{transform:scale(1.06)}}
+.exm-prog{font:500 14px var(--f-head);color:var(--muted);white-space:nowrap}
+.exm-nav{display:flex;gap:6px;flex-wrap:wrap;padding:2px}
+.exm-dot{width:36px;height:36px;border-radius:12px;border:1.5px solid rgba(110,100,180,.3);background:var(--glass);font:500 14px var(--f-head);cursor:pointer;color:var(--ink)}
+.exm-dot.on{background:var(--grad);color:#fff;border-color:transparent}
+.exq{padding:16px 18px;display:flex;flex-direction:column;gap:12px;scroll-margin-top:90px}
+.exq-h{display:flex;align-items:center;gap:10px}
+.exq-p{font:500 17px/1.6 var(--f-body);white-space:pre-wrap}
+.opts{display:flex;flex-direction:column;gap:8px}
+.opts.tf2{flex-direction:row}
+.opts.tf2 .opt{flex:1;justify-content:center}
+.opt{display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:16px;border:1.5px solid rgba(110,100,180,.25);background:var(--glass);cursor:pointer;text-align:left;font:500 16px var(--f-body);color:var(--ink);transition:all .15s;box-shadow:var(--glass-hi)}
+.opt:hover{border-color:rgba(91,77,255,.5);transform:translateY(-1px)}
+.opt-l{width:32px;height:32px;border-radius:50%;display:grid;place-items:center;flex:none;background:var(--primary-soft);color:var(--primary);font:600 15px var(--f-head)}
+.opt.on{background:linear-gradient(135deg,rgba(109,77,255,.14),rgba(34,184,240,.12));border-color:var(--primary);box-shadow:0 0 0 3px rgba(91,77,255,.15)}
+.opt.on .opt-l{background:var(--grad);color:#fff}
+.exm-score{text-align:center;padding:26px 20px 10px}
+.exm-score .big{font:600 64px/1.1 var(--f-head);background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.exm-score .big span{font-size:28px;color:var(--muted);-webkit-text-fill-color:var(--muted)}
+@media (max-width:820px){
+  .ex-settings{grid-template-columns:1fr}
+  .item-bar{width:120px}
+  .exm-bar{flex-wrap:wrap;top:6px}
+  .exm-bar .exm-title{max-width:160px}
+  .rv-b{padding-left:12px}
+}
 
 </style>
 </head>
@@ -1036,6 +1130,126 @@ const RosterParser = (() => {
 })();
 if (typeof module !== 'undefined') module.exports = RosterParser;
 
+/* ===== ตัวอ่านข้อสอบจากข้อความ / Word / Excel =====
+   รูปแบบข้อความที่อ่านได้ (วางจาก Word ได้เลย):
+     1. คำถาม ... (2 คะแนน)
+     ก. ตัวเลือก        ← ใส่ * หน้าหรือท้ายตัวเลือกที่ถูก หรือมีบรรทัด "ตอบ ข"
+     ข. ตัวเลือก
+     ตอบ ข
+     2. คำถามถูกผิด
+     ตอบ ถูก
+     3. คำถามเติมคำ
+     ตอบ กรุงเทพ | กรุงเทพมหานคร
+     4. คำถามอัตนัย [อัตนัย]
+*/
+const ExamParser = (() => {
+  const TH = ['ก', 'ข', 'ค', 'ง', 'จ', 'ฉ', 'ช', 'ซ'];
+  const EN = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'];
+  const norm = s => String(s ?? '').replace(/ /g, ' ').replace(/[ \t]+/g, ' ').trim();
+  const reQ = /^(?:ข้อ(?:ที่)?\s*)?(\d{1,3})\s*[.)]\s*(.*)$/;
+  const reC = /^(\*)?\s*\(?\s*([กขคงจฉชซ]|[a-hA-H])\s*[.)]\s+(.*?)\s*(\*)?$/;
+  const reA = /^(?:ตอบ|เฉลย|คำตอบ|answer|ans)\s*[:：.]?\s*(.*)$/i;
+  const reP = /\(\s*(\d+(?:\.\d+)?)\s*คะแนน\s*\)|\s(\d+(?:\.\d+)?)\s*คะแนน\s*$/;
+  const TRUE = ['ถูก', 'true', 't', 'จริง', '✓', 'ใช่'], FALSE = ['ผิด', 'false', 'f', 'เท็จ', '✗', 'ไม่ใช่'];
+  function letterIndex(s) {
+    s = norm(s).replace(/[.)]$/, '').toLowerCase();
+    let i = TH.indexOf(s); if (i >= 0) return i;
+    i = EN.indexOf(s); if (i >= 0) return i;
+    if (/^[1-8]$/.test(s)) return +s - 1;
+    return -1;
+  }
+  function finish(q, out) {
+    if (!q) return;
+    q.prompt = norm(q.promptLines.join('\n').replace(/\n{2,}/g, '\n'));
+    delete q.promptLines;
+    const isEssay = /\[(อัตนัย|essay)\]/i.test(q.prompt);
+    q.prompt = q.prompt.replace(/\s*\[(อัตนัย|essay|ปรนัย|ถูกผิด|เติมคำ)\]\s*/gi, ' ').trim();
+    const ans = q.ansText != null ? norm(q.ansText) : null;
+    if (q.choices.length >= 2) {
+      q.qtype = 'mcq';
+      if (q.correct == null && ans) q.correct = letterIndex(ans.split(/\s/)[0]);
+      q.answer = q.correct != null && q.correct >= 0 && q.correct < q.choices.length ? q.correct : null;
+      if (q.answer == null) q.warn = 'ยังไม่มีเฉลย';
+    } else if (isEssay) { q.qtype = 'essay'; q.choices = null; q.answer = null; }
+    else if (ans && TRUE.includes(ans.toLowerCase())) { q.qtype = 'true_false'; q.choices = null; q.answer = true; }
+    else if (ans && FALSE.includes(ans.toLowerCase())) { q.qtype = 'true_false'; q.choices = null; q.answer = false; }
+    else if (ans) { q.qtype = 'short'; q.choices = null; q.answer = ans.split(/\s*\|\s*/).map(norm).filter(Boolean); }
+    else { q.qtype = 'essay'; q.choices = null; q.answer = null; }
+    delete q.correct; delete q.ansText;
+    if (q.prompt) out.push(q);
+  }
+  function parseText(text) {
+    const out = []; let q = null;
+    const lines = String(text).replace(/\r/g, '').split('\n');
+    for (let raw of lines) {
+      const line = norm(raw);
+      if (!line) continue;
+      let m;
+      if ((m = line.match(reA)) && q) { q.ansText = m[1]; continue; }
+      if ((m = line.match(reC)) && q) {
+        const txt = norm(m[3]);
+        if (m[1] || m[4]) q.correct = q.choices.length;
+        q.choices.push(txt); continue;
+      }
+      if ((m = line.match(reQ))) {
+        finish(q, out);
+        let prompt = m[2], points = 1;
+        const pm = prompt.match(reP); if (pm) { points = parseFloat(pm[1] || pm[2]); prompt = prompt.replace(reP, ' ').replace(/\s+/g, ' ').trim(); }
+        q = { promptLines: [prompt], choices: [], correct: null, ansText: null, points };
+        continue;
+      }
+      if (q) {
+        if (q.choices.length) q.choices[q.choices.length - 1] += ' ' + line; // ตัวเลือกยาวหลายบรรทัด
+        else q.promptLines.push(line);
+      }
+    }
+    finish(q, out);
+    return out;
+  }
+  // ตาราง: แถวหัวมีคำว่า "คำถาม"
+  function parseRows(rows) {
+    const flat = v => norm(v).replace(/\s/g, '').toLowerCase();
+    let h = rows.findIndex(r => (r || []).some(c => ['คำถาม', 'โจทย์', 'question'].includes(flat(c))));
+    if (h < 0) return { questions: [], error: 'ไม่พบคอลัมน์ "คำถาม" ในไฟล์ (ดาวน์โหลดแม่แบบดูตัวอย่างได้)' };
+    const hd = rows[h].map(flat);
+    const col = names => hd.findIndex(c => names.includes(c));
+    const iQ = col(['คำถาม', 'โจทย์', 'question']), iT = col(['ประเภท', 'ชนิด', 'type']), iA = col(['คำตอบ', 'เฉลย', 'answer', 'ตอบ']), iP = col(['คะแนน', 'points', 'score']);
+    const iC = hd.map((c, i) => [c, i]).filter(([c]) => TH.includes(c) || EN.includes(c) || /^ตัวเลือก\d?$/.test(c) || /^choice\d?$/.test(c)).map(([, i]) => i);
+    const out = [];
+    for (const r of rows.slice(h + 1)) {
+      if (!r) continue;
+      const prompt = norm(r[iQ]); if (!prompt) continue;
+      const choices = iC.map(i => norm(r[i])).filter(Boolean);
+      const ans = iA >= 0 ? norm(r[iA]) : '';
+      const points = iP >= 0 && parseFloat(r[iP]) > 0 ? parseFloat(r[iP]) : 1;
+      const t = iT >= 0 ? flat(r[iT]) : '';
+      let q = { prompt, points, choices: null, answer: null };
+      const type = /ปรนัย|mcq|choice|เลือกตอบ/.test(t) ? 'mcq' : /ถูกผิด|true|tf/.test(t) ? 'true_false' : /เติม|short/.test(t) ? 'short' : /อัตนัย|essay|เขียน/.test(t) ? 'essay'
+        : choices.length >= 2 ? 'mcq' : (TRUE.includes(ans.toLowerCase()) || FALSE.includes(ans.toLowerCase())) ? 'true_false' : ans ? 'short' : 'essay';
+      q.qtype = type;
+      if (type === 'mcq') {
+        q.choices = choices;
+        let idx = letterIndex(ans);
+        if (idx < 0) idx = choices.findIndex(c => norm(c) === ans);
+        q.answer = idx >= 0 && idx < choices.length ? idx : null;
+        if (q.answer == null) q.warn = 'ยังไม่มีเฉลย';
+      } else if (type === 'true_false') q.answer = !FALSE.includes(ans.toLowerCase());
+      else if (type === 'short') q.answer = ans.split(/\s*\|\s*/).map(norm).filter(Boolean);
+      out.push(q);
+    }
+    return { questions: out, error: out.length ? null : 'ไม่พบคำถามใต้หัวตาราง' };
+  }
+  const TEMPLATE_ROWS = [
+    ['ประเภท', 'คำถาม', 'ก', 'ข', 'ค', 'ง', 'คำตอบ', 'คะแนน'],
+    ['ปรนัย', 'ข้อใดคืออุปกรณ์รับข้อมูล', 'จอภาพ', 'แป้นพิมพ์', 'ลำโพง', 'เครื่องพิมพ์', 'ข', 1],
+    ['ถูกผิด', 'RAM เป็นหน่วยความจำถาวร', '', '', '', '', 'ผิด', 1],
+    ['เติมคำ', 'หน่วยประมวลผลกลางเรียกย่อว่าอะไร', '', '', '', '', 'CPU | ซีพียู', 2],
+    ['อัตนัย', 'อธิบายขั้นตอนการทำงานของคอมพิวเตอร์', '', '', '', '', '', 5],
+  ];
+  return { parseText, parseRows, letterIndex, TH, TEMPLATE_ROWS };
+})();
+if (typeof module !== 'undefined') module.exports = ExamParser;
+
 </script>
 <script>
 /* =====================================================================
@@ -1085,7 +1299,7 @@ const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBh
 const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
 /* ข้อมูลที่โหลดมาจากเซิร์ฟเวอร์ (แคชไว้ในหน้าเว็บ) */
-const store = { terms: [], classrooms: [], students: [], subjects: [], subject_classes: [], assignments: [], assignment_classes: [], submissions: [], grade_columns: [], grade_entries: [], files: {}, teacher: { name: 'ครูผู้สอน', email: '' } };
+const store = { terms: [], classrooms: [], students: [], subjects: [], subject_classes: [], assignments: [], assignment_classes: [], submissions: [], grade_columns: [], grade_entries: [], exams: [], exam_classes: [], exam_questions: [], exam_attempts: [], exam_answers: [], files: {}, teacher: { name: 'ครูผู้สอน', email: '' } };
 
 function errMsg(e) {
   const m = (e && (e.message || e.error_description)) || String(e);
@@ -1101,6 +1315,9 @@ function errMsg(e) {
     PAST_DUE: 'เลยกำหนดส่งแล้ว และงานนี้ไม่รับส่งช้า', TYPE_NOT_ALLOWED: 'งานนี้ไม่รับไฟล์ชนิดนี้', TOO_LARGE: 'ไฟล์ใหญ่เกินกำหนดของงานนี้',
     ALREADY_GRADED: 'ครูตรวจงานนี้แล้ว แก้ไขไม่ได้', TOO_MANY_FILES: 'ส่งได้สูงสุด 10 ไฟล์ต่องาน', TOKEN_INVALID: 'การอัปโหลดหมดเวลา ลองใหม่อีกครั้ง',
     UPLOAD_MISSING: 'อัปโหลดไฟล์ไม่สำเร็จ ลองใหม่อีกครั้ง', FILE_NOT_FOUND: 'ไม่พบไฟล์นี้',
+    EXAM_NOT_FOUND: 'ไม่พบข้อสอบนี้ ตรวจลิงก์อีกครั้ง', NOT_IN_CLASS: 'ข้อสอบนี้ไม่ได้เปิดให้ห้องของคุณ', EXAM_CLOSED: 'ข้อสอบยังไม่เปิด หรือปิดไปแล้ว',
+    NO_ATTEMPTS_LEFT: 'คุณทำข้อสอบนี้ครบจำนวนครั้งที่กำหนดแล้ว', EXAM_EMPTY: 'ข้อสอบนี้ยังไม่มีคำถาม', TIME_UP: 'หมดเวลาสอบแล้ว',
+    ALREADY_SUBMITTED: 'ส่งข้อสอบไปแล้ว', ATTEMPT_NOT_FOUND: 'ไม่พบการสอบนี้', QUESTION_NOT_FOUND: 'ไม่พบคำถามนี้',
   };
   for (const k in codes) if (m.includes(k)) return codes[k];
   if (/exceeded the maximum allowed size|Payload too large|413/i.test(m)) return 'ไฟล์ใหญ่เกิน 50 MB';
@@ -1128,12 +1345,13 @@ function thaiTermNow() {
   return { year: m >= 11 ? be : be - 1, semester: 2 };
 }
 async function loadAll() {
-  const [terms, classrooms, students, subjects, subject_classes, assignments, assignment_classes, submissions, grade_columns, grade_entries] = await Promise.all([
+  const [terms, classrooms, students, subjects, subject_classes, assignments, assignment_classes, submissions, grade_columns, grade_entries, exams, exam_classes, exam_questions, exam_attempts] = await Promise.all([
     fetchAll('terms'), fetchAll('classrooms'), fetchAll('students'), fetchAll('subjects'), fetchAll('subject_classes', 'subject_id'),
     fetchAll('assignments'), fetchAll('assignment_classes', 'assignment_id'), fetchAll('submissions', 'submitted_at'),
     fetchAll('grade_columns'), fetchAll('grade_entries', 'column_id'),
+    fetchAll('exams'), fetchAll('exam_classes', 'exam_id'), fetchAll('exam_questions', 'sort_order'), fetchAll('exam_attempts', 'started_at'),
   ]);
-  Object.assign(store, { terms, classrooms, students, subjects, subject_classes, assignments, assignment_classes, submissions, grade_columns, grade_entries, files: {} });
+  Object.assign(store, { terms, classrooms, students, subjects, subject_classes, assignments, assignment_classes, submissions, grade_columns, grade_entries, exams, exam_classes, exam_questions, exam_attempts, exam_answers: [], files: {} });
   if (!store.terms.length) {
     const t = await q(sb.from('terms').insert({ ...thaiTermNow(), is_current: true }).select().single());
     store.terms.push(t);
@@ -1220,22 +1438,23 @@ const NAV = [
   { group: 'การเรียนการสอน' },
   { id: 'assignments', label: 'งานและตรวจงาน', icon: 'inbox' },
   { id: 'gradebook', label: 'ตารางคะแนน', icon: 'table' },
-  { id: 'exams', label: 'ข้อสอบ', icon: 'quiz', soon: 'เฟส 5' },
+  { id: 'exams', label: 'ข้อสอบ', icon: 'quiz' },
   { group: 'ระบบ' },
   { id: 'settings', label: 'ตั้งค่า', icon: 'gear' },
 ];
-const TITLES = { dashboard: 'แดชบอร์ด', subjects: 'วิชา', classes: 'ห้องเรียนและรายชื่อ', assignments: 'งานและตรวจงาน', grade: 'ตรวจงาน', gradebook: 'ตารางคะแนน', exams: 'ข้อสอบ', settings: 'ตั้งค่า' };
+const TITLES = { dashboard: 'แดชบอร์ด', subjects: 'วิชา', classes: 'ห้องเรียนและรายชื่อ', assignments: 'งานและตรวจงาน', grade: 'ตรวจงาน', examedit: 'แก้ไขข้อสอบ', examres: 'ผลสอบ', gradebook: 'ตารางคะแนน', exams: 'ข้อสอบ', settings: 'ตั้งค่า' };
 
 function render() {
   const root = $('#app');
+  if (isExamTakeRoute()) { root.innerHTML = viewExamTake(); return; }
   if (isStudentRoute()) { root.innerHTML = viewStudent(); return; }
   if (booting) { root.innerHTML = `<div class="stu" style="justify-content:center"><div class="brand"><div class="brand-mark">ป</div><div><b>ห้องเรียนครูปลื้ม</b><small style="color:var(--muted)">กำลังโหลดข้อมูล…</small></div></div></div>`; return; }
   if (!session) { root.innerHTML = viewLogin(); return; }
-  const base = ui.route.startsWith('grade-') ? 'grade' : ui.route;
+  const base = ui.route.startsWith('grade-') ? 'grade' : ui.route.startsWith('exam-edit-') ? 'examedit' : ui.route.startsWith('exam-res-') ? 'examres' : ui.route;
   if (!TITLES[base]) ui.route = 'dashboard';
   const theme = document.documentElement.dataset.theme;
-  const views = { dashboard: viewDashboard, subjects: viewSubjects, classes: viewClasses, settings: viewSettings, assignments: viewAssignments, grade: viewGrade, gradebook: viewGradebook, exams: viewSoon };
-  const navOn = base === 'grade' ? 'assignments' : base;
+  const views = { dashboard: viewDashboard, subjects: viewSubjects, classes: viewClasses, settings: viewSettings, assignments: viewAssignments, grade: viewGrade, gradebook: viewGradebook, exams: viewExams, examedit: viewExamEdit, examres: viewExamResults };
+  const navOn = base === 'grade' ? 'assignments' : (base === 'examedit' || base === 'examres') ? 'exams' : base;
   root.innerHTML = `
   <div class="shell">
     <aside class="side ${ui.sideOpen ? 'open' : ''}">
@@ -2364,8 +2583,8 @@ function studentHome(v) {
     <div class="stu-banner"><div class="acts"><button class="btn icon sm" data-act="stu-reload" aria-label="โหลดใหม่" title="โหลดใหม่">${ic('refresh')}</button><button class="btn sm" data-act="stu-out">ออก</button></div>
       <div class="row" style="gap:14px;position:relative;z-index:1"><div class="ava">${esc(first[0] || '?')}</div><div style="min-width:0"><h2>สวัสดี ${esc(first)}! 👋</h2>
         <div class="pills"><span class="pill">🏫 ${esc(v.classroom_name)}</span><span class="pill">เลขที่ ${v.number}</span></div></div></div></div>
-    <div class="seg stu-tabs"><button class="${stuState.tab !== 'score' ? 'on' : ''}" data-act="stu-tab" data-t="work">📝 งานของฉัน</button><button class="${stuState.tab === 'score' ? 'on' : ''}" data-act="stu-tab" data-t="score">📊 คะแนนของฉัน</button></div>
-    ${stuState.tab === 'score' ? studentScoresHTML() : stuState.asg ? `<div class="counters">
+    <div class="seg stu-tabs">${[['work', '📝 งาน'], ['exam', '🧪 ข้อสอบ'], ['score', '📊 คะแนน']].map(([k, l]) => `<button class="${(stuState.tab || 'work') === k ? 'on' : ''}" data-act="stu-tab" data-t="${k}">${l}</button>`).join('')}</div>
+    ${stuState.tab === 'score' ? studentScoresHTML() : stuState.tab === 'exam' ? studentExamsHTML() : stuState.asg ? `<div class="counters">
         <div class="counter todo"><span class="em">📝</span><div><b>${groups.todo.length}</b><small>ต้องส่ง/แก้</small></div></div>
         <div class="counter wait"><span class="em">⏳</span><div><b>${groups.wait.length}</b><small>รอครูตรวจ</small></div></div>
         <div class="counter done"><span class="em">🌟</span><div><b>${groups.done.length}</b><small>ตรวจแล้ว</small></div></div></div>
@@ -2489,17 +2708,18 @@ function qrSVG(text, cell) {
     return qr.createSvgTag({ cellSize: cell || 6, margin: 2, scalable: true });
   } catch (e) { return ''; }
 }
-function shareModal(aid) {
-  const url = studentLink(aid), msg = shareMessage(aid);
+function shareModal(aid, opts) {
+  opts = opts || {};
+  const url = opts.url || studentLink(aid), msg = opts.msg || shareMessage(aid);
   const a = aid && db.get('assignments', aid);
   const svg = qrSVG(url);
   openModal({
-    title: a ? `ส่งลิงก์งาน: ${a.title}` : 'ส่งลิงก์ให้นักเรียน', wide: true, ctx: { url, msg, aid },
+    title: opts.title || (a ? `ส่งลิงก์งาน: ${a.title}` : 'ส่งลิงก์ให้นักเรียน'), wide: true, ctx: { url, msg, aid, ptitle: opts.title },
     body: `<div class="share">
       <div class="share-qr">${svg ? `<div class="qr-box">${svg}</div>` : `<div class="qr-box qr-miss">${ic('qr')}<span class="small">โหลด QR ไม่สำเร็จ<br>ใช้ปุ่มคัดลอกลิงก์แทนได้</span></div>`}
         <button class="btn sm" data-act="share-present" ${svg ? '' : 'disabled'}>${ic('full')}ฉายขึ้นจอ</button></div>
       <div class="stack" style="flex:1;min-width:0">
-        <p class="muted small" style="margin:0">${a ? 'ลิงก์นี้พานักเรียนไปที่งานนี้โดยตรง (หลังยืนยันตัวตน)' : 'ลิงก์เดียวใช้ได้ทุกงาน ส่งเข้ากลุ่ม LINE ของห้องแล้วปักหมุดไว้ได้เลย'}</p>
+        <p class="muted small" style="margin:0">${opts.note || (a ? 'ลิงก์นี้พานักเรียนไปที่งานนี้โดยตรง (หลังยืนยันตัวตน)' : 'ลิงก์เดียวใช้ได้ทุกงาน ส่งเข้ากลุ่ม LINE ของห้องแล้วปักหมุดไว้ได้เลย')}</p>
         <label class="field"><span>ลิงก์</span><div class="row" style="gap:8px"><input class="input" readonly value="${esc(url)}" id="share-url" style="font-size:14px"><button class="btn" data-act="share-copy" data-what="url">${ic('copy')}คัดลอก</button></div></label>
         <label class="field"><span>ข้อความที่จะส่ง (แก้ไขได้)</span><textarea class="input" id="share-msg" rows="${a ? 5 : 5}">${esc(msg)}</textarea></label>
         <div class="row" style="gap:8px;flex-wrap:wrap">
@@ -2510,13 +2730,13 @@ function shareModal(aid) {
   });
 }
 function presentQR() {
-  const { url, aid } = modalCtx;
+  const { url, aid, ptitle } = modalCtx;
   const a = aid && db.get('assignments', aid);
   const box = document.createElement('div');
   box.className = 'present';
   box.innerHTML = `<button class="btn icon present-x" aria-label="ปิด">${ic('x')}</button>
     <div class="present-card"><div class="brand"><div class="brand-mark">ป</div><div><b>ห้องเรียนครูปลื้ม</b><small>สแกนเพื่อเข้าห้องเรียน</small></div></div>
-      ${a ? `<h2>📝 ${esc(a.title)}</h2>` : '<h2>📲 สแกนเพื่อส่งงาน</h2>'}
+      ${ptitle ? `<h2>${esc(ptitle.replace(/^ส่งลิงก์ข้อสอบ: /, '🧪 '))}</h2>` : a ? `<h2>📝 ${esc(a.title)}</h2>` : '<h2>📲 สแกนเพื่อส่งงาน</h2>'}
       <div class="present-qr">${qrSVG(url, 10)}</div>
       <div class="present-url">${esc(url.replace(/^https?:\/\//, ''))}</div>
       <p>เข้าด้วย ห้อง + เลขที่ + เลขประจำตัวนักเรียน</p></div>`;
@@ -2569,14 +2789,17 @@ const GB = {
   cols(sid, cid, withHidden) {
     const assigned = new Set(store.assignment_classes.filter(x => x.classroom_id === cid).map(x => x.assignment_id));
     const live = new Set(store.assignments.map(a => a.id));
+    const exLive = new Set(store.exam_classes.filter(x => x.classroom_id === cid).map(x => x.exam_id));
     return store.grade_columns.filter(c => c.subject_id === sid && (!c.classroom_id || c.classroom_id === cid)
       && (c.source !== 'assignment' || (live.has(c.assignment_id) && assigned.has(c.assignment_id)))
+      && (c.source !== 'exam' || exLive.has(c.exam_id))
       && (withHidden || !c.hidden))
       .sort((a, b) => (a.sort_order - b.sort_order) || (a.created_at || '').localeCompare(b.created_at || ''));
   },
-  max(c) { if (c.source === 'assignment') { const a = db.get('assignments', c.assignment_id); return +(a?.max_score ?? c.max_score); } return +c.max_score; },
+  max(c) { if (c.source === 'exam') return +EX.total(c.exam_id); if (c.source === 'assignment') { const a = db.get('assignments', c.assignment_id); return +(a?.max_score ?? c.max_score); } return +c.max_score; },
   entry: (colId, sid) => store.grade_entries.find(e => e.column_id === colId && e.student_id === sid),
   score(c, sid) {
+    if (c.source === 'exam') return { v: EX.best(c.exam_id, sid), st: null };
     if (c.source === 'assignment') { const s = A.sub(c.assignment_id, sid); return { v: s?.score ?? null, st: s?.status || null }; }
     const e = GB.entry(c.id, sid); return { v: e?.score ?? null, st: null };
   },
@@ -2592,6 +2815,17 @@ const GB = {
     return { sum: Math.round(sum * 100) / 100, max, pct };
   },
 };
+async function syncExamColumns(subjectId) {
+  const have = new Set(store.grade_columns.map(c => c.exam_id).filter(Boolean));
+  const missing = store.exams.filter(e => e.subject_id === subjectId && !have.has(e.id)).sort((a, b) => (a.created_at || '').localeCompare(b.created_at || ''));
+  if (!missing.length) return false;
+  const base = Math.max(0, ...store.grade_columns.filter(c => c.subject_id === subjectId).map(c => c.sort_order || 0));
+  const rows = missing.map((e, i) => ({ subject_id: subjectId, title: e.title, max_score: 0, source: 'exam', exam_id: e.id, sort_order: base + (i + 1) * 10 }));
+  const out = await q(sb.from('grade_columns').upsert(rows, { onConflict: 'exam_id', ignoreDuplicates: true }).select());
+  const ids = new Set(store.grade_columns.map(c => c.id));
+  out.forEach(r => { if (!ids.has(r.id)) store.grade_columns.push(r); });
+  return true;
+}
 async function syncAssignmentColumns(subjectId) {
   const have = new Set(store.grade_columns.map(c => c.assignment_id).filter(Boolean));
   const missing = store.assignments.filter(a => a.subject_id === subjectId && !have.has(a.id))
@@ -2617,7 +2851,7 @@ function viewGradebook() {
   if (!cids.includes(ui.gbCid)) ui.gbCid = cids[0] || null;
   if (ui.gbSynced !== sj.id) {
     ui.gbSynced = sj.id;
-    Promise.all([syncAssignmentColumns(sj.id), refreshAllSubs()]).then(() => { if (ui.route === 'gradebook') render(); }).catch(() => {});
+    Promise.all([syncAssignmentColumns(sj.id).then(() => syncExamColumns(sj.id)), refreshAllSubs(), fetchAll('exam_attempts', 'started_at').then(r => { store.exam_attempts = r; })]).then(() => { if (ui.route === 'gradebook') render(); }).catch(() => {});
   }
   const cid = ui.gbCid;
   const head = `
@@ -2643,7 +2877,7 @@ function viewGradebook() {
     ${studs.length ? `<div class="gb-wrap"><table class="gb" id="gb">
       <thead><tr><th class="gb-sticky gb-no">เลขที่</th><th class="gb-sticky gb-name">ชื่อ - สกุล</th>
         ${cols.map((c, i) => `<th class="gcol ${c.source}"><div class="gh"><span class="gt" title="${esc(c.title)}">${esc(c.title)}</span>
-          <span class="gm">${c.source === 'assignment' ? '📝' : '✏️'} เต็ม ${+GB.max(c)}${c.classroom_id ? ' · เฉพาะห้อง' : ''}${c.visible_to_students ? '' : ' · ซ่อนจากนักเรียน'}</span></div>
+          <span class="gm">${c.source === 'assignment' ? '📝' : c.source === 'exam' ? '🧪' : '✏️'} เต็ม ${+GB.max(c)}${c.classroom_id ? ' · เฉพาะห้อง' : ''}${c.visible_to_students ? '' : ' · ซ่อนจากนักเรียน'}</span></div>
           <button class="gb-menu" data-act="gb-col" data-id="${c.id}" aria-label="ตั้งค่าคอลัมน์ ${esc(c.title)}">${ic('dots')}</button></th>`).join('')}
         <th class="gb-tot">รวม<small>/${+totalMax}</small></th><th class="gb-tot">ร้อยละ</th><th class="gb-tot">เกรด</th></tr></thead>
       <tbody>${studs.map(s => gbRowHTML(s, cols)).join('')}</tbody>
@@ -2658,6 +2892,7 @@ function gbRowHTML(s, cols) {
   return `<tr data-sid="${s.id}" class="${s.active === false ? 'inactive' : ''}"><td class="gb-sticky gb-no">${s.number}</td><td class="gb-sticky gb-name">${esc(Q.fullName(s))}</td>
     ${cols.map((c, ci) => { const { v, st } = GB.score(c, s.id); const m = GB.max(c);
       const pend = v == null && (st === 'submitted' || st === 'late');
+      if (c.source === 'exam') return `<td class="gcell-td"><input class="gcell ro" readonly value="${v ?? ''}" placeholder="–" title="คะแนนข้อสอบ (ครั้งที่ดีที่สุด) แก้ได้ที่หน้าผลสอบ" data-ci="${ci}"></td>`;
       return `<td class="gcell-td"><input class="gcell ${v != null && v > m ? 'over' : ''} ${pend ? 'pend' : ''}" data-chg="gb-cell" data-c="${c.id}" data-s="${s.id}" data-ci="${ci}" value="${v ?? ''}" placeholder="${pend ? 'รอตรวจ' : '–'}" inputmode="decimal" aria-label="${esc(c.title)} ${esc(s.first_name)}"></td>`; }).join('')}
     ${gbTotCells(t)}</tr>`;
 }
@@ -2748,12 +2983,12 @@ function gbAddModal() {
   });
 }
 function gbColModal(c) {
-  const isA = c.source === 'assignment';
-  const a = isA && db.get('assignments', c.assignment_id);
+  const isA = c.source === 'assignment' || c.source === 'exam';
+  const a = c.source === 'assignment' ? db.get('assignments', c.assignment_id) : c.source === 'exam' ? db.get('exams', c.exam_id) : null;
   openModal({
     title: 'ตั้งค่าคอลัมน์', ctx: { colId: c.id },
     body: `<div class="stack">
-      ${isA ? `<div class="note">📝 คอลัมน์นี้มาจากงาน "<b>${esc(a?.title)}</b>" — คะแนนเต็มแก้ได้ที่หน้างาน</div>` : ''}
+      ${isA ? `<div class="note">${c.source === 'exam' ? '🧪 คอลัมน์นี้มาจากข้อสอบ' : '📝 คอลัมน์นี้มาจากงาน'} "<b>${esc(a?.title)}</b>" — คะแนนเต็มแก้ได้ที่หน้า${c.source === 'exam' ? 'ข้อสอบ' : 'งาน'}</div>` : ''}
       <div class="grid2" style="grid-template-columns:1fr 140px"><label class="field"><span>ชื่อคอลัมน์</span><input class="input" name="title" value="${esc(c.title)}"></label>
         <label class="field"><span>คะแนนเต็ม</span><input class="input" type="number" min="0.5" step="0.5" name="max_score" value="${+GB.max(c)}" ${isA ? 'disabled' : ''}></label></div>
       <label class="check" style="width:fit-content"><input type="checkbox" name="visible" ${c.visible_to_students ? 'checked' : ''}>ให้นักเรียนเห็นคะแนนคอลัมน์นี้</label>
@@ -2788,7 +3023,7 @@ function gbHiddenModal() {
   const hidden = GB.cols(ui.gbSubject, ui.gbCid, true).filter(c => c.hidden);
   openModal({
     title: 'คอลัมน์ที่ซ่อนไว้',
-    body: hidden.length ? `<div class="stack">${hidden.map(c => `<div class="row" style="gap:10px"><span>${c.source === 'assignment' ? '📝' : '✏️'}</span><span style="flex:1">${esc(c.title)} <span class="muted small">เต็ม ${+GB.max(c)}</span></span><button class="btn sm" data-act="gb-unhide" data-id="${c.id}">แสดง</button></div>`).join('')}</div>` : '<p class="muted">ไม่มีคอลัมน์ที่ซ่อนไว้</p>',
+    body: hidden.length ? `<div class="stack">${hidden.map(c => `<div class="row" style="gap:10px"><span>${c.source === 'assignment' ? '📝' : c.source === 'exam' ? '🧪' : '✏️'}</span><span style="flex:1">${esc(c.title)} <span class="muted small">เต็ม ${+GB.max(c)}</span></span><button class="btn sm" data-act="gb-unhide" data-id="${c.id}">แสดง</button></div>`).join('')}</div>` : '<p class="muted">ไม่มีคอลัมน์ที่ซ่อนไว้</p>',
     actions: [{ label: 'ปิด', onClick: closeModal }],
   });
 }
@@ -2872,7 +3107,7 @@ function studentScoresHTML() {
           <div class="sa-sub">รวม <b style="color:var(--ink)">${Math.round(sum * 100) / 100}</b> / ${max} คะแนน${pct != null ? ` · ${pct.toFixed(1)}%` : ''}</div>
           <div class="prog-bar" style="max-width:none;margin-top:6px"><i style="width:${pct ? Math.min(100, pct) : 0}%;background:var(--grad)"></i></div></div>
         <div class="score-bubble"><b>${g}</b><small>เกรด*</small></div></div>
-      <div class="sa-b"><div class="score-list">${sj.columns.map(c => `<div class="score-row"><span>${c.source === 'assignment' ? '📝' : '✏️'} ${esc(c.title)}</span><b>${c.score == null ? '<span class="muted">–</span>' : +c.score}<span class="muted small"> / ${+c.max_score}</span></b></div>`).join('') || '<span class="muted small">ยังไม่มีคอลัมน์คะแนน</span>'}</div>
+      <div class="sa-b"><div class="score-list">${sj.columns.map(c => `<div class="score-row"><span>${c.source === 'assignment' ? '📝' : c.source === 'exam' ? '🧪' : '✏️'} ${esc(c.title)}</span><b>${c.score == null ? '<span class="muted">–</span>' : +c.score}<span class="muted small"> / ${+c.max_score}</span></b></div>`).join('') || '<span class="muted small">ยังไม่มีคอลัมน์คะแนน</span>'}</div>
         <div class="small muted">* เกรดคำนวณจากคะแนนที่มีตอนนี้ (ช่องที่ยังไม่มีคะแนนนับเป็น 0) เกรดจริงขึ้นกับครูผู้สอน</div></div>
     </div>`;
   }).join('');
@@ -3033,6 +3268,660 @@ Object.assign(ACT, {
   },
 });
 Object.assign(CHG, { 'db-subject': el => { ui.dbSubject = el.value; ui.dbCid = null; render(); } });
+
+/* =====================================================================
+   เฟส 5 (ครู): ข้อสอบ — รายการ · ตัวแก้ข้อสอบ · นำเข้า · ผลสอบ · ตรวจอัตนัย
+   ===================================================================== */
+I.up = '<path d="M12 19V5M5 12l7-7 7 7"/>';
+I.down = '<path d="M12 5v14M5 12l7 7 7-7"/>';
+I.play = '<path d="M7 4v16l13-8z"/>';
+I.warn = '<path d="M12 3 2 21h20z"/><path d="M12 10v5M12 18h.01"/>';
+const QTYPE = { mcq: 'ปรนัย', true_false: 'ถูก/ผิด', short: 'เติมคำ', essay: 'อัตนัย' };
+const QICON = { mcq: '🔘', true_false: '⭕', short: '✍️', essay: '📝' };
+
+const EX = {
+  classIds: eid => store.exam_classes.filter(x => x.exam_id === eid).map(x => x.classroom_id),
+  questions: eid => store.exam_questions.filter(q => q.exam_id === eid).sort((a, b) => (a.sort_order - b.sort_order) || (a.id > b.id ? 1 : -1)),
+  total: eid => EX.questions(eid).reduce((a, q) => a + (+q.points || 0), 0),
+  attempts: eid => store.exam_attempts.filter(a => a.exam_id === eid),
+  best(eid, sid) {
+    const done = store.exam_attempts.filter(a => a.exam_id === eid && a.student_id === sid && a.submitted_at);
+    return done.length ? Math.max(...done.map(a => +(a.total_score || 0))) : null;
+  },
+  link: e => `${location.origin}${location.pathname}#exam-${e.share_code}`,
+  problems(q) {
+    if (!String(q.prompt || '').trim()) return 'ยังไม่มีคำถาม';
+    if (q.qtype === 'mcq') {
+      const ch = Array.isArray(q.choices) ? q.choices : [];
+      if (ch.filter(c => String(c).trim()).length < 2) return 'ต้องมีตัวเลือกอย่างน้อย 2 ข้อ';
+      if (q.answer == null || +q.answer >= ch.length || !String(ch[+q.answer] || '').trim()) return 'ยังไม่ได้เลือกคำตอบที่ถูก';
+    }
+    if (q.qtype === 'short' && !(Array.isArray(q.answer) && q.answer.length)) return 'ยังไม่ได้ใส่คำตอบที่ยอมรับ';
+    if (q.qtype === 'true_false' && typeof q.answer !== 'boolean') return 'ยังไม่ได้เลือกว่าถูกหรือผิด';
+    return '';
+  },
+};
+function isExamTakeRoute() { return /^exam-[0-9a-f]{6,16}$/i.test(ui.route); }
+
+/* ---------- รายการข้อสอบ ---------- */
+function viewExams() {
+  pruneLocal();
+  const term = Q.currentTerm();
+  const subs = Q.subjectsOfTerm(term?.id);
+  const ids = new Set(subs.map(s => s.id));
+  const list = store.exams.filter(e => ids.has(e.subject_id) && (!ui.exSubject || e.subject_id === ui.exSubject))
+    .sort((a, b) => (b.created_at || '').localeCompare(a.created_at || ''));
+  return `
+  <div class="page-head"><div><h2>ข้อสอบ</h2><p>ออกข้อสอบ ส่งลิงก์ทาง LINE ตรวจปรนัยอัตโนมัติ คะแนนเข้าตารางคะแนนเอง</p></div><span class="spacer"></span>
+    ${subs.length ? `<select class="input" style="width:auto" data-chg="ex-filter" aria-label="วิชา"><option value="">ทุกวิชา</option>${subs.map(s => `<option value="${s.id}" ${s.id === ui.exSubject ? 'selected' : ''}>${esc(s.name)}</option>`).join('')}</select>
+    <button class="btn primary" data-act="ex-new">${ic('plus')}สร้างข้อสอบ</button>` : ''}</div>
+  ${!subs.length ? `<div class="card"><div class="empty">${ic('book')}<b>ต้องเพิ่มวิชาก่อน</b><a class="btn primary" href="#subjects" style="margin-top:12px">${ic('plus')}เพิ่มวิชา</a></div></div>`
+  : !list.length ? `<div class="card"><div class="empty"><div style="font-size:44px">📝</div><b>ยังไม่มีข้อสอบ</b>สร้างข้อสอบใหม่ พิมพ์เอง หรือวางข้อสอบจาก Word/Excel ที่มีอยู่แล้ว<br><button class="btn primary" data-act="ex-new" style="margin-top:12px">${ic('plus')}สร้างข้อสอบ</button></div></div>`
+  : `<div class="asg-list">${list.map(examCard).join('')}</div>`}`;
+}
+function examCard(e) {
+  const subj = db.get('subjects', e.subject_id);
+  const cids = EX.classIds(e.id);
+  const total = cids.reduce((a, c) => a + Q.students(c).filter(s => s.active !== false).length, 0);
+  const done = new Set(EX.attempts(e.id).filter(a => a.submitted_at).map(a => a.student_id)).size;
+  const live = new Set(EX.attempts(e.id).filter(a => !a.submitted_at && (!a.deadline || new Date(a.deadline) > new Date())).map(a => a.student_id)).size;
+  const nq = EX.questions(e.id).length, probs = EX.questions(e.id).filter(q => EX.problems(q)).length;
+  const open = e.is_open && (!e.opens_at || new Date(e.opens_at) <= new Date()) && (!e.closes_at || new Date(e.closes_at) > new Date());
+  return `<article class="card asg"><div class="asg-bar" style="background:${esc(subj?.color || 'var(--primary)')}"></div>
+    <div class="asg-main">
+      <div style="min-width:0">
+        <div class="asg-meta"><span>${esc(subj?.name)}</span><span>·</span>${open ? '<span class="chip ok">🟢 เปิดสอบอยู่</span>' : '<span class="chip">⏸ ปิดสอบ</span>'}${probs ? `<span class="chip bad">${ic('warn')}${probs} ข้อยังไม่สมบูรณ์</span>` : ''}</div>
+        <h3 class="asg-title">${esc(e.title)}</h3>
+        <div class="asg-meta" style="margin-top:4px"><span>${nq} ข้อ · เต็ม ${+EX.total(e.id)}</span><span>⏱ ${e.time_limit_min ? e.time_limit_min + ' นาที' : 'ไม่จำกัดเวลา'}</span><span>🔁 ${e.max_attempts} ครั้ง</span>
+          <span class="chips">${cids.map(c => `<span class="chip">${esc(db.get('classrooms', c)?.name)}</span>`).join('')}</span></div>
+      </div>
+      <div class="asg-actions">
+        <button class="btn sm" data-act="ex-share" data-id="${e.id}">${ic('link')}ส่งลิงก์</button>
+        <a class="btn sm" href="#exam-edit-${e.id}">${ic('edit')}แก้ไขข้อสอบ</a>
+        <a class="btn primary sm" href="#exam-res-${e.id}">${ic('chart')}ผลสอบ</a>
+        <button class="btn ghost sm" data-act="ex-toggle" data-id="${e.id}">${e.is_open ? 'ปิดสอบ' : 'เปิดสอบ'}</button>
+        <button class="btn ghost icon" data-act="ex-del" data-id="${e.id}" aria-label="ลบข้อสอบ" style="color:var(--danger)">${ic('trash')}</button>
+      </div>
+      <div class="prog"><div class="prog-bar"><i style="width:${total ? done / total * 100 : 0}%;background:var(--ok)"></i><i style="width:${total ? live / total * 100 : 0}%;background:var(--accent)"></i></div>
+        <span>สอบแล้ว <b style="color:var(--ink)">${done}/${total}</b>${live ? ` · กำลังทำ ${live}` : ''}</span></div>
+    </div></article>`;
+}
+function examNewModal() {
+  const subs = Q.subjectsOfTerm(Q.currentTerm()?.id);
+  const sid = ui.exSubject || subs[0]?.id;
+  openModal({
+    title: 'สร้างข้อสอบ',
+    body: `<div class="stack">
+      <div class="grid2"><label class="field"><span>วิชา *</span><select class="input" name="subject_id" data-chg="ex-new-subject">${subs.map(s => `<option value="${s.id}" ${s.id === sid ? 'selected' : ''}>${esc(s.name)}</option>`).join('')}</select></label>
+        <label class="field"><span>ชื่อข้อสอบ *</span><input class="input" name="title" placeholder="เช่น สอบย่อยบทที่ 1"></label></div>
+      <div class="field"><span class="muted" style="font-weight:500">ห้องที่สอบ *</span><div id="ex-cls">${examClassChecks(sid, null)}</div></div>
+      <div class="note">สร้างแล้วจะไปหน้าเพิ่มคำถาม พิมพ์เองหรือนำเข้าจาก Word/Excel ได้ ข้อสอบจะยัง<b>ปิดอยู่</b>จนกว่าครูจะกดเปิดสอบ</div>
+    </div>`,
+    actions: [{ label: 'ยกเลิก', onClick: closeModal }, { label: 'สร้างข้อสอบ', kind: 'primary', onClick: async () => {
+      const title = mval('title'); const cls = $$('#modal-root input[name=ecls]:checked').map(x => x.value);
+      if (!title) return toast('กรุณาตั้งชื่อข้อสอบ', true);
+      if (!cls.length) return toast('เลือกห้องอย่างน้อย 1 ห้อง', true);
+      const e = await db.insert('exams', { subject_id: mval('subject_id'), title, time_limit_min: 30, shuffle_questions: true, shuffle_choices: true, max_attempts: 1, show_answers: 'after_close', is_open: false });
+      const rows = await q(sb.from('exam_classes').insert(cls.map(c => ({ exam_id: e.id, classroom_id: c }))).select());
+      store.exam_classes.push(...rows);
+      closeModal(); location.hash = 'exam-edit-' + e.id;
+    } }],
+  });
+}
+function examClassChecks(subjectId, selected) {
+  const subjCls = Q.subjectClassIds(subjectId);
+  const sel = selected || subjCls;
+  const cls = Q.classrooms().filter(c => subjCls.includes(c.id) || sel.includes(c.id));
+  if (!cls.length) return '<div class="note">วิชานี้ยังไม่ได้เลือกห้องที่สอน</div>';
+  return `<div class="checks">${cls.map(c => `<label class="check"><input type="checkbox" name="ecls" value="${c.id}" ${sel.includes(c.id) ? 'checked' : ''}>${esc(c.name)}</label>`).join('')}</div>`;
+}
+
+/* ---------- ตัวแก้ข้อสอบ ---------- */
+function viewExamEdit() {
+  const eid = ui.route.slice(10);
+  const e = db.get('exams', eid);
+  if (!e) return `<div class="card"><div class="empty"><b>ไม่พบข้อสอบนี้</b><a class="btn" href="#exams" style="margin-top:10px">กลับ</a></div></div>`;
+  const qs = EX.questions(eid);
+  const nAtt = EX.attempts(eid).length;
+  const probs = qs.filter(q => EX.problems(q)).length;
+  return `
+  <div class="page-head"><div><a href="#exams" class="small" style="text-decoration:none">‹ ข้อสอบทั้งหมด</a><h2 style="margin-top:4px">${esc(e.title)}</h2>
+    <p>${esc(db.get('subjects', e.subject_id)?.name)} · ${qs.length} ข้อ · คะแนนเต็ม ${+EX.total(eid)}</p></div><span class="spacer"></span>
+    <button class="btn" data-act="ex-share" data-id="${eid}">${ic('link')}ส่งลิงก์</button>
+    <a class="btn" href="#exam-res-${eid}">${ic('chart')}ผลสอบ</a>
+    <button class="btn ${e.is_open ? '' : 'primary'}" data-act="ex-toggle" data-id="${eid}">${e.is_open ? '⏸ ปิดสอบ' : '▶ เปิดสอบ'}</button></div>
+  ${nAtt ? `<div class="note" style="margin-bottom:14px">⚠️ มีนักเรียนเริ่มสอบแล้ว ${nAtt} ครั้ง ถ้าแก้เฉลยหรือคะแนน ให้กด "ตรวจใหม่ทั้งหมด" ในหน้าผลสอบ</div>` : ''}
+  <div class="card" style="margin-bottom:16px"><div class="card-h"><h3>⚙️ ตั้งค่าข้อสอบ</h3><span class="spacer"></span><span class="small muted">บันทึกอัตโนมัติ</span></div>
+    <div class="card-b ex-settings">
+      <label class="field"><span>ชื่อข้อสอบ</span><input class="input" value="${esc(e.title)}" data-chg="ex-set" data-f="title"></label>
+      <label class="field"><span>เวลาทำ (นาที · เว้นว่าง = ไม่จำกัด)</span><input class="input" type="number" min="1" value="${e.time_limit_min ?? ''}" data-chg="ex-set" data-f="time_limit_min"></label>
+      <label class="field"><span>ทำได้กี่ครั้ง</span><input class="input" type="number" min="1" max="10" value="${e.max_attempts}" data-chg="ex-set" data-f="max_attempts"></label>
+      <label class="field"><span>ให้นักเรียนดูเฉลย</span><select class="input" data-chg="ex-set" data-f="show_answers">
+        <option value="never" ${e.show_answers === 'never' ? 'selected' : ''}>ไม่ให้ดู (เห็นแค่คะแนน)</option>
+        <option value="after_submit" ${e.show_answers === 'after_submit' ? 'selected' : ''}>ทันทีหลังส่ง</option>
+        <option value="after_close" ${e.show_answers === 'after_close' ? 'selected' : ''}>หลังครูปิดสอบ</option></select></label>
+      <label class="field"><span>เปิดให้เข้าสอบตั้งแต่ (ไม่บังคับ)</span><input class="input" type="datetime-local" value="${toLocalInput(e.opens_at)}" data-chg="ex-set" data-f="opens_at"></label>
+      <label class="field"><span>ปิดอัตโนมัติเมื่อ (ไม่บังคับ)</span><input class="input" type="datetime-local" value="${toLocalInput(e.closes_at)}" data-chg="ex-set" data-f="closes_at"></label>
+      <label class="check"><input type="checkbox" ${e.shuffle_questions ? 'checked' : ''} data-chg="ex-set" data-f="shuffle_questions">🔀 สุ่มลำดับข้อ (แต่ละคนไม่เหมือนกัน)</label>
+      <label class="check"><input type="checkbox" ${e.shuffle_choices ? 'checked' : ''} data-chg="ex-set" data-f="shuffle_choices">🔀 สุ่มลำดับตัวเลือก</label>
+      <div class="field" style="grid-column:1/-1"><span class="muted" style="font-weight:500">ห้องที่สอบ</span><div data-chg-wrap>${examClassChecks(e.subject_id, EX.classIds(eid)).replace(/name="ecls"/g, 'name="ecls" data-chg="ex-cls"')}</div></div>
+      <label class="field" style="grid-column:1/-1"><span>คำชี้แจง (นักเรียนเห็นก่อนเริ่มสอบ)</span><textarea class="input" rows="2" data-chg="ex-set" data-f="description" placeholder="เช่น ข้อสอบมี 20 ข้อ ห้ามเปิดหนังสือ">${esc(e.description)}</textarea></label>
+    </div></div>
+  <div class="q-head"><h3>คำถาม <span class="chip">${qs.length} ข้อ · ${+EX.total(eid)} คะแนน</span>${probs ? ` <span class="chip bad">${ic('warn')}${probs} ข้อยังไม่สมบูรณ์</span>` : ''}</h3><span class="spacer"></span>
+    <button class="btn" data-act="ex-import">${ic('upload')}นำเข้าจาก Word / Excel / ข้อความ</button></div>
+  <div class="q-list">${qs.map((qq, i) => questionCard(qq, i, qs.length)).join('')}</div>
+  <div class="q-add">${Object.keys(QTYPE).map(t => `<button class="btn" data-act="q-add" data-t="${t}">${QICON[t]} + ${QTYPE[t]}</button>`).join('')}</div>`;
+}
+function questionCard(qq, i, n) {
+  const prob = EX.problems(qq);
+  const ch = Array.isArray(qq.choices) ? qq.choices : [];
+  let body = '';
+  if (qq.qtype === 'mcq') {
+    body = `<div class="q-choices">${ch.map((c, k) => `<div class="q-choice ${+qq.answer === k && qq.answer != null ? 'right' : ''}">
+        <label class="q-radio" title="เลือกเป็นคำตอบที่ถูก"><input type="radio" name="ans-${qq.id}" ${+qq.answer === k && qq.answer != null ? 'checked' : ''} data-chg="q-correct" data-id="${qq.id}" data-i="${k}"><span>${ExamParser.TH[k] || k + 1}</span></label>
+        <input class="input" value="${esc(c)}" placeholder="ตัวเลือก ${ExamParser.TH[k] || k + 1}" data-chg="q-choice" data-id="${qq.id}" data-i="${k}">
+        <button class="btn ghost icon" data-act="q-choice-del" data-id="${qq.id}" data-i="${k}" aria-label="ลบตัวเลือก" ${ch.length <= 2 ? 'disabled' : ''}>${ic('x')}</button></div>`).join('')}
+      ${ch.length < 8 ? `<button class="btn sm ghost" data-act="q-choice-add" data-id="${qq.id}">${ic('plus')}เพิ่มตัวเลือก</button>` : ''}
+      <div class="small muted">กดวงกลมหน้าตัวเลือกที่ถูก</div></div>`;
+  } else if (qq.qtype === 'true_false') {
+    body = `<div class="tf"><button class="tf-b ${qq.answer === true ? 'on ok' : ''}" data-act="q-tf" data-id="${qq.id}" data-v="1">⭕ ถูก</button><button class="tf-b ${qq.answer === false ? 'on bad' : ''}" data-act="q-tf" data-id="${qq.id}" data-v="0">❌ ผิด</button><span class="small muted">เลือกคำตอบที่ถูกต้อง</span></div>`;
+  } else if (qq.qtype === 'short') {
+    body = `<label class="field"><span>คำตอบที่ยอมรับ (บรรทัดละ 1 คำตอบ · ไม่สนตัวพิมพ์เล็ก/ใหญ่และช่องว่างหน้า-หลัง)</span><textarea class="input" rows="2" data-chg="q-short" data-id="${qq.id}" placeholder="เช่น CPU&#10;ซีพียู">${esc((Array.isArray(qq.answer) ? qq.answer : []).join('\n'))}</textarea></label>`;
+  } else body = `<div class="note">📝 นักเรียนพิมพ์คำตอบ ครูให้คะแนนเองในหน้าผลสอบ</div>`;
+  return `<div class="card qcard ${prob ? 'has-prob' : ''}" id="q-${qq.id}">
+    <div class="q-top"><span class="q-no">${i + 1}</span>
+      <select class="input q-type" data-chg="q-type" data-id="${qq.id}" aria-label="ประเภทคำถาม">${Object.keys(QTYPE).map(t => `<option value="${t}" ${t === qq.qtype ? 'selected' : ''}>${QICON[t]} ${QTYPE[t]}</option>`).join('')}</select>
+      <label class="q-pts"><input class="input" type="number" min="0" step="0.5" value="${+qq.points}" data-chg="q-points" data-id="${qq.id}" aria-label="คะแนน"><span>คะแนน</span></label>
+      ${prob ? `<span class="chip bad">${ic('warn')}${esc(prob)}</span>` : ''}<span class="spacer"></span>
+      <button class="btn ghost icon" data-act="q-move" data-id="${qq.id}" data-d="-1" ${i === 0 ? 'disabled' : ''} aria-label="ย้ายขึ้น">${ic('up')}</button>
+      <button class="btn ghost icon" data-act="q-move" data-id="${qq.id}" data-d="1" ${i === n - 1 ? 'disabled' : ''} aria-label="ย้ายลง">${ic('down')}</button>
+      <button class="btn ghost icon" data-act="q-dup" data-id="${qq.id}" aria-label="ทำสำเนา" title="ทำสำเนา">${ic('copy')}</button>
+      <button class="btn ghost icon" data-act="q-del" data-id="${qq.id}" aria-label="ลบคำถาม" style="color:var(--danger)">${ic('trash')}</button></div>
+    <textarea class="input q-prompt" rows="2" placeholder="พิมพ์คำถาม…" data-chg="q-prompt" data-id="${qq.id}">${esc(qq.prompt)}</textarea>
+    ${body}</div>`;
+}
+async function qUpdate(id, patch, rerender = true) {
+  await db.update('exam_questions', id, patch);
+  if (rerender) { const y = window.scrollY; render(); window.scrollTo(0, y); }
+}
+async function qAdd(eid, rows) {
+  const base = Math.max(0, ...EX.questions(eid).map(q => q.sort_order || 0));
+  const payload = rows.map((r, k) => ({ exam_id: eid, sort_order: base + (k + 1) * 10, qtype: r.qtype, prompt: r.prompt || '', choices: r.qtype === 'mcq' ? (r.choices || ['', '', '', '']) : null, answer: r.answer ?? null, points: r.points ?? 1 }));
+  for (let i = 0; i < payload.length; i += 200) {
+    const out = await q(sb.from('exam_questions').insert(payload.slice(i, i + 200)).select());
+    store.exam_questions.push(...out);
+  }
+}
+
+/* ---------- นำเข้า ---------- */
+function examImportModal(preview) {
+  const tab = ui.exImpTab || 'text';
+  openModal({
+    title: 'นำเข้าข้อสอบ', wide: true, ctx: { preview },
+    body: `<div class="stack">
+      <div class="seg">${[['text', '📋 วางข้อความ'], ['word', '📄 ไฟล์ Word'], ['excel', '📊 Excel / CSV']].map(([k, l]) => `<button class="${tab === k ? 'on' : ''}" data-act="ex-imp-tab" data-t="${k}">${l}</button>`).join('')}</div>
+      ${tab === 'text' ? `<textarea class="input" id="ex-imp-text" rows="9" placeholder="วางข้อสอบที่นี่ (คัดลอกจาก Word ได้เลย)">${esc(ui.exImpText || '')}</textarea>
+        <div class="row"><button class="btn primary" data-act="ex-imp-parse">อ่านข้อสอบ</button><span class="spacer"></span><button class="btn sm ghost" data-act="ex-imp-sample">ใส่ตัวอย่าง</button></div>`
+      : tab === 'word' ? `<label class="drop cute">📄<b>เลือกไฟล์ Word (.docx)</b><span class="small muted">พิมพ์ข้อสอบตามรูปแบบด้านล่าง ระบบจะอ่านให้อัตโนมัติ</span><input type="file" accept=".docx" hidden data-chg="ex-imp-file" data-k="word"></label>`
+      : `<label class="drop cute">📊<b>เลือกไฟล์ Excel หรือ CSV</b><span class="small muted">คอลัมน์: ประเภท · คำถาม · ก · ข · ค · ง · คำตอบ · คะแนน</span><input type="file" accept=".xlsx,.xls,.csv" hidden data-chg="ex-imp-file" data-k="excel"></label>
+        <button class="btn sm" data-act="ex-imp-template">${ic('dl')}ดาวน์โหลดแม่แบบ Excel</button>`}
+      ${preview ? `<div class="imp-prev"><div class="row"><b>อ่านได้ ${preview.length} ข้อ</b><span class="chip">${preview.reduce((a, x) => a + (+x.points || 0), 0)} คะแนน</span>${preview.filter(x => x.warn).length ? `<span class="chip bad">${preview.filter(x => x.warn).length} ข้อยังไม่มีเฉลย (แก้ทีหลังได้)</span>` : ''}</div>
+        ${preview.map((x, i) => `<div class="imp-q"><span class="q-no sm">${i + 1}</span><div style="min-width:0;flex:1"><div><span class="chip">${QICON[x.qtype]} ${QTYPE[x.qtype]}</span> <b>${esc(x.prompt)}</b> <span class="muted small">(${x.points} คะแนน)</span></div>
+          ${x.qtype === 'mcq' ? `<div class="small">${x.choices.map((c, k) => `<span class="${k === x.answer ? 'ans-ok' : ''}">${ExamParser.TH[k]}. ${esc(c)}</span>`).join(' · ')}</div>`
+          : x.qtype === 'true_false' ? `<div class="small">เฉลย: <span class="ans-ok">${x.answer ? 'ถูก' : 'ผิด'}</span></div>`
+          : x.qtype === 'short' ? `<div class="small">เฉลย: <span class="ans-ok">${esc(x.answer.join(' | '))}</span></div>` : ''}
+          ${x.warn ? `<div class="small" style="color:var(--danger)">${esc(x.warn)}</div>` : ''}</div></div>`).join('')}</div>` : ''}
+      <details class="fmt"><summary style="cursor:pointer"><b>รูปแบบข้อความ / Word ที่อ่านได้</b></summary><pre class="fmt-pre">1. ข้อใดคืออุปกรณ์รับข้อมูล (2 คะแนน)
+ก. จอภาพ
+ข. แป้นพิมพ์
+ค. ลำโพง
+ง. เครื่องพิมพ์
+ตอบ ข
+
+2. RAM เป็นหน่วยความจำถาวร
+ตอบ ผิด
+
+3. หน่วยประมวลผลกลางเรียกย่อว่าอะไร
+ตอบ CPU | ซีพียู
+
+4. อธิบายการทำงานของคอมพิวเตอร์ [อัตนัย]</pre>
+        <div class="small">· ตัวเลือกใช้ ก. ข. ค. ง. หรือ a) b) c) · ใส่ * ท้ายตัวเลือกที่ถูกแทนบรรทัด "ตอบ" ได้ · ไม่ใส่ "(x คะแนน)" = 1 คะแนน · มีหลายคำตอบที่ถูกคั่นด้วย |</div></details>
+    </div>`,
+    actions: preview?.length ? [{ label: 'ยกเลิก', onClick: closeModal }, { label: `เพิ่ม ${preview.length} ข้อลงข้อสอบ`, kind: 'primary', onClick: async () => {
+      const eid = ui.route.slice(10);
+      await qAdd(eid, preview); ui.exImpText = ''; closeModal(); render(); toast(`เพิ่ม ${preview.length} ข้อแล้ว`);
+    } }] : [{ label: 'ปิด', onClick: closeModal }],
+  });
+}
+async function examImportFile(file, kind) {
+  try {
+    const buf = await file.arrayBuffer();
+    if (kind === 'word') {
+      if (!window.mammoth) throw new Error('โหลดตัวอ่าน Word ไม่สำเร็จ — เปิดไฟล์ Word แล้วคัดลอกข้อความมาวางในแท็บ "วางข้อความ" แทนได้');
+      const r = await window.mammoth.extractRawText({ arrayBuffer: buf });
+      const qs = ExamParser.parseText(r.value);
+      if (!qs.length) throw new Error('ไม่พบข้อสอบในไฟล์ ตรวจรูปแบบ (เลขข้อ + ก. ข. ค. ง. + ตอบ)');
+      ui.exImpText = r.value; examImportModal(qs);
+    } else {
+      let rows;
+      if (/\.csv$/i.test(file.name)) rows = RosterParser.parseCSV(RosterParser.decodeText(buf));
+      else { if (!window.XLSX) throw new Error('โหลดตัวอ่าน Excel ไม่สำเร็จ ลองบันทึกเป็น .csv'); const wb = XLSX.read(buf, { type: 'array' }); rows = XLSX.utils.sheet_to_json(wb.Sheets[wb.SheetNames[0]], { header: 1, defval: '' }); }
+      const r = ExamParser.parseRows(rows);
+      if (r.error) throw new Error(r.error);
+      examImportModal(r.questions);
+    }
+  } catch (e) { toast(e.message || 'อ่านไฟล์ไม่สำเร็จ', true); }
+}
+
+/* ---------- ผลสอบ ---------- */
+async function loadExamResults(eid) {
+  const atts = await q(sb.from('exam_attempts').select('*').eq('exam_id', eid));
+  store.exam_attempts = store.exam_attempts.filter(a => a.exam_id !== eid).concat(atts);
+  const ids = atts.map(a => a.id); const ans = [];
+  for (let i = 0; i < ids.length; i += 150) ans.push(...await q(sb.from('exam_answers').select('*').in('attempt_id', ids.slice(i, i + 150))));
+  store.exam_answers = (store.exam_answers || []).filter(a => !ids.includes(a.attempt_id)).concat(ans);
+  ui.exResLoaded = eid;
+}
+function attemptStatus(a) {
+  if (!a) return '<span class="chip">ยังไม่สอบ</span>';
+  if (!a.submitted_at) return (a.deadline && new Date(a.deadline) < new Date()) ? '<span class="chip warn">หมดเวลา · ยังไม่ส่ง</span>' : '<span class="chip warn">🟡 กำลังทำ</span>';
+  const essay = EX.questions(a.exam_id).some(q => q.qtype === 'essay');
+  if (essay && a.manual_score == null) return '<span class="chip pri">รอตรวจอัตนัย</span>';
+  return '<span class="chip ok">ส่งแล้ว</span>';
+}
+function viewExamResults() {
+  const eid = ui.route.slice(9);
+  const e = db.get('exams', eid);
+  if (!e) return `<div class="card"><div class="empty"><b>ไม่พบข้อสอบนี้</b></div></div>`;
+  if (ui.exResLoaded !== eid) { ui.exResLoaded = eid; loadExamResults(eid).then(() => { if (ui.route === 'exam-res-' + eid) render(); }).catch(() => {}); }
+  const cids = EX.classIds(eid).sort((x, y) => (db.get('classrooms', x)?.name || '').localeCompare(db.get('classrooms', y)?.name || '', 'th', { numeric: true }));
+  if (!cids.includes(ui.exResCid)) ui.exResCid = cids[0];
+  const max = EX.total(eid);
+  const studs = ui.exResCid ? Q.students(ui.exResCid).filter(s => s.active !== false) : [];
+  const rows = studs.map(s => {
+    const atts = store.exam_attempts.filter(a => a.exam_id === eid && a.student_id === s.id).sort((a, b) => (b.started_at || '').localeCompare(a.started_at || ''));
+    const done = atts.filter(a => a.submitted_at);
+    const best = done.length ? done.reduce((m, a) => +a.total_score > +m.total_score ? a : m, done[0]) : null;
+    return { s, atts, latest: atts[0], best };
+  });
+  const scores = rows.filter(r => r.best).map(r => +r.best.total_score);
+  const avg = scores.length ? scores.reduce((a, b) => a + b, 0) / scores.length : null;
+  const qs = EX.questions(eid);
+  const doneIds = new Set(rows.flatMap(r => r.atts.filter(a => a.submitted_at).map(a => a.id)));
+  const ans = (store.exam_answers || []).filter(a => doneIds.has(a.attempt_id));
+  return `
+  <div class="page-head"><div><a href="#exams" class="small" style="text-decoration:none">‹ ข้อสอบทั้งหมด</a><h2 style="margin-top:4px">📊 ผลสอบ: ${esc(e.title)}</h2>
+    <p>${qs.length} ข้อ · เต็ม ${+max} · ${e.is_open ? '🟢 เปิดสอบอยู่' : '⏸ ปิดสอบแล้ว'}</p></div><span class="spacer"></span>
+    <button class="btn" data-act="ex-reload" data-id="${eid}">${ic('refresh')}รีเฟรช</button>
+    <button class="btn" data-act="ex-regrade" data-id="${eid}">ตรวจใหม่ทั้งหมด</button>
+    <button class="btn" data-act="ex-export" data-id="${eid}">${ic('dl')}Excel</button>
+    <a class="btn" href="#exam-edit-${eid}">${ic('edit')}แก้ไขข้อสอบ</a></div>
+  <div class="card" style="margin-bottom:16px">
+    <div class="toolbar"><div class="tabs">${cids.map(c => `<button class="tab ${c === ui.exResCid ? 'on' : ''}" data-act="ex-res-cls" data-id="${c}">${esc(db.get('classrooms', c)?.name)}</button>`).join('')}</div></div>
+    <div class="toolbar" style="background:rgba(255,255,255,.2)"><span class="chip pri">สอบแล้ว ${scores.length}/${studs.length}</span><span class="chip">เฉลี่ย ${avg == null ? '–' : avg.toFixed(2)}</span><span class="chip ok">สูงสุด ${scores.length ? Math.max(...scores) : '–'}</span><span class="chip bad">ต่ำสุด ${scores.length ? Math.min(...scores) : '–'}</span>
+      ${rows.some(r => r.atts.some(a => a.tab_switches >= 3)) ? `<span class="chip warn">${ic('warn')}มีคนสลับแท็บบ่อย</span>` : ''}</div>
+    <div class="tbl-wrap"><table class="tbl"><thead><tr><th>เลขที่</th><th>ชื่อ - สกุล</th><th>สถานะ</th><th style="text-align:right">คะแนน /${+max}</th><th>ครั้งที่</th><th>เวลาที่ใช้</th><th title="จำนวนครั้งที่ออกจากหน้าข้อสอบ">สลับแท็บ</th><th class="act"></th></tr></thead><tbody>
+    ${rows.map(({ s, atts, latest, best }) => { const a = best || latest; const sw = Math.max(0, ...atts.map(x => x.tab_switches || 0));
+      const dur = a && a.submitted_at ? Math.round((new Date(a.submitted_at) - new Date(a.started_at)) / 60000) : null;
+      return `<tr><td class="num">${s.number}</td><td>${esc(Q.fullName(s))}</td><td>${attemptStatus(latest && !latest.submitted_at ? latest : a)}</td>
+        <td style="text-align:right"><b>${best ? +best.total_score : '–'}</b></td><td class="small">${atts.length ? `${atts.length}/${e.max_attempts}` : '–'}</td>
+        <td class="small muted">${dur != null ? dur + ' นาที' : '–'}</td>
+        <td>${atts.length ? `<span class="sw ${sw >= 3 ? 'bad' : sw ? 'warn' : ''}">${sw ? '⚠️ ' : ''}${sw}</span>` : '–'}</td>
+        <td class="act">${atts.length ? `<button class="btn sm ${a && a.submitted_at && EX.questions(eid).some(q => q.qtype === 'essay') && a.manual_score == null ? 'primary' : ''}" data-act="ex-att" data-id="${a.id}">${ic('eye')}ดู/ตรวจ</button>` : ''}</td></tr>`; }).join('')}
+    </tbody></table></div></div>
+  ${qs.length ? `<div class="card"><div class="card-h"><h3>🔍 วิเคราะห์รายข้อ · ${esc(db.get('classrooms', ui.exResCid)?.name || '')}</h3><span class="spacer"></span><span class="small muted">ข้อที่ตอบถูกน้อย ควรทบทวนในห้อง</span></div>
+    <div class="card-b item-list">${qs.map((qq, i) => { const a = ans.filter(x => x.question_id === qq.id); const n = doneIds.size;
+      if (qq.qtype === 'essay') { const g = a.filter(x => x.points_awarded != null); const av = g.length ? g.reduce((s2, x) => s2 + +x.points_awarded, 0) / g.length : null;
+        return `<div class="item"><span class="q-no sm">${i + 1}</span><div class="item-q">${esc(qq.prompt)}</div><span class="small muted">อัตนัย · เฉลี่ย ${av == null ? '–' : av.toFixed(1)}/${+qq.points}</span></div>`; }
+      const right = a.filter(x => x.is_correct).length; const pct = n ? right / n * 100 : 0;
+      return `<div class="item"><span class="q-no sm">${i + 1}</span><div class="item-q">${esc(qq.prompt)}</div><div class="item-bar"><span><i style="width:${pct}%;background:${pct >= 70 ? 'var(--ok)' : pct >= 40 ? 'var(--accent)' : 'var(--danger)'}"></i></span><b>${n ? pct.toFixed(0) + '%' : '–'}</b></div></div>`; }).join('')}</div></div>` : ''}`;
+}
+function answerText(qq, v) {
+  if (v == null) return '<span class="muted">ไม่ได้ตอบ</span>';
+  if (qq.qtype === 'mcq') { const i = +v; return `${ExamParser.TH[i] || '?'}. ${esc((qq.choices || [])[i] ?? '')}`; }
+  if (qq.qtype === 'true_false') return v === true || v === 'true' ? '⭕ ถูก' : '❌ ผิด';
+  return esc(v);
+}
+function correctText(qq) {
+  if (qq.qtype === 'mcq') return qq.answer == null ? '–' : `${ExamParser.TH[+qq.answer]}. ${esc((qq.choices || [])[+qq.answer] ?? '')}`;
+  if (qq.qtype === 'true_false') return qq.answer ? '⭕ ถูก' : '❌ ผิด';
+  if (qq.qtype === 'short') return esc((qq.answer || []).join(' | '));
+  return 'ครูตรวจเอง';
+}
+function attemptModal(aid) {
+  const a = store.exam_attempts.find(x => x.id === aid); const s = db.get('students', a.student_id);
+  const order = a.question_order?.length ? a.question_order : EX.questions(a.exam_id).map(q2 => q2.id);
+  const qs = order.map(id => db.get('exam_questions', id)).filter(Boolean);
+  const ans = (store.exam_answers || []).filter(x => x.attempt_id === aid);
+  const ev = (a.events || []).slice(-10);
+  openModal({
+    title: `เลขที่ ${s.number} · ${Q.fullName(s)} · ครั้งที่ ${a.attempt_no}`, wide: true, ctx: { attemptId: aid },
+    body: `<div class="stack">
+      <div class="row" style="flex-wrap:wrap;gap:8px">${attemptStatus(a)}<span class="chip pri">คะแนน ${a.total_score ?? '–'} / ${+EX.total(a.exam_id)}</span><span class="chip">เริ่ม ${fmtDate(a.started_at)}</span>${a.submitted_at ? `<span class="chip">ส่ง ${fmtDate(a.submitted_at)}</span>` : ''}
+        <span class="chip ${a.tab_switches >= 3 ? 'bad' : a.tab_switches ? 'warn' : 'ok'}">สลับแท็บ ${a.tab_switches || 0} ครั้ง</span></div>
+      ${ev.length ? `<div class="small muted">ออกจากหน้าข้อสอบล่าสุด: ${ev.map(x => new Date(x.at).toLocaleTimeString('th-TH', { hour: '2-digit', minute: '2-digit', second: '2-digit' })).join(' · ')}</div>` : ''}
+      ${qs.map((qq, i) => { const x = ans.find(y => y.question_id === qq.id); const ok = x?.is_correct;
+        return `<div class="rv ${qq.qtype === 'essay' ? 'essay' : ok ? 'ok' : 'bad'}"><div class="rv-h"><span class="q-no sm">${i + 1}</span><b>${esc(qq.prompt)}</b><span class="spacer"></span>
+          ${qq.qtype === 'essay' ? `<label class="q-pts"><input class="input" type="number" min="0" max="${+qq.points}" step="0.5" value="${x?.points_awarded ?? ''}" data-essay="${qq.id}" ${x ? '' : 'disabled'}><span>/ ${+qq.points}</span></label>`
+          : `<span class="rv-pt">${ok ? '✓' : '✗'} ${x?.points_awarded ?? 0}/${+qq.points}</span>`}</div>
+          <div class="rv-b"><div><span class="muted small">คำตอบนักเรียน:</span> ${qq.qtype === 'essay' ? `<div class="essay-ans">${x ? esc(x.answer) : '<span class="muted">ไม่ได้ตอบ</span>'}</div>` : answerText(qq, x?.answer)}</div>
+            ${qq.qtype !== 'essay' ? `<div><span class="muted small">เฉลย:</span> ${correctText(qq)}</div>` : ''}</div></div>`; }).join('')}
+    </div>`,
+    actions: [
+      { label: `${ic('trash')}ลบครั้งนี้ (ให้สอบใหม่)`, kind: 'danger', onClick: () => confirmBox('ลบการสอบครั้งนี้', `ลบคำตอบและคะแนนครั้งที่ ${a.attempt_no} ของ ${esc(s.first_name)}? นักเรียนจะสอบใหม่ได้ (ถ้ายังเปิดสอบอยู่)`, 'ลบ', async () => {
+          await db.removeIds('exam_attempts', [a.id]); store.exam_answers = store.exam_answers.filter(x => x.attempt_id !== a.id); render(); toast('ลบแล้ว นักเรียนสอบใหม่ได้'); }) },
+      ...(a.submitted_at ? [] : [{ label: 'บังคับส่ง', onClick: async () => { await q(sb.rpc('teacher_exam_grade', { p_attempt_id: a.id })); await loadExamResults(a.exam_id); closeModal(); render(); toast('บังคับส่งและตรวจแล้ว'); } }]),
+      { label: 'บันทึกคะแนนอัตนัย', kind: 'primary', onClick: () => saveEssayScores(a) },
+    ],
+  });
+}
+async function saveEssayScores(a) {
+  const inputs = $$('#modal-root [data-essay]').filter(i => !i.disabled);
+  for (const el of inputs) {
+    const qq = db.get('exam_questions', el.dataset.essay);
+    const v = el.value.trim() === '' ? null : parseFloat(el.value);
+    if (v != null && (!(v >= 0) || v > +qq.points)) return toast(`คะแนนอัตนัยต้องอยู่ระหว่าง 0–${+qq.points}`, true);
+    await q(sb.from('exam_answers').update({ points_awarded: v }).eq('attempt_id', a.id).eq('question_id', qq.id));
+  }
+  if (a.submitted_at || inputs.length) await q(sb.rpc('teacher_exam_grade', { p_attempt_id: a.id }));
+  await loadExamResults(a.exam_id); closeModal(); render(); toast('บันทึกคะแนนแล้ว');
+}
+function examExport(eid) {
+  const e = db.get('exams', eid);
+  const header = ['ห้อง', 'เลขที่', 'เลขประจำตัว', 'ชื่อ - สกุล', `คะแนน (${EX.total(eid)})`, 'จำนวนครั้ง', 'สลับแท็บ', 'ส่งเมื่อ'];
+  const rows = EX.classIds(eid).flatMap(cid => Q.students(cid).filter(s => s.active !== false).map(s => {
+    const atts = store.exam_attempts.filter(a => a.exam_id === eid && a.student_id === s.id);
+    const best = EX.best(eid, s.id); const last = atts.filter(a => a.submitted_at).sort((a, b) => (b.submitted_at || '').localeCompare(a.submitted_at || ''))[0];
+    return [db.get('classrooms', cid).name, s.number, s.student_code, Q.fullName(s), best ?? '', atts.length, Math.max(0, ...atts.map(a => a.tab_switches || 0)), last ? fmtDate(last.submitted_at) : ''];
+  }));
+  const fname = `ผลสอบ_${e.title}`.replace(/[\\/:*?"<>|]/g, '-');
+  if (window.XLSX) { const wb = XLSX.utils.book_new(); const ws = XLSX.utils.aoa_to_sheet([header, ...rows]); ws['!cols'] = header.map((h, i) => ({ wch: i === 3 ? 28 : 12 })); XLSX.utils.book_append_sheet(wb, ws, 'ผลสอบ'); XLSX.writeFile(wb, fname + '.xlsx'); }
+  else { const csv = '﻿' + [header, ...rows].map(r => r.map(v => `"${String(v).replace(/"/g, '""')}"`).join(',')).join('\r\n'); const a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([csv], { type: 'text/csv' })); a.download = fname + '.csv'; a.click(); }
+}
+
+/* ---------- เหตุการณ์ ---------- */
+Object.assign(ACT, {
+  'ex-new': examNewModal,
+  'ex-toggle': async el => { const e = db.get('exams', el.dataset.id);
+    if (!e.is_open) { const bad = EX.questions(e.id).filter(x => EX.problems(x)).length; if (!EX.questions(e.id).length) return toast('ยังไม่มีคำถาม เพิ่มคำถามก่อนเปิดสอบ', true); if (bad) toast(`มี ${bad} ข้อยังไม่สมบูรณ์ — เปิดสอบแล้ว แต่ข้อเหล่านั้นจะไม่ได้คะแนน`); }
+    await db.update('exams', e.id, { is_open: !e.is_open }); render(); toast(e.is_open ? '▶ เปิดสอบแล้ว ส่งลิงก์ให้นักเรียนได้เลย' : '⏸ ปิดสอบแล้ว'); },
+  'ex-del': el => { const e = db.get('exams', el.dataset.id); const n = EX.attempts(e.id).length;
+    confirmBox('ลบข้อสอบ', `ลบข้อสอบ <b>${esc(e.title)}</b>?${n ? ` ผลสอบ ${n} ครั้งจะถูกลบด้วย` : ''} ลบแล้วกู้คืนไม่ได้`, 'ลบข้อสอบ', async () => {
+      await db.removeIds('exams', [e.id]); store.exam_questions = store.exam_questions.filter(x => x.exam_id !== e.id); store.exam_classes = store.exam_classes.filter(x => x.exam_id !== e.id);
+      store.exam_attempts = store.exam_attempts.filter(x => x.exam_id !== e.id); store.grade_columns = store.grade_columns.filter(x => x.exam_id !== e.id); render(); toast('ลบข้อสอบแล้ว'); }); },
+  'ex-share': el => { const e = db.get('exams', el.dataset.id); if (!e.is_open) toast('ข้อสอบยังปิดอยู่ — อย่าลืมกด "เปิดสอบ" ก่อนนักเรียนเข้า');
+    shareModal(null, { url: EX.link(e), title: `ส่งลิงก์ข้อสอบ: ${e.title}`, note: 'นักเรียนเปิดลิงก์ → กรอกห้อง เลขที่ เลขประจำตัว → เริ่มสอบ',
+      msg: `📝 ข้อสอบ: ${e.title}\n📚 ${db.get('subjects', e.subject_id)?.name || ''} · ${EX.questions(e.id).length} ข้อ · ${e.time_limit_min ? e.time_limit_min + ' นาที' : 'ไม่จำกัดเวลา'}\n⚠️ ห้ามสลับแท็บระหว่างสอบ ระบบจะบันทึก\n👉 เข้าสอบที่: ${EX.link(e)}` }); },
+  'q-add': async el => { const eid = ui.route.slice(10); const t = el.dataset.t;
+    await qAdd(eid, [{ qtype: t, prompt: '', choices: t === 'mcq' ? ['', '', '', ''] : null, answer: null, points: t === 'essay' ? 5 : 1 }]);
+    render(); const last = EX.questions(eid).at(-1); setTimeout(() => { const el2 = $(`#q-${last.id} .q-prompt`); el2?.scrollIntoView({ block: 'center', behavior: 'smooth' }); el2?.focus(); }, 50); },
+  'q-del': el => confirmBox('ลบคำถาม', 'ลบคำถามข้อนี้?', 'ลบ', async () => { await db.removeIds('exam_questions', [el.dataset.id]); const y = scrollY; render(); scrollTo(0, y); }),
+  'q-dup': async el => { const qq = db.get('exam_questions', el.dataset.id); const list = EX.questions(qq.exam_id); const i = list.indexOf(qq);
+    const next = list[i + 1]; const so = next ? (qq.sort_order + next.sort_order) / 2 : qq.sort_order + 10;
+    const r = await db.insert('exam_questions', { exam_id: qq.exam_id, sort_order: so, qtype: qq.qtype, prompt: qq.prompt, choices: qq.choices, answer: qq.answer, points: qq.points });
+    const y = scrollY; render(); scrollTo(0, y); toast('ทำสำเนาแล้ว'); },
+  'q-move': async el => { const qq = db.get('exam_questions', el.dataset.id); const list = EX.questions(qq.exam_id); const i = list.indexOf(qq), j = i + +el.dataset.d;
+    if (j < 0 || j >= list.length) return; [list[i], list[j]] = [list[j], list[i]];
+    for (let k = 0; k < list.length; k++) { const so = (k + 1) * 10; if (list[k].sort_order !== so) { await q(sb.from('exam_questions').update({ sort_order: so }).eq('id', list[k].id)); list[k].sort_order = so; } }
+    const y = scrollY; render(); scrollTo(0, y); },
+  'q-tf': el => qUpdate(el.dataset.id, { answer: el.dataset.v === '1' }),
+  'q-choice-add': el => { const qq = db.get('exam_questions', el.dataset.id); qUpdate(qq.id, { choices: [...(qq.choices || []), ''] }); },
+  'q-choice-del': el => { const qq = db.get('exam_questions', el.dataset.id); const i = +el.dataset.i; const ch = (qq.choices || []).filter((_, k) => k !== i);
+    let ans = qq.answer == null ? null : +qq.answer; if (ans === i) ans = null; else if (ans > i) ans--; qUpdate(qq.id, { choices: ch, answer: ans }); },
+  'ex-import': () => examImportModal(null),
+  'ex-imp-tab': el => { const t = $('#ex-imp-text'); if (t) ui.exImpText = t.value; ui.exImpTab = el.dataset.t; examImportModal(null); },
+  'ex-imp-parse': () => { ui.exImpText = $('#ex-imp-text').value; const qs = ExamParser.parseText(ui.exImpText); if (!qs.length) return toast('ยังอ่านข้อสอบไม่ได้ ตรวจรูปแบบตามตัวอย่างด้านล่าง', true); examImportModal(qs); },
+  'ex-imp-sample': () => { $('#ex-imp-text').value = '1. ข้อใดคืออุปกรณ์รับข้อมูล (2 คะแนน)\nก. จอภาพ\nข. แป้นพิมพ์\nค. ลำโพง\nง. เครื่องพิมพ์\nตอบ ข\n\n2. RAM เป็นหน่วยความจำถาวร\nตอบ ผิด\n\n3. หน่วยประมวลผลกลางเรียกย่อว่าอะไร\nตอบ CPU | ซีพียู\n\n4. อธิบายการทำงานของคอมพิวเตอร์ (5 คะแนน) [อัตนัย]'; },
+  'ex-imp-template': () => { if (!window.XLSX) return toast('โหลดไลบรารี Excel ไม่สำเร็จ', true); const wb = XLSX.utils.book_new(); XLSX.utils.book_append_sheet(wb, XLSX.utils.aoa_to_sheet(ExamParser.TEMPLATE_ROWS), 'ข้อสอบ'); XLSX.writeFile(wb, 'แม่แบบข้อสอบ.xlsx'); },
+  'ex-res-cls': el => { ui.exResCid = el.dataset.id; render(); },
+  'ex-reload': async el => { await loadExamResults(el.dataset.id); render(); toast('อัปเดตผลสอบล่าสุดแล้ว'); },
+  'ex-regrade': el => confirmBox('ตรวจใหม่ทั้งหมด', 'ตรวจคะแนนทุกคนใหม่ตามเฉลยปัจจุบัน (คะแนนอัตนัยที่ให้ไว้ยังอยู่)', 'ตรวจใหม่', async () => {
+    const atts = EX.attempts(el.dataset.id).filter(a => a.submitted_at); for (const a of atts) await q(sb.rpc('teacher_exam_grade', { p_attempt_id: a.id }));
+    await loadExamResults(el.dataset.id); render(); toast(`ตรวจใหม่ ${atts.length} คนแล้ว`); }),
+  'ex-export': el => examExport(el.dataset.id),
+  'ex-att': el => attemptModal(el.dataset.id),
+});
+Object.assign(CHG, {
+  'ex-filter': el => { ui.exSubject = el.value; render(); },
+  'ex-new-subject': el => { $('#ex-cls').innerHTML = examClassChecks(el.value, null); },
+  'ex-set': async el => { const eid = ui.route.slice(10); const f = el.dataset.f; let v;
+    if (el.type === 'checkbox') v = el.checked;
+    else if (f === 'time_limit_min') v = el.value ? Math.max(1, parseInt(el.value, 10)) : null;
+    else if (f === 'max_attempts') v = Math.min(10, Math.max(1, parseInt(el.value, 10) || 1));
+    else if (f === 'opens_at' || f === 'closes_at') v = el.value ? new Date(el.value).toISOString() : null;
+    else v = el.value.trim() || (f === 'title' ? null : null);
+    if (f === 'title' && !v) { el.value = db.get('exams', eid).title; return toast('ชื่อข้อสอบห้ามว่าง', true); }
+    await db.update('exams', eid, { [f]: v }); toast('บันทึกแล้ว');
+    if (f === 'title') { const gc = store.grade_columns.find(c => c.exam_id === eid); if (gc) db.update('grade_columns', gc.id, { title: v }).catch(() => {}); } },
+  'ex-cls': async el => { const eid = ui.route.slice(10);
+    if (el.checked) { const r = await q(sb.from('exam_classes').insert({ exam_id: eid, classroom_id: el.value }).select()); store.exam_classes.push(...r); }
+    else { await q(sb.from('exam_classes').delete().eq('exam_id', eid).eq('classroom_id', el.value)); store.exam_classes = store.exam_classes.filter(x => !(x.exam_id === eid && x.classroom_id === el.value)); }
+    toast('บันทึกห้องที่สอบแล้ว'); },
+  'q-prompt': el => qUpdate(el.dataset.id, { prompt: el.value.trim() }, false).then(() => { const y = scrollY; render(); scrollTo(0, y); }),
+  'q-points': el => { const v = parseFloat(el.value); if (!(v >= 0)) return toast('คะแนนไม่ถูกต้อง', true); qUpdate(el.dataset.id, { points: v }); },
+  'q-type': el => { const t = el.value; const qq = db.get('exam_questions', el.dataset.id);
+    const patch = { qtype: t, answer: null, choices: t === 'mcq' ? (Array.isArray(qq.choices) && qq.choices.length ? qq.choices : ['', '', '', '']) : null };
+    qUpdate(qq.id, patch); },
+  'q-choice': el => { const qq = db.get('exam_questions', el.dataset.id); const ch = [...(qq.choices || [])]; ch[+el.dataset.i] = el.value.trim(); qUpdate(qq.id, { choices: ch }, false); },
+  'q-correct': el => qUpdate(el.dataset.id, { answer: +el.dataset.i }),
+  'q-short': el => qUpdate(el.dataset.id, { answer: el.value.split('\n').map(x => x.trim()).filter(Boolean) }),
+  'ex-imp-file': el => { const f = el.files[0]; el.value = ''; if (f) examImportFile(f, el.dataset.k); },
+});
+
+/* =====================================================================
+   เฟส 5 (นักเรียน): ทำข้อสอบ — หน้าเข้าสอบ · กระดาษคำตอบ · จับเวลา · กันลอก · ผลสอบ
+   ===================================================================== */
+let EXM = null; // สถานะการสอบที่เปิดอยู่
+function exmReset(code) { exmStopTimer(); EXM = { code, info: null, err: '', att: null, answers: {}, result: null, switches: 0, saving: 0, savedAt: null, timers: {} }; }
+async function exmLoadInfo() {
+  try { EXM.info = await q(sb.rpc('student_exam_info', { p_share_code: EXM.code })); }
+  catch (e) { EXM.err = errMsg(e); }
+  if (isExamTakeRoute()) render();
+}
+function viewExamTake() {
+  const code = ui.route.slice(5).toLowerCase();
+  if (!EXM || EXM.code !== code) { exmReset(code); exmLoadInfo(); }
+  const theme = document.documentElement.dataset.theme;
+  const head = `<div class="row" style="width:min(760px,100%);margin-bottom:14px"><div class="brand" style="padding:0"><div class="brand-mark">ป</div><div><b>ห้องเรียนครูปลื้ม</b><small style="color:var(--muted)">ห้องสอบออนไลน์ 📝</small></div></div><span class="spacer"></span>
+    ${EXM.att && !EXM.result ? '' : `<button class="btn ghost icon" data-act="theme" aria-label="สลับธีม">${ic(theme === 'dark' ? 'sun' : 'moon')}</button>`}</div>`;
+  let body;
+  if (EXM.err && !EXM.info) body = `<div class="card stu-card"><div class="empty"><div style="font-size:44px">🙈</div><b>${esc(EXM.err)}</b><a class="btn" href="#student" style="margin-top:10px">ไปหน้านักเรียน</a></div></div>`;
+  else if (!EXM.info) body = `<div class="card stu-card"><div class="empty"><span class="spin" style="display:inline-block;width:26px;height:26px"></span><br>กำลังโหลดข้อสอบ…</div></div>`;
+  else if (EXM.result) body = exmResultHTML();
+  else if (EXM.att) body = exmPaperHTML();
+  else body = exmLandingHTML();
+  return `<div class="stu exm">${head}${body}</div>`;
+}
+function exmLandingHTML() {
+  const i = EXM.info, v = stuState.verified;
+  const okClass = v && i.classes.some(c => c.name === v.classroom_name);
+  const color = i.subject_color || '#6d4dff';
+  return `<div class="card exm-land">
+    <div class="exm-hero" style="--c:${esc(color)}"><span class="sa-tag" style="background:#fff3;color:#fff">${esc(i.subject_name)}</span><h2>${esc(i.title)}</h2>
+      <div class="exm-facts"><span>📋 ${i.n_questions} ข้อ</span><span>⭐ ${+i.total_points} คะแนน</span><span>⏱ ${i.time_limit_min ? i.time_limit_min + ' นาที' : 'ไม่จำกัดเวลา'}</span><span>🔁 ทำได้ ${i.max_attempts} ครั้ง</span></div></div>
+    <div class="card-b stack">
+      ${i.description ? `<div class="desc">${esc(i.description)}</div>` : ''}
+      <div class="rules"><b>📌 กติกา</b><ul><li>เริ่มแล้วจับเวลาทันที หมดเวลาระบบส่งให้อัตโนมัติ</li><li>คำตอบบันทึกทุกครั้งที่เลือก เน็ตหลุดเข้ามาทำต่อได้</li><li>⚠️ <b>ห้ามสลับแท็บหรือออกจากหน้าข้อสอบ</b> ระบบจะบันทึกและแจ้งครู</li></ul></div>
+      ${!i.is_open ? `<div class="lock-note"><span class="em">🔒</span>ข้อสอบนี้ยังไม่เปิด หรือปิดไปแล้ว</div>`
+      : !v ? `<form class="stack" data-form="stu"><div class="lbl-sm">ยืนยันตัวตนก่อนเข้าสอบ</div>
+          <label class="field"><span>🏫 ห้อง</span><select class="input big" name="cid" required><option value="">เลือกห้องของฉัน</option>${i.classes.map(c => `<option value="${c.id}">${esc(c.name)}</option>`).join('')}</select></label>
+          <div class="grid2"><label class="field"><span>🔢 เลขที่</span><input class="input big" type="number" min="1" name="num" required inputmode="numeric"></label>
+            <label class="field"><span>🪪 เลขประจำตัว</span><input class="input big" name="code" required inputmode="numeric" autocomplete="off"></label></div>
+          <button class="btn primary big" style="justify-content:center">ยืนยันตัวตน</button></form>`
+      : !okClass ? `<div class="lock-note"><span class="em">🙅</span>ข้อสอบนี้ไม่ได้เปิดให้ห้อง ${esc(v.classroom_name)}</div><button class="btn" data-act="stu-out">ไม่ใช่ฉัน / ออก</button>`
+      : `<div class="row" style="gap:12px"><div class="avatar">${esc((v.full_name.replace(/^(เด็กชาย|เด็กหญิง|นางสาว|นาย|นาง|ด\.ช\.|ด\.ญ\.|น\.ส\.)\s*/, '') || '?')[0])}</div><div><b>${esc(v.full_name)}</b><div class="small muted">${esc(v.classroom_name)} · เลขที่ ${v.number}</div></div><span class="spacer"></span><button class="btn sm ghost" data-act="stu-out">ไม่ใช่ฉัน</button></div>
+        ${EXM.err ? `<div class="lock-note"><span class="em">⚠️</span>${esc(EXM.err)}</div>` : ''}
+        <button class="btn primary big" data-act="exm-start" style="justify-content:center">เริ่มทำข้อสอบ 🚀</button>`}
+    </div></div>`;
+}
+function exmAnswered() { return EXM.att.questions.filter(qq => { const a = EXM.answers[qq.id]; return a != null && String(a).trim() !== ''; }).length; }
+function exmPaperHTML() {
+  const qs = EXM.att.questions;
+  return `<div class="exm-paper">
+    <div class="exm-bar"><div style="min-width:0;flex:1"><b class="exm-title">${esc(EXM.info.title)}</b><div class="small muted" id="exm-save">${EXM.saving ? 'กำลังบันทึก…' : EXM.savedAt ? 'บันทึกแล้ว ✓' : 'คำตอบบันทึกอัตโนมัติ'}</div></div>
+      ${EXM.att.deadline ? `<span class="exm-timer" id="exm-timer">⏱ --:--</span>` : ''}
+      <span class="exm-prog" id="exm-prog">${exmAnswered()}/${qs.length}</span>
+      <button class="btn primary" data-act="exm-submit">ส่งข้อสอบ</button></div>
+    <div class="exm-nav">${qs.map((qq, i) => `<button class="exm-dot ${EXM.answers[qq.id] != null && String(EXM.answers[qq.id]).trim() !== '' ? 'on' : ''}" data-act="exm-go" data-i="${i}" id="exm-dot-${qq.id}">${i + 1}</button>`).join('')}</div>
+    ${qs.map((qq, i) => exmQuestionHTML(qq, i)).join('')}
+    <button class="btn primary big" data-act="exm-submit" style="justify-content:center;width:100%;margin-top:6px">ส่งข้อสอบ ✅</button>
+  </div>`;
+}
+function exmQuestionHTML(qq, i) {
+  const a = EXM.answers[qq.id];
+  let ui_;
+  if (qq.qtype === 'mcq') ui_ = `<div class="opts">${(qq.choices || []).map((c, k) => `<button class="opt ${a != null && +a === c.i ? 'on' : ''}" data-act="exm-ans" data-q="${qq.id}" data-v="${c.i}"><span class="opt-l">${ExamParser.TH[k] || k + 1}</span><span>${esc(c.text)}</span></button>`).join('')}</div>`;
+  else if (qq.qtype === 'true_false') ui_ = `<div class="opts tf2"><button class="opt ${a === true ? 'on' : ''}" data-act="exm-ans" data-q="${qq.id}" data-v="true"><span class="opt-l">⭕</span><span>ถูก</span></button><button class="opt ${a === false ? 'on' : ''}" data-act="exm-ans" data-q="${qq.id}" data-v="false"><span class="opt-l">❌</span><span>ผิด</span></button></div>`;
+  else if (qq.qtype === 'short') ui_ = `<input class="input big" placeholder="พิมพ์คำตอบ" value="${esc(a ?? '')}" data-inp="exm-text" data-q="${qq.id}" autocomplete="off">`;
+  else ui_ = `<textarea class="input" rows="5" placeholder="พิมพ์คำตอบของคุณ" data-inp="exm-text" data-q="${qq.id}">${esc(a ?? '')}</textarea>`;
+  return `<div class="card exq" id="exq-${i}"><div class="exq-h"><span class="q-no">${i + 1}</span><span class="small muted">${QTYPE[qq.qtype]} · ${+qq.points} คะแนน</span></div>
+    <div class="exq-p">${esc(qq.prompt)}</div>${ui_}</div>`;
+}
+function exmMarkDom(qid) {
+  const dot = $(`#exm-dot-${qid}`); const a = EXM.answers[qid];
+  if (dot) dot.classList.toggle('on', a != null && String(a).trim() !== '');
+  const p = $('#exm-prog'); if (p) p.textContent = `${exmAnswered()}/${EXM.att.questions.length}`;
+}
+function exmSaveState() { const el = $('#exm-save'); if (el) el.textContent = EXM.saving ? 'กำลังบันทึก…' : EXM.savedAt ? 'บันทึกแล้ว ✓' : ''; }
+async function exmSave(qid, value) {
+  const v = stuState.verified; if (!EXM?.att || EXM.result) return;
+  EXM.saving++; exmSaveState();
+  try {
+    const { error } = await sb.rpc('student_exam_save', { p_student_id: v.student_id, p_code: v.code, p_attempt_id: EXM.att.attempt_id, p_question_id: qid, p_answer: value === '' ? null : value });
+    if (error) throw error;
+    EXM.savedAt = Date.now();
+  } catch (e) {
+    const m = e.message || '';
+    if (/TIME_UP|ALREADY_SUBMITTED/.test(m)) { EXM.saving = Math.max(0, EXM.saving - 1); return exmSubmit(true); }
+    toast('บันทึกคำตอบไม่สำเร็จ ตรวจอินเทอร์เน็ต แล้วเลือกคำตอบอีกครั้ง', true);
+  }
+  EXM.saving = Math.max(0, EXM.saving - 1); exmSaveState();
+}
+/* ---------- เวลา ---------- */
+function exmStopTimer() { if (EXM?.tick) { clearInterval(EXM.tick); EXM.tick = null; } }
+function exmStartTimer() {
+  exmStopTimer();
+  if (!EXM.att.deadline) return;
+  const end = new Date(EXM.att.deadline).getTime();
+  const warned = {};
+  const step = () => {
+    const left = Math.max(0, Math.round((end - (Date.now() + EXM.offset)) / 1000));
+    const el = $('#exm-timer');
+    if (el) { el.textContent = `⏱ ${String(Math.floor(left / 60)).padStart(2, '0')}:${String(left % 60).padStart(2, '0')}`; el.classList.toggle('low', left <= 60); el.classList.toggle('mid', left > 60 && left <= 300); }
+    if (left <= 300 && left > 60 && !warned[5]) { warned[5] = 1; toast('⏰ เหลือเวลา 5 นาที'); }
+    if (left <= 60 && left > 0 && !warned[1]) { warned[1] = 1; toast('⏰ เหลือเวลา 1 นาที!', true); }
+    if (left <= 0) { exmStopTimer(); toast('หมดเวลา! ระบบส่งข้อสอบให้อัตโนมัติ'); exmSubmit(true); }
+  };
+  step(); EXM.tick = setInterval(step, 1000);
+}
+async function exmStart() {
+  const v = stuState.verified; EXM.err = '';
+  try {
+    const r = await q(sb.rpc('student_exam_start', { p_student_id: v.student_id, p_code: v.code, p_exam_id: EXM.info.id }));
+    EXM.att = r; EXM.answers = r.answers || {}; EXM.switches = r.tab_switches || 0;
+    EXM.offset = new Date(r.server_now).getTime() - Date.now();
+    if (Object.keys(EXM.answers).length) toast('ทำต่อจากที่ค้างไว้ คำตอบเดิมยังอยู่ครบ');
+    render(); window.scrollTo(0, 0); exmStartTimer();
+  } catch (e) { EXM.err = errMsg(e); render(); }
+}
+async function exmSubmit(force) {
+  if (!EXM?.att || EXM.result || EXM.submitting) return;
+  const doIt = async () => {
+    EXM.submitting = true; exmStopTimer();
+    // รอให้บันทึกคำตอบที่ค้างอยู่เสร็จก่อน
+    for (const qid in EXM.timers) { clearTimeout(EXM.timers[qid]); await exmSave(qid, EXM.answers[qid] ?? ''); }
+    EXM.timers = {};
+    for (let i = 0; i < 20 && EXM.saving; i++) await new Promise(r => setTimeout(r, 150));
+    const v = stuState.verified;
+    try {
+      EXM.result = await q(sb.rpc('student_exam_submit', { p_student_id: v.student_id, p_code: v.code, p_attempt_id: EXM.att.attempt_id }));
+      closeModal(); render(); window.scrollTo(0, 0);
+      const pct = EXM.result.max ? EXM.result.score / EXM.result.max * 100 : 0;
+      if (pct >= 50) confetti();
+      stuState.exams = null; stuState.scores = null;
+    } catch (e) { EXM.submitting = false; if (!force) exmStartTimer(); }
+  };
+  if (force) return doIt();
+  const left = EXM.att.questions.length - exmAnswered();
+  openModal({
+    title: 'ส่งข้อสอบ?',
+    body: `<div style="text-align:center"><div style="font-size:46px">${left ? '🤔' : '🎯'}</div><p style="margin:6px 0">${left ? `ยังไม่ได้ตอบ <b style="color:var(--danger)">${left} ข้อ</b> จาก ${EXM.att.questions.length} ข้อ` : 'ตอบครบทุกข้อแล้ว!'}</p><p class="small muted" style="margin:0">ส่งแล้วแก้ไขคำตอบไม่ได้</p></div>`,
+    actions: [{ label: 'กลับไปทำต่อ', onClick: closeModal }, { label: 'ส่งเลย ✅', kind: 'primary', onClick: doIt }],
+  });
+}
+function exmResultHTML() {
+  const r = EXM.result, pct = r.max ? r.score / r.max * 100 : 0;
+  const em = pct >= 80 ? '🏆' : pct >= 60 ? '🌟' : pct >= 50 ? '👍' : '💪';
+  return `<div class="card exm-result"><div class="exm-score">
+      <div style="font-size:56px">${em}</div><div class="small muted">ส่งข้อสอบเรียบร้อย</div>
+      <div class="big">${+r.score}<span>/${+r.max}</span></div><div class="prog-bar" style="max-width:280px;margin:6px auto 0"><i style="width:${pct}%;background:var(--grad)"></i></div>
+      <div class="small muted" style="margin-top:6px">${pct.toFixed(0)}% · ครั้งที่ ${r.attempt_no}/${r.max_attempts}${r.has_essay ? ' · คะแนนอัตนัยรอครูตรวจ (คะแนนนี้ยังไม่รวมอัตนัย)' : ''}</div></div>
+    <div class="card-b stack">
+      ${r.review ? `<div class="lbl-sm">📖 เฉลย</div>${r.review.map((x, i) => `<div class="rv ${x.qtype === 'essay' ? 'essay' : x.is_correct ? 'ok' : 'bad'}"><div class="rv-h"><span class="q-no sm">${i + 1}</span><b>${esc(x.prompt)}</b><span class="spacer"></span><span class="rv-pt">${x.qtype === 'essay' ? 'รอตรวจ' : x.is_correct ? '✓' : '✗'}</span></div>
+          <div class="rv-b"><div><span class="muted small">คุณตอบ:</span> ${answerText(x, x.given)}</div>${x.qtype !== 'essay' ? `<div><span class="muted small">เฉลย:</span> ${correctText(x)}</div>` : ''}</div></div>`).join('')}`
+        : `<div class="lock-note"><span class="em">🔒</span>${r.show_answers === 'never' ? 'ครูไม่เปิดให้ดูเฉลยสำหรับข้อสอบนี้' : 'ดูเฉลยได้หลังครูปิดสอบ'}</div>`}
+      <a class="btn primary big" href="#student" style="justify-content:center" data-act="exm-home">กลับหน้าหลัก</a>
+    </div></div>`;
+}
+/* ---------- กันลอก: ออกจากหน้า / สลับแท็บ ---------- */
+document.addEventListener('visibilitychange', async () => {
+  if (!EXM?.att || EXM.result || !isExamTakeRoute()) return;
+  if (document.visibilityState === 'hidden') {
+    const v = stuState.verified;
+    try { const { data } = await sb.rpc('student_exam_event', { p_student_id: v.student_id, p_code: v.code, p_attempt_id: EXM.att.attempt_id, p_kind: 'hidden' }); EXM.switches = data || EXM.switches + 1; }
+    catch (e) { EXM.switches++; }
+    EXM.pendingWarn = true;
+  } else if (EXM.pendingWarn) {
+    EXM.pendingWarn = false;
+    openModal({ title: '⚠️ ออกจากหน้าข้อสอบ',
+      body: `<div style="text-align:center"><div style="font-size:46px">👀</div><p>ระบบบันทึกว่าคุณออกจากหน้าข้อสอบ <b style="color:var(--danger)">${EXM.switches} ครั้ง</b></p><p class="small muted">ครูจะเห็นข้อมูลนี้ในผลสอบ กรุณาอยู่ในหน้านี้จนกว่าจะส่งข้อสอบ</p></div>`,
+      actions: [{ label: 'เข้าใจแล้ว ทำต่อ', kind: 'primary', onClick: closeModal }] });
+  }
+});
+window.addEventListener('beforeunload', e => { if (EXM?.att && !EXM.result && isExamTakeRoute()) { e.preventDefault(); e.returnValue = ''; } });
+
+Object.assign(ACT, {
+  'exm-start': exmStart,
+  'exm-submit': () => exmSubmit(false),
+  'exm-go': el => { $(`#exq-${el.dataset.i}`)?.scrollIntoView({ behavior: 'smooth', block: 'center' }); },
+  'exm-ans': el => {
+    const qid = el.dataset.q; let v = el.dataset.v; v = v === 'true' ? true : v === 'false' ? false : +v;
+    EXM.answers[qid] = v;
+    el.parentElement.querySelectorAll('.opt').forEach(b => b.classList.toggle('on', b === el));
+    exmMarkDom(qid); exmSave(qid, v);
+  },
+  'exm-home': () => { EXM = null; stuState.tab = 'exam'; },
+});
+Object.assign(INP, {
+  'exm-text': el => {
+    const qid = el.dataset.q; EXM.answers[qid] = el.value; exmMarkDom(qid);
+    clearTimeout(EXM.timers[qid]);
+    EXM.timers[qid] = setTimeout(() => { delete EXM.timers[qid]; exmSave(qid, el.value.trim()); }, 700);
+  },
+});
+
+/* ---------- แท็บ "ข้อสอบ" ในหน้านักเรียน ---------- */
+async function loadStudentExams() {
+  const v = stuState.verified; if (!v || stuState.loadingExams) return;
+  stuState.loadingExams = true;
+  try { stuState.exams = await q(sb.rpc('student_exams', { p_student_id: v.student_id, p_code: v.code })); } catch (e) { stuState.exams = []; }
+  stuState.loadingExams = false;
+  if (isStudentRoute()) render();
+}
+function studentExamsHTML() {
+  if (!stuState.exams) { loadStudentExams(); return `<div class="card"><div class="empty"><span class="spin" style="display:inline-block;width:26px;height:26px"></span><br>กำลังโหลดข้อสอบ…</div></div>`; }
+  if (!stuState.exams.length) return `<div class="card"><div class="empty"><div style="font-size:44px">🧘</div><b>ยังไม่มีข้อสอบ</b>เมื่อครูเปิดสอบ ข้อสอบจะแสดงที่นี่</div></div>`;
+  return stuState.exams.map(x => {
+    const color = x.subject_color || '#6d4dff';
+    const can = x.is_open && (x.in_progress || x.attempts_used < x.max_attempts);
+    const badge = x.best_score != null ? `<div class="score-bubble"><b>${+x.best_score}</b><small>/${+x.total_points}</small></div>`
+      : x.in_progress ? '<span class="badge wait">⏳ ทำค้างไว้</span>' : x.is_open ? '<span class="badge todo">🟢 เปิดสอบ</span>' : '<span class="badge late">🔒 ปิดสอบ</span>';
+    return `<div class="card sa"><div class="sa-h" style="cursor:default"><span class="sa-ico" style="background:${esc(color)}22">🧪</span>
+      <div style="flex:1;min-width:0"><span class="sa-tag" style="background:${esc(color)}1f;color:${esc(color)}">${esc(x.subject_name)}</span><div class="sa-title">${esc(x.title)}</div>
+        <div class="sa-sub">${x.n_questions} ข้อ · ${x.time_limit_min ? x.time_limit_min + ' นาที' : 'ไม่จำกัดเวลา'} · ทำแล้ว ${x.attempts_used}/${x.max_attempts} ครั้ง${x.closes_at ? ` · ปิด ${fmtDate(x.closes_at)}` : ''}</div></div>${badge}</div>
+      ${can ? `<div class="sa-b"><a class="btn primary" href="#exam-${esc(x.share_code)}" style="justify-content:center">${x.in_progress ? 'ทำต่อ ▶' : x.attempts_used ? 'สอบอีกครั้ง 🔁' : 'เริ่มทำข้อสอบ 🚀'}</a></div>` : ''}</div>`;
+  }).join('');
+}
 
 </script>
 </body>
