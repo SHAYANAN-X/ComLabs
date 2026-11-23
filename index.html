@@ -937,6 +937,14 @@ table.gb{border-collapse:separate;border-spacing:0;font-size:14px;min-width:100%
 .pending-card{max-width:440px;text-align:center;padding:32px 28px}
 .pending-card h2{font-family:var(--f-head);font-weight:500;margin:8px 0 6px}
 @media (max-width:720px){.role-grid{grid-template-columns:1fr}}
+.auth-switch{text-align:center;font-size:14px;color:var(--muted)}
+.linkbtn{background:none;border:0;padding:0;font:inherit;font-weight:600;color:#6d4dff;cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+[data-theme=dark] .linkbtn{color:#a995ff}
+.signup-info{font-size:13px;padding:9px 12px;border-radius:12px;background:rgba(245,158,11,.12);color:var(--text)}
+.signup-done{text-align:center;display:flex;flex-direction:column;gap:8px;align-items:center;padding:12px 0}
+.signup-done b{font:500 20px var(--f-head)}
+.nav-badge{margin-left:auto;min-width:20px;height:20px;padding:0 6px;border-radius:99px;background:#f59e0b;color:#fff;font-size:12px;font-weight:700;display:grid;place-items:center}
+.uc-msg{margin-top:10px;padding:8px 12px;border-radius:12px;background:var(--surface-2);font-size:13.5px}
 
 </style>
 </head>
@@ -1351,6 +1359,10 @@ const store = { terms: [], classrooms: [], students: [], subjects: [], subject_c
 function errMsg(e) {
   const m = (e && (e.message || e.error_description)) || String(e);
   if (/Invalid login credentials/i.test(m)) return 'อีเมลหรือรหัสผ่านไม่ถูกต้อง';
+  if (/Signups? not allowed|signup.*disabled/i.test(m)) return 'ระบบยังไม่เปิดให้สมัคร (ผู้ดูแลต้องเปิด Allow new users to sign up ใน Supabase)';
+  if (/already registered|already been registered/i.test(m)) return 'อีเมลนี้สมัครไว้แล้ว ลองเข้าสู่ระบบ';
+  if (/rate limit|too many/i.test(m)) return 'มีการสมัครถี่เกินไป รอสักครู่แล้วลองใหม่';
+  if (/valid email|invalid.*email/i.test(m)) return 'รูปแบบอีเมลไม่ถูกต้อง';
   if (/Email not confirmed/i.test(m)) return 'อีเมลนี้ยังไม่ได้ยืนยัน (ตั้ง Auto Confirm ตอนสร้างผู้ใช้ใน Supabase)';
   if (/duplicate key|unique/i.test(m)) return 'ข้อมูลซ้ำกับที่มีอยู่แล้ว (เช่น เลขที่ ชื่อห้อง หรือภาคเรียนซ้ำ)';
   if (/JWT|session|not authenticated/i.test(m)) return 'หมดเวลาการเข้าสู่ระบบ กรุณาเข้าสู่ระบบใหม่';
@@ -1428,6 +1440,7 @@ async function loadAll() {
   catch (e) { store.me = null; store.setupMissing = true; throw e; }
   if (store.me?.display_name) store.teacher.name = store.me.display_name;
   if (!ME.active()) return;
+  store.pendingCount = ME.admin() ? await q(sb.rpc('admin_pending_count')).catch(() => 0) : 0;
   const [terms, classrooms, students, subjects, subject_classes, assignments, assignment_classes, submissions, grade_columns, grade_entries, exams, exam_classes, exam_questions, exam_attempts] = await Promise.all([
     fetchAll('terms'), fetchAll('classrooms'), fetchStudents(), fetchAll('subjects'), fetchAll('subject_classes', 'subject_id'),
     fetchAll('assignments'), fetchAll('assignment_classes', 'assignment_id'), fetchAll('submissions', 'submitted_at'),
@@ -1553,7 +1566,7 @@ function render() {
     <aside class="side ${ui.sideOpen ? 'open' : ''}">
       <div class="brand"><div class="brand-mark">ป</div><div><b>ห้องเรียนครูปลื้ม</b><small>ส่งงาน · คะแนน · ข้อสอบ</small></div></div>
       ${navItems().map(n => n.group ? `<div class="nav-group">${n.group}</div>` :
-        `<a class="nav-item ${navOn === n.id ? 'active' : ''}" href="#${n.id}">${ic(n.icon)}<span>${n.label}</span>${n.soon ? `<span class="soon">${n.soon}</span>` : ''}</a>`).join('')}
+        `<a class="nav-item ${navOn === n.id ? 'active' : ''}" href="#${n.id}">${ic(n.icon)}<span>${n.label}</span>${n.soon ? `<span class="soon">${n.soon}</span>` : ''}${n.id === 'users' && store.pendingCount ? `<span class="nav-badge">${store.pendingCount}</span>` : ''}</a>`).join('')}
       <div class="side-foot">ภาคเรียน ${esc(Q.termLabel(Q.currentTerm()))}</div>
     </aside>
     <div class="scrim ${ui.sideOpen ? 'open' : ''}" data-act="side-close"></div>
@@ -1590,12 +1603,28 @@ function viewLogin() {
     <section class="auth-form">
       <div class="auth-card stack">
         <a href="#student" class="stu-cta"><span class="em">🎒</span><div><b>นักเรียน มาส่งงานตรงนี้!</b><small>ส่งงาน · ดูคะแนน · ทำข้อสอบ</small></div><span class="arr">→</span></a>
+        ${ui.authMode === 'sent' ? `<div class="signup-done"><div style="font-size:44px">📬</div><b>สมัครเรียบร้อย!</b><p class="muted small">เปิดอีเมล <b>${esc(ui.signupEmail)}</b> แล้วกดลิงก์ยืนยัน จากนั้นกลับมาเข้าสู่ระบบ บัญชีจะใช้งานได้เมื่อผู้ดูแลอนุมัติ</p>
+          <button class="btn primary" data-act="auth-mode" data-m="login" style="justify-content:center">ไปหน้าเข้าสู่ระบบ</button></div>`
+        : ui.authMode === 'signup' ? `
+        <div class="or"><span>สมัครใช้งานสำหรับครู</span></div>
+        <form class="stack" data-form="signup">
+          <label class="field"><span>ชื่อที่แสดง *</span><input class="input" name="name" placeholder="ครูสมชาย ใจดี" required maxlength="80" autocomplete="name"></label>
+          <label class="field"><span>อีเมล *</span><input class="input" type="email" name="email" placeholder="teacher@school.ac.th" required autocomplete="username"></label>
+          <div class="grid2"><label class="field"><span>รหัสผ่าน * (8 ตัวขึ้นไป)</span><input class="input" type="password" name="password" required minlength="8" autocomplete="new-password"></label>
+            <label class="field"><span>ยืนยันรหัสผ่าน *</span><input class="input" type="password" name="password2" required minlength="8" autocomplete="new-password"></label></div>
+          <label class="field"><span>ข้อความถึงผู้ดูแล</span><input class="input" name="note" maxlength="300" placeholder="เช่น สอนวิชาภาษาไทย ม.2 ต้องการใช้ส่งงานและข้อสอบ"></label>
+          <div class="signup-info">⏳ หลังสมัคร ต้องรอผู้ดูแลระบบอนุมัติก่อนจึงจะใช้งานได้</div>
+          <button class="btn primary" style="justify-content:center;padding:12px">สมัครใช้งาน</button>
+        </form>
+        <div class="auth-switch">มีบัญชีแล้ว? <button class="linkbtn" data-act="auth-mode" data-m="login">เข้าสู่ระบบ</button></div>`
+        : `
         <div class="or"><span>หรือ เข้าสู่ระบบสำหรับครู</span></div>
         <form class="stack" data-form="login">
           <label class="field"><span>อีเมล</span><input class="input" type="email" name="email" placeholder="teacher@school.ac.th" required autocomplete="username"></label>
           <label class="field"><span>รหัสผ่าน</span><input class="input" type="password" name="password" required autocomplete="current-password"></label>
           <button class="btn primary" style="justify-content:center;padding:12px">เข้าสู่ระบบ</button>
         </form>
+        <div class="auth-switch">ครูยังไม่มีบัญชี? <button class="linkbtn" data-act="auth-mode" data-m="signup">สมัครใช้งาน</button></div>`}
       </div>
     </section>
   </div>`;
@@ -2115,6 +2144,19 @@ document.addEventListener('submit', async e => {
   const f = e.target, fd = new FormData(f);
   const btn = f.querySelector('button.primary'); if (btn) btn.disabled = true;
   try {
+    if (f.dataset.form === 'signup') {
+      const email = String(fd.get('email')).trim(), pw = String(fd.get('password')), name = String(fd.get('name')).trim();
+      if (!name) return toast('กรุณากรอกชื่อที่แสดง', true);
+      if (pw.length < 8) return toast('รหัสผ่านต้องยาวอย่างน้อย 8 ตัวอักษร', true);
+      if (pw !== fd.get('password2')) return toast('รหัสผ่านสองช่องไม่ตรงกัน', true);
+      const data = await q(sb.auth.signUp({ email, password: pw, options: { data: { display_name: name, signup_note: String(fd.get('note') || '').trim() }, emailRedirectTo: location.origin + location.pathname } }));
+      if (data.user && Array.isArray(data.user.identities) && !data.user.identities.length) return toast('อีเมลนี้สมัครไว้แล้ว ลองเข้าสู่ระบบ', true);
+      if (!data.session) { ui.authMode = 'sent'; ui.signupEmail = email; render(); return; }
+      session = data.session; setTeacher(data.user); ui.authMode = 'login';
+      booting = true; render();
+      try { await loadAll(); } catch (err) { console.error(err); } finally { booting = false; }
+      route(); toast('สมัครเรียบร้อย รอผู้ดูแลอนุมัติ');
+    }
     if (f.dataset.form === 'login') {
       const data = await q(sb.auth.signInWithPassword({ email: String(fd.get('email')).trim(), password: fd.get('password') }));
       session = data.session; setTeacher(data.user);
@@ -4080,7 +4122,7 @@ const STATUS_TXT = { active: ['ใช้งานได้', 'ok'], pending: ['�
 
 async function loadUsers() {
   if (USR.loading) return; USR.loading = true;
-  try { USR.list = await q(sb.rpc('admin_users')); } catch (e) { USR.list = USR.list || []; }
+  try { USR.list = await q(sb.rpc('admin_users')); store.pendingCount = USR.list.filter(u => u.status === 'pending').length; } catch (e) { USR.list = USR.list || []; }
   USR.loading = false; if (ui.route === 'users') render();
 }
 function initials(u) { return (u.display_name || u.email || '?').trim().charAt(0).toUpperCase(); }
@@ -4116,6 +4158,8 @@ function userCard(u) {
       <span class="spacer"></span>
       ${adm ? '<span class="chip pri">👑 ผู้ดูแลระบบ</span>' : `<span class="chip ${cls}">${st}</span>`}
     </div>
+    ${u.note && !adm ? `<div class="uc-msg">💬 ${esc(u.note)}</div>` : ''}
+    ${u.status === 'pending' ? `<div class="small muted" style="margin-top:6px">สมัครเมื่อ ${timeAgo(u.created_at)}</div>` : ''}
     ${adm ? `<div class="uc-note small muted">มีสิทธิ์ทุกเมนู และเป็นคนเดียวที่เพิ่ม/ลบรายชื่อนักเรียนได้</div>` : `
     <div class="perm-grid">${PERMS.map(p => `<label class="perm ${perms[p.k] ? 'on' : ''} ${u.status === 'suspended' ? 'dis' : ''}">
       <input type="checkbox" data-chg="usr-perm" data-u="${u.user_id}" data-k="${p.k}" ${perms[p.k] ? 'checked' : ''} ${u.status === 'suspended' ? 'disabled' : ''}>
@@ -4139,13 +4183,15 @@ async function saveUser(uid, patch) {
   const u = USR.list.find(x => x.user_id === uid); if (!u) return;
   const next = { status: patch.status ?? u.status, perms: { ...u.perms, ...(patch.perms || {}) } };
   const r = await q(sb.rpc('admin_set_user', { p_user: uid, p_status: next.status, p_perms: next.perms, p_name: null }));
-  Object.assign(u, { status: r.status, perms: r.perms }); render();
+  Object.assign(u, { status: r.status, perms: r.perms }); store.pendingCount = USR.list.filter(x => x.status === 'pending').length; render();
 }
 
 function howtoModal() {
   openModal({
     title: 'เพิ่มครูท่านอื่นเข้าระบบ', wide: true,
     body: `<ol class="howto">
+      <li style="list-style:none;margin-left:-22px"><b>วิธีที่ 1 · ให้ครูสมัครเอง (แนะนำ)</b> ส่งลิงก์เว็บให้ครูท่านนั้น กด "สมัครใช้งาน" ที่หน้าเข้าสู่ระบบ แล้วคำขอจะขึ้นใน "รออนุมัติ" ที่หน้านี้</li>
+      <li style="list-style:none;margin-left:-22px;margin-top:8px"><b>วิธีที่ 2 · ครูสร้างบัญชีให้เอง</b></li>
       <li><b>เปิด Supabase</b> → โปรเจกต์ของห้องเรียนครูปลื้ม → เมนู <b>Authentication</b> → <b>Users</b></li>
       <li>กด <b>Add user</b> → <b>Create new user</b> ใส่อีเมลและรหัสผ่านของครูท่านนั้น <b>ติ๊ก Auto Confirm User</b> แล้วกด Create</li>
       <li>กลับมาหน้านี้แล้วกด <b>รีเฟรช</b> ครูคนใหม่จะขึ้นใน "รออนุมัติ"</li>
@@ -4153,7 +4199,7 @@ function howtoModal() {
     </ol>
     <div class="fmt"><b>ครูที่ได้รับอนุมัติจะ:</b> เห็นห้องและรายชื่อนักเรียนชุดเดียวกับคุณ (ไม่เห็นเลขประจำตัว และแก้ไขไม่ได้) สร้างวิชา งาน ข้อสอบ ของตัวเองได้ตามสิทธิ์ ข้อมูลของแต่ละคนไม่ปนกัน
     นักเรียนใช้ลิงก์เดียวกัน เห็นงานและคะแนนจากครูทุกคนที่สอนห้องของตัวเอง</div>`,
-    actions: [{ label: 'เข้าใจแล้ว', kind: 'primary', onClick: () => { closeModal(); loadUsers(); } }],
+    actions: [{ label: 'คัดลอกลิงก์สมัคร', onClick: async () => { await copyText(location.origin + location.pathname); toast('คัดลอกลิงก์แล้ว ส่งให้ครูกด "สมัครใช้งาน"'); } }, { label: 'เข้าใจแล้ว', kind: 'primary', onClick: () => { closeModal(); loadUsers(); } }],
   });
 }
 
@@ -4170,6 +4216,7 @@ function viewPending() {
 }
 
 Object.assign(ACT, {
+  'auth-mode': el => { ui.authMode = el.dataset.m; render(); },
   'usr-reload': () => { USR.list = null; render(); },
   'usr-howto': howtoModal,
   'usr-status': el => {
