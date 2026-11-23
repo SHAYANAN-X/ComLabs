@@ -1523,6 +1523,89 @@ body.stu-bg::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:n
   .enter>*,.enter :is(.prog-bar i,.bar-track i,.mini-prog i,.item-bar i),.hero .art *{animation:none!important}
 }
 
+/* =====================================================================
+   โหมดมืด: ชื่อและหัวข้อเรืองแสงสีเหลือง
+   ===================================================================== */
+[data-theme=dark]{--glow:#FFE27A;--glow-shadow:0 0 6px rgba(255,214,10,.55),0 0 18px rgba(255,196,0,.35),0 0 36px rgba(255,170,0,.18)}
+[data-theme=dark] :is(.page-head h2,.hero-txt h2,.stu-banner h2,.auth-art h1,.m-top h1,.side .brand b,.exm-title,.exm-hero h2,.stu-card h2,.pending-card h2,.modal-h h3,.uc-id b,.m-me b){
+  color:var(--glow)!important;text-shadow:var(--glow-shadow)}
+[data-theme=dark] :is(.subj h3,.asg-title,.sa-title,.card-h h3,.stat .val,.counter b,.room-chip b,.gb .gb-name,#stu-tbl td:nth-child(3),.gcol .gt){
+  color:#FFE9A3;text-shadow:0 0 10px rgba(255,214,10,.28)}
+[data-theme=dark] .hero::after{background:linear-gradient(90deg,rgba(11,15,23,.72),rgba(11,15,23,.1) 60%)}
+[data-theme=dark] .stu-banner::before{background:linear-gradient(180deg,rgba(22,27,37,0) 50%,var(--surface))}
+
+/* =====================================================================
+   นาฬิกาเรืองแสง
+   ===================================================================== */
+.live-clock{display:inline-flex;flex-direction:column;align-items:flex-end;gap:2px;padding:12px 20px 10px;border-radius:24px;
+  background:rgba(255,255,255,.42);-webkit-backdrop-filter:blur(16px) saturate(180%);backdrop-filter:blur(16px) saturate(180%);
+  box-shadow:var(--lg-rim),var(--lg-edge),0 10px 30px -12px rgba(16,24,48,.35)}
+.lc-time{display:flex;align-items:flex-start;gap:4px;font:700 56px/1 var(--f-head);font-variant-numeric:tabular-nums;letter-spacing:-.02em;
+  background:linear-gradient(180deg,#2D7BFF,#5E5CE6);-webkit-background-clip:text;background-clip:text;color:transparent;
+  filter:drop-shadow(0 0 10px rgba(80,140,255,.45)) drop-shadow(0 2px 0 rgba(255,255,255,.6))}
+.lc-sec{font-size:.42em;margin-top:.18em;opacity:.85}
+.lc-date{font:600 14px var(--f-body);color:#24324F}
+[data-theme=dark] .live-clock{background:rgba(14,18,30,.45);box-shadow:inset 0 0 0 .5px rgba(255,255,255,.14),0 12px 30px -12px rgba(0,0,0,.6)}
+[data-theme=dark] .lc-time{background:linear-gradient(180deg,#FFF3B0,#FFD23F 55%,#FFB000);-webkit-background-clip:text;background-clip:text;color:transparent;
+  filter:drop-shadow(0 0 6px rgba(255,214,10,.75)) drop-shadow(0 0 20px rgba(255,170,0,.45))}
+[data-theme=dark] .lc-date{color:#FFE9A3;text-shadow:0 0 10px rgba(255,214,10,.4)}
+.lc-sec{animation:tick 1s steps(1) infinite}
+@keyframes tick{50%{opacity:.55}}
+.hero-clock{position:absolute;top:18px;right:20px;z-index:2}
+.stu-clock{position:absolute;top:12px;left:14px;z-index:2}
+.stu-clock .live-clock{align-items:flex-start;padding:8px 14px 7px;border-radius:18px}
+.stu-clock .lc-time{font-size:38px}
+.stu-clock .lc-date{font-size:12px}
+.stu-banner .acts{top:12px;right:12px}
+[data-device=mobile] .hero-clock{top:12px;left:14px;right:auto}
+[data-device=mobile] .hero-clock .live-clock{align-items:flex-start;padding:8px 14px 7px;border-radius:18px}
+[data-device=mobile] .hero-clock .lc-time{font-size:40px}
+[data-device=mobile] .hero-clock .lc-date{font-size:12px}
+[data-device=mobile] .hero-txt{padding-top:150px}
+[data-device=mobile] .hero .art.desk{height:70%}
+@media (max-width:1000px){.hero-clock .lc-time{font-size:44px}}
+
+/* =====================================================================
+   ข้อความถึงครู + ลิงก์อ้างอิง
+   ===================================================================== */
+.note-box{display:flex;flex-direction:column;gap:12px;margin-top:14px;padding:14px;border-radius:18px;background:var(--surface-2)}
+.note-box .field small{font-weight:400}
+.link-rows{display:flex;flex-direction:column;gap:8px}
+.link-row{display:flex;gap:6px;align-items:center}
+.link-row .input{flex:1;min-width:0}
+.note-box .field{display:flex;flex-direction:column;gap:6px}
+.note-read{display:flex;flex-direction:column;gap:6px;padding:12px 14px;border-radius:16px;background:var(--surface-2);margin:10px 0;font-size:14px}
+.note-read a,.sn-link{color:var(--primary);text-decoration:none;font-weight:500;overflow-wrap:anywhere}
+.note-read a:hover,.sn-link:hover{text-decoration:underline}
+.nb{display:inline-grid;place-items:center;min-width:26px;height:24px;padding:0 6px;margin-right:4px;border-radius:99px;background:var(--primary-soft);font-size:12.5px;cursor:help}
+.sub-note{display:flex;flex-direction:column;gap:8px;padding:12px 14px;border-radius:16px;background:var(--primary-soft);margin-bottom:12px}
+.sn-msg div{white-space:pre-wrap;font-weight:500}
+.sn-link{display:flex;gap:6px;padding:8px 12px;border-radius:12px;background:var(--surface)}
+.sn-link span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+
+/* =====================================================================
+   ข้อสอบทีละหน้า
+   ===================================================================== */
+.exm-dot.cur{box-shadow:0 0 0 2px var(--primary)}
+.exm-pagehead{display:flex;align-items:center;gap:10px;margin:4px 4px 12px}
+.exm-pagehead b{font:700 17px var(--f-head)}
+.exm-pips{display:flex;gap:6px}
+.exm-pips i{width:10px;height:10px;border-radius:50%;background:var(--line-2);transition:all .3s}
+.exm-pips i.done{background:var(--green)}
+.exm-pips i.cur{width:26px;border-radius:99px;background:var(--primary)}
+.exm-page{animation:page-in .45s cubic-bezier(.2,.9,.25,1)}
+@keyframes page-in{from{opacity:0;transform:translateX(24px)}}
+.exm-pager{display:flex;gap:10px;align-items:center;margin-top:10px;position:sticky;bottom:calc(14px + env(safe-area-inset-bottom));z-index:5}
+.exm-pager .btn.big{min-width:140px;justify-content:center}
+.exm-pager .btn small{font-size:11.5px;opacity:.85;font-weight:400}
+#exm-next.ready{animation:pulse-ready 1.6s ease-in-out infinite}
+@keyframes pulse-ready{50%{box-shadow:inset 0 0 0 .5px rgba(255,255,255,.45),0 0 0 6px color-mix(in srgb,var(--primary) 25%,transparent),0 10px 24px -10px rgba(10,112,240,.75)}}
+[data-device=mobile] .exm-pager .btn.big{min-width:0;flex:1}
+[data-device=mobile] .exm-pager .spacer{display:none}
+@media (prefers-reduced-motion:reduce){.exm-page,#exm-next.ready,.lc-sec{animation:none}}
+#exm-next{overflow:hidden;white-space:nowrap}
+[data-device=mobile] #exm-next small{display:none}
+
 </style>
 </head>
 <body>
@@ -2293,7 +2376,7 @@ function viewLogin() {
   return `
   <div class="auth">
     <section class="auth-art">
-      <div class="auth-scene">${ART.desk(new Date().getHours(), 620)}</div>
+      <div class="auth-scene">${ART.desk(sceneHour(), 620)}</div>
       <div class="brand" style="position:relative"><div class="brand-mark">ป</div><div><b>ห้องเรียนครูปลื้ม</b><small>ส่งงาน · ดูคะแนน · ทำข้อสอบ</small></div></div>
       <div style="position:relative"><h1>ส่งงานง่าย<br>ตรวจไว <span class="hl">ได้คะแนนชัวร์</span> ✨</h1><p>รูป คลิป เสียง เอกสาร ส่งจากมือถือได้หมด ครูตรวจเสร็จเห็นคะแนนทันที</p></div>
       <div class="auth-feat">
@@ -2724,7 +2807,7 @@ function viewStudent() {
   return `<div class="stu">
     <div class="row" style="width:min(${w}px,100%);margin-bottom:18px"><div class="brand" style="padding:0"><div class="brand-mark">ป</div><div><b>ห้องเรียนครูปลื้ม</b><small style="color:var(--muted)">โซนนักเรียน ✨</small></div></div><span class="spacer"></span>
       <button class="btn ghost icon" data-act="theme" aria-label="สลับธีม">${ic(theme === 'dark' ? 'sun' : 'moon')}</button></div>
-    ${v ? studentHome(v) : `<div class="card stu-card stu-login"><div class="stu-login-art">${ART.desk(new Date().getHours(), 440)}</div><div class="stu-hi">👋</div><form class="stack" data-form="stu">
+    ${v ? studentHome(v) : `<div class="card stu-card stu-login"><div class="stu-login-art">${ART.desk(sceneHour(), 440)}</div><div class="stu-hi">👋</div><form class="stack" data-form="stu">
         <div style="text-align:center"><h2 style="font-size:26px">สวัสดี! มาส่งงานกัน</h2><p class="muted" style="margin:2px 0 0">เลือกห้อง แล้วกรอกเลขที่กับเลขประจำตัวนักเรียน</p></div>
         <label class="field"><span>🏫 ห้อง</span><select class="input big" name="cid" required ${stuState.classes ? '' : 'disabled'}><option value="">${stuState.classes ? 'เลือกห้องของฉัน' : 'กำลังโหลดรายชื่อห้อง…'}</option>${cls.map(c => `<option value="${c.id}">${esc(c.name)}</option>`).join('')}</select></label>
         <div class="grid2"><label class="field"><span>🔢 เลขที่</span><input class="input big" type="number" min="1" name="num" required inputmode="numeric" placeholder="เช่น 7"></label>
@@ -3161,8 +3244,8 @@ function gradeRowHTML(a, s, sub, filesReady) {
   return `<tr id="gr-${s.id}" class="${s.active === false ? 'inactive' : ''}">
     <td class="num">${s.number}</td><td>${esc(Q.fullName(s))}</td>
     <td class="gr-st">${statusChip(sub?.status)}</td>
-    <td class="small muted">${sub && files.length ? fmtDate(sub.submitted_at) : '—'}</td>
-    <td>${sub ? (filesReady ? (files.length ? `<span class="mini-th">${files.slice(0, 3).map(f => f.thumb ? `<img src="${esc(f.thumb)}" alt="">` : `<span class="k-${f.kind}" style="background:${({ image: '#38a3ff', video: '#f97316', audio: '#14b8a6' })[f.kind] || '#2b4acb'}">${esc((fileExt(f.file_name) || '?').slice(0, 4).toUpperCase())}</span>`).join('')}</span> ${files.length > 3 ? `+${files.length - 3}` : ''}` : '<span class="muted small">ไม่มีไฟล์</span>') : '<span class="spin"></span>') : '—'}</td>
+    <td class="small muted">${sub && (files.length || sub.student_note || sub.links?.length) ? fmtDate(sub.submitted_at) : '—'}</td>
+    <td>${noteBadges(sub)}${sub ? (filesReady ? (files.length ? `<span class="mini-th">${files.slice(0, 3).map(f => f.thumb ? `<img src="${esc(f.thumb)}" alt="">` : `<span class="k-${f.kind}" style="background:${({ image: '#38a3ff', video: '#f97316', audio: '#14b8a6' })[f.kind] || '#2b4acb'}">${esc((fileExt(f.file_name) || '?').slice(0, 4).toUpperCase())}</span>`).join('')}</span> ${files.length > 3 ? `+${files.length - 3}` : ''}` : '<span class="muted small">ไม่มีไฟล์</span>') : '<span class="spin"></span>') : '—'}</td>
     <td style="text-align:right"><input class="input score-in" type="number" step="0.5" min="0" inputmode="decimal" value="${sub?.score ?? ''}" data-chg="quick-score" data-sid="${s.id}" aria-label="คะแนน ${esc(s.first_name)}"></td>
     <td class="act">${sub && (sub.status === 'graded' || sub.status === 'returned') ? `<button class="btn ghost icon" data-act="t-reset" data-sid="${s.id}" title="คืนค่าเริ่มต้น (ยกเลิกการตรวจ)" aria-label="คืนค่าเริ่มต้น">↺</button>` : ''}<button class="btn sm ${sub && sub.status !== 'graded' && files.length ? 'primary' : ''}" data-act="grade-open" data-sid="${s.id}">${ic('eye')}ตรวจ</button></td></tr>`;
 }
@@ -3260,6 +3343,7 @@ function openGrader(sid) {
     body: `<div class="grader">
       <div class="gv" id="gv">${files.length ? files.map(f => fileViewer(f, signedCache[f.storage_path]?.url)).join('') : `<div class="fv"><div class="ph">${sub ? 'ไม่มีไฟล์แนบ' : 'นักเรียนยังไม่ได้ส่งงานออนไลน์'}<br><span class="small">ถ้าส่งงานแบบอื่น (เช่น ส่งกระดาษ) ให้คะแนนได้เลย</span></div></div>`}</div>
       <div class="gs">
+        ${subNoteHTML(sub)}
         <div class="row" style="flex-wrap:wrap">${statusChip(sub?.status)}${sub && files.length ? `<span class="small muted">ส่งเมื่อ ${fmtDate(sub.submitted_at)}</span>` : ''}<span class="spacer"></span><span class="small muted">${idx + 1} / ${order.length}</span></div>
         <label class="field"><span>คะแนน</span><div class="big-score"><input class="input" type="number" step="0.5" min="0" name="score" value="${sub?.score ?? ''}" inputmode="decimal"><span class="muted">/ ${+a.max_score}</span></div></label>
         <label class="field"><span>ความเห็นถึงนักเรียน</span><textarea class="input" name="feedback" rows="4" placeholder="นักเรียนจะเห็นข้อความนี้">${esc(sub?.feedback)}</textarea></label>
@@ -3388,6 +3472,18 @@ document.addEventListener('dragover', e => { const d = e.target.closest?.('[data
 document.addEventListener('dragleave', e => { const d = e.target.closest?.('[data-drop]'); if (d) d.classList.remove('over'); });
 document.addEventListener('drop', e => { const d = e.target.closest?.('[data-drop]'); if (d) { e.preventDefault(); d.classList.remove('over'); if (e.dataTransfer.files.length && !stuState.uploading) stageFiles(d.dataset.drop, [...e.dataTransfer.files]); } });
 
+/* ข้อความและลิงก์จากนักเรียน */
+function noteBadges(sub) {
+  if (!sub) return '';
+  const n = sub.links?.length || 0;
+  return (sub.student_note ? `<span class="nb" title="${esc(sub.student_note)}">💬</span>` : '') + (n ? `<span class="nb" title="${n} ลิงก์">🔗${n > 1 ? n : ''}</span>` : '');
+}
+function subNoteHTML(sub) {
+  if (!sub || (!sub.student_note && !sub.links?.length)) return '';
+  return `<div class="sub-note">${sub.student_note ? `<div class="sn-msg"><span class="muted small">💬 นักเรียนเขียนถึงครู</span><div>${esc(sub.student_note)}</div></div>` : ''}
+    ${(sub.links || []).map(u => /^https?:\/\//i.test(u) ? `<a class="sn-link" href="${esc(u)}" target="_blank" rel="noopener noreferrer">🔗 <span>${esc(u.replace(/^https?:\/\//, ''))}</span></a>` : '').join('')}</div>`;
+}
+
 /* =====================================================================
    โซนนักเรียน (ธีมครูปลื้ม): งานของฉัน · เลือกไฟล์ + พรีวิว · ส่งงาน
    ===================================================================== */
@@ -3465,7 +3561,7 @@ function studentHome(v) {
   groups.todo.sort(byDue); groups.wait.sort(byDue);
   const sec = (key, title) => groups[key].length ? `<div class="sec-title">${title} <span class="chip">${groups[key].length}</span></div>${groups[key].map(studentAsgCard).join('')}` : '';
   return `<div class="stu-wrap">
-    <div class="stu-banner">${ART.desk()}<div class="acts"><button class="btn icon sm" data-act="stu-reload" aria-label="โหลดใหม่" title="โหลดใหม่">${ic('refresh')}</button><button class="btn sm" data-act="stu-out">ออก</button></div>
+    <div class="stu-banner">${ART.desk(sceneHour())}<div class="stu-clock">${clockHTML()}</div><div class="acts"><button class="btn icon sm" data-act="stu-reload" aria-label="โหลดใหม่" title="โหลดใหม่">${ic('refresh')}</button><button class="btn sm" data-act="stu-out">ออก</button></div>
       <div class="row" style="gap:14px;position:relative;z-index:1"><div class="ava">${esc(first[0] || '?')}</div><div style="min-width:0"><h2>สวัสดี ${esc(first)}! 👋</h2>
         <div class="pills"><span class="pill">🏫 ${esc(v.classroom_name)}</span><span class="pill">เลขที่ ${v.number}</span></div></div></div></div>
     <div class="seg stu-tabs">${[['work', '📝 งาน'], ['exam', '🧪 ข้อสอบ'], ['score', '📊 คะแนน']].map(([k, l]) => `<button class="${(stuState.tab || 'work') === k ? 'on' : ''}" data-act="stu-tab" data-t="${k}">${l}</button>`).join('')}</div>
@@ -3510,8 +3606,9 @@ function studentAsgCard(a) {
         <label class="drop cute" data-drop="${a.id}"><span class="em">📎</span><b>${staged.length || a.files.length ? 'เพิ่มไฟล์อีก' : 'แตะเพื่อเลือกไฟล์ หรือลากมาวาง'}</b>
           <span class="small muted">รับ ${a.accept_types.map(k => KIND_LABEL[k]).join(' · ')} · ไม่เกิน ${a.max_file_mb} MB/ไฟล์</span>
           <input type="file" multiple hidden accept="${a.accept_types.map(k => KIND_ACCEPT[k]).join(',')}" data-chg="stu-files" data-id="${a.id}"></label>
-        ${pendingStaged.length ? `<div class="send-bar"><button class="btn primary big" data-act="stu-send" data-id="${a.id}" ${stuState.uploading ? 'disabled' : ''}>${stuState.uploading ? '<span class="spin" style="border-top-color:#fff"></span> กำลังส่ง…' : `🚀 ส่งงานเลย (${pendingStaged.filter(x => x.state !== 'bad').length || pendingStaged.length} ไฟล์)`}</button></div>` : ''}`
-      : `<div class="lock-note"><span class="em">${a.status === 'graded' ? '🌟' : '🔒'}</span>${a.status === 'graded' ? 'ครูตรวจงานนี้แล้ว เก่งมาก!' : !a.is_open ? 'ครูปิดรับงานนี้แล้ว' : 'เลยกำหนดส่งแล้ว งานนี้ไม่รับส่งช้า'}</div>`}
+        ${noteFormHTML(a)}
+        <div class="send-slot" id="send-${a.id}">${sendBarHTML(a)}</div>`
+      : `${noteReadHTML(a)}<div class="lock-note"><span class="em">${a.status === 'graded' ? '🌟' : '🔒'}</span>${a.status === 'graded' ? 'ครูตรวจงานนี้แล้ว เก่งมาก!' : !a.is_open ? 'ครูปิดรับงานนี้แล้ว' : 'เลยกำหนดส่งแล้ว งานนี้ไม่รับส่งช้า'}</div>`}
     </div>` : ''}
   </div>`;
 }
@@ -3534,9 +3631,12 @@ function stageFiles(aid, files) {
 async function studentSend(aid) {
   const v = stuState.verified, a = (stuState.asg || []).find(x => x.id === aid);
   const items = (stuState.staged[aid] || []).filter(x => x.state !== 'ok' && x.state !== 'bad');
-  if (!v || !a || stuState.uploading || !items.length) { if (!items.length) toast('ไม่มีไฟล์ที่ส่งได้ ลองเอาไฟล์ที่มี ! ออกแล้วเลือกใหม่', true); return; }
+  const nd = noteDraft(a);
+  if (!v || !a || stuState.uploading || (!items.length && !nd.dirty)) { if (!items.length && !nd.dirty) toast('ไม่มีไฟล์ที่ส่งได้ ลองเอาไฟล์ที่มี ! ออกแล้วเลือกใหม่', true); return; }
+  const bad = nd.links.map(x => x.trim()).filter(x => x && !/^https?:\/\/\S+$/i.test(x));
+  if (bad.length) return toast('ลิงก์ต้องขึ้นต้นด้วย https:// เช่น https://www.canva.com/…', true);
   stuState.uploading = true; render();
-  let ok = 0;
+  let ok = 0, noteOk = false;
   for (const it of items) {
     it.state = 'up'; it.err = ''; render();
     try {
@@ -3550,9 +3650,15 @@ async function studentSend(aid) {
     } catch (e) { it.state = 'bad'; it.err = /ใหญ่เกิน/.test(e.message || '') ? e.message : errMsg(e); }
     render();
   }
+  if (nd.dirty) {
+    try {
+      await q(sb.rpc('student_save_note', { p_student_id: v.student_id, p_code: v.code, p_assignment_id: aid, p_note: nd.note, p_links: nd.links.map(x => x.trim()).filter(Boolean) }));
+      delete stuState.notes[aid]; noteOk = true;
+    } catch (e) { toast(errMsg(e), true); }
+  }
   stuState.uploading = false;
-  if (ok) {
-    confetti(); toast(`ส่งงานสำเร็จ ${ok} ไฟล์ 🎉`);
+  if (ok || noteOk) {
+    confetti(); toast(ok ? `ส่งงานสำเร็จ ${ok} ไฟล์ 🎉` : 'ส่งข้อความและลิงก์ให้ครูแล้ว 🎉');
     stuState.staged[aid] = (stuState.staged[aid] || []).filter(x => x.state !== 'ok');
     stuState.asg = null; await loadStudentAsg(); stuState.open = aid; render();
   } else render();
@@ -3567,6 +3673,51 @@ function confetti() {
   }
   document.body.appendChild(box); setTimeout(() => box.remove(), 2600);
 }
+
+/* ---------- ข้อความถึงครู + ลิงก์อ้างอิง ---------- */
+stuState.notes = stuState.notes || {};
+function noteDraft(a) {
+  if (!stuState.notes[a.id]) stuState.notes[a.id] = { note: a.student_note || '', links: (a.links || []).length ? [...a.links] : [''], dirty: false };
+  return stuState.notes[a.id];
+}
+function noteFormHTML(a) {
+  const d = noteDraft(a);
+  return `<div class="note-box">
+    <label class="field"><span>💬 ข้อความถึงครู <small class="muted">(ไม่บังคับ)</small></span>
+      <textarea class="input" rows="2" maxlength="1000" placeholder="เช่น ทำงานกลุ่มกับเลขที่ 5, 12, 18 หรือบอกอะไรครูก็ได้" data-inp="stu-note" data-id="${a.id}">${esc(d.note)}</textarea></label>
+    <div class="field"><span>🔗 ลิงก์อ้างอิง / ลิงก์งาน <small class="muted">(ไม่บังคับ · สูงสุด 5 ลิงก์)</small></span>
+      <div class="link-rows">${d.links.map((u, k) => `<div class="link-row"><input class="input" type="url" inputmode="url" placeholder="https://… เช่น ลิงก์ Canva, Google Docs, YouTube, เว็บที่ใช้อ้างอิง" value="${esc(u)}" data-inp="stu-link" data-id="${a.id}" data-k="${k}">
+        ${d.links.length > 1 || u ? `<button type="button" class="btn ghost icon sm" data-act="stu-link-del" data-id="${a.id}" data-k="${k}" aria-label="ลบลิงก์">${ic('x')}</button>` : ''}</div>`).join('')}</div>
+      ${d.links.length < 5 ? `<button type="button" class="btn sm" data-act="stu-link-add" data-id="${a.id}" style="align-self:flex-start">${ic('plus')}เพิ่มลิงก์</button>` : ''}</div>
+  </div>`;
+}
+function noteReadHTML(a) {
+  if (!a.student_note && !(a.links || []).length) return '';
+  return `<div class="note-read">${a.student_note ? `<div><b>💬 ข้อความถึงครู:</b> ${esc(a.student_note)}</div>` : ''}
+    ${(a.links || []).map(u => `<a href="${esc(u)}" target="_blank" rel="noopener noreferrer">🔗 ${esc(u.replace(/^https?:\/\//, '').slice(0, 70))}</a>`).join('')}</div>`;
+}
+function sendBarHTML(a) {
+  const pend = (stuState.staged[a.id] || []).filter(x => x.state !== 'ok');
+  const d = noteDraft(a);
+  if (!pend.length && !d.dirty) return '';
+  const nf = pend.filter(x => x.state !== 'bad').length || pend.length;
+  return `<div class="send-bar"><button class="btn primary big" data-act="stu-send" data-id="${a.id}" ${stuState.uploading ? 'disabled' : ''}>${stuState.uploading ? '<span class="spin" style="border-top-color:#fff"></span> กำลังส่ง…'
+    : pend.length ? `🚀 ส่งงานเลย (${nf} ไฟล์${d.dirty ? ' + ข้อความ' : ''})` : (a.files.length || a.status ? '💾 บันทึกข้อความ/ลิงก์' : '🚀 ส่งงาน (ข้อความ/ลิงก์)')}</button></div>`;
+}
+function noteTouched(aid) {
+  const a = (stuState.asg || []).find(x => x.id === aid); if (!a) return;
+  stuState.notes[aid].dirty = true;
+  const slot = document.getElementById('send-' + aid); if (slot) slot.innerHTML = sendBarHTML(a);
+}
+Object.assign(INP, {
+  'stu-note': el => { const a = (stuState.asg || []).find(x => x.id === el.dataset.id); noteDraft(a).note = el.value; noteTouched(a.id); },
+  'stu-link': el => { const a = (stuState.asg || []).find(x => x.id === el.dataset.id); noteDraft(a).links[+el.dataset.k] = el.value; noteTouched(a.id); },
+});
+Object.assign(ACT, {
+  'stu-link-add': el => { const a = (stuState.asg || []).find(x => x.id === el.dataset.id); const d = noteDraft(a); if (d.links.length < 5) d.links.push(''); render();
+    requestAnimationFrame(() => document.querySelector(`[data-inp=stu-link][data-id="${a.id}"][data-k="${d.links.length - 1}"]`)?.focus()); },
+  'stu-link-del': el => { const a = (stuState.asg || []).find(x => x.id === el.dataset.id); const d = noteDraft(a); d.links.splice(+el.dataset.k, 1); if (!d.links.length) d.links.push(''); d.dirty = true; render(); },
+});
 
 /* =====================================================================
    ส่งลิงก์ให้นักเรียน: LINE · คัดลอก · QR Code · โหมดฉายจอ
@@ -4067,7 +4218,7 @@ function viewDashboard() {
   const hour = new Date().getHours();
   const hello = hour < 12 ? 'อรุณสวัสดิ์' : hour < 17 ? 'สวัสดีตอนบ่าย' : 'สวัสดีตอนเย็น';
   return `
-  <section class="hero card">${ART.desk(hour)}<div class="hero-txt"><h2>${hello}<br>${esc(store.teacher.name)}</h2><p>ภาคเรียนที่ ${esc(Q.termLabel(term))} · ${new Date().toLocaleDateString('th-TH', { weekday: 'long', day: 'numeric', month: 'long' })}</p>
+  <section class="hero card">${ART.desk(sceneHour(hour))}<div class="hero-clock">${clockHTML()}</div><div class="hero-txt"><h2>${hello}<br>${esc(store.teacher.name)}</h2><p>ภาคเรียนที่ ${esc(Q.termLabel(term))} · ${new Date().toLocaleDateString('th-TH', { weekday: 'long', day: 'numeric', month: 'long' })}</p>
     <div class="hero-acts">${ME.can('assignments') ? `<a class="btn primary" href="#assignments">${ic('plus')}สร้างงาน</a>` : ''}${pendingCount() && ME.can('assignments') ? `<a class="btn" href="#assignments">${ic('check')}รอตรวจ ${thaiNum(pendingCount())} งาน</a>` : ''}</div></div></section>
   <div class="stats">
     <div class="card stat"><div class="lbl">${ic('book')}วิชาที่สอน</div><div class="val">${thaiNum(subs.length)}</div><div class="sub">${thaiNum(nStu)} ห้อง · ${thaiNum(allAsgs.length)} งาน</div></div>
@@ -4641,16 +4792,44 @@ function exmLandingHTML() {
     </div></div>`;
 }
 function exmAnswered() { return EXM.att.questions.filter(qq => { const a = EXM.answers[qq.id]; return a != null && String(a).trim() !== ''; }).length; }
+const EXM_PER = 5;
+function exmPageDone(k) { return EXM.att.questions.slice(k * EXM_PER, k * EXM_PER + EXM_PER).every(qq => { const a = EXM.answers[qq.id]; return a != null && String(a).trim() !== ''; }); }
+function exmGoPage(p, focusI) {
+  const pages = Math.ceil(EXM.att.questions.length / EXM_PER);
+  EXM.page = Math.max(0, Math.min(pages - 1, p)); exmCancelAuto(); render();
+  if (focusI != null) requestAnimationFrame(() => $(`#exq-${focusI}`)?.scrollIntoView({ behavior: 'smooth', block: 'center' }));
+  else window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+function exmCancelAuto() { if (EXM?.auto) { clearInterval(EXM.auto); EXM.auto = null; } }
+/* ตอบครบทุกข้อในหน้า (ปรนัย/ถูกผิด) → นับถอยหลัง 3 วินาทีแล้วไปหน้าถัดไปเอง */
+function exmCheckAuto() {
+  const pages = Math.ceil(EXM.att.questions.length / EXM_PER), pg = EXM.page || 0;
+  const next = $('#exm-next'); if (next) next.classList.toggle('ready', exmPageDone(pg));
+  document.querySelectorAll('.exm-pips i').forEach((el, k) => el.classList.toggle('done', exmPageDone(k)));
+  exmCancelAuto();
+  if (pg >= pages - 1 || !exmPageDone(pg) || !next) return;
+  let n = 3; next.innerHTML = `ถัดไปใน ${n}… <small>(แตะเพื่อไปเลย)</small>`;
+  EXM.auto = setInterval(() => { n--; const b = $('#exm-next'); if (!b) return exmCancelAuto();
+    if (n <= 0) { exmGoPage(pg + 1); } else b.innerHTML = `ถัดไปใน ${n}… <small>(แตะเพื่อไปเลย)</small>`; }, 1000);
+}
 function exmPaperHTML() {
   const qs = EXM.att.questions;
+  const pages = Math.ceil(qs.length / EXM_PER), pg = Math.min(EXM.page || 0, pages - 1), from = pg * EXM_PER;
   return `<div class="exm-paper">
     <div class="exm-bar"><div style="min-width:0;flex:1"><b class="exm-title">${esc(EXM.info.title)}</b><div class="small muted" id="exm-save">${EXM.saving ? 'กำลังบันทึก…' : EXM.savedAt ? 'บันทึกแล้ว ✓' : 'คำตอบบันทึกอัตโนมัติ'}</div></div>
       ${EXM.att.deadline ? `<span class="exm-timer" id="exm-timer">⏱ --:--</span>` : ''}
       <span class="exm-prog" id="exm-prog">${exmAnswered()}/${qs.length}</span>
       <button class="btn primary" data-act="exm-submit">ส่งข้อสอบ</button></div>
-    <div class="exm-nav">${qs.map((qq, i) => `<button class="exm-dot ${EXM.answers[qq.id] != null && String(EXM.answers[qq.id]).trim() !== '' ? 'on' : ''}" data-act="exm-go" data-i="${i}" id="exm-dot-${qq.id}">${i + 1}</button>`).join('')}</div>
-    ${qs.map((qq, i) => exmQuestionHTML(qq, i)).join('')}
-    <button class="btn primary big" data-act="exm-submit" style="justify-content:center;width:100%;margin-top:6px">ส่งข้อสอบ ✅</button>
+    <div class="exm-nav">${qs.map((qq, i) => `<button class="exm-dot ${EXM.answers[qq.id] != null && String(EXM.answers[qq.id]).trim() !== '' ? 'on' : ''} ${Math.floor(i / EXM_PER) === pg ? 'cur' : ''}" data-act="exm-go" data-i="${i}" id="exm-dot-${qq.id}">${i + 1}</button>`).join('')}</div>
+    <div class="exm-pagehead"><b>หน้า ${pg + 1} / ${pages}</b><span class="muted small">ข้อ ${from + 1}–${Math.min(from + EXM_PER, qs.length)}</span><span class="spacer"></span>
+      <div class="exm-pips">${Array.from({ length: pages }, (_, k) => `<i class="${k === pg ? 'cur' : ''} ${exmPageDone(k) ? 'done' : ''}"></i>`).join('')}</div></div>
+    <div class="exm-page" id="exm-page">${qs.slice(from, from + EXM_PER).map((qq, k) => exmQuestionHTML(qq, from + k)).join('')}</div>
+    <div class="exm-pager">
+      <button class="btn big" data-act="exm-page" data-d="-1" ${pg === 0 ? 'disabled' : ''}>‹ ก่อนหน้า</button>
+      <span class="spacer"></span>
+      ${pg < pages - 1 ? `<button class="btn primary big ${exmPageDone(pg) ? 'ready' : ''}" data-act="exm-page" data-d="1" id="exm-next">ถัดไป ›</button>`
+        : `<button class="btn primary big" data-act="exm-submit">ส่งข้อสอบ ✅</button>`}
+    </div>
   </div>`;
 }
 function exmQuestionHTML(qq, i) {
@@ -4711,6 +4890,7 @@ async function exmStart() {
   } catch (e) { EXM.err = errMsg(e); render(); }
 }
 async function exmSubmit(force) {
+  exmCancelAuto();
   if (!EXM?.att || EXM.result || EXM.submitting) return;
   const doIt = async () => {
     EXM.submitting = true; exmStopTimer();
@@ -4769,18 +4949,20 @@ window.addEventListener('beforeunload', e => { if (EXM?.att && !EXM.result && is
 Object.assign(ACT, {
   'exm-start': exmStart,
   'exm-submit': () => exmSubmit(false),
-  'exm-go': el => { $(`#exq-${el.dataset.i}`)?.scrollIntoView({ behavior: 'smooth', block: 'center' }); },
+  'exm-go': el => { const i = +el.dataset.i; exmGoPage(Math.floor(i / EXM_PER), i); },
+  'exm-page': el => exmGoPage((EXM.page || 0) + +el.dataset.d),
   'exm-ans': el => {
     const qid = el.dataset.q; let v = el.dataset.v; v = v === 'true' ? true : v === 'false' ? false : +v;
     EXM.answers[qid] = v;
     el.parentElement.querySelectorAll('.opt').forEach(b => b.classList.toggle('on', b === el));
-    exmMarkDom(qid); exmSave(qid, v);
+    exmMarkDom(qid); exmSave(qid, v); exmCheckAuto();
   },
   'exm-home': () => { EXM = null; stuState.tab = 'exam'; },
 });
 Object.assign(INP, {
   'exm-text': el => {
     const qid = el.dataset.q; EXM.answers[qid] = el.value; exmMarkDom(qid);
+    $('#exm-next')?.classList.toggle('ready', exmPageDone(EXM.page || 0)); document.querySelectorAll('.exm-pips i').forEach((x, k) => x.classList.toggle('done', exmPageDone(k)));
     clearTimeout(EXM.timers[qid]);
     EXM.timers[qid] = setTimeout(() => { delete EXM.timers[qid]; exmSave(qid, el.value.trim()); }, 700);
   },
@@ -5330,6 +5512,24 @@ const FX = (() => {
   addEventListener('hashchange', () => requestAnimationFrame(() => { syncBg(); enter(); }));
   return { syncBg, enter };
 })();
+
+/* ---------- นาฬิกาเรืองแสง ---------- */
+const TH_DAY = ['อาทิตย์', 'จันทร์', 'อังคาร', 'พุธ', 'พฤหัสบดี', 'ศุกร์', 'เสาร์'];
+const TH_MON = ['ม.ค.', 'ก.พ.', 'มี.ค.', 'เม.ย.', 'พ.ค.', 'มิ.ย.', 'ก.ค.', 'ส.ค.', 'ก.ย.', 'ต.ค.', 'พ.ย.', 'ธ.ค.'];
+function clockParts(d = new Date()) {
+  const p = n => String(n).padStart(2, '0');
+  return { hm: `${p(d.getHours())}:${p(d.getMinutes())}`, s: p(d.getSeconds()), d: `วัน${TH_DAY[d.getDay()]}ที่ ${d.getDate()} ${TH_MON[d.getMonth()]} ${d.getFullYear() + 543}` };
+}
+function clockHTML() {
+  const c = clockParts();
+  return `<div class="live-clock" role="timer" aria-label="เวลาปัจจุบัน"><div class="lc-time"><span data-clock="hm">${c.hm}</span><span class="lc-sec" data-clock="s">${c.s}</span></div><div class="lc-date" data-clock="d">${c.d}</div></div>`;
+}
+/* โหมดมืด = ภาพกลางคืน ให้ตัวอักษรเรืองแสงอ่านง่าย */
+function sceneHour(h = new Date().getHours()) { return document.documentElement.dataset.theme === 'dark' ? 21 : h; }
+setInterval(() => {
+  const els = document.querySelectorAll('[data-clock]'); if (!els.length) return;
+  const c = clockParts(); els.forEach(el => { const v = c[el.dataset.clock]; if (el.textContent !== v) el.textContent = v; });
+}, 1000);
 
 </script>
 </body>
