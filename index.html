@@ -890,6 +890,9 @@ table.gb{border-collapse:separate;border-spacing:0;font-size:14px;min-width:100%
   .exm-bar .exm-title{max-width:160px}
   .rv-b{padding-left:12px}
 }
+.grader-tools{display:flex;gap:8px;flex-wrap:wrap;padding-top:10px;border-top:1px dashed var(--glass-edge)}
+.fv-del{color:var(--danger)!important;padding:3px 8px!important}
+.fv-del svg{width:14px!important;height:14px!important;color:var(--danger)!important}
 
 </style>
 </head>
@@ -2321,7 +2324,7 @@ function gradeRowHTML(a, s, sub, filesReady) {
     <td class="small muted">${sub && files.length ? fmtDate(sub.submitted_at) : '—'}</td>
     <td>${sub ? (filesReady ? (files.length ? `<span class="mini-th">${files.slice(0, 3).map(f => f.thumb ? `<img src="${esc(f.thumb)}" alt="">` : `<span class="k-${f.kind}" style="background:${({ image: '#38a3ff', video: '#f97316', audio: '#14b8a6' })[f.kind] || '#6d4dff'}">${esc((fileExt(f.file_name) || '?').slice(0, 4).toUpperCase())}</span>`).join('')}</span> ${files.length > 3 ? `+${files.length - 3}` : ''}` : '<span class="muted small">ไม่มีไฟล์</span>') : '<span class="spin"></span>') : '—'}</td>
     <td style="text-align:right"><input class="input score-in" type="number" step="0.5" min="0" inputmode="decimal" value="${sub?.score ?? ''}" data-chg="quick-score" data-sid="${s.id}" aria-label="คะแนน ${esc(s.first_name)}"></td>
-    <td class="act"><button class="btn sm ${sub && sub.status !== 'graded' && files.length ? 'primary' : ''}" data-act="grade-open" data-sid="${s.id}">${ic('eye')}ตรวจ</button></td></tr>`;
+    <td class="act">${sub && (sub.status === 'graded' || sub.status === 'returned') ? `<button class="btn ghost icon" data-act="t-reset" data-sid="${s.id}" title="คืนค่าเริ่มต้น (ยกเลิกการตรวจ)" aria-label="คืนค่าเริ่มต้น">↺</button>` : ''}<button class="btn sm ${sub && sub.status !== 'graded' && files.length ? 'primary' : ''}" data-act="grade-open" data-sid="${s.id}">${ic('eye')}ตรวจ</button></td></tr>`;
 }
 I.eye = '<path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/>';
 
@@ -2358,6 +2361,31 @@ async function quickScore(el) {
   el.style.borderColor = 'var(--ok)'; setTimeout(() => { el.style.borderColor = ''; }, 700);
 }
 
+/* ---------- ครูลบไฟล์ / ลบงาน / คืนค่าการตรวจ ---------- */
+function statusBeforeGrading(aid, sub) {
+  const a = db.get('assignments', aid);
+  return a?.due_at && sub.submitted_at && new Date(sub.submitted_at) > new Date(a.due_at) ? 'late' : 'submitted';
+}
+async function teacherResetSubmission(aid, sid) {
+  const sub = A.sub(aid, sid); if (!sub) return;
+  const hasFiles = A.filesOf(aid, sub.id).length > 0;
+  if (!hasFiles) { // ไม่มีไฟล์ = ครูให้คะแนนเอง → ลบทิ้ง กลับเป็น "ยังไม่ส่ง"
+    await q(sb.from('submissions').delete().eq('id', sub.id));
+    store.submissions = store.submissions.filter(x => x.id !== sub.id);
+  } else {
+    const r = await q(sb.from('submissions').update({ score: null, feedback: null, graded_at: null, status: statusBeforeGrading(aid, sub) }).eq('id', sub.id).select().single());
+    Object.assign(sub, r);
+  }
+}
+async function teacherDeleteFiles(aid, files) {
+  const paths = files.map(f => f.storage_path).filter(Boolean);
+  if (paths.length) { try { await sb.storage.from('submissions').remove(paths); } catch (e) { console.error(e); } }
+  const ids = files.map(f => f.id);
+  for (let i = 0; i < ids.length; i += 150) await q(sb.from('submission_files').delete().in('id', ids.slice(i, i + 150)));
+  store.files[aid] = (store.files[aid] || []).filter(f => !ids.includes(f.id));
+}
+function regrade(sid) { render(); if (modalCtx?.sid === sid || $('#modal-root .grader')) openGrader(sid); }
+
 /* หน้าต่างตรวจงานรายคน */
 const signedCache = {};
 async function signUrls(paths) {
@@ -2369,7 +2397,7 @@ async function signUrls(paths) {
   return Object.fromEntries(paths.map(p => [p, signedCache[p]?.url]));
 }
 function fileViewer(f, url) {
-  const head = `<div class="fv-h">${ic(KIND_ICON[f.kind] || 'file')}<b>${esc(f.file_name)}</b><span class="muted">${fmtSize(f.size_bytes)} · ${fmtDate(f.created_at)}</span><span class="spacer"></span>${url ? `<a href="${esc(url)}" target="_blank" rel="noopener" class="small">${ic('ext').replace('<svg', '<svg style="width:14px;height:14px;vertical-align:-2px"')} เปิดแท็บใหม่</a>` : ''}</div>`;
+  const head = `<div class="fv-h">${ic(KIND_ICON[f.kind] || 'file')}<b>${esc(f.file_name)}</b><span class="muted">${fmtSize(f.size_bytes)} · ${fmtDate(f.created_at)}</span><span class="spacer"></span>${url ? `<a href="${esc(url)}" target="_blank" rel="noopener" class="small">${ic('ext').replace('<svg', '<svg style="width:14px;height:14px;vertical-align:-2px"')} เปิดแท็บใหม่</a>` : ''}<button class="btn ghost sm fv-del" data-act="t-file-del" data-id="${f.id}" title="ลบไฟล์นี้">${ic('trash')}ลบ</button></div>`;
   if (!url) return `<div class="fv">${head}<div class="ph"><span class="spin" style="display:inline-block"></span></div></div>`;
   const u = esc(url);
   let body;
@@ -2397,6 +2425,8 @@ function openGrader(sid) {
         <label class="field"><span>ความเห็นถึงนักเรียน</span><textarea class="input" name="feedback" rows="4" placeholder="นักเรียนจะเห็นข้อความนี้">${esc(sub?.feedback)}</textarea></label>
         <div class="quick">${FEEDBACK_QUICK.map(t => `<button type="button" data-act="fb-quick" data-t="${esc(t)}">${esc(t)}</button>`).join('')}</div>
         <p class="small muted" style="margin:0">กด Enter ในช่องคะแนน = บันทึกและไปคนถัดไป</p>
+        ${sub ? `<div class="grader-tools"><button class="btn sm" data-act="t-reset" data-sid="${sid}" title="ลบคะแนนและความเห็น กลับเป็นสถานะก่อนตรวจ">↺ คืนค่าเริ่มต้น (ยกเลิกการตรวจ)</button>
+          <button class="btn sm danger" data-act="t-sub-del" data-sid="${sid}" title="ลบงานที่ส่งทั้งหมดของคนนี้">${ic('trash')}ลบงานที่ส่งทั้งหมด</button></div>` : ''}
       </div></div>`,
     actions: [
       { label: `${ic('back')}ก่อนหน้า`, onClick: () => idx > 0 && openGrader(order[idx - 1]) },
@@ -2477,6 +2507,21 @@ Object.assign(ACT, {
   'grade-cls': el => { ui.gradeCid = el.dataset.id; render(); },
   'grade-filter': el => { ui.gradeFilter = el.dataset.f; render(); },
   'grade-open': el => openGrader(el.dataset.sid),
+  't-reset': el => { const aid = ui.route.slice(6), sid = el.dataset.sid, s = db.get('students', sid);
+    const inGrader = !!$('#modal-root .grader');
+    confirmBox('คืนค่าเริ่มต้น', `ยกเลิกการตรวจงานของ <b>${esc(Q.fullName(s))}</b>? คะแนนและความเห็นจะถูกลบ ไฟล์ที่ส่งมายังอยู่ และสถานะกลับเป็น "รอตรวจ"`, 'คืนค่าเริ่มต้น', async () => {
+      await teacherResetSubmission(aid, sid); render(); if (inGrader) openGrader(sid); toast('คืนค่าเริ่มต้นแล้ว'); }); },
+  't-file-del': el => { const aid = ui.route.slice(6), sid = modalCtx?.sid; const f = (store.files[aid] || []).find(x => x.id === el.dataset.id); if (!f) return;
+    confirmBox('ลบไฟล์', `ลบไฟล์ <b>${esc(f.file_name)}</b> ออกจากงานที่ส่ง? ลบแล้วกู้คืนไม่ได้`, 'ลบไฟล์', async () => {
+      await teacherDeleteFiles(aid, [f]);
+      const sub = A.sub(aid, sid);
+      if (sub && !A.filesOf(aid, sub.id).length && sub.score == null) { await q(sb.from('submissions').delete().eq('id', sub.id)); store.submissions = store.submissions.filter(x => x.id !== sub.id); }
+      render(); openGrader(sid); toast('ลบไฟล์แล้ว'); }); },
+  't-sub-del': el => { const aid = ui.route.slice(6), sid = el.dataset.sid, s = db.get('students', sid); const sub = A.sub(aid, sid); if (!sub) return;
+    confirmBox('ลบงานที่ส่งทั้งหมด', `ลบไฟล์ทั้งหมด คะแนน และความเห็นของ <b>${esc(Q.fullName(s))}</b> ในงานนี้? สถานะจะกลับเป็น "ยังไม่ส่ง" และนักเรียนส่งใหม่ได้ (ถ้างานยังเปิดรับ)`, 'ลบทั้งหมด', async () => {
+      await teacherDeleteFiles(aid, A.filesOf(aid, sub.id));
+      await q(sb.from('submissions').delete().eq('id', sub.id)); store.submissions = store.submissions.filter(x => x.id !== sub.id);
+      render(); openGrader(sid); toast('ลบงานที่ส่งแล้ว'); }); },
   'grade-refresh': async el => {
     const aid = el.dataset.id; el.disabled = true;
     try {
