@@ -1784,6 +1784,7 @@ select option,select optgroup{background:var(--surface);color:var(--ink)}
 .card-h select.input.sm-sel{width:auto;max-width:220px;flex:none;padding:6px 12px;font-size:14px}
 .card-h h3{white-space:nowrap}
 .rb-lvls{grid-template-columns:repeat(var(--n,4),1fr)}
+.rp-cfg{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;padding:14px 20px;border-bottom:1px solid var(--line);background:var(--surface-2)}
 
 </style>
 </head>
@@ -6015,7 +6016,8 @@ function viewReports() {
     <div class="card-h"><h3>📑 รายงานสรุปสิ้นภาค</h3><span class="spacer"></span>
       ${subs.length ? `<select class="input sm-sel" data-chg="rp-subject" aria-label="วิชา">${subs.map(s => `<option value="${s.id}" ${s.id === ui.rpSubject ? 'selected' : ''}>${esc(s.name)}</option>`).join('')}</select>
       <select class="input sm-sel" data-chg="rp-cls" aria-label="ห้อง">${cls.map(c => `<option value="${c.id}" ${c.id === ui.rpCid ? 'selected' : ''}>${esc(c.name)}</option>`).join('')}</select>
-      <button class="btn sm" data-act="rp-xlsx" ${ui.rpCid ? '' : 'disabled'}>${ic('download')}Excel</button><button class="btn sm primary" data-act="rp-print" ${ui.rpCid ? '' : 'disabled'}>🖨 พิมพ์ / PDF</button>` : ''}</div>
+      <button class="btn sm" data-act="rp-xlsx" ${ui.rpCid ? '' : 'disabled'}>${ic('download')}Excel</button><button class="btn sm" data-act="rp-cfg-toggle" aria-expanded="${!!ui.rpCfgOpen}">⚙️ หัวรายงาน</button><button class="btn sm primary" data-act="rp-print" ${ui.rpCid ? '' : 'disabled'}>🖨 พิมพ์ / PDF</button>` : ''}</div>
+    ${ui.rpCfgOpen ? rpCfgHTML() : ''}
     ${!subs.length ? `<div class="empty">${ic('book')}<b>ยังไม่มีวิชาในภาคเรียนนี้</b>เพิ่มวิชาก่อนจึงจะออกรายงานได้</div>` : !ui.rpCid ? `<div class="empty">${ic('users')}<b>วิชานี้ยังไม่มีห้อง</b></div>` : reportHTML(ui.rpSubject, ui.rpCid)}
   </div>`;
 }
@@ -6146,6 +6148,140 @@ Object.assign(CHG, {
     el.value = ''; render();
   },
 });
+
+/* =====================================================================
+   เอกสารรายงานสำหรับพิมพ์ (แยกจากหน้าเว็บ จัดหน้าแบบเอกสารราชการ)
+   ===================================================================== */
+const RP_CFG_KEY = 'cr-report-cfg';
+function rpCfg() { try { return JSON.parse(localStorage.getItem(RP_CFG_KEY)) || {}; } catch (e) { return {}; } }
+function rpCfgSet(k, v) { const c = rpCfg(); c[k] = v; try { localStorage.setItem(RP_CFG_KEY, JSON.stringify(c)); } catch (e) {} }
+function rpCfgHTML() {
+  const c = rpCfg();
+  return `<div class="rp-cfg">
+    <label class="field"><span>ชื่อโรงเรียน (หัวรายงาน)</span><input class="input" value="${esc(c.school || '')}" placeholder="เช่น โรงเรียนวังไกลกังวล" data-inp="rp-cfg" data-k="school"></label>
+    <label class="field"><span>กลุ่มสาระการเรียนรู้</span><input class="input" value="${esc(c.dept || '')}" placeholder="เช่น วิทยาศาสตร์และเทคโนโลยี" data-inp="rp-cfg" data-k="dept"></label>
+    <label class="field"><span>หัวหน้ากลุ่มสาระฯ</span><input class="input" value="${esc(c.head || '')}" placeholder="ชื่อ-สกุล (ไม่บังคับ)" data-inp="rp-cfg" data-k="head"></label>
+    <label class="field"><span>รองผู้อำนวยการฝ่ายวิชาการ</span><input class="input" value="${esc(c.deputy || '')}" placeholder="ชื่อ-สกุล (ไม่บังคับ)" data-inp="rp-cfg" data-k="deputy"></label>
+    <label class="field"><span>ผู้อำนวยการโรงเรียน</span><input class="input" value="${esc(c.director || '')}" placeholder="ชื่อ-สกุล (ไม่บังคับ)" data-inp="rp-cfg" data-k="director"></label>
+  </div>`;
+}
+const pe = s => String(s ?? '').replace(/[&<>"]/g, ch => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[ch]);
+const fmtN = v => v == null || v === '' ? '' : (Math.round(+v * 100) / 100).toString();
+function reportPrintDoc(sid, cid) {
+  const sj = db.get('subjects', sid), c = db.get('classrooms', cid), term = Q.currentTerm(), cfg = rpCfg();
+  const d = reportData(sid, cid), n = d.cols.length;
+  const withCode = ME.admin() && d.rows.some(r => r.st.student_code);
+  const named = n <= 6;                       // คอลัมน์น้อย: แสดงชื่อเต็ม · มาก: ใช้เลขกำกับ + คำอธิบายท้ายตาราง
+  const land = n > 5 || withCode && n > 3;    // คอลัมน์มาก: กระดาษแนวนอน
+  const total = d.rows[0]?.t.max ?? d.cols.reduce((s, x) => s + +GB.max(x), 0);
+  const gradeCount = g => d.rows.filter(r => !r.ms && r.grade === g).length;
+  const G = ['4', '3.5', '3', '2.5', '2', '1.5', '1', '0'];
+  const nAll = d.rows.length || 1;
+  const sign = (role, name) => `<div class="sg"><div class="sg-line">ลงชื่อ<span></span></div><div class="sg-name">( ${name ? pe(name) : '<span class="dots"></span>'} )</div><div class="sg-role">${role}</div></div>`;
+  const today = new Date().toLocaleDateString('th-TH', { day: 'numeric', month: 'long', year: 'numeric' });
+  return `<!DOCTYPE html><html lang="th"><head><meta charset="utf-8"><title>รายงานผลการเรียน ${pe(sj.name)} ${pe(c.name)}</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+@page{size:A4 ${land ? 'landscape' : 'portrait'};margin:14mm 12mm 14mm 12mm;
+  @bottom-right{content:"หน้า " counter(page) " / " counter(pages);font:9pt 'Sarabun',sans-serif;color:#555}
+  @bottom-left{content:"พิมพ์จากระบบห้องเรียนครูปลื้ม · ${today}";font:9pt 'Sarabun',sans-serif;color:#555}}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:#fff;color:#000}
+body{font:12pt/1.45 'Sarabun','TH Sarabun New','Tahoma',sans-serif;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.head{text-align:center;margin-bottom:5mm}
+.head .doc{font-size:16pt;font-weight:700;letter-spacing:.2px}
+.head .school{font-size:14pt;font-weight:600;margin-top:1mm}
+.info{display:grid;grid-template-columns:${land ? '1.5fr 1fr 1.2fr' : '1.3fr 1fr'};gap:1mm 8mm;margin:0 0 4mm;font-size:12pt}
+.info div{line-height:1.4}
+.info b{font-weight:600}
+table{border-collapse:collapse;width:100%}
+table.main{table-layout:fixed;font-size:${n > 10 ? 10.5 : 11.5}pt}
+.main th,.main td{border:.6pt solid #000;padding:1.2mm 1.4mm;vertical-align:middle}
+.main thead th{background:#ececec;font-weight:600;text-align:center;line-height:1.25;padding:1.2mm .8mm}
+.main thead tr.full th{background:#f7f7f7;font-weight:400;font-size:.92em}
+.main td{height:7.2mm}
+.main td.c{text-align:center;font-variant-numeric:tabular-nums}
+.main td.nm{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.main td.b{font-weight:700}
+.main tbody tr:nth-child(even) td{background:#fafafa}
+.main tr{break-inside:avoid;page-break-inside:avoid}
+.main thead{display:table-header-group}
+.gh{display:block;font-size:.88em;line-height:1.2;word-break:break-word}
+.ms{font-weight:700}
+.legend{margin-top:2.5mm;font-size:10pt;line-height:1.5;columns:${land ? 3 : 2};column-gap:8mm}
+.legend div{break-inside:avoid}
+.after{break-inside:avoid;page-break-inside:avoid;margin-top:5mm}
+.sumtitle{font-weight:600;margin-bottom:1.5mm}
+table.sum{width:auto;min-width:${land ? '62%' : '100%'};font-size:11pt}
+.sum th,.sum td{border:.6pt solid #000;padding:1mm 2.4mm;text-align:center;min-width:12mm}
+.sum th{background:#ececec;font-weight:600}
+.sum td.l,.sum th.l{text-align:left;white-space:nowrap}
+.note{font-size:10pt;margin-top:2.5mm;line-height:1.5}
+.signs{display:grid;grid-template-columns:1fr 1fr;gap:9mm 14mm;margin-top:9mm;break-inside:avoid;page-break-inside:avoid}
+.sg{text-align:center;font-size:12pt}
+.sg-line{display:flex;align-items:flex-end;justify-content:center;gap:2mm}
+.sg-line span{display:inline-block;width:58mm;border-bottom:.6pt dotted #000;height:5mm}
+.sg-name{margin-top:1.5mm}
+.sg-name .dots{display:inline-block;width:48mm;border-bottom:.6pt dotted #000}
+.sg-role{margin-top:.5mm}
+.approve{margin-top:1.5mm;font-size:11pt}
+</style></head><body>
+<div class="head"><div class="doc">แบบรายงานผลการเรียนรายวิชา</div>${cfg.school ? `<div class="school">${pe(cfg.school)}</div>` : ''}</div>
+<div class="info">
+  <div><b>รายวิชา</b> ${pe([sj.code, sj.name].filter(Boolean).join(' '))}</div>
+  <div><b>ชั้น/ห้อง</b> ${pe(c.name)}</div>
+  <div><b>ภาคเรียนที่</b> ${term ? `${term.semester} <b>ปีการศึกษา</b> ${term.year}` : '—'}</div>
+  ${cfg.dept ? `<div><b>กลุ่มสาระการเรียนรู้</b> ${pe(cfg.dept)}</div>` : ''}
+  <div><b>ครูผู้สอน</b> ${pe(store.teacher.name)}</div>
+  <div><b>จำนวนนักเรียน</b> ${d.rows.length} คน · <b>คะแนนเต็ม</b> ${fmtN(total)}</div>
+</div>
+<table class="main">
+  <colgroup><col style="width:9mm">${withCode ? '<col style="width:20mm">' : ''}<col${named ? ` style="width:${land ? 62 : 52}mm"` : ''}>${d.cols.map(() => `<col${named ? '' : ` style="width:${n > 12 ? 9.5 : 11}mm"`}>`).join('')}<col style="width:14mm"><col style="width:15mm"><col style="width:15mm"><col style="width:17mm"><col style="width:${land ? 26 : 20}mm"></colgroup>
+  <thead>
+    <tr><th rowspan="2">ที่</th>${withCode ? '<th rowspan="2">เลขประจำตัว</th>' : ''}<th rowspan="2">ชื่อ - สกุล</th>
+      ${d.cols.map((x, i) => `<th>${named ? `<span class="gh">${pe(x.title)}</span>` : i + 1}</th>`).join('')}
+      <th>รวม</th><th rowspan="2">ร้อยละ</th><th rowspan="2">ผลการ<br>เรียน</th><th rowspan="2">เวลาเรียน<br>(%)</th><th rowspan="2">หมายเหตุ</th></tr>
+    <tr class="full">${d.cols.map(x => `<th>${fmtN(GB.max(x))}</th>`).join('')}<th>${fmtN(total)}</th></tr>
+  </thead>
+  <tbody>
+    ${d.rows.map(r => `<tr><td class="c">${r.st.number}</td>${withCode ? `<td class="c">${pe(r.st.student_code)}</td>` : ''}<td class="nm">${pe(Q.fullName(r.st))}</td>
+      ${r.scores.map(v => `<td class="c">${fmtN(v)}</td>`).join('')}
+      <td class="c b">${fmtN(r.t.sum)}</td><td class="c">${r.t.pct == null ? '' : r.t.pct.toFixed(2)}</td><td class="c b">${r.ms ? '<span class="ms">มส</span>' : r.grade === '–' ? '' : r.grade}</td>
+      <td class="c">${r.attPct == null ? '' : r.attPct.toFixed(0)}</td><td class="c">${[r.ms ? 'เวลาเรียนไม่ถึง 80%' : '', r.missing ? `ค้าง ${r.missing} งาน` : ''].filter(Boolean).join(', ')}</td></tr>`).join('')}
+  </tbody>
+</table>
+${named ? '' : `<div class="legend"><b>คอลัมน์คะแนน:</b>${d.cols.map((x, i) => `<div>${i + 1} = ${pe(x.title)} (${fmtN(GB.max(x))})</div>`).join('')}</div>`}
+<div class="after">
+  <div class="sumtitle">สรุปผลการเรียน</div>
+  <table class="sum"><thead><tr><th class="l">ผลการเรียน</th>${G.map(g => `<th>${g}</th>`).join('')}<th>มส</th><th>รวม</th></tr></thead>
+    <tbody><tr><td class="l">จำนวน (คน)</td>${G.map(g => `<td>${gradeCount(g)}</td>`).join('')}<td>${d.rows.filter(r => r.ms).length}</td><td>${d.rows.length}</td></tr>
+    <tr><td class="l">ร้อยละ</td>${G.map(g => `<td>${(gradeCount(g) / nAll * 100).toFixed(1)}</td>`).join('')}<td>${(d.rows.filter(r => r.ms).length / nAll * 100).toFixed(1)}</td><td>100.0</td></tr></tbody></table>
+  <div class="note">เกณฑ์ผลการเรียน: ร้อยละ 80–100 = 4, 75–79 = 3.5, 70–74 = 3, 65–69 = 2.5, 60–64 = 2, 55–59 = 1.5, 50–54 = 1, 0–49 = 0 · มส = มีเวลาเรียนไม่ถึงร้อยละ 80 (คิดจาก ${d.sess.length} คาบที่เช็คชื่อ) · คะแนนเฉลี่ยของห้อง ร้อยละ ${d.avg.toFixed(2)}</div>
+  <div class="signs">
+    ${sign('ครูผู้สอน', store.teacher.name)}
+    ${sign(`หัวหน้ากลุ่มสาระการเรียนรู้${cfg.dept ? pe(cfg.dept) : ''}`, cfg.head)}
+    ${sign('รองผู้อำนวยการกลุ่มบริหารวิชาการ', cfg.deputy)}
+    <div class="sg"><div class="approve">☐ อนุมัติ &nbsp;&nbsp; ☐ ไม่อนุมัติ</div>${sign(`ผู้อำนวยการ${cfg.school ? pe(cfg.school) : 'โรงเรียน'}`, cfg.director).replace('<div class="sg">', '<div>')}</div>
+  </div>
+</div>
+</body></html>`;
+}
+function reportPrint() {
+  const html = reportPrintDoc(ui.rpSubject, ui.rpCid);
+  document.getElementById('rp-print-frame')?.remove();
+  const f = document.createElement('iframe'); f.id = 'rp-print-frame';
+  f.style.cssText = 'position:fixed;right:0;bottom:0;width:0;height:0;border:0;visibility:hidden';
+  document.body.appendChild(f);
+  const doc = f.contentDocument; doc.open(); doc.write(html); doc.close();
+  const go = () => { try { f.contentWindow.focus(); f.contentWindow.print(); } catch (e) { toast('เปิดหน้าพิมพ์ไม่ได้ ลองอีกครั้ง', true); } };
+  const ready = f.contentDocument.fonts?.ready || Promise.resolve();
+  Promise.race([ready, new Promise(r => setTimeout(r, 2500))]).then(() => setTimeout(go, 150));
+  toast('กำลังเปิดหน้าพิมพ์… เลือก "บันทึกเป็น PDF" เพื่อได้ไฟล์ PDF');
+}
+ACT['rp-print'] = reportPrint;
+ACT['rp-cfg-toggle'] = () => { ui.rpCfgOpen = !ui.rpCfgOpen; render(); };
+Object.assign(INP, { 'rp-cfg': el => rpCfgSet(el.dataset.k, el.value.trim()) });
 
 /* =====================================================================
    เวอร์ชันมือถือ — โครงหน้าจอแยกจาก PC
