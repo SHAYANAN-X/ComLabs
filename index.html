@@ -2019,8 +2019,6 @@ textarea.mono{font-family:ui-monospace,'SF Mono',Menlo,Consolas,monospace;font-s
 /* ---------- นักเรียน: แท็บ Ranking / ร้านค้า ---------- */
 .stu-tabs{max-width:100%;overflow-x:auto;scrollbar-width:none;flex-wrap:nowrap}
 .stu-tabs::-webkit-scrollbar{display:none}.stu-tabs button{white-space:nowrap;flex:none}
-.gchip{border:0;cursor:pointer;display:inline-flex;align-items:center;gap:4px;font:inherit;background:linear-gradient(135deg,#FFF3C4,#FFD54A);color:#6B4600!important;font-weight:600}
-.gchip .crown{font-size:13px}
 .gparts{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;padding:12px;margin-bottom:12px}
 .gparts.in-modal{padding:0;margin:12px 0 0;box-shadow:none;background:none}
 .gp{display:flex;flex-direction:column;align-items:center;gap:1px;padding:8px 4px;border-radius:14px;background:var(--surface-2)}
@@ -2068,12 +2066,91 @@ textarea.mono{font-family:ui-monospace,'SF Mono',Menlo,Consolas,monospace;font-s
 [data-device=mobile] .rk-q{width:100%}
 @media (prefers-reduced-motion:reduce){.crown,.cw-tw,.cw-glint{animation:none!important}}
 .rk-bar .input{width:auto;min-width:0}.rk-bar .rk-q{width:200px}[data-device=mobile] .rk-bar .rk-q{width:100%}
-.gchip,.gchip *{color:#5A3B00!important;opacity:1!important}
 .shop-coins{white-space:nowrap}
 [data-device=mobile] .rk-tbl td:nth-child(n+6):nth-child(-n+10){display:none}
 [data-device=mobile] .rk-tbl td:nth-child(5){min-width:0}
 [data-device=mobile] .rk-tbl td.num{width:auto}
-.pill.gchip{background:linear-gradient(135deg,#FFF3C4,#FFD54A)!important;box-shadow:0 4px 14px -6px rgba(245,180,0,.8)!important;border:0!important}
+
+/* =====================================================================
+   เฟส 8.1: คำทักทายเด่น · ชิปข้อมูลนักเรียน · รูปโปรไฟล์ตามยศ · ชื่อบนป้ายทำเนียบ
+   ===================================================================== */
+/* คำทักทาย (หน้านักเรียน + แดชบอร์ดครู) */
+h2.hello{font-size:40px!important;line-height:1.15!important;font-weight:800!important;letter-spacing:-.02em;width:auto!important;
+  background:none!important;-webkit-text-fill-color:initial!important;color:inherit!important;text-shadow:none!important;filter:none!important}
+h2.hello .hello-t{display:inline;background:linear-gradient(100deg,#0A4FE0 0%,#5B3BF0 45%,#C2289B 100%);-webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent;color:transparent;-webkit-box-decoration-break:clone;box-decoration-break:clone;
+  filter:drop-shadow(0 0 1.5px #fff) drop-shadow(0 0 1.5px #fff) drop-shadow(0 0 14px rgba(110,90,255,.55));animation:hello-glow 3.2s ease-in-out infinite}
+h2.hello .hello-s{font-size:.6em;font-weight:700;letter-spacing:0}
+h2.hello .wave{display:inline-block;transform-origin:70% 75%;animation:wave 2.4s ease-in-out infinite}
+[data-theme=dark] h2.hello .hello-t{background:linear-gradient(180deg,#FFFBE0 0%,#FFE066 45%,#FFB21A 100%);-webkit-background-clip:text;background-clip:text;
+  filter:drop-shadow(0 0 6px rgba(255,214,10,.8)) drop-shadow(0 0 22px rgba(255,170,0,.55));animation-name:hello-glow-d}
+@keyframes hello-glow{0%,100%{filter:drop-shadow(0 0 1.5px #fff) drop-shadow(0 0 1.5px #fff) drop-shadow(0 0 10px rgba(110,90,255,.4))}50%{filter:drop-shadow(0 0 1.5px #fff) drop-shadow(0 0 1.5px #fff) drop-shadow(0 0 22px rgba(150,90,255,.8))}}
+@keyframes hello-glow-d{0%,100%{filter:drop-shadow(0 0 5px rgba(255,214,10,.7)) drop-shadow(0 0 16px rgba(255,170,0,.4))}50%{filter:drop-shadow(0 0 9px rgba(255,224,60,1)) drop-shadow(0 0 30px rgba(255,170,0,.7))}}
+@keyframes wave{0%,60%,100%{transform:rotate(0)}10%,30%{transform:rotate(16deg)}20%,40%{transform:rotate(-8deg)}}
+.hero-txt h2.hello{font-size:44px!important}
+[data-device=mobile] h2.hello{font-size:32px!important}[data-device=mobile] .hero-txt h2.hello{font-size:34px!important}
+
+/* ชิปข้อมูลนักเรียน: อันดับ · ยศ · ฉายา · เหรียญ */
+.gchip-row{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin-top:8px;padding:6px 8px;border:0;border-radius:16px;cursor:pointer;font:inherit;text-align:left;
+  background:rgba(255,255,255,.72);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);box-shadow:0 6px 18px -10px rgba(20,30,70,.5),inset 0 0 0 1px rgba(255,255,255,.8);transition:transform .2s}
+.gchip-row:hover{transform:translateY(-1px)}
+[data-theme=dark] .gchip-row{background:rgba(20,24,40,.7);box-shadow:0 6px 18px -10px #000,inset 0 0 0 1px rgba(255,255,255,.1)}
+.gchip-row .rk,.gchip-row .ttl{font-size:13px;padding-top:2px;padding-bottom:2px}
+.pill.gchip,.pill.gcoin{display:inline-flex;align-items:center;gap:4px;font-weight:700;border:0!important;background:linear-gradient(135deg,#FFF3C4,#FFD54A)!important;box-shadow:0 4px 14px -6px rgba(245,180,0,.8)!important}
+.pill.gchip .gx,.pill.gcoin{color:#5A3B00!important}
+.gchip .crown{font-size:14px}
+.ttl-none{font-size:12px;color:var(--muted)}
+
+/* รูปโปรไฟล์ตามยศ */
+.ava.rv{position:relative;width:64px!important;height:64px!important;border-radius:20px!important;display:grid;place-items:center;flex:none;transform:none!important;isolation:isolate;
+  font:800 28px var(--f-head);color:#fff!important;--a:#9AA3B2;--b:#6B7383;background:linear-gradient(150deg,var(--a),var(--b))!important;box-shadow:0 8px 20px -10px var(--b)}
+.ava.rv .av-l{position:relative;z-index:2;text-shadow:0 2px 6px rgba(0,0,0,.25)}
+.ava.rv .av-ic{position:absolute;z-index:3;right:-8px;bottom:-8px;width:28px;height:28px;border-radius:50%;display:grid;place-items:center;font-size:15px;background:var(--surface);box-shadow:0 3px 8px rgba(0,0,0,.25),0 0 0 2px var(--a)}
+.ava.rv::before{content:'';position:absolute;inset:-4px;border-radius:24px;z-index:-1;opacity:0}
+.ava.rv.g1{--a:#7FD58B;--b:#2E9A44}.ava.rv.g2{--a:#5FE0D0;--b:#0E8E80}.ava.rv.g3{--a:#7DB2FF;--b:#2563EB}
+.ava.rv.g4{--a:#9AA0FF;--b:#4338CA}.ava.rv.g4::before{opacity:1;background:none;box-shadow:0 0 0 2px #fff,0 0 0 4px #6366F1}
+.ava.rv.g5{--a:#C9A7FF;--b:#7C3AED}.ava.rv.g5::before{opacity:1;box-shadow:0 0 0 2px #fff,0 0 0 4px #8B5CF6,0 0 16px #A78BFA}
+/* ยศสูง: กรอบหมุนเรืองแสง */
+.ava.rv.g6,.ava.rv.g7,.ava.rv.g8,.ava.rv.g9{overflow:visible}
+.ava.rv.g6{--a:#FFB37A;--b:#EA580C}.ava.rv.g7{--a:#FF8BA0;--b:#BE123C}
+.ava.rv.g8{--a:#FFE47A;--b:#C98A00;color:#5A3B00!important}.ava.rv.g8 .av-l{text-shadow:0 1px 0 rgba(255,255,255,.6)}
+.ava.rv.g9{--a:#8B5CF6;--b:#EC4899}
+.ava.rv.g6::before,.ava.rv.g7::before,.ava.rv.g8::before,.ava.rv.g9::before{opacity:1;inset:-5px;border-radius:25px;animation:av-spin 4s linear infinite}
+.ava.rv.g6::before{background:conic-gradient(from var(--r,0deg),#FFD3B0,#EA580C,#FFD3B0,#EA580C,#FFD3B0)}
+.ava.rv.g7::before{background:conic-gradient(from var(--r,0deg),#FFC1CC,#BE123C,#FFC1CC,#BE123C,#FFC1CC);box-shadow:0 0 18px rgba(225,29,72,.6)}
+.ava.rv.g8::before{background:conic-gradient(from var(--r,0deg),#FFF7C2,#F5B300,#B97800,#FFF7C2,#F5B300,#FFF7C2);box-shadow:0 0 22px rgba(255,196,0,.8)}
+.ava.rv.g9::before{background:conic-gradient(from var(--r,0deg),#FF5E62,#FFB347,#FFE66D,#6EE7B7,#60A5FA,#A78BFA,#FF5E62);box-shadow:0 0 26px rgba(167,139,250,.9)}
+.ava.rv.g8::after,.ava.rv.g9::after{content:'';position:absolute;inset:0;border-radius:inherit;z-index:1;background:linear-gradient(115deg,transparent 35%,rgba(255,255,255,.55) 50%,transparent 65%);background-size:250% 100%;animation:shine 2.8s linear infinite}
+@property --r{syntax:'<angle>';inherits:false;initial-value:0deg}
+@keyframes av-spin{to{--r:360deg}}
+[data-device=mobile] .ava.rv{width:56px!important;height:56px!important;font-size:24px}
+
+/* ชื่อบนป้ายทำเนียบ 1–5: ใหญ่ ขาว เรืองแสงตามสียศ */
+.pq-name{font-size:17px!important;line-height:1.3;margin:2px 0}
+.pq .gname{font-weight:800;letter-spacing:-.01em}
+.pq .gname:is(.g0,.g1,.g2,.g3,.g4,.g5,.g6,.g7){color:#fff!important;text-shadow:0 0 6px var(--gl,rgba(255,255,255,.5)),0 0 16px var(--gl,rgba(255,255,255,.25)),0 1px 2px rgba(0,0,0,.6)}
+.pq .gname.g0{--gl:rgba(200,210,225,.6)}.pq .gname.g1{--gl:rgba(110,220,130,.8)}.pq .gname.g2{--gl:rgba(70,225,205,.8)}.pq .gname.g3{--gl:rgba(110,170,255,.9)}
+.pq .gname.g4{--gl:rgba(150,150,255,.9)}.pq .gname.g5{--gl:rgba(190,150,255,.9)}.pq .gname.g6{--gl:rgba(255,160,80,.9)}.pq .gname.g7{--gl:rgba(255,100,130,.9)}
+.pq .gname.g8{filter:drop-shadow(0 0 6px rgba(255,200,0,.9)) drop-shadow(0 0 14px rgba(255,170,0,.6))}
+.pq .gname.g9{filter:drop-shadow(0 0 7px rgba(190,150,255,1)) drop-shadow(0 0 16px rgba(255,120,200,.6))}
+.pq.p1 .pq-name{font-size:20px!important}
+.pq.p1 .gname:is(.g0,.g1,.g2,.g3,.g4,.g5,.g6,.g7){color:#FFF6CF!important}
+[data-device=mobile] .pq-name{font-size:14.5px!important}[data-device=mobile] .pq.p1 .pq-name{font-size:16px!important}
+.pod-rest .gname{font-size:15.5px;font-weight:700}
+@media (prefers-reduced-motion:reduce){h2.hello .hello-t,h2.hello .wave,.ava.rv::before,.ava.rv::after{animation:none!important}}
+/* หน้า Ranking: เลือกห้องก่อน */
+.rk-pick{margin-bottom:12px}
+.rk-pick .card-h{flex-wrap:wrap;gap:8px}
+.rk-rooms{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px;padding:4px 18px 18px}
+.rk-room{display:flex;flex-direction:column;align-items:flex-start;gap:2px;padding:12px 14px;border:0;border-radius:16px;background:var(--surface-2);color:var(--ink);font:inherit;text-align:left;cursor:pointer;box-shadow:inset 0 0 0 1px var(--line);transition:transform .15s}
+.rk-room:hover{transform:translateY(-2px)}
+.rk-room b{font:700 17px var(--f-head)}.rk-room small{font-size:12px;color:var(--muted)}
+.rk-room-top{font-size:12.5px;margin-top:4px;padding:2px 8px;border-radius:99px;background:var(--surface)}
+.rk-room.on{background:var(--primary-soft);box-shadow:inset 0 0 0 2px var(--primary)}
+.rk-room.all{background:transparent;box-shadow:inset 0 0 0 1.5px dashed var(--line);border:1.5px dashed var(--line)}
+.rk-empty{padding:30px}
+.rk-pager{display:flex;align-items:center;justify-content:center;gap:12px;padding:12px;font-size:14px;color:var(--muted)}
+[data-device=mobile] .rk-rooms{grid-template-columns:1fr 1fr;padding:4px 12px 14px}
 
 </style>
 </head>
@@ -4053,8 +4130,8 @@ function studentHome(v) {
   const sec = (key, title) => groups[key].length ? `<div class="sec-title">${title} <span class="chip">${groups[key].length}</span></div>${groups[key].map(studentAsgCard).join('')}` : '';
   return `<div class="stu-wrap">
     <div class="stu-banner">${ART.desk(sceneHour())}<div class="stu-clock">${clockHTML()}</div><div class="acts"><button class="btn icon sm" data-act="stu-reload" aria-label="โหลดใหม่" title="โหลดใหม่">${ic('refresh')}</button><button class="btn sm" data-act="stu-out">ออก</button></div>
-      <div class="row" style="gap:14px;position:relative;z-index:1"><div class="ava">${esc(first[0] || '?')}</div><div style="min-width:0"><h2>สวัสดี ${esc(first)}! 👋</h2>
-        <div class="pills"><span class="pill">🏫 ${esc(v.classroom_name)}</span><span class="pill">เลขที่ ${v.number}</span>${gameChipHTML()}</div></div></div></div>
+      <div class="row" style="gap:14px;position:relative;z-index:1">${stuAvaHTML(first)}<div style="min-width:0"><h2 class="hello"><span class="hello-t"><span class="hello-s">สวัสดี</span> ${esc(first)}!</span> <span class="wave">👋</span></h2>
+        <div class="pills"><span class="pill">🏫 ${esc(v.classroom_name)}</span><span class="pill">เลขที่ ${v.number}</span></div>${gameChipHTML()}</div></div></div>
     ${studentAnnHTML()}
     <div class="seg stu-tabs">${[['work', '📝 งาน'], ['exam', '🧪 ข้อสอบ'], ['score', '📊 คะแนน'], ['rank', '🏆 Ranking'], ['shop', '🛒 ร้านค้า'], ['gallery', '🌟 ผลงาน']].map(([k, l]) => `<button class="${(stuState.tab || 'work') === k ? 'on' : ''}" data-act="stu-tab" data-t="${k}">${l}</button>`).join('')}</div>
     ${stuState.tab === 'rank' ? studentRankHTML(v) : stuState.tab === 'shop' ? shopHTML() : stuState.tab === 'gallery' ? studentGalleryHTML() : stuState.tab === 'score' ? studentScoresHTML() : stuState.tab === 'exam' ? studentExamsHTML() : stuState.asg ? `<div class="counters">
@@ -4711,7 +4788,7 @@ function viewDashboard() {
   const hour = new Date().getHours();
   const hello = hour < 12 ? 'อรุณสวัสดิ์' : hour < 17 ? 'สวัสดีตอนบ่าย' : 'สวัสดีตอนเย็น';
   return `
-  <section class="hero card">${ART.desk(sceneHour(hour))}<div class="hero-clock">${clockHTML()}</div><div class="hero-txt"><h2>${hello}<br>${esc(store.teacher.name)}</h2><p>ภาคเรียนที่ ${esc(Q.termLabel(term))} · ${new Date().toLocaleDateString('th-TH', { weekday: 'long', day: 'numeric', month: 'long' })}</p>
+  <section class="hero card">${ART.desk(sceneHour(hour))}<div class="hero-clock">${clockHTML()}</div><div class="hero-txt"><h2 class="hello"><span class="hello-t"><span class="hello-s">${hello}</span><br>${esc(store.teacher.name)}</span> <span class="wave">👋</span></h2><p>ภาคเรียนที่ ${esc(Q.termLabel(term))} · ${new Date().toLocaleDateString('th-TH', { weekday: 'long', day: 'numeric', month: 'long' })}</p>
     <div class="hero-acts">${ME.can('assignments') ? `<a class="btn primary" href="#assignments">${ic('plus')}สร้างงาน</a>` : ''}${pendingCount() && ME.can('assignments') ? `<a class="btn" href="#assignments">${ic('check')}รอตรวจ ${thaiNum(pendingCount())} งาน</a>` : ''}</div></div></section>
   <div class="stats">
     <div class="card stat"><div class="lbl">${ic('book')}วิชาที่สอน</div><div class="val">${thaiNum(subs.length)}</div><div class="sub">${thaiNum(nStu)} ห้อง · ${thaiNum(allAsgs.length)} งาน</div></div>
@@ -6739,12 +6816,21 @@ function studentGameHTML(v, compact) {
   return `${myGameCard(v, g)}<div class="card hall stu-hall"><div class="hall-h"><div><h3>🏆 ทำเนียบคนเก่ง ${esc(g.level)}</h3><small>เก่งและขยันที่สุด 5 อันดับแรกของสายชั้น</small></div><span class="spacer"></span><button class="btn sm ghost" data-act="game-help">ทำแต้มยังไง?</button></div>
     ${podiumHTML(g.top, g.titles)}</div>`;
 }
-/* ชิปเล็กในแบนเนอร์ กดแล้วไปแท็บ Ranking */
+/* ชิปเล็กในแบนเนอร์ กดแล้วไปแท็บ Ranking: อันดับ · ยศ · ฉายา · เหรียญ */
 function gameChipHTML() {
   if (!stuState.game) { loadStudentGame(); return ''; }
   const g = stuState.game; if (g.missing) return '';
-  const r = RANKS[rankIdx(g.xp)];
-  return `<button class="pill gchip" data-act="stu-tab" data-t="rank">${g.rank <= 10 && g.xp > 0 ? crownTag(g.rank) : r.ic} อันดับ ${g.rank} · ${r.n} · 🪙 ${g.coins}</button>`;
+  const i = rankIdx(g.xp), r = RANKS[i], t = titleOf(g.title_id, g.titles);
+  return `<button class="gchip-row" data-act="stu-tab" data-t="rank" title="ดู Ranking">
+    <span class="pill gchip">${g.rank <= 10 && g.xp > 0 ? crownTag(g.rank) : ''}<span class="gx">อันดับ ${g.rank}</span></span>
+    <span class="rk g${i}">${r.ic}<b>${r.n}</b> · Lv.${lvOf(g.xp)}</span>
+    ${t ? `<span class="ttl ${t.rarity}">${esc(t.name)}</span>` : '<span class="ttl-none">ยังไม่มีฉายา</span>'}
+    <span class="pill gcoin">🪙 ${g.coins}</span></button>`;
+}
+/* รูปโปรไฟล์: กรอบและสีเปลี่ยนตามยศ */
+function stuAvaHTML(first) {
+  const g = stuState.game, xp = g && !g.missing ? g.xp : 0, i = rankIdx(xp), r = RANKS[i];
+  return `<div class="ava rv g${i}" title="${r.n}"><span class="av-l">${esc((first || '?')[0])}</span>${g && !g.missing ? `<span class="av-ic">${r.ic}</span>` : ''}</div>`;
 }
 /* แท็บ Ranking */
 function studentRankHTML(v) {
@@ -7224,7 +7310,8 @@ Object.assign(ACT, {
 I.trophy = '<path d="M7 4h10v4a5 5 0 0 1-10 0z"/><path d="M7 6H4.5a2.5 2.5 0 0 0 2.6 3.4M17 6h2.5a2.5 2.5 0 0 1-2.6 3.4M12 13v4M8.5 20h7M9.5 17h5"/>';
 const confirmDlg = (msg, fn) => confirmBox('ยืนยัน', msg, 'ยืนยัน', fn);
 let rkQT = null;
-const RK = { t: null, adj: null, loading: false, lv: null, cls: '', q: '', sel: new Set(), missing: false };
+const RK = { t: null, adj: null, loading: false, lv: null, cls: '', q: '', sel: new Set(), missing: false, page: 0 };
+const RK_PER = 30;
 const RK_REASONS = [['🙋', 'ตอบคำถามในห้อง', 10], ['🤝', 'ช่วยเหลือเพื่อน', 20], ['🧹', 'จิตอาสา / ช่วยงานครู', 20], ['🏅', 'ร่วมกิจกรรม / แข่งขัน', 50], ['💡', 'งานสร้างสรรค์โดดเด่น', 30], ['⚠️', 'ไม่ตั้งใจเรียน', -10]];
 const RULE_LABELS = [
   ['งานที่ส่ง', [['sub', '📤 ส่งงาน (ต่อชิ้น)'], ['ontime', '⏰ ส่งตรงเวลา'], ['score', '📝 คะแนนงานสูงสุด (ตามร้อยละ)']]],
@@ -7244,8 +7331,9 @@ async function loadRanking(force) {
 }
 const rkCan = () => !!RK.t?.can;
 function rkRows() {
-  const rows = (RK.t?.rows || []).filter(r => r.level === RK.lv && (!RK.cls || r.classroom_id === RK.cls));
   const s = RK.q.trim().toLowerCase();
+  if (!RK.cls && !s) return [];
+  const rows = (RK.t?.rows || []).filter(r => r.level === RK.lv && (RK.cls === '*' || !RK.cls || r.classroom_id === RK.cls));
   return s ? rows.filter(r => r.name.toLowerCase().includes(s) || String(r.number) === s) : rows;
 }
 function rkStu(id) { return (RK.t?.rows || []).find(r => r.id === id); }
@@ -7260,38 +7348,54 @@ function viewRanking() {
   if (!levels.includes(RK.lv)) RK.lv = levels[0] || null;
   const inLv = all.filter(r => r.level === RK.lv);
   const rooms = [...new Map(inLv.map(r => [r.classroom_id, r.classroom])).entries()].sort((a, b) => a[1].localeCompare(b[1], 'th', { numeric: true }));
-  if (RK.cls && !rooms.some(([id]) => id === RK.cls)) RK.cls = '';
-  const rows = rkRows(), can = rkCan();
-  const top = inLv.filter(r => r.xp > 0).slice(0, 10).map(r => ({ ...r, name: r.name }));
+  if (RK.cls && RK.cls !== '*' && !rooms.some(([id]) => id === RK.cls)) RK.cls = '';
+  const allRows = rkRows(), can = rkCan();
+  const pages = Math.max(1, Math.ceil(allRows.length / RK_PER)); if (RK.page >= pages) RK.page = pages - 1;
+  const rows = allRows.slice(RK.page * RK_PER, RK.page * RK_PER + RK_PER);
+  const top = inLv.filter(r => r.xp > 0).slice(0, 10);
   const avg = inLv.length ? Math.round(inLv.reduce((a, r) => a + r.xp, 0) / inLv.length) : 0;
   const best = inLv[0];
-  const selN = [...RK.sel].filter(id => rows.some(r => r.id === id)).length;
   const cell = (n, cls = '') => `<td class="num ${cls}">${n ? n.toLocaleString() : '<span class="muted">–</span>'}</td>`;
+  const roomCard = ([id, n]) => { const rs = inLv.filter(r => r.classroom_id === id), sum = rs.reduce((a, r) => a + r.xp, 0), lead = rs.reduce((m, r) => r.xp > (m?.xp ?? -1) ? r : m, null);
+    return `<button class="rk-room ${RK.cls === id ? 'on' : ''}" data-act="rk-room" data-id="${id}"><b>${esc(n)}</b><small>${rs.length} คน · เฉลี่ย ${(rs.length ? Math.round(sum / rs.length) : 0).toLocaleString()} XP</small>${lead && lead.xp ? `<span class="rk-room-top">${RANKS[rankIdx(lead.xp)].ic} ${esc(lead.name.split(' ')[0])} · ${lead.xp.toLocaleString()}</span>` : ''}</button>`; };
   return `${head}<div class="row" style="gap:6px;flex-wrap:wrap">
       ${can ? `<button class="btn" data-act="rk-rules">⚙️ กติกาแต้ม</button><button class="btn" data-act="rk-history">📜 ประวัติการให้แต้ม</button>` : ''}
       <button class="btn ghost" data-act="rk-xlsx">${ic('download')}Excel</button><button class="btn ghost icon" data-act="rk-reload" title="คำนวณใหม่" aria-label="คำนวณใหม่">${ic('refresh')}</button></div></div>
     ${can ? '' : `<div class="card rk-note">👀 ดูได้อย่างเดียว · การให้แต้มและมอบฉายาต้องได้สิทธิ์ "จัดการ Ranking" จากผู้ดูแล</div>`}
     <div class="rk-bar">
       ${levels.length ? `<div class="seg">${levels.map(l => `<button class="${l === RK.lv ? 'on' : ''}" data-act="rk-lv" data-l="${esc(l)}">${esc(l)}</button>`).join('')}</div>` : ''}
-      <select class="input sm-sel" data-chg="rk-cls" aria-label="ห้อง"><option value="">ทุกห้องใน ${esc(RK.lv || '')}</option>${rooms.map(([id, n]) => `<option value="${id}" ${id === RK.cls ? 'selected' : ''}>${esc(n)}</option>`).join('')}</select>
-      <input class="input rk-q" data-inp="rk-q" placeholder="ค้นหาชื่อหรือเลขที่" value="${esc(RK.q)}">
       <span class="spacer"></span>
       <div class="rk-stats"><span>👥 <b>${inLv.length}</b> คน</span><span>⭐ เฉลี่ย <b>${avg.toLocaleString()}</b> XP</span>${best && best.xp ? `<span>${RANKS[rankIdx(best.xp)].ic} สูงสุด <b>${best.xp.toLocaleString()}</b></span>` : ''}</div>
     </div>
     <div class="card hall rk-hall"><div class="hall-h"><div><h3>ทำเนียบ ${esc(RK.lv || '')}</h3><small>ป้ายนี้แสดงในหน้าแดชบอร์ด หน้านักเรียน และหน้าก่อนเริ่มสอบ</small></div><span class="spacer"></span><button class="btn sm ghost" data-act="rk-help">วิธีคิดแต้ม</button></div>${podiumHTML(top, titles)}</div>
-    ${can ? `<div class="rk-bulk ${selN ? 'on' : ''}"><b>${selN ? `เลือก ${selN} คน` : 'เลือกนักเรียนเพื่อให้แต้มพร้อมกัน'}</b><span class="spacer"></span>
-      ${selN ? `<button class="btn primary sm" data-act="rk-give">🎁 ให้แต้ม / เหรียญ</button><button class="btn sm ghost" data-act="rk-clear">ยกเลิกเลือก</button>` : `<button class="btn sm" data-act="rk-selall">เลือกทั้งหมดที่แสดง (${rows.length})</button>`}</div>` : ''}
+    <div class="card rk-pick"><div class="card-h"><h3>เลือกห้องเพื่อจัดการแต้ม</h3><span class="spacer"></span>
+        <input class="input rk-q" data-inp="rk-q" placeholder="🔍 ค้นหาชื่อทั้ง ${esc(RK.lv || '')}" value="${esc(RK.q)}"></div>
+      <div class="rk-rooms">${rooms.map(roomCard).join('')}<button class="rk-room all ${RK.cls === '*' ? 'on' : ''}" data-act="rk-room" data-id="*"><b>ทั้งสายชั้น</b><small>เรียงตามอันดับ · หน้าละ ${RK_PER} คน</small></button></div></div>
+    ${!RK.cls && !RK.q.trim() ? `<div class="card"><div class="empty rk-empty">👆 <b>เลือกห้องด้านบน</b>หรือพิมพ์ชื่อนักเรียนเพื่อค้นหา แล้วรายชื่อจะแสดงที่นี่</div></div>` : `
+    ${can ? rkBulkHTML(allRows) : ''}
     <div class="card"><div class="tbl-wrap"><table class="tbl rk-tbl"><thead><tr>
-      ${can ? `<th class="ck"><input type="checkbox" data-chg="rk-all" ${rows.length && selN === rows.length ? 'checked' : ''} aria-label="เลือกทั้งหมด"></th>` : ''}
+      ${can ? `<th class="ck"><input type="checkbox" data-chg="rk-all" ${rows.length && rows.every(r => RK.sel.has(r.id)) ? 'checked' : ''} aria-label="เลือกทั้งหน้า"></th>` : ''}
       <th>อันดับ</th><th>ห้อง</th><th>เลขที่</th><th>ชื่อ · ยศ · ฉายา</th><th class="num">📤 งาน</th><th class="num">🧪 สอบ</th><th class="num">🖼 ผลงาน</th><th class="num">📋 เช็คชื่อ</th><th class="num">🎁 ครูให้</th><th class="num">XP รวม</th><th class="num">🪙 เหรียญ</th>${can ? '<th></th>' : ''}</tr></thead>
-      <tbody>${rows.map(r => `<tr class="${RK.sel.has(r.id) ? 'sel' : ''}">
+      <tbody>${rows.map(r => `<tr class="${RK.sel.has(r.id) ? 'sel' : ''}" data-rid="${r.id}">
         ${can ? `<td class="ck"><input type="checkbox" data-chg="rk-sel" data-id="${r.id}" ${RK.sel.has(r.id) ? 'checked' : ''} aria-label="เลือก"></td>` : ''}
         <td><span class="rk-no ${r.rank <= 3 && r.xp ? 'n' + r.rank : ''}">${r.rank}</span></td><td>${esc(r.classroom)}</td><td>${r.number}</td>
         <td>${nameTag(r.name, r.xp, r.rank, r.title_id, titles)}<small class="muted rk-lv">Lv.${lvOf(r.xp)}</small></td>
         ${cell(r.sub)}${cell(r.exam)}${cell(r.gallery)}${cell(r.att)}${cell(r.bonus, r.bonus < 0 ? 'neg' : r.bonus > 0 ? 'pos' : '')}
         <td class="num"><b>${r.xp.toLocaleString()}</b></td><td class="num ${r.coins < 0 ? 'neg' : ''}">${r.coins}</td>
         ${can ? `<td class="rk-act"><button class="btn sm" data-act="rk-plus" data-id="${r.id}" title="+10 XP ตอบคำถาม">+10</button><button class="btn sm ghost" data-act="rk-stu" data-id="${r.id}">จัดการ</button></td>` : ''}
-      </tr>`).join('') || `<tr><td colspan="13"><div class="empty">ไม่พบนักเรียน</div></td></tr>`}</tbody></table></div></div>`;
+      </tr>`).join('') || `<tr><td colspan="13"><div class="empty">ไม่พบนักเรียน</div></td></tr>`}</tbody></table></div>
+      ${pages > 1 ? `<div class="rk-pager"><button class="btn sm" data-act="rk-page" data-d="-1" ${RK.page ? '' : 'disabled'}>‹ ก่อนหน้า</button><span>หน้า ${RK.page + 1} / ${pages} · ทั้งหมด ${allRows.length} คน</span><button class="btn sm" data-act="rk-page" data-d="1" ${RK.page < pages - 1 ? '' : 'disabled'}>ถัดไป ›</button></div>` : ''}</div>`}`;
+}
+function rkBulkHTML(allRows) {
+  const selN = [...RK.sel].filter(id => allRows.some(r => r.id === id)).length;
+  return `<div class="rk-bulk ${selN ? 'on' : ''}" id="rk-bulk"><b>${selN ? `เลือก ${selN} คน` : 'ติ๊กเลือกนักเรียนเพื่อให้แต้มพร้อมกัน'}</b><span class="spacer"></span>
+    ${selN ? `<button class="btn primary sm" data-act="rk-give">🎁 ให้แต้ม / เหรียญ</button><button class="btn sm ghost" data-act="rk-clear">ยกเลิกเลือก</button>` : `<button class="btn sm" data-act="rk-selall">เลือกทั้งหมด (${allRows.length})</button>`}</div>`;
+}
+/* ติ๊กเลือกโดยไม่วาดหน้าใหม่ทั้งหมด (ลื่นขึ้น) */
+function rkSyncSel() {
+  const b = $('#rk-bulk'); if (b) b.outerHTML = rkBulkHTML(rkRows());
+  $$('.rk-tbl tbody tr[data-rid]').forEach(tr => { const on = RK.sel.has(tr.dataset.rid); tr.classList.toggle('sel', on); const c = tr.querySelector('[data-chg=rk-sel]'); if (c) c.checked = on; });
+  const all = $('[data-chg=rk-all]'); if (all) { const ids = $$('.rk-tbl tbody tr[data-rid]').map(tr => tr.dataset.rid); all.checked = ids.length && ids.every(id => RK.sel.has(id)); }
 }
 
 /* ---------- ให้แต้ม ---------- */
@@ -7394,14 +7498,16 @@ function rkHistoryModal() {
 }
 
 Object.assign(ACT, {
-  'rk-lv': el => { RK.lv = el.dataset.l; RK.cls = ''; RK.sel.clear(); render(); },
+  'rk-lv': el => { RK.lv = el.dataset.l; RK.cls = ''; RK.q = ''; RK.page = 0; RK.sel.clear(); render(); },
+  'rk-room': el => { RK.cls = RK.cls === el.dataset.id ? '' : el.dataset.id; RK.q = ''; RK.page = 0; RK.sel.clear(); render(); },
+  'rk-page': el => { RK.page += +el.dataset.d; render(); $('.rk-pick')?.scrollIntoView({ behavior: 'smooth', block: 'start' }); },
   'rk-reload': async () => { RK.t = null; render(); await loadRanking(true); toast('คำนวณแต้มใหม่แล้ว'); },
   'rk-help': () => gameHelpModal(RK.t?.rules),
   'rk-rules': rkRulesModal,
   'rk-history': rkHistoryModal,
   'rk-give': () => rkGiveModal([...RK.sel].filter(id => rkRows().some(r => r.id === id))),
-  'rk-selall': () => { rkRows().forEach(r => RK.sel.add(r.id)); render(); },
-  'rk-clear': () => { RK.sel.clear(); render(); },
+  'rk-selall': () => { rkRows().forEach(r => RK.sel.add(r.id)); rkSyncSel(); },
+  'rk-clear': () => { RK.sel.clear(); rkSyncSel(); },
   'rk-stu': el => rkStuModal(el.dataset.id),
   'rk-plus': async el => { await rkInsert([{ student_id: el.dataset.id, xp: 10, coins: 0, reason: 'ตอบคำถามในห้อง' }]); toast(`+10 XP ให้ ${rkStu(el.dataset.id)?.name.split(' ')[0] || ''} แล้ว`); },
   'rk-reason': el => { $('#modal-root [name=xp]').value = el.dataset.x; $('#modal-root [name=reason]').value = el.dataset.t; $$('#modal-root .rk-rs').forEach(b => b.classList.toggle('on', b === el)); },
@@ -7436,12 +7542,11 @@ Object.assign(ACT, {
   },
 });
 Object.assign(CHG, {
-  'rk-cls': el => { RK.cls = el.value; RK.sel.clear(); render(); },
-  'rk-sel': el => { el.checked ? RK.sel.add(el.dataset.id) : RK.sel.delete(el.dataset.id); render(); },
-  'rk-all': el => { rkRows().forEach(r => el.checked ? RK.sel.add(r.id) : RK.sel.delete(r.id)); render(); },
+  'rk-sel': el => { el.checked ? RK.sel.add(el.dataset.id) : RK.sel.delete(el.dataset.id); rkSyncSel(); },
+  'rk-all': el => { $$('.rk-tbl tbody tr[data-rid]').forEach(tr => el.checked ? RK.sel.add(tr.dataset.rid) : RK.sel.delete(tr.dataset.rid)); rkSyncSel(); },
 });
 Object.assign(INP, {
-  'rk-q': el => { clearTimeout(rkQT); rkQT = setTimeout(() => { RK.q = el.value; render(); const i = $('.rk-q'); if (i) { i.focus(); i.setSelectionRange(i.value.length, i.value.length); } }, 250); },
+  'rk-q': el => { clearTimeout(rkQT); rkQT = setTimeout(() => { RK.q = el.value; RK.page = 0; render(); const i = $('.rk-q'); if (i) { i.focus(); i.setSelectionRange(i.value.length, i.value.length); } }, 250); },
   'rk-rule-calc': rkCalc,
 });
 
