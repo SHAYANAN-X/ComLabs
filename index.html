@@ -1786,6 +1786,219 @@ select option,select optgroup{background:var(--surface);color:var(--ink)}
 .rb-lvls{grid-template-columns:repeat(var(--n,4),1fr)}
 .rp-cfg{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;padding:14px 20px;border-bottom:1px solid var(--line);background:var(--surface-2)}
 
+/* =====================================================================
+   เฟส 7: ยศ · มงกุฎ · ทำเนียบ · ร้านฉายา · ติดตามนักเรียน · ประกาศ · คลังข้อสอบ · แกลเลอรี
+   ===================================================================== */
+/* ---------- สีชื่อตามยศ (อ่อน → เรืองแสง) ---------- */
+:root{--g0:#8A93A3;--g1:#3FA34D;--g2:#0F9E8E;--g3:#2F74E8;--g4:#5458E0;--g5:#8048E8;--g6:#EA6A0C;--g7:#D9183F}
+[data-theme=dark]{--g0:#A7B0C0;--g1:#6BD47A;--g2:#3FD9C6;--g3:#6FA8FF;--g4:#8C90FF;--g5:#B28CFF;--g6:#FF9A4D;--g7:#FF5C7A}
+.ntag{display:inline-flex;align-items:center;gap:6px;flex-wrap:wrap;min-width:0}
+.gname{font-weight:700}
+.gname.g0{color:var(--g0)}.gname.g1{color:var(--g1)}.gname.g2{color:var(--g2)}.gname.g3{color:var(--g3)}.gname.g4{color:var(--g4)}
+.gname.g5{color:var(--g5)}.gname.g6{color:var(--g6)}.gname.g7{color:var(--g7);text-shadow:0 0 8px color-mix(in srgb,var(--g7) 35%,transparent)}
+.gname.g8{background:linear-gradient(180deg,#FFE680,#F5B300 55%,#C77700);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 0 5px rgba(255,190,0,.65))}
+.gname.g9{background:linear-gradient(90deg,#FF5E62,#FF9966,#FFD452,#6EE7B7,#60A5FA,#A78BFA,#FF5E62);background-size:300% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;
+  filter:drop-shadow(0 0 6px rgba(167,139,250,.75));animation:rainbow 4s linear infinite}
+@keyframes rainbow{to{background-position:300% 0}}
+/* ป้ายยศ */
+.rk{display:inline-flex;align-items:center;gap:3px;padding:1px 8px 1px 5px;border-radius:99px;font-size:11.5px;line-height:1.6;white-space:nowrap;
+  background:color-mix(in srgb,var(--rc,#888) 14%,transparent);color:var(--rc,#888);box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--rc,#888) 35%,transparent)}
+.rk b{font-weight:600}
+.rk.g0{--rc:var(--g0)}.rk.g1{--rc:var(--g1)}.rk.g2{--rc:var(--g2)}.rk.g3{--rc:var(--g3)}.rk.g4{--rc:var(--g4)}.rk.g5{--rc:var(--g5)}.rk.g6{--rc:var(--g6)}.rk.g7{--rc:var(--g7)}
+.rk.g8{--rc:#D79A00;background:linear-gradient(135deg,#FFF3C4,#FFD54A);color:#7A4F00;box-shadow:0 0 10px rgba(255,190,0,.55),inset 0 0 0 1px #F5B300}
+.rk.g9{color:#fff;background:linear-gradient(90deg,#FF5E62,#FFB347,#6EE7B7,#60A5FA,#A78BFA);background-size:200% 100%;animation:rainbow 5s linear infinite;box-shadow:0 0 12px rgba(167,139,250,.7)}
+/* มงกุฎ Top 10 กระพริบ */
+.crown{display:inline-block;font-size:1.05em;line-height:1;animation:crown 1.6s ease-in-out infinite;filter:drop-shadow(0 0 4px rgba(255,196,0,.8))}
+.crown.k1{font-size:1.3em;animation-duration:1.1s}
+.crown.k2,.crown.k3{font-size:1.15em}
+@keyframes crown{0%,100%{transform:translateY(0) rotate(-6deg);filter:drop-shadow(0 0 3px rgba(255,196,0,.6)) brightness(1)}50%{transform:translateY(-2px) rotate(6deg);filter:drop-shadow(0 0 10px rgba(255,214,10,1)) brightness(1.25)}}
+/* ฉายา */
+.ttl{display:inline-flex;align-items:center;padding:1px 9px;border-radius:7px;font-size:11.5px;font-weight:600;white-space:nowrap;letter-spacing:.1px}
+.ttl::before{content:'「';opacity:.6}.ttl::after{content:'」';opacity:.6}
+.ttl.common{background:var(--fill);color:var(--muted)}
+.ttl.rare{background:rgba(47,116,232,.12);color:#2F74E8;box-shadow:inset 0 0 0 1px rgba(47,116,232,.35)}
+.ttl.epic{background:linear-gradient(135deg,rgba(128,72,232,.16),rgba(217,70,239,.12));color:#7C3AED;box-shadow:inset 0 0 0 1px rgba(128,72,232,.45)}
+.ttl.legendary{background:linear-gradient(110deg,#FFE9A8 30%,#FFF7DB 45%,#FFE9A8 60%);background-size:250% 100%;color:#8A5A00;box-shadow:inset 0 0 0 1px #F5B300,0 0 8px rgba(255,190,0,.45);animation:shine 2.6s linear infinite}
+.ttl.mythic{color:#fff;background:linear-gradient(90deg,#FF5E62,#FFB347,#6EE7B7,#60A5FA,#A78BFA,#FF5E62);background-size:300% 100%;animation:rainbow 3.5s linear infinite;box-shadow:0 0 12px rgba(167,139,250,.7)}
+[data-theme=dark] .ttl.rare{color:#8AB6FF}[data-theme=dark] .ttl.epic{color:#C4A6FF}
+@keyframes shine{to{background-position:-250% 0}}
+
+/* ---------- ทำเนียบคนเก่ง ---------- */
+.hall{overflow:hidden;background:linear-gradient(180deg,color-mix(in srgb,#FFD54A 10%,var(--surface)),var(--surface) 45%)}
+[data-theme=dark] .hall{background:linear-gradient(180deg,rgba(255,196,0,.08),var(--surface) 45%)}
+.hall-h{display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding:16px 20px 4px}
+.hall-h h3{font:700 19px var(--f-head);margin:0}.hall-h small{color:var(--muted)}
+.podium{display:grid;grid-template-columns:repeat(5,1fr);align-items:end;gap:10px;padding:18px 18px 14px}
+.pq{position:relative;display:flex;flex-direction:column;align-items:center;text-align:center;gap:2px;padding:30px 8px 12px;border-radius:20px 20px 12px 12px;min-width:0;
+  background:var(--surface-2);box-shadow:inset 0 0 0 1px var(--line)}
+.pq-medal{position:absolute;top:-22px;font-size:40px;line-height:1;filter:drop-shadow(0 4px 6px rgba(0,0,0,.25))}
+.pq-no{font:800 13px var(--f-head);width:24px;height:24px;border-radius:50%;display:grid;place-items:center;background:var(--surface);box-shadow:var(--shadow);margin-bottom:4px}
+.pq-name{font-size:14.5px;max-width:100%;overflow:hidden}
+.pq-name .ntag{justify-content:center}
+.pq-meta{font-size:12px;color:var(--muted)}
+.pq-xp{font:800 16px var(--f-head);margin-top:2px}
+.pq-cls{font-size:11.5px;color:var(--muted)}
+.pq{--g0:#C3CAD6;--g1:#7BE08A;--g2:#4FE3CF;--g3:#86B6FF;--g4:#A2A6FF;--g5:#C4A4FF;--g6:#FFAA66;--g7:#FF7590;color:#F4F6FB;
+  background:linear-gradient(175deg,#2B3463,#1A1F3D 70%);box-shadow:0 14px 28px -16px rgba(16,20,48,.8),inset 0 0 0 2px var(--mt,#56608F),inset 0 3px 0 var(--mt,#56608F)}
+.pq .pq-meta,.pq .pq-cls{color:#AEB6CF}.pq .pq-no{background:var(--mt,#56608F);color:#1A1F3D;box-shadow:none}
+.pq.p1{--mt:#F5C02E;min-height:205px;background:radial-gradient(120% 70% at 50% 0%,rgba(255,200,40,.35),transparent 60%),linear-gradient(175deg,#3A2F5E,#1E1A3A 70%);box-shadow:0 16px 34px -14px rgba(245,170,0,.75),inset 0 0 0 2px #F5C02E,inset 0 3px 0 #FFE27A}
+.pq.p2{--mt:#C9D0DB;min-height:178px;background:radial-gradient(120% 70% at 50% 0%,rgba(220,228,240,.25),transparent 60%),linear-gradient(175deg,#2B3463,#1A1F3D 70%)}
+.pq.p3{--mt:#D98A4A;min-height:160px;background:radial-gradient(120% 70% at 50% 0%,rgba(230,140,70,.28),transparent 60%),linear-gradient(175deg,#2B3463,#1A1F3D 70%)}
+.pq.p4,.pq.p5{--mt:#56608F;min-height:140px}
+.pq.p1 .pq-xp{font-size:19px;color:#FFD54A;text-shadow:0 0 10px rgba(255,200,40,.6)}
+.pq .rk{background:rgba(255,255,255,.08)}.pq .rk.g8{background:linear-gradient(135deg,#FFF3C4,#FFD54A)}
+.pq.p1::after{content:'';position:absolute;inset:0;border-radius:inherit;pointer-events:none;background:linear-gradient(115deg,transparent 30%,rgba(255,255,255,.18) 45%,transparent 60%);background-size:250% 100%;animation:shine 3.2s linear infinite}
+.pq.me{outline:3px solid var(--primary);outline-offset:3px}
+.pq.vacant{min-height:110px;opacity:.45;justify-content:center}
+.pod-rest{padding:0 18px 16px;display:flex;flex-direction:column;gap:6px}
+.pr-row{display:flex;align-items:center;gap:10px;padding:8px 12px;border-radius:14px;background:var(--surface-2)}
+.pr-row.me{box-shadow:inset 0 0 0 2px var(--primary)}
+.pr-no{font:800 14px var(--f-head);width:26px;text-align:center;color:var(--muted)}
+.pr-xp{font-family:var(--f-head)}
+.pod-empty{padding:26px;text-align:center;color:var(--muted)}
+.dash-duo{display:grid;grid-template-columns:1.65fr 1fr;gap:16px;margin-bottom:16px;align-items:start}
+
+/* ---------- การ์ดนักผจญภัยของนักเรียน ---------- */
+.gcard{display:flex;gap:16px;align-items:center;padding:16px 18px;margin-bottom:12px;--rc:var(--g0)}
+.gcard.g1{--rc:var(--g1)}.gcard.g2{--rc:var(--g2)}.gcard.g3{--rc:var(--g3)}.gcard.g4{--rc:var(--g4)}.gcard.g5{--rc:var(--g5)}.gcard.g6{--rc:var(--g6)}.gcard.g7{--rc:var(--g7)}.gcard.g8{--rc:#F5B300}.gcard.g9{--rc:#A78BFA}
+.gc-emblem{flex:none;width:68px;height:68px;border-radius:20px;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  background:linear-gradient(150deg,color-mix(in srgb,var(--rc) 25%,var(--surface)),color-mix(in srgb,var(--rc) 55%,var(--surface)));box-shadow:0 10px 22px -12px var(--rc),inset 0 1px 0 rgba(255,255,255,.6)}
+.gc-emblem span{font-size:30px;line-height:1}.gc-emblem b{font:800 12.5px var(--f-head);margin-top:2px}
+.gc-body{flex:1;min-width:0;display:flex;flex-direction:column;gap:6px}
+.gc-name{font-size:17px}
+.gc-bar{height:10px;border-radius:99px;background:var(--fill);overflow:hidden}
+.gc-bar i{display:block;height:100%;border-radius:inherit;background:linear-gradient(90deg,color-mix(in srgb,var(--rc) 60%,#fff),var(--rc));box-shadow:0 0 10px var(--rc)}
+.gc-lv{height:4px;border-radius:99px;background:var(--fill);overflow:hidden;opacity:.7}.gc-lv i{display:block;height:100%;background:var(--muted)}
+.gc-meta{display:flex;justify-content:space-between;gap:8px;font-size:12.5px;color:var(--muted);flex-wrap:wrap}
+.gc-side{display:flex;flex-direction:column;align-items:stretch;gap:6px;flex:none}
+.gc-stat{text-align:center;padding:4px 10px;border-radius:12px;background:var(--surface-2)}
+.gc-stat b{display:block;font:800 18px var(--f-head)}.gc-stat small{font-size:11px;color:var(--muted)}
+.gc-stat.coin b{color:#C78A00}
+.stu-hall{margin-bottom:14px}
+.exm-hall{width:min(680px,100%);margin-top:16px}
+/* ร้าน */
+.shop-top{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.shop-coins{font:800 22px var(--f-head);padding:4px 14px;border-radius:99px;background:linear-gradient(180deg,#FFF3C4,#FFD54A);color:#7A4F00;box-shadow:0 6px 16px -8px rgba(245,180,0,.9)}
+.shop-sec{margin-top:12px}
+.shop-h{font:700 14px var(--f-head);margin-bottom:6px}
+.shop-h.rare{color:#2F74E8}.shop-h.epic{color:#7C3AED}.shop-h.legendary{color:#C47F00}.shop-h.mythic{background:linear-gradient(90deg,#FF5E62,#60A5FA,#A78BFA);-webkit-background-clip:text;background-clip:text;color:transparent}
+.shop-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:8px}
+.shop-item{display:flex;flex-direction:column;align-items:flex-start;gap:6px;padding:12px;border-radius:16px;background:var(--surface-2);box-shadow:inset 0 0 0 1px var(--line)}
+.shop-item.owned{box-shadow:inset 0 0 0 2px var(--ok)}
+.shop-item.locked{opacity:.6}
+.si-meta{font-size:12px;color:var(--muted)}
+.help-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.help-grid h4{font:700 15px var(--f-head);margin:0 0 6px}
+.hr-row{display:flex;align-items:center;gap:8px;padding:6px 0;border-bottom:1px dashed var(--line);font-size:14px}
+.rk-row .rk{font-size:13px}
+
+/* ---------- ติดตามนักเรียน ---------- */
+.risk-card .card-h{padding:14px 18px}
+.risk-sum{display:flex;gap:8px;padding:12px 18px 4px}
+.risk-sum div{padding:6px 14px;border-radius:14px;background:var(--accent-soft);color:var(--accent);text-align:center}
+.risk-sum div.bad{background:var(--danger-soft);color:var(--danger)}
+.risk-sum b{display:block;font:800 22px var(--f-head)}.risk-sum small{font-size:12px}
+.risk-mini{padding:6px 12px 14px}
+.rm-row{display:flex;align-items:center;gap:8px;padding:8px 6px;border-bottom:1px solid var(--line);font-size:14px}
+.rm-row:last-child{border-bottom:0}
+.rm-dot{width:9px;height:9px;border-radius:50%;flex:none}.rm-dot.high{background:var(--danger)}.rm-dot.mid{background:var(--orange)}.rm-dot.low{background:var(--primary)}
+.rm-nm{color:var(--muted)}.rm-r{font-size:12.5px;color:var(--muted);text-align:right}
+.risk-cfg{display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center;padding:14px 18px;margin-bottom:14px}
+.risk-cfg label{display:inline-flex;align-items:center;gap:6px;font-size:14px}
+.risk-cfg .input{width:70px;padding:6px 8px;text-align:center}
+.rc-t{font-weight:700}
+.rc-att{padding:6px 10px;border-radius:12px;background:var(--fill)}.rc-att.on{background:var(--primary-soft)}
+.rk-chips{display:flex;flex-wrap:wrap;gap:4px}
+.rk-chip{display:inline-block;padding:2px 9px;border-radius:99px;font-size:12.5px;font-weight:500}
+.rk-chip.miss{background:var(--accent-soft);color:var(--accent)}.rk-chip.score{background:var(--danger-soft);color:var(--danger)}
+.rk-chip.exam{background:var(--primary-soft);color:var(--primary)}.rk-chip.att{background:rgba(128,72,232,.12);color:#7C3AED}
+.rd-sec ul{margin:6px 0 0;padding-left:20px}
+
+/* ---------- ประกาศ ---------- */
+.ann-t{display:flex;gap:14px;align-items:flex-start;padding:16px 18px}
+.ann-t.off{opacity:.6}
+.ann-e{font-size:28px;line-height:1;flex:none}
+.ann-b{flex:1;min-width:0}.ann-b p{margin:4px 0;white-space:pre-wrap}
+.ann-a{display:flex;gap:4px}
+.ann-t.warn{box-shadow:var(--shadow),inset 4px 0 0 var(--orange)}.ann-t.urgent{box-shadow:var(--shadow),inset 4px 0 0 var(--danger)}.ann-t.fun{box-shadow:var(--shadow),inset 4px 0 0 var(--green)}.ann-t.info{box-shadow:var(--shadow),inset 4px 0 0 var(--primary)}
+.tone-pick{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.tone{display:flex;flex-direction:column;align-items:center;gap:2px;padding:10px;border-radius:16px;background:var(--fill);cursor:pointer;font-weight:600;font-size:13.5px}
+.tone input{position:absolute;opacity:0}.tone span{font-size:24px}
+.tone:has(input:checked){background:var(--primary-soft);box-shadow:inset 0 0 0 2px var(--primary)}
+.ann-stu{display:flex;flex-direction:column;gap:8px;margin-bottom:12px}
+.ann-s{position:relative;display:flex;gap:12px;align-items:flex-start;padding:12px 40px 12px 14px;border-radius:18px;background:var(--surface);box-shadow:var(--shadow);animation:rise .5s cubic-bezier(.2,.9,.25,1)}
+.ann-s.info{box-shadow:var(--shadow),inset 4px 0 0 var(--primary)}.ann-s.warn{background:color-mix(in srgb,var(--orange) 10%,var(--surface));box-shadow:var(--shadow),inset 4px 0 0 var(--orange)}
+.ann-s.urgent{background:color-mix(in srgb,var(--danger) 10%,var(--surface));box-shadow:var(--shadow),inset 4px 0 0 var(--danger)}.ann-s.urgent .ann-e{animation:crown 1.2s ease-in-out infinite}
+.ann-s.fun{background:color-mix(in srgb,var(--green) 10%,var(--surface));box-shadow:var(--shadow),inset 4px 0 0 var(--green)}
+.ann-s .ann-b b{font:700 15.5px var(--f-head)}.ann-s small{color:var(--muted);font-size:12px}
+.ann-x{position:absolute;top:8px;right:8px;width:28px;height:28px;border:0;border-radius:50%;background:var(--fill);color:var(--muted);cursor:pointer;display:grid;place-items:center}
+.ann-x svg{width:14px;height:14px}
+
+/* ---------- คลังข้อสอบ ---------- */
+.qb-units{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px;margin-bottom:14px}
+.qb-unit{text-align:left;border:0;border-radius:18px;padding:14px 16px;background:var(--surface);box-shadow:var(--shadow);cursor:pointer;color:var(--ink);font:inherit;display:flex;flex-direction:column;gap:2px;transition:transform .2s}
+.qb-unit:hover{transform:translateY(-2px)}.qb-unit.on{box-shadow:var(--shadow),inset 0 0 0 2px var(--primary)}
+.qb-unit b{font:700 15px var(--f-head)}.qb-unit small{color:var(--muted);font-size:12px}
+.qb-list{display:flex;flex-direction:column}
+.qb-item{padding:14px 20px;border-bottom:1px solid var(--line);display:grid;grid-template-columns:1fr auto;gap:4px 12px}
+.qb-tags{grid-column:1;display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+.qb-p{grid-column:1;font-weight:500}
+.qb-c{grid-column:1;display:flex;gap:4px 14px;flex-wrap:wrap;font-size:13.5px;color:var(--muted)}
+.qb-c .ok{color:var(--ok);font-weight:700}
+.qb-a{grid-column:2;grid-row:1/span 3;display:flex;gap:4px;align-items:center}
+.qb-draw{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+textarea.mono{font-family:ui-monospace,'SF Mono',Menlo,Consolas,monospace;font-size:13.5px}
+
+/* ---------- แกลเลอรี ---------- */
+.gal-page{width:min(1100px,100%)}
+.gal-hero{text-align:center;margin-bottom:14px}.gal-hero h2{font:700 28px var(--f-head);margin:0 auto}.gal-hero p{color:var(--muted)}
+.gal-lv{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}
+.gal-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px}
+.gal-card{background:var(--surface);border-radius:22px;box-shadow:var(--shadow);overflow:hidden;display:flex;flex-direction:column;transition:transform .25s,box-shadow .25s}
+.gal-card:hover{transform:translateY(-3px);box-shadow:var(--shadow),0 18px 40px -18px rgba(16,24,48,.35)}
+.gal-open{border:0;padding:0;background:none;cursor:zoom-in;display:block;width:100%}
+.gal-cover{aspect-ratio:4/3;background:var(--surface-2);display:grid;place-items:center;position:relative;overflow:hidden}
+.gal-cover img,.gal-cover video{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.gal-card:hover .gal-cover img{transform:scale(1.05)}
+.gal-cover .play{position:absolute;width:48px;height:48px;border-radius:50%;background:rgba(0,0,0,.5);color:#fff;display:grid;place-items:center;font-size:18px}
+.gal-cover.doc span,.gal-cover.link svg{font-size:44px;width:44px;height:44px}
+.gal-cover.doc small,.gal-cover.link span{position:absolute;bottom:10px;font-size:12px;color:var(--muted);max-width:90%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.gal-b{padding:12px 14px 4px;display:flex;flex-direction:column;gap:2px}.gal-b b{font:700 15px var(--f-head)}
+.gal-f{display:flex;align-items:center;justify-content:space-between;padding:4px 10px 12px 14px}
+.gal-like{display:inline-flex;align-items:center;gap:6px;border:0;border-radius:99px;padding:6px 12px;background:var(--fill);color:var(--muted);font:600 14px var(--f-body);cursor:pointer;transition:transform .2s}
+.gal-like svg{width:18px;height:18px}
+.gal-like.on{background:rgba(229,56,59,.12);color:#E5383B}.gal-like.on svg{fill:#E5383B}
+.gal-like.pop{animation:saved-pop .45s cubic-bezier(.2,1.6,.4,1)}
+.gal-view{display:flex;flex-direction:column;gap:10px}
+.gal-view img,.gal-view video{width:100%;border-radius:16px;max-height:70vh;object-fit:contain;background:var(--surface-2)}
+.gal-cap{padding:10px 14px;border-radius:14px;background:var(--primary-soft);font-weight:500}
+
+/* ---------- มือถือ ---------- */
+[data-device=mobile] .dash-duo{grid-template-columns:1fr}
+[data-device=mobile] .podium{grid-template-columns:repeat(3,1fr);gap:8px 6px;padding:22px 10px 10px}
+[data-device=mobile] .pq.p4,[data-device=mobile] .pq.p5{min-height:0;padding:22px 6px 10px}
+[data-device=mobile] .pq{padding:26px 4px 10px}
+[data-device=mobile] .pq-medal{font-size:32px;top:-18px}
+[data-device=mobile] .pq.p1{min-height:180px}[data-device=mobile] .pq.p2{min-height:160px}[data-device=mobile] .pq.p3{min-height:148px}
+[data-device=mobile] .pq-name{font-size:13px}
+[data-device=mobile] .podium>.pq.p4{order:4}[data-device=mobile] .podium>.pq.p5{order:5}
+[data-device=mobile] .podium>.pq.p2{order:1}[data-device=mobile] .podium>.pq.p1{order:2}[data-device=mobile] .podium>.pq.p3{order:3}
+[data-device=mobile] .gcard{flex-wrap:wrap}
+[data-device=mobile] .gc-side{flex-direction:row;width:100%}
+[data-device=mobile] .gc-side>*{flex:1}
+[data-device=mobile] .help-grid,[data-device=mobile] .qb-draw,[data-device=mobile] .tone-pick{grid-template-columns:1fr 1fr}
+[data-device=mobile] .gal-grid{grid-template-columns:1fr 1fr;gap:10px}
+@media (prefers-reduced-motion:reduce){.crown,.gname.g9,.rk.g9,.ttl.legendary,.ttl.mythic,.pq.p1::after{animation:none!important}}
+.qb-pick{display:flex;flex-wrap:wrap;gap:6px}.qb-pick .check{flex:none;white-space:nowrap;max-width:100%}
+.gal-ph{font-size:44px;opacity:.5;position:absolute;z-index:0}.gal-cover img{position:relative;z-index:1}
+.gc-stat small{white-space:nowrap}
+[data-device=mobile] .gc-side{align-items:stretch}
+[data-device=mobile] .gc-side>.btn{align-self:center;height:auto;min-height:44px;border-radius:14px}
+.pq .gname,.pq .ttl{white-space:normal;word-break:break-word}.pq .ttl{font-size:11px}
+.pr-xp{white-space:nowrap}
+[data-device=mobile] .podium{display:flex;flex-wrap:wrap;justify-content:center;align-items:flex-end;gap:26px 6px}
+[data-device=mobile] .podium>.pq{width:calc(33.3% - 4px)}
+
 </style>
 </head>
 <body>
@@ -2414,6 +2627,8 @@ async function loadAll() {
   store.attMissing = false;
   const [as_, ar_, rb_] = await Promise.all([fetchAll('attendance_sessions', 'opened_at'), fetchAll('attendance_records', 'checked_at'), fetchAll('rubrics')].map(p => p.catch(() => null)));
   store.attMissing = as_ == null; store.attendance_sessions = as_ || []; store.attendance_records = ar_ || []; store.rubrics = rb_ || [];
+  const [qb_, gi_, an_] = await Promise.all([fetchAll('qbank_questions'), fetchAll('gallery_items'), fetchAll('announcements')].map(p => p.catch(() => null)));
+  store.p7Missing = qb_ == null; store.qbank_questions = qb_ || []; store.gallery_items = gi_ || []; store.announcements = an_ || [];
   if (!store.terms.length && ME.admin()) {
     const t = await q(sb.from('terms').insert({ ...thaiTermNow(), is_current: true }).select().single());
     store.terms.push(t);
@@ -2496,6 +2711,7 @@ const mval = name => { const el = $(`#modal-root [name="${name}"]`); return el ?
 const NAV = [
   { group: 'ภาพรวม' },
   { id: 'dashboard', label: 'แดชบอร์ด', icon: 'home' },
+  { id: 'risk', label: 'ติดตามนักเรียน', icon: 'alert' },
   { group: 'จัดการข้อมูล' },
   { id: 'subjects', label: 'วิชา', icon: 'book' },
   { id: 'classes', label: 'ห้องเรียนและรายชื่อ', icon: 'users' },
@@ -2503,23 +2719,27 @@ const NAV = [
   { id: 'assignments', label: 'งานและตรวจงาน', icon: 'inbox' },
   { id: 'gradebook', label: 'ตารางคะแนน', icon: 'table' },
   { id: 'exams', label: 'ข้อสอบ', icon: 'quiz' },
+  { id: 'qbank', label: 'คลังข้อสอบ', icon: 'bank' },
+  { id: 'announce', label: 'ประกาศ', icon: 'megaphone' },
+  { id: 'works', label: 'แกลเลอรีผลงาน', icon: 'star' },
   { id: 'attendance', label: 'เช็คชื่อ', icon: 'attend' },
   { group: 'ระบบ' },
   { id: 'reports', label: 'รายงานและสำรองข้อมูล', icon: 'download' },
   { id: 'users', label: 'ผู้ใช้และสิทธิ์', icon: 'shield', admin: true },
   { id: 'settings', label: 'ตั้งค่า', icon: 'gear' },
 ];
-const ROUTE_PERM = { attendance: 'attendance', attsess: 'attendance', subjects: 'subjects', assignments: 'assignments', grade: 'assignments', gradebook: 'gradebook', exams: 'exams', examedit: 'exams', examres: 'exams' };
+const ROUTE_PERM = { qbank: 'exams', works: 'assignments', attendance: 'attendance', attsess: 'attendance', subjects: 'subjects', assignments: 'assignments', grade: 'assignments', gradebook: 'gradebook', exams: 'exams', examedit: 'exams', examres: 'exams' };
 function routeAllowed(base) { if (base === 'users') return ME.admin(); const p = ROUTE_PERM[base]; return !p || ME.can(p); }
 function navItems() {
   const items = NAV.filter(n => n.group || (n.admin ? ME.admin() : routeAllowed(n.id)));
   return items.filter((n, i) => !n.group || (items[i + 1] && !items[i + 1].group));
 }
-const TITLES = { dashboard: 'แดชบอร์ด', subjects: 'วิชา', classes: 'ห้องเรียนและรายชื่อ', assignments: 'งานและตรวจงาน', grade: 'ตรวจงาน', examedit: 'แก้ไขข้อสอบ', examres: 'ผลสอบ', gradebook: 'ตารางคะแนน', exams: 'ข้อสอบ', settings: 'ตั้งค่า', users: 'ผู้ใช้และสิทธิ์', attendance: 'เช็คชื่อ', attsess: 'เช็คชื่อ', reports: 'รายงานและสำรองข้อมูล' };
+const TITLES = { dashboard: 'แดชบอร์ด', subjects: 'วิชา', classes: 'ห้องเรียนและรายชื่อ', assignments: 'งานและตรวจงาน', grade: 'ตรวจงาน', examedit: 'แก้ไขข้อสอบ', examres: 'ผลสอบ', gradebook: 'ตารางคะแนน', exams: 'ข้อสอบ', settings: 'ตั้งค่า', users: 'ผู้ใช้และสิทธิ์', attendance: 'เช็คชื่อ', attsess: 'เช็คชื่อ', reports: 'รายงานและสำรองข้อมูล', risk: 'ติดตามนักเรียน', qbank: 'คลังข้อสอบ', announce: 'ประกาศ', works: 'แกลเลอรีผลงาน' };
 
 function render() {
   const root = $('#app');
   setDevice();
+  if (isGalleryRoute()) { root.innerHTML = viewGalleryPublic(); return; }
   if (isCheckinRoute()) { root.innerHTML = viewCheckin(); return; }
   if (isExamTakeRoute()) { root.innerHTML = viewExamTake(); return; }
   if (isStudentRoute()) { root.innerHTML = viewStudent(); return; }
@@ -2529,7 +2749,7 @@ function render() {
   let base = ui.route.startsWith('att-') ? 'attsess' : ui.route.startsWith('grade-') ? 'grade' : ui.route.startsWith('exam-edit-') ? 'examedit' : ui.route.startsWith('exam-res-') ? 'examres' : ui.route;
   if (!TITLES[base] || !routeAllowed(base)) { ui.route = 'dashboard'; base = 'dashboard'; }
   const theme = document.documentElement.dataset.theme;
-  const views = { dashboard: viewDashboard, subjects: viewSubjects, classes: viewClasses, settings: viewSettings, users: viewUsers, attendance: viewAttendance, attsess: viewAttSession, reports: viewReports, assignments: viewAssignments, grade: viewGrade, gradebook: viewGradebook, exams: viewExams, examedit: viewExamEdit, examres: viewExamResults };
+  const views = { dashboard: viewDashboard, subjects: viewSubjects, classes: viewClasses, settings: viewSettings, users: viewUsers, attendance: viewAttendance, attsess: viewAttSession, reports: viewReports, risk: viewRisk, qbank: viewQbank, announce: viewAnnounce, works: viewWorks, assignments: viewAssignments, grade: viewGrade, gradebook: viewGradebook, exams: viewExams, examedit: viewExamEdit, examres: viewExamResults };
   const navOn = base === 'grade' ? 'assignments' : (base === 'examedit' || base === 'examres') ? 'exams' : base === 'attsess' ? 'attendance' : base;
   if (isMobile()) { root.innerHTML = mobileShell(base, navOn, (views[base] || viewDashboard)()); return; }
   root.innerHTML = `
@@ -3542,7 +3762,7 @@ function openGrader(sid) {
         <label class="field"><span>ความเห็นถึงนักเรียน</span><textarea class="input" name="feedback" rows="4" placeholder="นักเรียนจะเห็นข้อความนี้">${esc(sub?.feedback)}</textarea></label>
         <div class="quick">${FEEDBACK_QUICK.map(t => `<button type="button" data-act="fb-quick" data-t="${esc(t)}">${esc(t)}</button>`).join('')}</div>
         <p class="small muted" style="margin:0">กด Enter ในช่องคะแนน = บันทึกและไปคนถัดไป</p>
-        ${sub ? `<div class="grader-tools"><button class="btn sm" data-act="t-reset" data-sid="${sid}" title="ลบคะแนนและความเห็น กลับเป็นสถานะก่อนตรวจ">↺ คืนค่าเริ่มต้น (ยกเลิกการตรวจ)</button>
+        ${sub ? `<div class="grader-tools">${galFeatureBtn(sub)}<button class="btn sm" data-act="t-reset" data-sid="${sid}" title="ลบคะแนนและความเห็น กลับเป็นสถานะก่อนตรวจ">↺ คืนค่าเริ่มต้น (ยกเลิกการตรวจ)</button>
           <button class="btn sm danger" data-act="t-sub-del" data-sid="${sid}" title="ลบงานที่ส่งทั้งหมดของคนนี้">${ic('trash')}ลบงานที่ส่งทั้งหมด</button></div>` : ''}
       </div></div>`,
     actions: [
@@ -3649,7 +3869,7 @@ Object.assign(ACT, {
   'stu-send': el => studentSend(el.dataset.id),
   'stu-unstage': el => { const l = stuState.staged[el.dataset.a] || []; stuState.staged[el.dataset.a] = l.filter(x => x.key !== el.dataset.k); render(); },
   'stu-toggle': el => { if (stuState.uploading) return; stuState.open = stuState.open === el.dataset.id ? null : el.dataset.id; render(); },
-  'stu-reload': () => { if (stuState.uploading) return; stuState.asg = null; render(); },
+  'stu-reload': () => { if (stuState.uploading) return; stuState.asg = null; stuState.game = null; stuState.ann = null; GAL.items = null; render(); },
   'stu-rm': el => { const v = stuState.verified;
     confirmBox('ลบไฟล์', 'ลบไฟล์นี้ออกจากงานที่ส่ง?', 'ลบไฟล์', async () => {
       await q(sb.rpc('student_remove_file', { p_student_id: v.student_id, p_code: v.code, p_file_id: el.dataset.id }));
@@ -3757,8 +3977,9 @@ function studentHome(v) {
     <div class="stu-banner">${ART.desk(sceneHour())}<div class="stu-clock">${clockHTML()}</div><div class="acts"><button class="btn icon sm" data-act="stu-reload" aria-label="โหลดใหม่" title="โหลดใหม่">${ic('refresh')}</button><button class="btn sm" data-act="stu-out">ออก</button></div>
       <div class="row" style="gap:14px;position:relative;z-index:1"><div class="ava">${esc(first[0] || '?')}</div><div style="min-width:0"><h2>สวัสดี ${esc(first)}! 👋</h2>
         <div class="pills"><span class="pill">🏫 ${esc(v.classroom_name)}</span><span class="pill">เลขที่ ${v.number}</span></div></div></div></div>
-    <div class="seg stu-tabs">${[['work', '📝 งาน'], ['exam', '🧪 ข้อสอบ'], ['score', '📊 คะแนน']].map(([k, l]) => `<button class="${(stuState.tab || 'work') === k ? 'on' : ''}" data-act="stu-tab" data-t="${k}">${l}</button>`).join('')}</div>
-    ${stuState.tab === 'score' ? studentScoresHTML() : stuState.tab === 'exam' ? studentExamsHTML() : stuState.asg ? `<div class="counters">
+    ${studentAnnHTML()}${studentGameHTML(v)}
+    <div class="seg stu-tabs">${[['work', '📝 งาน'], ['exam', '🧪 ข้อสอบ'], ['score', '📊 คะแนน'], ['gallery', '🌟 ผลงาน']].map(([k, l]) => `<button class="${(stuState.tab || 'work') === k ? 'on' : ''}" data-act="stu-tab" data-t="${k}">${l}</button>`).join('')}</div>
+    ${stuState.tab === 'gallery' ? studentGalleryHTML() : stuState.tab === 'score' ? studentScoresHTML() : stuState.tab === 'exam' ? studentExamsHTML() : stuState.asg ? `<div class="counters">
         <div class="counter todo"><span class="em">📝</span><div><b>${groups.todo.length}</b><small>ต้องส่ง/แก้</small></div></div>
         <div class="counter wait"><span class="em">⏳</span><div><b>${groups.wait.length}</b><small>รอครูตรวจ</small></div></div>
         <div class="counter done"><span class="em">🌟</span><div><b>${groups.done.length}</b><small>ตรวจแล้ว</small></div></div></div>
@@ -4421,6 +4642,7 @@ function viewDashboard() {
     <a class="card stat" href="#assignments" style="text-decoration:none;color:inherit"><div class="lbl">${ic('check')}งานรอตรวจ</div><div class="val" style="color:${pendingCount() ? 'var(--accent)' : 'inherit'}">${thaiNum(pendingCount())}</div><div class="sub">กดเพื่อไปตรวจงาน →</div></a>
   </div>
   ${!subs.length ? `<div class="card"><div class="empty">${ic('book')}<b>เริ่มต้นใช้งาน</b>1) อัปโหลดรายชื่อ → 2) เพิ่มวิชาและเลือกห้อง → 3) สร้างงาน → 4) ส่งลิงก์ให้นักเรียน<br><a class="btn primary" href="#classes" style="margin-top:12px">${ic('upload')}เริ่มจากอัปโหลดรายชื่อ</a></div></div>` : `
+  <div class="dash-duo">${teacherBoardHTML()}${riskCardHTML()}</div>
   <div class="dash-grid">
     <div class="stack">
       <div class="card">
@@ -4638,7 +4860,7 @@ function viewExamEdit() {
       <label class="field" style="grid-column:1/-1"><span>คำชี้แจง (นักเรียนเห็นก่อนเริ่มสอบ)</span><textarea class="input" rows="2" data-chg="ex-set" data-f="description" placeholder="เช่น ข้อสอบมี 20 ข้อ ห้ามเปิดหนังสือ">${esc(e.description)}</textarea></label>
     </div></div>
   <div class="q-head"><h3>คำถาม <span class="chip">${qs.length} ข้อ · ${+EX.total(eid)} คะแนน</span>${probs ? ` <span class="chip bad">${ic('warn')}${probs} ข้อยังไม่สมบูรณ์</span>` : ''}</h3><span class="spacer"></span>
-    <button class="btn" data-act="ex-import">${ic('upload')}นำเข้าจาก Word / Excel / ข้อความ</button></div>
+    <div class="row" style="gap:6px;flex-wrap:wrap">${store.p7Missing ? '' : `<button class="btn" data-act="qb-draw" data-id="${eid}">🎲 สุ่มจากคลัง</button><button class="btn ghost" data-act="qb-save-exam" data-id="${eid}">💾 เก็บลงคลัง</button>`}<button class="btn" data-act="ex-import">${ic('upload')}นำเข้าจาก Word / Excel / ข้อความ</button></div></div>
   <div class="q-list">${qs.map((qq, i) => questionCard(qq, i, qs.length)).join('')}</div>
   <div class="q-add">${Object.keys(QTYPE).map(t => `<button class="btn" data-act="q-add" data-t="${t}">${QICON[t]} + ${QTYPE[t]}</button>`).join('')}</div>`;
 }
@@ -4960,7 +5182,7 @@ function viewExamTake() {
   else if (!EXM.info) body = `<div class="card stu-card"><div class="empty"><span class="spin" style="display:inline-block;width:26px;height:26px"></span><br>กำลังโหลดข้อสอบ…</div></div>`;
   else if (EXM.result) body = exmResultHTML();
   else if (EXM.att) body = exmPaperHTML();
-  else body = exmLandingHTML();
+  else body = exmLandingHTML() + (stuState.verified ? `<div class="exm-hall">${studentGameHTML(stuState.verified)}</div>` : '');
   return `<div class="stu exm">${head}${body}</div>`;
 }
 function exmLandingHTML() {
@@ -5985,9 +6207,9 @@ const BK_TABLES = [
   ['assignments', 'id'], ['assignment_classes', 'assignment_id,classroom_id'], ['submissions', 'id'], ['submission_files', 'id'],
   ['exams', 'id'], ['exam_classes', 'exam_id,classroom_id'], ['exam_questions', 'id'], ['exam_attempts', 'id'], ['exam_answers', 'attempt_id,question_id'],
   ['grade_columns', 'id'], ['grade_entries', 'column_id,student_id'],
-  ['attendance_sessions', 'id'], ['attendance_records', 'id'], ['rubrics', 'id'],
+  ['attendance_sessions', 'id'], ['attendance_records', 'id'], ['rubrics', 'id'], ['qbank_questions', 'id'], ['announcements', 'id'], ['gallery_items', 'id'],
 ];
-const BK_NAMES = { terms: 'ภาคเรียน', classrooms: 'ห้องเรียน', students: 'นักเรียน', subjects: 'วิชา', subject_classes: 'วิชา-ห้อง', assignments: 'งาน', assignment_classes: 'งาน-ห้อง', submissions: 'งานที่ส่ง', submission_files: 'ไฟล์ที่ส่ง (ข้อมูลไฟล์)', exams: 'ข้อสอบ', exam_classes: 'ข้อสอบ-ห้อง', exam_questions: 'คำถาม', exam_attempts: 'การสอบ', exam_answers: 'คำตอบ', grade_columns: 'คอลัมน์คะแนน', grade_entries: 'คะแนนที่กรอก', attendance_sessions: 'คาบเช็คชื่อ', attendance_records: 'ผลเช็คชื่อ', rubrics: 'คลังรูบริก' };
+const BK_NAMES = { terms: 'ภาคเรียน', classrooms: 'ห้องเรียน', students: 'นักเรียน', subjects: 'วิชา', subject_classes: 'วิชา-ห้อง', assignments: 'งาน', assignment_classes: 'งาน-ห้อง', submissions: 'งานที่ส่ง', submission_files: 'ไฟล์ที่ส่ง (ข้อมูลไฟล์)', exams: 'ข้อสอบ', exam_classes: 'ข้อสอบ-ห้อง', exam_questions: 'คำถาม', exam_attempts: 'การสอบ', exam_answers: 'คำตอบ', grade_columns: 'คอลัมน์คะแนน', grade_entries: 'คะแนนที่กรอก', attendance_sessions: 'คาบเช็คชื่อ', attendance_records: 'ผลเช็คชื่อ', rubrics: 'คลังรูบริก', qbank_questions: 'คลังข้อสอบ', announcements: 'ประกาศ', gallery_items: 'แกลเลอรี' };
 const BK = { busy: false, file: null, result: null };
 const BK_ORDER = { subject_classes: 'subject_id', assignment_classes: 'assignment_id', exam_classes: 'exam_id', grade_entries: 'column_id', exam_answers: 'attempt_id', submissions: 'submitted_at', exam_attempts: 'started_at', exam_questions: 'sort_order', attendance_records: 'checked_at' };
 
@@ -6284,6 +6506,552 @@ ACT['rp-cfg-toggle'] = () => { ui.rpCfgOpen = !ui.rpCfgOpen; render(); };
 Object.assign(INP, { 'rp-cfg': el => rpCfgSet(el.dataset.k, el.value.trim()) });
 
 /* =====================================================================
+   แต้ม · เลเวล · ยศ · มงกุฎ Top 10 · ทำเนียบคนเก่ง Top 5 · ร้านฉายา
+   ===================================================================== */
+const RANKS = [
+  { n: 'ผู้ฝึกตน', en: 'Novice', xp: 0, ic: '🌱' },
+  { n: 'นักผจญภัย', en: 'Adventurer', xp: 60, ic: '🎒' },
+  { n: 'นักดาบ', en: 'Swordsman', xp: 150, ic: '🗡️' },
+  { n: 'อัศวิน', en: 'Knight', xp: 280, ic: '🛡️' },
+  { n: 'ขุนพล', en: 'Commander', xp: 450, ic: '⚔️' },
+  { n: 'แม่ทัพ', en: 'General', xp: 650, ic: '🏹' },
+  { n: 'จอมทัพ', en: 'Marshal', xp: 900, ic: '🦅' },
+  { n: 'เจ้าครองนคร', en: 'Lord', xp: 1200, ic: '🏰' },
+  { n: 'จักรพรรดิ', en: 'Emperor', xp: 1600, ic: '🐉' },
+  { n: 'ตำนาน', en: 'Legend', xp: 2100, ic: '✨' },
+];
+const RARITY = { common: 'ธรรมดา', rare: 'หายาก', epic: 'มหากาพย์', legendary: 'ตำนาน', mythic: 'เทพนิยาย' };
+const XP_RULES = [['📤', 'ส่งงาน', '+10 ต่อชิ้น'], ['⏰', 'ส่งตรงเวลา', '+5 ต่อชิ้น'], ['📝', 'คะแนนงาน', 'สูงสุด +20 ต่อชิ้น (ตามร้อยละ)'], ['🧪', 'ข้อสอบ', 'สูงสุด +30 ต่อชุด (ครั้งที่ดีที่สุด)'], ['🖼', 'ผลงานขึ้นแกลเลอรี', '+30 ต่อชิ้น'], ['📋', 'มาเรียน / สาย', '+2 / +1 (ถ้าครูใช้เช็คชื่อ)']];
+const GAME = { t: null, at: 0, loading: false, lvTab: null };
+
+function rankIdx(xp) { let i = 0; RANKS.forEach((r, k) => { if (xp >= r.xp) i = k; }); return i; }
+function lvOf(xp) { return 1 + Math.floor((xp || 0) / 50); }
+function titleOf(id, titles) { return id ? (titles || []).find(t => t.id === id) : null; }
+/* ชื่อพร้อมมงกุฎ สีตามยศ ป้ายยศ และฉายา */
+function nameTag(name, xp, rank, titleId, titles, o = {}) {
+  const i = rankIdx(xp || 0), r = RANKS[i], t = titleOf(titleId, titles);
+  const crown = rank && rank <= 10 && xp > 0 ? `<span class="crown k${rank <= 3 ? rank : 'x'}" title="อันดับ ${rank} ของสายชั้น">👑</span>` : '';
+  return `<span class="ntag">${crown}<span class="gname g${i}">${esc(name)}</span>${o.noBadge ? '' : `<span class="rk g${i}" title="${r.n} · Lv.${lvOf(xp)}">${r.ic}<b>${r.n}</b></span>`}${t ? `<span class="ttl ${t.rarity}">${esc(t.name)}</span>` : ''}</span>`;
+}
+
+/* ---------- ทำเนียบคนเก่ง (โพเดียม 5 อันดับ + 6–10) ---------- */
+function podiumHTML(top, titles, opt = {}) {
+  const list = (top || []).filter(x => x.xp > 0);
+  if (!list.length) return `<div class="pod-empty">ยังไม่มีใครได้แต้ม ส่งงานหรือทำข้อสอบเพื่อขึ้นทำเนียบ! 🚀</div>`;
+  const medal = ['', '🥇', '🥈', '🥉', '🎖️', '🎖️'];
+  const plaque = (x, k) => x ? `<div class="pq p${k}${x.me ? ' me' : ''}"><div class="pq-medal">${medal[k]}</div><div class="pq-no">${k}</div>
+      <div class="pq-name">${nameTag(x.name, x.xp, x.rank, x.title_id, titles, { noBadge: true })}</div>
+      <div class="pq-meta">${RANKS[rankIdx(x.xp)].ic} ${RANKS[rankIdx(x.xp)].n} · Lv.${lvOf(x.xp)}</div><div class="pq-xp">${x.xp.toLocaleString()} XP</div><div class="pq-cls">${esc(x.classroom)}</div></div>` : `<div class="pq p${k} vacant"><div class="pq-no">${k}</div><div class="pq-meta">ว่าง</div></div>`;
+  const [a, b, c, d, e] = list;
+  return `<div class="podium">${plaque(d, 4)}${plaque(b, 2)}${plaque(a, 1)}${plaque(c, 3)}${plaque(e, 5)}</div>
+    ${!opt.noRest && list.length > 5 ? `<div class="pod-rest">${list.slice(5, 10).map(x => `<div class="pr-row${x.me ? ' me' : ''}"><span class="pr-no">${x.rank}</span>${nameTag(x.name, x.xp, x.rank, x.title_id, titles)}<span class="spacer"></span><span class="small muted">${esc(x.classroom)}</span><b class="pr-xp">${x.xp.toLocaleString()} XP</b></div>`).join('')}</div>` : ''}`;
+}
+
+/* ---------- ครู: แดชบอร์ด ---------- */
+async function loadTeacherGame(force) {
+  if (GAME.loading || (!force && GAME.t && Date.now() - GAME.at < 60000)) return;
+  GAME.loading = true;
+  try { GAME.t = await q(sb.rpc('teacher_leaderboard')); GAME.at = Date.now(); } catch (e) { GAME.t = GAME.t || { top: [], all: {}, titles: [], missing: true }; }
+  GAME.loading = false; if (ui.route === 'dashboard' || ui.route === 'classes') render();
+}
+function teacherBoardHTML() {
+  loadTeacherGame();
+  if (!GAME.t) return `<div class="card hall"><div class="card-b"><span class="spin"></span> กำลังโหลดทำเนียบ…</div></div>`;
+  if (GAME.t.missing) return '';
+  const levels = [...new Set(GAME.t.top.map(x => x.level))].sort((a, b) => a.localeCompare(b, 'th', { numeric: true }));
+  if (!levels.includes(GAME.lvTab)) GAME.lvTab = levels[0] || null;
+  const top = GAME.t.top.filter(x => x.level === GAME.lvTab);
+  return `<div class="card hall"><div class="hall-h"><div><h3>🏆 ทำเนียบคนเก่ง</h3><small>5 อันดับแรกของแต่ละสายชั้น · 👑 มงกุฎสำหรับอันดับ 1–10</small></div><span class="spacer"></span>
+      ${levels.length ? `<div class="seg">${levels.map(l => `<button class="${l === GAME.lvTab ? 'on' : ''}" data-act="hall-lv" data-l="${esc(l)}">${esc(l)}</button>`).join('')}</div>` : ''}
+      <button class="btn sm ghost" data-act="game-help">วิธีคิดแต้ม</button></div>
+    ${podiumHTML(top, GAME.t.titles)}</div>`;
+}
+
+/* ---------- นักเรียน ---------- */
+async function loadStudentGame(force) {
+  const v = stuState.verified; if (!v || stuState.gameLoading || (stuState.game && !force)) return;
+  stuState.gameLoading = true;
+  try { stuState.game = await q(sb.rpc('student_game', { p_student_id: v.student_id, p_code: v.code })); }
+  catch (e) { stuState.game = { missing: true }; }
+  stuState.gameLoading = false; if (isStudentRoute() || isExamTakeRoute()) render();
+}
+function studentGameHTML(v, compact) {
+  if (!stuState.game) { loadStudentGame(); return ''; }
+  const g = stuState.game; if (g.missing) return '';
+  const i = rankIdx(g.xp), r = RANKS[i], nx = RANKS[i + 1];
+  const pct = nx ? Math.min(100, (g.xp - r.xp) / (nx.xp - r.xp) * 100) : 100;
+  const lvPct = (g.xp % 50) / 50 * 100;
+  const first = v.full_name.replace(/^(เด็กชาย|เด็กหญิง|นางสาว|นาย|นาง|ด\.ช\.|ด\.ญ\.|น\.ส\.)\s*/, '');
+  const me = `<div class="card gcard g${i}">
+    <div class="gc-emblem"><span>${r.ic}</span><b>Lv.${lvOf(g.xp)}</b></div>
+    <div class="gc-body"><div class="gc-name">${nameTag(first, g.xp, g.rank, g.title_id, g.titles)}</div>
+      <div class="gc-bar"><i style="width:${pct}%"></i></div>
+      <div class="gc-meta"><span>${g.xp.toLocaleString()} XP</span><span>${nx ? `อีก ${(nx.xp - g.xp).toLocaleString()} XP เป็น ${nx.ic} ${nx.n}` : 'ยศสูงสุดแล้ว!'}</span></div>
+      <div class="gc-lv" title="ความคืบหน้าเลเวล"><i style="width:${lvPct}%"></i></div></div>
+    <div class="gc-side"><div class="gc-stat"><b>#${g.rank}</b><small>ของ ${esc(g.level)} (${g.in_level} คน)</small></div>
+      <div class="gc-stat coin"><b>🪙 ${g.coins}</b><small>เหรียญ</small></div>
+      <button class="btn sm primary" data-act="shop-open">🛒 ร้านฉายา</button></div></div>`;
+  if (compact) return me;
+  return `${me}<div class="card hall stu-hall"><div class="hall-h"><div><h3>🏆 ทำเนียบคนเก่ง ${esc(g.level)}</h3><small>เก่งและขยันที่สุด 5 อันดับแรกของสายชั้น</small></div><span class="spacer"></span><button class="btn sm ghost" data-act="game-help">ทำแต้มยังไง?</button></div>
+    ${podiumHTML(g.top, g.titles)}</div>`;
+}
+function shopModal() {
+  const g = stuState.game; if (!g) return;
+  const owned = new Map((g.owned || []).map(o => [o.title_id, o]));
+  const groups = Object.keys(RARITY).map(r => [r, g.titles.filter(t => t.rarity === r)]).filter(x => x[1].length);
+  openModal({
+    title: '🛒 ร้านฉายา', wide: true,
+    body: `<div class="shop-top"><div>ใช้ <b>🪙 เหรียญ</b> จากการทำข้อสอบ ซื้อฉายามาประดับหลังชื่อ</div><span class="spacer"></span><span class="shop-coins">🪙 ${g.coins}</span></div>
+      <div class="small muted" style="margin:-4px 0 10px">ได้เหรียญจากข้อสอบ: ได้คะแนนทุก 10% = 1 เหรียญ · ได้คะแนนเต็มรับโบนัสเพิ่ม 5 เหรียญ</div>
+      ${groups.map(([r, list]) => `<div class="shop-sec"><div class="shop-h ${r}">${RARITY[r]}</div><div class="shop-grid">${list.map(t => {
+        const o = owned.get(t.id), lock = g.xp < t.min_xp, poor = g.coins < t.cost;
+        return `<div class="shop-item ${r} ${o ? 'owned' : ''} ${lock ? 'locked' : ''}"><span class="ttl ${r}">${esc(t.name)}</span>
+          <div class="si-meta">${o ? (o.equipped ? '✅ ใช้อยู่' : 'มีแล้ว') : `🪙 ${t.cost}`}${t.min_xp ? ` · ต้องเป็น ${RANKS[rankIdx(t.min_xp)].ic} ${RANKS[rankIdx(t.min_xp)].n}` : ''}</div>
+          ${o ? (o.equipped ? `<button class="btn sm ghost" data-act="shop-equip" data-id="">ถอด</button>` : `<button class="btn sm" data-act="shop-equip" data-id="${t.id}">ใช้ฉายานี้</button>`)
+            : `<button class="btn sm ${lock || poor ? '' : 'primary'}" data-act="shop-buy" data-id="${t.id}" ${lock || poor ? 'disabled' : ''}>${lock ? '🔒 ยศยังไม่ถึง' : poor ? 'เหรียญไม่พอ' : 'ซื้อ'}</button>`}</div>`; }).join('')}</div></div>`).join('')}`,
+    actions: [{ label: 'ปิด', onClick: closeModal }],
+  });
+}
+function gameHelpModal() {
+  openModal({
+    title: '⚔️ ระบบแต้มและยศ', wide: true,
+    body: `<div class="help-grid"><div><h4>วิธีได้แต้ม (XP)</h4>${XP_RULES.map(([e, a, b]) => `<div class="hr-row"><span>${e}</span><b>${a}</b><span class="spacer"></span><small>${b}</small></div>`).join('')}
+        <h4 style="margin-top:14px">เลเวลและมงกุฎ</h4><p class="small">ทุก 50 XP = ขึ้น 1 เลเวล · อันดับ 1–10 ของสายชั้นได้ 👑 มงกุฎหน้าชื่อ · 5 อันดับแรกขึ้นทำเนียบคนเก่งพร้อมเหรียญรางวัล</p>
+        <h4>เหรียญ 🪙</h4><p class="small">ได้จากข้อสอบ: ได้คะแนนทุก 10% = 1 เหรียญ และได้คะแนนเต็มรับโบนัสเพิ่ม 5 เหรียญ ใช้ซื้อฉายาในร้าน</p></div>
+      <div><h4>ยศ 10 ขั้น</h4>${RANKS.map((r, i) => `<div class="hr-row rk-row"><span class="rk g${i}">${r.ic}<b>${r.n}</b></span><small class="muted">${r.en}</small><span class="spacer"></span><b>${r.xp.toLocaleString()}+ XP</b></div>`).join('')}</div></div>`,
+    actions: [{ label: 'ปิด', onClick: closeModal }],
+  });
+}
+async function shopAction(fn, id) {
+  const v = stuState.verified;
+  try {
+    await q(sb.rpc(fn, { p_student_id: v.student_id, p_code: v.code, p_title: id || null }));
+    await loadStudentGame(true); shopModal();
+    if (fn === 'student_buy_title') { confetti(); toast('ได้ฉายาใหม่แล้ว! ✨'); }
+  } catch (e) { toast({ NOT_ENOUGH_COINS: 'เหรียญไม่พอ', NEED_MORE_XP: 'ยศยังไม่ถึง', ALREADY_OWNED: 'มีฉายานี้แล้ว' }[Object.keys({ NOT_ENOUGH_COINS: 1, NEED_MORE_XP: 1, ALREADY_OWNED: 1 }).find(k => (e.message || '').includes(k))] || errMsg(e), true); }
+}
+Object.assign(ACT, {
+  'hall-lv': el => { GAME.lvTab = el.dataset.l; render(); },
+  'game-help': gameHelpModal,
+  'shop-open': shopModal,
+  'shop-buy': el => shopAction('student_buy_title', el.dataset.id),
+  'shop-equip': el => shopAction('student_equip_title', el.dataset.id),
+});
+
+/* =====================================================================
+   ติดตามนักเรียนกลุ่มเสี่ยง (#risk) + การ์ดบนแดชบอร์ด
+   เกณฑ์ปรับได้ · เวลาเรียนปิดไว้ก่อน (เปิดเมื่อเริ่มใช้เช็คชื่อในเว็บนี้)
+   ===================================================================== */
+I.alert = '<path d="M12 3l9.5 16.5h-19z"/><path d="M12 10v4.5M12 17.5v.01"/>';
+const RISK_DEF = { missing: 3, score: 50, exam: 1, att: false, attPct: 80 };
+function riskCfg() { try { return { ...RISK_DEF, ...(JSON.parse(localStorage.getItem('cr-risk-cfg')) || {}) }; } catch (e) { return { ...RISK_DEF }; } }
+function riskCfgSet(k, v) { const c = riskCfg(); c[k] = v; try { localStorage.setItem('cr-risk-cfg', JSON.stringify(c)); } catch (e) {} }
+
+function riskData() {
+  const cfg = riskCfg(), term = Q.currentTerm(), now = Date.now();
+  const subs = Q.subjectsOfTerm(term?.id), sids = new Set(subs.map(s => s.id));
+  const week = 7 * 864e5;
+  const asgs = store.assignments.filter(a => sids.has(a.subject_id) && (a.due_at ? new Date(a.due_at) < now : now - new Date(a.created_at) > week));
+  const exams = store.exams.filter(e => sids.has(e.subject_id) && (!e.is_open || (e.closes_at && new Date(e.closes_at) < now)));
+  const doneEx = new Set(store.exam_attempts.filter(x => x.submitted_at).map(x => x.exam_id + ':' + x.student_id));
+  const cids = new Set(store.subject_classes.filter(x => sids.has(x.subject_id)).map(x => x.classroom_id));
+  const out = [];
+  store.classrooms.filter(c => cids.has(c.id)).forEach(c => {
+    const myAsg = asgs.filter(a => store.assignment_classes.some(x => x.assignment_id === a.id && x.classroom_id === c.id));
+    const myEx = exams.filter(e => store.exam_classes.some(x => x.exam_id === e.id && x.classroom_id === c.id));
+    const mySubs = subs.filter(s => store.subject_classes.some(x => x.subject_id === s.id && x.classroom_id === c.id));
+    const sess = cfg.att ? store.attendance_sessions.filter(s => s.classroom_id === c.id && !s.is_open) : [];
+    Q.students(c.id).filter(s => s.active !== false).forEach(st => {
+      const reasons = []; let sev = 0;
+      const miss = myAsg.filter(a => { const s = A.sub(a.id, st.id); return !s || s.status === 'returned'; });
+      if (miss.length >= cfg.missing) { reasons.push({ k: 'miss', t: `ค้างงาน ${miss.length} ชิ้น`, list: miss.map(a => a.title) }); sev += miss.length; }
+      mySubs.forEach(sj => {
+        const cols = GB.cols(sj.id, c.id); if (!cols.length) return;
+        const t = GB.total(cols, st.id);
+        if (t.max > 0 && t.pct != null && t.pct < cfg.score) { reasons.push({ k: 'score', t: `${sj.name} ${t.pct.toFixed(0)}%` }); sev += 3; }
+      });
+      const noEx = myEx.filter(e => !doneEx.has(e.id + ':' + st.id));
+      if (cfg.exam && noEx.length >= cfg.exam) { reasons.push({ k: 'exam', t: `ขาดสอบ ${noEx.length} ชุด`, list: noEx.map(e => e.title) }); sev += 2 * noEx.length; }
+      if (cfg.att && sess.length) {
+        const came = sess.filter(se => store.attendance_records.some(r => r.session_id === se.id && r.student_id === st.id && ['present', 'late'].includes(r.status))).length;
+        const p = came / sess.length * 100;
+        if (p < cfg.attPct) { reasons.push({ k: 'att', t: `เวลาเรียน ${p.toFixed(0)}%` }); sev += 4; }
+      }
+      if (reasons.length) out.push({ st, c, reasons, sev, level: sev >= 8 ? 'high' : sev >= 4 ? 'mid' : 'low' });
+    });
+  });
+  return out.sort((a, b) => b.sev - a.sev || a.c.name.localeCompare(b.c.name, 'th', { numeric: true }) || a.st.number - b.st.number);
+}
+const RISK_LV = { high: ['เร่งด่วน', 'bad'], mid: ['ควรติดตาม', 'warn'], low: ['เฝ้าระวัง', 'pri'] };
+function riskChips(r) { return r.reasons.map(x => `<span class="rk-chip ${x.k}">${esc(x.t)}</span>`).join(''); }
+
+function riskCardHTML() {
+  const list = riskData(), high = list.filter(r => r.level === 'high').length;
+  return `<div class="card risk-card"><div class="card-h"><h3>⚠️ นักเรียนที่ต้องติดตาม</h3><span class="spacer"></span><a class="btn sm" href="#risk">ดูทั้งหมด</a></div>
+    ${list.length ? `<div class="risk-sum"><div><b>${list.length}</b><small>คน</small></div>${high ? `<div class="bad"><b>${high}</b><small>เร่งด่วน</small></div>` : ''}</div>
+      <div class="risk-mini">${list.slice(0, 5).map(r => `<div class="rm-row"><span class="rm-dot ${r.level}"></span><b>${esc(r.c.name)} #${r.st.number}</b><span class="rm-nm">${esc(r.st.first_name)}</span><span class="spacer"></span><span class="rm-r">${esc(r.reasons[0].t)}${r.reasons.length > 1 ? ` +${r.reasons.length - 1}` : ''}</span></div>`).join('')}</div>`
+      : `<div class="empty" style="padding:18px">${ic('check')}<b>ยังไม่มีนักเรียนกลุ่มเสี่ยง</b>ทุกคนส่งงานและสอบครบตามเกณฑ์</div>`}</div>`;
+}
+function viewRisk() {
+  const cfg = riskCfg(), all = riskData();
+  const rooms = [...new Set(all.map(r => r.c.id))].map(id => db.get('classrooms', id)).sort((a, b) => a.name.localeCompare(b.name, 'th', { numeric: true }));
+  const list = ui.riskCid ? all.filter(r => r.c.id === ui.riskCid) : all;
+  const hasAtt = store.attendance_sessions.length > 0;
+  return `
+  <div class="page-head"><div><h2>ติดตามนักเรียน</h2><p>รายชื่อนักเรียนที่เสี่ยงติด 0 / ร / มส ภาคเรียนนี้ เพื่อตามก่อนปิดภาค</p></div><span class="spacer"></span>
+    ${list.length ? `<button class="btn" data-act="risk-copy">${ic('copy')}คัดลอกรายชื่อ</button><button class="btn line" data-act="risk-line">LINE</button><button class="btn" data-act="risk-xlsx">${ic('download')}Excel</button>` : ''}</div>
+  <div class="card risk-cfg"><div class="rc-t">⚙️ เกณฑ์</div>
+    <label>ค้างงานตั้งแต่ <input class="input" type="number" min="1" max="20" value="${cfg.missing}" data-chg="risk-cfg" data-k="missing"> ชิ้น</label>
+    <label>คะแนนรวมต่ำกว่า <input class="input" type="number" min="1" max="100" value="${cfg.score}" data-chg="risk-cfg" data-k="score"> %</label>
+    <label>ขาดสอบตั้งแต่ <input class="input" type="number" min="0" max="10" value="${cfg.exam}" data-chg="risk-cfg" data-k="exam"> ชุด</label>
+    <label class="rc-att ${cfg.att ? 'on' : ''}"><input type="checkbox" data-chg="risk-cfg" data-k="att" ${cfg.att ? 'checked' : ''}> นับเวลาเรียนจากเช็คชื่อ (ต่ำกว่า ${cfg.attPct}%)</label>
+    ${!cfg.att ? `<span class="small muted">ปิดไว้ก่อน ${hasAtt ? '' : '· ยังไม่มีข้อมูลเช็คชื่อในเว็บนี้ '}เปิดได้เมื่อเริ่มเช็คชื่อในเว็บ</span>` : ''}</div>
+  ${rooms.length > 1 ? `<div class="row" style="gap:6px;flex-wrap:wrap;margin-bottom:12px"><button class="tab ${!ui.riskCid ? 'on' : ''}" data-act="risk-room" data-id="">ทุกห้อง (${all.length})</button>${rooms.map(c => `<button class="tab ${ui.riskCid === c.id ? 'on' : ''}" data-act="risk-room" data-id="${c.id}">${esc(c.name)} (${all.filter(r => r.c.id === c.id).length})</button>`).join('')}</div>` : ''}
+  ${list.length ? `<div class="card"><div class="tbl-wrap"><table class="tbl"><thead><tr><th>ระดับ</th><th>ห้อง</th><th>เลขที่</th><th>ชื่อ - สกุล</th><th>เหตุผล</th><th class="act"></th></tr></thead><tbody>
+    ${list.map(r => `<tr><td><span class="chip ${RISK_LV[r.level][1]}">${RISK_LV[r.level][0]}</span></td><td>${esc(r.c.name)}</td><td class="num">${r.st.number}</td><td>${esc(Q.fullName(r.st))}</td><td><div class="rk-chips">${riskChips(r)}</div></td>
+      <td class="act"><button class="btn sm ghost" data-act="risk-detail" data-id="${r.st.id}">รายละเอียด</button></td></tr>`).join('')}
+  </tbody></table></div></div>` : `<div class="card"><div class="empty">${ic('check')}<b>ไม่มีนักเรียนกลุ่มเสี่ยงตามเกณฑ์นี้</b>ลองปรับเกณฑ์ด้านบนได้</div></div>`}`;
+}
+function riskText(list) {
+  const by = {}; list.forEach(r => { (by[r.c.name] = by[r.c.name] || []).push(r); });
+  return `📋 นักเรียนที่ต้องติดตาม (${list.length} คน)\n` + Object.entries(by).map(([room, rs]) => `\n🏫 ${room}\n` + rs.map(r => `• เลขที่ ${r.st.number} ${Q.fullName(r.st)} — ${r.reasons.map(x => x.t).join(', ')}`).join('\n')).join('\n');
+}
+function riskList() { const all = riskData(); return ui.riskCid ? all.filter(r => r.c.id === ui.riskCid) : all; }
+Object.assign(ACT, {
+  'risk-room': el => { ui.riskCid = el.dataset.id || null; render(); },
+  'risk-copy': async () => { await copyText(riskText(riskList())); toast('คัดลอกรายชื่อแล้ว'); },
+  'risk-line': () => { const t = riskText(riskList()); window.open(`https://line.me/R/share?text=${encodeURIComponent(t)}`, '_blank'); },
+  'risk-xlsx': () => {
+    const rows = riskList().map(r => ({ 'ระดับ': RISK_LV[r.level][0], 'ห้อง': r.c.name, 'เลขที่': r.st.number, 'ชื่อ - สกุล': Q.fullName(r.st), 'เหตุผล': r.reasons.map(x => x.t).join(', '), 'งานที่ค้าง': (r.reasons.find(x => x.k === 'miss')?.list || []).join(', ') }));
+    const wb = XLSX.utils.book_new(); XLSX.utils.book_append_sheet(wb, XLSX.utils.json_to_sheet(rows), 'ติดตามนักเรียน'); XLSX.writeFile(wb, 'นักเรียนที่ต้องติดตาม.xlsx');
+  },
+  'risk-detail': el => {
+    const r = riskData().find(x => x.st.id === el.dataset.id); if (!r) return;
+    openModal({ title: `${r.c.name} เลขที่ ${r.st.number} · ${Q.fullName(r.st)}`,
+      body: `<div class="stack">${r.reasons.map(x => `<div class="rd-sec"><span class="rk-chip ${x.k}">${esc(x.t)}</span>${x.list ? `<ul>${x.list.map(t => `<li>${esc(t)}</li>`).join('')}</ul>` : ''}</div>`).join('')}</div>`,
+      actions: [{ label: 'คัดลอกข้อความ', onClick: async () => { await copyText(riskText([r])); toast('คัดลอกแล้ว'); } }, { label: 'ปิด', kind: 'primary', onClick: closeModal }] });
+  },
+});
+Object.assign(CHG, { 'risk-cfg': el => { riskCfgSet(el.dataset.k, el.type === 'checkbox' ? el.checked : +el.value || 0); render(); } });
+
+/* =====================================================================
+   ประกาศจากครู (#announce) + ป้ายประกาศบนหน้านักเรียน
+   ===================================================================== */
+I.megaphone = '<path d="M3 10v4a1 1 0 0 0 1 1h3l6 4V5L7 9H4a1 1 0 0 0-1 1z"/><path d="M17 8.5a4 4 0 0 1 0 7M19.5 6a7.5 7.5 0 0 1 0 12"/>';
+const TONES = { info: ['📢', 'แจ้งข่าว'], warn: ['⚠️', 'เตือน'], urgent: ['🚨', 'ด่วน'], fun: ['🎉', 'ข่าวดี'] };
+store.announcements = store.announcements || [];
+const annActive = a => new Date(a.starts_at) <= new Date() && (!a.ends_at || new Date(a.ends_at) > new Date());
+
+function viewAnnounce() {
+  if (store.p7Missing) return `<div class="page-head"><div><h2>ประกาศ</h2></div></div><div class="card"><div class="empty">${ic('lock')}<b>ยังไม่ได้ตั้งค่า</b>รันไฟล์ phase7.sql ใน Supabase ก่อน</div></div>`;
+  const list = [...store.announcements].sort((a, b) => (b.pinned - a.pinned) || b.created_at.localeCompare(a.created_at));
+  const act = list.filter(annActive), old = list.filter(a => !annActive(a));
+  const card = a => { const [e, t] = TONES[a.tone] || TONES.info; const rooms = (a.classroom_ids || []).map(id => db.get('classrooms', id)?.name).filter(Boolean);
+    return `<div class="card ann-t ${a.tone} ${annActive(a) ? '' : 'off'}"><div class="ann-e">${e}</div><div class="ann-b"><div class="row" style="gap:6px;flex-wrap:wrap"><b>${esc(a.title)}</b>${a.pinned ? '<span class="chip pri">📌 ปักหมุด</span>' : ''}<span class="chip">${t}</span></div>
+      ${a.body ? `<p>${esc(a.body)}</p>` : ''}<div class="small muted">ห้อง ${rooms.length ? esc(rooms.join(', ')) : '—'} · ${a.ends_at ? `แสดงถึง ${fmtDate(a.ends_at)}` : 'แสดงจนกว่าจะลบ'}</div></div>
+      <div class="ann-a"><button class="btn sm ghost" data-act="ann-edit" data-id="${a.id}">${ic('edit')}แก้ไข</button><button class="btn ghost icon sm" data-act="ann-del" data-id="${a.id}" aria-label="ลบประกาศ" style="color:var(--danger)">${ic('trash')}</button></div></div>`; };
+  return `<div class="page-head"><div><h2>ประกาศ</h2><p>ข้อความจะขึ้นบนหน้านักเรียนของห้องที่เลือกทันที</p></div><span class="spacer"></span><button class="btn primary" data-act="ann-new">${ic('plus')}สร้างประกาศ</button></div>
+    ${act.length ? `<div class="sec-h">กำลังแสดง <span class="chip ok">${act.length}</span></div><div class="stack">${act.map(card).join('')}</div>` : `<div class="card"><div class="empty">${ic('megaphone')}<b>ยังไม่มีประกาศ</b>เช่น "พรุ่งนี้สอบย่อยบทที่ 2" หรือ "งานที่ 3 เลื่อนส่งเป็นวันศุกร์"</div></div>`}
+    ${old.length ? `<div class="sec-h">หมดเวลาแล้ว</div><div class="stack">${old.map(card).join('')}</div>` : ''}`;
+}
+function annModal(a) {
+  const rooms = Q.classrooms(); const sel = new Set(a?.classroom_ids || []);
+  const d = a?.ends_at ? new Date(a.ends_at) : new Date(Date.now() + 7 * 864e5);
+  const dv = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+  openModal({
+    title: a ? 'แก้ไขประกาศ' : 'สร้างประกาศ', ctx: { annId: a?.id },
+    body: `<div class="stack">
+      <div class="tone-pick">${Object.entries(TONES).map(([k, [e, t]]) => `<label class="tone ${k}"><input type="radio" name="tone" value="${k}" ${(a?.tone || 'info') === k ? 'checked' : ''}><span>${e}</span>${t}</label>`).join('')}</div>
+      <label class="field"><span>หัวข้อ *</span><input class="input" name="title" maxlength="120" value="${esc(a?.title || '')}" placeholder="เช่น พรุ่งนี้สอบย่อยบทที่ 2"></label>
+      <label class="field"><span>รายละเอียด</span><textarea class="input" name="body" rows="3" maxlength="1000" placeholder="เช่น เนื้อหาหน้า 20–35 นำเครื่องคิดเลขมาด้วย">${esc(a?.body || '')}</textarea></label>
+      <div class="field"><span class="muted" style="font-weight:500">ห้องที่เห็นประกาศ *</span><div class="checks"><label class="check"><input type="checkbox" data-chg="ann-all"> ทุกห้อง</label>${rooms.map(c => `<label class="check"><input type="checkbox" name="room" value="${c.id}" ${sel.has(c.id) ? 'checked' : ''}> ${esc(c.name)}</label>`).join('')}</div></div>
+      <div class="grid2"><label class="field"><span>แสดงถึงวันที่ (เว้นว่าง = ไม่หมดเวลา)</span><input class="input" type="date" name="ends" value="${a && !a.ends_at ? '' : dv}"></label>
+        <label class="radio" style="align-self:end"><input type="checkbox" name="pinned" ${a?.pinned ? 'checked' : ''}><div><b>📌 ปักหมุดไว้บนสุด</b></div></label></div></div>`,
+    actions: [{ label: 'ยกเลิก', onClick: closeModal }, { label: a ? 'บันทึก' : 'ประกาศเลย', kind: 'primary', onClick: async () => {
+      const title = mval('title').trim(), rooms2 = $$('#modal-root input[name=room]:checked').map(x => x.value);
+      if (!title) return toast('ใส่หัวข้อประกาศ', true); if (!rooms2.length) return toast('เลือกห้องอย่างน้อย 1 ห้อง', true);
+      const ends = mval('ends');
+      const row = { title, body: mval('body').trim() || null, tone: $('#modal-root input[name=tone]:checked')?.value || 'info', classroom_ids: rooms2,
+        pinned: $('#modal-root [name=pinned]').checked, ends_at: ends ? new Date(ends + 'T23:59:59').toISOString() : null };
+      const eid = modalCtx.annId;
+      if (eid) await db.update('announcements', eid, row); else await db.insert('announcements', row);
+      closeModal(); render(); toast(eid ? 'บันทึกแล้ว' : 'ประกาศแล้ว นักเรียนเห็นทันที');
+    } }],
+  });
+}
+
+/* ---------- ฝั่งนักเรียน ---------- */
+async function loadStudentAnn() {
+  const v = stuState.verified; if (!v || stuState.annLoading || stuState.ann) return;
+  stuState.annLoading = true;
+  try { stuState.ann = await q(sb.rpc('student_announcements', { p_student_id: v.student_id, p_code: v.code })); } catch (e) { stuState.ann = []; }
+  stuState.annLoading = false; if (isStudentRoute()) render();
+}
+function studentAnnHTML() {
+  if (!stuState.ann) { loadStudentAnn(); return ''; }
+  let hidden = []; try { hidden = JSON.parse(sessionStorage.getItem('cr-ann-hide')) || []; } catch (e) {}
+  const list = stuState.ann.filter(a => !hidden.includes(a.id));
+  return list.length ? `<div class="ann-stu">${list.map(a => { const [e] = TONES[a.tone] || TONES.info;
+    return `<div class="ann-s ${a.tone}"><span class="ann-e">${e}</span><div class="ann-b"><b>${esc(a.title)}</b>${a.body ? `<p>${esc(a.body)}</p>` : ''}<small>${esc(a.teacher || 'ครู')} · ${new Date(a.created_at).toLocaleDateString('th-TH', { day: 'numeric', month: 'short' })}</small></div>
+      <button class="ann-x" data-act="ann-hide" data-id="${a.id}" aria-label="ซ่อนประกาศนี้">${ic('x')}</button></div>`; }).join('')}</div>` : '';
+}
+Object.assign(ACT, {
+  'ann-new': () => annModal(null),
+  'ann-edit': el => annModal(db.get('announcements', el.dataset.id)),
+  'ann-del': el => confirmBox('ลบประกาศ', 'ลบประกาศนี้? นักเรียนจะไม่เห็นอีก', 'ลบ', async () => { await db.removeIds('announcements', [el.dataset.id]); render(); }),
+  'ann-hide': el => { let h = []; try { h = JSON.parse(sessionStorage.getItem('cr-ann-hide')) || []; } catch (e) {} h.push(el.dataset.id); try { sessionStorage.setItem('cr-ann-hide', JSON.stringify(h)); } catch (e) {} render(); },
+});
+Object.assign(CHG, { 'ann-all': el => $$('#modal-root input[name=room]').forEach(x => { x.checked = el.checked; }) });
+
+/* =====================================================================
+   คลังข้อสอบ (#qbank) · สุ่มข้อลงข้อสอบ · เก็บข้อสอบลงคลัง
+   ===================================================================== */
+I.bank = '<path d="M3 9l9-5 9 5v1H3z"/><path d="M5 10v8M9.5 10v8M14.5 10v8M19 10v8M3 20h18"/>';
+const DIFF = { easy: ['ง่าย', 'ok'], medium: ['กลาง', 'warn'], hard: ['ยาก', 'bad'] };
+const QT_SHORT = { mcq: 'ปรนัย', true_false: 'ถูก/ผิด', short: 'เติมคำ', essay: 'อัตนัย' };
+store.qbank_questions = store.qbank_questions || [];
+const qbUnits = () => [...new Set(store.qbank_questions.map(q => q.unit || 'ไม่ระบุหน่วย'))].sort((a, b) => a.localeCompare(b, 'th', { numeric: true }));
+
+/* คำถาม → ข้อความรูปแบบเดียวกับตอนนำเข้า (ใช้แก้ไขในคลัง) */
+function qToText(qq, n = 1) {
+  const pts = +qq.points !== 1 ? ` (${+qq.points} คะแนน)` : '';
+  if (qq.qtype === 'mcq') return `${n}. ${qq.prompt}${pts}\n${(qq.choices || []).map((c, i) => `${ExamParser.TH[i]}. ${c}`).join('\n')}\nตอบ ${qq.answer != null ? ExamParser.TH[+qq.answer] : ''}`;
+  if (qq.qtype === 'true_false') return `${n}. ${qq.prompt}${pts}\nตอบ ${qq.answer ? 'ถูก' : 'ผิด'}`;
+  if (qq.qtype === 'short') return `${n}. ${qq.prompt}${pts}\nตอบ ${(qq.answer || []).join(' | ')}`;
+  return `${n}. ${qq.prompt}${pts} [อัตนัย]`;
+}
+
+function viewQbank() {
+  if (store.p7Missing) return `<div class="page-head"><div><h2>คลังข้อสอบ</h2></div></div><div class="card"><div class="empty">${ic('lock')}<b>ยังไม่ได้ตั้งค่า</b>รันไฟล์ phase7.sql ใน Supabase ก่อน</div></div>`;
+  const all = store.qbank_questions, units = qbUnits(), f = ui.qbF || (ui.qbF = { unit: '', diff: '', type: '', q: '' });
+  const list = all.filter(x => (!f.unit || (x.unit || 'ไม่ระบุหน่วย') === f.unit) && (!f.diff || x.difficulty === f.diff) && (!f.type || x.qtype === f.type)
+    && (!f.q || RICH.plain(x).toLowerCase().includes(f.q.toLowerCase()))).sort((a, b) => (a.unit || '').localeCompare(b.unit || '', 'th', { numeric: true }) || b.created_at.localeCompare(a.created_at));
+  return `<div class="page-head"><div><h2>คลังข้อสอบ</h2><p>เก็บคำถามแยกตามหน่วยและความยาก แล้วสุ่มลงข้อสอบชุดใหม่ได้ทุกเทอม</p></div><span class="spacer"></span>
+      <button class="btn primary" data-act="qb-import">${ic('upload')}เพิ่มคำถามเข้าคลัง</button></div>
+    <div class="qb-units">${units.map(u => { const n = all.filter(x => (x.unit || 'ไม่ระบุหน่วย') === u); return `<button class="qb-unit ${f.unit === u ? 'on' : ''}" data-act="qb-unit" data-u="${esc(u)}"><b>${esc(u)}</b><small>${n.length} ข้อ · ง่าย ${n.filter(x => x.difficulty === 'easy').length} · กลาง ${n.filter(x => x.difficulty === 'medium').length} · ยาก ${n.filter(x => x.difficulty === 'hard').length}</small></button>`; }).join('')}</div>
+    <div class="card"><div class="toolbar"><div class="search">${ic('search')}<input class="input" placeholder="ค้นหาคำถาม" value="${esc(f.q)}" data-inp="qb-q"></div>
+      <select class="input sm-sel" data-chg="qb-f" data-k="diff"><option value="">ทุกระดับ</option>${Object.entries(DIFF).map(([k, [t]]) => `<option value="${k}" ${f.diff === k ? 'selected' : ''}>${t}</option>`).join('')}</select>
+      <select class="input sm-sel" data-chg="qb-f" data-k="type"><option value="">ทุกแบบ</option>${Object.entries(QT_SHORT).map(([k, t]) => `<option value="${k}" ${f.type === k ? 'selected' : ''}>${t}</option>`).join('')}</select>
+      ${f.unit ? `<button class="btn sm ghost" data-act="qb-unit" data-u="">ล้างตัวกรองหน่วย</button>` : ''}<span class="spacer"></span><span class="small muted">${list.length} / ${all.length} ข้อ</span></div>
+      ${list.length ? `<div class="qb-list">${list.slice(0, 300).map(x => `<div class="qb-item"><div class="qb-tags"><span class="chip">${esc(x.unit || 'ไม่ระบุหน่วย')}</span><span class="chip ${DIFF[x.difficulty][1]}">${DIFF[x.difficulty][0]}</span><span class="chip pri">${QT_SHORT[x.qtype]}</span><span class="small muted">${+x.points} คะแนน${x.used_count ? ` · ใช้แล้ว ${x.used_count} ครั้ง` : ''}</span></div>
+        <div class="qb-p">${esc(RICH.plain(x)).slice(0, 220)}</div>${x.qtype === 'mcq' ? `<div class="qb-c">${(x.choices || []).map((c, i) => `<span class="${+x.answer === i ? 'ok' : ''}">${ExamParser.TH[i]}. ${esc(c)}</span>`).join('')}</div>` : ''}
+        <div class="qb-a"><button class="btn sm ghost" data-act="qb-edit" data-id="${x.id}">${ic('edit')}แก้ไข</button><button class="btn ghost icon sm" data-act="qb-del" data-id="${x.id}" aria-label="ลบ" style="color:var(--danger)">${ic('trash')}</button></div></div>`).join('')}</div>`
+        : `<div class="empty">${ic('bank')}<b>${all.length ? 'ไม่พบคำถามตามตัวกรอง' : 'คลังยังว่าง'}</b>${all.length ? '' : 'เพิ่มคำถามด้วยการวางข้อความ หรือกด "💾 เก็บลงคลัง" ในหน้าแก้ไขข้อสอบ'}</div>`}</div>`;
+}
+function qbImportModal(pre) {
+  openModal({
+    title: 'เพิ่มคำถามเข้าคลัง', wide: true, ctx: { pre },
+    body: `<div class="stack"><div class="grid2"><label class="field"><span>หน่วยการเรียนรู้ *</span><input class="input" name="unit" list="qb-units" placeholder="เช่น หน่วยที่ 1 การแก้ปัญหา" value="${esc(ui.qbLastUnit || '')}"><datalist id="qb-units">${qbUnits().map(u => `<option value="${esc(u)}">`).join('')}</datalist></label>
+      <label class="field"><span>ระดับความยาก</span><select class="input" name="diff">${Object.entries(DIFF).map(([k, [t]]) => `<option value="${k}" ${k === 'medium' ? 'selected' : ''}>${t}</option>`).join('')}</select></label></div>
+      <label class="field"><span>วางคำถาม (รูปแบบเดียวกับตอนนำเข้าข้อสอบ)</span><textarea class="input mono" name="text" rows="10" placeholder="1. คำถาม\nก. ตัวเลือก\nข. ตัวเลือก\nตอบ ข">${esc(pre || '')}</textarea></label>
+      <div class="small muted">ใส่ "ตอบ ถูก/ผิด" = ถูกผิด · "ตอบ คำ1 | คำ2" = เติมคำ · ต่อท้ายคำถามด้วย [อัตนัย] = อัตนัย · "(2 คะแนน)" กำหนดคะแนน</div></div>`,
+    actions: [{ label: 'ยกเลิก', onClick: closeModal }, { label: 'เพิ่มเข้าคลัง', kind: 'primary', onClick: async () => {
+      const unit = mval('unit').trim(), qs = ExamParser.parseText(mval('text'));
+      if (!unit) return toast('ใส่ชื่อหน่วยการเรียนรู้', true); if (!qs.length) return toast('ยังอ่านคำถามไม่ได้ ตรวจรูปแบบอีกครั้ง', true);
+      ui.qbLastUnit = unit;
+      await qbInsert(qs.map(x => ({ unit, difficulty: mval('diff'), qtype: x.qtype, prompt: x.prompt, choices: x.choices, answer: x.answer, points: x.points ?? 1 })));
+      closeModal(); render(); toast(`เพิ่มเข้าคลังแล้ว ${qs.length} ข้อ`);
+    } }],
+  });
+}
+async function qbInsert(rows) {
+  for (let i = 0; i < rows.length; i += 200) { const out = await q(sb.from('qbank_questions').insert(rows.slice(i, i + 200)).select()); store.qbank_questions.push(...out); }
+}
+function qbEditModal(x) {
+  openModal({
+    title: 'แก้ไขคำถามในคลัง', wide: true, ctx: { qbId: x.id },
+    body: `<div class="stack"><div class="grid2"><label class="field"><span>หน่วยการเรียนรู้</span><input class="input" name="unit" list="qb-units2" value="${esc(x.unit || '')}"><datalist id="qb-units2">${qbUnits().map(u => `<option value="${esc(u)}">`).join('')}</datalist></label>
+      <label class="field"><span>ระดับความยาก</span><select class="input" name="diff">${Object.entries(DIFF).map(([k, [t]]) => `<option value="${k}" ${k === x.difficulty ? 'selected' : ''}>${t}</option>`).join('')}</select></label></div>
+      <label class="field"><span>คำถามและเฉลย</span><textarea class="input mono" name="text" rows="9">${esc(qToText(x))}</textarea></label>
+      ${x.prompt_html || x.media?.length ? '<div class="small muted">คำถามนี้มี HTML/รูป/วิดีโอ จะเก็บไว้ตามเดิม</div>' : ''}</div>`,
+    actions: [{ label: 'ยกเลิก', onClick: closeModal }, { label: 'บันทึก', kind: 'primary', onClick: async () => {
+      const p = ExamParser.parseText(mval('text'))[0]; if (!p) return toast('อ่านคำถามไม่ได้', true);
+      await db.update('qbank_questions', modalCtx.qbId, { unit: mval('unit').trim() || null, difficulty: mval('diff'), qtype: p.qtype, prompt: x.prompt_html ? x.prompt : p.prompt, choices: p.choices, answer: p.answer, points: p.points ?? 1 });
+      closeModal(); render(); toast('บันทึกแล้ว');
+    } }],
+  });
+}
+
+/* ---------- ในหน้าแก้ไขข้อสอบ ---------- */
+function qbDrawModal(eid) {
+  const all = store.qbank_questions; if (!all.length) return toast('คลังข้อสอบยังว่าง เพิ่มคำถามในเมนู "คลังข้อสอบ" ก่อน', true);
+  const units = qbUnits(), have = new Set(EX.questions(eid).map(x => x.prompt.trim()));
+  openModal({
+    title: '🎲 สุ่มคำถามจากคลัง', wide: true, ctx: { eid },
+    body: `<div class="stack"><div class="field"><span class="muted" style="font-weight:500">หน่วยที่จะสุ่ม</span><div class="checks qb-pick">${units.map(u => `<label class="check"><input type="checkbox" name="u" value="${esc(u)}" checked data-chg="qb-draw-calc"> ${esc(u)} <small class="muted">(${all.filter(x => (x.unit || 'ไม่ระบุหน่วย') === u).length})</small></label>`).join('')}</div></div>
+      <div class="qb-draw">${Object.entries(DIFF).map(([k, [t, c]]) => `<label class="field"><span><span class="chip ${c}">${t}</span> จำนวนข้อ <small class="muted" id="qb-av-${k}"></small></span><input class="input" type="number" min="0" value="0" name="n_${k}" data-chg="qb-draw-calc"></label>`).join('')}</div>
+      <label class="check"><input type="checkbox" name="nodup" checked> ไม่เอาข้อที่มีในข้อสอบนี้แล้ว</label>
+      <div class="fmt small">ระบบสุ่มคำถามจากคลังมาเพิ่มในข้อสอบนี้ ทุกครั้งที่นักเรียนเริ่มสอบ ระบบยังสลับลำดับข้อและตัวเลือกให้แต่ละคนไม่เหมือนกันเหมือนเดิม</div></div>`,
+    actions: [{ label: 'ยกเลิก', onClick: closeModal }, { label: 'สุ่มและเพิ่มลงข้อสอบ', kind: 'primary', onClick: async () => {
+      const us = new Set($$('#modal-root input[name=u]:checked').map(x => x.value)), nodup = $('#modal-root [name=nodup]').checked;
+      const pool = all.filter(x => us.has(x.unit || 'ไม่ระบุหน่วย') && !(nodup && have.has(x.prompt.trim())));
+      const pick = [];
+      for (const k of Object.keys(DIFF)) { const n = +mval('n_' + k) || 0; const p = pool.filter(x => x.difficulty === k).sort(() => Math.random() - .5); pick.push(...p.slice(0, n)); }
+      if (!pick.length) return toast('ใส่จำนวนข้อที่ต้องการอย่างน้อย 1 ข้อ', true);
+      const base = Math.max(0, ...EX.questions(modalCtx.eid).map(x => x.sort_order || 0));
+      const rows = pick.map((x, i) => ({ exam_id: modalCtx.eid, sort_order: base + (i + 1) * 10, qtype: x.qtype, prompt: x.prompt, choices: x.choices, answer: x.answer, points: x.points,
+        ...(x.media?.length ? { media: x.media } : {}), ...(x.prompt_html ? { prompt_html: true } : {}) }));
+      const out = await q(sb.from('exam_questions').insert(rows).select()); store.exam_questions.push(...out);
+      for (const x of pick) { x.used_count = (x.used_count || 0) + 1; sb.from('qbank_questions').update({ used_count: x.used_count }).eq('id', x.id).then(() => {}); }
+      closeModal(); render(); toast(`เพิ่ม ${pick.length} ข้อจากคลังแล้ว`);
+    } }],
+  });
+  qbDrawCalc();
+}
+function qbDrawCalc() {
+  const us = new Set($$('#modal-root input[name=u]:checked').map(x => x.value));
+  Object.keys(DIFF).forEach(k => { const n = store.qbank_questions.filter(x => x.difficulty === k && us.has(x.unit || 'ไม่ระบุหน่วย')).length; const el = $('#qb-av-' + k); if (el) el.textContent = `(มี ${n} ข้อ)`; const inp = $(`#modal-root [name=n_${k}]`); if (inp) inp.max = n; });
+}
+async function qbSaveExam(eid) {
+  const e = db.get('exams', eid), qs = EX.questions(eid); if (!qs.length) return toast('ข้อสอบนี้ยังไม่มีคำถาม', true);
+  const have = new Set(store.qbank_questions.map(x => x.prompt.trim()));
+  const rows = qs.filter(x => !have.has(x.prompt.trim())).map(x => ({ unit: e.title, difficulty: 'medium', qtype: x.qtype, prompt: x.prompt, choices: x.choices, answer: x.answer, points: x.points,
+    ...(x.media?.length ? { media: x.media } : {}), ...(x.prompt_html ? { prompt_html: true } : {}) }));
+  if (!rows.length) return toast('คำถามทุกข้อมีในคลังแล้ว');
+  await qbInsert(rows); toast(`เก็บลงคลังแล้ว ${rows.length} ข้อ (หน่วย "${e.title}" แก้ชื่อหน่วยได้ในคลัง)`);
+}
+Object.assign(ACT, {
+  'qb-import': () => qbImportModal(''),
+  'qb-unit': el => { ui.qbF.unit = el.dataset.u; render(); },
+  'qb-edit': el => qbEditModal(db.get('qbank_questions', el.dataset.id)),
+  'qb-del': el => confirmBox('ลบคำถาม', 'ลบคำถามนี้ออกจากคลัง? (ข้อสอบที่ใช้ไปแล้วไม่เปลี่ยน)', 'ลบ', async () => { await db.removeIds('qbank_questions', [el.dataset.id]); render(); }),
+  'qb-draw': el => qbDrawModal(el.dataset.id),
+  'qb-save-exam': el => qbSaveExam(el.dataset.id),
+});
+Object.assign(CHG, { 'qb-f': el => { ui.qbF[el.dataset.k] = el.value; render(); }, 'qb-draw-calc': qbDrawCalc });
+Object.assign(INP, { 'qb-q': el => { ui.qbF.q = el.value; clearTimeout(ui.qbT); ui.qbT = setTimeout(() => { render(); const i = $('[data-inp=qb-q]'); if (i) { i.focus(); i.setSelectionRange(i.value.length, i.value.length); } }, 350); } });
+
+/* =====================================================================
+   แกลเลอรีผลงาน — ครูติดดาวงานเด่น → คัดลอกไฟล์ไปที่เก็บสาธารณะ → โชว์ + กดหัวใจ
+   หน้าเปิดได้ทุกคน: #gallery · ครูจัดการ: #works · นักเรียน: แท็บ "แกลเลอรี"
+   ===================================================================== */
+I.star = '<path d="M12 3.5l2.6 5.4 5.9.8-4.3 4.1 1 5.8L12 16.9l-5.2 2.7 1-5.8L3.5 9.7l5.9-.8z"/>';
+I.heart = '<path d="M12 20s-7-4.4-9-8.6C1.6 8.3 3.4 5 6.6 5c2 0 3.4 1.2 5.4 3.3C14 6.2 15.4 5 17.4 5c3.2 0 5 3.3 3.6 6.4C19 15.6 12 20 12 20z"/>';
+const GAL = { items: null, loading: false, liked: new Set(), lv: null, at: 0 };
+store.gallery_items = store.gallery_items || [];
+function isGalleryRoute() { return ui.route === 'gallery'; }
+
+async function loadGallery(force) {
+  if (GAL.loading || (!force && GAL.items && Date.now() - GAL.at < 30000)) return;
+  GAL.loading = true;
+  try {
+    GAL.items = await q(sb.rpc('public_gallery')); GAL.at = Date.now();
+    const v = stuState.verified;
+    if (v) GAL.liked = new Set(await q(sb.rpc('student_gallery_likes', { p_student_id: v.student_id, p_code: v.code })).catch(() => []));
+  } catch (e) { GAL.items = GAL.items || []; GAL.missing = true; }
+  GAL.loading = false; render();
+}
+function galCover(it) {
+  const f = (it.files || [])[0];
+  if (!f) return `<div class="gal-cover link">${ic('link')}<span>ลิงก์ผลงาน</span></div>`;
+  if (f.kind === 'image') return `<div class="gal-cover"><img src="${esc(f.url)}" alt="${esc(it.title)}" loading="lazy" onerror="this.remove()"><span class="gal-ph">🖼️</span></div>`;
+  if (f.kind === 'video') return `<div class="gal-cover vid"><video src="${esc(f.url)}#t=0.5" preload="metadata" muted playsinline></video><span class="play">▶</span></div>`;
+  return `<div class="gal-cover doc"><span>${f.kind === 'audio' ? '🎧' : '📄'}</span><small>${esc(f.name || '')}</small></div>`;
+}
+function galleryGrid(items, o = {}) {
+  if (!items) { loadGallery(); return `<div class="card"><div class="empty"><span class="spin"></span><br>กำลังโหลดแกลเลอรี…</div></div>`; }
+  if (GAL.missing && !items.length) return `<div class="card"><div class="empty">${ic('lock')}<b>แกลเลอรียังไม่พร้อม</b>ผู้ดูแลต้องรันไฟล์ phase7.sql ใน Supabase ก่อน</div></div>`;
+  const levels = [...new Set(items.map(x => x.level))].sort((a, b) => a.localeCompare(b, 'th', { numeric: true }));
+  if (GAL.lv && !levels.includes(GAL.lv)) GAL.lv = null;
+  const list = GAL.lv ? items.filter(x => x.level === GAL.lv) : items;
+  const mine = new Set(store.gallery_items.map(x => x.id));
+  return `${levels.length > 1 ? `<div class="gal-lv"><button class="tab ${!GAL.lv ? 'on' : ''}" data-act="gal-lv" data-l="">ทุกสายชั้น</button>${levels.map(l => `<button class="tab ${GAL.lv === l ? 'on' : ''}" data-act="gal-lv" data-l="${esc(l)}">${esc(l)}</button>`).join('')}</div>` : ''}
+    ${list.length ? `<div class="gal-grid">${list.map(it => `<article class="gal-card">
+      <button class="gal-open" data-act="gal-view" data-id="${it.id}" aria-label="ดูผลงาน ${esc(it.title)}">${galCover(it)}</button>
+      <div class="gal-b"><b>${esc(it.title)}</b><div class="small muted">${esc(it.student_name)} · ${esc(it.classroom)}${it.subject ? ' · ' + esc(it.subject) : ''}</div></div>
+      <div class="gal-f"><button class="gal-like ${GAL.liked.has(it.id) ? 'on' : ''}" data-act="gal-like" data-id="${it.id}" aria-pressed="${GAL.liked.has(it.id)}">${ic('heart')}<span>${it.likes}</span></button>
+        ${o.manage && mine.has(it.id) ? `<button class="btn ghost icon sm" data-act="gal-remove" data-id="${it.id}" aria-label="เอาออกจากแกลเลอรี" style="color:var(--danger)">${ic('trash')}</button>` : ''}</div></article>`).join('')}</div>`
+      : `<div class="card"><div class="empty"><div style="font-size:44px">🌟</div><b>ยังไม่มีผลงานในแกลเลอรี</b>${o.manage ? 'เปิดหน้าตรวจงาน แล้วกด "⭐ โชว์ในแกลเลอรี" ที่งานเด่น' : 'ตั้งใจทำงาน แล้วผลงานของเราอาจได้ขึ้นโชว์ที่นี่!'}</div></div>`}`;
+}
+/* หน้าสาธารณะ */
+function viewGalleryPublic() {
+  const theme = document.documentElement.dataset.theme;
+  return `<div class="stu"><div class="stu-wrap gal-page"><div class="row" style="margin-bottom:14px"><div class="brand" style="padding:0"><div class="brand-mark">ป</div><div><b>ห้องเรียนครูปลื้ม</b><small style="color:var(--muted)">แกลเลอรีผลงานนักเรียน 🌟</small></div></div><span class="spacer"></span>
+      <button class="btn ghost icon" data-act="theme" aria-label="สลับธีม">${ic(theme === 'dark' ? 'sun' : 'moon')}</button></div>
+    <div class="gal-hero"><h2>🌟 แกลเลอรีผลงานเด่น</h2><p>ผลงานที่ครูคัดเลือกมาโชว์ ${stuState.verified ? 'กด ❤ ให้ผลงานที่ชอบได้เลย' : '· <a href="#student">เข้าสู่ระบบนักเรียน</a> เพื่อกดหัวใจ'}</p></div>
+    ${galleryGrid(GAL.items)}</div></div>`;
+}
+/* ครู */
+function viewWorks() {
+  return `<div class="page-head"><div><h2>แกลเลอรีผลงาน</h2><p>งานเด่นที่ครูติดดาว นักเรียนเจ้าของผลงานได้ +30 XP</p></div><span class="spacer"></span>
+    <button class="btn" data-act="gal-share">${ic('link')}ส่งลิงก์แกลเลอรี</button><a class="btn" href="#gallery" target="_blank">${ic('expand')}เปิดหน้าแกลเลอรี</a></div>
+    ${galleryGrid(GAL.items, { manage: true })}`;
+}
+/* นักเรียน (แท็บ) */
+function studentGalleryHTML() {
+  if (!GAL.lvSet && stuState.verified) { GAL.lv = levelOf(stuState.verified.classroom_name); GAL.lvSet = true; }
+  return galleryGrid(GAL.items);
+}
+
+function galViewModal(it) {
+  openModal({
+    title: it.title, wide: true,
+    body: `<div class="gal-view">${(it.files || []).map(f => f.kind === 'image' ? `<img src="${esc(f.url)}" alt="">` : f.kind === 'video' ? `<video src="${esc(f.url)}" controls playsinline></video>` : f.kind === 'audio' ? `<audio src="${esc(f.url)}" controls></audio>` : `<a class="sn-link" href="${esc(f.url)}" target="_blank" rel="noopener">📄 <span>${esc(f.name || 'เปิดไฟล์')}</span></a>`).join('')}
+      ${(it.links || []).map(u => `<a class="sn-link" href="${esc(u)}" target="_blank" rel="noopener noreferrer">🔗 <span>${esc(u.replace(/^https?:\/\//, ''))}</span></a>`).join('')}
+      ${it.caption ? `<div class="gal-cap">💬 ${esc(it.caption)}</div>` : ''}
+      <div class="small muted">ผลงานของ ${esc(it.student_name)} · ${esc(it.classroom)}${it.subject ? ' · ' + esc(it.subject) : ''} · ❤ ${it.likes}</div></div>`,
+    actions: [{ label: 'ปิด', kind: 'primary', onClick: closeModal }],
+  });
+}
+/* ปุ่มในหน้าตรวจงาน */
+function galFeatureBtn(sub) {
+  if (!sub || store.p7Missing) return '';
+  const it = store.gallery_items.find(x => x.submission_id === sub.id);
+  return it ? `<button class="btn sm" data-act="gal-unfeature" data-id="${it.id}" data-sid="${sub.student_id}">⭐ อยู่ในแกลเลอรี · เอาออก</button>` : `<button class="btn sm" data-act="gal-feature" data-sid="${sub.student_id}">⭐ โชว์ในแกลเลอรี</button>`;
+}
+function galFeatureModal(sid) {
+  const aid = modalCtx.aid, a = db.get('assignments', aid), sub = A.sub(aid, sid), files = A.filesOf(aid, sub.id);
+  const back = { ...modalCtx };
+  openModal({
+    title: '⭐ โชว์ผลงานในแกลเลอรี', ctx: { back, sid },
+    body: `<div class="stack"><div class="small muted">ระบบจะคัดลอกไฟล์ที่เลือกไปไว้ในแกลเลอรีที่เปิดดูได้ทุกคน (แสดงเฉพาะชื่อจริงกับห้อง ไม่แสดงนามสกุล)</div>
+      ${files.length ? `<div class="checks">${files.map(f => `<label class="check"><input type="checkbox" name="gf" value="${f.id}" ${['image', 'video', 'audio', 'document'].includes(f.kind) ? 'checked' : ''}> ${esc(f.file_name)}</label>`).join('')}</div>` : '<div class="small">ไม่มีไฟล์ จะโชว์เฉพาะลิงก์ของนักเรียน</div>'}
+      ${sub.links?.length ? `<label class="check"><input type="checkbox" name="glinks" checked> แสดงลิงก์ที่นักเรียนแนบ (${sub.links.length})</label>` : ''}
+      <label class="field"><span>คำชมจากครู (ไม่บังคับ)</span><input class="input" name="cap" maxlength="200" placeholder="เช่น ใช้สีสวยมาก การจัดวางอ่านง่าย"></label></div>`,
+    actions: [{ label: 'ยกเลิก', onClick: () => { closeModal(); openGrader(sid); } }, { label: 'โชว์ในแกลเลอรี', kind: 'primary', onClick: async el => {
+      const pick = new Set($$('#modal-root input[name=gf]:checked').map(x => x.value)), withLinks = $('#modal-root [name=glinks]')?.checked;
+      if (!pick.size && !(withLinks && sub.links?.length)) return toast('เลือกไฟล์หรือลิงก์อย่างน้อย 1 อย่าง', true);
+      toast('กำลังคัดลอกไฟล์ไปแกลเลอรี…');
+      const out = [];
+      for (const f of files.filter(x => pick.has(x.id))) {
+        const { data: blob, error } = await sb.storage.from('submissions').download(f.storage_path);
+        if (error) { toast(`คัดลอก ${f.file_name} ไม่สำเร็จ`, true); continue; }
+        const path = `${session.user.id}/${sub.id}/${crypto.randomUUID().slice(0, 8)}.${(f.file_name.split('.').pop() || 'bin').toLowerCase()}`;
+        const up = await sb.storage.from('gallery').upload(path, blob, { contentType: f.mime_type || blob.type, upsert: false });
+        if (up.error) { toast(errMsg(up.error), true); continue; }
+        out.push({ url: sb.storage.from('gallery').getPublicUrl(path).data.publicUrl, kind: f.kind, name: f.file_name, path });
+      }
+      const row = await db.insert('gallery_items', { submission_id: sub.id, student_id: sid, assignment_id: aid, title: a.title, caption: mval('cap').trim() || null, files: out, links: withLinks ? sub.links : [] });
+      GAL.items = null; confetti(); toast('ขึ้นแกลเลอรีแล้ว ⭐ นักเรียนได้ +30 XP'); closeModal(); openGrader(sid);
+    } }],
+  });
+}
+async function galRemove(id) {
+  const it = store.gallery_items.find(x => x.id === id);
+  const paths = (it?.files || []).map(f => f.path).filter(Boolean);
+  if (paths.length) await sb.storage.from('gallery').remove(paths).catch(() => {});
+  await db.removeIds('gallery_items', [id]); GAL.items = null; toast('เอาออกจากแกลเลอรีแล้ว');
+}
+Object.assign(ACT, {
+  'gal-lv': el => { GAL.lv = el.dataset.l || null; render(); },
+  'gal-view': el => { const it = (GAL.items || []).find(x => x.id === el.dataset.id); if (it) galViewModal(it); },
+  'gal-like': async el => {
+    const v = stuState.verified;
+    if (!v) return toast('เข้าสู่ระบบนักเรียนก่อน จึงจะกดหัวใจได้', true);
+    try {
+      const r = await q(sb.rpc('student_gallery_like', { p_student_id: v.student_id, p_code: v.code, p_item: el.dataset.id }));
+      const it = GAL.items.find(x => x.id === el.dataset.id); if (it) it.likes = r.likes;
+      r.liked ? GAL.liked.add(el.dataset.id) : GAL.liked.delete(el.dataset.id);
+      el.classList.toggle('on', r.liked); el.classList.add('pop'); el.querySelector('span').textContent = r.likes;
+    } catch (e) {}
+  },
+  'gal-feature': el => galFeatureModal(el.dataset.sid),
+  'gal-unfeature': el => confirmBox('เอาออกจากแกลเลอรี', 'เอาผลงานนี้ออกจากแกลเลอรี?', 'เอาออก', async () => { await galRemove(el.dataset.id); const sid = el.dataset.sid; if (sid && ui.route.startsWith('grade-')) openGrader(sid); else render(); }),
+  'gal-remove': el => confirmBox('เอาออกจากแกลเลอรี', 'เอาผลงานนี้ออกจากแกลเลอรี?', 'เอาออก', async () => { await galRemove(el.dataset.id); render(); }),
+  'gal-share': async () => { await copyText(location.origin + location.pathname + '#gallery'); toast('คัดลอกลิงก์แกลเลอรีแล้ว'); },
+});
+
+/* =====================================================================
    เวอร์ชันมือถือ — โครงหน้าจอแยกจาก PC
    แถบบนแบบย่อ · แท็บด้านล่าง · แผ่น "เพิ่มเติม" · ตารางเป็นการ์ด · หน้าต่างเลื่อนจากล่าง
    ===================================================================== */
@@ -6402,7 +7170,7 @@ const FX = (() => {
     el.innerHTML = out.join('');
   }
   function syncBg() {
-    const on = typeof isStudentRoute === 'function' && (isStudentRoute() || isExamTakeRoute() || isCheckinRoute());
+    const on = typeof isStudentRoute === 'function' && (isStudentRoute() || isExamTakeRoute() || isCheckinRoute() || isGalleryRoute());
     document.body.classList.toggle('stu-bg', on);
     if (on) buildEmojiBg();
   }
