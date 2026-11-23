@@ -1807,11 +1807,28 @@ select option,select optgroup{background:var(--surface);color:var(--ink)}
 .rk.g0{--rc:var(--g0)}.rk.g1{--rc:var(--g1)}.rk.g2{--rc:var(--g2)}.rk.g3{--rc:var(--g3)}.rk.g4{--rc:var(--g4)}.rk.g5{--rc:var(--g5)}.rk.g6{--rc:var(--g6)}.rk.g7{--rc:var(--g7)}
 .rk.g8{--rc:#D79A00;background:linear-gradient(135deg,#FFF3C4,#FFD54A);color:#7A4F00;box-shadow:0 0 10px rgba(255,190,0,.55),inset 0 0 0 1px #F5B300}
 .rk.g9{color:#fff;background:linear-gradient(90deg,#FF5E62,#FFB347,#6EE7B7,#60A5FA,#A78BFA);background-size:200% 100%;animation:rainbow 5s linear infinite;box-shadow:0 0 12px rgba(167,139,250,.7)}
-/* มงกุฎ Top 10 กระพริบ */
-.crown{display:inline-block;font-size:1.05em;line-height:1;animation:crown 1.6s ease-in-out infinite;filter:drop-shadow(0 0 4px rgba(255,196,0,.8))}
-.crown.k1{font-size:1.3em;animation-duration:1.1s}
-.crown.k2,.crown.k3{font-size:1.15em}
-@keyframes crown{0%,100%{transform:translateY(0) rotate(-6deg);filter:drop-shadow(0 0 3px rgba(255,196,0,.6)) brightness(1)}50%{transform:translateY(-2px) rotate(6deg);filter:drop-shadow(0 0 10px rgba(255,214,10,1)) brightness(1.25)}}
+/* ตราอันดับ 1–10 */
+.crown{position:relative;display:inline-flex;align-items:center;justify-content:center;flex:none;width:1.45em;height:1.15em;line-height:1;vertical-align:-.15em}
+.crown svg{width:100%;height:100%;overflow:visible}
+.crown.k1{width:1.9em;height:1.55em;animation:cw-glow1 2.2s ease-in-out infinite}
+.crown.k2{width:1.7em;height:1.35em;animation:cw-glow2 2.6s ease-in-out infinite}
+.crown.k3{width:1.7em;height:1.35em;animation:cw-glow3 2.6s ease-in-out infinite}
+.crown.k4,.crown.k5{width:1.6em;height:1.3em;animation:cw-float 3s ease-in-out infinite}
+.crown.k4{filter:drop-shadow(0 0 3px rgba(168,85,247,.55))}.crown.k5{filter:drop-shadow(0 0 3px rgba(141,183,51,.6))}
+.crown.kx{animation:cw-blink 1.8s ease-in-out infinite;filter:drop-shadow(0 0 2px rgba(245,190,30,.6))}
+@keyframes cw-glow1{0%,100%{filter:drop-shadow(0 0 3px rgba(255,196,0,.7)) drop-shadow(0 1px 1px rgba(120,70,0,.4));transform:translateY(0) rotate(-4deg)}
+  50%{filter:drop-shadow(0 0 11px rgba(255,214,10,1)) drop-shadow(0 0 22px rgba(255,120,60,.55));transform:translateY(-2px) rotate(4deg)}}
+@keyframes cw-glow2{0%,100%{filter:drop-shadow(0 0 2px rgba(150,190,255,.6))}50%{filter:drop-shadow(0 0 9px rgba(120,170,255,1))}}
+@keyframes cw-glow3{0%,100%{filter:drop-shadow(0 0 2px rgba(255,160,90,.6))}50%{filter:drop-shadow(0 0 9px rgba(16,185,129,.9))}}
+@keyframes cw-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-2px)}}
+@keyframes cw-blink{0%,100%{opacity:1}50%{opacity:.45}}
+.cw-tw{transform-origin:18px 1px;transform-box:view-box;animation:cw-tw 1.4s ease-in-out infinite}
+@keyframes cw-tw{0%,100%{opacity:.2;transform:scale(.5)}50%{opacity:1;transform:scale(1.25)}}
+/* ประกายแสงวิ่งผ่านตราอันดับ 1–3 */
+.cw-glint{position:absolute;inset:0;pointer-events:none;-webkit-mask:var(--m) center/contain no-repeat;mask:var(--m) center/contain no-repeat;
+  background:linear-gradient(110deg,transparent 35%,rgba(255,255,255,.95) 50%,transparent 65%);background-size:300% 100%;animation:cw-sweep 2.8s ease-in-out infinite;mix-blend-mode:overlay}
+.crown .cw-glint{--m:linear-gradient(#000,#000);border-radius:30%;opacity:.8}
+@keyframes cw-sweep{0%{background-position:150% 0}60%,100%{background-position:-150% 0}}
 /* ฉายา */
 .ttl{display:inline-flex;align-items:center;padding:1px 9px;border-radius:7px;font-size:11.5px;font-weight:600;white-space:nowrap;letter-spacing:.1px}
 .ttl::before{content:'「';opacity:.6}.ttl::after{content:'」';opacity:.6}
@@ -1998,6 +2015,65 @@ textarea.mono{font-family:ui-monospace,'SF Mono',Menlo,Consolas,monospace;font-s
 .pr-xp{white-space:nowrap}
 [data-device=mobile] .podium{display:flex;flex-wrap:wrap;justify-content:center;align-items:flex-end;gap:26px 6px}
 [data-device=mobile] .podium>.pq{width:calc(33.3% - 4px)}
+
+/* ---------- นักเรียน: แท็บ Ranking / ร้านค้า ---------- */
+.stu-tabs{max-width:100%;overflow-x:auto;scrollbar-width:none;flex-wrap:nowrap}
+.stu-tabs::-webkit-scrollbar{display:none}.stu-tabs button{white-space:nowrap;flex:none}
+.gchip{border:0;cursor:pointer;display:inline-flex;align-items:center;gap:4px;font:inherit;background:linear-gradient(135deg,#FFF3C4,#FFD54A);color:#6B4600!important;font-weight:600}
+.gchip .crown{font-size:13px}
+.gparts{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;padding:12px;margin-bottom:12px}
+.gparts.in-modal{padding:0;margin:12px 0 0;box-shadow:none;background:none}
+.gp{display:flex;flex-direction:column;align-items:center;gap:1px;padding:8px 4px;border-radius:14px;background:var(--surface-2)}
+.gp span{font-size:20px}.gp small{font-size:12px;color:var(--muted)}.gp b{font:800 17px var(--f-head)}
+.rank-2col{display:grid;grid-template-columns:1fr 1fr;gap:12px;align-items:start}
+.ladder{padding:6px 14px 12px}
+.ld-row{display:flex;align-items:center;gap:8px;padding:7px 6px;border-bottom:1px dashed var(--line);font-size:14px}
+.ld-row:last-child{border-bottom:0}.ld-row.done{opacity:.6}
+.ld-row.now{background:var(--primary-soft);border-radius:12px;border-bottom-color:transparent}
+.gb-h{font:700 14px var(--f-head);margin:14px 0 4px}
+.pos{color:var(--ok)}.neg{color:var(--danger)}
+.shop-card{padding:16px 18px}
+.shop-now{display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding:10px 12px;border-radius:14px;background:var(--surface-2);margin:6px 0 4px}
+.shop-coins.sm{font-size:15px;padding:2px 10px}
+/* ---------- ครู: หน้า Ranking ---------- */
+.rk-note{padding:12px 16px;margin-bottom:12px;background:var(--accent-soft)}
+.rk-bar{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+.rk-q{width:200px}
+.rk-stats{display:flex;gap:6px;flex-wrap:wrap}.rk-stats span{padding:6px 12px;border-radius:99px;background:var(--surface);box-shadow:var(--shadow);font-size:13.5px}
+.rk-hall{margin-bottom:12px}
+.rk-bulk{position:sticky;top:8px;z-index:5;display:flex;align-items:center;gap:8px;padding:10px 14px;margin-bottom:10px;border-radius:16px;background:var(--surface);box-shadow:var(--shadow);font-size:14px}
+.rk-bulk.on{background:var(--primary-soft);box-shadow:var(--shadow),inset 0 0 0 2px var(--primary)}
+.rk-tbl td,.rk-tbl th{white-space:nowrap}.rk-tbl td:nth-child(5){white-space:normal;min-width:240px}
+.rk-tbl .ck{width:34px}.rk-tbl tr.sel td{background:var(--primary-soft)}
+.rk-no{display:inline-grid;place-items:center;min-width:28px;height:28px;border-radius:50%;font:800 13px var(--f-head);background:var(--fill)}
+.rk-no.n1{background:linear-gradient(150deg,#FFF3B0,#F5B300);color:#5A3B00}.rk-no.n2{background:linear-gradient(150deg,#fff,#AEB7C4);color:#333}.rk-no.n3{background:linear-gradient(150deg,#FFE3CC,#CF7436);color:#4A2208}
+.rk-lv{margin-left:6px}
+.rk-act{display:flex;gap:4px}
+.rk-reasons{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.rk-rs{display:flex;align-items:center;gap:6px;border:0;border-radius:14px;padding:9px 10px;background:var(--fill);color:var(--ink);font:500 13.5px var(--f-body);cursor:pointer;text-align:left}
+.rk-rs span{font-size:18px}.rk-rs b{margin-left:auto;color:var(--ok)}.rk-rs.neg b{color:var(--danger)}
+.rk-rs.on{background:var(--primary-soft);box-shadow:inset 0 0 0 2px var(--primary)}
+.rk-sm-head{display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-size:17px}
+.rk-sm-xp{font:800 20px var(--f-head)}
+.rk-quick{display:flex;flex-wrap:wrap;gap:6px}
+.btn.danger-soft{background:var(--danger-soft);color:var(--danger)}
+.rk-hist{max-height:240px;overflow:auto}
+.rk-rules{display:grid;grid-template-columns:1fr 1fr;gap:6px 22px}
+.rk-rules h4{font:700 14px var(--f-head);margin:10px 0 4px}
+.rk-rule{display:flex;align-items:center;gap:8px;padding:4px 0;font-size:14px}.rk-rule span{flex:1}.rk-rule .input{width:84px;text-align:center;padding:6px}
+.rk-calc{margin-top:14px;padding:12px 14px;border-radius:14px;background:var(--primary-soft);font-size:14px;line-height:1.7}
+[data-device=mobile] .gparts{grid-template-columns:repeat(3,1fr)}
+[data-device=mobile] .rank-2col,[data-device=mobile] .rk-rules{grid-template-columns:1fr}
+[data-device=mobile] .rk-reasons{grid-template-columns:1fr 1fr}
+[data-device=mobile] .rk-q{width:100%}
+@media (prefers-reduced-motion:reduce){.crown,.cw-tw,.cw-glint{animation:none!important}}
+.rk-bar .input{width:auto;min-width:0}.rk-bar .rk-q{width:200px}[data-device=mobile] .rk-bar .rk-q{width:100%}
+.gchip,.gchip *{color:#5A3B00!important;opacity:1!important}
+.shop-coins{white-space:nowrap}
+[data-device=mobile] .rk-tbl td:nth-child(n+6):nth-child(-n+10){display:none}
+[data-device=mobile] .rk-tbl td:nth-child(5){min-width:0}
+[data-device=mobile] .rk-tbl td.num{width:auto}
+.pill.gchip{background:linear-gradient(135deg,#FFF3C4,#FFD54A)!important;box-shadow:0 4px 14px -6px rgba(245,180,0,.8)!important;border:0!important}
 
 </style>
 </head>
@@ -2589,6 +2665,7 @@ const PERMS = [
   { k: 'gradebook', label: 'ตารางคะแนน', desc: 'ลงคะแนน เพิ่มคอลัมน์ ส่งออก Excel', icon: 'table' },
   { k: 'exams', label: 'ข้อสอบ', desc: 'ออกข้อสอบ ส่งลิงก์ ดูผลสอบ', icon: 'quiz' },
   { k: 'attendance', label: 'เช็คชื่อ', desc: 'เปิด QR เช็คชื่อ สรุปเวลาเรียน', icon: 'attend' },
+  { k: 'ranking', label: 'จัดการ Ranking', desc: 'ให้/หัก XP และเหรียญ มอบฉายา ตั้งกติกาแต้ม', icon: 'trophy' },
 ];
 const ME = {
   active: () => store.me?.status === 'active',
@@ -2712,6 +2789,7 @@ const NAV = [
   { group: 'ภาพรวม' },
   { id: 'dashboard', label: 'แดชบอร์ด', icon: 'home' },
   { id: 'risk', label: 'ติดตามนักเรียน', icon: 'alert' },
+  { id: 'ranking', label: 'Ranking', icon: 'trophy' },
   { group: 'จัดการข้อมูล' },
   { id: 'subjects', label: 'วิชา', icon: 'book' },
   { id: 'classes', label: 'ห้องเรียนและรายชื่อ', icon: 'users' },
@@ -2734,7 +2812,7 @@ function navItems() {
   const items = NAV.filter(n => n.group || (n.admin ? ME.admin() : routeAllowed(n.id)));
   return items.filter((n, i) => !n.group || (items[i + 1] && !items[i + 1].group));
 }
-const TITLES = { dashboard: 'แดชบอร์ด', subjects: 'วิชา', classes: 'ห้องเรียนและรายชื่อ', assignments: 'งานและตรวจงาน', grade: 'ตรวจงาน', examedit: 'แก้ไขข้อสอบ', examres: 'ผลสอบ', gradebook: 'ตารางคะแนน', exams: 'ข้อสอบ', settings: 'ตั้งค่า', users: 'ผู้ใช้และสิทธิ์', attendance: 'เช็คชื่อ', attsess: 'เช็คชื่อ', reports: 'รายงานและสำรองข้อมูล', risk: 'ติดตามนักเรียน', qbank: 'คลังข้อสอบ', announce: 'ประกาศ', works: 'แกลเลอรีผลงาน' };
+const TITLES = { ranking: 'Ranking', dashboard: 'แดชบอร์ด', subjects: 'วิชา', classes: 'ห้องเรียนและรายชื่อ', assignments: 'งานและตรวจงาน', grade: 'ตรวจงาน', examedit: 'แก้ไขข้อสอบ', examres: 'ผลสอบ', gradebook: 'ตารางคะแนน', exams: 'ข้อสอบ', settings: 'ตั้งค่า', users: 'ผู้ใช้และสิทธิ์', attendance: 'เช็คชื่อ', attsess: 'เช็คชื่อ', reports: 'รายงานและสำรองข้อมูล', risk: 'ติดตามนักเรียน', qbank: 'คลังข้อสอบ', announce: 'ประกาศ', works: 'แกลเลอรีผลงาน' };
 
 function render() {
   const root = $('#app');
@@ -2749,7 +2827,7 @@ function render() {
   let base = ui.route.startsWith('att-') ? 'attsess' : ui.route.startsWith('grade-') ? 'grade' : ui.route.startsWith('exam-edit-') ? 'examedit' : ui.route.startsWith('exam-res-') ? 'examres' : ui.route;
   if (!TITLES[base] || !routeAllowed(base)) { ui.route = 'dashboard'; base = 'dashboard'; }
   const theme = document.documentElement.dataset.theme;
-  const views = { dashboard: viewDashboard, subjects: viewSubjects, classes: viewClasses, settings: viewSettings, users: viewUsers, attendance: viewAttendance, attsess: viewAttSession, reports: viewReports, risk: viewRisk, qbank: viewQbank, announce: viewAnnounce, works: viewWorks, assignments: viewAssignments, grade: viewGrade, gradebook: viewGradebook, exams: viewExams, examedit: viewExamEdit, examres: viewExamResults };
+  const views = { ranking: viewRanking, dashboard: viewDashboard, subjects: viewSubjects, classes: viewClasses, settings: viewSettings, users: viewUsers, attendance: viewAttendance, attsess: viewAttSession, reports: viewReports, risk: viewRisk, qbank: viewQbank, announce: viewAnnounce, works: viewWorks, assignments: viewAssignments, grade: viewGrade, gradebook: viewGradebook, exams: viewExams, examedit: viewExamEdit, examres: viewExamResults };
   const navOn = base === 'grade' ? 'assignments' : (base === 'examedit' || base === 'examres') ? 'exams' : base === 'attsess' ? 'attendance' : base;
   if (isMobile()) { root.innerHTML = mobileShell(base, navOn, (views[base] || viewDashboard)()); return; }
   root.innerHTML = `
@@ -3976,10 +4054,10 @@ function studentHome(v) {
   return `<div class="stu-wrap">
     <div class="stu-banner">${ART.desk(sceneHour())}<div class="stu-clock">${clockHTML()}</div><div class="acts"><button class="btn icon sm" data-act="stu-reload" aria-label="โหลดใหม่" title="โหลดใหม่">${ic('refresh')}</button><button class="btn sm" data-act="stu-out">ออก</button></div>
       <div class="row" style="gap:14px;position:relative;z-index:1"><div class="ava">${esc(first[0] || '?')}</div><div style="min-width:0"><h2>สวัสดี ${esc(first)}! 👋</h2>
-        <div class="pills"><span class="pill">🏫 ${esc(v.classroom_name)}</span><span class="pill">เลขที่ ${v.number}</span></div></div></div></div>
-    ${studentAnnHTML()}${studentGameHTML(v)}
-    <div class="seg stu-tabs">${[['work', '📝 งาน'], ['exam', '🧪 ข้อสอบ'], ['score', '📊 คะแนน'], ['gallery', '🌟 ผลงาน']].map(([k, l]) => `<button class="${(stuState.tab || 'work') === k ? 'on' : ''}" data-act="stu-tab" data-t="${k}">${l}</button>`).join('')}</div>
-    ${stuState.tab === 'gallery' ? studentGalleryHTML() : stuState.tab === 'score' ? studentScoresHTML() : stuState.tab === 'exam' ? studentExamsHTML() : stuState.asg ? `<div class="counters">
+        <div class="pills"><span class="pill">🏫 ${esc(v.classroom_name)}</span><span class="pill">เลขที่ ${v.number}</span>${gameChipHTML()}</div></div></div></div>
+    ${studentAnnHTML()}
+    <div class="seg stu-tabs">${[['work', '📝 งาน'], ['exam', '🧪 ข้อสอบ'], ['score', '📊 คะแนน'], ['rank', '🏆 Ranking'], ['shop', '🛒 ร้านค้า'], ['gallery', '🌟 ผลงาน']].map(([k, l]) => `<button class="${(stuState.tab || 'work') === k ? 'on' : ''}" data-act="stu-tab" data-t="${k}">${l}</button>`).join('')}</div>
+    ${stuState.tab === 'rank' ? studentRankHTML(v) : stuState.tab === 'shop' ? shopHTML() : stuState.tab === 'gallery' ? studentGalleryHTML() : stuState.tab === 'score' ? studentScoresHTML() : stuState.tab === 'exam' ? studentExamsHTML() : stuState.asg ? `<div class="counters">
         <div class="counter todo"><span class="em">📝</span><div><b>${groups.todo.length}</b><small>ต้องส่ง/แก้</small></div></div>
         <div class="counter wait"><span class="em">⏳</span><div><b>${groups.wait.length}</b><small>รอครูตรวจ</small></div></div>
         <div class="counter done"><span class="em">🌟</span><div><b>${groups.done.length}</b><small>ตรวจแล้ว</small></div></div></div>
@@ -6207,9 +6285,9 @@ const BK_TABLES = [
   ['assignments', 'id'], ['assignment_classes', 'assignment_id,classroom_id'], ['submissions', 'id'], ['submission_files', 'id'],
   ['exams', 'id'], ['exam_classes', 'exam_id,classroom_id'], ['exam_questions', 'id'], ['exam_attempts', 'id'], ['exam_answers', 'attempt_id,question_id'],
   ['grade_columns', 'id'], ['grade_entries', 'column_id,student_id'],
-  ['attendance_sessions', 'id'], ['attendance_records', 'id'], ['rubrics', 'id'], ['qbank_questions', 'id'], ['announcements', 'id'], ['gallery_items', 'id'],
+  ['attendance_sessions', 'id'], ['attendance_records', 'id'], ['rubrics', 'id'], ['qbank_questions', 'id'], ['announcements', 'id'], ['gallery_items', 'id'], ['game_adjustments', 'id'],
 ];
-const BK_NAMES = { terms: 'ภาคเรียน', classrooms: 'ห้องเรียน', students: 'นักเรียน', subjects: 'วิชา', subject_classes: 'วิชา-ห้อง', assignments: 'งาน', assignment_classes: 'งาน-ห้อง', submissions: 'งานที่ส่ง', submission_files: 'ไฟล์ที่ส่ง (ข้อมูลไฟล์)', exams: 'ข้อสอบ', exam_classes: 'ข้อสอบ-ห้อง', exam_questions: 'คำถาม', exam_attempts: 'การสอบ', exam_answers: 'คำตอบ', grade_columns: 'คอลัมน์คะแนน', grade_entries: 'คะแนนที่กรอก', attendance_sessions: 'คาบเช็คชื่อ', attendance_records: 'ผลเช็คชื่อ', rubrics: 'คลังรูบริก', qbank_questions: 'คลังข้อสอบ', announcements: 'ประกาศ', gallery_items: 'แกลเลอรี' };
+const BK_NAMES = { terms: 'ภาคเรียน', classrooms: 'ห้องเรียน', students: 'นักเรียน', subjects: 'วิชา', subject_classes: 'วิชา-ห้อง', assignments: 'งาน', assignment_classes: 'งาน-ห้อง', submissions: 'งานที่ส่ง', submission_files: 'ไฟล์ที่ส่ง (ข้อมูลไฟล์)', exams: 'ข้อสอบ', exam_classes: 'ข้อสอบ-ห้อง', exam_questions: 'คำถาม', exam_attempts: 'การสอบ', exam_answers: 'คำตอบ', grade_columns: 'คอลัมน์คะแนน', grade_entries: 'คะแนนที่กรอก', attendance_sessions: 'คาบเช็คชื่อ', attendance_records: 'ผลเช็คชื่อ', rubrics: 'คลังรูบริก', qbank_questions: 'คลังข้อสอบ', announcements: 'ประกาศ', gallery_items: 'แกลเลอรี', game_adjustments: 'แต้มพิเศษจากครู' };
 const BK = { busy: false, file: null, result: null };
 const BK_ORDER = { subject_classes: 'subject_id', assignment_classes: 'assignment_id', exam_classes: 'exam_id', grade_entries: 'column_id', exam_answers: 'attempt_id', submissions: 'submitted_at', exam_attempts: 'started_at', exam_questions: 'sort_order', attendance_records: 'checked_at' };
 
@@ -6506,7 +6584,7 @@ ACT['rp-cfg-toggle'] = () => { ui.rpCfgOpen = !ui.rpCfgOpen; render(); };
 Object.assign(INP, { 'rp-cfg': el => rpCfgSet(el.dataset.k, el.value.trim()) });
 
 /* =====================================================================
-   แต้ม · เลเวล · ยศ · มงกุฎ Top 10 · ทำเนียบคนเก่ง Top 5 · ร้านฉายา
+   แต้ม · เลเวล · ยศ · ตราอันดับ Top 10 · ทำเนียบคนเก่ง Top 5 · ร้านฉายา
    ===================================================================== */
 const RANKS = [
   { n: 'ผู้ฝึกตน', en: 'Novice', xp: 0, ic: '🌱' },
@@ -6521,16 +6599,80 @@ const RANKS = [
   { n: 'ตำนาน', en: 'Legend', xp: 2100, ic: '✨' },
 ];
 const RARITY = { common: 'ธรรมดา', rare: 'หายาก', epic: 'มหากาพย์', legendary: 'ตำนาน', mythic: 'เทพนิยาย' };
-const XP_RULES = [['📤', 'ส่งงาน', '+10 ต่อชิ้น'], ['⏰', 'ส่งตรงเวลา', '+5 ต่อชิ้น'], ['📝', 'คะแนนงาน', 'สูงสุด +20 ต่อชิ้น (ตามร้อยละ)'], ['🧪', 'ข้อสอบ', 'สูงสุด +30 ต่อชุด (ครั้งที่ดีที่สุด)'], ['🖼', 'ผลงานขึ้นแกลเลอรี', '+30 ต่อชิ้น'], ['📋', 'มาเรียน / สาย', '+2 / +1 (ถ้าครูใช้เช็คชื่อ)']];
+const RULE_DEF = { sub: 30, ontime: 10, score: 50, exam: 100, exam_full: 30, gallery: 100, present: 5, late: 3, exam_coin: 10, exam_full_coin: 5, sub_coin: 0 };
+function xpRules(r) {
+  r = { ...RULE_DEF, ...(r || {}) };
+  return [['📤', 'ส่งงาน', `+${r.sub} ต่อชิ้น`], ['⏰', 'ส่งตรงเวลา', `+${r.ontime} ต่อชิ้น`], ['📝', 'คะแนนงาน', `สูงสุด +${r.score} ต่อชิ้น (ตามร้อยละ)`],
+    ['🧪', 'ข้อสอบ', `สูงสุด +${r.exam} ต่อชุด · ได้เต็มรับเพิ่ม +${r.exam_full}`], ['🖼', 'ผลงานขึ้นแกลเลอรี', `+${r.gallery} ต่อชิ้น`],
+    ['📋', 'มาเรียน / สาย', `+${r.present} / +${r.late} (ถ้าครูใช้เช็คชื่อ)`], ['🎁', 'ครูให้พิเศษ', 'ตอบคำถาม ช่วยเพื่อน ทำกิจกรรม']];
+}
+function coinRule(r) { r = { ...RULE_DEF, ...(r || {}) }; return `ข้อสอบ: ได้คะแนนเต็มรับ ${r.exam_coin} เหรียญ (คิดตามร้อยละ) + โบนัสคะแนนเต็ม ${r.exam_full_coin} เหรียญ${r.sub_coin ? ` · ส่งงานตรงเวลา +${r.sub_coin}` : ''} · ครูให้พิเศษได้`; }
 const GAME = { t: null, at: 0, loading: false, lvTab: null };
 
 function rankIdx(xp) { let i = 0; RANKS.forEach((r, k) => { if (xp >= r.xp) i = k; }); return i; }
 function lvOf(xp) { return 1 + Math.floor((xp || 0) / 50); }
 function titleOf(id, titles) { return id ? (titles || []).find(t => t.id === id) : null; }
-/* ชื่อพร้อมมงกุฎ สีตามยศ ป้ายยศ และฉายา */
+
+/* ---------- ตราอันดับ 1–10 (SVG วาดเอง) ---------- */
+function crownDefs() {
+  if (document.getElementById('crown-defs')) return;
+  const lg = (id, stops, x2 = 0, y2 = 1) => `<linearGradient id="${id}" x1="0" y1="0" x2="${x2}" y2="${y2}">${stops.map((c, i) => `<stop offset="${i / (stops.length - 1)}" stop-color="${c}"/>`).join('')}</linearGradient>`;
+  const rg = (id, a, b, c) => `<radialGradient id="${id}" cx=".35" cy=".3" r=".75"><stop offset="0" stop-color="${a}"/><stop offset=".5" stop-color="${b}"/><stop offset="1" stop-color="${c}"/></radialGradient>`;
+  const s = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+  s.id = 'crown-defs'; s.setAttribute('width', '0'); s.setAttribute('height', '0'); s.setAttribute('aria-hidden', 'true');
+  s.style.cssText = 'position:absolute;width:0;height:0;overflow:hidden';
+  s.innerHTML = `<defs>${lg('cg1', ['#FFF7C2', '#FFD84A', '#F2B300', '#B97800'])}${lg('cg2', ['#FFFFFF', '#E6EBF2', '#B5C0CF', '#7F8A9C'])}${lg('cg3', ['#FFE6D2', '#F4AE7A', '#CF7436', '#8F4517'])}
+    ${lg('cg4', ['#FFFFFF', '#E9E3FF', '#B9A8E8', '#7A66B8'])}${lg('cg5', ['#F3FFD0', '#C8E86A', '#8DB733', '#4F7A12'])}${lg('cg6', ['#FFE98A', '#F5BE1E', '#C98A00'])}
+    ${rg('gm-ruby', '#FFC2CF', '#E8174F', '#6E0020')}${rg('gm-sapph', '#CFE6FF', '#2E73F0', '#0A2A78')}${rg('gm-emer', '#C6F8DA', '#12B981', '#035C3C')}
+    ${rg('gm-ame', '#F1DDFF', '#A855F7', '#4F1691')}${rg('gm-pearl', '#FFFFFF', '#F2EEE6', '#C9C1B2')}</defs>`;
+  (document.body || document.documentElement).appendChild(s);
+}
+const CROWN_BODY = 'M4 22 L2 8.5 L10.6 14.2 L18 3.8 L25.4 14.2 L34 8.5 L32 22 Z';
+function crownSVG(rank) {
+  crownDefs();
+  const R = Math.min(rank, 6);
+  const sv = (inner, vb = '0 0 36 28') => `<svg viewBox="${vb}" aria-hidden="true">${inner}</svg>`;
+  const crown = (body, stroke, gem, small) => `<path d="${CROWN_BODY}" fill="url(#${body})" stroke="${stroke}" stroke-width=".7" stroke-linejoin="round"/>
+    <path d="M6 20.6 L4.6 11.6 L10.6 15.8 L18 6.2 L25.4 15.8 L31.4 11.6 L30 20.6 Z" fill="#fff" opacity=".22"/>
+    <rect x="3.6" y="21" width="28.8" height="4.8" rx="1.6" fill="url(#${body})" stroke="${stroke}" stroke-width=".7"/>
+    <rect x="5" y="21.8" width="26" height="1.1" rx=".5" fill="#fff" opacity=".45"/>
+    ${small ? '' : `<circle cx="2" cy="8.5" r="2.1" fill="url(#gm-pearl)" stroke="${stroke}" stroke-width=".4"/><circle cx="34" cy="8.5" r="2.1" fill="url(#gm-pearl)" stroke="${stroke}" stroke-width=".4"/>
+    <circle cx="18" cy="3.6" r="2.5" fill="url(#gm-pearl)" stroke="${stroke}" stroke-width=".4"/>
+    <ellipse cx="18" cy="15.6" rx="2.8" ry="3.5" fill="url(#${gem})" stroke="${stroke}" stroke-width=".5"/><ellipse cx="17.1" cy="14.4" rx=".9" ry="1.2" fill="#fff" opacity=".8"/>
+    <circle cx="10" cy="23.4" r="1.4" fill="url(#${gem})"/><circle cx="18" cy="23.4" r="1.4" fill="url(#${gem})"/><circle cx="26" cy="23.4" r="1.4" fill="url(#${gem})"/>`}`;
+  if (R === 1) return sv(`${crown('cg1', '#8A5600', 'gm-ruby')}<path d="M18 -1.6 l.9 2 2 .9 -2 .9 -.9 2 -.9 -2 -2 -.9 2 -.9z" fill="#FFF7C2" class="cw-tw"/>`, '0 -2 36 30');
+  if (R === 2) return sv(crown('cg2', '#5E6878', 'gm-sapph'));
+  if (R === 3) return sv(crown('cg3', '#6E3410', 'gm-emer'));
+  if (R === 4) return sv(`<path d="M3 22.5 C3.6 17.4 6.6 15.2 9.6 15.8 C11.2 10.8 14.2 6.8 18 3.6 C21.8 6.8 24.8 10.8 26.4 15.8 C29.4 15.2 32.4 17.4 33 22.5 Z" fill="url(#cg4)" stroke="#5B4A97" stroke-width=".7" stroke-linejoin="round"/>
+      <path d="M7 21.4 C8 18.6 9.6 17.6 11.4 18 C13 13.6 15.2 10.6 18 8.2 C20.8 10.6 23 13.6 24.6 18 C26.4 17.6 28 18.6 29 21.4" fill="none" stroke="#fff" stroke-width=".9" opacity=".6"/>
+      <path d="M18 9.8 C20.8 12.8 21.2 15.8 18 19.4 C14.8 15.8 15.2 12.8 18 9.8Z" fill="url(#gm-ame)" stroke="#4F1691" stroke-width=".5"/><ellipse cx="17.2" cy="13" rx=".7" ry="1.3" fill="#fff" opacity=".8"/>
+      <circle cx="9.6" cy="15.6" r="1.7" fill="url(#gm-pearl)" stroke="#5B4A97" stroke-width=".3"/><circle cx="26.4" cy="15.6" r="1.7" fill="url(#gm-pearl)" stroke="#5B4A97" stroke-width=".3"/><circle cx="18" cy="3.3" r="2.1" fill="url(#gm-pearl)" stroke="#5B4A97" stroke-width=".3"/>
+      <circle cx="12.4" cy="20.2" r="1.3" fill="url(#gm-ame)"/><circle cx="23.6" cy="20.2" r="1.3" fill="url(#gm-ame)"/>
+      <rect x="2.4" y="21.6" width="31.2" height="4" rx="2" fill="url(#cg4)" stroke="#5B4A97" stroke-width=".6"/><rect x="5" y="22.4" width="26" height="1" rx=".5" fill="#fff" opacity=".6"/>`);
+  if (R === 5) {
+    const cx = 18, cy = 12, rad = 12.5, P = t => [cx + rad * Math.cos(t * Math.PI / 180), cy - rad * Math.sin(t * Math.PI / 180)];
+    const branch = side => Array.from({ length: 7 }, (_, k) => {
+      const th = 150 + k * 17.5, [x0, y0] = P(th), [x1, y1] = P(th + 4), ang = Math.atan2(y1 - y0, x1 - x0) * 180 / Math.PI;
+      const out = k % 2 ? -1 : 1, ox = Math.cos((ang + 90) * Math.PI / 180) * 1.5 * out, oy = Math.sin((ang + 90) * Math.PI / 180) * 1.5 * out;
+      let x = x0 + ox, y = y0 + oy, a = ang + out * 28; if (side < 0) { x = 2 * cx - x; a = 180 - a; }
+      return `<ellipse cx="${x.toFixed(2)}" cy="${y.toFixed(2)}" rx="3.2" ry="1.45" transform="rotate(${a.toFixed(1)} ${x.toFixed(2)} ${y.toFixed(2)})" fill="url(#cg6)" stroke="#8A5600" stroke-width=".35"/>`;
+    }).join('');
+    const [sx, sy] = P(146), [ex, ey] = P(262);
+    return sv(`<path d="M${sx.toFixed(1)} ${sy.toFixed(1)} A${rad} ${rad} 0 0 0 ${ex.toFixed(1)} ${ey.toFixed(1)} M${(36 - sx).toFixed(1)} ${sy.toFixed(1)} A${rad} ${rad} 0 0 1 ${(36 - ex).toFixed(1)} ${ey.toFixed(1)}" fill="none" stroke="#9A6A00" stroke-width=".8"/>
+      ${branch(1)}${branch(-1)}<path d="M18 5 l2 4.1 4.5.6 -3.3 3.1 .8 4.5 -4 -2.1 -4 2.1 .8 -4.5 -3.3 -3.1 4.5 -.6z" fill="url(#cg1)" stroke="#8A5600" stroke-width=".5"/>
+      <path d="M14.6 24.8 L18 23.2 L21.4 24.8 L20.6 27 L18 25.8 L15.4 27Z" fill="#D7263D" stroke="#7A0F1E" stroke-width=".4"/>`);
+  }
+  return sv(crown('cg6', '#8A5600', '', true));
+}
+function crownTag(rank) {
+  if (!rank || rank > 10) return '';
+  const k = rank <= 5 ? rank : 'x';
+  return `<span class="crown k${k}" title="อันดับ ${rank} ของสายชั้น">${crownSVG(rank)}${rank <= 3 ? '<i class="cw-glint"></i>' : ''}</span>`;
+}
+/* ชื่อพร้อมตราอันดับ สีตามยศ ป้ายยศ และฉายา */
 function nameTag(name, xp, rank, titleId, titles, o = {}) {
   const i = rankIdx(xp || 0), r = RANKS[i], t = titleOf(titleId, titles);
-  const crown = rank && rank <= 10 && xp > 0 ? `<span class="crown k${rank <= 3 ? rank : 'x'}" title="อันดับ ${rank} ของสายชั้น">👑</span>` : '';
+  const crown = xp > 0 ? crownTag(rank) : '';
   return `<span class="ntag">${crown}<span class="gname g${i}">${esc(name)}</span>${o.noBadge ? '' : `<span class="rk g${i}" title="${r.n} · Lv.${lvOf(xp)}">${r.ic}<b>${r.n}</b></span>`}${t ? `<span class="ttl ${t.rarity}">${esc(t.name)}</span>` : ''}</span>`;
 }
 
@@ -6561,9 +6703,9 @@ function teacherBoardHTML() {
   const levels = [...new Set(GAME.t.top.map(x => x.level))].sort((a, b) => a.localeCompare(b, 'th', { numeric: true }));
   if (!levels.includes(GAME.lvTab)) GAME.lvTab = levels[0] || null;
   const top = GAME.t.top.filter(x => x.level === GAME.lvTab);
-  return `<div class="card hall"><div class="hall-h"><div><h3>🏆 ทำเนียบคนเก่ง</h3><small>5 อันดับแรกของแต่ละสายชั้น · 👑 มงกุฎสำหรับอันดับ 1–10</small></div><span class="spacer"></span>
+  return `<div class="card hall"><div class="hall-h"><div><h3>🏆 ทำเนียบคนเก่ง</h3><small>5 อันดับแรกของแต่ละสายชั้น · ตราพิเศษสำหรับอันดับ 1–10</small></div><span class="spacer"></span>
       ${levels.length ? `<div class="seg">${levels.map(l => `<button class="${l === GAME.lvTab ? 'on' : ''}" data-act="hall-lv" data-l="${esc(l)}">${esc(l)}</button>`).join('')}</div>` : ''}
-      <button class="btn sm ghost" data-act="game-help">วิธีคิดแต้ม</button></div>
+      <a class="btn sm ghost" href="#ranking">จัดการ Ranking</a></div>
     ${podiumHTML(top, GAME.t.titles)}</div>`;
 }
 
@@ -6575,49 +6717,74 @@ async function loadStudentGame(force) {
   catch (e) { stuState.game = { missing: true }; }
   stuState.gameLoading = false; if (isStudentRoute() || isExamTakeRoute()) render();
 }
+function stuFirst(v) { return v.full_name.replace(/^(เด็กชาย|เด็กหญิง|นางสาว|นาย|นาง|ด\.ช\.|ด\.ญ\.|น\.ส\.)\s*/, ''); }
+function myGameCard(v, g) {
+  const i = rankIdx(g.xp), r = RANKS[i], nx = RANKS[i + 1];
+  const pct = nx ? Math.min(100, (g.xp - r.xp) / (nx.xp - r.xp) * 100) : 100;
+  return `<div class="card gcard g${i}">
+    <div class="gc-emblem"><span>${r.ic}</span><b>Lv.${lvOf(g.xp)}</b></div>
+    <div class="gc-body"><div class="gc-name">${nameTag(stuFirst(v), g.xp, g.rank, g.title_id, g.titles)}</div>
+      <div class="gc-bar"><i style="width:${pct}%"></i></div>
+      <div class="gc-meta"><span>${g.xp.toLocaleString()} XP</span><span>${nx ? `อีก ${(nx.xp - g.xp).toLocaleString()} XP เป็น ${nx.ic} ${nx.n}` : 'ยศสูงสุดแล้ว!'}</span></div>
+      <div class="gc-lv" title="ความคืบหน้าเลเวล"><i style="width:${(g.xp % 50) / 50 * 100}%"></i></div></div>
+    <div class="gc-side"><div class="gc-stat"><b>#${g.rank}</b><small>ของ ${esc(g.level)} (${g.in_level} คน)</small></div>
+      <div class="gc-stat coin"><b>🪙 ${g.coins}</b><small>เหรียญ</small></div>
+      <button class="btn sm primary" data-act="shop-open">🛒 ร้านค้า</button></div></div>`;
+}
+/* ใช้ในหน้าก่อนเริ่มสอบ: การ์ดของฉัน + ทำเนียบ */
 function studentGameHTML(v, compact) {
   if (!stuState.game) { loadStudentGame(); return ''; }
   const g = stuState.game; if (g.missing) return '';
-  const i = rankIdx(g.xp), r = RANKS[i], nx = RANKS[i + 1];
-  const pct = nx ? Math.min(100, (g.xp - r.xp) / (nx.xp - r.xp) * 100) : 100;
-  const lvPct = (g.xp % 50) / 50 * 100;
-  const first = v.full_name.replace(/^(เด็กชาย|เด็กหญิง|นางสาว|นาย|นาง|ด\.ช\.|ด\.ญ\.|น\.ส\.)\s*/, '');
-  const me = `<div class="card gcard g${i}">
-    <div class="gc-emblem"><span>${r.ic}</span><b>Lv.${lvOf(g.xp)}</b></div>
-    <div class="gc-body"><div class="gc-name">${nameTag(first, g.xp, g.rank, g.title_id, g.titles)}</div>
-      <div class="gc-bar"><i style="width:${pct}%"></i></div>
-      <div class="gc-meta"><span>${g.xp.toLocaleString()} XP</span><span>${nx ? `อีก ${(nx.xp - g.xp).toLocaleString()} XP เป็น ${nx.ic} ${nx.n}` : 'ยศสูงสุดแล้ว!'}</span></div>
-      <div class="gc-lv" title="ความคืบหน้าเลเวล"><i style="width:${lvPct}%"></i></div></div>
-    <div class="gc-side"><div class="gc-stat"><b>#${g.rank}</b><small>ของ ${esc(g.level)} (${g.in_level} คน)</small></div>
-      <div class="gc-stat coin"><b>🪙 ${g.coins}</b><small>เหรียญ</small></div>
-      <button class="btn sm primary" data-act="shop-open">🛒 ร้านฉายา</button></div></div>`;
-  if (compact) return me;
-  return `${me}<div class="card hall stu-hall"><div class="hall-h"><div><h3>🏆 ทำเนียบคนเก่ง ${esc(g.level)}</h3><small>เก่งและขยันที่สุด 5 อันดับแรกของสายชั้น</small></div><span class="spacer"></span><button class="btn sm ghost" data-act="game-help">ทำแต้มยังไง?</button></div>
+  if (compact) return myGameCard(v, g);
+  return `${myGameCard(v, g)}<div class="card hall stu-hall"><div class="hall-h"><div><h3>🏆 ทำเนียบคนเก่ง ${esc(g.level)}</h3><small>เก่งและขยันที่สุด 5 อันดับแรกของสายชั้น</small></div><span class="spacer"></span><button class="btn sm ghost" data-act="game-help">ทำแต้มยังไง?</button></div>
     ${podiumHTML(g.top, g.titles)}</div>`;
 }
-function shopModal() {
-  const g = stuState.game; if (!g) return;
+/* ชิปเล็กในแบนเนอร์ กดแล้วไปแท็บ Ranking */
+function gameChipHTML() {
+  if (!stuState.game) { loadStudentGame(); return ''; }
+  const g = stuState.game; if (g.missing) return '';
+  const r = RANKS[rankIdx(g.xp)];
+  return `<button class="pill gchip" data-act="stu-tab" data-t="rank">${g.rank <= 10 && g.xp > 0 ? crownTag(g.rank) : r.ic} อันดับ ${g.rank} · ${r.n} · 🪙 ${g.coins}</button>`;
+}
+/* แท็บ Ranking */
+function studentRankHTML(v) {
+  if (!stuState.game) { loadStudentGame(); return `<div class="card"><div class="empty"><span class="spin"></span> กำลังโหลด…</div></div>`; }
+  const g = stuState.game; if (g.missing) return `<div class="card"><div class="empty">ระบบ Ranking ยังไม่เปิดใช้</div></div>`;
+  const P = g.parts || {}, i = rankIdx(g.xp);
+  const part = (e, l, x) => `<div class="gp"><span>${e}</span><small>${l}</small><b>${(x || 0).toLocaleString()}</b></div>`;
+  return `${myGameCard(v, g)}
+    ${g.parts ? `<div class="card gparts">${part('📤', 'งาน', P.sub)}${part('🧪', 'ข้อสอบ', P.exam)}${part('🖼', 'ผลงาน', P.gallery)}${part('📋', 'เช็คชื่อ', P.att)}${part('🎁', 'ครูให้', P.bonus)}</div>` : ''}
+    <div class="card hall stu-hall"><div class="hall-h"><div><h3>🏆 ทำเนียบคนเก่ง ${esc(g.level)}</h3><small>5 อันดับแรกขึ้นป้ายเกียรติยศ · อันดับ 1–10 ได้ตราพิเศษหน้าชื่อ</small></div></div>
+      ${podiumHTML(g.top, g.titles)}</div>
+    <div class="rank-2col">
+      <div class="card"><div class="card-h"><h3>⚔️ เส้นทางยศ</h3></div><div class="ladder">${RANKS.map((r, k) => `<div class="ld-row${k === i ? ' now' : ''}${k < i ? ' done' : ''}"><span class="rk g${k}">${r.ic}<b>${r.n}</b></span><span class="spacer"></span><small>${r.xp.toLocaleString()}+ XP</small>${k === i ? '<span class="chip">ตอนนี้</span>' : k < i ? '✓' : ''}</div>`).join('')}</div></div>
+      <div class="card"><div class="card-h"><h3>✨ วิธีได้แต้ม</h3></div><div class="card-b">${xpRules(g.rules).map(([e, a, b]) => `<div class="hr-row"><span>${e}</span><b>${a}</b><span class="spacer"></span><small>${b}</small></div>`).join('')}
+        <p class="small muted" style="margin-top:10px">🪙 ${coinRule(g.rules)}</p>
+        ${(g.bonus || []).length ? `<h4 class="gb-h">🎁 แต้มพิเศษจากครูล่าสุด</h4>${g.bonus.map(b => `<div class="hr-row"><span>${b.xp >= 0 ? '⬆️' : '⬇️'}</span><span>${esc(b.reason || 'แต้มพิเศษ')}</span><span class="spacer"></span><b class="${b.xp < 0 ? 'neg' : 'pos'}">${b.xp ? `${b.xp > 0 ? '+' : ''}${b.xp} XP` : ''}${b.coins ? ` ${b.coins > 0 ? '+' : ''}${b.coins}🪙` : ''}</b></div>`).join('')}` : ''}</div></div>
+    </div>`;
+}
+/* แท็บร้านค้า */
+function shopHTML() {
+  if (!stuState.game) { loadStudentGame(); return `<div class="card"><div class="empty"><span class="spin"></span> กำลังโหลด…</div></div>`; }
+  const g = stuState.game; if (g.missing) return `<div class="card"><div class="empty">ร้านค้ายังไม่เปิด</div></div>`;
   const owned = new Map((g.owned || []).map(o => [o.title_id, o]));
   const groups = Object.keys(RARITY).map(r => [r, g.titles.filter(t => t.rarity === r)]).filter(x => x[1].length);
-  openModal({
-    title: '🛒 ร้านฉายา', wide: true,
-    body: `<div class="shop-top"><div>ใช้ <b>🪙 เหรียญ</b> จากการทำข้อสอบ ซื้อฉายามาประดับหลังชื่อ</div><span class="spacer"></span><span class="shop-coins">🪙 ${g.coins}</span></div>
-      <div class="small muted" style="margin:-4px 0 10px">ได้เหรียญจากข้อสอบ: ได้คะแนนทุก 10% = 1 เหรียญ · ได้คะแนนเต็มรับโบนัสเพิ่ม 5 เหรียญ</div>
-      ${groups.map(([r, list]) => `<div class="shop-sec"><div class="shop-h ${r}">${RARITY[r]}</div><div class="shop-grid">${list.map(t => {
-        const o = owned.get(t.id), lock = g.xp < t.min_xp, poor = g.coins < t.cost;
-        return `<div class="shop-item ${r} ${o ? 'owned' : ''} ${lock ? 'locked' : ''}"><span class="ttl ${r}">${esc(t.name)}</span>
-          <div class="si-meta">${o ? (o.equipped ? '✅ ใช้อยู่' : 'มีแล้ว') : `🪙 ${t.cost}`}${t.min_xp ? ` · ต้องเป็น ${RANKS[rankIdx(t.min_xp)].ic} ${RANKS[rankIdx(t.min_xp)].n}` : ''}</div>
-          ${o ? (o.equipped ? `<button class="btn sm ghost" data-act="shop-equip" data-id="">ถอด</button>` : `<button class="btn sm" data-act="shop-equip" data-id="${t.id}">ใช้ฉายานี้</button>`)
-            : `<button class="btn sm ${lock || poor ? '' : 'primary'}" data-act="shop-buy" data-id="${t.id}" ${lock || poor ? 'disabled' : ''}>${lock ? '🔒 ยศยังไม่ถึง' : poor ? 'เหรียญไม่พอ' : 'ซื้อ'}</button>`}</div>`; }).join('')}</div></div>`).join('')}`,
-    actions: [{ label: 'ปิด', onClick: closeModal }],
-  });
+  const eq = titleOf(g.title_id, g.titles);
+  return `<div class="card shop-card"><div class="shop-top"><div><h3 style="margin:0">🛒 ร้านฉายา</h3><div class="small muted">ใช้ 🪙 เหรียญซื้อฉายามาประดับหลังชื่อ · ${coinRule(g.rules)}</div></div><span class="spacer"></span><span class="shop-coins">🪙 ${g.coins}</span></div>
+    <div class="shop-now">ตอนนี้: ${nameTag(stuFirst(stuState.verified), g.xp, g.rank, g.title_id, g.titles)} ${eq ? '' : '<span class="small muted">(ยังไม่ได้ใส่ฉายา)</span>'}</div>
+    ${groups.map(([r, list]) => `<div class="shop-sec"><div class="shop-h ${r}">${RARITY[r]}</div><div class="shop-grid">${list.map(t => {
+      const o = owned.get(t.id), lock = g.xp < t.min_xp, poor = g.coins < t.cost;
+      return `<div class="shop-item ${r} ${o ? 'owned' : ''} ${lock ? 'locked' : ''}"><span class="ttl ${r}">${esc(t.name)}</span>
+        <div class="si-meta">${o ? (o.equipped ? '✅ ใช้อยู่' : 'มีแล้ว') : `🪙 ${t.cost}`}${t.min_xp ? ` · ต้องเป็น ${RANKS[rankIdx(t.min_xp)].ic} ${RANKS[rankIdx(t.min_xp)].n}` : ''}</div>
+        ${o ? (o.equipped ? `<button class="btn sm ghost" data-act="shop-equip" data-id="">ถอด</button>` : `<button class="btn sm" data-act="shop-equip" data-id="${t.id}">ใช้ฉายานี้</button>`)
+          : `<button class="btn sm ${lock || poor ? '' : 'primary'}" data-act="shop-buy" data-id="${t.id}" ${lock || poor ? 'disabled' : ''}>${lock ? '🔒 ยศยังไม่ถึง' : poor ? 'เหรียญไม่พอ' : 'ซื้อ'}</button>`}</div>`; }).join('')}</div></div>`).join('')}</div>`;
 }
-function gameHelpModal() {
+function gameHelpModal(rules) {
   openModal({
     title: '⚔️ ระบบแต้มและยศ', wide: true,
-    body: `<div class="help-grid"><div><h4>วิธีได้แต้ม (XP)</h4>${XP_RULES.map(([e, a, b]) => `<div class="hr-row"><span>${e}</span><b>${a}</b><span class="spacer"></span><small>${b}</small></div>`).join('')}
-        <h4 style="margin-top:14px">เลเวลและมงกุฎ</h4><p class="small">ทุก 50 XP = ขึ้น 1 เลเวล · อันดับ 1–10 ของสายชั้นได้ 👑 มงกุฎหน้าชื่อ · 5 อันดับแรกขึ้นทำเนียบคนเก่งพร้อมเหรียญรางวัล</p>
-        <h4>เหรียญ 🪙</h4><p class="small">ได้จากข้อสอบ: ได้คะแนนทุก 10% = 1 เหรียญ และได้คะแนนเต็มรับโบนัสเพิ่ม 5 เหรียญ ใช้ซื้อฉายาในร้าน</p></div>
+    body: `<div class="help-grid"><div><h4>วิธีได้แต้ม (XP)</h4>${xpRules(rules || stuState.game?.rules || RK?.t?.rules).map(([e, a, b]) => `<div class="hr-row"><span>${e}</span><b>${a}</b><span class="spacer"></span><small>${b}</small></div>`).join('')}
+        <h4 style="margin-top:14px">เลเวลและตราอันดับ</h4><p class="small">ทุก 50 XP = ขึ้น 1 เลเวล · อันดับ 1–10 ของสายชั้นได้ตราพิเศษหน้าชื่อ (อันดับ 1 มงกุฎทองทับทิม · 2 มงกุฎแพลทินัมไพลิน · 3 มงกุฎสำริดมรกต · 4 รัดเกล้าอเมทิสต์ · 5 ช่อชัยพฤกษ์ · 6–10 มงกุฎทอง) · 5 อันดับแรกขึ้นทำเนียบคนเก่ง</p>
+        <h4>เหรียญ 🪙</h4><p class="small">${coinRule(rules || stuState.game?.rules)} · ใช้ซื้อฉายาในร้านค้า</p></div>
       <div><h4>ยศ 10 ขั้น</h4>${RANKS.map((r, i) => `<div class="hr-row rk-row"><span class="rk g${i}">${r.ic}<b>${r.n}</b></span><small class="muted">${r.en}</small><span class="spacer"></span><b>${r.xp.toLocaleString()}+ XP</b></div>`).join('')}</div></div>`,
     actions: [{ label: 'ปิด', onClick: closeModal }],
   });
@@ -6626,14 +6793,14 @@ async function shopAction(fn, id) {
   const v = stuState.verified;
   try {
     await q(sb.rpc(fn, { p_student_id: v.student_id, p_code: v.code, p_title: id || null }));
-    await loadStudentGame(true); shopModal();
+    await loadStudentGame(true); render();
     if (fn === 'student_buy_title') { confetti(); toast('ได้ฉายาใหม่แล้ว! ✨'); }
-  } catch (e) { toast({ NOT_ENOUGH_COINS: 'เหรียญไม่พอ', NEED_MORE_XP: 'ยศยังไม่ถึง', ALREADY_OWNED: 'มีฉายานี้แล้ว' }[Object.keys({ NOT_ENOUGH_COINS: 1, NEED_MORE_XP: 1, ALREADY_OWNED: 1 }).find(k => (e.message || '').includes(k))] || errMsg(e), true); }
+  } catch (e) { const k = ['NOT_ENOUGH_COINS', 'NEED_MORE_XP', 'ALREADY_OWNED'].find(k => (e.message || '').includes(k)); toast({ NOT_ENOUGH_COINS: 'เหรียญไม่พอ', NEED_MORE_XP: 'ยศยังไม่ถึง', ALREADY_OWNED: 'มีฉายานี้แล้ว' }[k] || errMsg(e), true); }
 }
 Object.assign(ACT, {
   'hall-lv': el => { GAME.lvTab = el.dataset.l; render(); },
-  'game-help': gameHelpModal,
-  'shop-open': shopModal,
+  'game-help': () => gameHelpModal(),
+  'shop-open': () => { stuState.tab = 'shop'; if (isExamTakeRoute()) { EXM = null; location.hash = '#student'; } else { render(); window.scrollTo({ top: 0, behavior: 'smooth' }); } },
   'shop-buy': el => shopAction('student_buy_title', el.dataset.id),
   'shop-equip': el => shopAction('student_equip_title', el.dataset.id),
 });
@@ -7049,6 +7216,233 @@ Object.assign(ACT, {
   'gal-unfeature': el => confirmBox('เอาออกจากแกลเลอรี', 'เอาผลงานนี้ออกจากแกลเลอรี?', 'เอาออก', async () => { await galRemove(el.dataset.id); const sid = el.dataset.sid; if (sid && ui.route.startsWith('grade-')) openGrader(sid); else render(); }),
   'gal-remove': el => confirmBox('เอาออกจากแกลเลอรี', 'เอาผลงานนี้ออกจากแกลเลอรี?', 'เอาออก', async () => { await galRemove(el.dataset.id); render(); }),
   'gal-share': async () => { await copyText(location.origin + location.pathname + '#gallery'); toast('คัดลอกลิงก์แกลเลอรีแล้ว'); },
+});
+
+/* =====================================================================
+   ครู: จัดการ Ranking — ตารางแต้มทุกคน ให้/หัก XP และเหรียญ มอบฉายา ตั้งกติกาแต้ม
+   ===================================================================== */
+I.trophy = '<path d="M7 4h10v4a5 5 0 0 1-10 0z"/><path d="M7 6H4.5a2.5 2.5 0 0 0 2.6 3.4M17 6h2.5a2.5 2.5 0 0 1-2.6 3.4M12 13v4M8.5 20h7M9.5 17h5"/>';
+const confirmDlg = (msg, fn) => confirmBox('ยืนยัน', msg, 'ยืนยัน', fn);
+let rkQT = null;
+const RK = { t: null, adj: null, loading: false, lv: null, cls: '', q: '', sel: new Set(), missing: false };
+const RK_REASONS = [['🙋', 'ตอบคำถามในห้อง', 10], ['🤝', 'ช่วยเหลือเพื่อน', 20], ['🧹', 'จิตอาสา / ช่วยงานครู', 20], ['🏅', 'ร่วมกิจกรรม / แข่งขัน', 50], ['💡', 'งานสร้างสรรค์โดดเด่น', 30], ['⚠️', 'ไม่ตั้งใจเรียน', -10]];
+const RULE_LABELS = [
+  ['งานที่ส่ง', [['sub', '📤 ส่งงาน (ต่อชิ้น)'], ['ontime', '⏰ ส่งตรงเวลา'], ['score', '📝 คะแนนงานสูงสุด (ตามร้อยละ)']]],
+  ['ข้อสอบ', [['exam', '🧪 ข้อสอบสูงสุด (ต่อชุด)'], ['exam_full', '💯 โบนัสได้คะแนนเต็ม']]],
+  ['อื่น ๆ', [['gallery', '🖼 ผลงานขึ้นแกลเลอรี'], ['present', '📋 มาเรียน'], ['late', '🕘 มาสาย']]],
+  ['เหรียญ 🪙', [['exam_coin', '🧪 ข้อสอบคะแนนเต็มได้ (คิดตามร้อยละ)'], ['exam_full_coin', '💯 โบนัสคะแนนเต็ม'], ['sub_coin', '⏰ ส่งงานตรงเวลา (ต่อชิ้น)']]],
+];
+
+async function loadRanking(force) {
+  if (RK.loading || (RK.t && !force)) return;
+  RK.loading = true;
+  try {
+    const [t, adj] = await Promise.all([q(sb.rpc('teacher_game_table')), fetchAll('game_adjustments', 'created_at').catch(() => [])]);
+    RK.t = t; RK.adj = adj; RK.missing = false;
+  } catch (e) { RK.missing = true; RK.t = { rows: [], rules: {}, titles: [] }; }
+  RK.loading = false; GAME.t = null; if (ui.route === 'ranking') render();
+}
+const rkCan = () => !!RK.t?.can;
+function rkRows() {
+  const rows = (RK.t?.rows || []).filter(r => r.level === RK.lv && (!RK.cls || r.classroom_id === RK.cls));
+  const s = RK.q.trim().toLowerCase();
+  return s ? rows.filter(r => r.name.toLowerCase().includes(s) || String(r.number) === s) : rows;
+}
+function rkStu(id) { return (RK.t?.rows || []).find(r => r.id === id); }
+
+function viewRanking() {
+  loadRanking();
+  const head = `<div class="page-head"><div><h2>🏆 Ranking</h2><div class="sub">อันดับ XP ของนักเรียนทุกคน แยกตามสายชั้น · ให้แต้มพิเศษ มอบฉายา และตั้งกติกาแต้มได้ที่นี่</div></div>`;
+  if (!RK.t) return `${head}</div><div class="card"><div class="empty"><span class="spin"></span> กำลังคำนวณแต้ม…</div></div>`;
+  if (RK.missing) return `${head}</div><div class="card"><div class="empty">${ic('lock')}<b>ยังไม่ได้ตั้งค่า</b>รันไฟล์ phase7.sql และ phase8.sql ใน Supabase ก่อน</div></div>`;
+  const all = RK.t.rows, titles = RK.t.titles;
+  const levels = [...new Set(all.map(r => r.level))].sort((a, b) => a.localeCompare(b, 'th', { numeric: true }));
+  if (!levels.includes(RK.lv)) RK.lv = levels[0] || null;
+  const inLv = all.filter(r => r.level === RK.lv);
+  const rooms = [...new Map(inLv.map(r => [r.classroom_id, r.classroom])).entries()].sort((a, b) => a[1].localeCompare(b[1], 'th', { numeric: true }));
+  if (RK.cls && !rooms.some(([id]) => id === RK.cls)) RK.cls = '';
+  const rows = rkRows(), can = rkCan();
+  const top = inLv.filter(r => r.xp > 0).slice(0, 10).map(r => ({ ...r, name: r.name }));
+  const avg = inLv.length ? Math.round(inLv.reduce((a, r) => a + r.xp, 0) / inLv.length) : 0;
+  const best = inLv[0];
+  const selN = [...RK.sel].filter(id => rows.some(r => r.id === id)).length;
+  const cell = (n, cls = '') => `<td class="num ${cls}">${n ? n.toLocaleString() : '<span class="muted">–</span>'}</td>`;
+  return `${head}<div class="row" style="gap:6px;flex-wrap:wrap">
+      ${can ? `<button class="btn" data-act="rk-rules">⚙️ กติกาแต้ม</button><button class="btn" data-act="rk-history">📜 ประวัติการให้แต้ม</button>` : ''}
+      <button class="btn ghost" data-act="rk-xlsx">${ic('download')}Excel</button><button class="btn ghost icon" data-act="rk-reload" title="คำนวณใหม่" aria-label="คำนวณใหม่">${ic('refresh')}</button></div></div>
+    ${can ? '' : `<div class="card rk-note">👀 ดูได้อย่างเดียว · การให้แต้มและมอบฉายาต้องได้สิทธิ์ "จัดการ Ranking" จากผู้ดูแล</div>`}
+    <div class="rk-bar">
+      ${levels.length ? `<div class="seg">${levels.map(l => `<button class="${l === RK.lv ? 'on' : ''}" data-act="rk-lv" data-l="${esc(l)}">${esc(l)}</button>`).join('')}</div>` : ''}
+      <select class="input sm-sel" data-chg="rk-cls" aria-label="ห้อง"><option value="">ทุกห้องใน ${esc(RK.lv || '')}</option>${rooms.map(([id, n]) => `<option value="${id}" ${id === RK.cls ? 'selected' : ''}>${esc(n)}</option>`).join('')}</select>
+      <input class="input rk-q" data-inp="rk-q" placeholder="ค้นหาชื่อหรือเลขที่" value="${esc(RK.q)}">
+      <span class="spacer"></span>
+      <div class="rk-stats"><span>👥 <b>${inLv.length}</b> คน</span><span>⭐ เฉลี่ย <b>${avg.toLocaleString()}</b> XP</span>${best && best.xp ? `<span>${RANKS[rankIdx(best.xp)].ic} สูงสุด <b>${best.xp.toLocaleString()}</b></span>` : ''}</div>
+    </div>
+    <div class="card hall rk-hall"><div class="hall-h"><div><h3>ทำเนียบ ${esc(RK.lv || '')}</h3><small>ป้ายนี้แสดงในหน้าแดชบอร์ด หน้านักเรียน และหน้าก่อนเริ่มสอบ</small></div><span class="spacer"></span><button class="btn sm ghost" data-act="rk-help">วิธีคิดแต้ม</button></div>${podiumHTML(top, titles)}</div>
+    ${can ? `<div class="rk-bulk ${selN ? 'on' : ''}"><b>${selN ? `เลือก ${selN} คน` : 'เลือกนักเรียนเพื่อให้แต้มพร้อมกัน'}</b><span class="spacer"></span>
+      ${selN ? `<button class="btn primary sm" data-act="rk-give">🎁 ให้แต้ม / เหรียญ</button><button class="btn sm ghost" data-act="rk-clear">ยกเลิกเลือก</button>` : `<button class="btn sm" data-act="rk-selall">เลือกทั้งหมดที่แสดง (${rows.length})</button>`}</div>` : ''}
+    <div class="card"><div class="tbl-wrap"><table class="tbl rk-tbl"><thead><tr>
+      ${can ? `<th class="ck"><input type="checkbox" data-chg="rk-all" ${rows.length && selN === rows.length ? 'checked' : ''} aria-label="เลือกทั้งหมด"></th>` : ''}
+      <th>อันดับ</th><th>ห้อง</th><th>เลขที่</th><th>ชื่อ · ยศ · ฉายา</th><th class="num">📤 งาน</th><th class="num">🧪 สอบ</th><th class="num">🖼 ผลงาน</th><th class="num">📋 เช็คชื่อ</th><th class="num">🎁 ครูให้</th><th class="num">XP รวม</th><th class="num">🪙 เหรียญ</th>${can ? '<th></th>' : ''}</tr></thead>
+      <tbody>${rows.map(r => `<tr class="${RK.sel.has(r.id) ? 'sel' : ''}">
+        ${can ? `<td class="ck"><input type="checkbox" data-chg="rk-sel" data-id="${r.id}" ${RK.sel.has(r.id) ? 'checked' : ''} aria-label="เลือก"></td>` : ''}
+        <td><span class="rk-no ${r.rank <= 3 && r.xp ? 'n' + r.rank : ''}">${r.rank}</span></td><td>${esc(r.classroom)}</td><td>${r.number}</td>
+        <td>${nameTag(r.name, r.xp, r.rank, r.title_id, titles)}<small class="muted rk-lv">Lv.${lvOf(r.xp)}</small></td>
+        ${cell(r.sub)}${cell(r.exam)}${cell(r.gallery)}${cell(r.att)}${cell(r.bonus, r.bonus < 0 ? 'neg' : r.bonus > 0 ? 'pos' : '')}
+        <td class="num"><b>${r.xp.toLocaleString()}</b></td><td class="num ${r.coins < 0 ? 'neg' : ''}">${r.coins}</td>
+        ${can ? `<td class="rk-act"><button class="btn sm" data-act="rk-plus" data-id="${r.id}" title="+10 XP ตอบคำถาม">+10</button><button class="btn sm ghost" data-act="rk-stu" data-id="${r.id}">จัดการ</button></td>` : ''}
+      </tr>`).join('') || `<tr><td colspan="13"><div class="empty">ไม่พบนักเรียน</div></td></tr>`}</tbody></table></div></div>`;
+}
+
+/* ---------- ให้แต้ม ---------- */
+function rkGiveModal(ids) {
+  const names = ids.map(rkStu).filter(Boolean);
+  openModal({
+    title: `🎁 ให้แต้ม ${names.length === 1 ? names[0].name : `${names.length} คน`}`, wide: true,
+    body: `<div class="stack">
+      <div class="rk-reasons">${RK_REASONS.map(([e, t, x]) => `<button class="rk-rs ${x < 0 ? 'neg' : ''}" data-act="rk-reason" data-t="${esc(t)}" data-x="${x}"><span>${e}</span>${esc(t)}<b>${x > 0 ? '+' : ''}${x}</b></button>`).join('')}</div>
+      <div class="grid2"><label class="field"><span>XP (ใส่ติดลบเพื่อหัก)</span><input class="input" type="number" name="xp" value="10" step="1"></label>
+        <label class="field"><span>🪙 เหรียญ (ใส่ติดลบเพื่อหัก)</span><input class="input" type="number" name="coins" value="0" step="1"></label></div>
+      <label class="field"><span>เหตุผล (นักเรียนเห็นข้อความนี้)</span><input class="input" name="reason" maxlength="200" value="ตอบคำถามในห้อง"></label>
+      ${names.length > 1 ? `<div class="small muted">ให้กับ: ${names.slice(0, 12).map(n => esc(n.name.split(' ')[0])).join(', ')}${names.length > 12 ? ` และอีก ${names.length - 12} คน` : ''}</div>` : ''}</div>`,
+    ctx: { rkIds: ids },
+    actions: [{ label: 'ยกเลิก', onClick: closeModal }, { label: 'ให้แต้ม', kind: 'primary', onClick: async () => {
+      const xp = Math.round(+$('#modal-root [name=xp]').value || 0), coins = Math.round(+$('#modal-root [name=coins]').value || 0), reason = $('#modal-root [name=reason]').value.trim();
+      if (!xp && !coins) return toast('ใส่ XP หรือเหรียญอย่างน้อย 1 อย่าง', true);
+      const list = modalCtx.rkIds;
+      await rkInsert(list.map(id => ({ student_id: id, xp, coins, reason: reason || null })));
+      closeModal(); RK.sel.clear(); toast(`${xp >= 0 && coins >= 0 ? 'ให้' : 'ปรับ'}แต้มแล้ว ${list.length} คน ✨`);
+    } }],
+  });
+}
+async function rkInsert(rows) {
+  const uid = session?.user?.id;
+  await q(sb.from('game_adjustments').insert(rows.map(r => ({ ...r, created_by: uid }))));
+  await loadRanking(true);
+}
+
+/* ---------- จัดการรายคน ---------- */
+function rkStuModal(id) {
+  const r = rkStu(id); if (!r) return;
+  const titles = RK.t.titles, owned = new Set(r.owned || []);
+  const hist = (RK.adj || []).filter(a => a.student_id === id).sort((a, b) => b.created_at.localeCompare(a.created_at));
+  const part = (e, l, x) => `<div class="gp"><span>${e}</span><small>${l}</small><b>${(x || 0).toLocaleString()}</b></div>`;
+  openModal({
+    title: `${r.classroom} เลขที่ ${r.number}`, wide: true,
+    body: `<div class="rk-sm-head">${nameTag(r.name, r.xp, r.rank, r.title_id, titles)}<span class="spacer"></span><span class="chip">อันดับ ${r.rank} ของ ${esc(r.level)}</span><b class="rk-sm-xp">${r.xp.toLocaleString()} XP</b><span class="shop-coins sm">🪙 ${r.coins}</span></div>
+      <div class="gparts in-modal">${part('📤', 'งาน', r.sub)}${part('🧪', 'ข้อสอบ', r.exam)}${part('🖼', 'ผลงาน', r.gallery)}${part('📋', 'เช็คชื่อ', r.att)}${part('🎁', 'ครูให้', r.bonus)}</div>
+      <div class="small muted" style="margin:6px 0 12px">เหรียญ: ได้จากระบบ ${r.coins_earn} · ครูให้ ${r.coins_adj} · ใช้ซื้อฉายา ${r.spent}</div>
+      <div class="help-grid">
+        <div><h4>ปรับแต้ม</h4>
+          <div class="rk-quick">${[10, 20, 50, 100, -10, -50].map(x => `<button class="btn sm ${x < 0 ? 'danger-soft' : ''}" data-act="rk-q1" data-id="${id}" data-x="${x}">${x > 0 ? '+' : ''}${x} XP</button>`).join('')}</div>
+          <div class="grid2" style="margin-top:10px"><label class="field"><span>XP</span><input class="input" type="number" name="xp" value="0"></label><label class="field"><span>🪙 เหรียญ</span><input class="input" type="number" name="coins" value="0"></label></div>
+          <label class="field"><span>เหตุผล</span><input class="input" name="reason" maxlength="200" placeholder="เช่น ตอบคำถามถูก"></label>
+          <div class="row" style="gap:6px;margin-top:8px"><button class="btn primary sm" data-act="rk-apply" data-id="${id}">บันทึก</button>
+            <span class="spacer"></span><label class="small muted" style="display:flex;gap:6px;align-items:center">ตั้ง XP รวมเป็น <input class="input" style="width:90px" type="number" name="setxp" placeholder="${r.xp}"></label><button class="btn sm" data-act="rk-setxp" data-id="${id}">ตั้งค่า</button></div>
+          <h4 style="margin-top:16px">ประวัติแต้มพิเศษ</h4>
+          ${hist.length ? `<div class="rk-hist">${hist.slice(0, 30).map(a => `<div class="hr-row"><span class="${a.xp < 0 || a.coins < 0 ? 'neg' : 'pos'}">${a.xp ? `${a.xp > 0 ? '+' : ''}${a.xp} XP` : ''} ${a.coins ? `${a.coins > 0 ? '+' : ''}${a.coins}🪙` : ''}</span><span class="small">${esc(a.reason || '—')}</span><span class="spacer"></span><small class="muted">${fmtDate(a.created_at)}</small><button class="btn icon sm ghost" data-act="rk-undo" data-id="${a.id}" data-s="${id}" title="ยกเลิกรายการนี้" aria-label="ยกเลิก">${ic('trash')}</button></div>`).join('')}</div>` : '<p class="small muted">ยังไม่มี</p>'}
+        </div>
+        <div><h4>ฉายา</h4>
+          ${owned.size ? [...owned].map(tid => { const t = titleOf(tid, titles); return t ? `<div class="hr-row"><span class="ttl ${t.rarity}">${esc(t.name)}</span>${r.title_id === tid ? '<small>✅ ใช้อยู่</small>' : ''}<span class="spacer"></span><button class="btn sm ghost" data-act="rk-revoke" data-id="${id}" data-t="${tid}">ถอน</button></div>` : ''; }).join('') : '<p class="small muted">ยังไม่มีฉายา</p>'}
+          <label class="field" style="margin-top:10px"><span>มอบฉายาฟรี (เป็นรางวัลพิเศษ)</span><select class="input" name="title">${Object.keys(RARITY).map(rr => `<optgroup label="${RARITY[rr]}">${titles.filter(t => t.rarity === rr && !owned.has(t.id)).map(t => `<option value="${t.id}">${esc(t.name)}</option>`).join('')}</optgroup>`).join('')}</select></label>
+          <button class="btn sm" data-act="rk-grant" data-id="${id}" style="margin-top:6px">🎖 มอบและใส่ให้เลย</button>
+          <p class="small muted" style="margin-top:10px">ถอนฉายาที่นักเรียนซื้อด้วยเหรียญ → เหรียญคืนให้อัตโนมัติ</p></div>
+      </div>`,
+    ctx: { rkStu: id },
+    actions: [{ label: 'ปิด', onClick: closeModal }],
+  });
+}
+async function rkReopen(id, msg) { await loadRanking(true); rkStuModal(id); if (msg) toast(msg); }
+
+/* ---------- กติกาแต้ม ---------- */
+function rkRulesModal() {
+  const r = { ...RULE_DEF, ...(RK.t.rules || {}) };
+  openModal({
+    title: '⚙️ กติกาแต้ม', wide: true,
+    body: `<p class="small muted" style="margin-top:0">แก้แล้วแต้มของทุกคนคำนวณใหม่ทันที (ย้อนหลังทั้งหมด) · ยศตัดที่ ${RANKS.map(x => `${x.ic}${x.xp}`).join(' · ')} XP</p>
+      <div class="rk-rules">${RULE_LABELS.map(([g, list]) => `<div><h4>${g}</h4>${list.map(([k, l]) => `<label class="rk-rule"><span>${l}</span><input class="input" type="number" min="0" max="1000" name="r_${k}" value="${r[k]}" data-inp="rk-rule-calc"></label>`).join('')}</div>`).join('')}</div>
+      <div class="rk-calc" id="rk-calc"></div>`,
+    actions: [{ label: 'คืนค่าเริ่มต้น', kind: 'ghost', onClick: () => { Object.entries(RULE_DEF).forEach(([k, v]) => { const el = $(`#modal-root [name=r_${k}]`); if (el) el.value = v; }); rkCalc(); } },
+      { label: 'ยกเลิก', onClick: closeModal },
+      { label: 'บันทึกกติกา', kind: 'primary', onClick: async () => {
+        const rules = {}; Object.keys(RULE_DEF).forEach(k => { rules[k] = Math.max(0, Math.min(1000, Math.round(+$(`#modal-root [name=r_${k}]`).value || 0))); });
+        await q(sb.rpc('teacher_set_game_rules', { p_rules: rules })); closeModal(); await loadRanking(true); toast('บันทึกกติกาแล้ว คำนวณแต้มใหม่เรียบร้อย');
+      } }],
+  });
+  rkCalc();
+}
+function rkCalc() {
+  const v = k => +($(`#modal-root [name=r_${k}]`)?.value || 0);
+  const perAsg = v('sub') + v('ontime') + v('score'), perExam = v('exam') + v('exam_full');
+  const term = 10 * perAsg + 4 * perExam + 2 * v('gallery');
+  const el = $('#rk-calc'); if (!el) return;
+  el.innerHTML = `ส่งงานครบ ตรงเวลา ได้เต็ม = <b>${perAsg}</b> XP/ชิ้น · ข้อสอบได้เต็ม = <b>${perExam}</b> XP/ชุด<br>ตัวอย่าง 1 ภาคเรียน (งาน 10 ชิ้น + สอบ 4 ชุด + ผลงาน 2 ชิ้น) เด็กที่ทำเต็มทุกอย่าง ≈ <b>${term.toLocaleString()} XP</b> → ${RANKS[rankIdx(term)].ic} ${RANKS[rankIdx(term)].n}`;
+}
+
+/* ---------- ประวัติทั้งหมด ---------- */
+function rkHistoryModal() {
+  const list = [...(RK.adj || [])].sort((a, b) => b.created_at.localeCompare(a.created_at)).slice(0, 300);
+  openModal({
+    title: '📜 ประวัติการให้แต้ม', wide: true,
+    body: list.length ? `<div class="tbl-wrap"><table class="tbl"><thead><tr><th>เวลา</th><th>นักเรียน</th><th class="num">XP</th><th class="num">🪙 เหรียญ</th><th>เหตุผล</th><th></th></tr></thead><tbody>
+      ${list.map(a => { const s = rkStu(a.student_id); return `<tr><td class="small">${fmtDate(a.created_at)}</td><td>${s ? `${esc(s.classroom)} · ${s.number} ${esc(s.name)}` : '<span class="muted">—</span>'}</td>
+        <td class="num ${a.xp < 0 ? 'neg' : 'pos'}">${a.xp ? (a.xp > 0 ? '+' : '') + a.xp : ''}</td><td class="num">${a.coins ? (a.coins > 0 ? '+' : '') + a.coins : ''}</td><td>${esc(a.reason || '')}</td>
+        <td><button class="btn icon sm ghost" data-act="rk-undo" data-id="${a.id}" title="ยกเลิกรายการนี้" aria-label="ยกเลิก">${ic('trash')}</button></td></tr>`; }).join('')}</tbody></table></div>`
+      : `<div class="empty">ยังไม่เคยให้แต้มพิเศษ</div>`,
+    actions: [{ label: 'ปิด', onClick: closeModal }],
+  });
+}
+
+Object.assign(ACT, {
+  'rk-lv': el => { RK.lv = el.dataset.l; RK.cls = ''; RK.sel.clear(); render(); },
+  'rk-reload': async () => { RK.t = null; render(); await loadRanking(true); toast('คำนวณแต้มใหม่แล้ว'); },
+  'rk-help': () => gameHelpModal(RK.t?.rules),
+  'rk-rules': rkRulesModal,
+  'rk-history': rkHistoryModal,
+  'rk-give': () => rkGiveModal([...RK.sel].filter(id => rkRows().some(r => r.id === id))),
+  'rk-selall': () => { rkRows().forEach(r => RK.sel.add(r.id)); render(); },
+  'rk-clear': () => { RK.sel.clear(); render(); },
+  'rk-stu': el => rkStuModal(el.dataset.id),
+  'rk-plus': async el => { await rkInsert([{ student_id: el.dataset.id, xp: 10, coins: 0, reason: 'ตอบคำถามในห้อง' }]); toast(`+10 XP ให้ ${rkStu(el.dataset.id)?.name.split(' ')[0] || ''} แล้ว`); },
+  'rk-reason': el => { $('#modal-root [name=xp]').value = el.dataset.x; $('#modal-root [name=reason]').value = el.dataset.t; $$('#modal-root .rk-rs').forEach(b => b.classList.toggle('on', b === el)); },
+  'rk-q1': async el => { const x = +el.dataset.x; await rkInsert([{ student_id: el.dataset.id, xp: x, coins: 0, reason: $('#modal-root [name=reason]').value.trim() || (x > 0 ? 'แต้มพิเศษจากครู' : 'หักแต้ม') }]); rkStuModal(el.dataset.id); toast(`${x > 0 ? '+' : ''}${x} XP แล้ว`); },
+  'rk-apply': async el => {
+    const xp = Math.round(+$('#modal-root [name=xp]').value || 0), coins = Math.round(+$('#modal-root [name=coins]').value || 0);
+    if (!xp && !coins) return toast('ใส่ XP หรือเหรียญก่อน', true);
+    await rkInsert([{ student_id: el.dataset.id, xp, coins, reason: $('#modal-root [name=reason]').value.trim() || null }]); rkStuModal(el.dataset.id); toast('บันทึกแล้ว');
+  },
+  'rk-setxp': async el => {
+    const r = rkStu(el.dataset.id), want = Math.round(+$('#modal-root [name=setxp]').value);
+    if (!Number.isFinite(want) || $('#modal-root [name=setxp]').value === '') return toast('ใส่ XP ที่ต้องการ', true);
+    const d = want - r.xp; if (!d) return toast('XP เท่าเดิม');
+    await rkInsert([{ student_id: r.id, xp: d, coins: 0, reason: `ครูปรับ XP เป็น ${want}` }]); rkStuModal(r.id); toast(`ปรับ XP เป็น ${want} แล้ว`);
+  },
+  'rk-undo': el => confirmDlg('ยกเลิกรายการนี้? แต้มจะถูกคืนกลับเหมือนไม่เคยให้', async () => {
+    const back = modalCtx?.rkStu || el.dataset.s;
+    await q(sb.from('game_adjustments').delete().eq('id', el.dataset.id)); await loadRanking(true);
+    if (back) rkStuModal(back); else rkHistoryModal(); toast('ยกเลิกแล้ว');
+  }),
+  'rk-grant': async el => {
+    const t = $('#modal-root [name=title]').value; if (!t) return;
+    try { await q(sb.rpc('teacher_grant_title', { p_student: el.dataset.id, p_title: t, p_equip: true })); await rkReopen(el.dataset.id, 'มอบฉายาแล้ว 🎖'); } catch (e) { toast(errMsg(e), true); }
+  },
+  'rk-revoke': el => confirmDlg('ถอนฉายานี้? (ถ้าซื้อด้วยเหรียญ เหรียญจะคืนให้นักเรียน)', async () => {
+    await q(sb.rpc('teacher_revoke_title', { p_student: el.dataset.id, p_title: el.dataset.t })); await rkReopen(el.dataset.id, 'ถอนฉายาแล้ว');
+  }),
+  'rk-xlsx': () => {
+    const rows = (RK.t?.rows || []).filter(r => r.level === RK.lv).map(r => ({ 'อันดับ': r.rank, 'ห้อง': r.classroom, 'เลขที่': r.number, 'ชื่อ - สกุล': r.name, 'ยศ': RANKS[rankIdx(r.xp)].n, 'เลเวล': lvOf(r.xp),
+      'XP งาน': r.sub, 'XP สอบ': r.exam, 'XP ผลงาน': r.gallery, 'XP เช็คชื่อ': r.att, 'XP ครูให้': r.bonus, 'XP รวม': r.xp, 'เหรียญ': r.coins, 'ฉายา': titleOf(r.title_id, RK.t.titles)?.name || '' }));
+    const wb = XLSX.utils.book_new(); XLSX.utils.book_append_sheet(wb, XLSX.utils.json_to_sheet(rows), String(RK.lv || 'Ranking').replace(/[\\/?*[\]:]/g, '-')); XLSX.writeFile(wb, `Ranking ${String(RK.lv || '').replace(/[\\/]/g, '-')}.xlsx`);
+  },
+});
+Object.assign(CHG, {
+  'rk-cls': el => { RK.cls = el.value; RK.sel.clear(); render(); },
+  'rk-sel': el => { el.checked ? RK.sel.add(el.dataset.id) : RK.sel.delete(el.dataset.id); render(); },
+  'rk-all': el => { rkRows().forEach(r => el.checked ? RK.sel.add(r.id) : RK.sel.delete(r.id)); render(); },
+});
+Object.assign(INP, {
+  'rk-q': el => { clearTimeout(rkQT); rkQT = setTimeout(() => { RK.q = el.value; render(); const i = $('.rk-q'); if (i) { i.focus(); i.setSelectionRange(i.value.length, i.value.length); } }, 250); },
+  'rk-rule-calc': rkCalc,
 });
 
 /* =====================================================================
