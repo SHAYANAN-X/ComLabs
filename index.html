@@ -2991,6 +2991,91 @@ body.bar-scrolled .top.anav::after,body.bar-scrolled .snav::after{opacity:1}
   [data-device=pc] .main::before{content:"";position:fixed;top:0;left:0;right:0;height:30px;z-index:19;pointer-events:none;
     -webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);-webkit-mask:linear-gradient(#000 35%,transparent);mask:linear-gradient(#000 35%,transparent)}
 }
+/* ---------- 🔥 Streak ---------- */
+.fire-tag{display:inline-flex;align-items:center;gap:1px;margin-left:5px;padding:1px 7px 1px 5px;border-radius:999px;font:800 11.5px var(--f-body);color:#B33A00;vertical-align:middle;
+  background:linear-gradient(180deg,#FFE6C7,#FFC58A);box-shadow:inset 0 0 0 1px rgba(230,110,0,.35),0 2px 6px -2px rgba(255,120,0,.5)}
+[data-theme=dark] .fire-tag{color:#FFB36B;background:rgba(255,120,0,.16)}
+.pill.gfire{background:linear-gradient(180deg,#FFE6C7,#FFC58A);color:#B33A00;font-weight:800}
+.card.streak{display:flex;align-items:center;gap:16px;padding:14px 18px;margin-top:12px;border-radius:24px;position:relative;overflow:hidden}
+.card.streak::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.55;background:radial-gradient(120% 140% at 0% 50%,rgba(255,150,40,.28),transparent 55%)}
+.card.streak.cold::before{background:radial-gradient(120% 140% at 0% 50%,rgba(120,140,170,.18),transparent 55%)}
+.sk-fire{position:relative;flex:none;width:68px;height:68px;border-radius:22px;display:grid;place-items:center;
+  background:linear-gradient(160deg,#FFF1DC,#FFD3A1);box-shadow:inset 0 1px 0 rgba(255,255,255,.8),inset 0 0 0 1px rgba(255,140,0,.25),0 10px 22px -12px rgba(255,110,0,.8)}
+.cold .sk-fire{background:linear-gradient(160deg,#F1F4F8,#DCE3EC);box-shadow:inset 0 1px 0 #fff,inset 0 0 0 1px rgba(100,120,150,.2)}
+[data-theme=dark] .sk-fire{background:linear-gradient(160deg,rgba(255,150,40,.25),rgba(255,90,0,.12))}
+.sk-flame{font-size:34px;line-height:1;transform-origin:50% 90%}
+.hot1 .sk-flame,.hot2 .sk-flame,.hot3 .sk-flame,.warm .sk-flame{animation:sk-flick 1.6s ease-in-out infinite}
+.hot2 .sk-fire{box-shadow:inset 0 1px 0 rgba(255,255,255,.8),0 0 0 2px rgba(255,140,0,.4),0 0 22px rgba(255,120,0,.5)}
+.hot3 .sk-fire{background:linear-gradient(160deg,#FFE0F0,#C9B6FF);box-shadow:0 0 0 2px rgba(150,100,255,.45),0 0 26px rgba(150,90,255,.55)}
+.sk-fire b{position:absolute;right:-6px;bottom:-6px;min-width:26px;height:26px;padding:0 6px;border-radius:13px;display:grid;place-items:center;
+  font:800 14px var(--f-head);color:#fff;background:linear-gradient(180deg,#FF8A1F,#E8590C);box-shadow:0 0 0 2.5px var(--surface,#fff),0 4px 10px -3px rgba(230,80,0,.7)}
+.cold .sk-fire b{background:#9AA6B8}
+@keyframes sk-flick{0%,100%{transform:scale(1) rotate(-2deg)}30%{transform:scale(1.08,1.12) rotate(2deg)}60%{transform:scale(.97,1.04) rotate(-1deg)}}
+.sk-body{flex:1;min-width:0;display:flex;flex-direction:column;gap:6px;position:relative}
+.sk-t{font:600 15.5px var(--f-head);display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}.sk-t b{font-size:18px;color:#E8590C}
+.sk-t small{font:500 12px var(--f-body);color:var(--muted)}.sk-t .sk-pb{color:#B7791F;font-weight:700}
+.sk-dots{display:flex;align-items:center;gap:6px}.sk-dots i{width:22px;height:8px;border-radius:4px;background:rgba(120,130,150,.22)}
+.sk-dots i.on{background:linear-gradient(90deg,#FFB224,#FF6A00);box-shadow:0 0 8px rgba(255,120,0,.55)}
+.sk-dots span{font-size:12.5px;color:var(--muted);margin-left:4px}
+.sk-msg{font-size:13px;color:var(--muted)}
+.sk-next{flex:none;display:flex;flex-direction:column;align-items:flex-end;gap:3px;text-align:right;position:relative}
+.sk-next small{font-size:11.5px;color:var(--muted)}.sk-next b{font:700 15px var(--f-head)}.sk-next.urgent b{color:var(--danger)}
+@media (max-width:640px){.card.streak{flex-wrap:wrap;gap:12px}.sk-fire{width:56px;height:56px}.sk-next{flex-direction:row;align-items:center;width:100%;justify-content:space-between}}
+@media (prefers-reduced-motion:reduce){.sk-flame{animation:none!important}}
+/* ---------- วิเคราะห์ข้อสอบรายข้อ ---------- */
+.card.ia{margin-top:16px}
+.ia .card-h{flex-wrap:wrap;gap:8px}
+.ia-sum{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;padding:4px 18px 14px}
+.ia-k{display:flex;flex-direction:column;gap:2px;padding:12px 14px;border-radius:16px;background:var(--surface-2);box-shadow:inset 0 0 0 1px var(--line)}
+.ia-k small{font-size:12px;color:var(--muted)}.ia-k b{font:800 24px var(--f-head);line-height:1.1}.ia-k span{font-size:12px;color:var(--muted)}
+.ia-k.ok b{color:var(--ok)}.ia-k.warn b{color:#C77700}.ia-k.bad b{color:var(--danger)}
+.ia-bar{gap:10px;flex-wrap:wrap}.ia-legend b{color:var(--text)}
+.ia-list{display:flex;flex-direction:column}
+.ia-row{display:grid;grid-template-columns:34px minmax(0,1fr) 78px 78px 200px;gap:14px;align-items:center;padding:12px 18px;border-top:1px solid var(--line)}
+.ia-qt{font-size:14px;line-height:1.45;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.ia-dist{display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:4px 12px;margin-top:6px}
+.ia-ch{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--muted)}
+.ia-ch b{width:16px;font-weight:700}.ia-ch em{font-style:normal;min-width:18px;text-align:right}
+.ia-cb{flex:1;height:7px;border-radius:4px;background:rgba(120,130,150,.15);overflow:hidden}.ia-cb i{display:block;height:100%;border-radius:4px;background:#9AA6B8}
+.ia-ch.right{color:var(--ok)}.ia-ch.right b{color:var(--ok)}.ia-ch.right .ia-cb i{background:linear-gradient(90deg,#34C759,#1AA353)}
+.ia-ch.weak .ia-cb{outline:1px dashed rgba(199,119,0,.5)}.ia-ch.weak b{color:#C77700}
+.ia-ch.rev b,.ia-ch.rev em{color:var(--danger)}.ia-ch.rev .ia-cb i{background:var(--danger)}
+.ia-ch.none{opacity:.7}
+.ia-m{display:flex;flex-direction:column;gap:3px}.ia-m small{font-size:11px;color:var(--muted);font-weight:700}
+.ia-m b{font:800 17px var(--f-head)}.ia-m b.ok{color:var(--ok)}.ia-m b.warn{color:#C77700}.ia-m b.bad{color:var(--danger)}
+.ia-mini{height:5px;border-radius:3px;background:rgba(120,130,150,.15);overflow:hidden}.ia-mini i{display:block;height:100%;background:linear-gradient(90deg,#5AC8FA,#0A6CF0)}
+.ia-mini.r i{background:linear-gradient(90deg,#B78CFF,#7A4DFF)}
+.ia-v{display:flex;flex-direction:column;align-items:flex-start;gap:4px}.ia-v small{font-size:11.5px;color:var(--muted);line-height:1.35}
+.chip.bad{background:rgba(229,72,77,.12);color:var(--danger)}
+@media (max-width:900px){.ia-sum{grid-template-columns:1fr 1fr}.ia-row{grid-template-columns:30px 1fr 64px 64px}.ia-v{grid-column:2/-1;flex-direction:row;align-items:center}}
+/* ---------- พื้นที่เก็บข้อมูล ---------- */
+.dm-meters{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.dm-meter{padding:12px 14px;border-radius:16px;background:var(--surface-2);box-shadow:inset 0 0 0 1px var(--line);display:flex;flex-direction:column;gap:6px}
+.dm-top{display:flex;justify-content:space-between;align-items:baseline;gap:8px}.dm-top b{font-size:13.5px}.dm-top span{font:800 16px var(--f-head)}.dm-top small{font-weight:500;color:var(--muted);font-size:12px}
+.dm-bar{height:10px;border-radius:6px;background:rgba(120,130,150,.15);overflow:hidden}.dm-bar i{display:block;height:100%;border-radius:6px;background:linear-gradient(90deg,#5AC8FA,#0A6CF0)}
+.dm-meter.warn .dm-bar i{background:linear-gradient(90deg,#FFC15A,#FF8A1F)}.dm-meter.bad .dm-bar i{background:linear-gradient(90deg,#FF8F8F,#E5484D)}
+.dm-meter>small{font-size:11.5px;color:var(--muted)}
+.dm-buckets{display:flex;flex-wrap:wrap;gap:6px}
+.dm-sub{font:700 13.5px var(--f-head);margin-bottom:6px}
+.dm-terms{display:flex;flex-direction:column;gap:6px}
+.dm-term{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 12px;border-radius:14px;background:var(--surface-2)}
+.dm-term>div{display:flex;align-items:center;gap:8px;flex-wrap:wrap}.dm-term small{color:var(--muted);font-size:12.5px}
+.dm-term.cur{box-shadow:inset 0 0 0 1.5px color-mix(in srgb,var(--ok) 45%,transparent)}
+.btn.danger-soft{color:var(--danger);background:rgba(229,72,77,.08);box-shadow:inset 0 0 0 1px rgba(229,72,77,.25)}
+.dm-backup{display:flex;align-items:center;gap:14px;flex-wrap:wrap;padding:14px;border-radius:16px;background:linear-gradient(135deg,rgba(90,200,250,.12),rgba(10,108,240,.08));box-shadow:inset 0 0 0 1px rgba(10,108,240,.15)}
+.dm-backup>div:first-child{flex:1;min-width:220px;display:flex;flex-direction:column;gap:2px}.dm-backup small{color:var(--muted);font-size:12.5px}
+@media (max-width:640px){.dm-meters{grid-template-columns:1fr}}
+/* ---------- ขึ้นภาคเรียนใหม่ ---------- */
+.nt-flow{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.nt-t{flex:1;min-width:160px;padding:14px 16px;border-radius:18px;background:var(--surface-2);display:flex;flex-direction:column;gap:6px}
+.nt-t small{font-size:12px;color:var(--muted)}.nt-t b{font:800 24px var(--f-head)}
+.nt-t.new{background:linear-gradient(135deg,rgba(90,200,250,.16),rgba(10,108,240,.1));box-shadow:inset 0 0 0 1.5px rgba(10,108,240,.3)}
+.nt-t.new .input{width:72px}
+.nt-arrow{font-size:24px;color:var(--muted)}
+.nt-opts{display:flex;flex-direction:column;gap:8px}
+.nt-opt{display:flex;gap:12px;align-items:flex-start;padding:12px 14px;border-radius:14px;background:var(--surface-2);cursor:pointer}
+.nt-opt input{margin-top:3px;width:18px;height:18px;accent-color:#0A6CF0}.nt-opt span{display:flex;flex-direction:column}.nt-opt small{color:var(--muted);font-size:12.5px}
+.dm-top{flex-wrap:wrap}.dm-top b{white-space:nowrap}
 
 </style>
 </head>
@@ -3485,7 +3570,7 @@ if (typeof module !== 'undefined') module.exports = ExamParser;
 </script>
 <script>
 /* โลโก้: ภาพครูปลื้ม (ไฟล์ต้นฉบับ src/logo.svg ฝังตอน build) */
-const APP_VER = '14.5 · 24 พ.ย. 2569';
+const APP_VER = '15.0 · 24 พ.ย. 2569';
 let LOGO_N = 0;
 function logoSVG() { const k = 'L' + (++LOGO_N); return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><defs><linearGradient id="lgb" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3B9BFF"/><stop offset=".5" stop-color="#0A5BE0"/><stop offset="1" stop-color="#062C78"/></linearGradient><linearGradient id="lgs" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset=".6" stop-color="#FFF4D6"/><stop offset="1" stop-color="#FFD978"/></linearGradient><radialGradient id="lgc" cx=".3" cy=".08" r=".75"><stop offset="0" stop-color="#fff" stop-opacity=".55"/><stop offset=".5" stop-color="#fff" stop-opacity=".08"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient></defs><rect width="48" height="48" rx="13" fill="url(#lgb)"/><rect width="48" height="48" rx="13" fill="url(#lgc)"/><rect x=".75" y=".75" width="46.5" height="46.5" rx="12.3" fill="none" stroke="#fff" stroke-opacity=".45" stroke-width="1.2"/><g fill="none" stroke="#04235F" stroke-opacity=".35" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" transform="translate(0 1.2)"><path d="M21.2 17 C19.8 14.6 17.4 13.6 14.8 13.6 C11 13.6 8.6 15.6 8.6 18.5 C8.6 21.8 11.6 22.9 14.9 23.9 C18.6 25 21.6 26.4 21.6 29.8 C21.6 33 18.8 34.6 15.1 34.6 C12 34.6 9.5 33.4 8 31.1"/><path d="M26.6 14 L39.6 34.2 M39.6 14 L26.6 34.2"/></g><g fill="none" stroke="url(#lgs)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M21.2 17 C19.8 14.6 17.4 13.6 14.8 13.6 C11 13.6 8.6 15.6 8.6 18.5 C8.6 21.8 11.6 22.9 14.9 23.9 C18.6 25 21.6 26.4 21.6 29.8 C21.6 33 18.8 34.6 15.1 34.6 C12 34.6 9.5 33.4 8 31.1"/><path d="M26.6 14 L39.6 34.2 M39.6 14 L26.6 34.2"/></g></svg>`.replace('<svg ', '<svg class="logo" aria-hidden="true" ').replace(/\b(lg[bsc])\b/g, '$1' + k); }
 /* =====================================================================
@@ -4238,12 +4323,13 @@ function viewSettings() {
   <div class="page-head"><div><h2>ตั้งค่า</h2><p>ข้อมูลครูและภาคเรียน</p></div></div>
   <div class="dash-grid">
     <div class="stack">
-      <div class="card"><div class="card-h"><h3>ปีการศึกษาและภาคเรียน</h3><span class="spacer"></span>${ME.admin() ? `<button class="btn sm" data-act="term-new">${ic('plus')}เพิ่มภาคเรียน</button>` : '<span class="chip">ผู้ดูแลเป็นผู้กำหนด</span>'}</div>
+      <div class="card"><div class="card-h"><h3>ปีการศึกษาและภาคเรียน</h3><span class="spacer"></span>${ME.admin() ? `<button class="btn sm primary" data-act="term-wizard">🎓 ขึ้นภาคเรียนใหม่</button>`: ''}${ME.admin() ? `<button class="btn sm" data-act="term-new">${ic('plus')}เพิ่มภาคเรียน</button>` : '<span class="chip">ผู้ดูแลเป็นผู้กำหนด</span>'}</div>
         <table class="tbl"><thead><tr><th>ภาคเรียน</th><th>วิชา</th><th>สถานะ</th><th class="act"></th></tr></thead><tbody>
         ${terms.map(t => `<tr><td><b>${t.semester}/${t.year}</b></td><td>${thaiNum(Q.subjectsOfTerm(t.id).length)}</td>
           <td>${t.is_current ? '<span class="chip ok">ภาคเรียนปัจจุบัน</span>' : ME.admin() ? `<button class="btn sm" data-act="term-current" data-id="${t.id}">ตั้งเป็นปัจจุบัน</button>` : ''}</td>
           <td class="act">${t.is_current || !ME.admin() ? '' : `<button class="btn ghost icon" data-act="term-del" data-id="${t.id}" aria-label="ลบภาคเรียน" style="color:var(--danger)">${ic('trash')}</button>`}</td></tr>`).join('')}
         </tbody></table></div>
+      ${typeof dataCardHTML === 'function' ? dataCardHTML() : ''}
     </div>
     <div class="stack">
       <div class="card"><div class="card-h"><h3>ข้อมูลครู</h3></div><div class="card-b stack">
@@ -6163,12 +6249,7 @@ function viewExamResults() {
         <td>${atts.length ? `<span class="sw ${sw >= 3 ? 'bad' : sw ? 'warn' : ''}">${sw ? '⚠️ ' : ''}${sw}</span>` : '–'}</td>
         <td class="act">${atts.length ? `<button class="btn sm ${a && a.submitted_at && EX.questions(eid).some(q => q.qtype === 'essay') && a.manual_score == null ? 'primary' : ''}" data-act="ex-att" data-id="${a.id}">${ic('eye')}ดู/ตรวจ</button>` : ''}</td></tr>`; }).join('')}
     </tbody></table></div></div>
-  ${qs.length ? `<div class="card"><div class="card-h"><h3>🔍 วิเคราะห์รายข้อ · ${esc(db.get('classrooms', ui.exResCid)?.name || '')}</h3><span class="spacer"></span><span class="small muted">ข้อที่ตอบถูกน้อย ควรทบทวนในห้อง</span></div>
-    <div class="card-b item-list">${qs.map((qq, i) => { const a = ans.filter(x => x.question_id === qq.id); const n = doneIds.size;
-      if (qq.qtype === 'essay') { const g = a.filter(x => x.points_awarded != null); const av = g.length ? g.reduce((s2, x) => s2 + +x.points_awarded, 0) / g.length : null;
-        return `<div class="item"><span class="q-no sm">${i + 1}</span><div class="item-q">${esc(RICH.plain(qq))}</div><span class="small muted">อัตนัย · เฉลี่ย ${av == null ? '–' : av.toFixed(1)}/${+qq.points}</span></div>`; }
-      const right = a.filter(x => x.is_correct).length; const pct = n ? right / n * 100 : 0;
-      return `<div class="item"><span class="q-no sm">${i + 1}</span><div class="item-q">${esc(RICH.plain(qq))}</div><div class="item-bar"><span><i style="width:${pct}%;background:${pct >= 70 ? 'var(--ok)' : pct >= 40 ? 'var(--accent)' : 'var(--danger)'}"></i></span><b>${n ? pct.toFixed(0) + '%' : '–'}</b></div></div>`; }).join('')}</div></div>` : ''}`;
+  ${qs.length ? itemAnalysisHTML(eid) : ''}`;
 }
 function answerText(qq, v) {
   if (v == null) return '<span class="muted">ไม่ได้ตอบ</span>';
@@ -7678,10 +7759,10 @@ const RANKS = [
   { n: 'สุดในรุ่น สุดในโรง', en: 'เด่นสุดทั้งโรงเรียน ไม่มีใครแตะได้', xp: 2100, ic: STAR5 },
 ];
 const RARITY = { common: 'ธรรมดา', rare: 'หายาก', epic: 'มหากาพย์', legendary: 'ตำนาน', mythic: 'เทพนิยาย' };
-const RULE_DEF = { sub: 30, ontime: 10, score: 50, exam: 100, exam_full: 30, gallery: 100, present: 5, late: 3, exam_coin: 10, exam_coin_per: 10, exam_full_coin: 0, sub_coin: 0 };
+const RULE_DEF = { sub: 30, ontime: 10, score: 50, exam: 100, exam_full: 30, gallery: 100, present: 5, late: 3, exam_coin: 10, exam_coin_per: 10, exam_full_coin: 0, sub_coin: 0, streak_xp: 5, streak_coin: 2 };
 function xpRules(r) {
   r = { ...RULE_DEF, ...(r || {}) };
-  return [['📤', 'ส่งงาน', `+${r.sub} ต่อชิ้น`], ['⏰', 'ส่งตรงเวลา', `+${r.ontime} ต่อชิ้น`], ['📝', 'คะแนนงาน', `สูงสุด +${r.score} ต่อชิ้น (ตามร้อยละ)`],
+  return [['📤', 'ส่งงาน', `+${r.sub} ต่อชิ้น`], ['⏰', 'ส่งตรงเวลา', `+${r.ontime} ต่อชิ้น`], ['📝', 'คะแนนงาน', `สูงสุด +${r.score} ต่อชิ้น (ตามร้อยละ)`], ['🔥', 'ส่งตรงเวลาติดต่อกัน', `ตั้งแต่งานที่ 3 ได้ +${r.streak_xp} ต่องาน · ครบทุก 5 งานรับ 🪙 ${r.streak_coin}`],
     ['🧪', 'ข้อสอบ', `สูงสุด +${r.exam} ต่อชุด · ได้เต็มรับเพิ่ม +${r.exam_full}`], ['🖼', 'ผลงานขึ้นแกลเลอรี', `+${r.gallery} ต่อชิ้น`],
     ['📋', 'มาเรียน / สาย', `+${r.present} / +${r.late} (ถ้าครูใช้เช็คชื่อ)`], ['🎁', 'ครูให้พิเศษ', 'ตอบคำถาม ช่วยเพื่อน ทำกิจกรรม']];
 }
@@ -7812,7 +7893,7 @@ function podiumHTML(top, titles, opt = {}) {
   if (!list.length) return `<div class="pod-empty">ยังไม่มีใครได้แต้ม ส่งงานหรือทำข้อสอบเพื่อขึ้นทำเนียบ! 🚀</div>`;
   const medal = ['', '🥇', '🥈', '🥉', '🎖️', '🎖️'];
   const plaque = (x, k) => x ? `<div class="pq p${k}${x.me ? ' me' : ''}"><div class="pq-medal">${medal[k]}</div>${emblemHTML(k)}
-      <div class="pq-name">${nameTag(x.name, x.xp, x.rank, x.title_id, titles, { noBadge: true, noCrown: true })}</div>
+      <div class="pq-name">${nameTag(x.name, x.xp, x.rank, x.title_id, titles, { noBadge: true, noCrown: true })}${fireTag(x.streak)}</div>
       <div class="pq-rank">${rkBadge(rankIdx(x.xp))}</div><div class="pq-meta">Lv.${lvOf(x.xp)}</div><div class="pq-xp">${x.xp.toLocaleString()} XP</div><div class="pq-cls">${esc(x.classroom)}</div></div>` : `<div class="pq p${k} vacant">${emblemHTML(k)}<div class="pq-meta">ว่าง</div></div>`;
   const [a, b, c, d, e] = list;
   return `<div class="podium">${plaque(d, 4)}${plaque(b, 2)}${plaque(a, 1)}${plaque(c, 3)}${plaque(e, 5)}</div>
@@ -7859,7 +7940,27 @@ function myGameCard(v, g) {
       <div class="gc-lv" title="ความคืบหน้าเลเวล"><i style="width:${(g.xp % 50) / 50 * 100}%"></i></div></div>
     <div class="gc-side"><div class="gc-stat"><b>#${g.rank}</b><small>ของ ${esc(g.level)} (${g.in_level} คน)</small></div>
       <div class="gc-stat coin"><b>🪙 ${g.coins}</b><small>เหรียญ</small></div>
-      <button class="btn sm primary" data-act="shop-open">🛒 ร้านค้า</button></div></div>`;
+      <button class="btn sm primary" data-act="shop-open">🛒 ร้านค้า</button></div></div>${streakHTML(g)}`;
+}
+/* ---------- 🔥 Streak: ส่งงานตรงเวลาติดต่อกัน ---------- */
+function fireTag(n) { return n >= 3 ? `<span class="fire-tag" title="ส่งงานตรงเวลาติดต่อกัน ${n} งาน">🔥${n}</span>` : ''; }
+function streakHTML(g) {
+  if (g.streak == null) return '';
+  const n = +g.streak || 0, best = +g.best_streak || 0, r = { ...RULE_DEF, ...(g.rules || {}) };
+  const step = n % 5, left = 5 - step;
+  const due = g.streak_next ? new Date(g.streak_next) : null;
+  const hrs = due ? (due - Date.now()) / 36e5 : null;
+  const dueTx = due ? (hrs < 24 ? `ภายใน ${Math.max(1, Math.round(hrs))} ชั่วโมง` : `อีก ${Math.ceil(hrs / 24)} วัน`) : '';
+  const lvl = n >= 10 ? 'hot3' : n >= 5 ? 'hot2' : n >= 3 ? 'hot1' : n ? 'warm' : 'cold';
+  const msg = !n ? (best ? `ไฟดับแล้ว 😢 เริ่มจุดใหม่ได้เลย สถิติเดิม ${best} งาน` : 'ส่งงานให้ทันกำหนดเพื่อจุดไฟดวงแรก')
+    : n < 3 ? `อีก ${3 - n} งานเริ่มได้โบนัส +${r.streak_xp} XP ต่องาน` : `ได้โบนัส +${r.streak_xp} XP ทุกงานที่ส่งทัน`;
+  return `<div class="card streak ${lvl}">
+    <div class="sk-fire"><span class="sk-flame">${n ? '🔥' : '🪵'}</span><b>${n}</b></div>
+    <div class="sk-body"><div class="sk-t">ส่งงานตรงเวลาติดต่อกัน <b>${n}</b> งาน${best > n ? `<small>สถิติสูงสุด ${best}</small>` : n && n >= best ? '<small class="sk-pb">🏅 สถิติใหม่</small>' : ''}</div>
+      <div class="sk-dots" title="ครบ 5 งาน รับ 🪙 ${r.streak_coin}">${Array.from({ length: 5 }, (_, i) => `<i class="${i < step || (n && step === 0) ? 'on' : ''}"></i>`).join('')}<span>${n && step === 0 ? `ครบรอบแล้ว! ได้ 🪙 ${r.streak_coin}` : `อีก ${left} งานรับ 🪙 ${r.streak_coin}`}</span></div>
+      <div class="sk-msg">${msg}</div></div>
+    ${due ? `<div class="sk-next ${hrs < 24 ? 'urgent' : ''}"><small>งานถัดไปครบกำหนด</small><b>${dueTx}</b><button class="btn sm" data-act="stu-tab" data-t="work">ไปส่งงาน</button></div>` : ''}
+  </div>`;
 }
 /* ใช้ในหน้าก่อนเริ่มสอบ: การ์ดของฉัน + ทำเนียบ */
 function studentGameHTML(v, compact) {
@@ -7878,7 +7979,7 @@ function gameChipHTML() {
     <span class="pill gchip">${g.rank <= 10 && g.xp > 0 ? crownTag(g.rank) : ''}<span class="gx">อันดับ ${g.rank}</span></span>
     ${rkBadge(i, ` · Lv.${lvOf(g.xp)}`)}
     ${t ? `<span class="ttl ${t.rarity}">${esc(t.name)}</span>` : '<span class="ttl-none">ยังไม่มีฉายา</span>'}
-    <span class="pill gcoin">🪙 ${g.coins}</span></button>`;
+    ${g.streak ? `<span class="pill gfire">🔥 ${g.streak}</span>` : ''}<span class="pill gcoin">🪙 ${g.coins}</span></button>`;
 }
 /* รูปโปรไฟล์ = ภาพประจำยศ (เต็มรูป ไม่มีพื้นหลัง) */
 function stuAvaHTML() {
@@ -7950,7 +8051,7 @@ function railListHTML(list, titles, school) {
   const md = ['', '🥇', '🥈', '🥉', '4', '5'];
   return list.slice(0, 5).map((x, k) => { const pos = x.rank || k + 1, r = RANKS[rankIdx(x.xp)];
     return `<div class="rail-row p${Math.min(pos, 4)}${x.me ? ' me' : ''}"><span class="rail-md">${pos <= 3 ? md[pos] : `<i>${pos}</i>`}</span>
-      <div class="rail-b"><div class="rail-n">${nameTag(x.name.split(' ')[0], x.xp, school ? x.lvl_rank : x.rank, x.title_id, titles, { noBadge: true })}</div>
+      <div class="rail-b"><div class="rail-n">${nameTag(x.name.split(' ')[0], x.xp, school ? x.lvl_rank : x.rank, x.title_id, titles, { noBadge: true })}${fireTag(x.streak)}</div>
       <div class="rail-r">${rkBadge(rankIdx(x.xp))}</div><small>${esc(x.classroom)}${school && x.lvl_rank ? ` · #${x.lvl_rank} ${esc(x.level)}` : ''}</small></div><b class="rail-xp">${x.xp.toLocaleString()}<small>XP</small></b></div>`; }).join('');
 }
 function stuRailsHTML() {
@@ -8318,6 +8419,314 @@ document.addEventListener('dragleave', e => { e.target.closest?.('#qb-drop')?.cl
 document.addEventListener('drop', e => { const d = e.target.closest?.('#qb-drop'); if (!d) return; e.preventDefault(); d.classList.remove('over'); if (e.dataTransfer?.files?.[0]) qbReadFile(e.dataTransfer.files[0]); });
 
 /* =====================================================================
+   insight.js — เฟส 15
+   1) วิเคราะห์ข้อสอบรายข้อ: ค่าความยาก (p) อำนาจจำแนก (r) ตัวลวง และความเชื่อมั่น KR-20
+   2) พื้นที่เก็บข้อมูล · ล้างไฟล์ภาคเรียนเก่า · สำรองข้อมูล
+   3) ขึ้นภาคเรียนใหม่ (คัดลอกรายวิชา/ห้อง/งาน)
+   ===================================================================== */
+
+/* ---------- 1) วิเคราะห์ข้อสอบ ---------- */
+const IA_VERDICT = {
+  great: ['ดีมาก', 'ok', 'ความยากพอเหมาะ แยกเด็กเก่ง/อ่อนได้ชัด เก็บเข้าคลังได้เลย'],
+  good: ['ใช้ได้', 'ok', 'ใช้ต่อได้ อาจปรับตัวลวงให้คมขึ้น'],
+  easy: ['ง่ายไป', 'warn', 'เกือบทุกคนตอบถูก ใช้เป็นข้ออุ่นเครื่องหรือปรับให้ยากขึ้น'],
+  hard: ['ยากไป', 'warn', 'ตอบถูกน้อยมาก ควรทบทวนเนื้อหา หรือตรวจว่าโจทย์ชัดเจนไหม'],
+  low: ['จำแนกต่ำ', 'warn', 'เด็กเก่งกับเด็กอ่อนตอบถูกพอ ๆ กัน ควรปรับคำถามหรือตัวลวง'],
+  bad: ['ตรวจเฉลย', 'bad', 'กลุ่มอ่อนตอบถูกมากกว่ากลุ่มเก่ง อาจเฉลยผิดหรือโจทย์กำกวม'],
+  few: ['ข้อมูลน้อย', '', 'มีผู้สอบไม่ถึง 5 คน ผลยังไม่น่าเชื่อถือ'],
+  essay: ['อัตนัย', '', 'ดูค่าเฉลี่ยคะแนน'],
+};
+function iaVerdict(p, r, n) {
+  if (n < 5) return 'few';
+  if (r < 0) return 'bad';
+  if (p > .8) return 'easy';
+  if (p < .2) return 'hard';
+  if (r < .2) return 'low';
+  return r >= .4 ? 'great' : 'good';
+}
+function itemAnalysis(eid, cids) {
+  const qs = EX.questions(eid);
+  const studs = cids.flatMap(c => Q.students(c).filter(s => s.active !== false));
+  const sids = new Set(studs.map(s => s.id));
+  // ครั้งที่ดีที่สุดของแต่ละคน
+  const bestOf = {};
+  store.exam_attempts.filter(a => a.exam_id === eid && a.submitted_at && sids.has(a.student_id)).forEach(a => {
+    const b = bestOf[a.student_id]; if (!b || +a.total_score > +b.total_score) bestOf[a.student_id] = a;
+  });
+  const atts = Object.values(bestOf).sort((a, b) => +b.total_score - +a.total_score);
+  const N = atts.length;
+  const amap = new Map(); (store.exam_answers || []).forEach(x => amap.set(x.attempt_id + '|' + x.question_id, x));
+  const frac = (a, qq) => { const x = amap.get(a.id + '|' + qq.id); if (!x) return 0;
+    if (x.is_correct != null && qq.qtype !== 'essay') return x.is_correct ? 1 : 0;
+    return +qq.points ? Math.max(0, Math.min(1, (+x.points_awarded || 0) / +qq.points)) : 0; };
+  const g = Math.max(1, Math.round(N * .27));
+  const up = atts.slice(0, g), lo = atts.slice(-g);
+  const mean = arr => arr.length ? arr.reduce((s, v) => s + v, 0) / arr.length : 0;
+  const items = qs.map((qq, i) => {
+    const all = atts.map(a => frac(a, qq));
+    const p = mean(all), pU = mean(up.map(a => frac(a, qq))), pL = mean(lo.map(a => frac(a, qq)));
+    const r = N >= 2 ? pU - pL : 0;
+    let dist = null;
+    if (qq.qtype === 'mcq') {
+      const k = (qq.choices || []).length;
+      const cnt = (list) => { const c = Array(k + 1).fill(0); list.forEach(a => { const x = amap.get(a.id + '|' + qq.id); const v = x && x.answer != null && x.answer !== '' ? +x.answer : -1; c[v >= 0 && v < k ? v : k]++; }); return c; };
+      dist = { all: cnt(atts), up: cnt(up), lo: cnt(lo), k };
+    }
+    const v = qq.qtype === 'essay' ? 'essay' : iaVerdict(p, r, N);
+    return { qq, i, p, r, pU, pL, v, dist };
+  });
+  // KR-20 (เฉพาะข้อที่ให้คะแนนถูก/ผิด)
+  const di = items.filter(x => x.qq.qtype !== 'essay');
+  let kr = null;
+  if (di.length >= 2 && N >= 5) {
+    const tot = atts.map(a => di.reduce((s, x) => s + frac(a, x.qq), 0));
+    const m = mean(tot), varT = mean(tot.map(t => (t - m) ** 2));
+    const spq = di.reduce((s, x) => s + x.p * (1 - x.p), 0);
+    if (varT > 0) kr = di.length / (di.length - 1) * (1 - spq / varT);
+  }
+  return { items, N, g, kr };
+}
+function krText(kr) {
+  if (kr == null) return ['–', '', 'ต้องมีผู้สอบอย่างน้อย 5 คน'];
+  return kr >= .8 ? [kr.toFixed(2), 'ok', 'เชื่อมั่นสูงมาก'] : kr >= .7 ? [kr.toFixed(2), 'ok', 'เชื่อมั่นดี'] : kr >= .5 ? [kr.toFixed(2), 'warn', 'พอใช้ ควรปรับบางข้อ'] : [kr.toFixed(2), 'bad', 'ต่ำ ข้อสอบยังวัดได้ไม่คงที่'];
+}
+function itemAnalysisHTML(eid) {
+  const cids = EX.classIds(eid);
+  const scope = ui.iaScope === 'all' || !ui.exResCid ? 'all' : 'cls';
+  const A = itemAnalysis(eid, scope === 'all' ? cids : [ui.exResCid]);
+  const f = ui.iaFilter || 'all';
+  const cnt = k => A.items.filter(x => x.v === k).length;
+  const list = A.items.filter(x => f === 'all' || (f === 'fix' ? ['bad', 'low', 'hard', 'easy'].includes(x.v) : ['great', 'good'].includes(x.v)));
+  const [krv, krc, krt] = krText(A.kr);
+  const pct = v => (v * 100).toFixed(0);
+  const goodN = cnt('great') + cnt('good');
+  return `<div class="card ia">
+    <div class="card-h"><h3>🔍 วิเคราะห์ข้อสอบรายข้อ</h3><span class="spacer"></span>
+      ${cids.length > 1 ? `<div class="seg sm">${[['cls', esc(db.get('classrooms', ui.exResCid)?.name || 'ห้องนี้')], ['all', 'ทุกห้องรวมกัน']].map(([k, l]) => `<button class="${scope === k ? 'on' : ''}" data-act="ia-scope" data-k="${k}">${l}</button>`).join('')}</div>` : ''}
+      <button class="btn sm" data-act="ia-export" data-id="${eid}">${ic('dl')}ส่งออก Excel</button>
+      ${!store.p7Missing && goodN ? `<button class="btn sm primary" data-act="ia-tobank" data-id="${eid}">📚 เก็บข้อดี ${goodN} ข้อเข้าคลัง</button>` : ''}</div>
+    <div class="ia-sum">
+      <div class="ia-k"><small>ผู้สอบ</small><b>${A.N}</b><span>คน · กลุ่มเก่ง/อ่อน กลุ่มละ ${A.N ? A.g : 0} คน (27%)</span></div>
+      <div class="ia-k ${krc}"><small>ความเชื่อมั่น KR-20</small><b>${krv}</b><span>${krt}</span></div>
+      <div class="ia-k ok"><small>ข้อดี (ใช้ได้–ดีมาก)</small><b>${goodN}</b><span>จาก ${A.items.length} ข้อ</span></div>
+      <div class="ia-k ${cnt('bad') ? 'bad' : cnt('low') + cnt('hard') + cnt('easy') ? 'warn' : ''}"><small>ควรปรับปรุง</small><b>${cnt('bad') + cnt('low') + cnt('hard') + cnt('easy')}</b><span>${cnt('bad') ? `ตรวจเฉลย ${cnt('bad')} ข้อ` : 'ข้อที่ยาก/ง่ายเกิน หรือจำแนกต่ำ'}</span></div>
+    </div>
+    <div class="toolbar ia-bar"><div class="seg sm">${[['all', `ทั้งหมด ${A.items.length}`], ['fix', 'ควรปรับ'], ['good', 'ข้อดี']].map(([k, l]) => `<button class="${f === k ? 'on' : ''}" data-act="ia-filter" data-k="${k}">${l}</button>`).join('')}</div>
+      <span class="spacer"></span><span class="small muted ia-legend"><b>p</b> ความยาก (สัดส่วนที่ตอบถูก) เหมาะ 0.20–0.80 · <b>r</b> อำนาจจำแนก ≥ 0.20 ใช้ได้ ≥ 0.40 ดีมาก</span></div>
+    ${!A.N ? `<div class="empty"><div style="font-size:40px">📭</div><b>ยังไม่มีผู้ส่งข้อสอบ</b>เมื่อมีนักเรียนส่งแล้ว ผลวิเคราะห์จะขึ้นที่นี่</div>` : `
+    <div class="ia-list">${list.map(x => { const V = IA_VERDICT[x.v];
+      return `<div class="ia-row">
+        <span class="q-no sm">${x.i + 1}</span>
+        <div class="ia-q"><div class="ia-qt">${esc(RICH.plain(x.qq).slice(0, 140))}</div>
+          ${x.dist ? `<div class="ia-dist">${x.dist.all.slice(0, x.dist.k).map((c, j) => { const right = +x.qq.answer === j, w = A.N ? c / A.N * 100 : 0, weak = !right && c / Math.max(1, A.N) < .05, rev = !right && x.dist.up[j] > x.dist.lo[j];
+            return `<div class="ia-ch ${right ? 'right' : ''} ${weak ? 'weak' : ''} ${rev ? 'rev' : ''}" title="${right ? 'คำตอบที่ถูก' : weak ? 'ตัวลวงนี้แทบไม่มีคนเลือก ควรเปลี่ยน' : rev ? 'เด็กเก่งเลือกตัวลวงนี้มากกว่าเด็กอ่อน ตรวจความกำกวม' : 'ตัวลวงทำงานดี'}"><b>${ExamParser.TH[j]}</b><span class="ia-cb"><i style="width:${w}%"></i></span><em>${c}</em></div>`; }).join('')}${x.dist.all[x.dist.k] ? `<div class="ia-ch none"><b>–</b><span class="ia-cb"><i style="width:${x.dist.all[x.dist.k] / A.N * 100}%"></i></span><em>${x.dist.all[x.dist.k]}</em></div>` : ''}</div>` : `<div class="small muted">${({ true_false: 'ถูก/ผิด', short: 'เติมคำ', essay: 'อัตนัย · คะแนนเฉลี่ย ' + (x.p * +x.qq.points).toFixed(1) + '/' + +x.qq.points })[x.qq.qtype] || ''}</div>`}
+        </div>
+        <div class="ia-m"><small>p</small><b class="${x.p > .8 || x.p < .2 ? 'warn' : ''}">${x.p.toFixed(2)}</b><span class="ia-mini"><i style="width:${pct(x.p)}%"></i></span></div>
+        <div class="ia-m"><small>r</small><b class="${x.v === 'essay' ? '' : x.r < 0 ? 'bad' : x.r < .2 ? 'warn' : 'ok'}">${x.v === 'essay' ? '–' : x.r.toFixed(2)}</b><span class="ia-mini r"><i style="width:${Math.max(0, Math.min(100, x.r * 100))}%"></i></span></div>
+        <div class="ia-v"><span class="chip ${V[1]}">${V[0]}</span><small>${V[2]}</small></div>
+      </div>`; }).join('') || '<div class="empty small">ไม่มีข้อในกลุ่มนี้</div>'}</div>`}
+  </div>`;
+}
+function iaExport(eid) {
+  const e = db.get('exams', eid), cids = EX.classIds(eid);
+  const A = itemAnalysis(eid, ui.iaScope === 'all' || !ui.exResCid ? cids : [ui.exResCid]);
+  const header = ['ข้อ', 'คำถาม', 'ชนิด', 'p (ความยาก)', 'r (อำนาจจำแนก)', 'pH กลุ่มเก่ง', 'pL กลุ่มอ่อน', 'ผล', 'คำแนะนำ', 'จำนวนผู้เลือก ก/ข/ค/ง/…'];
+  const rows = A.items.map(x => [x.i + 1, RICH.plain(x.qq), x.qq.qtype, +x.p.toFixed(2), x.v === 'essay' ? '' : +x.r.toFixed(2), +x.pU.toFixed(2), +x.pL.toFixed(2), IA_VERDICT[x.v][0], IA_VERDICT[x.v][2],
+    x.dist ? x.dist.all.slice(0, x.dist.k).map((c, j) => `${ExamParser.TH[j]}${+x.qq.answer === j ? '*' : ''}=${c}`).join(' ') : '']);
+  const foot = [[], ['จำนวนผู้สอบ', A.N], ['KR-20', A.kr == null ? '' : +A.kr.toFixed(3)], ['เกณฑ์', 'p 0.20–0.80 เหมาะสม · r ≥ 0.20 ใช้ได้ · r ≥ 0.40 ดีมาก · * = คำตอบที่ถูก']];
+  const fname = `วิเคราะห์ข้อสอบ_${e.title}`.replace(/[\\/:*?"<>|]/g, '-');
+  if (!window.XLSX) return toast('โหลดตัวสร้าง Excel ไม่สำเร็จ', true);
+  const wb = XLSX.utils.book_new(), ws = XLSX.utils.aoa_to_sheet([header, ...rows, ...foot]);
+  ws['!cols'] = [6, 50, 10, 12, 14, 12, 12, 12, 46, 30].map(w => ({ wch: w }));
+  XLSX.utils.book_append_sheet(wb, ws, 'วิเคราะห์รายข้อ'); XLSX.writeFile(wb, fname + '.xlsx');
+}
+async function iaToBank(eid) {
+  const e = db.get('exams', eid), cids = EX.classIds(eid);
+  const A = itemAnalysis(eid, ui.iaScope === 'all' || !ui.exResCid ? cids : [ui.exResCid]);
+  const good = A.items.filter(x => ['great', 'good'].includes(x.v));
+  if (!good.length) return toast('ยังไม่มีข้อที่ผ่านเกณฑ์', true);
+  if (!store.qbank_questions) store.qbank_questions = [];
+  const dup = new Set(store.qbank_questions.map(x => (x.prompt || '').trim()));
+  const rows = good.filter(x => !dup.has((x.qq.prompt || '').trim())).map(x => ({
+    unit: e.title, difficulty: x.p > .7 ? 'easy' : x.p < .4 ? 'hard' : 'medium', qtype: x.qq.qtype, prompt: x.qq.prompt,
+    ...(x.qq.prompt_html != null ? { prompt_html: !!x.qq.prompt_html } : {}), ...(Array.isArray(x.qq.media) ? { media: x.qq.media } : {}),
+    choices: x.qq.choices, answer: x.qq.answer, points: x.qq.points ?? 1 }));
+  if (!rows.length) return toast('ข้อดีทั้งหมดอยู่ในคลังแล้ว');
+  try { await qbInsert(rows); toast(`เก็บเข้าคลังแล้ว ${rows.length} ข้อ (หน่วย "${e.title}" · ระดับความยากตามผลสอบจริง)`); }
+  catch (err) { toast(err.message || 'บันทึกไม่สำเร็จ', true); }
+}
+Object.assign(ACT, {
+  'ia-scope': el => { ui.iaScope = el.dataset.k; render(); },
+  'ia-filter': el => { ui.iaFilter = el.dataset.k; render(); },
+  'ia-export': el => iaExport(el.dataset.id),
+  'ia-tobank': el => iaToBank(el.dataset.id),
+});
+
+/* ---------- 2) พื้นที่เก็บข้อมูล & สำรองข้อมูล ---------- */
+const DATA = { st: null, loading: false, err: null, busy: '' };
+const FREE = { storage: 1024 ** 3, db: 500 * 1024 ** 2 };
+function fmtBytes(b) { b = +b || 0; return b >= 1024 ** 3 ? (b / 1024 ** 3).toFixed(2) + ' GB' : b >= 1024 ** 2 ? (b / 1024 ** 2).toFixed(1) + ' MB' : b >= 1024 ? Math.round(b / 1024) + ' KB' : b + ' B'; }
+async function loadStorage(force) {
+  if (DATA.loading || (DATA.st && !force)) return;
+  DATA.loading = true; DATA.err = null;
+  try { DATA.st = await q(sb.rpc('storage_stats')); } catch (e) { DATA.err = /storage_stats|function/i.test(e.message || '') ? 'need-sql' : (e.message || 'error'); DATA.st = null; }
+  DATA.loading = false; if (ui.route === 'settings') render();
+}
+const BUCKET_TH = { submissions: '📤 ไฟล์งานนักเรียน', 'exam-media': '🧪 รูป/สื่อในข้อสอบ', gallery: '🖼 แกลเลอรีผลงาน' };
+function meterHTML(used, cap, label) {
+  const p = Math.min(100, used / cap * 100);
+  return `<div class="dm-meter ${p >= 85 ? 'bad' : p >= 60 ? 'warn' : ''}"><div class="dm-top"><b>${label}</b><span>${fmtBytes(used)} <small>/ ${fmtBytes(cap)}</small></span></div>
+    <div class="dm-bar"><i style="width:${Math.max(1.5, p)}%"></i></div><small>${p.toFixed(1)}% ของแพ็กเกจฟรี${p >= 85 ? ' · ใกล้เต็มแล้ว ควรล้างไฟล์ภาคเรียนเก่า' : ''}</small></div>`;
+}
+function dataCardHTML() {
+  if (!DATA.st && !DATA.err) loadStorage();
+  const st = DATA.st, cur = Q.currentTerm();
+  const termRows = st ? store.terms.slice().sort((a, b) => b.year - a.year || b.semester - a.semester).map(t => ({ t, u: (st.terms || []).find(x => x.term_id === t.id) || { files: 0, bytes: 0 } })) : [];
+  const busy = DATA.busy;
+  return `<div class="card dm-card"><div class="card-h"><h3>💾 พื้นที่เก็บข้อมูล & สำรองข้อมูล</h3><span class="spacer"></span><button class="btn ghost sm" data-act="dm-reload">${ic('refresh')}อัปเดต</button></div>
+    <div class="card-b stack">
+    ${DATA.err === 'need-sql' ? `<div class="hint warn">⚠️ ยังไม่ได้รันไฟล์ <b>phase15.sql</b> ใน Supabase SQL Editor ส่วนนี้จึงยังใช้ไม่ได้</div>` : DATA.err ? `<div class="hint warn">${esc(DATA.err)}</div>` : !st ? '<div class="muted small">กำลังโหลด…</div>' : `
+      ${st.admin ? `<div class="dm-meters">${meterHTML((st.buckets || []).reduce((s, b) => s + +b.bytes, 0), FREE.storage, '📁 พื้นที่ไฟล์ทั้งหมด')}${meterHTML(st.db_bytes, FREE.db, '🗄 ฐานข้อมูล')}</div>
+        <div class="dm-buckets">${(st.buckets || []).map(b => `<span class="chip">${BUCKET_TH[b.bucket] || esc(b.bucket)} · ${b.files.toLocaleString()} ไฟล์ · ${fmtBytes(b.bytes)}</span>`).join('') || '<span class="muted small">ยังไม่มีไฟล์</span>'}</div>` : ''}
+      <div><div class="dm-sub">ไฟล์งานนักเรียนแยกตามภาคเรียน${st.admin ? '' : ' (เฉพาะงานของฉัน)'}</div>
+        <div class="dm-terms">${termRows.map(({ t, u }) => `<div class="dm-term ${t.is_current ? 'cur' : ''}">
+          <div><b>ภาคเรียน ${Q.termLabel(t)}</b>${t.is_current ? '<span class="chip ok">ปัจจุบัน</span>' : ''}<small>${(+u.files).toLocaleString()} ไฟล์ · ${fmtBytes(u.bytes)}</small></div>
+          ${t.is_current ? '<small class="muted">ล้างไม่ได้ระหว่างใช้งาน</small>' : +u.files ? `<button class="btn sm danger-soft" data-act="dm-purge" data-id="${t.id}" ${busy ? 'disabled' : ''}>${busy === t.id ? 'กำลังล้าง…' : '🧹 ล้างไฟล์'}</button>` : '<small class="muted">ไม่มีไฟล์</small>'}
+        </div>`).join('')}</div>
+        <p class="small muted" style="margin:8px 0 0">ล้างไฟล์แล้ว คะแนน ความคิดเห็น และรายการส่งงานยังอยู่ครบ หายเฉพาะตัวไฟล์ ควรสำรองข้อมูลก่อนล้าง</p></div>`}
+      <div class="dm-backup"><div><b>📦 สำรองข้อมูล</b><small>ดาวน์โหลดข้อมูลทั้งหมดที่บัญชีนี้เข้าถึงได้ (ห้อง นักเรียน งาน คะแนน ข้อสอบ เช็คชื่อ ฯลฯ) ไม่รวมรหัสผ่าน · ควรทำทุกสิ้นภาคเรียน</small></div>
+        <div class="row" style="gap:8px"><button class="btn" data-act="dm-backup" data-k="xlsx" ${busy ? 'disabled' : ''}>${ic('dl')}${busy === 'xlsx' ? 'กำลังรวบรวม…' : 'Excel'}</button><button class="btn" data-act="dm-backup" data-k="json" ${busy ? 'disabled' : ''}>${ic('dl')}${busy === 'json' ? 'กำลังรวบรวม…' : 'JSON (ครบทุกช่อง)'}</button></div></div>
+    </div></div>`;
+}
+async function dmPurge(tid) {
+  const t = store.terms.find(x => x.id === tid); if (!t) return;
+  const u = (DATA.st?.terms || []).find(x => x.term_id === tid) || { files: 0, bytes: 0 };
+  const ok = await confirmP(`ล้างไฟล์งานภาคเรียน ${Q.termLabel(t)}?`, `จะลบไฟล์งานนักเรียน ${(+u.files).toLocaleString()} ไฟล์ (${fmtBytes(u.bytes)}) ออกจากที่เก็บถาวร กู้คืนไม่ได้\nคะแนนและรายการส่งงานยังอยู่ครบ`, 'ลบไฟล์ถาวร');
+  if (!ok) return;
+  DATA.busy = tid; render();
+  try {
+    const files = await q(sb.rpc('term_files', { p_term: tid }));
+    let done = 0;
+    for (let i = 0; i < files.length; i += 100) {
+      const part = files.slice(i, i + 100);
+      const { error } = await sb.storage.from('submissions').remove(part.map(f => f.storage_path));
+      if (error) throw error;
+      await q(sb.rpc('mark_files_purged', { p_ids: part.map(f => f.id) }));
+      done += part.length; toast(`ล้างแล้ว ${done}/${files.length} ไฟล์`);
+    }
+    toast(files.length ? `ล้างไฟล์ภาคเรียน ${Q.termLabel(t)} เรียบร้อย ${files.length} ไฟล์` : 'ไม่มีไฟล์ที่ล้างได้');
+  } catch (e) { toast('ล้างไม่สำเร็จ: ' + (e.message || e), true); }
+  DATA.busy = ''; await loadStorage(true); render();
+}
+const BACKUP_TABLES = ['terms', 'classrooms', 'students', 'subjects', 'subject_classes', 'assignments', 'assignment_classes', 'submissions', 'submission_files',
+  'exams', 'exam_classes', 'exam_questions', 'exam_attempts', 'exam_answers', 'grade_columns', 'grade_entries', 'rubrics',
+  'attendance_sessions', 'attendance_records', 'announcements', 'qbank_questions', 'gallery_items', 'game_config', 'game_titles', 'game_adjustments', 'title_purchases'];
+async function fetchAny(table) {
+  const out = [];
+  for (let from = 0; ; from += 1000) {
+    let r = await sb.from(table).select('*').order('created_at', { ascending: true }).range(from, from + 999);
+    if (r.error) r = await sb.from(table).select('*').range(from, from + 999);
+    if (r.error) throw r.error;
+    out.push(...r.data); if (r.data.length < 1000) break;
+  }
+  return out;
+}
+async function dmBackup(kind) {
+  DATA.busy = kind; render();
+  const data = {}, skipped = [];
+  try {
+    for (const t of BACKUP_TABLES) {
+      try { data[t] = (await fetchAny(t)).map(r => { const o = { ...r }; delete o.pass_hash; delete o.thumb; return o; }); }
+      catch { skipped.push(t); }
+    }
+    const stamp = new Date().toISOString().slice(0, 10), name = `สำรองข้อมูล_ห้องเรียนครูปลื้ม_${stamp}`;
+    if (kind === 'json') {
+      const blob = new Blob([JSON.stringify({ app: 'ห้องเรียนครูปลื้ม', version: APP_VER, exported_at: new Date().toISOString(), tables: data }, null, 1)], { type: 'application/json' });
+      const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = name + '.json'; a.click(); setTimeout(() => URL.revokeObjectURL(a.href), 5000);
+    } else {
+      if (!window.XLSX) throw new Error('โหลดตัวสร้าง Excel ไม่สำเร็จ ลองแบบ JSON');
+      const wb = XLSX.utils.book_new();
+      const sum = [['ตาราง', 'จำนวนแถว'], ...Object.entries(data).map(([k, v]) => [k, v.length]), [], ['ส่งออกเมื่อ', new Date().toLocaleString('th-TH')]];
+      XLSX.utils.book_append_sheet(wb, XLSX.utils.aoa_to_sheet(sum), 'สรุป');
+      for (const [k, rows] of Object.entries(data)) {
+        if (!rows.length) continue;
+        const clean = rows.map(r => Object.fromEntries(Object.entries(r).map(([c, v]) => [c, v != null && typeof v === 'object' ? JSON.stringify(v) : v]).map(([c, v]) => [c, typeof v === 'string' && v.length > 32000 ? v.slice(0, 32000) + '…' : v])));
+        XLSX.utils.book_append_sheet(wb, XLSX.utils.json_to_sheet(clean), k.slice(0, 31));
+      }
+      XLSX.writeFile(wb, name + '.xlsx');
+    }
+    const n = Object.values(data).reduce((s, v) => s + v.length, 0);
+    toast(`สำรองข้อมูลแล้ว ${n.toLocaleString()} แถว จาก ${Object.keys(data).length} ตาราง${skipped.length ? ` (ข้าม ${skipped.length} ตารางที่ยังไม่ได้ติดตั้ง)` : ''}`);
+  } catch (e) { toast('สำรองไม่สำเร็จ: ' + (e.message || e), true); }
+  DATA.busy = ''; render();
+}
+function confirmP(title, msg, okText) {
+  return new Promise(res => {
+    openModal({ title, body: `<p style="white-space:pre-line;margin:0">${esc(msg)}</p>`,
+      actions: [{ label: 'ยกเลิก', onClick: () => { closeModal(); res(false); } }, { label: okText || 'ยืนยัน', kind: 'danger solid', onClick: () => { closeModal(); res(true); } }] });
+  });
+}
+Object.assign(ACT, {
+  'dm-reload': () => loadStorage(true),
+  'dm-purge': el => dmPurge(el.dataset.id),
+  'dm-backup': el => dmBackup(el.dataset.k),
+});
+
+/* ---------- 3) ขึ้นภาคเรียนใหม่ ---------- */
+function nextTermOf(t) { return !t ? thaiTermNow() : +t.semester >= 2 ? { year: +t.year + 1, semester: 1 } : { year: +t.year, semester: 2 }; }
+function newTermWizard() {
+  const cur = Q.currentTerm(), nx = nextTermOf(cur);
+  const subs = Q.subjectsOfTerm(cur?.id);
+  openModal({
+    title: '🎓 ขึ้นภาคเรียนใหม่', wide: true,
+    body: `<div class="stack">
+      <div class="nt-flow"><div class="nt-t old"><small>ภาคเรียนปัจจุบัน</small><b>${cur ? Q.termLabel(cur) : '—'}</b></div><span class="nt-arrow">→</span>
+        <div class="nt-t new"><small>ภาคเรียนใหม่</small><div class="row" style="gap:6px"><select class="input" name="sem">${[1, 2, 3].map(n => `<option ${n === nx.semester ? 'selected' : ''}>${n}</option>`).join('')}</select><span>/</span><input class="input" name="year" type="number" value="${nx.year}" style="width:96px"></div></div></div>
+      <div class="nt-opts">
+        <label class="nt-opt"><input type="checkbox" name="copySub" checked><span><b>คัดลอกรายวิชา ${subs.length} วิชา</b><small>พร้อมห้องที่สอน · ชื่อ รหัส สี เหมือนเดิม</small></span></label>
+        <label class="nt-opt"><input type="checkbox" name="copyAsg"><span><b>คัดลอกงาน/ใบงาน</b><small>ไม่รวมกำหนดส่ง และตั้งเป็น "ปิดรับ" ไว้ก่อน ค่อยเปิดทีละงานเมื่อสอน</small></span></label>
+        <label class="nt-opt"><input type="checkbox" name="makeCur" checked><span><b>ตั้งเป็นภาคเรียนปัจจุบันทันที</b><small>ภาคเรียนเก่ายังดูย้อนหลังได้จากตัวเลือกภาคเรียนในหน้ารายวิชา</small></span></label>
+      </div>
+      <div class="hint">💡 แนะนำ: กด "สำรองข้อมูล" ก่อนขึ้นภาคเรียนใหม่ · XP และ Ranking ของนักเรียนยังสะสมต่อเนื่อง</div>
+    </div>`,
+    actions: [{ label: 'ยกเลิก', onClick: closeModal }, { label: 'เริ่มภาคเรียนใหม่', kind: 'primary', onClick: async () => {
+      const year = +mval('year'), semester = +mval('sem');
+      if (!year || year < 2500) return toast('ใส่ปีการศึกษาเป็น พ.ศ. เช่น 2570', true);
+      const mroot = $('#modal-root'), chk = n => mroot.querySelector(`[name=${n}]`)?.checked;
+      try {
+        let t = store.terms.find(x => +x.year === year && +x.semester === semester);
+        if (!t) { t = await q(sb.from('terms').insert({ year, semester, is_current: false }).select().single()); store.terms.push(t); }
+        let nSub = 0, nAsg = 0;
+        if (chk('copySub') && cur) {
+          for (const s of subs) {
+            const ns = await q(sb.from('subjects').insert({ term_id: t.id, code: s.code, name: s.name, color: s.color }).select().single()); store.subjects.push(ns); nSub++;
+            const links = store.subject_classes.filter(x => x.subject_id === s.id).map(x => ({ subject_id: ns.id, classroom_id: x.classroom_id }));
+            if (links.length) { const out = await q(sb.from('subject_classes').insert(links).select()); store.subject_classes.push(...out); }
+            if (chk('copyAsg')) {
+              const asg = await q(sb.from('assignments').select('*').eq('subject_id', s.id));
+              for (const a of asg) {
+                const na = await q(sb.from('assignments').insert({ subject_id: ns.id, title: a.title, description: a.description, max_score: a.max_score, allow_late: a.allow_late, is_open: false, accept_types: a.accept_types, max_file_mb: a.max_file_mb, sort_order: a.sort_order }).select().single());
+                const ac = await q(sb.from('assignment_classes').select('classroom_id').eq('assignment_id', a.id));
+                if (ac.length) await q(sb.from('assignment_classes').insert(ac.map(x => ({ assignment_id: na.id, classroom_id: x.classroom_id }))));
+                (store.assignments || []).push?.(na); nAsg++;
+              }
+            }
+          }
+        }
+        if (chk('makeCur')) {
+          await q(sb.from('terms').update({ is_current: false }).neq('id', t.id));
+          await q(sb.from('terms').update({ is_current: true }).eq('id', t.id));
+          store.terms.forEach(x => { x.is_current = x.id === t.id; }); ui.termId = null;
+        }
+        closeModal(); render();
+        toast(`เริ่มภาคเรียน ${Q.termLabel(t)} แล้ว${nSub ? ` · คัดลอก ${nSub} วิชา` : ''}${nAsg ? ` · ${nAsg} งาน` : ''}`);
+      } catch (e) { toast(e.message || 'ทำรายการไม่สำเร็จ', true); }
+    } }],
+  });
+}
+Object.assign(ACT, { 'term-wizard': newTermWizard });
+
+/* =====================================================================
    แกลเลอรีผลงาน — ครูติดดาวงานเด่น → คัดลอกไฟล์ไปที่เก็บสาธารณะ → โชว์ + กดหัวใจ
    หน้าเปิดได้ทุกคน: #gallery · ครูจัดการ: #works · นักเรียน: แท็บ "แกลเลอรี"
    ===================================================================== */
@@ -8457,10 +8866,10 @@ const RK = { t: null, adj: null, loading: false, lv: null, cls: '', q: '', sel: 
 const RK_PER = 30;
 const RK_REASONS = [['🙋', 'ตอบคำถามในห้อง', 10], ['🤝', 'ช่วยเหลือเพื่อน', 20], ['🧹', 'จิตอาสา / ช่วยงานครู', 20], ['🏅', 'ร่วมกิจกรรม / แข่งขัน', 50], ['💡', 'งานสร้างสรรค์โดดเด่น', 30], ['⚠️', 'ไม่ตั้งใจเรียน', -10]];
 const RULE_LABELS = [
-  ['งานที่ส่ง', [['sub', '📤 ส่งงาน (ต่อชิ้น)'], ['ontime', '⏰ ส่งตรงเวลา'], ['score', '📝 คะแนนงานสูงสุด (ตามร้อยละ)']]],
+  ['งานที่ส่ง', [['sub', '📤 ส่งงาน (ต่อชิ้น)'], ['ontime', '⏰ ส่งตรงเวลา'], ['score', '📝 คะแนนงานสูงสุด (ตามร้อยละ)'], ['streak_xp', '🔥 ส่งตรงเวลาติดต่อกัน (ต่องานที่เกิน 2)']]],
   ['ข้อสอบ', [['exam', '🧪 ข้อสอบสูงสุด (ต่อชุด)'], ['exam_full', '💯 โบนัสได้คะแนนเต็ม']]],
   ['อื่น ๆ', [['gallery', '🖼 ผลงานขึ้นแกลเลอรี'], ['present', '📋 มาเรียน'], ['late', '🕘 มาสาย']]],
-  ['เหรียญ 🪙', [['exam_coin_per', '🧪 คะแนนสอบทุกกี่คะแนน = 1 เหรียญ'], ['exam_full_coin', '💯 โบนัสเมื่อได้คะแนนเต็ม (0 = ไม่มี)'], ['sub_coin', '⏰ ส่งงานตรงเวลา (ต่อชิ้น)']]],
+  ['เหรียญ 🪙', [['exam_coin_per', '🧪 คะแนนสอบทุกกี่คะแนน = 1 เหรียญ'], ['exam_full_coin', '💯 โบนัสเมื่อได้คะแนนเต็ม (0 = ไม่มี)'], ['sub_coin', '⏰ ส่งงานตรงเวลา (ต่อชิ้น)'], ['streak_coin', '🔥 ส่งตรงเวลาติดต่อกันครบทุก 5 งาน']]],
 ];
 
 async function loadRanking(force) {
@@ -8522,7 +8931,7 @@ function viewRanking() {
       <tbody>${rows.map(r => `<tr class="${RK.sel.has(r.id) ? 'sel' : ''}" data-rid="${r.id}">
         ${can ? `<td class="ck"><input type="checkbox" data-chg="rk-sel" data-id="${r.id}" ${RK.sel.has(r.id) ? 'checked' : ''} aria-label="เลือก"></td>` : ''}
         <td><span class="rk-no ${r.rank <= 3 && r.xp ? 'n' + r.rank : ''}">${r.rank}</span></td><td>${esc(r.classroom)}</td><td>${r.number}</td>
-        <td>${nameTag(r.name, r.xp, r.rank, r.title_id, titles)}<small class="muted rk-lv">Lv.${lvOf(r.xp)}</small></td>
+        <td>${nameTag(r.name, r.xp, r.rank, r.title_id, titles)}${fireTag(r.streak)}<small class="muted rk-lv">Lv.${lvOf(r.xp)}</small></td>
         ${cell(r.sub)}${cell(r.exam)}${cell(r.gallery)}${cell(r.att)}${cell(r.bonus, r.bonus < 0 ? 'neg' : r.bonus > 0 ? 'pos' : '')}
         <td class="num"><b>${r.xp.toLocaleString()}</b></td><td class="num ${r.coins < 0 ? 'neg' : ''}">${r.coins}</td>
         ${can ? `<td class="rk-act"><button class="btn sm" data-act="rk-plus" data-id="${r.id}" title="+10 XP ตอบคำถาม">+10</button><button class="btn sm ghost" data-act="rk-stu" data-id="${r.id}">จัดการ</button></td>` : ''}
