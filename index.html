@@ -2555,6 +2555,68 @@ h2.hello .wave{display:inline-block;transform-origin:70% 75%;animation:wave 2.4s
 .chat-pop::before{content:'💬 ข้อความใหม่';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#0A84FF,#34C759);font-size:0}
 @media (prefers-reduced-motion:reduce){.chat-pop{animation:none!important}}
 
+/* =====================================================================
+   เฟส 12.3: แถบเลื่อนทันสมัย · เมนูข้างแบบพับกลุ่ม · เมนูเพิ่มเติมบนมือถือ
+   ===================================================================== */
+/* แถบเลื่อน: บาง โค้งมน โปร่งใส เข้มขึ้นเมื่อชี้ */
+*{scrollbar-width:thin;scrollbar-color:rgba(100,116,139,.38) transparent}
+::-webkit-scrollbar{width:10px;height:10px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:rgba(100,116,139,.32);border-radius:99px;border:3px solid transparent;background-clip:padding-box;min-height:40px}
+::-webkit-scrollbar-thumb:hover{background:rgba(10,132,255,.55);background-clip:padding-box;border-width:2px}
+::-webkit-scrollbar-corner{background:transparent}
+::-webkit-scrollbar-button{display:none;width:0;height:0}
+[data-theme=dark] *{scrollbar-color:rgba(203,213,225,.28) transparent}
+[data-theme=dark] ::-webkit-scrollbar-thumb{background:rgba(203,213,225,.22);background-clip:padding-box}
+[data-theme=dark] ::-webkit-scrollbar-thumb:hover{background:rgba(120,180,255,.55);background-clip:padding-box}
+/* แถบเลื่อนในกล่องเล็ก (ตาราง แชท เมนู) บางลงอีก */
+.tbl-wrap::-webkit-scrollbar,.ch-msgs::-webkit-scrollbar,.ch-list::-webkit-scrollbar,.sc-body::-webkit-scrollbar,.nav-scroll::-webkit-scrollbar,.modal-body::-webkit-scrollbar{width:8px;height:8px}
+.nav-scroll{scrollbar-width:none}.nav-scroll::-webkit-scrollbar{display:none}
+.side:hover .nav-scroll{scrollbar-width:thin}
+
+/* เมนูข้าง */
+.side{gap:2px!important}
+.nav-scroll{flex:1;min-height:0;overflow:auto;display:flex;flex-direction:column;gap:4px;margin:6px -4px 0;padding:0 4px 6px}
+.nav-top{display:flex;flex-direction:column;gap:2px;padding-bottom:6px;margin-bottom:2px;border-bottom:1px solid var(--line)}
+.nav-sec{border-radius:18px;transition:background .2s}
+.nav-sec.open{background:color-mix(in srgb,var(--fill) 55%,transparent)}
+.nav-sec-h{display:flex;align-items:center;gap:10px;width:100%;border:0;background:none;cursor:pointer;padding:9px 12px;border-radius:14px;font:600 13.5px var(--f-body);color:var(--muted);text-align:left;transition:color .15s,background .15s}
+.nav-sec-h:hover{background:var(--fill);color:var(--ink)}
+.nav-sec-h svg{width:17px;height:17px;opacity:.8}
+.nav-sec-h small{font-size:11px;min-width:20px;height:18px;border-radius:9px;display:grid;place-items:center;background:var(--fill);color:var(--muted)}
+.nav-sec.has .nav-sec-h{color:var(--primary)}
+.nav-chev{width:8px;height:8px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:rotate(-45deg);transition:transform .25s;opacity:.6;margin-right:2px}
+.nav-sec.open .nav-chev{transform:rotate(45deg) translate(-2px,-2px)}
+.nav-sec-b{display:grid;grid-template-rows:0fr;transition:grid-template-rows .28s cubic-bezier(.2,.8,.2,1)}
+.nav-sec.open .nav-sec-b{grid-template-rows:1fr}
+.nav-sec-b>div{overflow:hidden;display:flex;flex-direction:column;gap:2px;padding:0 4px}
+.nav-sec.open .nav-sec-b>div{padding-bottom:6px}
+.nav-sec .nav-item{font-size:14.5px;padding:8px 12px 8px 14px}
+.nav-sec-h .nav-badge{margin-left:0}
+@media (prefers-reduced-motion:reduce){.nav-sec-b,.nav-chev{transition:none}}
+
+/* มือถือ: เมนูเพิ่มเติมจัดเป็นหมวด ไอคอน 4 คอลัมน์ ขนาดเท่ากัน */
+.m-sheet{max-height:86dvh;overflow:auto}
+.m-sec{margin-top:12px}
+.m-sec-h{font:600 12.5px var(--f-body);color:var(--muted);padding:0 4px 6px;letter-spacing:.01em}
+.m-grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
+.m-grid4 a{display:flex;flex-direction:column;align-items:center;gap:6px;padding:10px 2px 8px;border-radius:16px;color:var(--ink);text-decoration:none;font-size:12px;line-height:1.25;text-align:center;transition:background .15s}
+.m-grid4 a:active{background:var(--fill)}
+.m-grid4 a.on{background:var(--primary-soft);color:var(--primary);font-weight:600}
+.m-ic{position:relative;width:46px;height:46px;border-radius:15px;display:grid;place-items:center;color:#fff;
+  background:linear-gradient(160deg,#3FA0FF,#0A6CF0);box-shadow:0 8px 16px -10px rgba(10,108,240,.8),inset 0 1px 0 rgba(255,255,255,.5)}
+.m-ic svg{width:22px;height:22px}
+.m-ic .nav-badge{position:absolute;top:-5px;right:-7px;margin:0}
+.m-sec.g-top .m-ic{background:linear-gradient(160deg,#4ADE80,#16A34A);box-shadow:0 8px 16px -10px rgba(22,163,74,.8),inset 0 1px 0 rgba(255,255,255,.5)}
+.m-sec.g-teach .m-ic{background:linear-gradient(160deg,#FFB347,#F07A0A);box-shadow:0 8px 16px -10px rgba(240,122,10,.8),inset 0 1px 0 rgba(255,255,255,.5)}
+.m-sec.g-data .m-ic{background:linear-gradient(160deg,#34D399,#059669);box-shadow:0 8px 16px -10px rgba(5,150,105,.8),inset 0 1px 0 rgba(255,255,255,.5)}
+.m-sec.g-sys .m-ic{background:linear-gradient(160deg,#94A3B8,#475569);box-shadow:0 8px 16px -10px rgba(71,85,105,.8),inset 0 1px 0 rgba(255,255,255,.5)}
+.m-sec .stu-link .m-ic{background:linear-gradient(160deg,#FFD25A,#E0A000);box-shadow:0 8px 16px -10px rgba(224,160,0,.8),inset 0 1px 0 rgba(255,255,255,.5)}
+.nav-sec-h>span:not(.nav-badge){flex:1}.nav-sec-h .nav-badge{flex:none;min-width:20px}
+.m-list{margin-top:14px}
+body:has(.m-sheet-bg) #t-chat,body:has(.m-sheet-bg) #chat-pops{display:none}
+[data-device=mobile] .sc-fab.t{width:52px;height:52px}
+
 </style>
 </head>
 <body>
@@ -3048,7 +3110,7 @@ if (typeof module !== 'undefined') module.exports = ExamParser;
 </script>
 <script>
 /* โลโก้: ภาพครูปลื้ม (ไฟล์ต้นฉบับ src/logo.svg ฝังตอน build) */
-const APP_VER = '12.2 · 24 พ.ย. 2569';
+const APP_VER = '12.3 · 24 พ.ย. 2569';
 let LOGO_N = 0;
 function logoSVG() { const k = 'L' + (++LOGO_N); return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><defs><linearGradient id="lgb" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3B9BFF"/><stop offset=".5" stop-color="#0A5BE0"/><stop offset="1" stop-color="#062C78"/></linearGradient><linearGradient id="lgs" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset=".6" stop-color="#FFF4D6"/><stop offset="1" stop-color="#FFD978"/></linearGradient><radialGradient id="lgc" cx=".3" cy=".08" r=".75"><stop offset="0" stop-color="#fff" stop-opacity=".55"/><stop offset=".5" stop-color="#fff" stop-opacity=".08"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient></defs><rect width="48" height="48" rx="13" fill="url(#lgb)"/><rect width="48" height="48" rx="13" fill="url(#lgc)"/><rect x=".75" y=".75" width="46.5" height="46.5" rx="12.3" fill="none" stroke="#fff" stroke-opacity=".45" stroke-width="1.2"/><g fill="none" stroke="#04235F" stroke-opacity=".35" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" transform="translate(0 1.2)"><path d="M21.2 17 C19.8 14.6 17.4 13.6 14.8 13.6 C11 13.6 8.6 15.6 8.6 18.5 C8.6 21.8 11.6 22.9 14.9 23.9 C18.6 25 21.6 26.4 21.6 29.8 C21.6 33 18.8 34.6 15.1 34.6 C12 34.6 9.5 33.4 8 31.1"/><path d="M26.6 14 L39.6 34.2 M39.6 14 L26.6 34.2"/></g><g fill="none" stroke="url(#lgs)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M21.2 17 C19.8 14.6 17.4 13.6 14.8 13.6 C11 13.6 8.6 15.6 8.6 18.5 C8.6 21.8 11.6 22.9 14.9 23.9 C18.6 25 21.6 26.4 21.6 29.8 C21.6 33 18.8 34.6 15.1 34.6 C12 34.6 9.5 33.4 8 31.1"/><path d="M26.6 14 L39.6 34.2 M39.6 14 L26.6 34.2"/></g></svg>`.replace('<svg ', '<svg class="logo" aria-hidden="true" ').replace(/\b(lg[bsc])\b/g, '$1' + k); }
 /* =====================================================================
@@ -3287,26 +3349,26 @@ const mval = name => { const el = $(`#modal-root [name="${name}"]`); return el ?
    หน้าจอ
    ===================================================================== */
 const NAV = [
-  { group: 'ภาพรวม' },
-  { id: 'dashboard', label: 'แดชบอร์ด', icon: 'home' },
-  { id: 'chat', label: 'ข้อความ', icon: 'chat' },
-  { id: 'risk', label: 'ติดตามนักเรียน', icon: 'alert' },
-  { id: 'ranking', label: 'Ranking', icon: 'trophy' },
-  { group: 'จัดการข้อมูล' },
-  { id: 'subjects', label: 'วิชา', icon: 'book' },
-  { id: 'classes', label: 'ห้องเรียนและรายชื่อ', icon: 'users' },
-  { group: 'การเรียนการสอน' },
-  { id: 'assignments', label: 'งานและตรวจงาน', icon: 'inbox' },
-  { id: 'gradebook', label: 'ตารางคะแนน', icon: 'table' },
-  { id: 'exams', label: 'ข้อสอบ', icon: 'quiz' },
-  { id: 'qbank', label: 'คลังข้อสอบ', icon: 'bank' },
-  { id: 'announce', label: 'ประกาศ', icon: 'megaphone' },
-  { id: 'works', label: 'แกลเลอรีผลงาน', icon: 'star' },
-  { id: 'attendance', label: 'เช็คชื่อ', icon: 'attend' },
-  { group: 'ระบบ' },
-  { id: 'reports', label: 'รายงานและสำรองข้อมูล', icon: 'download' },
-  { id: 'users', label: 'ผู้ใช้และสิทธิ์', icon: 'shield', admin: true },
-  { id: 'settings', label: 'ตั้งค่า', icon: 'gear' },
+  { id: 'dashboard', label: 'แดชบอร์ด', short: 'หน้าหลัก', icon: 'home' },
+  { id: 'chat', label: 'ข้อความ', short: 'ข้อความ', icon: 'chat' },
+  { group: 'การสอน', key: 'teach', icon: 'inbox' },
+  { id: 'assignments', label: 'งานและตรวจงาน', short: 'งาน', icon: 'inbox' },
+  { id: 'exams', label: 'ข้อสอบ', short: 'ข้อสอบ', icon: 'quiz' },
+  { id: 'qbank', label: 'คลังข้อสอบ', short: 'คลังข้อสอบ', icon: 'bank' },
+  { id: 'attendance', label: 'เช็คชื่อ', short: 'เช็คชื่อ', icon: 'attend' },
+  { id: 'announce', label: 'ประกาศ', short: 'ประกาศ', icon: 'megaphone' },
+  { group: 'คะแนนและผลงาน', key: 'score', icon: 'table' },
+  { id: 'gradebook', label: 'ตารางคะแนน', short: 'คะแนน', icon: 'table' },
+  { id: 'risk', label: 'ติดตามนักเรียน', short: 'ติดตาม', icon: 'alert' },
+  { id: 'ranking', label: 'Ranking', short: 'Ranking', icon: 'trophy' },
+  { id: 'works', label: 'แกลเลอรีผลงาน', short: 'ผลงาน', icon: 'star' },
+  { group: 'ข้อมูลห้องเรียน', key: 'data', icon: 'users' },
+  { id: 'subjects', label: 'วิชา', short: 'วิชา', icon: 'book' },
+  { id: 'classes', label: 'ห้องเรียนและรายชื่อ', short: 'รายชื่อ', icon: 'users' },
+  { group: 'ระบบ', key: 'sys', icon: 'gear' },
+  { id: 'reports', label: 'รายงานและสำรองข้อมูล', short: 'รายงาน', icon: 'download' },
+  { id: 'users', label: 'ผู้ใช้และสิทธิ์', short: 'ผู้ใช้', icon: 'shield', admin: true },
+  { id: 'settings', label: 'ตั้งค่า', short: 'ตั้งค่า', icon: 'gear' },
 ];
 const ROUTE_PERM = { qbank: 'exams', works: 'assignments', attendance: 'attendance', attsess: 'attendance', subjects: 'subjects', assignments: 'assignments', grade: 'assignments', gradebook: 'gradebook', exams: 'exams', examedit: 'exams', examres: 'exams' };
 function routeAllowed(base) { if (base === 'users') return ME.admin(); const p = ROUTE_PERM[base]; return !p || ME.can(p); }
@@ -3315,6 +3377,36 @@ function navItems() {
   return items.filter((n, i) => !n.group || (items[i + 1] && !items[i + 1].group));
 }
 const TITLES = { chat: 'ข้อความจากนักเรียน', ranking: 'Ranking', dashboard: 'แดชบอร์ด', subjects: 'วิชา', classes: 'ห้องเรียนและรายชื่อ', assignments: 'งานและตรวจงาน', grade: 'ตรวจงาน', examedit: 'แก้ไขข้อสอบ', examres: 'ผลสอบ', gradebook: 'ตารางคะแนน', exams: 'ข้อสอบ', settings: 'ตั้งค่า', users: 'ผู้ใช้และสิทธิ์', attendance: 'เช็คชื่อ', attsess: 'เช็คชื่อ', reports: 'รายงานและสำรองข้อมูล', risk: 'ติดตามนักเรียน', qbank: 'คลังข้อสอบ', announce: 'ประกาศ', works: 'แกลเลอรีผลงาน' };
+
+function navSecToggle(el) {
+  const k = el.dataset.k, sec = el.closest('.nav-sec'), st = navOpenState();
+  const open = !sec.classList.contains('open'); sec.classList.toggle('open', open); el.setAttribute('aria-expanded', open);
+  st[k] = open; try { localStorage.setItem('cr-nav', JSON.stringify(st)); } catch (e) {}
+}
+/* ---------- เมนูข้าง: จัดกลุ่ม พับ/กางได้ (จำสถานะไว้) · กลุ่มของหน้าปัจจุบันกางอัตโนมัติ ---------- */
+function navBadge(id) {
+  if (id === 'users' && store.pendingCount) return store.pendingCount;
+  if (id === 'chat' && window.CHAT && CHAT.unread) return CHAT.unread;
+  if (id === 'classes' && ME.admin() && (store.resetReqs || []).length) return store.resetReqs.length;
+  return 0;
+}
+function navGroups() {
+  const out = [], items = navItems(); let cur = { key: 'top', items: [] }; out.push(cur);
+  items.forEach(n => { if (n.group) { cur = { key: n.key, label: n.group, icon: n.icon, items: [] }; out.push(cur); } else cur.items.push(n); });
+  return out.filter(g => g.items.length);
+}
+function navOpenState() { try { return JSON.parse(localStorage.getItem('cr-nav') || '{}'); } catch (e) { return {}; } }
+function sideNavHTML(navOn) {
+  const st = navOpenState();
+  const item = n => { const b = navBadge(n.id); return `<a class="nav-item ${navOn === n.id ? 'active' : ''}" href="#${n.id}">${ic(n.icon)}<span>${n.label}</span>${b ? `<span class="nav-badge">${b > 99 ? '99+' : b}</span>` : ''}</a>`; };
+  return navGroups().map(g => {
+    if (g.key === 'top') return `<div class="nav-top">${g.items.map(item).join('')}</div>`;
+    const has = g.items.some(n => n.id === navOn), open = has || st[g.key] === true, sum = g.items.reduce((a, n) => a + navBadge(n.id), 0);
+    return `<div class="nav-sec ${open ? 'open' : ''} ${has ? 'has' : ''}">
+      <button class="nav-sec-h" data-act="nav-sec" data-k="${g.key}" aria-expanded="${open}">${ic(g.icon)}<span>${g.label}</span>${!open && sum ? `<span class="nav-badge">${sum}</span>` : `<small>${g.items.length}</small>`}<i class="nav-chev" aria-hidden="true"></i></button>
+      <div class="nav-sec-b"><div>${g.items.map(item).join('')}</div></div></div>`;
+  }).join('');
+}
 
 function render() {
   const root = $('#app');
@@ -3338,8 +3430,7 @@ function render() {
   <div class="shell">
     <aside class="side ${ui.sideOpen ? 'open' : ''}">
       <div class="brand"><div class="brand-mark">${logoSVG()}</div><div><b>ห้องเรียนครูปลื้ม</b><small>ส่งงาน · คะแนน · ข้อสอบ</small></div></div>
-      ${navItems().map(n => n.group ? `<div class="nav-group">${n.group}</div>` :
-        `<a class="nav-item ${navOn === n.id ? 'active' : ''}" href="#${n.id}">${ic(n.icon)}<span>${n.label}</span>${n.soon ? `<span class="soon">${n.soon}</span>` : ''}${n.id === 'users' && store.pendingCount ? `<span class="nav-badge">${store.pendingCount}</span>` : ''}${n.id === 'chat' ? chatBadgeHTML() : ''}${n.id === 'classes' && ME.admin() && (store.resetReqs || []).length ? `<span class="nav-badge">${store.resetReqs.length}</span>` : ''}</a>`).join('')}
+      <nav class="nav-scroll">${sideNavHTML(navOn)}</nav>
       <div class="side-foot">ภาคเรียน ${esc(Q.termLabel(Q.currentTerm()))}</div>
     </aside>
     <div class="scrim ${ui.sideOpen ? 'open' : ''}" data-act="side-close"></div>
@@ -3813,6 +3904,7 @@ function viewStudent() {
    เหตุการณ์ (ใช้ data-act / data-chg / data-inp)
    ===================================================================== */
 const ACT = {
+  'nav-sec': el => navSecToggle(el),
   'modal-close': closeModal,
   'modal-bg': (el, e) => { if (e.target === el) closeModal(); },
   'modal-action': async el => {
@@ -8679,10 +8771,8 @@ function mobileShell(base, navOn, body) {
         <div class="m-grab"></div>
         <div class="m-me"><div class="avatar ${ME.admin() ? 'gold' : ''}">${esc((store.teacher.name || 'ค').charAt(0))}</div>
           <div><b>${esc(store.teacher.name)}</b><small>${ME.admin() ? 'ผู้ดูแลระบบ' : 'ครูผู้ใช้'} · ภาคเรียน ${esc(Q.termLabel(Q.currentTerm()))}</small></div></div>
-        <div class="m-grid">
-          ${more.map(n => `<a href="#${n.id}" class="${n.id === navOn ? 'on' : ''}">${ic(n.icon)}<span>${n.label}</span>${n.id === 'users' && store.pendingCount ? `<i class="nav-badge">${store.pendingCount}</i>` : ''}${n.id === 'chat' ? chatBadgeHTML() : ''}</a>`).join('')}
-          <a href="#student">${ic('student')}<span>หน้านักเรียน</span></a>
-        </div>
+        ${navGroups().map(g => { const its = g.items.filter(n => !tabs.some(t => t.id === n.id)); if (!its.length) return '';
+          return `<div class="m-sec g-${g.key}"><div class="m-sec-h">${g.label || 'ทางลัด'}</div><div class="m-grid4">${its.map(n => { const b = navBadge(n.id); return `<a href="#${n.id}" class="${n.id === navOn ? 'on' : ''}"><span class="m-ic">${ic(n.icon)}${b ? `<i class="nav-badge">${b > 99 ? '99+' : b}</i>` : ''}</span><span>${n.short || n.label}</span></a>`; }).join('')}${g.key === 'top' ? `<a href="#student" class="stu-link"><span class="m-ic">${ic('student')}</span><span>หน้านักเรียน</span></a>` : ''}</div></div>`; }).join('')}
         <div class="m-list">
           <button data-act="theme">${ic(dark ? 'sun' : 'moon')}<span>${dark ? 'โหมดสว่าง' : 'โหมดมืด'}</span></button>
           <button data-act="logout" class="danger">${ic('logout')}<span>ออกจากระบบ</span></button>
