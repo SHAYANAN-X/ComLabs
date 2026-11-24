@@ -2860,7 +2860,7 @@ if (typeof module !== 'undefined') module.exports = ExamParser;
 </script>
 <script>
 /* โลโก้: ภาพครูปลื้ม (ไฟล์ต้นฉบับ src/logo.svg ฝังตอน build) */
-const APP_VER = '9.2 · 24 พ.ย. 2569';
+const APP_VER = '9.3 · 24 พ.ย. 2569';
 let LOGO_N = 0;
 function logoSVG() { const k = 'L' + (++LOGO_N); return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><defs><linearGradient id="lgb" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3B9BFF"/><stop offset=".5" stop-color="#0A5BE0"/><stop offset="1" stop-color="#062C78"/></linearGradient><linearGradient id="lgs" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset=".6" stop-color="#FFF4D6"/><stop offset="1" stop-color="#FFD978"/></linearGradient><radialGradient id="lgc" cx=".3" cy=".08" r=".75"><stop offset="0" stop-color="#fff" stop-opacity=".55"/><stop offset=".5" stop-color="#fff" stop-opacity=".08"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient></defs><rect width="48" height="48" rx="13" fill="url(#lgb)"/><rect width="48" height="48" rx="13" fill="url(#lgc)"/><rect x=".75" y=".75" width="46.5" height="46.5" rx="12.3" fill="none" stroke="#fff" stroke-opacity=".45" stroke-width="1.2"/><g fill="none" stroke="#04235F" stroke-opacity=".35" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" transform="translate(0 1.2)"><path d="M21.2 17 C19.8 14.6 17.4 13.6 14.8 13.6 C11 13.6 8.6 15.6 8.6 18.5 C8.6 21.8 11.6 22.9 14.9 23.9 C18.6 25 21.6 26.4 21.6 29.8 C21.6 33 18.8 34.6 15.1 34.6 C12 34.6 9.5 33.4 8 31.1"/><path d="M26.6 14 L39.6 34.2 M39.6 14 L26.6 34.2"/></g><g fill="none" stroke="url(#lgs)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M21.2 17 C19.8 14.6 17.4 13.6 14.8 13.6 C11 13.6 8.6 15.6 8.6 18.5 C8.6 21.8 11.6 22.9 14.9 23.9 C18.6 25 21.6 26.4 21.6 29.8 C21.6 33 18.8 34.6 15.1 34.6 C12 34.6 9.5 33.4 8 31.1"/><path d="M26.6 14 L39.6 34.2 M39.6 14 L26.6 34.2"/></g></svg>`.replace('<svg ', '<svg class="logo" aria-hidden="true" ').replace(/\b(lg[bsc])\b/g, '$1' + k); }
 /* =====================================================================
@@ -6893,16 +6893,16 @@ Object.assign(INP, { 'rp-cfg': el => rpCfgSet(el.dataset.k, el.value.trim()) });
    แต้ม · เลเวล · ยศ · ตราอันดับ Top 10 · ทำเนียบคนเก่ง Top 5 · ร้านฉายา
    ===================================================================== */
 const RANKS = [
-  { n: 'ผู้ฝึกตน', en: 'Novice', xp: 0, ic: '🌱' },
-  { n: 'นักผจญภัย', en: 'Adventurer', xp: 60, ic: '🎒' },
-  { n: 'นักดาบ', en: 'Swordsman', xp: 150, ic: '🗡️' },
-  { n: 'อัศวิน', en: 'Knight', xp: 280, ic: '🛡️' },
-  { n: 'ขุนพล', en: 'Commander', xp: 450, ic: '⚔️' },
-  { n: 'แม่ทัพ', en: 'General', xp: 650, ic: '🏹' },
-  { n: 'จอมทัพ', en: 'Marshal', xp: 900, ic: '🦅' },
-  { n: 'เจ้าครองนคร', en: 'Lord', xp: 1200, ic: '🏰' },
-  { n: 'จักรพรรดิ', en: 'Emperor', xp: 1600, ic: '🐉' },
-  { n: 'ตำนาน', en: 'Legend', xp: 2100, ic: '✨' },
+  { n: 'ไข่ยังไม่ฟัก', en: 'ยังไม่เกิดในระบบ', xp: 0, ic: '🥚' },
+  { n: 'ลูกเจี๊ยบเพิ่งตื่น', en: 'ตาปรือแต่ส่งงานแล้ว', xp: 60, ic: '🐣' },
+  { n: 'สลอธเริ่มขยับ', en: 'ช้าแต่ชัวร์', xp: 150, ic: '🦥' },
+  { n: 'หอยทากติดเทอร์โบ', en: 'ช้าแบบมีสปีด', xp: 280, ic: '🐌' },
+  { n: 'กบนอกกะลา', en: 'เริ่มเห็นโลกกว้าง', xp: 450, ic: '🐸' },
+  { n: 'ไก่ชนประจำห้อง', en: 'ตีปีกทุกงาน', xp: 650, ic: '🐓' },
+  { n: 'ไดโนส่งงานไว', en: 'ทันเดดไลน์ทุกยุค', xp: 900, ic: '🦖' },
+  { n: 'สมองเน็ต 5G', en: 'โหลดความรู้ไม่มีกระตุก', xp: 1200, ic: '🧠' },
+  { n: 'เทพเจ้าแห่งการบ้าน', en: 'ครูยังต้องกราบ', xp: 1600, ic: '🔱' },
+  { n: 'เอเลี่ยนมาเรียน', en: 'เก่งเกินมนุษย์โลก', xp: 2100, ic: '🛸' },
 ];
 const RARITY = { common: 'ธรรมดา', rare: 'หายาก', epic: 'มหากาพย์', legendary: 'ตำนาน', mythic: 'เทพนิยาย' };
 const RULE_DEF = { sub: 30, ontime: 10, score: 50, exam: 100, exam_full: 30, gallery: 100, present: 5, late: 3, exam_coin: 10, exam_full_coin: 5, sub_coin: 0 };
