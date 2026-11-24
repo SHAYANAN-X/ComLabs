@@ -2874,56 +2874,85 @@ body:has(#t-chat) .main{padding-bottom:96px}body:has(#stu-chat) .stu{padding-bot
 .rail-r{display:flex;min-width:0;overflow:hidden;border-radius:999px}.rail-r>*{max-width:100%;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 
 /* =========================================================
-   แถบเมนูด้านบนแบบ Apple — แถบโปร่งแสงเต็มความกว้าง เส้นบาง ๆ ด้านล่าง
+   แถบด้านบน v2 — "Glass toolbar"
+   แถบกระจกเต็มความกว้าง + เส้นแสงสีโลโก้ SX ด้านล่าง
+   ซ้าย: ไอคอนหน้าแบบ iOS tile + หมวด/ชื่อหน้า
+   ขวา: ปุ่มหลัก 1 ปุ่ม + กลุ่มเครื่องมือในแคปซูลเดียวแบบ macOS toolbar
    ========================================================= */
+.top.anav,[data-theme=dark] .top.anav,.snav{
+  --bar-bg:linear-gradient(180deg,rgba(255,255,255,.86),rgba(246,249,255,.66));
+  --bar-hair:rgba(15,40,90,.08);--tool-bg:rgba(255,255,255,.7);--tool-rim:rgba(15,40,90,.09);--ink:#0E1B33;--ink-2:#5B6B86}
+[data-theme=dark] .top.anav,[data-theme=dark] .snav{
+  --bar-bg:linear-gradient(180deg,rgba(24,28,40,.86),rgba(18,21,30,.66));
+  --bar-hair:rgba(255,255,255,.07);--tool-bg:rgba(255,255,255,.06);--tool-rim:rgba(255,255,255,.1);--ink:#EEF3FF;--ink-2:#93A1BD}
 .top.anav,[data-theme=dark] .top.anav{
-  position:sticky;top:0;z-index:20;margin:0;border-radius:0;
-  display:flex;align-items:center;justify-content:space-between;gap:16px;
-  height:58px;padding:0 28px 0 34px;pointer-events:auto;
-  background:rgba(250,250,252,.72);
-  -webkit-backdrop-filter:saturate(180%) blur(20px);backdrop-filter:saturate(180%) blur(20px);
-  border:0;border-bottom:1px solid rgba(0,0,0,.08);box-shadow:none}
-[data-theme=dark] .top.anav{background:rgba(22,22,26,.72);border-bottom-color:rgba(255,255,255,.09)}
-[data-device=pc] .top.anav{zoom:1.06}
-.an-l,.an-r{display:flex;align-items:center;gap:6px;min-width:0}
-.an-title{display:flex;flex-direction:column;line-height:1.15;min-width:0}
-.an-title small{font:500 11.5px var(--f-body);color:var(--muted);letter-spacing:.01em}
-.top.anav .an-title h1{opacity:1;font:600 18px var(--f-head);color:var(--text);margin:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;background:none;-webkit-text-fill-color:currentColor}
-.an-ic{display:inline-grid;place-items:center;width:36px;height:36px;border-radius:10px;border:0;background:transparent;color:var(--text);opacity:.78;cursor:pointer;transition:background .2s,opacity .2s,transform .3s cubic-bezier(.2,1.5,.4,1)}
+  position:sticky;top:0;z-index:20;margin:0;border:0;border-radius:0;pointer-events:auto;
+  display:flex;align-items:center;justify-content:space-between;gap:18px;height:66px;padding:0 26px 0 30px;
+  background:var(--bar-bg);-webkit-backdrop-filter:saturate(190%) blur(24px);backdrop-filter:saturate(190%) blur(24px);
+  box-shadow:inset 0 -1px 0 var(--bar-hair);transition:box-shadow .3s}
+.top.anav::after,.snav::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:1px;pointer-events:none;opacity:0;transition:opacity .35s;
+  background:linear-gradient(90deg,transparent,rgba(10,132,255,.55) 25%,rgba(90,200,250,.65) 55%,rgba(10,132,255,.4) 80%,transparent)}
+body.bar-scrolled .top.anav,body.bar-scrolled .snav{box-shadow:inset 0 -1px 0 var(--bar-hair),0 10px 28px -18px rgba(10,40,100,.35)}
+body.bar-scrolled .top.anav::after,body.bar-scrolled .snav::after{opacity:1}
+[data-device=pc] .top.anav{zoom:1.04}
+.an-l,.an-r{display:flex;align-items:center;gap:12px;min-width:0}
+/* ไอคอนหน้า แบบไอคอน iOS */
+.an-tile{flex:none;width:38px;height:38px;border-radius:11px;display:grid;place-items:center;color:#fff;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.45),inset 0 -1px 0 rgba(0,0,0,.08),0 6px 14px -8px var(--tile-sh,rgba(10,100,240,.7))}
+.an-tile svg{width:20px;height:20px;stroke-width:2.1}
+.an-tile.t-blue{background:linear-gradient(160deg,#5AC8FA,#0A6CF0)}
+.an-tile.t-green{background:linear-gradient(160deg,#5EE08A,#1AA353);--tile-sh:rgba(26,163,83,.7)}
+.an-tile.t-orange{background:linear-gradient(160deg,#FFC15A,#FF8A1F);--tile-sh:rgba(255,138,31,.7)}
+.an-tile.t-pink{background:linear-gradient(160deg,#FF8FB1,#F2416F);--tile-sh:rgba(242,65,111,.7)}
+.an-tile.t-graphite{background:linear-gradient(160deg,#A3AEC2,#5D6A82);--tile-sh:rgba(70,80,100,.6)}
+.an-title{display:flex;flex-direction:column;gap:1px;min-width:0;line-height:1.15}
+.an-title small{font:500 12px var(--f-body);color:var(--ink-2)}
+.top.anav .an-title h1{opacity:1;margin:0;font:700 19px var(--f-head);color:var(--ink);letter-spacing:-.005em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;background:none;-webkit-text-fill-color:currentColor}
+/* ปุ่มหลัก */
+.an-cta{display:inline-flex;align-items:center;gap:7px;height:38px;padding:0 17px 0 14px;border-radius:12px;border:0;cursor:pointer;color:#fff;
+  font:600 14px var(--f-body);background:linear-gradient(180deg,#2E95FF,#0A6CF0);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 0 0 1px rgba(10,90,210,.55),0 8px 18px -10px rgba(10,108,240,.9);
+  transition:transform .35s cubic-bezier(.2,1.6,.4,1),filter .2s}
+.an-cta svg{width:17px;height:17px}.an-cta:hover{filter:brightness(1.07)}.an-cta:active{transform:scale(.95)}
+/* แคปซูลเครื่องมือ */
+.an-tools{display:flex;align-items:center;gap:2px;height:44px;padding:0 4px;border-radius:14px;background:var(--tool-bg);
+  box-shadow:inset 0 0 0 1px var(--tool-rim),inset 0 1px 0 rgba(255,255,255,.6),0 2px 6px -3px rgba(10,40,100,.12)}
+[data-theme=dark] .an-tools{box-shadow:inset 0 0 0 1px var(--tool-rim),inset 0 1px 0 rgba(255,255,255,.06)}
+.an-ic{display:inline-grid;place-items:center;width:36px;height:36px;border-radius:10px;border:0;background:transparent;color:var(--ink);opacity:.72;cursor:pointer;
+  transition:background .2s,opacity .2s,color .2s,transform .35s cubic-bezier(.2,1.6,.4,1)}
 .an-ic svg{width:19px;height:19px}
-.an-ic:hover{opacity:1;background:rgba(0,0,0,.05)}[data-theme=dark] .an-ic:hover{background:rgba(255,255,255,.08)}
-.an-ic:active{transform:scale(.9)}
-.an-ic.sm{width:30px;height:30px;border-radius:8px}.an-ic.sm svg{width:16px;height:16px}
-.an-sep{width:1px;height:20px;background:rgba(0,0,0,.12);margin:0 6px}[data-theme=dark] .an-sep{background:rgba(255,255,255,.14)}
-.an-cta{display:inline-flex;align-items:center;gap:6px;height:32px;padding:0 14px;border-radius:999px;border:0;cursor:pointer;
-  background:#0071E3;color:#fff;font:600 13.5px var(--f-body);transition:background .2s,transform .3s cubic-bezier(.2,1.5,.4,1)}
-.an-cta svg{width:16px;height:16px}.an-cta:hover{background:#0077ED}.an-cta:active{transform:scale(.95)}
-.an-user{display:flex;align-items:center;gap:8px;padding:3px 3px 3px 3px;border-radius:999px}
-.an-ava{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;font:700 14px var(--f-head);color:#fff;
-  background:linear-gradient(145deg,#5AC8FA,#0071E3);box-shadow:inset 0 1px 0 rgba(255,255,255,.4)}
-.an-name{display:flex;flex-direction:column;font:600 13.5px var(--f-body);line-height:1.15;color:var(--text);white-space:nowrap}
-.an-name small{font-weight:500;font-size:11px;color:var(--muted)}
+.an-ic:hover{opacity:1;background:rgba(10,60,140,.07)}[data-theme=dark] .an-ic:hover{background:rgba(255,255,255,.09)}
+.an-ic:active{transform:scale(.88)}
+.an-ic.out:hover{color:#E5484D;background:rgba(229,72,77,.1)}
+.an-div{width:1px;height:22px;margin:0 6px;background:var(--tool-rim)}
+.an-me{display:flex;align-items:center;gap:9px;padding:0 8px 0 2px;min-width:0}
+.an-ava,.sn-ava{flex:none;width:32px;height:32px;border-radius:50%;display:grid;place-items:center}
+.an-ava{font:700 14.5px var(--f-head);color:#fff;background:linear-gradient(150deg,#5AC8FA,#0A6CF0);box-shadow:inset 0 1px 0 rgba(255,255,255,.45),0 0 0 2px rgba(255,255,255,.8),0 0 0 3px rgba(10,108,240,.25)}
+.sn-ava{font-size:19px;background:linear-gradient(150deg,#FFF4D0,#FFD66B);box-shadow:inset 0 1px 0 rgba(255,255,255,.7),0 0 0 2px rgba(255,255,255,.8),0 0 0 3px rgba(240,170,0,.3)}
+[data-theme=dark] .an-ava,[data-theme=dark] .sn-ava{box-shadow:inset 0 1px 0 rgba(255,255,255,.3),0 0 0 2px rgba(255,255,255,.12)}
+.an-name{display:flex;flex-direction:column;font:600 13.5px var(--f-body);line-height:1.2;color:var(--ink);white-space:nowrap;max-width:180px;overflow:hidden;text-overflow:ellipsis}
+.an-name small{font:500 11.5px var(--f-body);color:var(--ink-2)}
 .top.anav .menu-btn{display:none}
-@media (max-width:900px){.top.anav .menu-btn{display:inline-grid}.top.anav{padding:0 14px}}
-@media (max-width:640px){.top.anav .hide-sm{display:none}.an-cta{width:34px;padding:0;justify-content:center}}
-/* เนื้อหาเริ่มต่อจากแถบพอดี ไม่ซ้อนกัน */
-.top.anav+.content{padding-top:22px}
+@media (max-width:900px){.top.anav .menu-btn{display:inline-grid}.top.anav{padding:0 12px;height:60px}.an-tile{display:none}}
+@media (max-width:640px){.anav .hide-sm,.snav .hide-sm{display:none}.an-cta{width:38px;padding:0;justify-content:center}.an-me{padding:0 2px}}
+.top.anav+.content{padding-top:24px}
 
-/* ---------- แถบด้านบนของหน้านักเรียน ---------- */
-.snav{position:sticky;top:0;z-index:20;align-self:stretch;margin:-28px -18px 20px;
-  background:rgba(250,250,252,.72);-webkit-backdrop-filter:saturate(180%) blur(20px);backdrop-filter:saturate(180%) blur(20px);
-  border-bottom:1px solid rgba(0,0,0,.08)}
-[data-theme=dark] .snav{background:rgba(22,22,26,.72);border-bottom-color:rgba(255,255,255,.09)}
-.snav-in{height:54px;width:min(820px,100%);margin:0 auto;padding:0 18px;display:flex;align-items:center;gap:6px}
-.sn-brand{display:flex;align-items:center;gap:9px;min-width:0}
-.sn-brand .brand-mark{width:30px!important;height:30px!important;border-radius:8px!important;flex-shrink:0;overflow:hidden;box-shadow:0 2px 6px -2px rgba(0,60,160,.35)!important}
+/* ---------- นักเรียน ---------- */
+.snav{position:sticky;top:0;z-index:20;align-self:stretch;margin:-28px -18px 22px;
+  background:var(--bar-bg);-webkit-backdrop-filter:saturate(190%) blur(24px);backdrop-filter:saturate(190%) blur(24px);
+  box-shadow:inset 0 -1px 0 var(--bar-hair);transition:box-shadow .3s}
+.snav-in{height:64px;width:min(840px,100%);margin:0 auto;padding:0 16px;display:flex;align-items:center;gap:10px}
+.sn-brand{display:flex;align-items:center;gap:10px;min-width:0}
+.sn-brand .brand-mark{width:36px!important;height:36px!important;border-radius:10px!important;flex-shrink:0;overflow:hidden;box-shadow:0 6px 14px -8px rgba(10,80,200,.8)!important}
 .sn-brand .brand-mark svg{width:100%;height:100%}
-.sn-brand b{font:700 16px var(--f-head);color:var(--text);white-space:nowrap}
-.sn-tag{font:500 11.5px var(--f-body);color:var(--muted);padding:2px 9px;border-radius:999px;background:rgba(0,0,0,.05)}
-[data-theme=dark] .sn-tag{background:rgba(255,255,255,.08)}
-.sn-who{font:500 13.5px var(--f-body);color:var(--muted);white-space:nowrap;max-width:220px;overflow:hidden;text-overflow:ellipsis}
+.sn-wm{display:flex;flex-direction:column;line-height:1.15}
+.sn-wm b{font:700 16.5px var(--f-head);color:var(--ink);white-space:nowrap}
+.sn-wm small{font:500 11.5px var(--f-body);color:var(--ink-2)}
+.sn-coin{display:inline-flex;align-items:center;gap:4px;height:28px;padding:0 10px;border-radius:999px;font:700 13px var(--f-body);color:#8A5A00;
+  background:linear-gradient(180deg,#FFF3C9,#FFE08A);box-shadow:inset 0 0 0 1px rgba(220,160,0,.35)}
+[data-theme=dark] .sn-coin{color:#FFD45A;background:rgba(255,200,40,.14);box-shadow:inset 0 0 0 1px rgba(255,200,40,.3)}
 [data-device=pc] .stu>.snav{zoom:1}
-@media (max-width:640px){.snav{margin:-28px -18px 14px}.sn-tag{display:none}.stu .hide-sm{display:none}}
+@media (max-width:640px){.snav{margin:-28px -18px 14px}.snav-in{height:58px}.sn-wm small{display:none}}
 
 </style>
 </head>
@@ -3418,7 +3447,7 @@ if (typeof module !== 'undefined') module.exports = ExamParser;
 </script>
 <script>
 /* โลโก้: ภาพครูปลื้ม (ไฟล์ต้นฉบับ src/logo.svg ฝังตอน build) */
-const APP_VER = '14.2 · 24 พ.ย. 2569';
+const APP_VER = '14.3 · 24 พ.ย. 2569';
 let LOGO_N = 0;
 function logoSVG() { const k = 'L' + (++LOGO_N); return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><defs><linearGradient id="lgb" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3B9BFF"/><stop offset=".5" stop-color="#0A5BE0"/><stop offset="1" stop-color="#062C78"/></linearGradient><linearGradient id="lgs" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset=".6" stop-color="#FFF4D6"/><stop offset="1" stop-color="#FFD978"/></linearGradient><radialGradient id="lgc" cx=".3" cy=".08" r=".75"><stop offset="0" stop-color="#fff" stop-opacity=".55"/><stop offset=".5" stop-color="#fff" stop-opacity=".08"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient></defs><rect width="48" height="48" rx="13" fill="url(#lgb)"/><rect width="48" height="48" rx="13" fill="url(#lgc)"/><rect x=".75" y=".75" width="46.5" height="46.5" rx="12.3" fill="none" stroke="#fff" stroke-opacity=".45" stroke-width="1.2"/><g fill="none" stroke="#04235F" stroke-opacity=".35" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" transform="translate(0 1.2)"><path d="M21.2 17 C19.8 14.6 17.4 13.6 14.8 13.6 C11 13.6 8.6 15.6 8.6 18.5 C8.6 21.8 11.6 22.9 14.9 23.9 C18.6 25 21.6 26.4 21.6 29.8 C21.6 33 18.8 34.6 15.1 34.6 C12 34.6 9.5 33.4 8 31.1"/><path d="M26.6 14 L39.6 34.2 M39.6 14 L26.6 34.2"/></g><g fill="none" stroke="url(#lgs)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M21.2 17 C19.8 14.6 17.4 13.6 14.8 13.6 C11 13.6 8.6 15.6 8.6 18.5 C8.6 21.8 11.6 22.9 14.9 23.9 C18.6 25 21.6 26.4 21.6 29.8 C21.6 33 18.8 34.6 15.1 34.6 C12 34.6 9.5 33.4 8 31.1"/><path d="M26.6 14 L39.6 34.2 M39.6 14 L26.6 34.2"/></g></svg>`.replace('<svg ', '<svg class="logo" aria-hidden="true" ').replace(/\b(lg[bsc])\b/g, '$1' + k); }
 /* =====================================================================
@@ -3705,6 +3734,45 @@ function navBadgeSync() {
   document.querySelectorAll('.m-tabs a[href]').forEach(a => { const id = a.getAttribute('href').slice(1), b = navBadge(id); a.querySelector('.tab-badge')?.remove(); if (b) a.insertAdjacentHTML('beforeend', `<i class="tab-badge">${b > 99 ? '99+' : b}</i>`); });
   if (typeof titleBadge === 'function') titleBadge();
 }
+/* ---------- แถบด้านบน (ครู) ---------- */
+const GROUP_TINT = { top: 'blue', teach: 'blue', score: 'green', grade: 'green', data: 'orange', sys: 'graphite', system: 'graphite' };
+function topBarHTML(base) {
+  const g = navGroups().find(g => g.items.some(n => n.id === base)) || { key: 'top' };
+  const item = NAV.find(n => n.id === base) || NAV[0];
+  const tint = GROUP_TINT[g.key] || ['blue', 'green', 'orange', 'pink', 'graphite'][navGroups().indexOf(g) % 5] || 'blue';
+  const nm = (store.teacher.name || '').trim(), ini = (nm.replace(/^(ครู|คุณครู|อ\.|อาจารย์)\s*/, '') || 'ค').charAt(0);
+  return `<header class="top anav">
+    <div class="an-l">
+      <button class="an-ic menu-btn" data-act="side-open" aria-label="เมนู">${ic('menu')}</button>
+      <span class="an-tile t-${tint}">${ic(item.icon)}</span>
+      <div class="an-title"><small>${g.label ? esc(g.label) : 'ห้องเรียนครูปลื้ม'}</small><h1>${TITLES[TITLES[base] ? base : 'dashboard']}</h1></div>
+    </div>
+    <div class="an-r">
+      <button class="an-cta" data-act="share-open">${ic('link')}<span class="hide-sm">ส่งลิงก์ให้นักเรียน</span></button>
+      <div class="an-tools">
+        <a class="an-ic hide-sm" href="#student" title="เปิดหน้านักเรียน" aria-label="เปิดหน้านักเรียน">${ic('student')}</a>
+        <button class="an-ic" data-act="theme" aria-label="สลับธีม" title="สลับธีมสว่าง/มืด">${ic(document.documentElement.dataset.theme === 'dark' ? 'sun' : 'moon')}</button>
+        <span class="an-div"></span>
+        <span class="an-me" title="${esc(nm)}"><span class="an-ava">${esc(ini)}</span><span class="an-name hide-sm">${esc(nm)}<small>${ME.admin() ? 'ผู้ดูแลระบบ' : 'ครูผู้สอน'}</small></span></span>
+        <button class="an-ic out" data-act="logout" aria-label="ออกจากระบบ" title="ออกจากระบบ">${ic('logout')}</button>
+      </div>
+    </div>
+  </header>`;
+}
+/* ---------- แถบด้านบน (นักเรียน) ---------- */
+function stuBarHTML(v) {
+  const g = stuState.game, ok = v && g && !g.missing, r = ok ? RANKS[rankIdx(g.xp)] : null;
+  return `<header class="snav"><div class="snav-in">
+    <div class="sn-brand"><span class="brand-mark">${logoSVG()}</span><span class="sn-wm"><b>ห้องเรียนครูปลื้ม</b><small>โซนนักเรียน</small></span></div>
+    <span class="spacer"></span>
+    <div class="an-tools">
+      ${v ? `<span class="an-me"><span class="sn-ava">${r ? r.ic : '🙂'}</span><span class="an-name hide-sm">${esc(stuFirst(v))}<small>${esc(v.classroom_name || '')}${v.number ? ` · เลขที่ ${v.number}` : ''}</small></span></span>
+      ${ok ? `<span class="sn-coin" title="เหรียญ">🪙 ${(+g.coins || 0).toLocaleString()}</span>` : ''}<span class="an-div"></span>` : ''}
+      <button class="an-ic" data-act="theme" aria-label="สลับธีม" title="สลับธีมสว่าง/มืด">${ic(document.documentElement.dataset.theme === 'dark' ? 'sun' : 'moon')}</button>
+    </div>
+  </div></header>`;
+}
+window.addEventListener('scroll', () => document.body.classList.toggle('bar-scrolled', window.scrollY > 8), { passive: true });
 function navGroups() {
   const out = [], items = navItems(); let cur = { key: 'top', items: [] }; out.push(cur);
   items.forEach(n => { if (n.group) { cur = { key: n.key, label: n.group, icon: n.icon, items: [] }; out.push(cur); } else cur.items.push(n); });
@@ -3751,21 +3819,7 @@ function render() {
     </aside>
     <div class="scrim ${ui.sideOpen ? 'open' : ''}" data-act="side-close"></div>
     <div class="main">
-      <header class="top anav">
-        <div class="an-l">
-          <button class="an-ic menu-btn" data-act="side-open" aria-label="เมนู">${ic('menu')}</button>
-          <div class="an-title">${(() => { const g = navGroups().find(g => g.label && g.items.some(n => n.id === base)); return g ? `<small>${esc(g.label)}</small>` : ''; })()}<h1>${TITLES[TITLES[base] ? base : 'dashboard']}</h1></div>
-        </div>
-        <div class="an-r">
-          <button class="an-cta" data-act="share-open">${ic('link')}<span class="hide-sm">ส่งลิงก์ให้นักเรียน</span></button>
-          <span class="an-sep hide-sm"></span>
-          <a class="an-ic hide-sm" href="#student" title="เปิดหน้านักเรียน" aria-label="เปิดหน้านักเรียน">${ic('student')}</a>
-          <button class="an-ic" data-act="theme" aria-label="สลับธีม" title="สลับธีมสว่าง/มืด">${ic(theme === 'dark' ? 'sun' : 'moon')}</button>
-          <span class="an-sep"></span>
-          <div class="an-user"><span class="an-ava">${esc(((store.teacher.name || '').trim().replace(/^(ครู|คุณครู|อ\.|อาจารย์)\s*/, '') || 'ค').charAt(0))}</span><span class="an-name hide-sm">${esc(store.teacher.name)}${ME.admin() ? '<small>ผู้ดูแลระบบ</small>' : '<small>ครูผู้สอน</small>'}</span>
-            <button class="an-ic sm" data-act="logout" aria-label="ออกจากระบบ" title="ออกจากระบบ">${ic('logout')}</button></div>
-        </div>
-      </header>
+      ${topBarHTML(base)}
       <main class="content">${(views[base] || viewDashboard)()}</main>
       <div class="credit">ห้องเรียนครูปลื้ม · ทำด้วยใจ 💜 · ${esc(store.teacher.name)} · <span title="เวอร์ชันของหน้าเว็บ">v${APP_VER}</span></div>
     </div>
@@ -4214,12 +4268,7 @@ function viewStudent() {
   const cls = stuState.classes || [];
   const w = v ? 680 : 440;
   return `<div class="stu">
-    <header class="snav"><div class="snav-in">
-      <div class="sn-brand"><span class="brand-mark">${logoSVG()}</span><b>ห้องเรียนครูปลื้ม</b><span class="sn-tag">โซนนักเรียน</span></div>
-      <span class="spacer"></span>
-      ${v ? `<span class="sn-who hide-sm">${esc(stuFirst(v))}</span><span class="an-sep"></span>` : ''}
-      <button class="an-ic" data-act="theme" aria-label="สลับธีม" title="สลับธีมสว่าง/มืด">${ic(theme === 'dark' ? 'sun' : 'moon')}</button>
-    </div></header>
+    ${stuBarHTML(v)}
     ${v ? studentHome(v) + stuRailsHTML() : `<div class="card stu-card stu-login"><div class="stu-login-art">${ART.desk(sceneHour(), 440)}</div><div class="stu-hi">👋</div><form class="stack" data-form="stu">
         <div style="text-align:center"><h2 style="font-size:26px">สวัสดี! มาส่งงานกัน</h2><p class="muted" style="margin:2px 0 0">เลือกห้อง แล้วกรอกเลขที่กับรหัสผ่าน</p></div>
         <label class="field"><span>🏫 ห้อง</span><select class="input big" name="cid" required ${stuState.classes ? '' : 'disabled'}><option value="">${stuState.classes ? 'เลือกห้องของฉัน' : 'กำลังโหลดรายชื่อห้อง…'}</option>${cls.map(c => `<option value="${c.id}">${esc(c.name)}</option>`).join('')}</select></label>
