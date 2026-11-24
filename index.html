@@ -2713,6 +2713,75 @@ textarea.mono::placeholder{color:#64748B}
 [data-device=mobile] .stu{padding-bottom:90px}
 @media (prefers-reduced-motion:reduce){.sc-fab.dock,.sc-panel{animation:none!important;transition:none!important}}
 
+/* =====================================================================
+   เฟส 13.5: หน้าเลือกบทบาท · ป้ายยศใหญ่ขึ้น · ยศสูงเรืองแสงพรีเมียม
+   ===================================================================== */
+.role-pick{display:flex;flex-direction:column;gap:12px}
+.rp-h{font:700 20px var(--f-head);margin:0 0 4px}
+.role-card{position:relative;display:flex;align-items:center;gap:14px;width:100%;padding:16px 18px;border:0;border-radius:22px;text-decoration:none;text-align:left;font:inherit;cursor:pointer;overflow:hidden;
+  transition:transform .3s cubic-bezier(.2,1.4,.4,1),box-shadow .3s}
+.role-card:hover{transform:translateY(-3px)}.role-card:active{transform:scale(.98)}
+.role-card.rc-stu{padding:22px 20px;color:#fff;background:radial-gradient(120% 120% at 0% 0%,rgba(255,255,255,.35),transparent 50%),linear-gradient(140deg,#3FA0FF,#0A5BE0);
+  box-shadow:0 20px 40px -18px rgba(10,91,224,.75),inset 0 1.5px 0 rgba(255,255,255,.55)}
+.role-card.rc-tch{color:var(--ink);background:linear-gradient(160deg,rgba(255,255,255,.8),rgba(255,255,255,.55));backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  box-shadow:0 12px 28px -16px rgba(20,50,120,.4),inset 0 1.5px 0 #fff,inset 0 0 0 1px rgba(120,140,170,.25)}
+[data-theme=dark] .role-card.rc-tch{background:linear-gradient(160deg,rgba(70,90,130,.5),rgba(40,55,85,.4));box-shadow:0 12px 28px -16px #000,inset 0 1px 0 rgba(255,255,255,.18),inset 0 0 0 1px rgba(255,255,255,.1)}
+.rc-ic{flex:none;width:56px;height:56px;border-radius:18px;display:grid;place-items:center;font-size:30px;background:rgba(255,255,255,.25);box-shadow:inset 0 1px 0 rgba(255,255,255,.5)}
+.role-card.rc-stu .rc-ic{width:64px;height:64px;font-size:36px}
+.role-card.rc-tch .rc-ic{background:var(--fill)}
+.rc-tx{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px}
+.rc-tx b{font:800 20px var(--f-head)}.role-card.rc-stu .rc-tx b{font-size:24px}
+.rc-tx small{font-size:13px;opacity:.85}
+.role-card.rc-tch .rc-tx small{color:var(--muted);opacity:1}
+.rc-go{flex:none;width:11px;height:11px;border-right:2.5px solid currentColor;border-top:2.5px solid currentColor;transform:rotate(45deg);opacity:.7;margin-right:4px;transition:transform .3s}
+.role-card:hover .rc-go{transform:translateX(4px) rotate(45deg)}
+.role-card.rc-stu::after{content:'';position:absolute;top:0;bottom:0;width:45%;left:-60%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.35),transparent);transform:skewX(-20deg);animation:rk-sweep 3.6s ease-in-out infinite}
+.auth-back{margin-bottom:2px}
+
+/* ป้ายยศ: ใหญ่ขึ้น อ่านง่าย */
+.rk{gap:5px!important;padding:3px 11px 3px 7px!important;font-size:13px!important;line-height:1.5!important;font-weight:600}
+.rk .rk-ic{font-size:1.15em;line-height:1}
+.rk b{font-weight:700}
+.pq-rank{margin:4px 0 2px;display:flex;justify-content:center}
+.hall .pq .rk{font-size:13.5px!important;padding:4px 12px 4px 8px!important;box-shadow:inset 0 0 0 1.5px color-mix(in srgb,var(--rc,#888) 45%,transparent);background:rgba(255,255,255,.75)}
+.hall .pq.p1 .rk{font-size:15px!important;padding:5px 14px 5px 9px!important}
+.hall .pq .pq-meta{font-size:12px}
+.rail-r{margin:2px 0}.rail-r .rk{font-size:12px!important;padding:2px 9px 2px 6px!important}
+.pod-rest .rk{font-size:13px!important}
+.gchip-row .rk{font-size:13.5px!important}
+
+/* ยศขั้น 6 ขึ้นไป: เรืองแสง + แสงสะท้อนวิ่งผ่าน */
+.rk.rk-hi{position:relative;overflow:hidden;isolation:isolate;border:0}
+.rk.rk-hi::after{content:'';position:absolute;top:-2px;bottom:-2px;width:38%;left:-60%;z-index:1;pointer-events:none;
+  background:linear-gradient(100deg,transparent,rgba(255,255,255,.9),transparent);transform:skewX(-22deg);animation:rk-sweep 2.8s ease-in-out infinite}
+.rk.rk-hi>*{position:relative;z-index:2}
+@keyframes rk-sweep{0%{left:-60%}55%,100%{left:130%}}
+.rk.g5.rk-hi{background:linear-gradient(135deg,#F0FAFF,#BAE6FD 55%,#7DD3FC)!important;color:#075985!important;box-shadow:0 0 10px rgba(56,189,248,.55),inset 0 0 0 1.5px #38BDF8!important;animation:rk-g5 2.4s ease-in-out infinite}
+.rk.g6.rk-hi{background:linear-gradient(135deg,#FFF1F3,#FECDD3 55%,#FDA4AF)!important;color:#9F1239!important;box-shadow:0 0 12px rgba(244,114,182,.55),inset 0 0 0 1.5px #FB7185!important;animation:rk-g6 2.4s ease-in-out infinite}
+.rk.g7.rk-hi{background:linear-gradient(135deg,#FFF7ED,#FED7AA 50%,#FB923C)!important;color:#9A3412!important;box-shadow:0 0 14px rgba(251,146,60,.65),inset 0 0 0 1.5px #F97316!important;animation:rk-g7 2s ease-in-out infinite}
+.rk.g8.rk-hi{background:linear-gradient(135deg,#FFFBEA,#FFE58A 50%,#F5B300)!important;color:#6B4200!important;box-shadow:0 0 16px rgba(255,190,0,.75),inset 0 0 0 1.5px #E0A800!important;animation:rk-g8 2s ease-in-out infinite}
+.rk.g9.rk-hi{background:linear-gradient(100deg,#FF5A1F,#FF9F1C,#FFD23F,#FFF3B0,#FFD23F,#FF9F1C,#FF5A1F)!important;background-size:300% 100%!important;color:#5A1A00!important;
+  box-shadow:0 0 18px rgba(255,170,0,.9),0 0 34px rgba(255,90,30,.45),inset 0 0 0 1.5px rgba(255,255,255,.7)!important;animation:rainbow 4s linear infinite,rk-g9 1.8s ease-in-out infinite}
+.rk.g9.rk-hi b{text-shadow:0 1px 0 rgba(255,255,255,.6)}
+@keyframes rk-g5{50%{box-shadow:0 0 18px rgba(56,189,248,.85),inset 0 0 0 1.5px #38BDF8}}
+@keyframes rk-g6{50%{box-shadow:0 0 20px rgba(244,114,182,.85),inset 0 0 0 1.5px #FB7185}}
+@keyframes rk-g7{50%{box-shadow:0 0 22px rgba(251,146,60,.95),inset 0 0 0 1.5px #F97316}}
+@keyframes rk-g8{50%{box-shadow:0 0 26px rgba(255,200,0,1),inset 0 0 0 1.5px #E0A800}}
+@keyframes rk-g9{50%{filter:brightness(1.12) saturate(1.15)}}
+/* ยศสูงสุด: ดาวระยิบระยับรอบป้าย */
+.rk-spk{position:relative;display:inline-flex;vertical-align:middle}
+.spk{position:absolute;font-style:normal;line-height:1;color:#FFD23F;pointer-events:none;z-index:3;text-shadow:0 0 6px #FFB800,0 0 12px rgba(255,180,0,.8);animation:spk 1.6s ease-in-out infinite}
+.spk.s1{top:-8px;left:-5px;font-size:12px}
+.spk.s2{top:-9px;right:12px;font-size:10px;animation-delay:.4s}
+.spk.s3{bottom:-8px;right:-6px;font-size:13px;animation-delay:.8s}
+.spk.s4{bottom:-7px;left:30%;font-size:9px;animation-delay:1.1s}
+.spk.s5{top:40%;right:-10px;font-size:9px;animation-delay:.6s}
+@keyframes spk{0%,100%{opacity:0;transform:scale(.3) rotate(0)}50%{opacity:1;transform:scale(1.15) rotate(90deg)}}
+@media (prefers-reduced-motion:reduce){.rk.rk-hi,.rk.rk-hi::after,.spk,.role-card.rc-stu::after{animation:none!important}.spk{opacity:.8}}
+.role-card.rc-stu .rc-tx b,.role-card.rc-stu .rc-tx small{color:#fff!important;-webkit-text-fill-color:#fff;background:none}.role-card.rc-stu .rc-tx small{opacity:.92}.role-card.rc-tch .rc-tx b{color:var(--ink)}
+body:has(#t-chat) .main{padding-bottom:96px}body:has(#stu-chat) .stu{padding-bottom:96px}
+#stu-chat,#t-chat{z-index:45!important}#chat-pops{z-index:46}
+
 </style>
 </head>
 <body>
@@ -3206,7 +3275,7 @@ if (typeof module !== 'undefined') module.exports = ExamParser;
 </script>
 <script>
 /* โลโก้: ภาพครูปลื้ม (ไฟล์ต้นฉบับ src/logo.svg ฝังตอน build) */
-const APP_VER = '13.4 · 24 พ.ย. 2569';
+const APP_VER = '13.5 · 24 พ.ย. 2569';
 let LOGO_N = 0;
 function logoSVG() { const k = 'L' + (++LOGO_N); return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><defs><linearGradient id="lgb" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3B9BFF"/><stop offset=".5" stop-color="#0A5BE0"/><stop offset="1" stop-color="#062C78"/></linearGradient><linearGradient id="lgs" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset=".6" stop-color="#FFF4D6"/><stop offset="1" stop-color="#FFD978"/></linearGradient><radialGradient id="lgc" cx=".3" cy=".08" r=".75"><stop offset="0" stop-color="#fff" stop-opacity=".55"/><stop offset=".5" stop-color="#fff" stop-opacity=".08"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient></defs><rect width="48" height="48" rx="13" fill="url(#lgb)"/><rect width="48" height="48" rx="13" fill="url(#lgc)"/><rect x=".75" y=".75" width="46.5" height="46.5" rx="12.3" fill="none" stroke="#fff" stroke-opacity=".45" stroke-width="1.2"/><g fill="none" stroke="#04235F" stroke-opacity=".35" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" transform="translate(0 1.2)"><path d="M21.2 17 C19.8 14.6 17.4 13.6 14.8 13.6 C11 13.6 8.6 15.6 8.6 18.5 C8.6 21.8 11.6 22.9 14.9 23.9 C18.6 25 21.6 26.4 21.6 29.8 C21.6 33 18.8 34.6 15.1 34.6 C12 34.6 9.5 33.4 8 31.1"/><path d="M26.6 14 L39.6 34.2 M39.6 14 L26.6 34.2"/></g><g fill="none" stroke="url(#lgs)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M21.2 17 C19.8 14.6 17.4 13.6 14.8 13.6 C11 13.6 8.6 15.6 8.6 18.5 C8.6 21.8 11.6 22.9 14.9 23.9 C18.6 25 21.6 26.4 21.6 29.8 C21.6 33 18.8 34.6 15.1 34.6 C12 34.6 9.5 33.4 8 31.1"/><path d="M26.6 14 L39.6 34.2 M39.6 14 L26.6 34.2"/></g></svg>`.replace('<svg ', '<svg class="logo" aria-hidden="true" ').replace(/\b(lg[bsc])\b/g, '$1' + k); }
 /* =====================================================================
@@ -3570,10 +3639,16 @@ function viewLogin() {
     </section>
     <section class="auth-form">
       <div class="auth-card stack">
-        <a href="#student" class="stu-cta"><span class="em">🎒</span><div><b>นักเรียน มาส่งงานตรงนี้!</b><small>ส่งงาน · ดูคะแนน · ทำข้อสอบ</small></div><span class="arr">→</span></a>
-        ${ui.authMode === 'sent' ? `<div class="signup-done"><div style="font-size:44px">📬</div><b>สมัครเรียบร้อย!</b><p class="muted small">ส่งคำขอของ <b>${esc(ui.signupEmail)}</b> ถึงผู้ดูแลแล้ว รอผู้ดูแลกดอนุมัติ แล้วกลับมาเข้าสู่ระบบด้วยอีเมลและรหัสผ่านที่สมัครไว้</p>
+        ${!ui.authMode ? `
+        <div class="role-pick">
+          <h2 class="rp-h">เข้าใช้งานในฐานะ</h2>
+          <a href="#student" class="role-card rc-stu"><span class="rc-ic">🎒</span><span class="rc-tx"><b>นักเรียน</b><small>ส่งงาน · ดูคะแนน · ทำข้อสอบ · Ranking</small></span><i class="rc-go" aria-hidden="true"></i></a>
+          <button class="role-card rc-tch" data-act="auth-mode" data-m="login"><span class="rc-ic">👩‍🏫</span><span class="rc-tx"><b>ครูผู้สอน</b><small>เข้าสู่ระบบด้วยอีเมล · ตรวจงาน · จัดการคะแนน</small></span><i class="rc-go" aria-hidden="true"></i></button>
+        </div>`
+        : ui.authMode === 'sent' ? `<div class="signup-done"><div style="font-size:44px">📬</div><b>สมัครเรียบร้อย!</b><p class="muted small">ส่งคำขอของ <b>${esc(ui.signupEmail)}</b> ถึงผู้ดูแลแล้ว รอผู้ดูแลกดอนุมัติ แล้วกลับมาเข้าสู่ระบบด้วยอีเมลและรหัสผ่านที่สมัครไว้</p>
           <button class="btn primary" data-act="auth-mode" data-m="login" style="justify-content:center">ไปหน้าเข้าสู่ระบบ</button></div>`
         : ui.authMode === 'signup' ? `
+        <div class="auth-back"><button class="linkbtn" data-act="auth-mode" data-m="">← เลือกใหม่ (นักเรียน / ครู)</button></div>
         <div class="or"><span>สมัครใช้งานสำหรับครู</span></div>
         <form class="stack" data-form="signup">
           <label class="field"><span>ชื่อที่แสดง *</span><input class="input" name="name" placeholder="ครูสมชาย ใจดี" required maxlength="80" autocomplete="name"></label>
@@ -3586,7 +3661,8 @@ function viewLogin() {
         </form>
         <div class="auth-switch">มีบัญชีแล้ว? <button class="linkbtn" data-act="auth-mode" data-m="login">เข้าสู่ระบบ</button></div>`
         : `
-        <div class="or"><span>หรือ เข้าสู่ระบบสำหรับครู</span></div>
+        <div class="auth-back"><button class="linkbtn" data-act="auth-mode" data-m="">← เลือกใหม่ (นักเรียน / ครู)</button></div>
+        <h2 class="rp-h">👩‍🏫 เข้าสู่ระบบสำหรับครู</h2>
         <form class="stack" data-form="login">
           <label class="field"><span>อีเมล</span><input class="input" type="email" name="email" placeholder="teacher@school.ac.th" required autocomplete="username"></label>
           <label class="field"><span>รหัสผ่าน</span><input class="input" type="password" name="password" required autocomplete="current-password"></label>
@@ -4000,7 +4076,6 @@ function viewStudent() {
         <button class="btn primary big" style="justify-content:center">ไปกันเลย 🚀</button>
         <div class="stu-pass-hint">ยังไม่เคยเปลี่ยนรหัส? ใช้ <b>เลขประจำตัวนักเรียน</b> เป็นรหัสผ่าน · <button type="button" class="linkish" data-act="stu-forgot">ลืมรหัสผ่าน?</button></div>
       </form></div>`}
-    ${session ? `<a href="#dashboard" class="small" style="margin-top:16px">← กลับหน้าครู</a>` : `<a href="#dashboard" class="small" style="margin-top:16px">ครู? เข้าสู่ระบบที่นี่</a>`}
   </div>`;
 }
 
@@ -7346,6 +7421,12 @@ function xpRules(r) {
 function coinRule(r) { r = { ...RULE_DEF, ...(r || {}) }; return `ข้อสอบ: ได้คะแนนเต็มรับ ${r.exam_coin} เหรียญ (คิดตามร้อยละ) + โบนัสคะแนนเต็ม ${r.exam_full_coin} เหรียญ${r.sub_coin ? ` · ส่งงานตรงเวลา +${r.sub_coin}` : ''} · ครูให้พิเศษได้`; }
 const GAME = { t: null, at: 0, loading: false, lvTab: null };
 
+/* ป้ายยศ: ตั้งแต่ "จึ้งเกินต้าน" (ขั้น 6) ขึ้นไปเรืองแสง + แสงสะท้อนวิ่งผ่าน · ยศสูงสุดมีดาวระยิบระยับ */
+function rkBadge(i, extra = '', title = '') {
+  const r = RANKS[i];
+  const inner = `<span class="rk g${i}${i >= 5 ? ' rk-hi' : ''}"${title ? ` title="${esc(title)}"` : ''}><span class="rk-ic">${r.ic}</span><b>${r.n}</b>${extra}</span>`;
+  return i >= 9 ? `<span class="rk-spk">${inner}<i class="spk s1">✦</i><i class="spk s2">✦</i><i class="spk s3">✧</i><i class="spk s4">✦</i><i class="spk s5">✧</i></span>` : inner;
+}
 function rankIdx(xp) { let i = 0; RANKS.forEach((r, k) => { if (xp >= r.xp) i = k; }); return i; }
 function lvOf(xp) { return 1 + Math.floor((xp || 0) / 50); }
 function titleOf(id, titles) { return id ? (titles || []).find(t => t.id === id) : null; }
@@ -7409,7 +7490,7 @@ function crownTag(rank) {
 function nameTag(name, xp, rank, titleId, titles, o = {}) {
   const i = rankIdx(xp || 0), r = RANKS[i], t = titleOf(titleId, titles);
   const crown = xp > 0 ? crownTag(rank) : '';
-  return `<span class="ntag">${crown}<span class="gname g${i}">${esc(name)}</span>${o.noBadge ? '' : `<span class="rk g${i}" title="${r.n} · Lv.${lvOf(xp)}">${r.ic}<b>${r.n}</b></span>`}${t ? `<span class="ttl ${t.rarity}">${esc(t.name)}</span>` : ''}</span>`;
+  return `<span class="ntag">${crown}<span class="gname g${i}">${esc(name)}</span>${o.noBadge ? '' : rkBadge(i, '', `${r.n} · Lv.${lvOf(xp)}`)}${t ? `<span class="ttl ${t.rarity}">${esc(t.name)}</span>` : ''}</span>`;
 }
 
 /* ---------- ทำเนียบคนเก่ง (โพเดียม 5 อันดับ + 6–10) ---------- */
@@ -7419,7 +7500,7 @@ function podiumHTML(top, titles, opt = {}) {
   const medal = ['', '🥇', '🥈', '🥉', '🎖️', '🎖️'];
   const plaque = (x, k) => x ? `<div class="pq p${k}${x.me ? ' me' : ''}"><div class="pq-medal">${medal[k]}</div><div class="pq-no">${k}</div>
       <div class="pq-name">${nameTag(x.name, x.xp, x.rank, x.title_id, titles, { noBadge: true })}</div>
-      <div class="pq-meta">${RANKS[rankIdx(x.xp)].ic} ${RANKS[rankIdx(x.xp)].n} · Lv.${lvOf(x.xp)}</div><div class="pq-xp">${x.xp.toLocaleString()} XP</div><div class="pq-cls">${esc(x.classroom)}</div></div>` : `<div class="pq p${k} vacant"><div class="pq-no">${k}</div><div class="pq-meta">ว่าง</div></div>`;
+      <div class="pq-rank">${rkBadge(rankIdx(x.xp))}</div><div class="pq-meta">Lv.${lvOf(x.xp)}</div><div class="pq-xp">${x.xp.toLocaleString()} XP</div><div class="pq-cls">${esc(x.classroom)}</div></div>` : `<div class="pq p${k} vacant"><div class="pq-no">${k}</div><div class="pq-meta">ว่าง</div></div>`;
   const [a, b, c, d, e] = list;
   return `<div class="podium">${plaque(d, 4)}${plaque(b, 2)}${plaque(a, 1)}${plaque(c, 3)}${plaque(e, 5)}</div>
     ${!opt.noRest && list.length > 5 ? `<div class="pod-rest">${list.slice(5, 10).map(x => `<div class="pr-row${x.me ? ' me' : ''}"><span class="pr-no">${x.rank}</span>${nameTag(x.name, x.xp, x.rank, x.title_id, titles)}<span class="spacer"></span><span class="small muted">${esc(x.classroom)}</span><b class="pr-xp">${x.xp.toLocaleString()} XP</b></div>`).join('')}</div>` : ''}`;
@@ -7482,7 +7563,7 @@ function gameChipHTML() {
   const i = rankIdx(g.xp), r = RANKS[i], t = titleOf(g.title_id, g.titles);
   return `<button class="gchip-row" data-act="stu-tab" data-t="rank" title="ดู Ranking">
     <span class="pill gchip">${g.rank <= 10 && g.xp > 0 ? crownTag(g.rank) : ''}<span class="gx">อันดับ ${g.rank}</span></span>
-    <span class="rk g${i}">${r.ic}<b>${r.n}</b> · Lv.${lvOf(g.xp)}</span>
+    ${rkBadge(i, ` · Lv.${lvOf(g.xp)}`)}
     ${t ? `<span class="ttl ${t.rarity}">${esc(t.name)}</span>` : '<span class="ttl-none">ยังไม่มีฉายา</span>'}
     <span class="pill gcoin">🪙 ${g.coins}</span></button>`;
 }
@@ -7502,7 +7583,7 @@ function studentRankHTML(v) {
     <div class="card hall stu-hall"><div class="hall-h"><div><h3>🏆 ทำเนียบคนเก่ง ${esc(g.level)}</h3><small>5 อันดับแรกขึ้นป้ายเกียรติยศ · อันดับ 1–3 ได้มงกุฎหน้าชื่อ</small></div></div>
       ${podiumHTML(g.top, g.titles)}</div>
     <div class="rank-2col">
-      <div class="card"><div class="card-h"><h3>⚔️ เส้นทางยศ</h3></div><div class="ladder">${RANKS.map((r, k) => `<div class="ld-row${k === i ? ' now' : ''}${k < i ? ' done' : ''}"><span class="rk g${k}">${r.ic}<b>${r.n}</b></span><span class="spacer"></span><small>${r.xp.toLocaleString()}+ XP</small>${k === i ? '<span class="chip">ตอนนี้</span>' : k < i ? '✓' : ''}</div>`).join('')}</div></div>
+      <div class="card"><div class="card-h"><h3>⚔️ เส้นทางยศ</h3></div><div class="ladder">${RANKS.map((r, k) => `<div class="ld-row${k === i ? ' now' : ''}${k < i ? ' done' : ''}">${rkBadge(k)}<span class="spacer"></span><small>${r.xp.toLocaleString()}+ XP</small>${k === i ? '<span class="chip">ตอนนี้</span>' : k < i ? '✓' : ''}</div>`).join('')}</div></div>
       <div class="card"><div class="card-h"><h3>✨ วิธีได้แต้ม</h3></div><div class="card-b">${xpRules(g.rules).map(([e, a, b]) => `<div class="hr-row"><span>${e}</span><b>${a}</b><span class="spacer"></span><small>${b}</small></div>`).join('')}
         <p class="small muted" style="margin-top:10px">🪙 ${coinRule(g.rules)}</p>
         ${(g.bonus || []).length ? `<h4 class="gb-h">🎁 แต้มพิเศษจากครูล่าสุด</h4>${g.bonus.map(b => `<div class="hr-row"><span>${b.xp >= 0 ? '⬆️' : '⬇️'}</span><span>${esc(b.reason || 'แต้มพิเศษ')}</span><span class="spacer"></span><b class="${b.xp < 0 ? 'neg' : 'pos'}">${b.xp ? `${b.xp > 0 ? '+' : ''}${b.xp} XP` : ''}${b.coins ? ` ${b.coins > 0 ? '+' : ''}${b.coins}🪙` : ''}</b></div>`).join('')}` : ''}</div></div>
@@ -7530,7 +7611,7 @@ function gameHelpModal(rules) {
     body: `<div class="help-grid"><div><h4>วิธีได้แต้ม (XP)</h4>${xpRules(rules || stuState.game?.rules || RK?.t?.rules).map(([e, a, b]) => `<div class="hr-row"><span>${e}</span><b>${a}</b><span class="spacer"></span><small>${b}</small></div>`).join('')}
         <h4 style="margin-top:14px">เลเวลและตราอันดับ</h4><p class="small">ทุก 50 XP = ขึ้น 1 เลเวล · อันดับ 1 / 2 / 3 ของสายชั้นได้มงกุฎทอง / เงิน / ทองแดง หน้าชื่อ (โชว์ทุกที่ รวมท็อปโรงเรียน) · 5 อันดับแรกขึ้นทำเนียบคนเก่ง</p>
         <h4>เหรียญ 🪙</h4><p class="small">${coinRule(rules || stuState.game?.rules)} · ใช้ซื้อฉายาในร้านค้า</p></div>
-      <div><h4>ยศ 10 ขั้น</h4>${RANKS.map((r, i) => `<div class="hr-row rk-row"><span class="rk g${i}">${r.ic}<b>${r.n}</b></span><small class="muted">${r.en}</small><span class="spacer"></span><b>${r.xp.toLocaleString()}+ XP</b></div>`).join('')}</div></div>`,
+      <div><h4>ยศ 10 ขั้น</h4>${RANKS.map((r, i) => `<div class="hr-row rk-row">${rkBadge(i)}<small class="muted">${r.en}</small><span class="spacer"></span><b>${r.xp.toLocaleString()}+ XP</b></div>`).join('')}</div></div>`,
     actions: [{ label: 'ปิด', onClick: closeModal }],
   });
 }
@@ -7557,7 +7638,7 @@ function railListHTML(list, titles, school) {
   return list.slice(0, 5).map((x, k) => { const pos = x.rank || k + 1, r = RANKS[rankIdx(x.xp)];
     return `<div class="rail-row p${Math.min(pos, 4)}${x.me ? ' me' : ''}"><span class="rail-md">${pos <= 3 ? md[pos] : `<i>${pos}</i>`}</span>
       <div class="rail-b"><div class="rail-n">${nameTag(x.name.split(' ')[0], x.xp, school ? x.lvl_rank : x.rank, x.title_id, titles, { noBadge: true })}</div>
-      <small>${r.ic} ${r.n} · ${esc(x.classroom)}${school && x.lvl_rank ? ` · #${x.lvl_rank} ${esc(x.level)}` : ''}</small></div><b class="rail-xp">${x.xp.toLocaleString()}<small>XP</small></b></div>`; }).join('');
+      <div class="rail-r">${rkBadge(rankIdx(x.xp))}</div><small>${esc(x.classroom)}${school && x.lvl_rank ? ` · #${x.lvl_rank} ${esc(x.level)}` : ''}</small></div><b class="rail-xp">${x.xp.toLocaleString()}<small>XP</small></b></div>`; }).join('');
 }
 function stuRailsHTML() {
   const g = stuState.game; if (!g || g.missing) return '';
