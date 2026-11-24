@@ -2973,6 +2973,24 @@ body.bar-scrolled .top.anav::after,body.bar-scrolled .snav::after{opacity:1}
 .pq-rank .rk b{white-space:normal!important;overflow:visible!important;text-overflow:clip!important}
 .pq:not(.p1) .pq-rank .rk{font-size:11.5px!important;padding:3px 8px!important}
 .pq:not(.p1) .pq-rank .rk .rk-ic{font-size:13px!important}
+/* ---------- แถบด้านบนครู: เป็นแผงกระจกลอยคู่กับแถบเมนูซ้าย (ขอบบน/ความโค้ง/เงาเดียวกัน) ---------- */
+@media (min-width:901px){
+  .top.anav,[data-theme=dark] .top.anav{top:14px;margin:14px 18px 0 18px;height:66px;padding:0 12px 0 14px;border-radius:24px;zoom:1!important;
+    background:var(--bar);-webkit-backdrop-filter:blur(28px) saturate(190%);backdrop-filter:blur(28px) saturate(190%);
+    box-shadow:var(--lg-rim),var(--lg-edge),var(--lg-drop)}
+  body.bar-scrolled .top.anav{box-shadow:var(--lg-rim),var(--lg-edge),0 18px 40px -20px rgba(10,40,100,.45)}
+  .top.anav::after{display:none}
+  /* ด้านบนสุดเหนือแผงเป็นพื้นโปร่ง ไม่ให้เนื้อหาโผล่ตอนเลื่อน */
+  .main{position:relative}
+  .top.anav::before{content:"";position:absolute;left:-18px;right:-18px;top:-15px;height:15px;background:transparent}
+  .an-tools{height:46px;border-radius:16px}
+  .an-cta{height:40px;border-radius:13px}
+  .top.anav+.content{padding-top:20px}
+}
+@media (min-width:901px){
+  [data-device=pc] .main::before{content:"";position:fixed;top:0;left:0;right:0;height:30px;z-index:19;pointer-events:none;
+    -webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);-webkit-mask:linear-gradient(#000 35%,transparent);mask:linear-gradient(#000 35%,transparent)}
+}
 
 </style>
 </head>
@@ -3467,7 +3485,7 @@ if (typeof module !== 'undefined') module.exports = ExamParser;
 </script>
 <script>
 /* โลโก้: ภาพครูปลื้ม (ไฟล์ต้นฉบับ src/logo.svg ฝังตอน build) */
-const APP_VER = '14.4 · 24 พ.ย. 2569';
+const APP_VER = '14.5 · 24 พ.ย. 2569';
 let LOGO_N = 0;
 function logoSVG() { const k = 'L' + (++LOGO_N); return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><defs><linearGradient id="lgb" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3B9BFF"/><stop offset=".5" stop-color="#0A5BE0"/><stop offset="1" stop-color="#062C78"/></linearGradient><linearGradient id="lgs" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset=".6" stop-color="#FFF4D6"/><stop offset="1" stop-color="#FFD978"/></linearGradient><radialGradient id="lgc" cx=".3" cy=".08" r=".75"><stop offset="0" stop-color="#fff" stop-opacity=".55"/><stop offset=".5" stop-color="#fff" stop-opacity=".08"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient></defs><rect width="48" height="48" rx="13" fill="url(#lgb)"/><rect width="48" height="48" rx="13" fill="url(#lgc)"/><rect x=".75" y=".75" width="46.5" height="46.5" rx="12.3" fill="none" stroke="#fff" stroke-opacity=".45" stroke-width="1.2"/><g fill="none" stroke="#04235F" stroke-opacity=".35" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" transform="translate(0 1.2)"><path d="M21.2 17 C19.8 14.6 17.4 13.6 14.8 13.6 C11 13.6 8.6 15.6 8.6 18.5 C8.6 21.8 11.6 22.9 14.9 23.9 C18.6 25 21.6 26.4 21.6 29.8 C21.6 33 18.8 34.6 15.1 34.6 C12 34.6 9.5 33.4 8 31.1"/><path d="M26.6 14 L39.6 34.2 M39.6 14 L26.6 34.2"/></g><g fill="none" stroke="url(#lgs)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M21.2 17 C19.8 14.6 17.4 13.6 14.8 13.6 C11 13.6 8.6 15.6 8.6 18.5 C8.6 21.8 11.6 22.9 14.9 23.9 C18.6 25 21.6 26.4 21.6 29.8 C21.6 33 18.8 34.6 15.1 34.6 C12 34.6 9.5 33.4 8 31.1"/><path d="M26.6 14 L39.6 34.2 M39.6 14 L26.6 34.2"/></g></svg>`.replace('<svg ', '<svg class="logo" aria-hidden="true" ').replace(/\b(lg[bsc])\b/g, '$1' + k); }
 /* =====================================================================
