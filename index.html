@@ -2396,6 +2396,77 @@ h2.hello .wave{display:inline-block;transform-origin:70% 75%;animation:wave 2.4s
 .gc-emblem .r5s{font-size:22px}
 @media (prefers-reduced-motion:reduce){.r5s i{animation:none!important}}
 
+/* =====================================================================
+   เฟส 10: แชท (ครู + นักเรียน) — สไตล์ iMessage + กระจก
+   ===================================================================== */
+.ch-wrap{display:grid;grid-template-columns:minmax(280px,360px) 1fr;gap:14px;height:calc(100vh - 210px);min-height:480px}
+.ch-side,.ch-pane{display:flex;flex-direction:column;min-height:0;overflow:hidden}
+.ch-tools{display:flex;flex-direction:column;gap:8px;padding:12px;border-bottom:1px solid var(--line)}
+.ch-tools .seg{align-self:flex-start}
+.ch-mine{display:flex;align-items:center;gap:6px;font-size:12.5px;color:var(--muted)}
+.ch-list,.sc-list{flex:1;overflow:auto;padding:6px}
+.ch-th{width:100%;display:flex;align-items:center;gap:10px;padding:10px;border:0;border-radius:16px;background:none;color:var(--ink);font:inherit;text-align:left;cursor:pointer;transition:background .15s}
+.ch-th:hover{background:var(--fill)}.ch-th.on{background:var(--primary-soft)}
+.ch-th.new .ch-tl{color:var(--ink);font-weight:600}
+.ch-av{flex:none;width:42px;height:42px;border-radius:50%;display:grid;place-items:center;font:700 17px var(--f-head);color:#fff;
+  background:linear-gradient(150deg,color-mix(in srgb,var(--c) 70%,#fff),var(--c));box-shadow:inset 0 1px 0 rgba(255,255,255,.5)}
+.ch-tb{flex:1;min-width:0;display:flex;flex-direction:column;gap:1px}
+.ch-tn{display:flex;align-items:baseline;gap:6px}.ch-tn b{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:14.5px}.ch-tn small{font-size:11.5px;color:var(--muted);white-space:nowrap}
+.ch-ts{font-size:12px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.ch-ts i{font-style:normal;font-weight:600}
+.ch-tl{font-size:13px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ch-un{flex:none;min-width:22px;height:22px;padding:0 6px;border-radius:11px;background:#FF3B30;color:#fff;font:700 12px var(--f-head);display:grid;place-items:center}
+.ch-head{display:flex;align-items:center;gap:10px;padding:12px 16px;border-bottom:1px solid var(--line);background:color-mix(in srgb,var(--surface) 85%,transparent);backdrop-filter:blur(14px)}
+.ch-hn{min-width:0}.ch-hn b{display:block;font:700 16px var(--f-head)}.ch-hn small{font-size:12.5px;color:var(--muted)}
+.ch-msgs{flex:1;overflow:auto;padding:16px;display:flex;flex-direction:column;gap:4px;
+  background:radial-gradient(60% 40% at 0% 0%,color-mix(in srgb,var(--primary) 6%,transparent),transparent),radial-gradient(60% 40% at 100% 100%,color-mix(in srgb,#34C759 6%,transparent),transparent)}
+.ch-day{text-align:center;margin:10px 0 6px}.ch-day span{font-size:11.5px;color:var(--muted);background:var(--fill);padding:3px 10px;border-radius:99px}
+.ch-msg{display:flex;flex-direction:column;max-width:76%;animation:ch-in .25s cubic-bezier(.2,.9,.3,1)}
+.ch-msg.me{align-self:flex-end;align-items:flex-end}.ch-msg.them{align-self:flex-start}
+.ch-b{padding:9px 14px;border-radius:20px;font-size:15px;line-height:1.45;word-break:break-word}
+.ch-msg.me .ch-b{background:linear-gradient(180deg,#2E95FF,#0A7AFF);color:#fff;border-bottom-right-radius:6px;box-shadow:0 4px 12px -6px rgba(10,122,255,.6)}
+.ch-msg.them .ch-b{background:var(--surface-2);color:var(--ink);border-bottom-left-radius:6px;box-shadow:inset 0 0 0 1px var(--line)}
+.ch-msg.me .ch-b a{color:#fff;text-decoration:underline}
+.ch-t{font-size:11px;color:var(--muted);margin:2px 8px 6px}
+@keyframes ch-in{from{opacity:0;transform:translateY(6px) scale(.98)}}
+.ch-empty{margin:auto;display:flex;flex-direction:column;align-items:center;gap:4px;text-align:center;color:var(--muted);padding:30px 16px;font-size:13.5px}
+.ch-empty b{color:var(--ink);font-size:15px}.ch-empty:first-line{font-size:30px}
+.ch-quick{display:flex;gap:6px;overflow-x:auto;padding:8px 12px 0;scrollbar-width:none}.ch-quick::-webkit-scrollbar{display:none}.ch-quick .chip{white-space:nowrap;cursor:pointer;border:0;font:inherit;font-size:12.5px}
+.ch-comp{display:flex;align-items:flex-end;gap:8px;padding:10px 12px 12px}
+.ch-comp textarea{flex:1;resize:none;min-height:42px;max-height:140px;border-radius:21px;padding:10px 16px;line-height:1.4}
+.ch-send{flex:none;width:42px;height:42px;padding:0!important;border-radius:50%!important;display:grid;place-items:center}
+.ch-send svg{width:19px;height:19px}
+.ch-none{justify-content:center}
+.ch-hide{display:none!important}
+[data-device=mobile] .ch-wrap{grid-template-columns:1fr;height:calc(100vh - 230px)}
+[data-theme=dark] .ch-msg.them .ch-b{background:#2A2F3A}
+
+/* ---------- นักเรียน: ปุ่มลอย + หน้าต่างแชท ---------- */
+#stu-chat{position:fixed;right:20px;bottom:20px;z-index:60;display:flex;flex-direction:column;align-items:flex-end;gap:12px;pointer-events:none}
+#stu-chat>*{pointer-events:auto}
+.sc-fab{position:relative;width:62px;height:62px;border:0;border-radius:50%;cursor:pointer;display:grid;place-items:center;color:#fff;font-size:22px;
+  background:radial-gradient(circle at 30% 25%,rgba(255,255,255,.55),transparent 45%),linear-gradient(160deg,#3FA0FF,#0A6CF0);
+  box-shadow:0 14px 30px -10px rgba(10,108,240,.75),inset 0 1px 0 rgba(255,255,255,.7),inset 0 -4px 10px rgba(0,40,120,.3);transition:transform .2s}
+.sc-fab:hover{transform:translateY(-2px) scale(1.04)}.sc-fab svg{width:28px;height:28px}
+.sc-fab.on{background:linear-gradient(160deg,#8A93A3,#5B6473);font-size:20px}
+.sc-badge{position:absolute;top:-2px;right:-2px;min-width:22px;height:22px;padding:0 6px;border-radius:11px;background:#FF3B30;color:#fff;font:700 12px var(--f-head);display:grid;place-items:center;box-shadow:0 0 0 3px var(--bg,#fff);animation:sc-pop 1.6s ease-in-out infinite}
+@keyframes sc-pop{0%,100%{transform:scale(1)}50%{transform:scale(1.15)}}
+.sc-tip{position:absolute;right:72px;top:50%;transform:translateY(-50%);white-space:nowrap;font:600 13px var(--f-body);color:var(--ink);background:var(--surface);padding:6px 12px;border-radius:99px;box-shadow:var(--shadow);opacity:0;transition:opacity .2s;pointer-events:none}
+.sc-fab:hover .sc-tip{opacity:1}
+.sc-panel{width:min(380px,calc(100vw - 24px));height:min(560px,calc(100vh - 120px));display:flex;flex-direction:column;overflow:hidden;border-radius:26px;
+  background:color-mix(in srgb,var(--surface) 88%,transparent);backdrop-filter:blur(24px) saturate(1.6);-webkit-backdrop-filter:blur(24px) saturate(1.6);
+  box-shadow:0 30px 60px -20px rgba(15,30,70,.5),inset 0 1px 0 rgba(255,255,255,.7),inset 0 0 0 1px var(--line);animation:sc-up .28s cubic-bezier(.2,.9,.3,1)}
+@keyframes sc-up{from{opacity:0;transform:translateY(16px) scale(.97)}}
+.sc-head{display:flex;align-items:center;gap:10px;padding:12px 14px;border-bottom:1px solid var(--line)}
+.sc-hn b{display:block;font:700 16px var(--f-head)}.sc-hn small{font-size:12px;color:var(--muted)}
+.sc-body{flex:1;overflow:auto}
+.sc-foot{font-size:11.5px;color:var(--muted);text-align:center;padding:8px 12px 12px}
+[data-device=mobile] #stu-chat{right:12px;bottom:12px}
+[data-device=mobile] .sc-panel{width:calc(100vw - 24px);height:calc(100vh - 110px)}
+[data-device=mobile] .sc-fab{width:56px;height:56px}
+@media (prefers-reduced-motion:reduce){.sc-badge,.ch-msg,.sc-panel{animation:none!important}}
+[data-device=mobile] .ch-wrap{height:calc(100dvh - 300px);min-height:380px}
+[data-device=mobile] .page-head .sub{display:none}
+
 </style>
 </head>
 <body>
@@ -2879,7 +2950,7 @@ if (typeof module !== 'undefined') module.exports = ExamParser;
 </script>
 <script>
 /* โลโก้: ภาพครูปลื้ม (ไฟล์ต้นฉบับ src/logo.svg ฝังตอน build) */
-const APP_VER = '9.5 · 24 พ.ย. 2569';
+const APP_VER = '10.0 · 24 พ.ย. 2569';
 let LOGO_N = 0;
 function logoSVG() { const k = 'L' + (++LOGO_N); return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><defs><linearGradient id="lgb" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3B9BFF"/><stop offset=".5" stop-color="#0A5BE0"/><stop offset="1" stop-color="#062C78"/></linearGradient><linearGradient id="lgs" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset=".6" stop-color="#FFF4D6"/><stop offset="1" stop-color="#FFD978"/></linearGradient><radialGradient id="lgc" cx=".3" cy=".08" r=".75"><stop offset="0" stop-color="#fff" stop-opacity=".55"/><stop offset=".5" stop-color="#fff" stop-opacity=".08"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient></defs><rect width="48" height="48" rx="13" fill="url(#lgb)"/><rect width="48" height="48" rx="13" fill="url(#lgc)"/><rect x=".75" y=".75" width="46.5" height="46.5" rx="12.3" fill="none" stroke="#fff" stroke-opacity=".45" stroke-width="1.2"/><g fill="none" stroke="#04235F" stroke-opacity=".35" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" transform="translate(0 1.2)"><path d="M21.2 17 C19.8 14.6 17.4 13.6 14.8 13.6 C11 13.6 8.6 15.6 8.6 18.5 C8.6 21.8 11.6 22.9 14.9 23.9 C18.6 25 21.6 26.4 21.6 29.8 C21.6 33 18.8 34.6 15.1 34.6 C12 34.6 9.5 33.4 8 31.1"/><path d="M26.6 14 L39.6 34.2 M39.6 14 L26.6 34.2"/></g><g fill="none" stroke="url(#lgs)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M21.2 17 C19.8 14.6 17.4 13.6 14.8 13.6 C11 13.6 8.6 15.6 8.6 18.5 C8.6 21.8 11.6 22.9 14.9 23.9 C18.6 25 21.6 26.4 21.6 29.8 C21.6 33 18.8 34.6 15.1 34.6 C12 34.6 9.5 33.4 8 31.1"/><path d="M26.6 14 L39.6 34.2 M39.6 14 L26.6 34.2"/></g></svg>`.replace('<svg ', '<svg class="logo" aria-hidden="true" ').replace(/\b(lg[bsc])\b/g, '$1' + k); }
 /* =====================================================================
@@ -3113,6 +3184,7 @@ const mval = name => { const el = $(`#modal-root [name="${name}"]`); return el ?
 const NAV = [
   { group: 'ภาพรวม' },
   { id: 'dashboard', label: 'แดชบอร์ด', icon: 'home' },
+  { id: 'chat', label: 'ข้อความ', icon: 'chat' },
   { id: 'risk', label: 'ติดตามนักเรียน', icon: 'alert' },
   { id: 'ranking', label: 'Ranking', icon: 'trophy' },
   { group: 'จัดการข้อมูล' },
@@ -3137,7 +3209,7 @@ function navItems() {
   const items = NAV.filter(n => n.group || (n.admin ? ME.admin() : routeAllowed(n.id)));
   return items.filter((n, i) => !n.group || (items[i + 1] && !items[i + 1].group));
 }
-const TITLES = { ranking: 'Ranking', dashboard: 'แดชบอร์ด', subjects: 'วิชา', classes: 'ห้องเรียนและรายชื่อ', assignments: 'งานและตรวจงาน', grade: 'ตรวจงาน', examedit: 'แก้ไขข้อสอบ', examres: 'ผลสอบ', gradebook: 'ตารางคะแนน', exams: 'ข้อสอบ', settings: 'ตั้งค่า', users: 'ผู้ใช้และสิทธิ์', attendance: 'เช็คชื่อ', attsess: 'เช็คชื่อ', reports: 'รายงานและสำรองข้อมูล', risk: 'ติดตามนักเรียน', qbank: 'คลังข้อสอบ', announce: 'ประกาศ', works: 'แกลเลอรีผลงาน' };
+const TITLES = { chat: 'ข้อความจากนักเรียน', ranking: 'Ranking', dashboard: 'แดชบอร์ด', subjects: 'วิชา', classes: 'ห้องเรียนและรายชื่อ', assignments: 'งานและตรวจงาน', grade: 'ตรวจงาน', examedit: 'แก้ไขข้อสอบ', examres: 'ผลสอบ', gradebook: 'ตารางคะแนน', exams: 'ข้อสอบ', settings: 'ตั้งค่า', users: 'ผู้ใช้และสิทธิ์', attendance: 'เช็คชื่อ', attsess: 'เช็คชื่อ', reports: 'รายงานและสำรองข้อมูล', risk: 'ติดตามนักเรียน', qbank: 'คลังข้อสอบ', announce: 'ประกาศ', works: 'แกลเลอรีผลงาน' };
 
 function render() {
   const root = $('#app');
@@ -3145,14 +3217,15 @@ function render() {
   if (isGalleryRoute()) { root.innerHTML = viewGalleryPublic(); return; }
   if (isCheckinRoute()) { root.innerHTML = viewCheckin(); return; }
   if (isExamTakeRoute()) { root.innerHTML = viewExamTake(); return; }
-  if (isStudentRoute()) { root.innerHTML = viewStudent(); return; }
+  stuChatSync();
+  if (isStudentRoute()) { root.innerHTML = viewStudent(); stuChatSync(); return; }
   if (booting) { root.innerHTML = `<div class="stu" style="justify-content:center"><div class="brand"><div class="brand-mark">${logoSVG()}</div><div><b>ห้องเรียนครูปลื้ม</b><small style="color:var(--muted)">กำลังโหลดข้อมูล…</small></div></div></div>`; return; }
   if (!session) { root.innerHTML = viewLogin(); return; }
   if (!ME.active()) { root.innerHTML = viewPending(); return; }
   let base = ui.route.startsWith('att-') ? 'attsess' : ui.route.startsWith('grade-') ? 'grade' : ui.route.startsWith('exam-edit-') ? 'examedit' : ui.route.startsWith('exam-res-') ? 'examres' : ui.route;
   if (!TITLES[base] || !routeAllowed(base)) { ui.route = 'dashboard'; base = 'dashboard'; }
   const theme = document.documentElement.dataset.theme;
-  const views = { ranking: viewRanking, dashboard: viewDashboard, subjects: viewSubjects, classes: viewClasses, settings: viewSettings, users: viewUsers, attendance: viewAttendance, attsess: viewAttSession, reports: viewReports, risk: viewRisk, qbank: viewQbank, announce: viewAnnounce, works: viewWorks, assignments: viewAssignments, grade: viewGrade, gradebook: viewGradebook, exams: viewExams, examedit: viewExamEdit, examres: viewExamResults };
+  const views = { chat: viewChat, ranking: viewRanking, dashboard: viewDashboard, subjects: viewSubjects, classes: viewClasses, settings: viewSettings, users: viewUsers, attendance: viewAttendance, attsess: viewAttSession, reports: viewReports, risk: viewRisk, qbank: viewQbank, announce: viewAnnounce, works: viewWorks, assignments: viewAssignments, grade: viewGrade, gradebook: viewGradebook, exams: viewExams, examedit: viewExamEdit, examres: viewExamResults };
   const navOn = base === 'grade' ? 'assignments' : (base === 'examedit' || base === 'examres') ? 'exams' : base === 'attsess' ? 'attendance' : base;
   if (isMobile()) { root.innerHTML = mobileShell(base, navOn, (views[base] || viewDashboard)()); return; }
   root.innerHTML = `
@@ -3160,7 +3233,7 @@ function render() {
     <aside class="side ${ui.sideOpen ? 'open' : ''}">
       <div class="brand"><div class="brand-mark">${logoSVG()}</div><div><b>ห้องเรียนครูปลื้ม</b><small>ส่งงาน · คะแนน · ข้อสอบ</small></div></div>
       ${navItems().map(n => n.group ? `<div class="nav-group">${n.group}</div>` :
-        `<a class="nav-item ${navOn === n.id ? 'active' : ''}" href="#${n.id}">${ic(n.icon)}<span>${n.label}</span>${n.soon ? `<span class="soon">${n.soon}</span>` : ''}${n.id === 'users' && store.pendingCount ? `<span class="nav-badge">${store.pendingCount}</span>` : ''}</a>`).join('')}
+        `<a class="nav-item ${navOn === n.id ? 'active' : ''}" href="#${n.id}">${ic(n.icon)}<span>${n.label}</span>${n.soon ? `<span class="soon">${n.soon}</span>` : ''}${n.id === 'users' && store.pendingCount ? `<span class="nav-badge">${store.pendingCount}</span>` : ''}${n.id === 'chat' ? chatBadgeHTML() : ''}</a>`).join('')}
       <div class="side-foot">ภาคเรียน ${esc(Q.termLabel(Q.currentTerm()))}</div>
     </aside>
     <div class="scrim ${ui.sideOpen ? 'open' : ''}" data-act="side-close"></div>
@@ -7828,6 +7901,304 @@ Object.assign(INP, {
 });
 
 /* =====================================================================
+   แชทนักเรียน ↔ ครูประจำวิชา
+   ครู: หน้า #chat (รายชื่อห้องแชท + กล่องข้อความ) · ข้อความใหม่เด้งทันทีผ่าน Realtime (สำรองด้วยการเช็คทุก 30 วิ)
+   นักเรียน: ปุ่มแชทลอยมุมขวาล่าง · เช็คข้อความใหม่ทุก 12 วิ
+   ===================================================================== */
+I.chat = '<path d="M4 5.5A2.5 2.5 0 0 1 6.5 3h11A2.5 2.5 0 0 1 20 5.5v8a2.5 2.5 0 0 1-2.5 2.5H10l-4.5 4v-4H6.5A2.5 2.5 0 0 1 4 13.5z"/><path d="M8.5 8.5h7M8.5 11.5h4"/>';
+I.send = '<path d="M4 12 20 4l-6 16-3-7z"/><path d="m11 13 9-9"/>';
+var CHAT = { threads: null, unread: 0, cur: null, msgs: null, draft: {}, filter: 'all', mine: true, q: '', at: 0, loading: false, chan: null, seen: null };
+const CHAT_QUICK = ['รับทราบครับ 👍', 'ส่งได้ถึงศุกร์นี้นะครับ', 'ครูตรวจแล้ว ดูคะแนนในเว็บได้เลยครับ', 'เดี๋ยวครูตรวจให้นะครับ', 'แวะมาคุยกับครูที่ห้องได้เลยครับ', 'สู้ ๆ นะ ครูเป็นกำลังใจให้ 💪'];
+const CHAT_ERR = { TOO_MANY_MESSAGES: 'ส่งถี่เกินไป รอสักครู่แล้วส่งใหม่นะ', MESSAGE_TOO_LONG: 'ข้อความยาวเกินไป (ไม่เกิน 500 ตัวอักษร)', EMPTY_MESSAGE: 'พิมพ์ข้อความก่อนส่ง', NOT_YOUR_SUBJECT: 'ไม่พบวิชานี้ในห้องของคุณ', NOT_ALLOWED: 'ไม่มีสิทธิ์ตอบห้องแชทนี้' };
+const chatErr = e => CHAT_ERR[Object.keys(CHAT_ERR).find(k => (e?.message || '').includes(k))] || errMsg(e);
+const chatKey = (subj, stu) => subj + '|' + stu;
+const kru = n => /^(ครู|อ\.|อาจารย์)/.test(n || '') ? n : 'ครู' + (n || '');
+
+/* ---------- ส่วนแสดงผลร่วม ---------- */
+function chatTime(d) {
+  const t = new Date(d), now = new Date(), same = t.toDateString() === now.toDateString();
+  return same ? t.toLocaleTimeString('th-TH', { hour: '2-digit', minute: '2-digit' }) : t.toLocaleDateString('th-TH', { day: 'numeric', month: 'short' }) + ' ' + t.toLocaleTimeString('th-TH', { hour: '2-digit', minute: '2-digit' });
+}
+function chatLinkify(text) {
+  return esc(text).replace(/(https?:\/\/[^\s<]+)/g, u => `<a href="${u}" target="_blank" rel="noopener">${u.length > 48 ? u.slice(0, 46) + '…' : u}</a>`).replace(/\n/g, '<br>');
+}
+function chatBubbles(msgs, me) {
+  if (!msgs) return `<div class="ch-empty"><span class="spin"></span></div>`;
+  if (!msgs.length) return `<div class="ch-empty">👋<b>เริ่มคุยได้เลย</b>${me === 'student' ? 'ถามเรื่องงาน คะแนน หรือขอคำแนะนำจากครูได้' : 'ส่งข้อความหานักเรียนคนนี้'}</div>`;
+  let day = '', out = '';
+  const lastMine = [...msgs].reverse().find(m => m.sender === me);
+  msgs.forEach(m => {
+    const d = new Date(m.at).toLocaleDateString('th-TH', { weekday: 'short', day: 'numeric', month: 'short' });
+    if (d !== day) { day = d; out += `<div class="ch-day"><span>${d}</span></div>`; }
+    const mine = m.sender === me;
+    out += `<div class="ch-msg ${mine ? 'me' : 'them'}"><div class="ch-b">${chatLinkify(m.body)}</div><div class="ch-t">${m.by && me === 'teacher' && mine ? esc(m.by) + ' · ' : ''}${new Date(m.at).toLocaleTimeString('th-TH', { hour: '2-digit', minute: '2-digit' })}${mine && m === lastMine && m.read ? ' · อ่านแล้ว ✓' : ''}</div></div>`;
+  });
+  return out;
+}
+function chatScroll(sel) { const el = $(sel); if (el) el.scrollTop = el.scrollHeight; }
+function chatBadgeHTML() { return CHAT && CHAT.unread ? `<span class="nav-badge">${CHAT.unread > 99 ? '99+' : CHAT.unread}</span>` : ''; }
+function chatBadgeSync() {
+  $$('a[href="#chat"]').forEach(a => { a.querySelector('.nav-badge')?.remove(); if (CHAT.unread) a.insertAdjacentHTML('beforeend', chatBadgeHTML()); });
+  const more = $('[data-act=m-more]'); if (more && CHAT.unread && !more.querySelector('.m-dot')) more.insertAdjacentHTML('beforeend', '<i class="m-dot"></i>');
+}
+
+/* =====================================================================
+   ครู
+   ===================================================================== */
+async function loadChatThreads(force) {
+  if (!session || !ME.active() || CHAT.loading) return;
+  if (!force && CHAT.threads && Date.now() - CHAT.at < 8000) return;
+  CHAT.loading = true;
+  try {
+    const list = await q(sb.rpc('teacher_chat_threads'));
+    const prev = CHAT.seen;
+    CHAT.threads = list; CHAT.at = Date.now(); CHAT.missing = false;
+    CHAT.unread = list.filter(t => t.mine).reduce((a, t) => a + t.unread, 0);
+    // แจ้งเตือนเมื่อมีข้อความใหม่จากนักเรียน (ตอนไม่ได้อยู่หน้าแชท)
+    const sig = Object.fromEntries(list.map(t => [chatKey(t.subject_id, t.student_id), t.last_at]));
+    if (prev && ui.route !== 'chat') {
+      const fresh = list.find(t => t.mine && t.unread && t.last_sender === 'student' && prev[chatKey(t.subject_id, t.student_id)] !== t.last_at);
+      if (fresh) toast(`💬 ${fresh.student_name.split(' ')[0]} (${fresh.classroom}) ส่งข้อความถึงครู`);
+    }
+    CHAT.seen = sig;
+  } catch (e) { CHAT.threads = CHAT.threads || []; CHAT.missing = /chat|function/i.test(e?.message || ''); }
+  CHAT.loading = false;
+  chatBadgeSync();
+  if (ui.route === 'chat') { chatListSync(); if (CHAT.cur) chatHeadSync(); }
+}
+async function loadChatMsgs() {
+  const t = CHAT.cur; if (!t) return;
+  try {
+    const msgs = await q(sb.rpc('teacher_chat_messages', { p_student: t.student_id, p_subject: t.subject_id }));
+    if (CHAT.cur !== t) return;
+    const grew = !CHAT.msgs || msgs.length !== CHAT.msgs.length;
+    CHAT.msgs = msgs;
+    const box = $('#ch-msgs'); if (box && grew) { box.innerHTML = chatBubbles(msgs, 'teacher'); chatScroll('#ch-msgs'); }
+    const th = (CHAT.threads || []).find(x => x.subject_id === t.subject_id && x.student_id === t.student_id);
+    if (th && th.mine && th.unread) { th.unread = 0; CHAT.unread = CHAT.threads.filter(x => x.mine).reduce((a, x) => a + x.unread, 0); chatBadgeSync(); chatListSync(); }
+  } catch (e) { toast(chatErr(e), true); }
+}
+function chatStartRealtime() {
+  if (CHAT.chan || typeof sb.channel !== 'function' || !session) return;
+  try {
+    CHAT.chan = sb.channel('chat-teacher').on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'chat_messages' }, p => {
+      const m = p.new || {};
+      loadChatThreads(true);
+      if (CHAT.cur && m.subject_id === CHAT.cur.subject_id && m.student_id === CHAT.cur.student_id) loadChatMsgs();
+    }).subscribe();
+  } catch (e) { CHAT.chan = null; }
+}
+/* เช็คเบื้องหลัง: ทุก 30 วิ (หน้าแชทเปิดอยู่ = ทุก 8 วิ) */
+setInterval(() => {
+  if (!session || !ME.active() || isStudentRoute() || document.hidden) return;
+  chatStartRealtime();
+  const onPage = ui.route === 'chat';
+  if (onPage || Date.now() - CHAT.at > 30000) loadChatThreads(true);
+  if (onPage && CHAT.cur) loadChatMsgs();
+}, 8000);
+
+function chatFiltered() {
+  let list = CHAT.threads || [];
+  if (CHAT.mine) list = list.filter(t => t.mine);
+  if (CHAT.filter === 'unread') list = list.filter(t => t.unread);
+  const s = CHAT.q.trim().toLowerCase();
+  if (s) list = list.filter(t => (t.student_name + ' ' + t.classroom + ' ' + t.subject_name).toLowerCase().includes(s) || String(t.number) === s);
+  return list;
+}
+function chatListHTML() {
+  const list = chatFiltered();
+  if (!CHAT.threads) return `<div class="ch-empty"><span class="spin"></span></div>`;
+  if (!list.length) return `<div class="ch-empty">📭<b>${CHAT.filter === 'unread' ? 'อ่านครบทุกข้อความแล้ว' : 'ยังไม่มีข้อความ'}</b>เมื่อนักเรียนส่งข้อความมา จะแสดงที่นี่</div>`;
+  return list.map(t => { const on = CHAT.cur && CHAT.cur.subject_id === t.subject_id && CHAT.cur.student_id === t.student_id;
+    return `<button class="ch-th ${on ? 'on' : ''} ${t.unread && t.mine ? 'new' : ''}" data-act="chat-open" data-sj="${t.subject_id}" data-st="${t.student_id}">
+      <span class="ch-av" style="--c:${esc(t.color || '#0A84FF')}">${esc((t.student_name || '?')[0])}</span>
+      <span class="ch-tb"><span class="ch-tn"><b>${esc(t.student_name)}</b><small>${chatTime(t.last_at)}</small></span>
+        <span class="ch-ts">${esc(t.classroom)} · เลขที่ ${t.number} · <i style="color:${esc(t.color || 'inherit')}">${esc(t.subject_name)}</i>${!t.mine ? ` · ${esc(kru(t.teacher))}` : ''}</span>
+        <span class="ch-tl">${t.last_sender === 'teacher' ? 'คุณ: ' : ''}${esc(t.last_body || '')}</span></span>
+      ${t.unread && t.mine ? `<span class="ch-un">${t.unread}</span>` : ''}</button>`; }).join('');
+}
+function chatListSync() { const el = $('#ch-list'); if (el) el.innerHTML = chatListHTML(); const f = $('#ch-unread-n'); if (f) f.textContent = CHAT.unread ? ` (${CHAT.unread})` : ''; }
+function chatHeadHTML() {
+  const t = CHAT.cur; if (!t) return '';
+  return `${isMobile() ? `<button class="btn ghost icon" data-act="chat-back" aria-label="กลับ">${ic('back')}</button>` : ''}
+    <span class="ch-av" style="--c:${esc(t.color || '#0A84FF')}">${esc((t.student_name || '?')[0])}</span>
+    <div class="ch-hn"><b>${esc(t.student_name)}</b><small>${esc(t.classroom)} · เลขที่ ${t.number} · ${esc(t.subject_name)}${t.mine === false ? ` · ห้องแชทของ${esc(kru(t.teacher))}` : ''}</small></div>`;
+}
+function chatHeadSync() { const el = $('#ch-head'); if (el) el.innerHTML = chatHeadHTML(); }
+
+function viewChat() {
+  loadChatThreads();
+  const head = `<div class="page-head"><div><h2>💬 ข้อความ</h2><div class="sub">นักเรียนส่งข้อความหาครูประจำวิชาได้จากหน้าเว็บนักเรียน · ข้อความเก็บไว้ทั้งหมด ลบไม่ได้</div></div><span class="spacer"></span>
+    <button class="btn" data-act="chat-new">${ic('plus')}ส่งข้อความหานักเรียน</button></div>`;
+  if (CHAT.missing) return `${head}<div class="card"><div class="empty">${ic('lock')}<b>ยังไม่ได้ตั้งค่า</b>รันไฟล์ phase10.sql ใน Supabase ก่อน</div></div>`;
+  const mob = isMobile(), t = CHAT.cur;
+  const list = `<div class="ch-side card ${mob && t ? 'ch-hide' : ''}">
+      <div class="ch-tools"><input class="input" data-inp="chat-q" placeholder="🔍 ค้นหาชื่อ ห้อง วิชา" value="${esc(CHAT.q)}">
+        <div class="seg"><button class="${CHAT.filter === 'all' ? 'on' : ''}" data-act="chat-filter" data-v="all">ทั้งหมด</button><button class="${CHAT.filter === 'unread' ? 'on' : ''}" data-act="chat-filter" data-v="unread">ยังไม่อ่าน<span id="ch-unread-n">${CHAT.unread ? ` (${CHAT.unread})` : ''}</span></button></div>
+        ${ME.admin() ? `<label class="ch-mine"><input type="checkbox" data-chg="chat-mine" ${CHAT.mine ? '' : 'checked'}> ดูห้องแชทของครูทุกคน (ผู้ดูแล)</label>` : ''}</div>
+      <div class="ch-list" id="ch-list">${chatListHTML()}</div></div>`;
+  const pane = t ? `<div class="ch-pane card">
+      <div class="ch-head" id="ch-head">${chatHeadHTML()}</div>
+      <div class="ch-msgs" id="ch-msgs">${chatBubbles(CHAT.msgs, 'teacher')}</div>
+      <div class="ch-quick">${CHAT_QUICK.map(x => `<button class="chip" data-act="chat-quick" data-t="${esc(x)}">${esc(x)}</button>`).join('')}</div>
+      <div class="ch-comp"><textarea id="ch-input" class="input" rows="1" maxlength="1000" placeholder="${isMobile() ? 'พิมพ์ข้อความ…' : 'พิมพ์ข้อความ… (Enter ส่ง · Shift+Enter ขึ้นบรรทัด)'}">${esc(CHAT.draft[chatKey(t.subject_id, t.student_id)] || '')}</textarea>
+        <button class="btn primary ch-send" data-act="chat-send" aria-label="ส่ง">${ic('send')}</button></div></div>`
+    : `<div class="ch-pane card ch-none ${mob ? 'ch-hide' : ''}"><div class="ch-empty">💬<b>เลือกห้องแชททางซ้าย</b>หรือกด "ส่งข้อความหานักเรียน" เพื่อเริ่มคุยก่อน</div></div>`;
+  setTimeout(() => chatScroll('#ch-msgs'), 0);
+  return `${head}<div class="ch-wrap">${list}${pane}</div>`;
+}
+function chatOpen(t) {
+  CHAT.cur = t; CHAT.msgs = null; render(); loadChatMsgs();
+  setTimeout(() => $('#ch-input')?.focus(), 60);
+}
+async function chatSendTeacher() {
+  const t = CHAT.cur, el = $('#ch-input'); if (!t || !el) return;
+  const body = el.value.trim(); if (!body) return;
+  const k = chatKey(t.subject_id, t.student_id);
+  el.disabled = true;
+  try {
+    await q(sb.rpc('teacher_chat_send', { p_student: t.student_id, p_subject: t.subject_id, p_body: body }));
+    CHAT.draft[k] = ''; el.value = ''; chatAutoGrow(el);
+    await loadChatMsgs(); loadChatThreads(true);
+  } catch (e) { toast(chatErr(e), true); }
+  el.disabled = false; el.focus();
+}
+function chatAutoGrow(el) { el.style.height = 'auto'; el.style.height = Math.min(el.scrollHeight, 140) + 'px'; }
+
+/* เริ่มแชทใหม่: เลือกวิชา → ห้อง → นักเรียน */
+function chatNewModal() {
+  const subs = store.subjects.filter(sj => sj.owner_id === session?.user?.id || !sj.owner_id);
+  if (!subs.length) return toast('ยังไม่มีวิชาที่สอน เพิ่มวิชาก่อนนะครับ', true);
+  const roomsOf = sid => store.subject_classes.filter(x => x.subject_id === sid).map(x => db.get('classrooms', x.classroom_id)).filter(Boolean).sort((a, b) => a.name.localeCompare(b.name, 'th', { numeric: true }));
+  const fill = () => {
+    const sid = $('#modal-root [name=sj]').value, rooms = roomsOf(sid), rs = $('#modal-root [name=room]');
+    rs.innerHTML = rooms.map(c => `<option value="${c.id}">${esc(c.name)}</option>`).join('');
+    fillStu();
+  };
+  const fillStu = () => {
+    const cid = $('#modal-root [name=room]').value;
+    $('#modal-root [name=stu]').innerHTML = store.students.filter(s => s.classroom_id === cid && s.active !== false).sort((a, b) => a.number - b.number).map(s => `<option value="${s.id}">${s.number}. ${esc(Q.fullName(s))}</option>`).join('');
+  };
+  openModal({
+    title: '💬 ส่งข้อความหานักเรียน',
+    body: `<div class="stack"><label class="field"><span>วิชา</span><select class="input" name="sj">${subs.map(sj => `<option value="${sj.id}">${esc(sj.name)}</option>`).join('')}</select></label>
+      <div class="grid2"><label class="field"><span>ห้อง</span><select class="input" name="room"></select></label><label class="field"><span>นักเรียน</span><select class="input" name="stu"></select></label></div></div>`,
+    actions: [{ label: 'ยกเลิก', onClick: closeModal }, { label: 'เปิดห้องแชท', kind: 'primary', onClick: () => {
+      const sj = store.subjects.find(x => x.id === $('#modal-root [name=sj]').value), st = db.get('students', $('#modal-root [name=stu]').value);
+      if (!sj || !st) return toast('เลือกนักเรียนก่อน', true);
+      const c = db.get('classrooms', st.classroom_id);
+      closeModal();
+      const ex = (CHAT.threads || []).find(x => x.subject_id === sj.id && x.student_id === st.id);
+      chatOpen(ex || { subject_id: sj.id, student_id: st.id, subject_name: sj.name, color: sj.color, student_name: `${st.first_name} ${st.last_name || ''}`.trim(), classroom: c?.name || '', number: st.number, mine: true });
+    } }],
+  });
+  $('#modal-root [name=sj]').addEventListener('change', fill);
+  $('#modal-root [name=room]').addEventListener('change', fillStu);
+  fill();
+}
+
+Object.assign(ACT, {
+  'chat-open': el => { const t = (CHAT.threads || []).find(x => x.subject_id === el.dataset.sj && x.student_id === el.dataset.st); if (t) chatOpen(t); },
+  'chat-back': () => { CHAT.cur = null; CHAT.msgs = null; render(); },
+  'chat-filter': el => { CHAT.filter = el.dataset.v; render(); },
+  'chat-send': chatSendTeacher,
+  'chat-quick': el => { const i = $('#ch-input'); if (!i) return; i.value = (i.value.trim() ? i.value.trim() + ' ' : '') + el.dataset.t; chatAutoGrow(i); i.focus(); if (CHAT.cur) CHAT.draft[chatKey(CHAT.cur.subject_id, CHAT.cur.student_id)] = i.value; },
+  'chat-new': chatNewModal,
+});
+Object.assign(CHG, { 'chat-mine': el => { CHAT.mine = !el.checked; render(); } });
+Object.assign(INP, { 'chat-q': el => { CHAT.q = el.value; chatListSync(); } });
+
+/* =====================================================================
+   นักเรียน: ปุ่มแชทลอยมุมขวาล่าง
+   ===================================================================== */
+var SC = { open: false, threads: null, cur: null, msgs: null, draft: {}, unread: 0, sending: false, tThreads: 0, tMsgs: 0, missing: false };
+function stuChatSync() {
+  if (!SC) return;
+  const want = isStudentRoute() && !!stuState.verified;
+  let box = $('#stu-chat');
+  if (!want) { if (box) box.remove(); if (!stuState.verified) Object.assign(SC, { open: false, threads: null, cur: null, msgs: null, unread: 0, draft: {} }); return; }
+  if (!box) {
+    box = document.createElement('div'); box.id = 'stu-chat'; document.body.appendChild(box);
+    scLoadThreads(); stuChatDraw();
+  }
+}
+function stuChatDraw() {
+  const box = $('#stu-chat'); if (!box) return;
+  if (SC.missing) { box.innerHTML = ''; return; }
+  const fab = `<button class="sc-fab ${SC.open ? 'on' : ''}" data-act="sc-toggle" aria-label="${SC.open ? 'ปิดแชท' : 'แชทกับครู'}">${SC.open ? '✕' : ic('chat')}${!SC.open && SC.unread ? `<span class="sc-badge">${SC.unread}</span>` : ''}${!SC.open ? '<span class="sc-tip">แชทกับครู</span>' : ''}</button>`;
+  if (!SC.open) { box.innerHTML = fab; return; }
+  const t = SC.cur;
+  const panel = !t ? `<div class="sc-panel"><div class="sc-head"><div class="sc-hn"><b>💬 แชทกับครู</b><small>เลือกวิชาที่อยากคุย</small></div></div>
+      <div class="sc-body sc-list">${!SC.threads ? '<div class="ch-empty"><span class="spin"></span></div>' : SC.threads.length ? SC.threads.map(x => `
+        <button class="ch-th ${x.unread ? 'new' : ''}" data-act="sc-open" data-sj="${x.subject_id}"><span class="ch-av" style="--c:${esc(x.color || '#0A84FF')}">${esc((x.subject_name || '?')[0])}</span>
+          <span class="ch-tb"><span class="ch-tn"><b>${esc(x.subject_name)}</b>${x.last_at ? `<small>${chatTime(x.last_at)}</small>` : ''}</span><span class="ch-ts">${esc(kru(x.teacher))}</span>
+          <span class="ch-tl">${x.last_body ? `${x.last_sender === 'student' ? 'คุณ: ' : ''}${esc(x.last_body)}` : 'ยังไม่เคยคุย · กดเพื่อเริ่ม'}</span></span>${x.unread ? `<span class="ch-un">${x.unread}</span>` : ''}</button>`).join('')
+        : '<div class="ch-empty">📚<b>ยังไม่มีวิชาในห้องนี้</b>เมื่อครูเพิ่มวิชา จะคุยกับครูได้ที่นี่</div>'}</div>
+      <div class="sc-foot">ข้อความถูกเก็บไว้ ครูและผู้ดูแลเว็บอ่านได้ · ใช้ถ้อยคำสุภาพนะ 🙂</div></div>`
+    : `<div class="sc-panel"><div class="sc-head"><button class="btn ghost icon" data-act="sc-back" aria-label="กลับ">${ic('back')}</button>
+        <span class="ch-av" style="--c:${esc(t.color || '#0A84FF')}">${esc((t.subject_name || '?')[0])}</span><div class="sc-hn"><b>${esc(t.subject_name)}</b><small>${esc(kru(t.teacher))}</small></div></div>
+      <div class="sc-body ch-msgs" id="sc-msgs">${chatBubbles(SC.msgs, 'student')}</div>
+      <div class="ch-comp"><textarea id="sc-input" class="input" rows="1" maxlength="500" placeholder="พิมพ์ข้อความถึงครู…">${esc(SC.draft[t.subject_id] || '')}</textarea>
+        <button class="btn primary ch-send" data-act="sc-send" aria-label="ส่ง" ${SC.sending ? 'disabled' : ''}>${ic('send')}</button></div></div>`;
+  box.innerHTML = panel + fab;
+  chatScroll('#sc-msgs');
+}
+async function scLoadThreads() {
+  const v = stuState.verified; if (!v) return;
+  try {
+    const list = await q(sb.rpc('student_chat_threads', { p_student_id: v.student_id, p_code: v.code }));
+    const before = SC.unread;
+    SC.threads = list; SC.unread = list.reduce((a, x) => a + (x.unread || 0), 0); SC.missing = false;
+    if (SC.unread > before && !SC.open && before !== undefined && SC.tThreads) toast('💬 ครูตอบข้อความแล้ว กดปุ่มแชทมุมขวาล่าง');
+  } catch (e) { SC.threads = SC.threads || []; if (/student_chat|function/i.test(e?.message || '')) SC.missing = true; }
+  SC.tThreads = Date.now();
+  if (!SC.cur || !SC.open) stuChatDraw(); else { const fab = $('#stu-chat .sc-fab'); if (fab) stuChatDraw(); }
+}
+async function scLoadMsgs() {
+  const v = stuState.verified, t = SC.cur; if (!v || !t) return;
+  try {
+    const msgs = await q(sb.rpc('student_chat_messages', { p_student_id: v.student_id, p_code: v.code, p_subject: t.subject_id }));
+    if (SC.cur !== t) return;
+    const grew = !SC.msgs || msgs.length !== SC.msgs.length || (msgs.at(-1)?.read !== SC.msgs.at(-1)?.read);
+    SC.msgs = msgs; SC.tMsgs = Date.now();
+    if (grew) { const box = $('#sc-msgs'); if (box) { box.innerHTML = chatBubbles(msgs, 'student'); chatScroll('#sc-msgs'); } }
+    if (t.unread) { t.unread = 0; SC.unread = (SC.threads || []).reduce((a, x) => a + (x.unread || 0), 0); }
+  } catch (e) { toast(chatErr(e), true); }
+}
+setInterval(() => {
+  if (!$('#stu-chat') || !stuState.verified || document.hidden) return;
+  if (SC.open && SC.cur && Date.now() - SC.tMsgs > 7000) scLoadMsgs();
+  if (Date.now() - SC.tThreads > 12000) scLoadThreads();
+}, 4000);
+async function scSend() {
+  const v = stuState.verified, t = SC.cur, el = $('#sc-input'); if (!v || !t || !el || SC.sending) return;
+  const body = el.value.trim(); if (!body) return;
+  SC.sending = true; el.disabled = true;
+  try {
+    await q(sb.rpc('student_chat_send', { p_student_id: v.student_id, p_code: v.code, p_subject: t.subject_id, p_body: body }));
+    SC.draft[t.subject_id] = ''; el.value = ''; chatAutoGrow(el);
+    await scLoadMsgs(); scLoadThreads();
+  } catch (e) { toast(chatErr(e), true); }
+  SC.sending = false; el.disabled = false; el.focus();
+}
+Object.assign(ACT, {
+  'sc-toggle': () => { SC.open = !SC.open; stuChatDraw(); if (SC.open) { scLoadThreads(); if (SC.cur) scLoadMsgs(); } },
+  'sc-open': el => { const t = (SC.threads || []).find(x => x.subject_id === el.dataset.sj); if (!t) return; SC.cur = t; SC.msgs = null; stuChatDraw(); scLoadMsgs(); setTimeout(() => $('#sc-input')?.focus(), 60); },
+  'sc-back': () => { SC.cur = null; SC.msgs = null; stuChatDraw(); scLoadThreads(); },
+  'sc-send': scSend,
+});
+/* คีย์ลัด: Enter ส่ง (Shift+Enter ขึ้นบรรทัด) · บนมือถือ Enter = ขึ้นบรรทัด · เก็บข้อความที่พิมพ์ค้างไว้ */
+document.addEventListener('keydown', e => {
+  const id = e.target?.id; if (id !== 'ch-input' && id !== 'sc-input') return;
+  if (e.key === 'Enter' && !e.shiftKey && !e.isComposing && !isMobile()) { e.preventDefault(); id === 'ch-input' ? chatSendTeacher() : scSend(); }
+});
+document.addEventListener('input', e => {
+  const el = e.target;
+  if (el?.id === 'ch-input') { chatAutoGrow(el); if (CHAT.cur) CHAT.draft[chatKey(CHAT.cur.subject_id, CHAT.cur.student_id)] = el.value; }
+  if (el?.id === 'sc-input') { chatAutoGrow(el); if (SC.cur) SC.draft[SC.cur.subject_id] = el.value; }
+});
+
+/* =====================================================================
    เวอร์ชันมือถือ — โครงหน้าจอแยกจาก PC
    แถบบนแบบย่อ · แท็บด้านล่าง · แผ่น "เพิ่มเติม" · ตารางเป็นการ์ด · หน้าต่างเลื่อนจากล่าง
    ===================================================================== */
@@ -7864,7 +8235,7 @@ function mobileShell(base, navOn, body) {
     <main class="content">${body}</main>
     <nav class="m-tabs" aria-label="เมนูหลัก">
       ${tabs.map(t => `<a href="#${t.id}" class="${t.id === navOn ? 'on' : ''}" ${t.id === navOn ? 'aria-current="page"' : ''}>${ic(t.icon)}<span>${t.label}</span></a>`).join('')}
-      <button class="${!inTabs || ui.moreOpen ? 'on' : ''}" data-act="m-more" aria-expanded="${!!ui.moreOpen}">${ic('grid')}<span>เพิ่มเติม</span>${store.pendingCount && ME.admin() ? '<i class="m-dot"></i>' : ''}</button>
+      <button class="${!inTabs || ui.moreOpen ? 'on' : ''}" data-act="m-more" aria-expanded="${!!ui.moreOpen}">${ic('grid')}<span>เพิ่มเติม</span>${(store.pendingCount && ME.admin()) || (window.CHAT && CHAT.unread) ? '<i class="m-dot"></i>' : ''}</button>
     </nav>
     ${ui.moreOpen ? `
     <div class="m-sheet-bg" data-act="m-more-close">
@@ -7873,7 +8244,7 @@ function mobileShell(base, navOn, body) {
         <div class="m-me"><div class="avatar ${ME.admin() ? 'gold' : ''}">${esc((store.teacher.name || 'ค').charAt(0))}</div>
           <div><b>${esc(store.teacher.name)}</b><small>${ME.admin() ? 'ผู้ดูแลระบบ' : 'ครูผู้ใช้'} · ภาคเรียน ${esc(Q.termLabel(Q.currentTerm()))}</small></div></div>
         <div class="m-grid">
-          ${more.map(n => `<a href="#${n.id}" class="${n.id === navOn ? 'on' : ''}">${ic(n.icon)}<span>${n.label}</span>${n.id === 'users' && store.pendingCount ? `<i class="nav-badge">${store.pendingCount}</i>` : ''}</a>`).join('')}
+          ${more.map(n => `<a href="#${n.id}" class="${n.id === navOn ? 'on' : ''}">${ic(n.icon)}<span>${n.label}</span>${n.id === 'users' && store.pendingCount ? `<i class="nav-badge">${store.pendingCount}</i>` : ''}${n.id === 'chat' ? chatBadgeHTML() : ''}</a>`).join('')}
           <a href="#student">${ic('student')}<span>หน้านักเรียน</span></a>
         </div>
         <div class="m-list">
