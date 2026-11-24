@@ -2782,6 +2782,72 @@ textarea.mono::placeholder{color:#64748B}
 body:has(#t-chat) .main{padding-bottom:96px}body:has(#stu-chat) .stu{padding-bottom:96px}
 #stu-chat,#t-chat{z-index:45!important}#chat-pops{z-index:46}
 
+/* =====================================================================
+   เฟส 14: แท็บนักเรียนแบบกระจก + ตัวเลขแดง · การ์ดนักเรียนที่ต้องติดตามแบบใหม่
+   ===================================================================== */
+.stu-tabs2{display:grid;grid-template-columns:repeat(6,1fr);gap:6px;padding:7px;margin:4px 0 14px;border-radius:26px;position:relative;
+  background:linear-gradient(160deg,rgba(255,255,255,.72),rgba(255,255,255,.45));backdrop-filter:blur(22px) saturate(1.8);-webkit-backdrop-filter:blur(22px) saturate(1.8);
+  box-shadow:0 16px 36px -20px rgba(20,50,120,.45),inset 0 1.5px 0 rgba(255,255,255,.95),inset 0 0 0 1px rgba(255,255,255,.6)}
+.st2{position:relative;display:flex;flex-direction:column;align-items:center;gap:3px;padding:9px 4px 8px;border:0;border-radius:20px;background:transparent;cursor:pointer;font:inherit;color:var(--muted);
+  transition:transform .35s cubic-bezier(.2,1.6,.4,1),background .25s,color .2s,box-shadow .25s}
+.st2-ic{position:relative;font-size:24px;line-height:1;transition:transform .4s cubic-bezier(.2,1.8,.4,1);filter:drop-shadow(0 3px 4px rgba(0,0,0,.12))}
+.st2-l{font:600 13px var(--f-body);white-space:nowrap}
+.st2:hover{background:rgba(255,255,255,.55);color:var(--ink)}
+.st2:hover .st2-ic{transform:translateY(-3px) scale(1.18) rotate(-6deg)}
+.st2:active{transform:scale(.9);transition-duration:.1s}
+.st2.on{color:#0A5BD6;background:linear-gradient(170deg,#FFFFFF,rgba(235,244,255,.9));
+  box-shadow:0 10px 22px -12px rgba(10,91,214,.55),inset 0 1.5px 0 #fff,inset 0 0 0 1.5px rgba(10,132,255,.35);animation:st2-pop .5s cubic-bezier(.2,1.6,.4,1)}
+.st2.on .st2-ic{transform:scale(1.12)}
+.st2.on .st2-l{font-weight:800}
+.st2.on::after{content:'';position:absolute;bottom:4px;left:50%;width:18px;height:3px;margin-left:-9px;border-radius:3px;background:linear-gradient(90deg,#3FA0FF,#0A6CF0)}
+@keyframes st2-pop{0%{transform:scale(.88)}60%{transform:scale(1.05)}100%{transform:scale(1)}}
+.st2-badge{position:absolute;top:-8px;right:-14px;min-width:20px;height:20px;padding:0 6px;border-radius:99px;background:#FF3B30;color:#fff;font:800 11.5px var(--f-head);font-style:normal;display:grid;place-items:center;
+  box-shadow:0 0 0 2.5px #fff,0 4px 10px -3px rgba(255,59,48,.7);animation:badge-in .4s cubic-bezier(.2,1.6,.4,1),st2-ping 2.4s ease-in-out 1s infinite}
+@keyframes st2-ping{0%,100%{transform:scale(1)}8%{transform:scale(1.25)}16%{transform:scale(1)}}
+.st2-pos{position:absolute;top:-8px;right:-18px;padding:1px 6px;border-radius:99px;background:linear-gradient(180deg,#FFE58A,#F2B200);color:#5A3700;font:800 10.5px var(--f-head);font-style:normal;box-shadow:0 0 0 2px #fff}
+[data-theme=dark] .stu-tabs2{background:linear-gradient(160deg,rgba(70,90,130,.5),rgba(40,55,85,.4));box-shadow:0 16px 36px -20px #000,inset 0 1px 0 rgba(255,255,255,.18),inset 0 0 0 1px rgba(255,255,255,.1)}
+[data-theme=dark] .st2:hover{background:rgba(255,255,255,.08)}
+[data-theme=dark] .st2.on{color:#9CC8FF;background:linear-gradient(170deg,rgba(255,255,255,.18),rgba(255,255,255,.08));box-shadow:0 10px 22px -12px #000,inset 0 1px 0 rgba(255,255,255,.25),inset 0 0 0 1.5px rgba(120,180,255,.4)}
+[data-theme=dark] .st2-badge,[data-theme=dark] .st2-pos{box-shadow:0 0 0 2.5px #1E2A44}
+[data-device=mobile] .stu-tabs2{grid-template-columns:repeat(6,minmax(58px,1fr));overflow-x:auto;scrollbar-width:none;gap:3px;padding:6px;border-radius:22px}
+[data-device=mobile] .stu-tabs2::-webkit-scrollbar{display:none}
+[data-device=mobile] .st2{padding:8px 2px 7px}[data-device=mobile] .st2-ic{font-size:22px}[data-device=mobile] .st2-l{font-size:11.5px}
+@media (prefers-reduced-motion:reduce){.st2,.st2-ic,.st2-badge{animation:none!important;transition:none!important}}
+
+/* การ์ด "นักเรียนที่ต้องติดตาม" แบบใหม่ */
+.rc2{padding:0;overflow:hidden}
+.rc-h{display:flex;align-items:center;gap:12px;padding:16px 18px 10px}
+.rc-ico{flex:none;width:42px;height:42px;border-radius:14px;display:grid;place-items:center;font-size:22px;background:linear-gradient(160deg,#FFE3B0,#FFB547);box-shadow:0 8px 16px -10px rgba(240,140,0,.8),inset 0 1px 0 rgba(255,255,255,.7)}
+.rc-h h3{margin:0;font:700 17px var(--f-head)}.rc-h small{color:var(--muted);font-size:12.5px}
+.rc-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:4px 18px 10px}
+.rc-st{border-radius:16px;padding:10px 8px;text-align:center;box-shadow:inset 0 0 0 1px var(--line)}
+.rc-st b{display:block;font:800 24px/1.1 var(--f-head)}.rc-st small{font-size:12px;font-weight:600}
+.rc-st.high{background:linear-gradient(170deg,rgba(255,59,48,.1),rgba(255,59,48,.04));color:#D92D20}
+.rc-st.mid{background:linear-gradient(170deg,rgba(255,149,0,.12),rgba(255,149,0,.04));color:#C26200}
+.rc-st.low{background:linear-gradient(170deg,rgba(10,132,255,.1),rgba(10,132,255,.03));color:#0A6CD6}
+.rc-bar{display:flex;height:6px;margin:0 18px 8px;border-radius:99px;overflow:hidden;background:var(--fill)}
+.rc-bar i{display:block;height:100%}.rc-bar .high{background:#FF3B30}.rc-bar .mid{background:#FF9500}.rc-bar .low{background:#0A84FF}
+.rc-list{display:flex;flex-direction:column;padding:4px 10px 8px}
+.rc-row{display:flex;align-items:center;gap:12px;padding:10px 8px;border-radius:16px;color:var(--ink);text-decoration:none;transition:background .2s,transform .25s cubic-bezier(.2,1.4,.4,1)}
+.rc-row:hover{background:var(--fill);transform:translateX(3px)}
+.rc-row+.rc-row{border-top:1px solid var(--line)}
+.rc-av{flex:none;width:40px;height:40px;border-radius:50%;display:grid;place-items:center;font:700 16px var(--f-head);color:#fff;background:linear-gradient(160deg,#94A3B8,#64748B)}
+.rc-row.high .rc-av{background:linear-gradient(160deg,#FF7A70,#E5383B);box-shadow:0 0 0 3px rgba(255,59,48,.18)}
+.rc-row.mid .rc-av{background:linear-gradient(160deg,#FFC069,#F08C00);box-shadow:0 0 0 3px rgba(255,149,0,.18)}
+.rc-row.low .rc-av{background:linear-gradient(160deg,#6CB8FF,#0A84FF);box-shadow:0 0 0 3px rgba(10,132,255,.15)}
+.rc-who{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px}
+.rc-who b{font-size:14.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.rc-who small{font-size:12px;color:var(--muted)}
+.rc-chips{display:flex;gap:4px;flex-wrap:wrap;margin-top:2px}.rc-chips .rk-chip{font-size:11.5px;padding:1px 8px}
+.rk-chip.more{background:var(--fill);color:var(--muted)}
+.rc-lv{flex:none;font:700 11.5px var(--f-body);padding:4px 10px;border-radius:99px}
+.rc-lv.high{background:#FF3B30;color:#fff}.rc-lv.mid{background:rgba(255,149,0,.16);color:#C26200}.rc-lv.low{background:rgba(10,132,255,.12);color:#0A6CD6}
+.rc-more{display:block;text-align:center;padding:11px 14px 14px;font-size:13px;font-weight:600;color:var(--primary);text-decoration:none;border-top:1px solid var(--line)}
+.rc-more:hover{background:var(--fill)}
+.rc-ok{display:flex;flex-direction:column;align-items:center;gap:4px;padding:18px 18px 26px;text-align:center}
+.rc-ok-ic{font-size:40px;animation:st2-pop .6s cubic-bezier(.2,1.6,.4,1)}.rc-ok small{color:var(--muted)}
+[data-theme=dark] .rc-st.high{color:#FF8A80}[data-theme=dark] .rc-st.mid{color:#FFB86B}[data-theme=dark] .rc-st.low{color:#8CC4FF}
+[data-device=mobile] .stu-tabs2{grid-template-columns:repeat(6,1fr)!important;overflow:visible}[data-device=mobile] .st2-l{font-size:11px;letter-spacing:-.01em}[data-device=mobile] .st2-badge{right:-11px;min-width:18px;height:18px;font-size:10.5px}[data-device=mobile] .st2-pos{right:-14px;font-size:9.5px}
+
 </style>
 </head>
 <body>
@@ -3275,7 +3341,7 @@ if (typeof module !== 'undefined') module.exports = ExamParser;
 </script>
 <script>
 /* โลโก้: ภาพครูปลื้ม (ไฟล์ต้นฉบับ src/logo.svg ฝังตอน build) */
-const APP_VER = '13.5 · 24 พ.ย. 2569';
+const APP_VER = '14.0 · 24 พ.ย. 2569';
 let LOGO_N = 0;
 function logoSVG() { const k = 'L' + (++LOGO_N); return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><defs><linearGradient id="lgb" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3B9BFF"/><stop offset=".5" stop-color="#0A5BE0"/><stop offset="1" stop-color="#062C78"/></linearGradient><linearGradient id="lgs" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset=".6" stop-color="#FFF4D6"/><stop offset="1" stop-color="#FFD978"/></linearGradient><radialGradient id="lgc" cx=".3" cy=".08" r=".75"><stop offset="0" stop-color="#fff" stop-opacity=".55"/><stop offset=".5" stop-color="#fff" stop-opacity=".08"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient></defs><rect width="48" height="48" rx="13" fill="url(#lgb)"/><rect width="48" height="48" rx="13" fill="url(#lgc)"/><rect x=".75" y=".75" width="46.5" height="46.5" rx="12.3" fill="none" stroke="#fff" stroke-opacity=".45" stroke-width="1.2"/><g fill="none" stroke="#04235F" stroke-opacity=".35" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" transform="translate(0 1.2)"><path d="M21.2 17 C19.8 14.6 17.4 13.6 14.8 13.6 C11 13.6 8.6 15.6 8.6 18.5 C8.6 21.8 11.6 22.9 14.9 23.9 C18.6 25 21.6 26.4 21.6 29.8 C21.6 33 18.8 34.6 15.1 34.6 C12 34.6 9.5 33.4 8 31.1"/><path d="M26.6 14 L39.6 34.2 M39.6 14 L26.6 34.2"/></g><g fill="none" stroke="url(#lgs)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M21.2 17 C19.8 14.6 17.4 13.6 14.8 13.6 C11 13.6 8.6 15.6 8.6 18.5 C8.6 21.8 11.6 22.9 14.9 23.9 C18.6 25 21.6 26.4 21.6 29.8 C21.6 33 18.8 34.6 15.1 34.6 C12 34.6 9.5 33.4 8 31.1"/><path d="M26.6 14 L39.6 34.2 M39.6 14 L26.6 34.2"/></g></svg>`.replace('<svg ', '<svg class="logo" aria-hidden="true" ').replace(/\b(lg[bsc])\b/g, '$1' + k); }
 /* =====================================================================
@@ -4849,7 +4915,7 @@ function studentHome(v) {
       <div class="row" style="gap:14px;position:relative;z-index:1">${stuAvaHTML()}<div style="min-width:0"><h2 class="hello"><span class="hello-t"><span class="hello-s">สวัสดี</span> ${esc(first)}!</span> <span class="wave">👋</span></h2>
         <div class="pills"><span class="pill">🏫 ${esc(v.classroom_name)}</span><span class="pill">เลขที่ ${v.number}</span></div>${gameChipHTML()}</div></div></div>
     ${studentAnnHTML()}
-    <div class="seg stu-tabs">${[['work', '📝 งาน'], ['exam', '🧪 ข้อสอบ'], ['score', '📊 คะแนน'], ['rank', '🏆 Ranking'], ['shop', '🛒 ร้านค้า'], ['gallery', '🌟 ผลงาน']].map(([k, l]) => `<button class="${(stuState.tab || 'work') === k ? 'on' : ''}" data-act="stu-tab" data-t="${k}">${l}</button>`).join('')}</div>
+    ${stuTabsHTML(groups)}
     ${stuState.tab === 'rank' ? studentRankHTML(v) : stuState.tab === 'shop' ? shopHTML() : stuState.tab === 'gallery' ? studentGalleryHTML() : stuState.tab === 'score' ? studentScoresHTML() : stuState.tab === 'exam' ? studentExamsHTML() : stuState.asg ? `<div class="counters">
         <div class="counter todo"><span class="em">📝</span><div><b>${groups.todo.length}</b><small>ต้องส่ง/แก้</small></div></div>
         <div class="counter wait"><span class="em">⏳</span><div><b>${groups.wait.length}</b><small>รอครูตรวจ</small></div></div>
@@ -5007,6 +5073,34 @@ Object.assign(ACT, {
     requestAnimationFrame(() => document.querySelector(`[data-inp=stu-link][data-id="${a.id}"][data-k="${d.links.length - 1}"]`)?.focus()); },
   'stu-link-del': el => { const a = (stuState.asg || []).find(x => x.id === el.dataset.id); const d = noteDraft(a); d.links.splice(+el.dataset.k, 1); if (!d.links.length) d.links.push(''); d.dirty = true; render(); },
 });
+
+/* ---------- เมนูแท็บนักเรียน: กระจก Liquid Glass + ตัวเลขแจ้งเตือนสีแดง ---------- */
+function stuSeenKey() { return 'cr-seen-' + (stuState.verified?.student_id || ''); }
+function stuSeen() { try { return JSON.parse(localStorage.getItem(stuSeenKey()) || '{}'); } catch (e) { return {}; } }
+function stuMarkSeen(k, ids) { const s = stuSeen(); s[k] = ids; try { localStorage.setItem(stuSeenKey(), JSON.stringify(s)); } catch (e) {} }
+function stuTabBadges(groups) {
+  const b = {};
+  b.work = (groups?.todo || []).length;
+  if (!stuState.exams && !stuState.examsLoading && typeof loadStudentExams === 'function') { stuState.examsLoading = true; Promise.resolve(loadStudentExams()).finally(() => { stuState.examsLoading = false; }); }
+  b.exam = (stuState.exams || []).filter(x => x.is_open && (x.in_progress || (x.attempts_used === 0 && x.attempts_used < x.max_attempts))).length;
+  const graded = (stuState.asg || []).filter(a => a.status === 'graded').map(a => a.id), seen = stuSeen().score || [];
+  b.score = stuState.asg ? graded.filter(id => !seen.includes(id)).length : 0;
+  const g = stuState.game;
+  if (g && !g.missing) {
+    const owned = new Set((g.owned || []).map(o => o.title_id));
+    b.shop = (g.titles || []).filter(t => !owned.has(t.id) && g.coins >= t.cost && g.xp >= (t.min_xp || 0)).length;
+    b.rankPos = g.rank;
+  }
+  return b;
+}
+function stuTabsHTML(groups) {
+  const cur = stuState.tab || 'work', b = stuTabBadges(groups);
+  const T = [['work', '📝', 'งาน', b.work], ['exam', '🧪', 'ข้อสอบ', b.exam], ['score', '📊', 'คะแนน', b.score], ['rank', '🏆', 'Ranking', 0], ['shop', '🛒', 'ร้านค้า', b.shop], ['gallery', '🌟', 'ผลงาน', 0]];
+  return `<nav class="stu-tabs2" role="tablist" aria-label="เมนูนักเรียน">${T.map(([k, e, l, n]) => `
+    <button class="st2 ${cur === k ? 'on' : ''}" role="tab" aria-selected="${cur === k}" data-act="stu-tab" data-t="${k}">
+      <span class="st2-ic">${e}${n ? `<i class="st2-badge" aria-label="${n} รายการใหม่">${n > 99 ? '99+' : n}</i>` : ''}${k === 'rank' && b.rankPos && b.rankPos <= 99 ? `<i class="st2-pos">#${b.rankPos}</i>` : ''}</span>
+      <span class="st2-l">${l}</span></button>`).join('')}</nav>`;
+}
 
 /* =====================================================================
    ส่งลิงก์ให้นักเรียน: LINE · คัดลอก · QR Code · โหมดฉายจอ
@@ -5438,7 +5532,7 @@ function studentScoresHTML() {
   }).join('');
 }
 Object.assign(ACT, {
-  'stu-tab': el => { stuState.tab = el.dataset.t; if (el.dataset.t === 'score') stuState.scores = null; render(); },
+  'stu-tab': el => { stuState.tab = el.dataset.t; if (el.dataset.t === 'score') { stuState.scores = null; stuMarkSeen('score', (stuState.asg || []).filter(a => a.status === 'graded').map(a => a.id)); } render(); },
 });
 
 /* =====================================================================
@@ -7411,14 +7505,14 @@ const RANKS = [
   { n: 'สุดในรุ่น สุดในโรง', en: 'เด่นสุดทั้งโรงเรียน ไม่มีใครแตะได้', xp: 2100, ic: STAR5 },
 ];
 const RARITY = { common: 'ธรรมดา', rare: 'หายาก', epic: 'มหากาพย์', legendary: 'ตำนาน', mythic: 'เทพนิยาย' };
-const RULE_DEF = { sub: 30, ontime: 10, score: 50, exam: 100, exam_full: 30, gallery: 100, present: 5, late: 3, exam_coin: 10, exam_full_coin: 5, sub_coin: 0 };
+const RULE_DEF = { sub: 30, ontime: 10, score: 50, exam: 100, exam_full: 30, gallery: 100, present: 5, late: 3, exam_coin: 10, exam_coin_per: 10, exam_full_coin: 0, sub_coin: 0 };
 function xpRules(r) {
   r = { ...RULE_DEF, ...(r || {}) };
   return [['📤', 'ส่งงาน', `+${r.sub} ต่อชิ้น`], ['⏰', 'ส่งตรงเวลา', `+${r.ontime} ต่อชิ้น`], ['📝', 'คะแนนงาน', `สูงสุด +${r.score} ต่อชิ้น (ตามร้อยละ)`],
     ['🧪', 'ข้อสอบ', `สูงสุด +${r.exam} ต่อชุด · ได้เต็มรับเพิ่ม +${r.exam_full}`], ['🖼', 'ผลงานขึ้นแกลเลอรี', `+${r.gallery} ต่อชิ้น`],
     ['📋', 'มาเรียน / สาย', `+${r.present} / +${r.late} (ถ้าครูใช้เช็คชื่อ)`], ['🎁', 'ครูให้พิเศษ', 'ตอบคำถาม ช่วยเพื่อน ทำกิจกรรม']];
 }
-function coinRule(r) { r = { ...RULE_DEF, ...(r || {}) }; return `ข้อสอบ: ได้คะแนนเต็มรับ ${r.exam_coin} เหรียญ (คิดตามร้อยละ) + โบนัสคะแนนเต็ม ${r.exam_full_coin} เหรียญ${r.sub_coin ? ` · ส่งงานตรงเวลา +${r.sub_coin}` : ''} · ครูให้พิเศษได้`; }
+function coinRule(r) { r = { ...RULE_DEF, ...(r || {}) }; return `ข้อสอบ: ทุก ${r.exam_coin_per} คะแนน (≈ ${r.exam_coin_per} ข้อ) = 1 เหรียญ คิดจากครั้งที่ได้คะแนนดีที่สุด${r.exam_full_coin ? ` · ได้เต็มรับเพิ่ม ${r.exam_full_coin}` : ''}${r.sub_coin ? ` · ส่งงานตรงเวลา +${r.sub_coin}` : ''} · ครูให้พิเศษได้`; }
 const GAME = { t: null, at: 0, loading: false, lvTab: null };
 
 /* ป้ายยศ: ตั้งแต่ "จึ้งเกินต้าน" (ขั้น 6) ขึ้นไปเรืองแสง + แสงสะท้อนวิ่งผ่าน · ยศสูงสุดมีดาวระยิบระยับ */
@@ -7680,7 +7774,7 @@ function riskData() {
       mySubs.forEach(sj => {
         const cols = GB.cols(sj.id, c.id); if (!cols.length) return;
         const t = GB.total(cols, st.id);
-        if (t.max > 0 && t.pct != null && t.pct < cfg.score) { reasons.push({ k: 'score', t: `${sj.name} ${t.pct.toFixed(0)}%` }); sev += 3; }
+        if (t.max > 0 && t.pct != null && t.pct < cfg.score) { reasons.push({ k: 'score', t: `คะแนน${sj.name} ${t.pct.toFixed(0)}%` }); sev += 3; }
       });
       const noEx = myEx.filter(e => !doneEx.has(e.id + ':' + st.id));
       if (cfg.exam && noEx.length >= cfg.exam) { reasons.push({ k: 'exam', t: `ขาดสอบ ${noEx.length} ชุด`, list: noEx.map(e => e.title) }); sev += 2 * noEx.length; }
@@ -7698,11 +7792,23 @@ const RISK_LV = { high: ['เร่งด่วน', 'bad'], mid: ['ควรต
 function riskChips(r) { return r.reasons.map(x => `<span class="rk-chip ${x.k}">${esc(x.t)}</span>`).join(''); }
 
 function riskCardHTML() {
-  const list = riskData(), high = list.filter(r => r.level === 'high').length;
-  return `<div class="card risk-card"><div class="card-h"><h3>⚠️ นักเรียนที่ต้องติดตาม</h3><span class="spacer"></span><a class="btn sm" href="#risk">ดูทั้งหมด</a></div>
-    ${list.length ? `<div class="risk-sum"><div><b>${list.length}</b><small>คน</small></div>${high ? `<div class="bad"><b>${high}</b><small>เร่งด่วน</small></div>` : ''}</div>
-      <div class="risk-mini">${list.slice(0, 5).map(r => `<div class="rm-row"><span class="rm-dot ${r.level}"></span><b>${esc(r.c.name)} #${r.st.number}</b><span class="rm-nm">${esc(r.st.first_name)}</span><span class="spacer"></span><span class="rm-r">${esc(r.reasons[0].t)}${r.reasons.length > 1 ? ` +${r.reasons.length - 1}` : ''}</span></div>`).join('')}</div>`
-      : `<div class="empty" style="padding:18px">${ic('check')}<b>ยังไม่มีนักเรียนกลุ่มเสี่ยง</b>ทุกคนส่งงานและสอบครบตามเกณฑ์</div>`}</div>`;
+  const list = riskData();
+  const n = { high: 0, mid: 0, low: 0 }; list.forEach(r => n[r.level]++);
+  const tot = list.length;
+  const LV = { high: ['เสี่ยงสูง', '🔴'], mid: ['ปานกลาง', '🟠'], low: ['เฝ้าระวัง', '🔵'] };
+  const head = `<div class="rc-h"><span class="rc-ico">⚠️</span><div><h3>นักเรียนที่ต้องติดตาม</h3><small>${tot ? `ทั้งหมด ${tot} คน · เรียงจากเร่งด่วนที่สุด` : 'ตามเกณฑ์ในหน้าติดตามนักเรียน'}</small></div><span class="spacer"></span><a class="btn sm" href="#risk">ดูทั้งหมด</a></div>`;
+  if (!tot) return `<div class="card risk-card rc2">${head}<div class="rc-ok"><div class="rc-ok-ic">🎉</div><b>ยังไม่มีนักเรียนกลุ่มเสี่ยง</b><small>ทุกคนส่งงานและสอบครบตามเกณฑ์</small></div></div>`;
+  const pct = k => (n[k] / tot * 100).toFixed(1);
+  return `<div class="card risk-card rc2">${head}
+    <div class="rc-stats">${['high', 'mid', 'low'].map(k => `<div class="rc-st ${k}"><b>${n[k]}</b><small>${LV[k][0]}</small></div>`).join('')}</div>
+    <div class="rc-bar" title="สัดส่วนตามระดับความเสี่ยง">${['high', 'mid', 'low'].map(k => n[k] ? `<i class="${k}" style="width:${pct(k)}%"></i>` : '').join('')}</div>
+    <div class="rc-list">${list.slice(0, 5).map(r => { const more = r.reasons.length - 2;
+      return `<a class="rc-row ${r.level}" href="#risk" data-act="risk-goto" data-cid="${r.c.id}">
+        <span class="rc-av">${esc((r.st.first_name || '?')[0])}</span>
+        <span class="rc-who"><b>${esc(r.st.first_name)} ${esc(r.st.last_name || '')}</b><small>${esc(r.c.name)} · เลขที่ ${r.st.number}</small>
+          <span class="rc-chips">${r.reasons.slice(0, 2).map(x => `<span class="rk-chip ${x.k}">${esc(x.t)}</span>`).join('')}${more > 0 ? `<span class="rk-chip more">+${more}</span>` : ''}</span></span>
+        <span class="rc-lv ${r.level}">${LV[r.level][0]}</span></a>`; }).join('')}</div>
+    ${tot > 5 ? `<a class="rc-more" href="#risk">ยังมีอีก ${tot - 5} คน · ดูรายชื่อทั้งหมดและส่งเตือนทาง LINE ›</a>` : ''}</div>`;
 }
 function viewRisk() {
   const cfg = riskCfg(), all = riskData();
@@ -7739,6 +7845,7 @@ function riskText(list) {
 function riskList() { const all = riskData(); return ui.riskCid ? all.filter(r => r.c.id === ui.riskCid) : []; }
 function roomLevel(n) { const m = String(n).match(/^(.*?)\s*\/\s*\d+$/); return m ? m[1].trim() : String(n); }
 Object.assign(ACT, {
+  'risk-goto': el => { const c = db.get('classrooms', el.dataset.cid); if (c) { ui.riskLv = roomLevel(c.name); ui.riskCid = c.id; } },
   'risk-lv': el => { ui.riskLv = el.dataset.l; ui.riskCid = null; render(); },
   'risk-room': el => { ui.riskCid = ui.riskCid === el.dataset.id ? null : el.dataset.id; render(); },
   'risk-copy': async () => { await copyText(riskText(riskList())); toast('คัดลอกรายชื่อแล้ว'); },
@@ -8086,7 +8193,7 @@ const RULE_LABELS = [
   ['งานที่ส่ง', [['sub', '📤 ส่งงาน (ต่อชิ้น)'], ['ontime', '⏰ ส่งตรงเวลา'], ['score', '📝 คะแนนงานสูงสุด (ตามร้อยละ)']]],
   ['ข้อสอบ', [['exam', '🧪 ข้อสอบสูงสุด (ต่อชุด)'], ['exam_full', '💯 โบนัสได้คะแนนเต็ม']]],
   ['อื่น ๆ', [['gallery', '🖼 ผลงานขึ้นแกลเลอรี'], ['present', '📋 มาเรียน'], ['late', '🕘 มาสาย']]],
-  ['เหรียญ 🪙', [['exam_coin', '🧪 ข้อสอบคะแนนเต็มได้ (คิดตามร้อยละ)'], ['exam_full_coin', '💯 โบนัสคะแนนเต็ม'], ['sub_coin', '⏰ ส่งงานตรงเวลา (ต่อชิ้น)']]],
+  ['เหรียญ 🪙', [['exam_coin_per', '🧪 คะแนนสอบทุกกี่คะแนน = 1 เหรียญ'], ['exam_full_coin', '💯 โบนัสเมื่อได้คะแนนเต็ม (0 = ไม่มี)'], ['sub_coin', '⏰ ส่งงานตรงเวลา (ต่อชิ้น)']]],
 ];
 
 async function loadRanking(force) {
@@ -8238,7 +8345,7 @@ function rkRulesModal() {
     actions: [{ label: 'คืนค่าเริ่มต้น', kind: 'ghost', onClick: () => { Object.entries(RULE_DEF).forEach(([k, v]) => { const el = $(`#modal-root [name=r_${k}]`); if (el) el.value = v; }); rkCalc(); } },
       { label: 'ยกเลิก', onClick: closeModal },
       { label: 'บันทึกกติกา', kind: 'primary', onClick: async () => {
-        const rules = {}; Object.keys(RULE_DEF).forEach(k => { rules[k] = Math.max(0, Math.min(1000, Math.round(+$(`#modal-root [name=r_${k}]`).value || 0))); });
+        const rules = {}; Object.keys(RULE_DEF).forEach(k => { const el = $(`#modal-root [name=r_${k}]`); if (!el) return; rules[k] = Math.max(k === 'exam_coin_per' ? 1 : 0, Math.min(1000, Math.round(+el.value || 0))); });
         await q(sb.rpc('teacher_set_game_rules', { p_rules: rules })); closeModal(); await loadRanking(true); toast('บันทึกกติกาแล้ว คำนวณแต้มใหม่เรียบร้อย');
       } }],
   });
