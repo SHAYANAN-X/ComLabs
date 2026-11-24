@@ -2650,6 +2650,15 @@ textarea.mono::placeholder{color:#64748B}
 .nb.code{font:700 11px ui-monospace,Menlo,monospace;color:#0369A1;background:#E0F2FE}
 [data-theme=dark] .hn-badge,[data-theme=dark] .nb.code{background:rgba(56,189,248,.15);color:#7DD3FC}[data-theme=dark] .hn-flag{color:#7DD3FC}
 [data-device=mobile] .hn-full{grid-template-columns:1fr}[data-device=mobile] .hn-code.tall{height:260px}
+/* ---------- ตัวเลขแจ้งเตือนสีแดง ---------- */
+.nav-badge{background:#FF3B30!important;color:#fff!important;box-shadow:0 2px 6px -1px rgba(255,59,48,.55);font-weight:700;animation:badge-in .35s cubic-bezier(.2,1.6,.4,1)}
+@keyframes badge-in{from{transform:scale(.4);opacity:0}}
+.red-badge{display:inline-grid;place-items:center;min-width:19px;height:19px;padding:0 5px;margin-left:6px;border-radius:99px;background:#FF3B30;color:#fff;font:700 11.5px var(--f-head);font-style:normal;vertical-align:1px;box-shadow:0 2px 6px -1px rgba(255,59,48,.55)}
+.tab .red-badge{margin-left:6px}
+.chip.has-red{padding-right:4px}
+.red-pill{display:inline-flex;align-items:center;gap:4px;font:700 12px var(--f-body);color:#fff;background:#FF3B30;padding:2px 9px;border-radius:99px;vertical-align:3px;box-shadow:0 3px 8px -3px rgba(255,59,48,.7)}
+.m-tabs a{position:relative}
+.tab-badge{position:absolute;top:2px;left:calc(50% + 6px);min-width:18px;height:18px;padding:0 5px;border-radius:99px;background:#FF3B30;color:#fff;font:700 11px var(--f-head);font-style:normal;display:grid;place-items:center;box-shadow:0 0 0 2px var(--surface)}
 
 </style>
 </head>
@@ -3144,7 +3153,7 @@ if (typeof module !== 'undefined') module.exports = ExamParser;
 </script>
 <script>
 /* โลโก้: ภาพครูปลื้ม (ไฟล์ต้นฉบับ src/logo.svg ฝังตอน build) */
-const APP_VER = '13.0 · 24 พ.ย. 2569';
+const APP_VER = '13.1 · 24 พ.ย. 2569';
 let LOGO_N = 0;
 function logoSVG() { const k = 'L' + (++LOGO_N); return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><defs><linearGradient id="lgb" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3B9BFF"/><stop offset=".5" stop-color="#0A5BE0"/><stop offset="1" stop-color="#062C78"/></linearGradient><linearGradient id="lgs" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset=".6" stop-color="#FFF4D6"/><stop offset="1" stop-color="#FFD978"/></linearGradient><radialGradient id="lgc" cx=".3" cy=".08" r=".75"><stop offset="0" stop-color="#fff" stop-opacity=".55"/><stop offset=".5" stop-color="#fff" stop-opacity=".08"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient></defs><rect width="48" height="48" rx="13" fill="url(#lgb)"/><rect width="48" height="48" rx="13" fill="url(#lgc)"/><rect x=".75" y=".75" width="46.5" height="46.5" rx="12.3" fill="none" stroke="#fff" stroke-opacity=".45" stroke-width="1.2"/><g fill="none" stroke="#04235F" stroke-opacity=".35" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" transform="translate(0 1.2)"><path d="M21.2 17 C19.8 14.6 17.4 13.6 14.8 13.6 C11 13.6 8.6 15.6 8.6 18.5 C8.6 21.8 11.6 22.9 14.9 23.9 C18.6 25 21.6 26.4 21.6 29.8 C21.6 33 18.8 34.6 15.1 34.6 C12 34.6 9.5 33.4 8 31.1"/><path d="M26.6 14 L39.6 34.2 M39.6 14 L26.6 34.2"/></g><g fill="none" stroke="url(#lgs)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M21.2 17 C19.8 14.6 17.4 13.6 14.8 13.6 C11 13.6 8.6 15.6 8.6 18.5 C8.6 21.8 11.6 22.9 14.9 23.9 C18.6 25 21.6 26.4 21.6 29.8 C21.6 33 18.8 34.6 15.1 34.6 C12 34.6 9.5 33.4 8 31.1"/><path d="M26.6 14 L39.6 34.2 M39.6 14 L26.6 34.2"/></g></svg>`.replace('<svg ', '<svg class="logo" aria-hidden="true" ').replace(/\b(lg[bsc])\b/g, '$1' + k); }
 /* =====================================================================
@@ -3419,10 +3428,17 @@ function navSecToggle(el) {
 }
 /* ---------- เมนูข้าง: จัดกลุ่ม พับ/กางได้ (จำสถานะไว้) · กลุ่มของหน้าปัจจุบันกางอัตโนมัติ ---------- */
 function navBadge(id) {
+  if (id === 'assignments' && typeof pendingCount === 'function') return pendingCount();
   if (id === 'users' && store.pendingCount) return store.pendingCount;
   if (id === 'chat' && window.CHAT && CHAT.unread) return CHAT.unread;
   if (id === 'classes' && ME.admin() && (store.resetReqs || []).length) return store.resetReqs.length;
   return 0;
+}
+/* อัปเดตเฉพาะตัวเลขบนเมนู (ไม่วาดทั้งหน้าใหม่) */
+function navBadgeSync() {
+  const ns = document.querySelector('.nav-scroll'); if (ns) ns.innerHTML = sideNavHTML(ui._navOn);
+  document.querySelectorAll('.m-tabs a[href]').forEach(a => { const id = a.getAttribute('href').slice(1), b = navBadge(id); a.querySelector('.tab-badge')?.remove(); if (b) a.insertAdjacentHTML('beforeend', `<i class="tab-badge">${b > 99 ? '99+' : b}</i>`); });
+  if (typeof titleBadge === 'function') titleBadge();
 }
 function navGroups() {
   const out = [], items = navItems(); let cur = { key: 'top', items: [] }; out.push(cur);
@@ -3459,6 +3475,7 @@ function render() {
   const theme = document.documentElement.dataset.theme;
   const views = { chat: viewChat, ranking: viewRanking, dashboard: viewDashboard, subjects: viewSubjects, classes: viewClasses, settings: viewSettings, users: viewUsers, attendance: viewAttendance, attsess: viewAttSession, reports: viewReports, risk: viewRisk, qbank: viewQbank, announce: viewAnnounce, works: viewWorks, assignments: viewAssignments, grade: viewGrade, gradebook: viewGradebook, exams: viewExams, examedit: viewExamEdit, examres: viewExamResults };
   const navOn = base === 'grade' ? 'assignments' : (base === 'examedit' || base === 'examres') ? 'exams' : base === 'attsess' ? 'attendance' : base;
+  ui._navOn = navOn;
   if (isMobile()) { root.innerHTML = mobileShell(base, navOn, (views[base] || viewDashboard)()); return; }
   root.innerHTML = `
   <div class="shell">
@@ -4224,9 +4241,9 @@ function asgCard(a) {
     <div class="asg-main">
       <div style="min-width:0">
         <div class="asg-meta"><span>${esc(subj?.name)}</span><span>·</span><span>คะแนนเต็ม ${+a.max_score}</span>${a.is_open ? '' : `<span class="chip">${ic('lock')}ปิดรับแล้ว</span>`}</div>
-        <h3 class="asg-title">${esc(a.title)}</h3>
+        <h3 class="asg-title">${esc(a.title)}${st.pending ? ` <span class="red-pill">📥 รอตรวจ ${st.pending}</span>` : ''}</h3>
         <div class="asg-meta" style="margin-top:4px"><span class="${late ? 'due-late' : ''}">${ic('clock')} ${esc(dueText(a.due_at))}</span>
-          <span class="chips">${A.classIds(a.id).map(c => `<span class="chip">${esc(db.get('classrooms', c)?.name)}</span>`).join('')}</span></div>
+          <span class="chips">${A.classIds(a.id).map(c => { const p = A.stats(a.id, c).pending; return `<span class="chip ${p ? 'has-red' : ''}">${esc(db.get('classrooms', c)?.name)}${p ? `<i class="red-badge" title="รอตรวจ ${p} ชิ้น">${p}</i>` : ''}</span>`; }).join('')}</span></div>
       </div>
       <div class="asg-actions">
         <button class="btn sm" data-act="share-open" data-id="${a.id}" title="ส่งลิงก์งานนี้ให้นักเรียน">${ic('link')}ส่งลิงก์</button>
@@ -4340,7 +4357,7 @@ function viewGrade() {
   ${a.description ? `<div class="card" style="margin-bottom:14px"><div class="card-b desc">${esc(a.description)}</div></div>` : ''}
   <div class="card">
     <div class="toolbar" style="gap:12px">
-      <div class="tabs">${cids.map(c => { const s = A.stats(aid, c); return `<button class="tab ${c === ui.gradeCid ? 'on' : ''}" data-act="grade-cls" data-id="${c}">${esc(db.get('classrooms', c)?.name)} <span class="muted small">${s.sent}/${s.total}</span></button>`; }).join('')}</div>
+      <div class="tabs">${cids.map(c => { const s = A.stats(aid, c); return `<button class="tab ${c === ui.gradeCid ? 'on' : ''}" data-act="grade-cls" data-id="${c}">${esc(db.get('classrooms', c)?.name)} <span class="muted small">${s.sent}/${s.total}</span>${s.pending ? `<i class="red-badge" title="รอตรวจ ${s.pending} ชิ้น">${s.pending}</i>` : ''}</button>`; }).join('')}</div>
       <span class="spacer"></span>
       <div class="seg">${[['all', 'ทั้งหมด'], ['pending', 'รอตรวจ'], ['missing', 'ยังไม่ส่ง'], ['graded', 'ตรวจแล้ว']].map(([k, l]) => `<button class="${f === k ? 'on' : ''}" data-act="grade-filter" data-f="${k}">${l}</button>`).join('')}</div>
     </div>
@@ -4605,6 +4622,23 @@ function subNoteHTML(sub) {
   return `<div class="sub-note">${sub.student_note ? `<div class="sn-msg"><span class="muted small">💬 นักเรียนเขียนถึงครู${isHtmlNote(sub.student_note) ? ' · <b class="hn-flag">&lt;/&gt; โค้ด HTML</b>' : ''}</span>${hnViewHTML(sub.student_note, 'โค้ด HTML ที่นักเรียนส่งมา')}</div>` : ''}
     ${(sub.links || []).map(u => /^https?:\/\//i.test(u) ? `<a class="sn-link" href="${esc(u)}" target="_blank" rel="noopener noreferrer">🔗 <span>${esc(u.replace(/^https?:\/\//, ''))}</span></a>` : '').join('')}</div>`;
 }
+
+/* ---------- เช็คงานส่งใหม่ทุก 45 วิ: อัปเดตตัวเลขแดงโดยไม่ต้องรีเฟรช ---------- */
+setInterval(async () => {
+  if (!session || !ME.active() || document.hidden || isStudentRoute() || isExamTakeRoute() || !store.assignments) return;
+  try {
+    const before = pendingCount(), beforeIds = new Set(store.submissions.map(x => x.id + (x.submitted_at || '')));
+    const subs = await fetchAll('submissions', 'submitted_at');
+    const fresh = subs.filter(x => !beforeIds.has(x.id + (x.submitted_at || '')) && (x.status === 'submitted' || x.status === 'late'));
+    store.submissions = subs;
+    const after = pendingCount();
+    if (after !== before || fresh.length) {
+      if (fresh.length) toast(`📥 มีงานส่งใหม่ ${fresh.length} ชิ้น · รอตรวจทั้งหมด ${after} ชิ้น`);
+      if (['assignments', 'dashboard'].includes(ui.route) || String(location.hash).startsWith('#grade-')) { if (!document.querySelector('#modal-root .modal')) render(); }
+      else navBadgeSync();
+    }
+  } catch (e) {}
+}, 45000);
 
 /* =====================================================================
    โซนนักเรียน (ธีมครูปลื้ม): งานของฉัน · เลือกไฟล์ + พรีวิว · ส่งงาน
@@ -8195,6 +8229,7 @@ function chatBubbles(msgs, me) {
 function chatScroll(sel) { const el = $(sel); if (el) el.scrollTop = el.scrollHeight; }
 function chatBadgeHTML() { return CHAT && CHAT.unread ? `<span class="nav-badge">${CHAT.unread > 99 ? '99+' : CHAT.unread}</span>` : ''; }
 function chatBadgeSync() {
+  if (typeof navBadgeSync === 'function' && !isStudentRoute()) { navBadgeSync(); }
   $$('a[href="#chat"]').forEach(a => { a.querySelector('.nav-badge')?.remove(); if (CHAT.unread) a.insertAdjacentHTML('beforeend', chatBadgeHTML()); });
   const more = $('[data-act=m-more]'); if (more && CHAT.unread && !more.querySelector('.m-dot')) more.insertAdjacentHTML('beforeend', '<i class="m-dot"></i>');
 }
@@ -8557,7 +8592,7 @@ function chatDing() {
 }
 /* จำนวนที่ยังไม่อ่านบนแท็บเบราว์เซอร์ เช่น "(2) ห้องเรียนครูปลื้ม" */
 function titleBadge() {
-  const n = isStudentRoute() ? SC.unread : (session ? CHAT.unread : 0);
+  const n = isStudentRoute() ? SC.unread : (session ? (CHAT.unread || 0) + (typeof pendingCount === 'function' && store.assignments ? pendingCount() : 0) : 0);
   const base = document.title.replace(/^\(\d+\+?\)\s*/, '');
   document.title = n ? `(${n > 99 ? '99+' : n}) ${base}` : base;
 }
@@ -8902,7 +8937,7 @@ function mobileShell(base, navOn, body) {
     </header>
     <main class="content">${body}</main>
     <nav class="m-tabs" aria-label="เมนูหลัก">
-      ${tabs.map(t => `<a href="#${t.id}" class="${t.id === navOn ? 'on' : ''}" ${t.id === navOn ? 'aria-current="page"' : ''}>${ic(t.icon)}<span>${t.label}</span></a>`).join('')}
+      ${tabs.map(t => { const b = navBadge(t.id); return `<a href="#${t.id}" class="${t.id === navOn ? 'on' : ''}" ${t.id === navOn ? 'aria-current="page"' : ''}>${ic(t.icon)}<span>${t.label}</span>${b ? `<i class="tab-badge">${b > 99 ? '99+' : b}</i>` : ''}</a>`; }).join('')}
       <button class="${!inTabs || ui.moreOpen ? 'on' : ''}" data-act="m-more" aria-expanded="${!!ui.moreOpen}">${ic('grid')}<span>เพิ่มเติม</span>${(store.pendingCount && ME.admin()) || (window.CHAT && CHAT.unread) ? '<i class="m-dot"></i>' : ''}</button>
     </nav>
     ${ui.moreOpen ? `
