@@ -2466,6 +2466,32 @@ h2.hello .wave{display:inline-block;transform-origin:70% 75%;animation:wave 2.4s
 @media (prefers-reduced-motion:reduce){.sc-badge,.ch-msg,.sc-panel{animation:none!important}}
 [data-device=mobile] .ch-wrap{height:calc(100dvh - 300px);min-height:380px}
 [data-device=mobile] .page-head .sub{display:none}
+/* ---------- เฟส 11: ออนไลน์ · บล็อก · ลบข้อความ · รหัสผ่าน ---------- */
+.ch-av{position:relative}
+.ch-av.on::after{content:'';position:absolute;right:-1px;bottom:-1px;width:12px;height:12px;border-radius:50%;background:#34C759;box-shadow:0 0 0 2.5px var(--surface)}
+.on-txt{color:#1F9D44;font-weight:600}.on-dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:#34C759;margin-right:4px;vertical-align:1px;box-shadow:0 0 0 3px rgba(52,199,89,.2)}
+.off-txt{color:var(--muted)}
+.ch-blk{font-style:normal;font-size:11px;font-weight:600;color:var(--danger);background:var(--danger-soft);padding:1px 6px;border-radius:99px;margin-left:4px}
+.ch-blocked{margin:8px 12px 0;padding:10px 12px;border-radius:14px;background:var(--danger-soft);color:var(--danger);font-size:13px;text-align:center}
+.sc-panel .ch-blocked{margin:10px 12px 12px}
+.ch-row{display:flex;align-items:center;gap:6px}
+.ch-msg.me .ch-row{flex-direction:row}.ch-msg.them .ch-row{flex-direction:row-reverse}
+.ch-del{opacity:0;width:26px;height:26px;border:0;border-radius:50%;background:var(--fill);color:var(--muted);display:grid;place-items:center;cursor:pointer;flex:none;transition:opacity .15s}
+.ch-del svg{width:13px;height:13px}.ch-del:hover{background:var(--danger-soft);color:var(--danger)}
+.ch-msg:hover .ch-del,.ch-del:focus-visible{opacity:1}
+[data-device=mobile] .ch-del{opacity:.55}
+.ch-head .btn.sm{flex:none}
+[data-device=mobile] .ch-head{flex-wrap:wrap}
+.stu-pass-hint{font-size:13px;color:var(--muted);text-align:center}
+.linkish{border:0;background:none;padding:0;color:var(--primary);font:inherit;font-weight:600;cursor:pointer;text-decoration:underline}
+.pw-state{padding:10px 12px;border-radius:14px;background:var(--accent-soft);color:var(--accent);font-size:13.5px}.pw-state.ok{background:rgba(52,199,89,.14);color:#1F7A3A}
+.check-inline{display:flex;align-items:center;gap:6px;font-size:13.5px}
+.pw-done{text-align:center}.pw-done div{font-size:44px}
+.pw-req{margin-bottom:14px;box-shadow:var(--shadow),inset 4px 0 0 var(--accent)}
+.pw-list{padding:4px 14px 14px}
+.pw-row{display:flex;align-items:center;gap:8px;padding:10px 6px;border-bottom:1px solid var(--line);flex-wrap:wrap}.pw-row:last-child{border-bottom:0}
+.pw-who{flex:1;min-width:200px;display:flex;flex-direction:column}.pw-who small{color:var(--muted);font-size:12.5px}.pw-who i{font-size:13px;color:var(--ink)}
+.pw-chip{font-size:14px;margin-right:2px;vertical-align:middle}
 
 </style>
 </head>
@@ -2950,7 +2976,7 @@ if (typeof module !== 'undefined') module.exports = ExamParser;
 </script>
 <script>
 /* โลโก้: ภาพครูปลื้ม (ไฟล์ต้นฉบับ src/logo.svg ฝังตอน build) */
-const APP_VER = '10.0 · 24 พ.ย. 2569';
+const APP_VER = '11.0 · 24 พ.ย. 2569';
 let LOGO_N = 0;
 function logoSVG() { const k = 'L' + (++LOGO_N); return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><defs><linearGradient id="lgb" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3B9BFF"/><stop offset=".5" stop-color="#0A5BE0"/><stop offset="1" stop-color="#062C78"/></linearGradient><linearGradient id="lgs" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset=".6" stop-color="#FFF4D6"/><stop offset="1" stop-color="#FFD978"/></linearGradient><radialGradient id="lgc" cx=".3" cy=".08" r=".75"><stop offset="0" stop-color="#fff" stop-opacity=".55"/><stop offset=".5" stop-color="#fff" stop-opacity=".08"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient></defs><rect width="48" height="48" rx="13" fill="url(#lgb)"/><rect width="48" height="48" rx="13" fill="url(#lgc)"/><rect x=".75" y=".75" width="46.5" height="46.5" rx="12.3" fill="none" stroke="#fff" stroke-opacity=".45" stroke-width="1.2"/><g fill="none" stroke="#04235F" stroke-opacity=".35" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" transform="translate(0 1.2)"><path d="M21.2 17 C19.8 14.6 17.4 13.6 14.8 13.6 C11 13.6 8.6 15.6 8.6 18.5 C8.6 21.8 11.6 22.9 14.9 23.9 C18.6 25 21.6 26.4 21.6 29.8 C21.6 33 18.8 34.6 15.1 34.6 C12 34.6 9.5 33.4 8 31.1"/><path d="M26.6 14 L39.6 34.2 M39.6 14 L26.6 34.2"/></g><g fill="none" stroke="url(#lgs)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M21.2 17 C19.8 14.6 17.4 13.6 14.8 13.6 C11 13.6 8.6 15.6 8.6 18.5 C8.6 21.8 11.6 22.9 14.9 23.9 C18.6 25 21.6 26.4 21.6 29.8 C21.6 33 18.8 34.6 15.1 34.6 C12 34.6 9.5 33.4 8 31.1"/><path d="M26.6 14 L39.6 34.2 M39.6 14 L26.6 34.2"/></g></svg>`.replace('<svg ', '<svg class="logo" aria-hidden="true" ').replace(/\b(lg[bsc])\b/g, '$1' + k); }
 /* =====================================================================
@@ -3102,6 +3128,7 @@ async function loadAll() {
   store.attMissing = as_ == null; store.attendance_sessions = as_ || []; store.attendance_records = ar_ || []; store.rubrics = rb_ || [];
   const [qb_, gi_, an_] = await Promise.all([fetchAll('qbank_questions'), fetchAll('gallery_items'), fetchAll('announcements')].map(p => p.catch(() => null)));
   store.p7Missing = qb_ == null; store.qbank_questions = qb_ || []; store.gallery_items = gi_ || []; store.announcements = an_ || [];
+  if (ME.admin()) { const [rr_, cp_] = await Promise.all([q(sb.rpc('admin_reset_requests')), q(sb.rpc('admin_custom_pass_ids'))].map(p => p.catch(() => null))); store.resetReqs = rr_ || []; store.customPass = cp_ || []; }
   if (!store.terms.length && ME.admin()) {
     const t = await q(sb.from('terms').insert({ ...thaiTermNow(), is_current: true }).select().single());
     store.terms.push(t);
@@ -3233,7 +3260,7 @@ function render() {
     <aside class="side ${ui.sideOpen ? 'open' : ''}">
       <div class="brand"><div class="brand-mark">${logoSVG()}</div><div><b>ห้องเรียนครูปลื้ม</b><small>ส่งงาน · คะแนน · ข้อสอบ</small></div></div>
       ${navItems().map(n => n.group ? `<div class="nav-group">${n.group}</div>` :
-        `<a class="nav-item ${navOn === n.id ? 'active' : ''}" href="#${n.id}">${ic(n.icon)}<span>${n.label}</span>${n.soon ? `<span class="soon">${n.soon}</span>` : ''}${n.id === 'users' && store.pendingCount ? `<span class="nav-badge">${store.pendingCount}</span>` : ''}${n.id === 'chat' ? chatBadgeHTML() : ''}</a>`).join('')}
+        `<a class="nav-item ${navOn === n.id ? 'active' : ''}" href="#${n.id}">${ic(n.icon)}<span>${n.label}</span>${n.soon ? `<span class="soon">${n.soon}</span>` : ''}${n.id === 'users' && store.pendingCount ? `<span class="nav-badge">${store.pendingCount}</span>` : ''}${n.id === 'chat' ? chatBadgeHTML() : ''}${n.id === 'classes' && ME.admin() && (store.resetReqs || []).length ? `<span class="nav-badge">${store.resetReqs.length}</span>` : ''}</a>`).join('')}
       <div class="side-foot">ภาคเรียน ${esc(Q.termLabel(Q.currentTerm()))}</div>
     </aside>
     <div class="scrim ${ui.sideOpen ? 'open' : ''}" data-act="side-close"></div>
@@ -3375,6 +3402,7 @@ function viewClasses() {
     <button class="btn primary" data-act="import-open">${ic('upload')}อัปโหลดรายชื่อ</button>` : `<span class="chip">${ic('lock')}ดูได้อย่างเดียว</span>`}
   </div>
   ${ME.admin() ? '' : `<div class="ro-note">${ic('lock')}<div><b>รายชื่อนักเรียนจัดการโดยผู้ดูแลระบบ</b>ถ้าพบชื่อผิด เลขที่ผิด หรือมีนักเรียนย้ายเข้า-ออก แจ้งผู้ดูแลให้แก้ไข</div></div>`}
+  ${ME.admin() ? resetReqCardHTML() : ''}
   ${cls.length ? `
   <div class="card picker">
     <div class="picker-row">
@@ -3425,7 +3453,7 @@ function classPanel(c) {
         <td><input class="input" value="${esc(s.last_name)}" data-chg="cell" data-id="${s.id}" data-f="last_name"></td>`
         : `<td class="num">${s.number}</td>${adm ? `<td class="code-mask">${esc(s.student_code) || '<span class="chip warn">ไม่มี</span>'}</td>` : ''}<td>${esc(s.prefix)}</td><td>${esc(s.first_name)}</td><td>${esc(s.last_name)}</td>`}
         <td>${s.active === false ? '<span class="chip">ย้าย/ลาออก</span>' : '<span class="chip ok">กำลังเรียน</span>'}</td>
-        ${adm ? `<td class="act"><button class="btn ghost icon" data-act="student-edit" data-id="${s.id}" aria-label="แก้ไข">${ic('edit')}</button><button class="btn ghost icon" data-act="student-del" data-id="${s.id}" aria-label="ลบ" style="color:var(--danger)">${ic('trash')}</button></td>` : ''}
+        ${adm ? `<td class="act">${(store.customPass || []).includes(s.id) ? '<span class="pw-chip" title="นักเรียนตั้งรหัสผ่านเองแล้ว">🔐</span>' : ''}<button class="btn ghost icon" data-act="stu-pw-reset" data-id="${s.id}" aria-label="รีเซ็ตรหัสผ่าน" title="รีเซ็ตรหัสผ่านเป็นเลขประจำตัว">🔑</button><button class="btn ghost icon" data-act="student-edit" data-id="${s.id}" aria-label="แก้ไข">${ic('edit')}</button><button class="btn ghost icon" data-act="student-del" data-id="${s.id}" aria-label="ลบ" style="color:var(--danger)">${ic('trash')}</button></td>` : ''}
       </tr>`).join('')}</tbody></table></div>
       <datalist id="prefixes">${PREFIX_OPTS.map(p => `<option value="${p}">`).join('')}</datalist>`
     : `<div class="empty">${ic('users')}<b>ห้องนี้ยังไม่มีนักเรียน</b>${adm ? 'เพิ่มทีละคน หรืออัปโหลดไฟล์รายชื่อ' : 'รอผู้ดูแลระบบเพิ่มรายชื่อ'}</div>`}
@@ -3691,11 +3719,12 @@ function viewStudent() {
     <div class="row" style="width:min(${w}px,100%);margin-bottom:18px"><div class="brand" style="padding:0"><div class="brand-mark">${logoSVG()}</div><div><b>ห้องเรียนครูปลื้ม</b><small style="color:var(--muted)">โซนนักเรียน ✨</small></div></div><span class="spacer"></span>
       <button class="btn ghost icon" data-act="theme" aria-label="สลับธีม">${ic(theme === 'dark' ? 'sun' : 'moon')}</button></div>
     ${v ? studentHome(v) + stuRailsHTML() : `<div class="card stu-card stu-login"><div class="stu-login-art">${ART.desk(sceneHour(), 440)}</div><div class="stu-hi">👋</div><form class="stack" data-form="stu">
-        <div style="text-align:center"><h2 style="font-size:26px">สวัสดี! มาส่งงานกัน</h2><p class="muted" style="margin:2px 0 0">เลือกห้อง แล้วกรอกเลขที่กับเลขประจำตัวนักเรียน</p></div>
+        <div style="text-align:center"><h2 style="font-size:26px">สวัสดี! มาส่งงานกัน</h2><p class="muted" style="margin:2px 0 0">เลือกห้อง แล้วกรอกเลขที่กับรหัสผ่าน</p></div>
         <label class="field"><span>🏫 ห้อง</span><select class="input big" name="cid" required ${stuState.classes ? '' : 'disabled'}><option value="">${stuState.classes ? 'เลือกห้องของฉัน' : 'กำลังโหลดรายชื่อห้อง…'}</option>${cls.map(c => `<option value="${c.id}">${esc(c.name)}</option>`).join('')}</select></label>
         <div class="grid2"><label class="field"><span>🔢 เลขที่</span><input class="input big" type="number" min="1" name="num" required inputmode="numeric" placeholder="เช่น 7"></label>
-          <label class="field"><span>🪪 เลขประจำตัว</span><input class="input big" name="code" required inputmode="numeric" autocomplete="off" placeholder="เช่น 25101"></label></div>
+          <label class="field"><span>🔑 รหัสผ่าน</span><input class="input big" type="password" name="code" required autocomplete="current-password" placeholder="ครั้งแรก = เลขประจำตัว"></label></div>
         <button class="btn primary big" style="justify-content:center">ไปกันเลย 🚀</button>
+        <div class="stu-pass-hint">ยังไม่เคยเปลี่ยนรหัส? ใช้ <b>เลขประจำตัวนักเรียน</b> เป็นรหัสผ่าน · <button type="button" class="linkish" data-act="stu-forgot">ลืมรหัสผ่าน?</button></div>
       </form></div>`}
     ${session ? `<a href="#dashboard" class="small" style="margin-top:16px">← กลับหน้าครู</a>` : `<a href="#dashboard" class="small" style="margin-top:16px">ครู? เข้าสู่ระบบที่นี่</a>`}
   </div>`;
@@ -3834,7 +3863,7 @@ document.addEventListener('submit', async e => {
     if (f.dataset.form === 'stu') {
       const num = parseInt(fd.get('num'), 10), code = String(fd.get('code')).trim();
       const rows = await q(sb.rpc('student_verify', { p_classroom_id: fd.get('cid'), p_number: num, p_code: code }));
-      if (!rows.length) { toast('ข้อมูลไม่ตรงกัน ตรวจสอบห้อง เลขที่ และเลขประจำตัวอีกครั้ง', true); return; }
+      if (!rows.length) { toast('ข้อมูลไม่ตรงกัน ตรวจสอบห้อง เลขที่ และรหัสผ่าน (ถ้ายังไม่เคยเปลี่ยน ใช้เลขประจำตัว)', true); return; }
       stuState.verified = { ...rows[0], number: num, code };
       try { sessionStorage.setItem('cr-student', JSON.stringify(stuState.verified)); } catch (err) {}
       render();
@@ -4450,7 +4479,7 @@ function studentHome(v) {
   groups.todo.sort(byDue); groups.wait.sort(byDue);
   const sec = (key, title) => groups[key].length ? `<div class="sec-title">${title} <span class="chip">${groups[key].length}</span></div>${groups[key].map(studentAsgCard).join('')}` : '';
   return `<div class="stu-wrap">
-    <div class="stu-banner">${ART.desk(sceneHour())}<div class="stu-clock">${clockHTML()}</div><div class="acts"><button class="btn icon sm" data-act="stu-reload" aria-label="โหลดใหม่" title="โหลดใหม่">${ic('refresh')}</button><button class="btn sm" data-act="stu-out">ออก</button></div>
+    <div class="stu-banner">${ART.desk(sceneHour())}<div class="stu-clock">${clockHTML()}</div><div class="acts"><button class="btn icon sm" data-act="stu-reload" aria-label="โหลดใหม่" title="โหลดใหม่">${ic('refresh')}</button><button class="btn icon sm" data-act="stu-pass" aria-label="เปลี่ยนรหัสผ่าน" title="เปลี่ยนรหัสผ่าน">🔑</button><button class="btn sm" data-act="stu-out">ออก</button></div>
       <div class="row" style="gap:14px;position:relative;z-index:1">${stuAvaHTML()}<div style="min-width:0"><h2 class="hello"><span class="hello-t"><span class="hello-s">สวัสดี</span> ${esc(first)}!</span> <span class="wave">👋</span></h2>
         <div class="pills"><span class="pill">🏫 ${esc(v.classroom_name)}</span><span class="pill">เลขที่ ${v.number}</span></div>${gameChipHTML()}</div></div></div>
     ${studentAnnHTML()}
@@ -5675,7 +5704,7 @@ function exmLandingHTML() {
       : !v ? `<form class="stack" data-form="stu"><div class="lbl-sm">ยืนยันตัวตนก่อนเข้าสอบ</div>
           <label class="field"><span>🏫 ห้อง</span><select class="input big" name="cid" required><option value="">เลือกห้องของฉัน</option>${i.classes.map(c => `<option value="${c.id}">${esc(c.name)}</option>`).join('')}</select></label>
           <div class="grid2"><label class="field"><span>🔢 เลขที่</span><input class="input big" type="number" min="1" name="num" required inputmode="numeric"></label>
-            <label class="field"><span>🪪 เลขประจำตัว</span><input class="input big" name="code" required inputmode="numeric" autocomplete="off"></label></div>
+            <label class="field"><span>🔑 รหัสผ่าน</span><input class="input big" type="password" name="code" required autocomplete="current-password" placeholder="ครั้งแรก = เลขประจำตัว"></label></div>
           <button class="btn primary big" style="justify-content:center">ยืนยันตัวตน</button></form>`
       : !okClass ? `<div class="lock-note"><span class="em">🙅</span>ข้อสอบนี้ไม่ได้เปิดให้ห้อง ${esc(v.classroom_name)}</div><button class="btn" data-act="stu-out">ไม่ใช่ฉัน / ออก</button>`
       : `<div class="row" style="gap:12px"><div class="avatar">${esc((v.full_name.replace(/^(เด็กชาย|เด็กหญิง|นางสาว|นาย|นาง|ด\.ช\.|ด\.ญ\.|น\.ส\.)\s*/, '') || '?')[0])}</div><div><b>${esc(v.full_name)}</b><div class="small muted">${esc(v.classroom_name)} · เลขที่ ${v.number}</div></div><span class="spacer"></span><button class="btn sm ghost" data-act="stu-out">ไม่ใช่ฉัน</button></div>
@@ -6607,7 +6636,7 @@ function viewCheckin() {
       ${CHK.err ? `<div class="lock-note"><span class="em">⚠️</span>${esc(CHK.err)}</div>` : ''}
       <form class="stack" data-form="chk">
         <div class="grid2"><label class="field"><span>🔢 เลขที่</span><input class="input big" type="number" min="1" name="num" required inputmode="numeric" placeholder="เช่น 7" value="${v && v.classroom_name === CHK.claim.classroom_name ? v.number : ''}"></label>
-        <label class="field"><span>🪪 เลขประจำตัว</span><input class="input big" name="code" required inputmode="numeric" autocomplete="off" placeholder="เช่น 25101"></label></div>
+        <label class="field"><span>🔑 รหัสผ่าน</span><input class="input big" type="password" name="code" required autocomplete="current-password" placeholder="ครั้งแรก = เลขประจำตัว"></label></div>
         <label class="check"><input type="checkbox" name="remember" ${localStorage.getItem('cr-student-keep') ? 'checked' : ''}> จำฉันไว้ในเครื่องนี้ (ครั้งหน้าสแกนแล้วเช็คชื่อได้ทันที)</label>
         <button class="btn primary big" style="justify-content:center">เช็คชื่อ ✅</button></form>`;
   return `<div class="stu"><div class="row" style="width:min(440px,100%);margin-bottom:18px"><div class="brand" style="padding:0"><div class="brand-mark">${logoSVG()}</div><div><b>ห้องเรียนครูปลื้ม</b><small style="color:var(--muted)">เช็คชื่อเข้าเรียน 📋</small></div></div><span class="spacer"></span>
@@ -7909,12 +7938,18 @@ I.chat = '<path d="M4 5.5A2.5 2.5 0 0 1 6.5 3h11A2.5 2.5 0 0 1 20 5.5v8a2.5 2.5 
 I.send = '<path d="M4 12 20 4l-6 16-3-7z"/><path d="m11 13 9-9"/>';
 var CHAT = { threads: null, unread: 0, cur: null, msgs: null, draft: {}, filter: 'all', mine: true, q: '', at: 0, loading: false, chan: null, seen: null };
 const CHAT_QUICK = ['รับทราบครับ 👍', 'ส่งได้ถึงศุกร์นี้นะครับ', 'ครูตรวจแล้ว ดูคะแนนในเว็บได้เลยครับ', 'เดี๋ยวครูตรวจให้นะครับ', 'แวะมาคุยกับครูที่ห้องได้เลยครับ', 'สู้ ๆ นะ ครูเป็นกำลังใจให้ 💪'];
-const CHAT_ERR = { TOO_MANY_MESSAGES: 'ส่งถี่เกินไป รอสักครู่แล้วส่งใหม่นะ', MESSAGE_TOO_LONG: 'ข้อความยาวเกินไป (ไม่เกิน 500 ตัวอักษร)', EMPTY_MESSAGE: 'พิมพ์ข้อความก่อนส่ง', NOT_YOUR_SUBJECT: 'ไม่พบวิชานี้ในห้องของคุณ', NOT_ALLOWED: 'ไม่มีสิทธิ์ตอบห้องแชทนี้' };
+const CHAT_ERR = { CHAT_BLOCKED: 'ครูปิดการส่งข้อความของคุณในวิชานี้ไว้', TOO_MANY_MESSAGES: 'ส่งถี่เกินไป รอสักครู่แล้วส่งใหม่นะ', MESSAGE_TOO_LONG: 'ข้อความยาวเกินไป (ไม่เกิน 500 ตัวอักษร)', EMPTY_MESSAGE: 'พิมพ์ข้อความก่อนส่ง', NOT_YOUR_SUBJECT: 'ไม่พบวิชานี้ในห้องของคุณ', NOT_ALLOWED: 'ไม่มีสิทธิ์ตอบห้องแชทนี้' };
 const chatErr = e => CHAT_ERR[Object.keys(CHAT_ERR).find(k => (e?.message || '').includes(k))] || errMsg(e);
 const chatKey = (subj, stu) => subj + '|' + stu;
 const kru = n => /^(ครู|อ\.|อาจารย์)/.test(n || '') ? n : 'ครู' + (n || '');
 
 /* ---------- ส่วนแสดงผลร่วม ---------- */
+function seenText(online, seen) {
+  if (online) return '<span class="on-txt"><i class="on-dot"></i>ออนไลน์</span>';
+  if (!seen) return '<span class="off-txt">ยังไม่เคยออนไลน์</span>';
+  const m = Math.round((Date.now() - new Date(seen)) / 60000);
+  return `<span class="off-txt">ใช้งานล่าสุด ${m < 1 ? 'เมื่อสักครู่' : m < 60 ? m + ' นาทีที่แล้ว' : m < 1440 ? Math.round(m / 60) + ' ชม.ที่แล้ว' : chatTime(seen)}</span>`;
+}
 function chatTime(d) {
   const t = new Date(d), now = new Date(), same = t.toDateString() === now.toDateString();
   return same ? t.toLocaleTimeString('th-TH', { hour: '2-digit', minute: '2-digit' }) : t.toLocaleDateString('th-TH', { day: 'numeric', month: 'short' }) + ' ' + t.toLocaleTimeString('th-TH', { hour: '2-digit', minute: '2-digit' });
@@ -7931,7 +7966,7 @@ function chatBubbles(msgs, me) {
     const d = new Date(m.at).toLocaleDateString('th-TH', { weekday: 'short', day: 'numeric', month: 'short' });
     if (d !== day) { day = d; out += `<div class="ch-day"><span>${d}</span></div>`; }
     const mine = m.sender === me;
-    out += `<div class="ch-msg ${mine ? 'me' : 'them'}"><div class="ch-b">${chatLinkify(m.body)}</div><div class="ch-t">${m.by && me === 'teacher' && mine ? esc(m.by) + ' · ' : ''}${new Date(m.at).toLocaleTimeString('th-TH', { hour: '2-digit', minute: '2-digit' })}${mine && m === lastMine && m.read ? ' · อ่านแล้ว ✓' : ''}</div></div>`;
+    out += `<div class="ch-msg ${mine ? 'me' : 'them'}"><div class="ch-row">${me === 'teacher' && m.id ? `<button class="ch-del" data-act="chat-del" data-id="${m.id}" title="ลบข้อความนี้" aria-label="ลบข้อความ">${ic('trash')}</button>` : ''}<div class="ch-b">${chatLinkify(m.body)}</div></div><div class="ch-t">${m.by && me === 'teacher' && mine ? esc(m.by) + ' · ' : ''}${new Date(m.at).toLocaleTimeString('th-TH', { hour: '2-digit', minute: '2-digit' })}${mine && m === lastMine && m.read ? ' · อ่านแล้ว ✓' : ''}</div></div>`;
   });
   return out;
 }
@@ -7961,6 +7996,7 @@ async function loadChatThreads(force) {
       if (fresh) toast(`💬 ${fresh.student_name.split(' ')[0]} (${fresh.classroom}) ส่งข้อความถึงครู`);
     }
     CHAT.seen = sig;
+    if (CHAT.cur) { const n = list.find(x => x.subject_id === CHAT.cur.subject_id && x.student_id === CHAT.cur.student_id); if (n && n !== CHAT.cur) Object.assign(CHAT.cur, n); }
   } catch (e) { CHAT.threads = CHAT.threads || []; CHAT.missing = /chat|function/i.test(e?.message || ''); }
   CHAT.loading = false;
   chatBadgeSync();
@@ -8011,8 +8047,8 @@ function chatListHTML() {
   if (!list.length) return `<div class="ch-empty">📭<b>${CHAT.filter === 'unread' ? 'อ่านครบทุกข้อความแล้ว' : 'ยังไม่มีข้อความ'}</b>เมื่อนักเรียนส่งข้อความมา จะแสดงที่นี่</div>`;
   return list.map(t => { const on = CHAT.cur && CHAT.cur.subject_id === t.subject_id && CHAT.cur.student_id === t.student_id;
     return `<button class="ch-th ${on ? 'on' : ''} ${t.unread && t.mine ? 'new' : ''}" data-act="chat-open" data-sj="${t.subject_id}" data-st="${t.student_id}">
-      <span class="ch-av" style="--c:${esc(t.color || '#0A84FF')}">${esc((t.student_name || '?')[0])}</span>
-      <span class="ch-tb"><span class="ch-tn"><b>${esc(t.student_name)}</b><small>${chatTime(t.last_at)}</small></span>
+      <span class="ch-av ${t.online ? 'on' : ''}" style="--c:${esc(t.color || '#0A84FF')}">${esc((t.student_name || '?')[0])}</span>
+      <span class="ch-tb"><span class="ch-tn"><b>${esc(t.student_name)}${t.blocked ? ' <em class="ch-blk">🚫 บล็อก</em>' : ''}</b><small>${chatTime(t.last_at)}</small></span>
         <span class="ch-ts">${esc(t.classroom)} · เลขที่ ${t.number} · <i style="color:${esc(t.color || 'inherit')}">${esc(t.subject_name)}</i>${!t.mine ? ` · ${esc(kru(t.teacher))}` : ''}</span>
         <span class="ch-tl">${t.last_sender === 'teacher' ? 'คุณ: ' : ''}${esc(t.last_body || '')}</span></span>
       ${t.unread && t.mine ? `<span class="ch-un">${t.unread}</span>` : ''}</button>`; }).join('');
@@ -8021,8 +8057,11 @@ function chatListSync() { const el = $('#ch-list'); if (el) el.innerHTML = chatL
 function chatHeadHTML() {
   const t = CHAT.cur; if (!t) return '';
   return `${isMobile() ? `<button class="btn ghost icon" data-act="chat-back" aria-label="กลับ">${ic('back')}</button>` : ''}
-    <span class="ch-av" style="--c:${esc(t.color || '#0A84FF')}">${esc((t.student_name || '?')[0])}</span>
-    <div class="ch-hn"><b>${esc(t.student_name)}</b><small>${esc(t.classroom)} · เลขที่ ${t.number} · ${esc(t.subject_name)}${t.mine === false ? ` · ห้องแชทของ${esc(kru(t.teacher))}` : ''}</small></div>`;
+    <span class="ch-av ${t.online ? 'on' : ''}" style="--c:${esc(t.color || '#0A84FF')}">${esc((t.student_name || '?')[0])}</span>
+    <div class="ch-hn"><b>${esc(t.student_name)}</b><small>${seenText(t.online, t.seen)} · ${esc(t.classroom)} · เลขที่ ${t.number} · ${esc(t.subject_name)}${t.mine === false ? ` · ห้องแชทของ${esc(kru(t.teacher))}` : ''}</small></div>
+    <span class="spacer"></span>
+    <button class="btn sm ${t.blocked ? 'primary' : 'ghost'}" data-act="chat-block" title="${t.blocked ? 'ให้นักเรียนส่งข้อความได้อีกครั้ง' : 'ไม่ให้นักเรียนคนนี้ส่งข้อความถึงครู'}">${t.blocked ? '✅ ปลดบล็อก' : '🚫 บล็อก'}</button>
+    <button class="btn sm ghost ch-clear" data-act="chat-clear" title="ลบข้อความทั้งหมดในห้องแชทนี้">${ic('trash')}<span class="hide-sm">ล้างแชท</span></button>`;
 }
 function chatHeadSync() { const el = $('#ch-head'); if (el) el.innerHTML = chatHeadHTML(); }
 
@@ -8039,6 +8078,7 @@ function viewChat() {
       <div class="ch-list" id="ch-list">${chatListHTML()}</div></div>`;
   const pane = t ? `<div class="ch-pane card">
       <div class="ch-head" id="ch-head">${chatHeadHTML()}</div>
+      ${t.blocked ? '<div class="ch-blocked">🚫 บล็อกนักเรียนคนนี้อยู่ นักเรียนส่งข้อความถึงครูไม่ได้ (ครูยังส่งหานักเรียนได้)</div>' : ''}
       <div class="ch-msgs" id="ch-msgs">${chatBubbles(CHAT.msgs, 'teacher')}</div>
       <div class="ch-quick">${CHAT_QUICK.map(x => `<button class="chip" data-act="chat-quick" data-t="${esc(x)}">${esc(x)}</button>`).join('')}</div>
       <div class="ch-comp"><textarea id="ch-input" class="input" rows="1" maxlength="1000" placeholder="${isMobile() ? 'พิมพ์ข้อความ…' : 'พิมพ์ข้อความ… (Enter ส่ง · Shift+Enter ขึ้นบรรทัด)'}">${esc(CHAT.draft[chatKey(t.subject_id, t.student_id)] || '')}</textarea>
@@ -8047,8 +8087,11 @@ function viewChat() {
   setTimeout(() => chatScroll('#ch-msgs'), 0);
   return `${head}<div class="ch-wrap">${list}${pane}</div>`;
 }
+async function chatStatus(t) {
+  try { const st = await q(sb.rpc('teacher_chat_status', { p_student: t.student_id, p_subject: t.subject_id })); if (CHAT.cur !== t) return; Object.assign(t, st); chatHeadSync(); } catch (e) {}
+}
 function chatOpen(t) {
-  CHAT.cur = t; CHAT.msgs = null; render(); loadChatMsgs();
+  CHAT.cur = t; CHAT.msgs = null; render(); loadChatMsgs(); chatStatus(t);
   setTimeout(() => $('#ch-input')?.focus(), 60);
 }
 async function chatSendTeacher() {
@@ -8104,6 +8147,15 @@ Object.assign(ACT, {
   'chat-send': chatSendTeacher,
   'chat-quick': el => { const i = $('#ch-input'); if (!i) return; i.value = (i.value.trim() ? i.value.trim() + ' ' : '') + el.dataset.t; chatAutoGrow(i); i.focus(); if (CHAT.cur) CHAT.draft[chatKey(CHAT.cur.subject_id, CHAT.cur.student_id)] = i.value; },
   'chat-new': chatNewModal,
+  'chat-del': el => confirmBox('ลบข้อความ', 'ลบข้อความนี้? ทั้งครูและนักเรียนจะไม่เห็นข้อความนี้อีก', 'ลบ', async () => {
+    try { await q(sb.rpc('teacher_chat_delete', { p_id: el.dataset.id })); CHAT.msgs = null; await loadChatMsgs(); loadChatThreads(true); toast('ลบข้อความแล้ว'); } catch (e) { toast(chatErr(e), true); }
+  }),
+  'chat-clear': () => { const t = CHAT.cur; if (!t) return; confirmBox('ล้างห้องแชท', `ลบข้อความทั้งหมดกับ <b>${esc(t.student_name)}</b> ในวิชา ${esc(t.subject_name)}? ทั้งครูและนักเรียนจะไม่เห็นข้อความเดิมอีก`, 'ล้างแชท', async () => {
+    try { await q(sb.rpc('teacher_chat_clear', { p_student: t.student_id, p_subject: t.subject_id })); CHAT.msgs = null; await loadChatThreads(true); render(); loadChatMsgs(); toast('ล้างห้องแชทแล้ว'); } catch (e) { toast(chatErr(e), true); }
+  }); },
+  'chat-block': async () => { const t = CHAT.cur; if (!t) return; const on = !t.blocked;
+    const go = async () => { try { await q(sb.rpc('teacher_chat_block', { p_student: t.student_id, p_subject: t.subject_id, p_on: on })); t.blocked = on; (CHAT.threads || []).forEach(x => { if (x.student_id === t.student_id && x.teacher_id === t.teacher_id) x.blocked = on; }); render(); toast(on ? '🚫 บล็อกแล้ว นักเรียนคนนี้ส่งข้อความถึงครูไม่ได้' : '✅ ปลดบล็อกแล้ว'); } catch (e) { toast(chatErr(e), true); } };
+    on ? confirmBox('บล็อกนักเรียน', `ไม่ให้ <b>${esc(t.student_name)}</b> ส่งข้อความถึงครู (ทุกวิชาของครูเจ้าของวิชานี้)? ปลดบล็อกได้ภายหลัง`, 'บล็อก', go) : go(); },
 });
 Object.assign(CHG, { 'chat-mine': el => { CHAT.mine = !el.checked; render(); } });
 Object.assign(INP, { 'chat-q': el => { CHAT.q = el.value; chatListSync(); } });
@@ -8130,16 +8182,16 @@ function stuChatDraw() {
   const t = SC.cur;
   const panel = !t ? `<div class="sc-panel"><div class="sc-head"><div class="sc-hn"><b>💬 แชทกับครู</b><small>เลือกวิชาที่อยากคุย</small></div></div>
       <div class="sc-body sc-list">${!SC.threads ? '<div class="ch-empty"><span class="spin"></span></div>' : SC.threads.length ? SC.threads.map(x => `
-        <button class="ch-th ${x.unread ? 'new' : ''}" data-act="sc-open" data-sj="${x.subject_id}"><span class="ch-av" style="--c:${esc(x.color || '#0A84FF')}">${esc((x.subject_name || '?')[0])}</span>
-          <span class="ch-tb"><span class="ch-tn"><b>${esc(x.subject_name)}</b>${x.last_at ? `<small>${chatTime(x.last_at)}</small>` : ''}</span><span class="ch-ts">${esc(kru(x.teacher))}</span>
+        <button class="ch-th ${x.unread ? 'new' : ''}" data-act="sc-open" data-sj="${x.subject_id}"><span class="ch-av ${x.online ? 'on' : ''}" style="--c:${esc(x.color || '#0A84FF')}">${esc((x.subject_name || '?')[0])}</span>
+          <span class="ch-tb"><span class="ch-tn"><b>${esc(x.subject_name)}</b>${x.last_at ? `<small>${chatTime(x.last_at)}</small>` : ''}</span><span class="ch-ts">${esc(kru(x.teacher))} · ${x.online ? '<span class="on-txt">ออนไลน์</span>' : 'ออฟไลน์'}</span>
           <span class="ch-tl">${x.last_body ? `${x.last_sender === 'student' ? 'คุณ: ' : ''}${esc(x.last_body)}` : 'ยังไม่เคยคุย · กดเพื่อเริ่ม'}</span></span>${x.unread ? `<span class="ch-un">${x.unread}</span>` : ''}</button>`).join('')
         : '<div class="ch-empty">📚<b>ยังไม่มีวิชาในห้องนี้</b>เมื่อครูเพิ่มวิชา จะคุยกับครูได้ที่นี่</div>'}</div>
       <div class="sc-foot">ข้อความถูกเก็บไว้ ครูและผู้ดูแลเว็บอ่านได้ · ใช้ถ้อยคำสุภาพนะ 🙂</div></div>`
     : `<div class="sc-panel"><div class="sc-head"><button class="btn ghost icon" data-act="sc-back" aria-label="กลับ">${ic('back')}</button>
-        <span class="ch-av" style="--c:${esc(t.color || '#0A84FF')}">${esc((t.subject_name || '?')[0])}</span><div class="sc-hn"><b>${esc(t.subject_name)}</b><small>${esc(kru(t.teacher))}</small></div></div>
+        <span class="ch-av ${t.online ? 'on' : ''}" style="--c:${esc(t.color || '#0A84FF')}">${esc((t.subject_name || '?')[0])}</span><div class="sc-hn"><b>${esc(t.subject_name)}</b><small>${esc(kru(t.teacher))} · ${seenText(t.online, t.teacher_seen)}</small></div></div>
       <div class="sc-body ch-msgs" id="sc-msgs">${chatBubbles(SC.msgs, 'student')}</div>
-      <div class="ch-comp"><textarea id="sc-input" class="input" rows="1" maxlength="500" placeholder="พิมพ์ข้อความถึงครู…">${esc(SC.draft[t.subject_id] || '')}</textarea>
-        <button class="btn primary ch-send" data-act="sc-send" aria-label="ส่ง" ${SC.sending ? 'disabled' : ''}>${ic('send')}</button></div></div>`;
+      ${t.blocked ? '<div class="ch-blocked">🚫 ครูปิดการส่งข้อความของคุณไว้ อ่านข้อความจากครูได้ตามปกติ</div>' : `<div class="ch-comp"><textarea id="sc-input" class="input" rows="1" maxlength="500" placeholder="พิมพ์ข้อความถึงครู…">${esc(SC.draft[t.subject_id] || '')}</textarea>
+        <button class="btn primary ch-send" data-act="sc-send" aria-label="ส่ง" ${SC.sending ? 'disabled' : ''}>${ic('send')}</button></div>`}</div>`;
   box.innerHTML = panel + fab;
   chatScroll('#sc-msgs');
 }
@@ -8149,6 +8201,7 @@ async function scLoadThreads() {
     const list = await q(sb.rpc('student_chat_threads', { p_student_id: v.student_id, p_code: v.code }));
     const before = SC.unread;
     SC.threads = list; SC.unread = list.reduce((a, x) => a + (x.unread || 0), 0); SC.missing = false;
+    if (SC.cur) { const n = list.find(x => x.subject_id === SC.cur.subject_id); if (n) { const chg = n.blocked !== SC.cur.blocked || n.online !== SC.cur.online; Object.assign(SC.cur, n, { unread: 0 }); if (chg && SC.open) { stuChatDraw(); } } }
     if (SC.unread > before && !SC.open && before !== undefined && SC.tThreads) toast('💬 ครูตอบข้อความแล้ว กดปุ่มแชทมุมขวาล่าง');
   } catch (e) { SC.threads = SC.threads || []; if (/student_chat|function/i.test(e?.message || '')) SC.missing = true; }
   SC.tThreads = Date.now();
@@ -8197,6 +8250,99 @@ document.addEventListener('input', e => {
   if (el?.id === 'ch-input') { chatAutoGrow(el); if (CHAT.cur) CHAT.draft[chatKey(CHAT.cur.subject_id, CHAT.cur.student_id)] = el.value; }
   if (el?.id === 'sc-input') { chatAutoGrow(el); if (SC.cur) SC.draft[SC.cur.subject_id] = el.value; }
 });
+
+/* =====================================================================
+   รหัสผ่านนักเรียน: เปลี่ยนรหัสเอง · ลืมรหัส → ส่งคำขอ · ผู้ดูแลรีเซ็ตเป็นเลขประจำตัว
+   ===================================================================== */
+const PW_ERR = { PASSWORD_TOO_SHORT: 'รหัสผ่านต้องยาวอย่างน้อย 4 ตัวอักษร', PASSWORD_TOO_LONG: 'รหัสผ่านยาวเกินไป', PASSWORD_SAME_AS_CODE: 'ห้ามใช้เลขประจำตัวเป็นรหัสใหม่ ตั้งให้ต่างจากเดิม', STUDENT_INVALID: 'รหัสผ่านปัจจุบันไม่ถูกต้อง' };
+const pwErr = e => PW_ERR[Object.keys(PW_ERR).find(k => (e?.message || '').includes(k))] || errMsg(e);
+
+async function stuPassModal() {
+  const v = stuState.verified; if (!v) return;
+  let acc = null;
+  try { acc = await q(sb.rpc('student_account', { p_student_id: v.student_id, p_code: v.code })); } catch (e) {}
+  openModal({
+    title: '🔑 เปลี่ยนรหัสผ่าน',
+    body: `<div class="stack">
+      <div class="pw-state ${acc?.custom ? 'ok' : ''}">${acc?.custom ? `🔐 ตั้งรหัสผ่านเองแล้ว${acc.changed_at ? ` · ${new Date(acc.changed_at).toLocaleDateString('th-TH', { day: 'numeric', month: 'short', year: '2-digit' })}` : ''}` : '⚠️ ตอนนี้ใช้เลขประจำตัวเป็นรหัสผ่าน (เพื่อนที่รู้เลขประจำตัวเข้าได้) ตั้งรหัสใหม่เพื่อความปลอดภัย'}</div>
+      <label class="field"><span>รหัสผ่านปัจจุบัน</span><input class="input" type="password" name="cur" autocomplete="current-password" placeholder="${acc?.custom ? '' : 'เลขประจำตัวนักเรียน'}"></label>
+      <label class="field"><span>รหัสผ่านใหม่ (อย่างน้อย 4 ตัว)</span><input class="input" type="password" name="new1" autocomplete="new-password"></label>
+      <label class="field"><span>พิมพ์รหัสใหม่อีกครั้ง</span><input class="input" type="password" name="new2" autocomplete="new-password"></label>
+      <label class="check-inline"><input type="checkbox" data-chg="pw-show"> แสดงรหัสผ่าน</label>
+      <p class="small muted" style="margin:0">ลืมรหัสเมื่อไหร่ กด "ลืมรหัสผ่าน?" ที่หน้าเข้าสู่ระบบ ครูจะรีเซ็ตกลับเป็นเลขประจำตัวให้</p></div>`,
+    actions: [{ label: 'ยกเลิก', onClick: closeModal }, { label: 'บันทึกรหัสใหม่', kind: 'primary', onClick: async () => {
+      const cur = mval('cur'), n1 = mval('new1'), n2 = mval('new2');
+      if (!cur) return toast('กรอกรหัสผ่านปัจจุบัน', true);
+      if (n1.length < 4) return toast(PW_ERR.PASSWORD_TOO_SHORT, true);
+      if (n1 !== n2) return toast('รหัสใหม่ทั้งสองช่องไม่ตรงกัน', true);
+      try {
+        await q(sb.rpc('student_change_password', { p_student_id: v.student_id, p_code: cur, p_new: n1 }));
+        stuState.verified = { ...v, code: n1 };
+        try { sessionStorage.setItem('cr-student', JSON.stringify(stuState.verified)); } catch (e) {}
+        closeModal(); toast('เปลี่ยนรหัสผ่านแล้ว ครั้งหน้าใช้รหัสใหม่เข้าระบบนะ 🔐');
+      } catch (e) { toast(pwErr(e), true); }
+    } }],
+  });
+}
+
+function stuForgotModal() {
+  const cls = stuState.classes || [];
+  const pre = $('form[data-form=stu] [name=cid]')?.value || '', num = $('form[data-form=stu] [name=num]')?.value || '';
+  openModal({
+    title: '🙋 ลืมรหัสผ่าน',
+    body: `<div class="stack">
+      <p style="margin:0">ส่งคำขอให้ครูรีเซ็ตรหัสผ่าน เมื่อครูรีเซ็ตแล้ว <b>เข้าระบบด้วยเลขประจำตัวนักเรียน</b> ได้เหมือนครั้งแรก</p>
+      <label class="field"><span>🏫 ห้อง</span><select class="input" name="cid">${cls.map(c => `<option value="${c.id}" ${c.id === pre ? 'selected' : ''}>${esc(c.name)}</option>`).join('')}</select></label>
+      <label class="field"><span>🔢 เลขที่</span><input class="input" type="number" min="1" name="num" value="${esc(num)}" inputmode="numeric"></label>
+      <label class="field"><span>ฝากถึงครู (ไม่บังคับ)</span><input class="input" name="note" maxlength="200" placeholder="เช่น ลืมรหัสที่ตั้งไว้ค่ะ"></label></div>`,
+    actions: [{ label: 'ยกเลิก', onClick: closeModal }, { label: 'ส่งคำขอ', kind: 'primary', onClick: async () => {
+      const cid = $('#modal-root [name=cid]').value, n = parseInt($('#modal-root [name=num]').value, 10);
+      if (!cid || !n) return toast('เลือกห้องและกรอกเลขที่', true);
+      try {
+        await q(sb.rpc('student_request_reset', { p_classroom_id: cid, p_number: n, p_note: mval('note') || null }));
+        closeModal();
+        openModal({ title: '📨 ส่งคำขอแล้ว', body: `<div class="pw-done"><div>✅</div><p>ครูจะรีเซ็ตรหัสผ่านให้เร็ว ๆ นี้<br>จากนั้นเข้าระบบด้วย <b>เลขประจำตัวนักเรียน</b> แล้วตั้งรหัสใหม่ได้เลย</p></div>`, actions: [{ label: 'ตกลง', kind: 'primary', onClick: closeModal }] });
+      } catch (e) { toast(errMsg(e), true); }
+    } }],
+  });
+}
+
+/* ---------- ผู้ดูแล ---------- */
+function resetReqCardHTML() {
+  const list = store.resetReqs || []; if (!list.length) return '';
+  return `<div class="card pw-req"><div class="card-h"><h3>🙋 คำขอรีเซ็ตรหัสผ่าน</h3><span class="chip bad">${list.length} รายการ</span><span class="spacer"></span><span class="small muted">รีเซ็ตแล้ว นักเรียนเข้าด้วยเลขประจำตัวได้ทันที</span></div>
+    <div class="pw-list">${list.map(r => `<div class="pw-row"><div class="pw-who"><b>${esc(r.name)}</b><small>${esc(r.classroom)} · เลขที่ ${r.number} · ${new Date(r.at).toLocaleString('th-TH', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' })}${r.custom ? '' : ' · (ยังใช้เลขประจำตัวอยู่แล้ว)'}</small>${r.note ? `<i>"${esc(r.note)}"</i>` : ''}</div>
+      <button class="btn sm primary" data-act="pw-req-reset" data-id="${r.student_id}">🔑 รีเซ็ตเป็นเลขประจำตัว</button><button class="btn sm ghost" data-act="pw-req-dismiss" data-id="${r.id}">ไม่ต้อง</button></div>`).join('')}</div></div>`;
+}
+async function pwReload() {
+  try { const [rr, cp] = await Promise.all([q(sb.rpc('admin_reset_requests')), q(sb.rpc('admin_custom_pass_ids'))]); store.resetReqs = rr; store.customPass = cp; } catch (e) {}
+  render();
+}
+async function pwReset(id) {
+  const s = db.get('students', id);
+  confirmBox('รีเซ็ตรหัสผ่าน', `รีเซ็ตรหัสผ่านของ ${s ? esc(Q.fullName(s)) : 'นักเรียนคนนี้'} กลับเป็น <b>เลขประจำตัวนักเรียน</b>?`, 'รีเซ็ต', async () => {
+    try { await q(sb.rpc('admin_reset_student_password', { p_student: id })); toast('รีเซ็ตแล้ว นักเรียนเข้าด้วยเลขประจำตัวได้เลย'); await pwReload(); }
+    catch (e) { toast(errMsg(e), true); }
+  });
+}
+/* เช็คคำขอใหม่ทุก 60 วิ (เฉพาะผู้ดูแล) */
+setInterval(async () => {
+  if (!session || !ME.admin() || document.hidden || isStudentRoute()) return;
+  try {
+    const rr = await q(sb.rpc('admin_reset_requests'));
+    const before = (store.resetReqs || []).length; store.resetReqs = rr;
+    if (rr.length !== before) { if (rr.length > before) toast(`🙋 มีคำขอรีเซ็ตรหัสผ่านใหม่ (${rr.length})`); if (ui.route === 'classes') render(); else { const a = $('a[href="#classes"]'); if (a) { a.querySelector('.nav-badge')?.remove(); if (rr.length) a.insertAdjacentHTML('beforeend', `<span class="nav-badge">${rr.length}</span>`); } } }
+  } catch (e) {}
+}, 60000);
+
+Object.assign(ACT, {
+  'stu-pass': stuPassModal,
+  'stu-forgot': stuForgotModal,
+  'stu-pw-reset': el => pwReset(el.dataset.id),
+  'pw-req-reset': el => pwReset(el.dataset.id),
+  'pw-req-dismiss': async el => { try { await q(sb.rpc('admin_dismiss_reset', { p_id: el.dataset.id })); await pwReload(); } catch (e) { toast(errMsg(e), true); } },
+});
+Object.assign(CHG, { 'pw-show': el => $$('#modal-root input[name^=new], #modal-root input[name=cur]').forEach(i => { i.type = el.checked ? 'text' : 'password'; }) });
 
 /* =====================================================================
    เวอร์ชันมือถือ — โครงหน้าจอแยกจาก PC
