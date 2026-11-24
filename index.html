@@ -2492,6 +2492,29 @@ h2.hello .wave{display:inline-block;transform-origin:70% 75%;animation:wave 2.4s
 .pw-row{display:flex;align-items:center;gap:8px;padding:10px 6px;border-bottom:1px solid var(--line);flex-wrap:wrap}.pw-row:last-child{border-bottom:0}
 .pw-who{flex:1;min-width:200px;display:flex;flex-direction:column}.pw-who small{color:var(--muted);font-size:12.5px}.pw-who i{font-size:13px;color:var(--ink)}
 .pw-chip{font-size:14px;margin-right:2px;vertical-align:middle}
+/* ---------- เฟส 12: ป๊อบอัพแชทครู · แจ้งเตือนเด้ง ---------- */
+#t-chat{position:fixed;right:20px;bottom:20px;z-index:60;display:flex;flex-direction:column;align-items:flex-end;gap:12px;pointer-events:none}
+#t-chat>*{pointer-events:auto}
+.sc-fab.t{background:radial-gradient(circle at 30% 25%,rgba(255,255,255,.55),transparent 45%),linear-gradient(160deg,#34C759,#16A34A);box-shadow:0 14px 30px -10px rgba(22,163,74,.75),inset 0 1px 0 rgba(255,255,255,.7),inset 0 -4px 10px rgba(0,80,30,.3)}
+.sc-fab.t.on{background:linear-gradient(160deg,#8A93A3,#5B6473)}
+[data-device=mobile] #t-chat{right:12px;bottom:calc(92px + env(safe-area-inset-bottom))}
+[data-device=mobile] #t-chat .sc-panel{height:calc(100dvh - 190px)}
+#t-chat .ch-quick{padding-top:6px}
+#chat-pops{position:fixed;right:20px;bottom:96px;z-index:70;display:flex;flex-direction:column;gap:8px;width:min(340px,calc(100vw - 24px));pointer-events:none}
+[data-device=mobile] #chat-pops{right:12px;bottom:calc(160px + env(safe-area-inset-bottom))}
+.chat-pop{position:relative;pointer-events:auto;border-radius:20px;overflow:hidden;
+  background:color-mix(in srgb,var(--surface) 90%,transparent);backdrop-filter:blur(22px) saturate(1.6);-webkit-backdrop-filter:blur(22px) saturate(1.6);
+  box-shadow:0 20px 40px -16px rgba(15,30,70,.5),inset 0 1px 0 rgba(255,255,255,.7),inset 0 0 0 1px var(--line);animation:cp-in .35s cubic-bezier(.2,1.2,.3,1)}
+.chat-pop.out{animation:cp-out .35s ease forwards}
+@keyframes cp-in{from{opacity:0;transform:translateX(30px) scale(.96)}}
+@keyframes cp-out{to{opacity:0;transform:translateX(30px)}}
+.cp-main{display:flex;gap:10px;align-items:flex-start;width:100%;border:0;background:none;padding:12px 36px 12px 12px;text-align:left;font:inherit;color:var(--ink);cursor:pointer}
+.cp-b{flex:1;min-width:0;display:flex;flex-direction:column}
+.cp-b b{font:700 14.5px var(--f-head)}.cp-b small{font-size:11.5px;color:var(--muted)}
+.cp-b span{font-size:13.5px;margin-top:2px;overflow:hidden;text-overflow:ellipsis;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+.cp-x{position:absolute;top:8px;right:8px;width:24px;height:24px;border:0;border-radius:50%;background:var(--fill);color:var(--muted);cursor:pointer;font-size:11px}
+.chat-pop::before{content:'💬 ข้อความใหม่';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#0A84FF,#34C759);font-size:0}
+@media (prefers-reduced-motion:reduce){.chat-pop{animation:none!important}}
 
 </style>
 </head>
@@ -2976,7 +2999,7 @@ if (typeof module !== 'undefined') module.exports = ExamParser;
 </script>
 <script>
 /* โลโก้: ภาพครูปลื้ม (ไฟล์ต้นฉบับ src/logo.svg ฝังตอน build) */
-const APP_VER = '11.0 · 24 พ.ย. 2569';
+const APP_VER = '12.0 · 24 พ.ย. 2569';
 let LOGO_N = 0;
 function logoSVG() { const k = 'L' + (++LOGO_N); return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><defs><linearGradient id="lgb" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3B9BFF"/><stop offset=".5" stop-color="#0A5BE0"/><stop offset="1" stop-color="#062C78"/></linearGradient><linearGradient id="lgs" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset=".6" stop-color="#FFF4D6"/><stop offset="1" stop-color="#FFD978"/></linearGradient><radialGradient id="lgc" cx=".3" cy=".08" r=".75"><stop offset="0" stop-color="#fff" stop-opacity=".55"/><stop offset=".5" stop-color="#fff" stop-opacity=".08"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient></defs><rect width="48" height="48" rx="13" fill="url(#lgb)"/><rect width="48" height="48" rx="13" fill="url(#lgc)"/><rect x=".75" y=".75" width="46.5" height="46.5" rx="12.3" fill="none" stroke="#fff" stroke-opacity=".45" stroke-width="1.2"/><g fill="none" stroke="#04235F" stroke-opacity=".35" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" transform="translate(0 1.2)"><path d="M21.2 17 C19.8 14.6 17.4 13.6 14.8 13.6 C11 13.6 8.6 15.6 8.6 18.5 C8.6 21.8 11.6 22.9 14.9 23.9 C18.6 25 21.6 26.4 21.6 29.8 C21.6 33 18.8 34.6 15.1 34.6 C12 34.6 9.5 33.4 8 31.1"/><path d="M26.6 14 L39.6 34.2 M39.6 14 L26.6 34.2"/></g><g fill="none" stroke="url(#lgs)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M21.2 17 C19.8 14.6 17.4 13.6 14.8 13.6 C11 13.6 8.6 15.6 8.6 18.5 C8.6 21.8 11.6 22.9 14.9 23.9 C18.6 25 21.6 26.4 21.6 29.8 C21.6 33 18.8 34.6 15.1 34.6 C12 34.6 9.5 33.4 8 31.1"/><path d="M26.6 14 L39.6 34.2 M39.6 14 L26.6 34.2"/></g></svg>`.replace('<svg ', '<svg class="logo" aria-hidden="true" ').replace(/\b(lg[bsc])\b/g, '$1' + k); }
 /* =====================================================================
@@ -3183,7 +3206,7 @@ setTheme(getTheme());
 function toast(msg, err) {
   const box = $('#toasts'); const el = document.createElement('div');
   el.className = 'toast' + (err ? ' err' : ''); el.textContent = msg; box.appendChild(el);
-  setTimeout(() => el.remove(), 2600);
+  setTimeout(() => el.remove(), err ? 5000 : 2600);
 }
 let modalCtx = null;
 function openModal({ title, body, actions = [], wide = false, ctx = {} }) {
@@ -3244,7 +3267,7 @@ function render() {
   if (isGalleryRoute()) { root.innerHTML = viewGalleryPublic(); return; }
   if (isCheckinRoute()) { root.innerHTML = viewCheckin(); return; }
   if (isExamTakeRoute()) { root.innerHTML = viewExamTake(); return; }
-  stuChatSync();
+  stuChatSync(); tChatSync();
   if (isStudentRoute()) { root.innerHTML = viewStudent(); stuChatSync(); return; }
   if (booting) { root.innerHTML = `<div class="stu" style="justify-content:center"><div class="brand"><div class="brand-mark">${logoSVG()}</div><div><b>ห้องเรียนครูปลื้ม</b><small style="color:var(--muted)">กำลังโหลดข้อมูล…</small></div></div></div>`; return; }
   if (!session) { root.innerHTML = viewLogin(); return; }
@@ -3862,9 +3885,8 @@ document.addEventListener('submit', async e => {
     }
     if (f.dataset.form === 'stu') {
       const num = parseInt(fd.get('num'), 10), code = String(fd.get('code')).trim();
-      const rows = await q(sb.rpc('student_verify', { p_classroom_id: fd.get('cid'), p_number: num, p_code: code }));
-      if (!rows.length) { toast('ข้อมูลไม่ตรงกัน ตรวจสอบห้อง เลขที่ และรหัสผ่าน (ถ้ายังไม่เคยเปลี่ยน ใช้เลขประจำตัว)', true); return; }
-      stuState.verified = { ...rows[0], number: num, code };
+      let row; try { row = await studentLogin(fd.get('cid'), num, code); } catch (err) { toast(err.message || errMsg(err), true); return; }
+      stuState.verified = { ...row, number: num, code };
       try { sessionStorage.setItem('cr-student', JSON.stringify(stuState.verified)); } catch (err) {}
       render();
     }
@@ -5949,7 +5971,7 @@ function viewUsers() {
   <h3 class="sec-h">ครูที่ใช้งานอยู่</h3>
   <div class="user-list">${L.filter(u => u.role === 'admin').map(userCard).join('')}${act.map(userCard).join('') || ''}</div>
   ${!act.length && !pend.length ? `<div class="card"><div class="empty">${ic('users')}<b>ยังไม่มีครูท่านอื่น</b>กด "เพิ่มครู" เพื่อดูวิธีสร้างบัญชีให้ครูท่านอื่น</div></div>` : ''}
-  ${sus.length ? `<h3 class="sec-h">ระงับการใช้งาน</h3><div class="user-list">${sus.map(userCard).join('')}</div>` : ''}`;
+  ${sus.length ? `<h3 class="sec-h">ระงับการใช้งาน${sus.length > 1 ? `<button class="btn sm ghost" data-act="usr-del-all" style="margin-left:auto;color:var(--danger)">${ic('trash')}ลบทั้งหมด ${sus.length} บัญชี</button>` : ''}</h3><div class="user-list">${sus.map(userCard).join('')}</div>` : ''}`;
 }
 
 function userCard(u) {
@@ -5975,11 +5997,12 @@ function userCard(u) {
       <span class="small muted">วิชา ${thaiNum(u.n_subjects)} · งาน ${thaiNum(u.n_assignments)} · ข้อสอบ ${thaiNum(u.n_exams)}</span>
       <span class="spacer"></span>
       ${u.status === 'pending' ? `<select class="input sm-sel" data-chg="usr-preset" data-u="${u.user_id}" aria-label="ชุดสิทธิ์"><option value="">ใช้ชุดสิทธิ์…</option>${PERM_PRESETS.map(p => `<option value="${p.id}">${p.label}</option>`).join('')}</select>
+        <button class="btn sm ghost icon" data-act="usr-del" data-u="${u.user_id}" title="ลบคำขอและบัญชีนี้ทิ้ง" aria-label="ลบบัญชี" style="color:var(--danger)">${ic('trash')}</button>
         <button class="btn sm ghost" data-act="usr-status" data-u="${u.user_id}" data-s="suspended" style="color:var(--danger)">ปฏิเสธ</button>
         <button class="btn sm primary" data-act="usr-status" data-u="${u.user_id}" data-s="active">✓ อนุมัติ</button>`
       : u.status === 'active' ? `<select class="input sm-sel" data-chg="usr-preset" data-u="${u.user_id}" aria-label="ชุดสิทธิ์"><option value="">ใช้ชุดสิทธิ์…</option>${PERM_PRESETS.map(p => `<option value="${p.id}">${p.label}</option>`).join('')}</select>
         <button class="btn sm ghost" data-act="usr-status" data-u="${u.user_id}" data-s="suspended" style="color:var(--danger)">${ic('lock')}ระงับ</button>`
-      : `<button class="btn sm" data-act="usr-status" data-u="${u.user_id}" data-s="active">เปิดใช้งานอีกครั้ง</button>`}
+      : `<button class="btn sm ghost" data-act="usr-del" data-u="${u.user_id}" style="color:var(--danger)">${ic('trash')}ลบบัญชี</button><button class="btn sm" data-act="usr-status" data-u="${u.user_id}" data-s="active">เปิดใช้งานอีกครั้ง</button>`}
     </div>`}
   </div>`;
 }
@@ -6040,6 +6063,22 @@ Object.assign(CHG, {
     try { await saveUser(el.dataset.u, { perms: p.perms }); toast(`ใช้ชุดสิทธิ์ "${p.label}" แล้ว`); } catch (e) { el.value = ''; } },
 });
 I.refresh = '<path d="M20 11a8 8 0 0 0-14.5-4.5L4 8"/><path d="M4 3v5h5"/><path d="M4 13a8 8 0 0 0 14.5 4.5L20 16"/><path d="M20 21v-5h-5"/>';
+
+/* ---------- ลบบัญชีที่รออนุมัติ / ถูกระงับ ---------- */
+const DEL_ERR = { ONLY_PENDING_OR_SUSPENDED: 'ลบได้เฉพาะบัญชีที่รออนุมัติหรือถูกระงับ', CANNOT_DELETE_ADMIN: 'ลบบัญชีผู้ดูแลไม่ได้', CANNOT_DELETE_SELF: 'ลบบัญชีตัวเองไม่ได้' };
+function usrDataTxt(u) { const n = (u.n_subjects || 0) + (u.n_assignments || 0) + (u.n_exams || 0); return n ? `<br><span style="color:var(--danger)">⚠️ บัญชีนี้มีวิชา ${u.n_subjects || 0} · งาน ${u.n_assignments || 0} · ข้อสอบ ${u.n_exams || 0} จะถูกลบไปด้วยทั้งหมด</span>` : ''; }
+async function usrDelete(ids) {
+  let ok = 0;
+  for (const id of ids) { try { await q(sb.rpc('admin_delete_user', { p_user: id })); ok++; } catch (e) { toast(DEL_ERR[Object.keys(DEL_ERR).find(k => (e.message || '').includes(k))] || errMsg(e), true); } }
+  USR.list = null; await loadUsers(); render(); if (ok) toast(`ลบแล้ว ${ok} บัญชี`);
+}
+Object.assign(ACT, {
+  'usr-del': el => { const u = (USR.list || []).find(x => x.user_id === el.dataset.u); if (!u) return;
+    confirmBox('ลบบัญชี', `ลบบัญชี <b>${esc(u.display_name || u.email)}</b> (${esc(u.email)}) ถาวร? ลบแล้วกู้คืนไม่ได้ ถ้าต้องการใช้อีกต้องสมัครใหม่${usrDataTxt(u)}`, 'ลบถาวร', () => usrDelete([u.user_id])); },
+  'usr-del-all': () => { const L = (USR.list || []).filter(u => u.status === 'suspended' && u.role !== 'admin');
+    const withData = L.filter(u => (u.n_subjects || 0) + (u.n_assignments || 0) + (u.n_exams || 0));
+    confirmBox('ลบบัญชีที่ถูกระงับทั้งหมด', `ลบ ${L.length} บัญชีที่ถูกระงับถาวร?${withData.length ? `<br><span style="color:var(--danger)">⚠️ มี ${withData.length} บัญชีที่มีวิชา/งาน/ข้อสอบ ซึ่งจะถูกลบไปด้วย</span>` : ''}`, 'ลบทั้งหมด', () => usrDelete(L.map(u => u.user_id))); },
+});
 
 /* =====================================================================
    เนื้อหาคำถามแบบ "รวย": HTML ที่ปลอดภัย + รูป + วิดีโอ (YouTube / Google Drive / ไฟล์วิดีโอ)
@@ -6674,10 +6713,8 @@ document.addEventListener('submit', async e => {
   e.preventDefault(); e.stopImmediatePropagation();
   const fd = new FormData(f), num = parseInt(fd.get('num'), 10), code = String(fd.get('code')).trim();
   try {
-    const { data: rows, error } = await sb.rpc('student_verify', { p_classroom_id: CHK.claim.classroom_id, p_number: num, p_code: code });
-    if (error) throw error;
-    if (!rows?.length) { CHK.err = CHK_ERR.STUDENT_INVALID; return render(); }
-    stuState.verified = { ...rows[0], number: num, code };
+    let row; try { row = await studentLogin(CHK.claim.classroom_id, num, code); } catch (x) { CHK.err = x.message || CHK_ERR.STUDENT_INVALID; return render(); }
+    stuState.verified = { ...row, number: num, code };
     try { sessionStorage.setItem('cr-student', JSON.stringify(stuState.verified));
       if (fd.get('remember')) localStorage.setItem('cr-student-keep', JSON.stringify(stuState.verified)); else localStorage.removeItem('cr-student-keep'); } catch (x) {}
     chkCheckin(stuState.verified);
@@ -7966,7 +8003,7 @@ function chatBubbles(msgs, me) {
     const d = new Date(m.at).toLocaleDateString('th-TH', { weekday: 'short', day: 'numeric', month: 'short' });
     if (d !== day) { day = d; out += `<div class="ch-day"><span>${d}</span></div>`; }
     const mine = m.sender === me;
-    out += `<div class="ch-msg ${mine ? 'me' : 'them'}"><div class="ch-row">${me === 'teacher' && m.id ? `<button class="ch-del" data-act="chat-del" data-id="${m.id}" title="ลบข้อความนี้" aria-label="ลบข้อความ">${ic('trash')}</button>` : ''}<div class="ch-b">${chatLinkify(m.body)}</div></div><div class="ch-t">${m.by && me === 'teacher' && mine ? esc(m.by) + ' · ' : ''}${new Date(m.at).toLocaleTimeString('th-TH', { hour: '2-digit', minute: '2-digit' })}${mine && m === lastMine && m.read ? ' · อ่านแล้ว ✓' : ''}</div></div>`;
+    out += `<div class="ch-msg ${mine ? 'me' : 'them'}"><div class="ch-row">${m.id && (me === 'teacher' || mine) ? `<button class="ch-del" data-act="${me === 'teacher' ? 'chat-del' : 'sc-del'}" data-id="${m.id}" title="${me === 'teacher' ? 'ลบข้อความนี้' : 'ยกเลิกข้อความนี้'}" aria-label="ลบข้อความ">${ic('trash')}</button>` : ''}<div class="ch-b">${chatLinkify(m.body)}</div></div><div class="ch-t">${m.by && me === 'teacher' && mine ? esc(m.by) + ' · ' : ''}${new Date(m.at).toLocaleTimeString('th-TH', { hour: '2-digit', minute: '2-digit' })}${mine && m === lastMine && m.read ? ' · อ่านแล้ว ✓' : ''}</div></div>`;
   });
   return out;
 }
@@ -8017,11 +8054,13 @@ async function loadChatMsgs() {
 function chatStartRealtime() {
   if (CHAT.chan || typeof sb.channel !== 'function' || !session) return;
   try {
-    CHAT.chan = sb.channel('chat-teacher').on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'chat_messages' }, p => {
-      const m = p.new || {};
-      loadChatThreads(true);
-      if (CHAT.cur && m.subject_id === CHAT.cur.subject_id && m.student_id === CHAT.cur.student_id) loadChatMsgs();
+    // 1) ฐานข้อมูลแจ้งเองเมื่อมีข้อความใหม่/อ่าน/ลบ (ต้องเปิด Realtime ให้ตาราง chat_messages — phase10 ทำให้แล้ว)
+    CHAT.chan = sb.channel('chat-db-' + session.user.id).on('postgres_changes', { event: '*', schema: 'public', table: 'chat_messages' }, p => {
+      const m = p.new && p.new.id ? p.new : (p.old || {});
+      rtTeacherEvent(m.student_id, m.subject_id, p.eventType === 'INSERT' && m.sender === 'student' && !m.deleted_at ? 'msg' : 'upd', m.body);
     }).subscribe();
+    // 2) ช่องสัญญาณตรงจากหน้านักเรียน (เร็วกว่า และใช้ได้แม้ยังไม่เปิด Realtime ของตาราง)
+    rtChan('chat-t-' + session.user.id, pl => rtTeacherEvent(pl.st, pl.sj, pl.k, pl.b));
   } catch (e) { CHAT.chan = null; }
 }
 /* เช็คเบื้องหลัง: ทุก 30 วิ (หน้าแชทเปิดอยู่ = ทุก 8 วิ) */
@@ -8083,7 +8122,7 @@ function viewChat() {
       <div class="ch-quick">${CHAT_QUICK.map(x => `<button class="chip" data-act="chat-quick" data-t="${esc(x)}">${esc(x)}</button>`).join('')}</div>
       <div class="ch-comp"><textarea id="ch-input" class="input" rows="1" maxlength="1000" placeholder="${isMobile() ? 'พิมพ์ข้อความ…' : 'พิมพ์ข้อความ… (Enter ส่ง · Shift+Enter ขึ้นบรรทัด)'}">${esc(CHAT.draft[chatKey(t.subject_id, t.student_id)] || '')}</textarea>
         <button class="btn primary ch-send" data-act="chat-send" aria-label="ส่ง">${ic('send')}</button></div></div>`
-    : `<div class="ch-pane card ch-none ${mob ? 'ch-hide' : ''}"><div class="ch-empty">💬<b>เลือกห้องแชททางซ้าย</b>หรือกด "ส่งข้อความหานักเรียน" เพื่อเริ่มคุยก่อน</div></div>`;
+    : `<div class="ch-pane card ch-none ${mob ? 'ch-hide' : ''}"><div class="ch-empty">💬<b>เลือกห้องแชททางซ้าย</b>หรือเริ่มคุยกับนักเรียนก่อนได้เลย<button class="btn primary" data-act="chat-new" style="margin-top:12px">${ic('plus')}ส่งข้อความหานักเรียน</button></div></div>`;
   setTimeout(() => chatScroll('#ch-msgs'), 0);
   return `${head}<div class="ch-wrap">${list}${pane}</div>`;
 }
@@ -8101,6 +8140,7 @@ async function chatSendTeacher() {
   el.disabled = true;
   try {
     await q(sb.rpc('teacher_chat_send', { p_student: t.student_id, p_subject: t.subject_id, p_body: body }));
+    rtPingStudent(t.student_id, t.subject_id, 'msg');
     CHAT.draft[k] = ''; el.value = ''; chatAutoGrow(el);
     await loadChatMsgs(); loadChatThreads(true);
   } catch (e) { toast(chatErr(e), true); }
@@ -8148,13 +8188,13 @@ Object.assign(ACT, {
   'chat-quick': el => { const i = $('#ch-input'); if (!i) return; i.value = (i.value.trim() ? i.value.trim() + ' ' : '') + el.dataset.t; chatAutoGrow(i); i.focus(); if (CHAT.cur) CHAT.draft[chatKey(CHAT.cur.subject_id, CHAT.cur.student_id)] = i.value; },
   'chat-new': chatNewModal,
   'chat-del': el => confirmBox('ลบข้อความ', 'ลบข้อความนี้? ทั้งครูและนักเรียนจะไม่เห็นข้อความนี้อีก', 'ลบ', async () => {
-    try { await q(sb.rpc('teacher_chat_delete', { p_id: el.dataset.id })); CHAT.msgs = null; await loadChatMsgs(); loadChatThreads(true); toast('ลบข้อความแล้ว'); } catch (e) { toast(chatErr(e), true); }
+    try { await q(sb.rpc('teacher_chat_delete', { p_id: el.dataset.id })); const t = TC.open && TC.cur ? TC.cur : CHAT.cur; if (t) rtPingStudent(t.student_id, t.subject_id, 'del'); CHAT.msgs = null; TC.msgs = null; await Promise.all([loadChatMsgs(), tcLoadMsgs()]); loadChatThreads(true); toast('ลบข้อความแล้ว'); } catch (e) { toast(chatErr(e), true); }
   }),
   'chat-clear': () => { const t = CHAT.cur; if (!t) return; confirmBox('ล้างห้องแชท', `ลบข้อความทั้งหมดกับ <b>${esc(t.student_name)}</b> ในวิชา ${esc(t.subject_name)}? ทั้งครูและนักเรียนจะไม่เห็นข้อความเดิมอีก`, 'ล้างแชท', async () => {
-    try { await q(sb.rpc('teacher_chat_clear', { p_student: t.student_id, p_subject: t.subject_id })); CHAT.msgs = null; await loadChatThreads(true); render(); loadChatMsgs(); toast('ล้างห้องแชทแล้ว'); } catch (e) { toast(chatErr(e), true); }
+    try { await q(sb.rpc('teacher_chat_clear', { p_student: t.student_id, p_subject: t.subject_id })); rtPingStudent(t.student_id, t.subject_id, 'del'); CHAT.cur = null; CHAT.msgs = null; if (TC.cur && TC.cur.student_id === t.student_id && TC.cur.subject_id === t.subject_id) { TC.cur = null; TC.msgs = null; } await loadChatThreads(true); render(); toast('ล้างห้องแชทแล้ว'); } catch (e) { toast(chatErr(e), true); }
   }); },
   'chat-block': async () => { const t = CHAT.cur; if (!t) return; const on = !t.blocked;
-    const go = async () => { try { await q(sb.rpc('teacher_chat_block', { p_student: t.student_id, p_subject: t.subject_id, p_on: on })); t.blocked = on; (CHAT.threads || []).forEach(x => { if (x.student_id === t.student_id && x.teacher_id === t.teacher_id) x.blocked = on; }); render(); toast(on ? '🚫 บล็อกแล้ว นักเรียนคนนี้ส่งข้อความถึงครูไม่ได้' : '✅ ปลดบล็อกแล้ว'); } catch (e) { toast(chatErr(e), true); } };
+    const go = async () => { try { await q(sb.rpc('teacher_chat_block', { p_student: t.student_id, p_subject: t.subject_id, p_on: on })); t.blocked = on; rtPingStudent(t.student_id, t.subject_id, 'block'); (CHAT.threads || []).forEach(x => { if (x.student_id === t.student_id && x.teacher_id === t.teacher_id) x.blocked = on; }); render(); toast(on ? '🚫 บล็อกแล้ว นักเรียนคนนี้ส่งข้อความถึงครูไม่ได้' : '✅ ปลดบล็อกแล้ว'); } catch (e) { toast(chatErr(e), true); } };
     on ? confirmBox('บล็อกนักเรียน', `ไม่ให้ <b>${esc(t.student_name)}</b> ส่งข้อความถึงครู (ทุกวิชาของครูเจ้าของวิชานี้)? ปลดบล็อกได้ภายหลัง`, 'บล็อก', go) : go(); },
 });
 Object.assign(CHG, { 'chat-mine': el => { CHAT.mine = !el.checked; render(); } });
@@ -8168,11 +8208,12 @@ function stuChatSync() {
   if (!SC) return;
   const want = isStudentRoute() && !!stuState.verified;
   let box = $('#stu-chat');
-  if (!want) { if (box) box.remove(); if (!stuState.verified) Object.assign(SC, { open: false, threads: null, cur: null, msgs: null, unread: 0, draft: {} }); return; }
+  if (!want) { if (box) { box.remove(); $('#chat-pops')?.remove(); } if (!stuState.verified) { if (SC.listenFor) { const c = RT.chans['chat-s-' + SC.listenFor]; try { c && sb.removeChannel(c); } catch (e) {} delete RT.chans['chat-s-' + SC.listenFor]; } Object.assign(SC, { open: false, threads: null, cur: null, msgs: null, unread: 0, draft: {}, listenFor: null }); } return; }
   if (!box) {
     box = document.createElement('div'); box.id = 'stu-chat'; document.body.appendChild(box);
     scLoadThreads(); stuChatDraw();
   }
+  rtStudentListen();
 }
 function stuChatDraw() {
   const box = $('#stu-chat'); if (!box) return;
@@ -8229,6 +8270,7 @@ async function scSend() {
   SC.sending = true; el.disabled = true;
   try {
     await q(sb.rpc('student_chat_send', { p_student_id: v.student_id, p_code: v.code, p_subject: t.subject_id, p_body: body }));
+    rtPingTeacher(t.teacher_id, v.student_id, t.subject_id, 'msg', body);
     SC.draft[t.subject_id] = ''; el.value = ''; chatAutoGrow(el);
     await scLoadMsgs(); scLoadThreads();
   } catch (e) { toast(chatErr(e), true); }
@@ -8251,11 +8293,208 @@ document.addEventListener('input', e => {
   if (el?.id === 'sc-input') { chatAutoGrow(el); if (SC.cur) SC.draft[SC.cur.subject_id] = el.value; }
 });
 
+
+/* =====================================================================
+   เรียลไทม์: ช่องสัญญาณ Broadcast + ป๊อบอัพแจ้งเตือน + เสียง + เลขบนแท็บ
+   (สัญญาณบอกแค่ "มีอะไรใหม่" ไม่มีเนื้อหาข้อความ แล้วแต่ละฝั่งโหลดข้อความผ่านฟังก์ชันที่ตรวจสิทธิ์)
+   ===================================================================== */
+var RT = { chans: {}, dedupe: {} };
+function rtChan(name, onPing) {
+  if (typeof sb.channel !== 'function') return null;
+  let c = RT.chans[name];
+  if (!c) {
+    try {
+      c = sb.channel(name, { config: { broadcast: { self: false, ack: false } } });
+      if (onPing) c.on('broadcast', { event: 'ping' }, ({ payload }) => onPing(payload || {}));
+      c.subscribe(); RT.chans[name] = c;
+    } catch (e) { return null; }
+  } else if (onPing && !c.__listen) { c.on('broadcast', { event: 'ping' }, ({ payload }) => onPing(payload || {})); }
+  if (onPing) c.__listen = true;
+  return c;
+}
+function rtSend(name, payload) { const c = rtChan(name); try { c && c.send({ type: 'broadcast', event: 'ping', payload }); } catch (e) {} }
+function rtPingStudent(studentId, subjectId, k) { rtSend('chat-s-' + studentId, { sj: subjectId, k }); }
+function rtPingTeacher(teacherId, studentId, subjectId, k, body) { if (teacherId) rtSend('chat-t-' + teacherId, { st: studentId, sj: subjectId, k, b: (body || '').slice(0, 80) }); }
+function rtDedupe(key) { const now = Date.now(); if (RT.dedupe[key] && now - RT.dedupe[key] < 1500) return true; RT.dedupe[key] = now; return false; }
+
+/* ฝั่งครู: มีความเคลื่อนไหวในห้องแชท */
+async function rtTeacherEvent(st, sj, k, body) {
+  if (rtDedupe('t' + st + sj + k) || !session || isStudentRoute() || isExamTakeRoute()) return;
+  await loadChatThreads(true);
+  const viewingPage = ui.route === 'chat' && CHAT.cur && CHAT.cur.student_id === st && CHAT.cur.subject_id === sj;
+  const viewingPop = TC.open && TC.cur && TC.cur.student_id === st && TC.cur.subject_id === sj;
+  if (viewingPage) loadChatMsgs();
+  if (viewingPop) tcLoadMsgs();
+  if (k === 'msg' && !(viewingPage || viewingPop) || (k === 'msg' && document.hidden)) {
+    const t = (CHAT.threads || []).find(x => x.student_id === st && x.subject_id === sj);
+    if (t && t.mine) chatPop({ who: t.student_name, sub: `${t.classroom} · ${t.subject_name}`, body: body || t.last_body, color: t.color, act: 'tc-pop-open', sj, st });
+  }
+  tChatDraw();
+}
+/* ฝั่งนักเรียน */
+function rtStudentListen() {
+  const v = stuState.verified; if (!v || SC.listenFor === v.student_id) return;
+  SC.listenFor = v.student_id;
+  rtChan('chat-s-' + v.student_id, async pl => {
+    if (rtDedupe('s' + pl.sj + pl.k) || !isStudentRoute() || !stuState.verified) return;
+    const viewing = SC.open && SC.cur && SC.cur.subject_id === pl.sj;
+    await scLoadThreads();
+    if (viewing) { SC.msgs = null; await scLoadMsgs(); if (pl.k !== 'msg') stuChatDraw(); }
+    if (pl.k === 'msg' && (!viewing || document.hidden)) {
+      const t = (SC.threads || []).find(x => x.subject_id === pl.sj);
+      if (t) chatPop({ who: kru(t.teacher), sub: t.subject_name, body: t.last_body, color: t.color, act: 'sc-pop-open', sj: pl.sj });
+    }
+  });
+}
+
+/* ป๊อบอัพแจ้งเตือนมุมขวาล่าง */
+function chatPop(o) {
+  let box = $('#chat-pops'); if (!box) { box = document.createElement('div'); box.id = 'chat-pops'; document.body.appendChild(box); }
+  const el = document.createElement('div');
+  el.className = 'chat-pop'; el.setAttribute('role', 'status');
+  el.innerHTML = `<button class="cp-main" data-act="${o.act}" data-sj="${o.sj || ''}" data-st="${o.st || ''}"><span class="ch-av" style="--c:${esc(o.color || '#0A84FF')}">${esc((o.who || '?').replace(/^ครู/, '')[0] || '💬')}</span>
+    <span class="cp-b"><b>${esc(o.who || 'ข้อความใหม่')}</b><small>${esc(o.sub || '')}</small><span>${esc((o.body || 'ส่งข้อความถึงคุณ').slice(0, 90))}</span></span></button><button class="cp-x" aria-label="ปิด">✕</button>`;
+  el.querySelector('.cp-x').onclick = () => el.remove();
+  el.querySelector('.cp-main').addEventListener('click', () => setTimeout(() => el.remove(), 50));
+  box.appendChild(el);
+  while (box.children.length > 3) box.firstElementChild.remove();
+  setTimeout(() => { el.classList.add('out'); setTimeout(() => el.remove(), 400); }, 7000);
+  chatDing(); titleBadge();
+}
+function chatDing() {
+  try {
+    const A = window.AudioContext || window.webkitAudioContext; if (!A) return;
+    const ctx = RT.ctx || (RT.ctx = new A()); if (ctx.state === 'suspended') ctx.resume();
+    [[880, 0], [1320, .12]].forEach(([f, t]) => { const o = ctx.createOscillator(), g = ctx.createGain(); o.type = 'sine'; o.frequency.value = f;
+      g.gain.setValueAtTime(0.0001, ctx.currentTime + t); g.gain.exponentialRampToValueAtTime(0.12, ctx.currentTime + t + .02); g.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + t + .25);
+      o.connect(g).connect(ctx.destination); o.start(ctx.currentTime + t); o.stop(ctx.currentTime + t + .3); });
+  } catch (e) {}
+}
+/* จำนวนที่ยังไม่อ่านบนแท็บเบราว์เซอร์ เช่น "(2) ห้องเรียนครูปลื้ม" */
+function titleBadge() {
+  const n = isStudentRoute() ? SC.unread : (session ? CHAT.unread : 0);
+  const base = document.title.replace(/^\(\d+\+?\)\s*/, '');
+  document.title = n ? `(${n > 99 ? '99+' : n}) ${base}` : base;
+}
+setInterval(titleBadge, 3000);
+
+/* =====================================================================
+   ครู: ป๊อบอัพแชทมุมขวาล่าง (ทุกหน้า ยกเว้นหน้าข้อความ)
+   ===================================================================== */
+var TC = { open: false, cur: null, msgs: null, tMsgs: 0 };
+function tChatSync() {
+  if (!TC) return;
+  const want = !!session && ME.active() && !isStudentRoute() && !isExamTakeRoute() && !isGalleryRoute() && !isCheckinRoute() && ui.route !== 'chat' && !CHAT.missing;
+  let box = $('#t-chat');
+  if (!want) { if (box) { box.remove(); $('#chat-pops')?.remove(); } return; }
+  if (!box) { box = document.createElement('div'); box.id = 't-chat'; document.body.appendChild(box); loadChatThreads(); }
+  chatStartRealtime();
+  tChatDraw();
+}
+function tChatDraw() {
+  const box = $('#t-chat'); if (!box) return;
+  const fab = `<button class="sc-fab t ${TC.open ? 'on' : ''}" data-act="tc-toggle" aria-label="${TC.open ? 'ปิดแชท' : 'ข้อความจากนักเรียน'}">${TC.open ? '✕' : ic('chat')}${!TC.open && CHAT.unread ? `<span class="sc-badge">${CHAT.unread > 99 ? '99+' : CHAT.unread}</span>` : ''}${!TC.open ? '<span class="sc-tip">ข้อความจากนักเรียน</span>' : ''}</button>`;
+  if (!TC.open) { box.innerHTML = fab; return; }
+  const t = TC.cur;
+  if (!t) {
+    const list = (CHAT.threads || []).filter(x => x.mine).slice(0, 30);
+    box.innerHTML = `<div class="sc-panel"><div class="sc-head"><div class="sc-hn"><b>💬 ข้อความจากนักเรียน</b><small>${CHAT.unread ? `ยังไม่อ่าน ${CHAT.unread}` : 'อ่านครบแล้ว'}</small></div><span class="spacer"></span><a class="btn sm ghost" href="#chat">เปิดเต็มจอ</a></div>
+      <div class="sc-body sc-list">${!CHAT.threads ? '<div class="ch-empty"><span class="spin"></span></div>' : list.length ? list.map(x => `
+        <button class="ch-th ${x.unread ? 'new' : ''}" data-act="tc-open" data-sj="${x.subject_id}" data-st="${x.student_id}"><span class="ch-av ${x.online ? 'on' : ''}" style="--c:${esc(x.color || '#0A84FF')}">${esc((x.student_name || '?')[0])}</span>
+          <span class="ch-tb"><span class="ch-tn"><b>${esc(x.student_name)}${x.blocked ? ' <em class="ch-blk">🚫</em>' : ''}</b><small>${chatTime(x.last_at)}</small></span><span class="ch-ts">${esc(x.classroom)} · ${esc(x.subject_name)}</span>
+          <span class="ch-tl">${x.last_sender === 'teacher' ? 'คุณ: ' : ''}${esc(x.last_body || '')}</span></span>${x.unread ? `<span class="ch-un">${x.unread}</span>` : ''}</button>`).join('')
+        : '<div class="ch-empty">📭<b>ยังไม่มีข้อความ</b>เมื่อนักเรียนส่งข้อความมา จะเด้งที่นี่</div>'}</div>
+      <div class="sc-foot"><button class="linkish" data-act="chat-new">+ ส่งข้อความหานักเรียน</button></div></div>${fab}`;
+    return;
+  }
+  const k = chatKey(t.subject_id, t.student_id);
+  box.innerHTML = `<div class="sc-panel"><div class="sc-head"><button class="btn ghost icon" data-act="tc-back" aria-label="กลับ">${ic('back')}</button>
+      <span class="ch-av ${t.online ? 'on' : ''}" style="--c:${esc(t.color || '#0A84FF')}">${esc((t.student_name || '?')[0])}</span><div class="sc-hn"><b>${esc(t.student_name)}</b><small>${seenText(t.online, t.seen)} · ${esc(t.classroom)} · ${esc(t.subject_name)}</small></div>
+      <span class="spacer"></span><button class="btn icon sm ghost" data-act="tc-full" title="เปิดเต็มจอ" aria-label="เปิดเต็มจอ">⤢</button></div>
+    ${t.blocked ? '<div class="ch-blocked">🚫 บล็อกนักเรียนคนนี้อยู่</div>' : ''}
+    <div class="sc-body ch-msgs" id="tc-msgs">${chatBubbles(TC.msgs, 'teacher')}</div>
+    <div class="ch-quick">${CHAT_QUICK.slice(0, 4).map(x => `<button class="chip" data-act="tc-quick" data-t="${esc(x)}">${esc(x)}</button>`).join('')}</div>
+    <div class="ch-comp"><textarea id="tc-input" class="input" rows="1" maxlength="1000" placeholder="ตอบนักเรียน…">${esc(CHAT.draft[k] || '')}</textarea>
+      <button class="btn primary ch-send" data-act="tc-send" aria-label="ส่ง">${ic('send')}</button></div></div>${fab}`;
+  chatScroll('#tc-msgs');
+}
+async function tcLoadMsgs() {
+  const t = TC.cur; if (!t || !TC.open) return;
+  try {
+    const msgs = await q(sb.rpc('teacher_chat_messages', { p_student: t.student_id, p_subject: t.subject_id }));
+    if (TC.cur !== t) return;
+    const grew = !TC.msgs || msgs.length !== TC.msgs.length || msgs.at(-1)?.read !== TC.msgs.at(-1)?.read;
+    TC.msgs = msgs; TC.tMsgs = Date.now();
+    if (grew) { const b = $('#tc-msgs'); if (b) { b.innerHTML = chatBubbles(msgs, 'teacher'); chatScroll('#tc-msgs'); } }
+    const th = (CHAT.threads || []).find(x => x.subject_id === t.subject_id && x.student_id === t.student_id);
+    if (th && th.mine && th.unread) { th.unread = 0; CHAT.unread = CHAT.threads.filter(x => x.mine).reduce((a, x) => a + x.unread, 0); chatBadgeSync(); titleBadge(); }
+  } catch (e) { toast(chatErr(e), true); }
+}
+async function tcSend() {
+  const t = TC.cur, el = $('#tc-input'); if (!t || !el) return;
+  const body = el.value.trim(); if (!body) return;
+  el.disabled = true;
+  try {
+    await q(sb.rpc('teacher_chat_send', { p_student: t.student_id, p_subject: t.subject_id, p_body: body }));
+    rtPingStudent(t.student_id, t.subject_id, 'msg');
+    CHAT.draft[chatKey(t.subject_id, t.student_id)] = ''; el.value = ''; chatAutoGrow(el);
+    await tcLoadMsgs(); loadChatThreads(true);
+  } catch (e) { toast(chatErr(e), true); }
+  el.disabled = false; el.focus();
+}
+function tcOpen(sj, st) {
+  const t = (CHAT.threads || []).find(x => x.subject_id === sj && x.student_id === st); if (!t) return;
+  TC.open = true; TC.cur = t; TC.msgs = null; tChatDraw(); tcLoadMsgs(); setTimeout(() => $('#tc-input')?.focus(), 60);
+}
+setInterval(() => { if (TC.open && TC.cur && $('#t-chat') && !document.hidden && Date.now() - TC.tMsgs > 8000) tcLoadMsgs(); }, 4000);
+
+/* ทุกครั้งที่ข้อมูลห้องแชทของครูเปลี่ยน → อัปเดตป๊อบอัพด้วย */
+const _lct = loadChatThreads;
+loadChatThreads = async function (force) { await _lct(force); if ($('#t-chat') && !(TC.open && TC.cur)) tChatDraw(); else if ($('#t-chat')) { const f = $('#t-chat .sc-fab'); if (f && !TC.open) tChatDraw(); } titleBadge(); };
+
+Object.assign(ACT, {
+  'tc-toggle': () => { TC.open = !TC.open; if (TC.open) loadChatThreads(true); tChatDraw(); if (TC.open && TC.cur) tcLoadMsgs(); },
+  'tc-open': el => tcOpen(el.dataset.sj, el.dataset.st),
+  'tc-pop-open': el => { if (ui.route === 'chat') { const t = (CHAT.threads || []).find(x => x.subject_id === el.dataset.sj && x.student_id === el.dataset.st); if (t) chatOpen(t); } else tcOpen(el.dataset.sj, el.dataset.st); },
+  'tc-back': () => { TC.cur = null; TC.msgs = null; tChatDraw(); },
+  'tc-full': () => { const t = TC.cur; TC.open = false; TC.cur = null; if (t) { CHAT.cur = t; CHAT.msgs = null; } location.hash = '#chat'; if (t) setTimeout(loadChatMsgs, 50); },
+  'tc-send': tcSend,
+  'tc-quick': el => { const i = $('#tc-input'); if (!i) return; i.value = (i.value.trim() ? i.value.trim() + ' ' : '') + el.dataset.t; chatAutoGrow(i); i.focus(); if (TC.cur) CHAT.draft[chatKey(TC.cur.subject_id, TC.cur.student_id)] = i.value; },
+  'sc-pop-open': el => { const t = (SC.threads || []).find(x => x.subject_id === el.dataset.sj); if (!t) return; SC.open = true; SC.cur = t; SC.msgs = null; stuChatDraw(); scLoadMsgs(); },
+  'sc-del': el => confirmBox('ยกเลิกข้อความ', 'ยกเลิกข้อความนี้? ครูจะไม่เห็นข้อความนี้อีก', 'ยกเลิกข้อความ', async () => {
+    const v = stuState.verified, t = SC.cur; if (!v) return;
+    try { await q(sb.rpc('student_chat_delete', { p_student_id: v.student_id, p_code: v.code, p_id: el.dataset.id })); if (t) rtPingTeacher(t.teacher_id, v.student_id, t.subject_id, 'del'); SC.msgs = null; await scLoadMsgs(); scLoadThreads(); toast('ยกเลิกข้อความแล้ว'); }
+    catch (e) { toast(/student_chat_delete|function/i.test(e?.message || '') ? 'ยังลบไม่ได้ (ครูต้องอัปเดตระบบ)' : chatErr(e), true); }
+  }),
+});
+document.addEventListener('keydown', e => {
+  if (e.target?.id === 'tc-input' && e.key === 'Enter' && !e.shiftKey && !e.isComposing && !isMobile()) { e.preventDefault(); tcSend(); }
+});
+document.addEventListener('input', e => {
+  const el = e.target; if (el?.id === 'tc-input') { chatAutoGrow(el); if (TC.cur) CHAT.draft[chatKey(TC.cur.subject_id, TC.cur.student_id)] = el.value; }
+});
+
 /* =====================================================================
    รหัสผ่านนักเรียน: เปลี่ยนรหัสเอง · ลืมรหัส → ส่งคำขอ · ผู้ดูแลรีเซ็ตเป็นเลขประจำตัว
    ===================================================================== */
 const PW_ERR = { PASSWORD_TOO_SHORT: 'รหัสผ่านต้องยาวอย่างน้อย 4 ตัวอักษร', PASSWORD_TOO_LONG: 'รหัสผ่านยาวเกินไป', PASSWORD_SAME_AS_CODE: 'ห้ามใช้เลขประจำตัวเป็นรหัสใหม่ ตั้งให้ต่างจากเดิม', STUDENT_INVALID: 'รหัสผ่านปัจจุบันไม่ถูกต้อง' };
 const pwErr = e => PW_ERR[Object.keys(PW_ERR).find(k => (e?.message || '').includes(k))] || errMsg(e);
+
+/* เข้าสู่ระบบนักเรียน (จำกัดการเดารหัส 5 ครั้ง / รอ 5 นาที) → คืนข้อมูลนักเรียน หรือ throw ข้อความภาษาไทย */
+async function studentLogin(cid, num, code) {
+  let r;
+  try { r = await q(sb.rpc('student_login', { p_classroom_id: cid, p_number: num, p_code: code })); }
+  catch (e) {
+    if (!/student_login|function/i.test(e?.message || '')) throw e;
+    const rows = await q(sb.rpc('student_verify', { p_classroom_id: cid, p_number: num, p_code: code }));   // ยังไม่ได้รัน phase12
+    if (!rows.length) throw new Error('ข้อมูลไม่ตรงกัน ตรวจสอบห้อง เลขที่ และรหัสผ่าน (ถ้ายังไม่เคยเปลี่ยน ใช้เลขประจำตัว)');
+    return rows[0];
+  }
+  if (r.ok) return { student_id: r.student_id, full_name: r.full_name, classroom_name: r.classroom_name };
+  if (r.error === 'LOGIN_LOCKED') { const m = Math.floor(r.wait / 60), sec = r.wait % 60; throw new Error(`🔒 ใส่รหัสผิดครบ 5 ครั้ง รออีก ${[m ? m + ' นาที' : '', sec ? sec + ' วินาที' : ''].filter(Boolean).join(' ')} แล้วลองใหม่ (ลืมรหัส? กด "ลืมรหัสผ่าน?")`); }
+  if (r.error === 'WRONG_PASSWORD') throw new Error(`รหัสผ่านไม่ถูกต้อง · ลองได้อีก ${r.left} ครั้ง ก่อนถูกล็อก 5 นาที${r.left <= 2 ? ' (ลืมรหัส? กด "ลืมรหัสผ่าน?")' : ''}`);
+  throw new Error('ไม่พบเลขที่นี้ในห้องที่เลือก ตรวจสอบห้องและเลขที่อีกครั้ง');
+}
 
 async function stuPassModal() {
   const v = stuState.verified; if (!v) return;
