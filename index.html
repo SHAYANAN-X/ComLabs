@@ -2953,6 +2953,26 @@ body.bar-scrolled .top.anav::after,body.bar-scrolled .snav::after{opacity:1}
 [data-theme=dark] .sn-coin{color:#FFD45A;background:rgba(255,200,40,.14);box-shadow:inset 0 0 0 1px rgba(255,200,40,.3)}
 [data-device=pc] .stu>.snav{zoom:1}
 @media (max-width:640px){.snav{margin:-28px -18px 14px}.snav-in{height:58px}.sn-wm small{display:none}}
+/* ---------- ตราประจำตำแหน่งในทำเนียบ (แทนตัวเลข) ---------- */
+.pq-emb{position:relative;display:block;margin:2px auto 4px;width:46px;height:38px;filter:drop-shadow(0 4px 6px rgba(20,30,60,.22))}
+.pq-emb svg{width:100%;height:100%;overflow:visible}
+.pq.p1 .pq-emb{width:78px;height:64px;margin-top:4px;filter:drop-shadow(0 6px 12px rgba(190,130,0,.5)) drop-shadow(0 0 14px rgba(255,214,80,.55));animation:emb-float 3.2s ease-in-out infinite}
+.pq.p2 .pq-emb,.pq.p3 .pq-emb{width:58px;height:48px}
+.pq.p2 .pq-emb{filter:drop-shadow(0 4px 8px rgba(90,110,140,.35)) drop-shadow(0 0 8px rgba(180,205,240,.6))}
+.pq.p3 .pq-emb{filter:drop-shadow(0 4px 8px rgba(150,70,20,.35))}
+.pq.vacant .pq-emb{opacity:.35;filter:grayscale(1)}
+@keyframes emb-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}
+.pq-emb:hover{transform:scale(1.08) rotate(-3deg);transition:transform .4s cubic-bezier(.2,1.6,.4,1)}
+[data-device=mobile] .pq .pq-emb{width:38px;height:32px}[data-device=mobile] .pq.p1 .pq-emb{width:60px;height:50px}[data-device=mobile] .pq.p2 .pq-emb,[data-device=mobile] .pq.p3 .pq-emb{width:46px;height:38px}
+@media (prefers-reduced-motion:reduce){.pq.p1 .pq-emb{animation:none}}
+/* ป้ายยศในทำเนียบไม่ล้นกรอบ */
+.pq{min-width:0}.pq-rank{max-width:100%;display:flex;justify-content:center;min-width:0}
+.pq-rank>*{max-width:100%;min-width:0;white-space:normal;flex-wrap:wrap;justify-content:center;text-align:center;line-height:1.25;height:auto!important;padding-top:3px!important;padding-bottom:3px!important}
+.pq:not(.p1) .pq-rank>*{font-size:11.5px!important}
+.pq-rank .rk,.pq-rank .rk-spk{max-width:100%!important;white-space:normal!important;flex-wrap:wrap;justify-content:center;text-align:center;row-gap:0}
+.pq-rank .rk b{white-space:normal!important;overflow:visible!important;text-overflow:clip!important}
+.pq:not(.p1) .pq-rank .rk{font-size:11.5px!important;padding:3px 8px!important}
+.pq:not(.p1) .pq-rank .rk .rk-ic{font-size:13px!important}
 
 </style>
 </head>
@@ -3447,7 +3467,7 @@ if (typeof module !== 'undefined') module.exports = ExamParser;
 </script>
 <script>
 /* โลโก้: ภาพครูปลื้ม (ไฟล์ต้นฉบับ src/logo.svg ฝังตอน build) */
-const APP_VER = '14.3 · 24 พ.ย. 2569';
+const APP_VER = '14.4 · 24 พ.ย. 2569';
 let LOGO_N = 0;
 function logoSVG() { const k = 'L' + (++LOGO_N); return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><defs><linearGradient id="lgb" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3B9BFF"/><stop offset=".5" stop-color="#0A5BE0"/><stop offset="1" stop-color="#062C78"/></linearGradient><linearGradient id="lgs" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset=".6" stop-color="#FFF4D6"/><stop offset="1" stop-color="#FFD978"/></linearGradient><radialGradient id="lgc" cx=".3" cy=".08" r=".75"><stop offset="0" stop-color="#fff" stop-opacity=".55"/><stop offset=".5" stop-color="#fff" stop-opacity=".08"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient></defs><rect width="48" height="48" rx="13" fill="url(#lgb)"/><rect width="48" height="48" rx="13" fill="url(#lgc)"/><rect x=".75" y=".75" width="46.5" height="46.5" rx="12.3" fill="none" stroke="#fff" stroke-opacity=".45" stroke-width="1.2"/><g fill="none" stroke="#04235F" stroke-opacity=".35" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" transform="translate(0 1.2)"><path d="M21.2 17 C19.8 14.6 17.4 13.6 14.8 13.6 C11 13.6 8.6 15.6 8.6 18.5 C8.6 21.8 11.6 22.9 14.9 23.9 C18.6 25 21.6 26.4 21.6 29.8 C21.6 33 18.8 34.6 15.1 34.6 C12 34.6 9.5 33.4 8 31.1"/><path d="M26.6 14 L39.6 34.2 M39.6 14 L26.6 34.2"/></g><g fill="none" stroke="url(#lgs)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M21.2 17 C19.8 14.6 17.4 13.6 14.8 13.6 C11 13.6 8.6 15.6 8.6 18.5 C8.6 21.8 11.6 22.9 14.9 23.9 C18.6 25 21.6 26.4 21.6 29.8 C21.6 33 18.8 34.6 15.1 34.6 C12 34.6 9.5 33.4 8 31.1"/><path d="M26.6 14 L39.6 34.2 M39.6 14 L26.6 34.2"/></g></svg>`.replace('<svg ', '<svg class="logo" aria-hidden="true" ').replace(/\b(lg[bsc])\b/g, '$1' + k); }
 /* =====================================================================
@@ -7718,18 +7738,64 @@ function crownTag(rank) {
 /* ชื่อพร้อมตราอันดับ สีตามยศ ป้ายยศ และฉายา */
 function nameTag(name, xp, rank, titleId, titles, o = {}) {
   const i = rankIdx(xp || 0), r = RANKS[i], t = titleOf(titleId, titles);
-  const crown = xp > 0 ? crownTag(rank) : '';
+  const crown = xp > 0 && !o.noCrown ? crownTag(rank) : '';
   return `<span class="ntag">${crown}<span class="gname g${i}">${esc(name)}</span>${o.noBadge ? '' : rkBadge(i, '', `${r.n} · Lv.${lvOf(xp)}`)}${t ? `<span class="ttl ${t.rarity}">${esc(t.name)}</span>` : ''}</span>`;
 }
+
+/* ---------- ตราประจำตำแหน่งทำเนียบ 1–5 ----------
+   1 มงกุฎทองจักรพรรดิ (ทับทิม) · 2 รัดเกล้าเงิน (ไพลิน) · 3 ช่อชัยพฤกษ์ทองแดง (มรกต)
+   4 โล่อัศวินม่วง (อเมทิสต์) · 5 ดาวเกียรติยศเขียว (มุก) */
+const EMBLEM_NAME = ['', 'มงกุฎทองจักรพรรดิ', 'รัดเกล้าเงิน', 'ช่อชัยพฤกษ์ทองแดง', 'โล่อัศวิน', 'ดาวเกียรติยศ'];
+function emblemSVG(k) {
+  crownDefs();
+  const f = n => +n.toFixed(2);
+  if (k === 1) return `<svg viewBox="0 0 48 40" aria-hidden="true">
+    <g opacity=".9">${Array.from({ length: 9 }, (_, i) => { const a = Math.PI * (1.08 + i * .105); return `<path d="M24 22 L${f(24 + Math.cos(a - .05) * 23)} ${f(22 + Math.sin(a - .05) * 23)} L${f(24 + Math.cos(a + .05) * 23)} ${f(22 + Math.sin(a + .05) * 23)}Z" fill="#FFD84A" opacity=".35"/>`; }).join('')}</g>
+    <path d="M7 31 L4.5 14 L15 21 L24 7.5 L33 21 L43.5 14 L41 31 Z" fill="url(#cg1)" stroke="#9A6400" stroke-width=".9" stroke-linejoin="round"/>
+    <path d="M9 29.6 L7.4 17.8 L15.4 23 L24 10.8 L32.6 23 L40.6 17.8 L39 29.6Z" fill="#fff" opacity=".2"/>
+    <rect x="6.2" y="30.4" width="35.6" height="6.4" rx="2" fill="url(#cg1)" stroke="#9A6400" stroke-width=".9"/>
+    <circle cx="4.5" cy="13.4" r="2.3" fill="url(#gm-pearl)"/><circle cx="43.5" cy="13.4" r="2.3" fill="url(#gm-pearl)"/><circle cx="24" cy="6.6" r="2.7" fill="url(#gm-pearl)"/>
+    <path d="M24 17.5 l4.2 5.3 -4.2 5.3 -4.2 -5.3z" fill="url(#gm-ruby)" stroke="#7A0020" stroke-width=".5"/>
+    <circle cx="13.5" cy="33.6" r="1.7" fill="url(#gm-sapph)"/><circle cx="24" cy="33.6" r="2" fill="url(#gm-emer)"/><circle cx="34.5" cy="33.6" r="1.7" fill="url(#gm-sapph)"/>
+    <path d="M8 31.6 H40" stroke="#fff" stroke-opacity=".55" stroke-width=".8"/></svg>`;
+  if (k === 2) return `<svg viewBox="0 0 48 40" aria-hidden="true">
+    <path d="M5 33 Q8 22 13 25 Q15 16 19 20 Q21 9 24 4.5 Q27 9 29 20 Q33 16 35 25 Q40 22 43 33 Q24 26 5 33Z" fill="url(#cg2)" stroke="#6F7B8E" stroke-width=".9" stroke-linejoin="round"/>
+    <path d="M9 30.4 Q11 24.5 14 26.6 Q16.4 20 19.6 22.6 Q22 13 24 9 Q26 13 28.4 22.6 Q31.6 20 34 26.6 Q37 24.5 39 30.4 Q24 25.4 9 30.4Z" fill="#fff" opacity=".35"/>
+    <path d="M5 33 Q24 26 43 33 L42.4 36.4 Q24 29.6 5.6 36.4Z" fill="url(#cg2)" stroke="#6F7B8E" stroke-width=".9"/>
+    <path d="M24 12.5 c3.4 3.6 3.6 7.2 0 9.6 c-3.6 -2.4 -3.4 -6 0 -9.6z" fill="url(#gm-sapph)" stroke="#0A2A78" stroke-width=".5"/>
+    <circle cx="13" cy="24.6" r="1.8" fill="url(#gm-pearl)"/><circle cx="35" cy="24.6" r="1.8" fill="url(#gm-pearl)"/><circle cx="19" cy="19.6" r="1.5" fill="url(#gm-pearl)"/><circle cx="29" cy="19.6" r="1.5" fill="url(#gm-pearl)"/><circle cx="24" cy="4.4" r="1.6" fill="url(#gm-pearl)"/>
+    <circle cx="24" cy="30.4" r="1.6" fill="url(#gm-sapph)"/></svg>`;
+  if (k === 3) {
+    const leaves = [-1, 1].map(sd => Array.from({ length: 6 }, (_, i) => { const a = (sd < 0 ? 200 - i * 24 : -20 + i * 24) * Math.PI / 180, cx = 24 + Math.cos(a) * 14, cy = 20 - Math.sin(a) * 14 * -1;
+      const rot = Math.atan2(Math.cos(a), -Math.sin(a)) * 180 / Math.PI + (sd < 0 ? 25 : -25);
+      return `<ellipse cx="${f(cx)}" cy="${f(cy)}" rx="4.6" ry="2" transform="rotate(${f(rot)} ${f(cx)} ${f(cy)})" fill="url(#cg3)" stroke="#7A3A10" stroke-width=".5"/>`; }).join('')).join('');
+    return `<svg viewBox="0 0 48 40" aria-hidden="true"><g transform="translate(0 2) scale(1 .95)">${leaves}</g>
+    <path d="M18 34 L24 31 L30 34 L28 38.5 L24 36.6 L20 38.5Z" fill="#C0632A" stroke="#7A3A10" stroke-width=".5"/>
+    <circle cx="24" cy="20" r="7.2" fill="url(#cg3)" stroke="#7A3A10" stroke-width=".8"/><circle cx="24" cy="20" r="5.2" fill="none" stroke="#fff" stroke-opacity=".4" stroke-width=".7"/>
+    <path d="M24 15.6 l4 4.4 -4 4.4 -4 -4.4z" fill="url(#gm-emer)" stroke="#035C3C" stroke-width=".5"/></svg>`;
+  }
+  if (k === 4) return `<svg viewBox="0 0 48 40" aria-hidden="true">
+    <path d="M8 13 Q2 12 1.5 7 Q6 9.5 9 9z M40 13 Q46 12 46.5 7 Q42 9.5 39 9z" fill="url(#cg4)" stroke="#5E4C9C" stroke-width=".6"/>
+    <path d="M24 2.5 L39.5 8.5 V19.5 Q39.5 31.5 24 38 Q8.5 31.5 8.5 19.5 V8.5Z" fill="url(#cg4)" stroke="#5E4C9C" stroke-width=".9" stroke-linejoin="round"/>
+    <path d="M24 6.6 L35.6 11.2 V19.6 Q35.6 28.6 24 33.8 Q12.4 28.6 12.4 19.6 V11.2Z" fill="#fff" opacity=".28"/>
+    <path d="M24 6.6 V33.8 M12.4 18.5 H35.6" stroke="#5E4C9C" stroke-opacity=".35" stroke-width="1"/>
+    <circle cx="24" cy="18.5" r="5.2" fill="url(#gm-ame)" stroke="#4F1691" stroke-width=".6"/><circle cx="22.4" cy="16.8" r="1.4" fill="#fff" opacity=".7"/></svg>`;
+  const pts = Array.from({ length: 10 }, (_, i) => { const a = -Math.PI / 2 + i * Math.PI / 5, r = i % 2 ? 7.4 : 16.5; return `${f(24 + Math.cos(a) * r)},${f(21 + Math.sin(a) * r)}`; }).join(' ');
+  return `<svg viewBox="0 0 48 40" aria-hidden="true">
+    <path d="M15 31 L11 39 L16.5 37 L19 40 L21.5 33Z M33 31 L37 39 L31.5 37 L29 40 L26.5 33Z" fill="#3E9A6A" stroke="#1F5E3D" stroke-width=".5"/>
+    <polygon points="${pts}" fill="url(#cg5)" stroke="#4F7A12" stroke-width=".9" stroke-linejoin="round"/>
+    <circle cx="24" cy="21.6" r="4.6" fill="url(#gm-pearl)" stroke="#9B9280" stroke-width=".5"/><circle cx="22.8" cy="20.3" r="1.2" fill="#fff"/></svg>`;
+}
+function emblemHTML(k) { return `<span class="pq-emb e${k}" title="${EMBLEM_NAME[k]} · อันดับ ${k}">${emblemSVG(k)}</span>`; }
 
 /* ---------- ทำเนียบคนเก่ง (โพเดียม 5 อันดับ + 6–10) ---------- */
 function podiumHTML(top, titles, opt = {}) {
   const list = (top || []).filter(x => x.xp > 0);
   if (!list.length) return `<div class="pod-empty">ยังไม่มีใครได้แต้ม ส่งงานหรือทำข้อสอบเพื่อขึ้นทำเนียบ! 🚀</div>`;
   const medal = ['', '🥇', '🥈', '🥉', '🎖️', '🎖️'];
-  const plaque = (x, k) => x ? `<div class="pq p${k}${x.me ? ' me' : ''}"><div class="pq-medal">${medal[k]}</div><div class="pq-no">${k}</div>
-      <div class="pq-name">${nameTag(x.name, x.xp, x.rank, x.title_id, titles, { noBadge: true })}</div>
-      <div class="pq-rank">${rkBadge(rankIdx(x.xp))}</div><div class="pq-meta">Lv.${lvOf(x.xp)}</div><div class="pq-xp">${x.xp.toLocaleString()} XP</div><div class="pq-cls">${esc(x.classroom)}</div></div>` : `<div class="pq p${k} vacant"><div class="pq-no">${k}</div><div class="pq-meta">ว่าง</div></div>`;
+  const plaque = (x, k) => x ? `<div class="pq p${k}${x.me ? ' me' : ''}"><div class="pq-medal">${medal[k]}</div>${emblemHTML(k)}
+      <div class="pq-name">${nameTag(x.name, x.xp, x.rank, x.title_id, titles, { noBadge: true, noCrown: true })}</div>
+      <div class="pq-rank">${rkBadge(rankIdx(x.xp))}</div><div class="pq-meta">Lv.${lvOf(x.xp)}</div><div class="pq-xp">${x.xp.toLocaleString()} XP</div><div class="pq-cls">${esc(x.classroom)}</div></div>` : `<div class="pq p${k} vacant">${emblemHTML(k)}<div class="pq-meta">ว่าง</div></div>`;
   const [a, b, c, d, e] = list;
   return `<div class="podium">${plaque(d, 4)}${plaque(b, 2)}${plaque(a, 1)}${plaque(c, 3)}${plaque(e, 5)}</div>
     ${!opt.noRest && list.length > 5 ? `<div class="pod-rest">${list.slice(5, 10).map(x => `<div class="pr-row${x.me ? ' me' : ''}"><span class="pr-no">${x.rank}</span>${nameTag(x.name, x.xp, x.rank, x.title_id, titles)}<span class="spacer"></span><span class="small muted">${esc(x.classroom)}</span><b class="pr-xp">${x.xp.toLocaleString()} XP</b></div>`).join('')}</div>` : ''}`;
