@@ -2999,7 +2999,7 @@ if (typeof module !== 'undefined') module.exports = ExamParser;
 </script>
 <script>
 /* โลโก้: ภาพครูปลื้ม (ไฟล์ต้นฉบับ src/logo.svg ฝังตอน build) */
-const APP_VER = '12.0 · 24 พ.ย. 2569';
+const APP_VER = '12.1 · 24 พ.ย. 2569';
 let LOGO_N = 0;
 function logoSVG() { const k = 'L' + (++LOGO_N); return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><defs><linearGradient id="lgb" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3B9BFF"/><stop offset=".5" stop-color="#0A5BE0"/><stop offset="1" stop-color="#062C78"/></linearGradient><linearGradient id="lgs" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset=".6" stop-color="#FFF4D6"/><stop offset="1" stop-color="#FFD978"/></linearGradient><radialGradient id="lgc" cx=".3" cy=".08" r=".75"><stop offset="0" stop-color="#fff" stop-opacity=".55"/><stop offset=".5" stop-color="#fff" stop-opacity=".08"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient></defs><rect width="48" height="48" rx="13" fill="url(#lgb)"/><rect width="48" height="48" rx="13" fill="url(#lgc)"/><rect x=".75" y=".75" width="46.5" height="46.5" rx="12.3" fill="none" stroke="#fff" stroke-opacity=".45" stroke-width="1.2"/><g fill="none" stroke="#04235F" stroke-opacity=".35" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" transform="translate(0 1.2)"><path d="M21.2 17 C19.8 14.6 17.4 13.6 14.8 13.6 C11 13.6 8.6 15.6 8.6 18.5 C8.6 21.8 11.6 22.9 14.9 23.9 C18.6 25 21.6 26.4 21.6 29.8 C21.6 33 18.8 34.6 15.1 34.6 C12 34.6 9.5 33.4 8 31.1"/><path d="M26.6 14 L39.6 34.2 M39.6 14 L26.6 34.2"/></g><g fill="none" stroke="url(#lgs)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M21.2 17 C19.8 14.6 17.4 13.6 14.8 13.6 C11 13.6 8.6 15.6 8.6 18.5 C8.6 21.8 11.6 22.9 14.9 23.9 C18.6 25 21.6 26.4 21.6 29.8 C21.6 33 18.8 34.6 15.1 34.6 C12 34.6 9.5 33.4 8 31.1"/><path d="M26.6 14 L39.6 34.2 M39.6 14 L26.6 34.2"/></g></svg>`.replace('<svg ', '<svg class="logo" aria-hidden="true" ').replace(/\b(lg[bsc])\b/g, '$1' + k); }
 /* =====================================================================
@@ -8003,7 +8003,7 @@ function chatBubbles(msgs, me) {
     const d = new Date(m.at).toLocaleDateString('th-TH', { weekday: 'short', day: 'numeric', month: 'short' });
     if (d !== day) { day = d; out += `<div class="ch-day"><span>${d}</span></div>`; }
     const mine = m.sender === me;
-    out += `<div class="ch-msg ${mine ? 'me' : 'them'}"><div class="ch-row">${m.id && (me === 'teacher' || mine) ? `<button class="ch-del" data-act="${me === 'teacher' ? 'chat-del' : 'sc-del'}" data-id="${m.id}" title="${me === 'teacher' ? 'ลบข้อความนี้' : 'ยกเลิกข้อความนี้'}" aria-label="ลบข้อความ">${ic('trash')}</button>` : ''}<div class="ch-b">${chatLinkify(m.body)}</div></div><div class="ch-t">${m.by && me === 'teacher' && mine ? esc(m.by) + ' · ' : ''}${new Date(m.at).toLocaleTimeString('th-TH', { hour: '2-digit', minute: '2-digit' })}${mine && m === lastMine && m.read ? ' · อ่านแล้ว ✓' : ''}</div></div>`;
+    out += `<div class="ch-msg ${mine ? 'me' : 'them'}"><div class="ch-row">${m.id && me === 'teacher' ? `<button class="ch-del" data-act="chat-del" data-id="${m.id}" title="ลบข้อความนี้" aria-label="ลบข้อความ">${ic('trash')}</button>` : ''}<div class="ch-b">${chatLinkify(m.body)}</div></div><div class="ch-t">${m.by && me === 'teacher' && mine ? esc(m.by) + ' · ' : ''}${new Date(m.at).toLocaleTimeString('th-TH', { hour: '2-digit', minute: '2-digit' })}${mine && m === lastMine && m.read ? ' · อ่านแล้ว ✓' : ''}</div></div>`;
   });
   return out;
 }
@@ -8461,11 +8461,6 @@ Object.assign(ACT, {
   'tc-send': tcSend,
   'tc-quick': el => { const i = $('#tc-input'); if (!i) return; i.value = (i.value.trim() ? i.value.trim() + ' ' : '') + el.dataset.t; chatAutoGrow(i); i.focus(); if (TC.cur) CHAT.draft[chatKey(TC.cur.subject_id, TC.cur.student_id)] = i.value; },
   'sc-pop-open': el => { const t = (SC.threads || []).find(x => x.subject_id === el.dataset.sj); if (!t) return; SC.open = true; SC.cur = t; SC.msgs = null; stuChatDraw(); scLoadMsgs(); },
-  'sc-del': el => confirmBox('ยกเลิกข้อความ', 'ยกเลิกข้อความนี้? ครูจะไม่เห็นข้อความนี้อีก', 'ยกเลิกข้อความ', async () => {
-    const v = stuState.verified, t = SC.cur; if (!v) return;
-    try { await q(sb.rpc('student_chat_delete', { p_student_id: v.student_id, p_code: v.code, p_id: el.dataset.id })); if (t) rtPingTeacher(t.teacher_id, v.student_id, t.subject_id, 'del'); SC.msgs = null; await scLoadMsgs(); scLoadThreads(); toast('ยกเลิกข้อความแล้ว'); }
-    catch (e) { toast(/student_chat_delete|function/i.test(e?.message || '') ? 'ยังลบไม่ได้ (ครูต้องอัปเดตระบบ)' : chatErr(e), true); }
-  }),
 });
 document.addEventListener('keydown', e => {
   if (e.target?.id === 'tc-input' && e.key === 'Enter' && !e.shiftKey && !e.isComposing && !isMobile()) { e.preventDefault(); tcSend(); }
