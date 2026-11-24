@@ -8,7 +8,7 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%232f7cf6'/%3E%3Ctext x='32' y='44' font-size='34' text-anchor='middle' fill='%23ffffff' font-family='sans-serif' font-weight='700'%3E%E0%B8%9B%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Anuphan:wght@400;500;600;700&family=Noto+Sans+Thai:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Anuphan:wght@400;500;600;700&family=Trirong:wght@600;700;800&family=Noto+Sans+Thai:wght@400;500;600;700&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
@@ -2101,29 +2101,19 @@ h2.hello .wave{display:inline-block;transform-origin:70% 75%;animation:wave 2.4s
 .gchip .crown{font-size:14px}
 .ttl-none{font-size:12px;color:var(--muted)}
 
-/* รูปโปรไฟล์ตามยศ */
-.ava.rv{position:relative;width:64px!important;height:64px!important;border-radius:20px!important;display:grid;place-items:center;flex:none;transform:none!important;isolation:isolate;
-  font:800 28px var(--f-head);color:#fff!important;--a:#9AA3B2;--b:#6B7383;background:linear-gradient(150deg,var(--a),var(--b))!important;box-shadow:0 8px 20px -10px var(--b)}
-.ava.rv .av-l{position:relative;z-index:2;text-shadow:0 2px 6px rgba(0,0,0,.25)}
-.ava.rv .av-ic{position:absolute;z-index:3;right:-8px;bottom:-8px;width:28px;height:28px;border-radius:50%;display:grid;place-items:center;font-size:15px;background:var(--surface);box-shadow:0 3px 8px rgba(0,0,0,.25),0 0 0 2px var(--a)}
-.ava.rv::before{content:'';position:absolute;inset:-4px;border-radius:24px;z-index:-1;opacity:0}
-.ava.rv.g1{--a:#7FD58B;--b:#2E9A44}.ava.rv.g2{--a:#5FE0D0;--b:#0E8E80}.ava.rv.g3{--a:#7DB2FF;--b:#2563EB}
-.ava.rv.g4{--a:#9AA0FF;--b:#4338CA}.ava.rv.g4::before{opacity:1;background:none;box-shadow:0 0 0 2px #fff,0 0 0 4px #6366F1}
-.ava.rv.g5{--a:#C9A7FF;--b:#7C3AED}.ava.rv.g5::before{opacity:1;box-shadow:0 0 0 2px #fff,0 0 0 4px #8B5CF6,0 0 16px #A78BFA}
-/* ยศสูง: กรอบหมุนเรืองแสง */
-.ava.rv.g6,.ava.rv.g7,.ava.rv.g8,.ava.rv.g9{overflow:visible}
-.ava.rv.g6{--a:#FFB37A;--b:#EA580C}.ava.rv.g7{--a:#FF8BA0;--b:#BE123C}
-.ava.rv.g8{--a:#FFE47A;--b:#C98A00;color:#5A3B00!important}.ava.rv.g8 .av-l{text-shadow:0 1px 0 rgba(255,255,255,.6)}
-.ava.rv.g9{--a:#8B5CF6;--b:#EC4899}
-.ava.rv.g6::before,.ava.rv.g7::before,.ava.rv.g8::before,.ava.rv.g9::before{opacity:1;inset:-5px;border-radius:25px;animation:av-spin 4s linear infinite}
-.ava.rv.g6::before{background:conic-gradient(from var(--r,0deg),#FFD3B0,#EA580C,#FFD3B0,#EA580C,#FFD3B0)}
-.ava.rv.g7::before{background:conic-gradient(from var(--r,0deg),#FFC1CC,#BE123C,#FFC1CC,#BE123C,#FFC1CC);box-shadow:0 0 18px rgba(225,29,72,.6)}
-.ava.rv.g8::before{background:conic-gradient(from var(--r,0deg),#FFF7C2,#F5B300,#B97800,#FFF7C2,#F5B300,#FFF7C2);box-shadow:0 0 22px rgba(255,196,0,.8)}
-.ava.rv.g9::before{background:conic-gradient(from var(--r,0deg),#FF5E62,#FFB347,#FFE66D,#6EE7B7,#60A5FA,#A78BFA,#FF5E62);box-shadow:0 0 26px rgba(167,139,250,.9)}
-.ava.rv.g8::after,.ava.rv.g9::after{content:'';position:absolute;inset:0;border-radius:inherit;z-index:1;background:linear-gradient(115deg,transparent 35%,rgba(255,255,255,.55) 50%,transparent 65%);background-size:250% 100%;animation:shine 2.8s linear infinite}
-@property --r{syntax:'<angle>';inherits:false;initial-value:0deg}
-@keyframes av-spin{to{--r:360deg}}
-[data-device=mobile] .ava.rv{width:56px!important;height:56px!important;font-size:24px}
+/* รูปโปรไฟล์ = ภาพประจำยศ ไม่มีพื้นหลัง */
+.ava.rv-e{position:relative;width:76px!important;height:76px!important;flex:none;display:grid;place-items:center;transform:none!important;
+  background:none!important;box-shadow:none!important;border:0!important;border-radius:0!important;overflow:visible;--gc:rgba(140,150,170,.45)}
+.ava.rv-e span{font-size:62px;line-height:1;filter:drop-shadow(0 4px 6px rgba(0,0,0,.25)) drop-shadow(0 0 10px var(--gc));animation:av-bob 3.2s ease-in-out infinite}
+.ava.rv-e.wait span{width:40px;height:40px;border-radius:50%;background:var(--fill);animation:none;filter:none}
+.ava.rv-e.g1{--gc:rgba(80,200,100,.55)}.ava.rv-e.g2{--gc:rgba(40,210,190,.55)}.ava.rv-e.g3{--gc:rgba(80,140,255,.6)}.ava.rv-e.g4{--gc:rgba(110,110,255,.65)}
+.ava.rv-e.g5{--gc:rgba(150,100,255,.7)}.ava.rv-e.g6{--gc:rgba(255,140,60,.75)}.ava.rv-e.g7{--gc:rgba(255,70,110,.8)}.ava.rv-e.g8{--gc:rgba(255,196,0,.9)}.ava.rv-e.g9{--gc:rgba(190,140,255,.95)}
+/* ยศสูง: แสงเรืองเป็นจังหวะ */
+.ava.rv-e:is(.g6,.g7,.g8,.g9) span{animation:av-bob 3.2s ease-in-out infinite,av-pulse 2.4s ease-in-out infinite}
+@keyframes av-bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+@keyframes av-pulse{0%,100%{filter:drop-shadow(0 4px 6px rgba(0,0,0,.25)) drop-shadow(0 0 8px var(--gc))}50%{filter:drop-shadow(0 4px 6px rgba(0,0,0,.25)) drop-shadow(0 0 22px var(--gc)) drop-shadow(0 0 36px var(--gc))}}
+[data-device=mobile] .ava.rv-e{width:64px!important;height:64px!important}[data-device=mobile] .ava.rv-e span{font-size:52px}
+@media (prefers-reduced-motion:reduce){.ava.rv-e span{animation:none!important}}
 
 /* ชื่อบนป้ายทำเนียบ 1–5: ใหญ่ ขาว เรืองแสงตามสียศ */
 .pq-name{font-size:17px!important;line-height:1.3;margin:2px 0}
@@ -2137,7 +2127,7 @@ h2.hello .wave{display:inline-block;transform-origin:70% 75%;animation:wave 2.4s
 .pq.p1 .gname:is(.g0,.g1,.g2,.g3,.g4,.g5,.g6,.g7){color:#FFF6CF!important}
 [data-device=mobile] .pq-name{font-size:14.5px!important}[data-device=mobile] .pq.p1 .pq-name{font-size:16px!important}
 .pod-rest .gname{font-size:15.5px;font-weight:700}
-@media (prefers-reduced-motion:reduce){h2.hello .hello-t,h2.hello .wave,.ava.rv::before,.ava.rv::after{animation:none!important}}
+@media (prefers-reduced-motion:reduce){h2.hello .hello-t,h2.hello .wave{animation:none!important}}
 /* หน้า Ranking: เลือกห้องก่อน */
 .rk-pick{margin-bottom:12px}
 .rk-pick .card-h{flex-wrap:wrap;gap:8px}
@@ -2151,6 +2141,25 @@ h2.hello .wave{display:inline-block;transform-origin:70% 75%;animation:wave 2.4s
 .rk-empty{padding:30px}
 .rk-pager{display:flex;align-items:center;justify-content:center;gap:12px;padding:12px;font-size:14px;color:var(--muted)}
 [data-device=mobile] .rk-rooms{grid-template-columns:1fr 1fr;padding:4px 12px 14px}
+
+/* =====================================================================
+   แบรนด์: โลโก้ตราทอง-กรมท่า + ชื่อเว็บตัวอักษรอาลักษณ์ (Trirong)
+   ===================================================================== */
+.brand-mark{width:46px!important;height:46px!important;padding:0!important;border-radius:13px!important;background:none!important;transform:none!important;flex:none;
+  box-shadow:0 8px 18px -8px rgba(10,15,51,.75),0 0 0 1px rgba(201,142,26,.25)!important;overflow:hidden;display:grid;place-items:center}
+.brand-mark .logo{width:100%;height:100%;display:block}
+.brand-mark.sm{width:36px!important;height:36px!important;border-radius:10px!important}
+.brand-mark::after{content:'';position:absolute}
+.brand b{font-family:'Trirong',Anuphan,serif!important;font-weight:700!important;font-size:19px!important;letter-spacing:.01em;line-height:1.5!important;padding-top:.15em;margin-top:-.15em;display:block;
+  background:linear-gradient(180deg,#1E2A78 0%,#16205A 55%,#0A0F33 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent!important;text-shadow:none!important;
+  filter:drop-shadow(0 1px 0 rgba(255,255,255,.8))}
+.brand small{display:flex;align-items:center;gap:6px;font-size:11.5px!important;letter-spacing:.04em;color:#A07A1E!important;font-weight:500}
+.brand small::before{content:'';width:14px;height:1.5px;border-radius:2px;background:linear-gradient(90deg,transparent,#C98E1A)}
+[data-theme=dark] .brand b{background:linear-gradient(180deg,#FFF6CF 0%,#F4C84A 55%,#C98E1A 100%)!important;-webkit-background-clip:text!important;background-clip:text!important;
+  -webkit-text-fill-color:transparent;color:transparent!important;filter:drop-shadow(0 0 6px rgba(255,200,60,.45))!important;text-shadow:none!important}
+[data-theme=dark] .brand small{color:#D9B866!important}
+.side .brand{gap:12px}
+.present-card .brand b{font-size:24px!important}
 
 </style>
 </head>
@@ -2634,6 +2643,25 @@ if (typeof module !== 'undefined') module.exports = ExamParser;
 
 </script>
 <script>
+/* โลโก้: ตราหนังสือทองบนพื้นกรมท่า สวมมงกุฎ */
+const APP_VER = '8.3 · 24 พ.ย. 2569';
+function logoSVG() {
+  return `<svg class="logo" viewBox="0 0 48 48" aria-hidden="true"><defs>
+    <linearGradient id="lg-navy" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2B3A8F"/><stop offset=".55" stop-color="#16205A"/><stop offset="1" stop-color="#0A0F33"/></linearGradient>
+    <linearGradient id="lg-gold" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFF3C2"/><stop offset=".45" stop-color="#F4C84A"/><stop offset="1" stop-color="#B9800F"/></linearGradient>
+    <linearGradient id="lg-gold2" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#C98E1A"/><stop offset=".5" stop-color="#FFE9A0"/><stop offset="1" stop-color="#C98E1A"/></linearGradient></defs>
+    <rect x="1" y="1" width="46" height="46" rx="13" fill="url(#lg-navy)"/>
+    <rect x="3.2" y="3.2" width="41.6" height="41.6" rx="10.8" fill="none" stroke="url(#lg-gold2)" stroke-width=".9" opacity=".85"/>
+    <path d="M6 9 Q24 1 42 9 L42 4 Q24 -2 6 4Z" fill="#fff" opacity=".08"/>
+    <path d="M16.2 15.2 L15 9.6 L19.2 12.3 L24 7.4 L28.8 12.3 L33 9.6 L31.8 15.2Z" fill="url(#lg-gold)" stroke="#8A5A00" stroke-width=".45" stroke-linejoin="round"/>
+    <circle cx="24" cy="7.2" r="1.3" fill="#FFF7D6"/><circle cx="15" cy="9.5" r=".95" fill="#FFF7D6"/><circle cx="33" cy="9.5" r=".95" fill="#FFF7D6"/>
+    <path d="M10 20.4 C14.6 17.6 19.6 17.8 23.4 20.6 V36 C19.6 33.4 14.6 33.2 10 35.6Z" fill="url(#lg-gold)" stroke="#8A5A00" stroke-width=".5" stroke-linejoin="round"/>
+    <path d="M38 20.4 C33.4 17.6 28.4 17.8 24.6 20.6 V36 C28.4 33.4 33.4 33.2 38 35.6Z" fill="url(#lg-gold)" stroke="#8A5A00" stroke-width=".5" stroke-linejoin="round"/>
+    <path d="M13 23.4 C16 22 19 22 21.4 23.4 M13 26.6 C16 25.2 19 25.2 21.4 26.6 M13 29.8 C16 28.4 19 28.4 21.4 29.8 M35 23.4 C32 22 29 22 26.6 23.4 M35 26.6 C32 25.2 29 25.2 26.6 26.6" fill="none" stroke="#9A6A08" stroke-width=".7" stroke-linecap="round" opacity=".55"/>
+    <path d="M30.6 29.2 l.8 1.7 1.8.3 -1.3 1.3 .3 1.8 -1.6-.9 -1.6.9 .3-1.8 -1.3-1.3 1.8-.3z" fill="#16205A" opacity=".75"/>
+    <path d="M24 20.4 V37.6" stroke="#FFF3C2" stroke-width=".8"/><path d="M8.6 37.2 C14 34.6 19.6 34.8 24 38 C28.4 34.8 34 34.6 39.4 37.2" fill="none" stroke="url(#lg-gold2)" stroke-width="1.2" stroke-linecap="round"/>
+  </svg>`;
+}
 /* =====================================================================
    ห้องเรียนออนไลน์ — ต้นแบบเฟส 1 (ฝั่งครู + หน้ายืนยันตัวตนนักเรียน)
    ข้อมูลในต้นแบบนี้เก็บในเบราว์เซอร์ (ชั้น `db`) — เฟสถัดไปจะเปลี่ยน `db`
@@ -2898,7 +2926,7 @@ function render() {
   if (isCheckinRoute()) { root.innerHTML = viewCheckin(); return; }
   if (isExamTakeRoute()) { root.innerHTML = viewExamTake(); return; }
   if (isStudentRoute()) { root.innerHTML = viewStudent(); return; }
-  if (booting) { root.innerHTML = `<div class="stu" style="justify-content:center"><div class="brand"><div class="brand-mark">ป</div><div><b>ห้องเรียนครูปลื้ม</b><small style="color:var(--muted)">กำลังโหลดข้อมูล…</small></div></div></div>`; return; }
+  if (booting) { root.innerHTML = `<div class="stu" style="justify-content:center"><div class="brand"><div class="brand-mark">${logoSVG()}</div><div><b>ห้องเรียนครูปลื้ม</b><small style="color:var(--muted)">กำลังโหลดข้อมูล…</small></div></div></div>`; return; }
   if (!session) { root.innerHTML = viewLogin(); return; }
   if (!ME.active()) { root.innerHTML = viewPending(); return; }
   let base = ui.route.startsWith('att-') ? 'attsess' : ui.route.startsWith('grade-') ? 'grade' : ui.route.startsWith('exam-edit-') ? 'examedit' : ui.route.startsWith('exam-res-') ? 'examres' : ui.route;
@@ -2910,7 +2938,7 @@ function render() {
   root.innerHTML = `
   <div class="shell">
     <aside class="side ${ui.sideOpen ? 'open' : ''}">
-      <div class="brand"><div class="brand-mark">ป</div><div><b>ห้องเรียนครูปลื้ม</b><small>ส่งงาน · คะแนน · ข้อสอบ</small></div></div>
+      <div class="brand"><div class="brand-mark">${logoSVG()}</div><div><b>ห้องเรียนครูปลื้ม</b><small>ส่งงาน · คะแนน · ข้อสอบ</small></div></div>
       ${navItems().map(n => n.group ? `<div class="nav-group">${n.group}</div>` :
         `<a class="nav-item ${navOn === n.id ? 'active' : ''}" href="#${n.id}">${ic(n.icon)}<span>${n.label}</span>${n.soon ? `<span class="soon">${n.soon}</span>` : ''}${n.id === 'users' && store.pendingCount ? `<span class="nav-badge">${store.pendingCount}</span>` : ''}</a>`).join('')}
       <div class="side-foot">ภาคเรียน ${esc(Q.termLabel(Q.currentTerm()))}</div>
@@ -2928,7 +2956,7 @@ function render() {
         <button class="btn ghost icon" data-act="logout" aria-label="ออกจากระบบ" title="ออกจากระบบ">${ic('logout')}</button>
       </header>
       <main class="content">${(views[base] || viewDashboard)()}</main>
-      <div class="credit">ห้องเรียนครูปลื้ม · ทำด้วยใจ 💜 · ${esc(store.teacher.name)}</div>
+      <div class="credit">ห้องเรียนครูปลื้ม · ทำด้วยใจ 💜 · ${esc(store.teacher.name)} · <span title="เวอร์ชันของหน้าเว็บ">v${APP_VER}</span></div>
     </div>
   </div>`;
 }
@@ -2939,7 +2967,7 @@ function viewLogin() {
   <div class="auth">
     <section class="auth-art">
       <div class="auth-scene">${ART.desk(sceneHour(), 620)}</div>
-      <div class="brand" style="position:relative"><div class="brand-mark">ป</div><div><b>ห้องเรียนครูปลื้ม</b><small>ส่งงาน · ดูคะแนน · ทำข้อสอบ</small></div></div>
+      <div class="brand" style="position:relative"><div class="brand-mark">${logoSVG()}</div><div><b>ห้องเรียนครูปลื้ม</b><small>ส่งงาน · ดูคะแนน · ทำข้อสอบ</small></div></div>
       <div style="position:relative"><h1>ส่งงานง่าย<br>ตรวจไว <span class="hl">ได้คะแนนชัวร์</span> ✨</h1><p>รูป คลิป เสียง เอกสาร ส่งจากมือถือได้หมด ครูตรวจเสร็จเห็นคะแนนทันที</p></div>
       <div class="auth-feat">
         <div><b>📤 ส่งงานรายคน</b>แยกไฟล์ตามเลขที่</div><div><b>📊 ตารางคะแนน</b>แยกห้อง แก้ได้อิสระ</div>
@@ -3367,7 +3395,7 @@ function viewStudent() {
   const cls = stuState.classes || [];
   const w = v ? 680 : 440;
   return `<div class="stu">
-    <div class="row" style="width:min(${w}px,100%);margin-bottom:18px"><div class="brand" style="padding:0"><div class="brand-mark">ป</div><div><b>ห้องเรียนครูปลื้ม</b><small style="color:var(--muted)">โซนนักเรียน ✨</small></div></div><span class="spacer"></span>
+    <div class="row" style="width:min(${w}px,100%);margin-bottom:18px"><div class="brand" style="padding:0"><div class="brand-mark">${logoSVG()}</div><div><b>ห้องเรียนครูปลื้ม</b><small style="color:var(--muted)">โซนนักเรียน ✨</small></div></div><span class="spacer"></span>
       <button class="btn ghost icon" data-act="theme" aria-label="สลับธีม">${ic(theme === 'dark' ? 'sun' : 'moon')}</button></div>
     ${v ? studentHome(v) : `<div class="card stu-card stu-login"><div class="stu-login-art">${ART.desk(sceneHour(), 440)}</div><div class="stu-hi">👋</div><form class="stack" data-form="stu">
         <div style="text-align:center"><h2 style="font-size:26px">สวัสดี! มาส่งงานกัน</h2><p class="muted" style="margin:2px 0 0">เลือกห้อง แล้วกรอกเลขที่กับเลขประจำตัวนักเรียน</p></div>
@@ -4130,7 +4158,7 @@ function studentHome(v) {
   const sec = (key, title) => groups[key].length ? `<div class="sec-title">${title} <span class="chip">${groups[key].length}</span></div>${groups[key].map(studentAsgCard).join('')}` : '';
   return `<div class="stu-wrap">
     <div class="stu-banner">${ART.desk(sceneHour())}<div class="stu-clock">${clockHTML()}</div><div class="acts"><button class="btn icon sm" data-act="stu-reload" aria-label="โหลดใหม่" title="โหลดใหม่">${ic('refresh')}</button><button class="btn sm" data-act="stu-out">ออก</button></div>
-      <div class="row" style="gap:14px;position:relative;z-index:1">${stuAvaHTML(first)}<div style="min-width:0"><h2 class="hello"><span class="hello-t"><span class="hello-s">สวัสดี</span> ${esc(first)}!</span> <span class="wave">👋</span></h2>
+      <div class="row" style="gap:14px;position:relative;z-index:1">${stuAvaHTML()}<div style="min-width:0"><h2 class="hello"><span class="hello-t"><span class="hello-s">สวัสดี</span> ${esc(first)}!</span> <span class="wave">👋</span></h2>
         <div class="pills"><span class="pill">🏫 ${esc(v.classroom_name)}</span><span class="pill">เลขที่ ${v.number}</span></div>${gameChipHTML()}</div></div></div>
     ${studentAnnHTML()}
     <div class="seg stu-tabs">${[['work', '📝 งาน'], ['exam', '🧪 ข้อสอบ'], ['score', '📊 คะแนน'], ['rank', '🏆 Ranking'], ['shop', '🛒 ร้านค้า'], ['gallery', '🌟 ผลงาน']].map(([k, l]) => `<button class="${(stuState.tab || 'work') === k ? 'on' : ''}" data-act="stu-tab" data-t="${k}">${l}</button>`).join('')}</div>
@@ -4341,7 +4369,7 @@ function presentQR() {
   const box = document.createElement('div');
   box.className = 'present';
   box.innerHTML = `<button class="btn icon present-x" aria-label="ปิด">${ic('x')}</button>
-    <div class="present-card"><div class="brand"><div class="brand-mark">ป</div><div><b>ห้องเรียนครูปลื้ม</b><small>สแกนเพื่อเข้าห้องเรียน</small></div></div>
+    <div class="present-card"><div class="brand"><div class="brand-mark">${logoSVG()}</div><div><b>ห้องเรียนครูปลื้ม</b><small>สแกนเพื่อเข้าห้องเรียน</small></div></div>
       ${ptitle ? `<h2>${esc(ptitle.replace(/^ส่งลิงก์ข้อสอบ: /, '🧪 '))}</h2>` : a ? `<h2>📝 ${esc(a.title)}</h2>` : '<h2>📲 สแกนเพื่อส่งงาน</h2>'}
       <div class="present-qr">${qrSVG(url, 10)}</div>
       <div class="present-url">${esc(url.replace(/^https?:\/\//, ''))}</div>
@@ -5330,7 +5358,7 @@ function viewExamTake() {
   const code = ui.route.slice(5).toLowerCase();
   if (!EXM || EXM.code !== code) { exmReset(code); exmLoadInfo(); }
   const theme = document.documentElement.dataset.theme;
-  const head = `<div class="row" style="width:min(760px,100%);margin-bottom:14px"><div class="brand" style="padding:0"><div class="brand-mark">ป</div><div><b>ห้องเรียนครูปลื้ม</b><small style="color:var(--muted)">ห้องสอบออนไลน์ 📝</small></div></div><span class="spacer"></span>
+  const head = `<div class="row" style="width:min(760px,100%);margin-bottom:14px"><div class="brand" style="padding:0"><div class="brand-mark">${logoSVG()}</div><div><b>ห้องเรียนครูปลื้ม</b><small style="color:var(--muted)">ห้องสอบออนไลน์ 📝</small></div></div><span class="spacer"></span>
     ${EXM.att && !EXM.result ? '' : `<button class="btn ghost icon" data-act="theme" aria-label="สลับธีม">${ic(theme === 'dark' ? 'sun' : 'moon')}</button>`}</div>`;
   let body;
   if (EXM.err && !EXM.info) body = `<div class="card stu-card"><div class="empty"><div style="font-size:44px">🙈</div><b>${esc(EXM.err)}</b><a class="btn" href="#student" style="margin-top:10px">ไปหน้านักเรียน</a></div></div>`;
@@ -6195,7 +6223,7 @@ function attPresent() {
   const c = db.get('classrooms', s.classroom_id), k = attCounts(s.id);
   const box = document.createElement('div'); box.className = 'present att-present';
   box.innerHTML = `<button class="btn icon present-x" aria-label="ปิด">${ic('x')}</button>
-    <div class="present-card"><div class="brand"><div class="brand-mark">ป</div><div><b>ห้องเรียนครูปลื้ม</b><small>สแกนเพื่อเช็คชื่อ</small></div></div>
+    <div class="present-card"><div class="brand"><div class="brand-mark">${logoSVG()}</div><div><b>ห้องเรียนครูปลื้ม</b><small>สแกนเพื่อเช็คชื่อ</small></div></div>
       <h2>📋 เช็คชื่อ ${esc(c.name)}</h2><div class="present-qr" id="att-present-qr">${qrSVG(attUrl(s.id, ATT.token), 12)}</div>
       <div class="att-present-meta"><span>QR ใหม่ใน <b id="att-present-left">${Math.ceil(ATT.left)}</b> วินาที</span><span>มาแล้ว <b id="att-present-came">${k.present + k.late}</b> คน</span></div>
       ${clockHTML()}</div>`;
@@ -6289,7 +6317,7 @@ function viewCheckin() {
         <label class="field"><span>🪪 เลขประจำตัว</span><input class="input big" name="code" required inputmode="numeric" autocomplete="off" placeholder="เช่น 25101"></label></div>
         <label class="check"><input type="checkbox" name="remember" ${localStorage.getItem('cr-student-keep') ? 'checked' : ''}> จำฉันไว้ในเครื่องนี้ (ครั้งหน้าสแกนแล้วเช็คชื่อได้ทันที)</label>
         <button class="btn primary big" style="justify-content:center">เช็คชื่อ ✅</button></form>`;
-  return `<div class="stu"><div class="row" style="width:min(440px,100%);margin-bottom:18px"><div class="brand" style="padding:0"><div class="brand-mark">ป</div><div><b>ห้องเรียนครูปลื้ม</b><small style="color:var(--muted)">เช็คชื่อเข้าเรียน 📋</small></div></div><span class="spacer"></span>
+  return `<div class="stu"><div class="row" style="width:min(440px,100%);margin-bottom:18px"><div class="brand" style="padding:0"><div class="brand-mark">${logoSVG()}</div><div><b>ห้องเรียนครูปลื้ม</b><small style="color:var(--muted)">เช็คชื่อเข้าเรียน 📋</small></div></div><span class="spacer"></span>
       <button class="btn ghost icon" data-act="theme" aria-label="สลับธีม">${ic(theme === 'dark' ? 'sun' : 'moon')}</button></div>
     <div class="card stu-card chk-card">${body}</div></div>`;
 }
@@ -6827,10 +6855,10 @@ function gameChipHTML() {
     ${t ? `<span class="ttl ${t.rarity}">${esc(t.name)}</span>` : '<span class="ttl-none">ยังไม่มีฉายา</span>'}
     <span class="pill gcoin">🪙 ${g.coins}</span></button>`;
 }
-/* รูปโปรไฟล์: กรอบและสีเปลี่ยนตามยศ */
-function stuAvaHTML(first) {
-  const g = stuState.game, xp = g && !g.missing ? g.xp : 0, i = rankIdx(xp), r = RANKS[i];
-  return `<div class="ava rv g${i}" title="${r.n}"><span class="av-l">${esc((first || '?')[0])}</span>${g && !g.missing ? `<span class="av-ic">${r.ic}</span>` : ''}</div>`;
+/* รูปโปรไฟล์ = ภาพประจำยศ (เต็มรูป ไม่มีพื้นหลัง) */
+function stuAvaHTML() {
+  const g = stuState.game, ok = g && !g.missing, i = ok ? rankIdx(g.xp) : 0, r = RANKS[i];
+  return `<div class="ava rv-e g${i}${ok ? '' : ' wait'}" title="${ok ? `${r.n} · Lv.${lvOf(g.xp)}` : ''}" role="img" aria-label="${r.n}"><span>${ok ? r.ic : ''}</span></div>`;
 }
 /* แท็บ Ranking */
 function studentRankHTML(v) {
@@ -7219,7 +7247,7 @@ function galleryGrid(items, o = {}) {
 /* หน้าสาธารณะ */
 function viewGalleryPublic() {
   const theme = document.documentElement.dataset.theme;
-  return `<div class="stu"><div class="stu-wrap gal-page"><div class="row" style="margin-bottom:14px"><div class="brand" style="padding:0"><div class="brand-mark">ป</div><div><b>ห้องเรียนครูปลื้ม</b><small style="color:var(--muted)">แกลเลอรีผลงานนักเรียน 🌟</small></div></div><span class="spacer"></span>
+  return `<div class="stu"><div class="stu-wrap gal-page"><div class="row" style="margin-bottom:14px"><div class="brand" style="padding:0"><div class="brand-mark">${logoSVG()}</div><div><b>ห้องเรียนครูปลื้ม</b><small style="color:var(--muted)">แกลเลอรีผลงานนักเรียน 🌟</small></div></div><span class="spacer"></span>
       <button class="btn ghost icon" data-act="theme" aria-label="สลับธีม">${ic(theme === 'dark' ? 'sun' : 'moon')}</button></div>
     <div class="gal-hero"><h2>🌟 แกลเลอรีผลงานเด่น</h2><p>ผลงานที่ครูคัดเลือกมาโชว์ ${stuState.verified ? 'กด ❤ ให้ผลงานที่ชอบได้เลย' : '· <a href="#student">เข้าสู่ระบบนักเรียน</a> เพื่อกดหัวใจ'}</p></div>
     ${galleryGrid(GAL.items)}</div></div>`;
@@ -7579,7 +7607,7 @@ function mobileShell(base, navOn, body) {
   return `
   <div class="m-shell">
     <header class="m-top">
-      ${back ? `<a class="btn ghost icon" href="#${back[0]}" aria-label="กลับไป${back[1]}">${ic('back')}</a>` : `<div class="brand-mark sm">ป</div>`}
+      ${back ? `<a class="btn ghost icon" href="#${back[0]}" aria-label="กลับไป${back[1]}">${ic('back')}</a>` : `<div class="brand-mark sm">${logoSVG()}</div>`}
       <h1>${TITLES[base] || 'แดชบอร์ด'}</h1>
       <span class="spacer"></span>
       <button class="btn primary icon" data-act="share-open" aria-label="ส่งลิงก์ให้นักเรียน">${ic('link')}</button>
