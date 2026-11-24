@@ -2616,6 +2616,40 @@ h2.hello .wave{display:inline-block;transform-origin:70% 75%;animation:wave 2.4s
 .m-list{margin-top:14px}
 body:has(.m-sheet-bg) #t-chat,body:has(.m-sheet-bg) #chat-pops{display:none}
 [data-device=mobile] .sc-fab.t{width:52px;height:52px}
+/* ---------- เฟส 13: ข้อความถึงครูแบบโค้ด HTML ---------- */
+.hn-label{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.hn-mode{margin-left:auto;border:0;border-radius:99px;padding:4px 12px;font:600 12.5px var(--f-body);cursor:pointer;background:var(--fill);color:var(--muted);transition:background .15s,color .15s}
+.hn-mode.on{background:#0F172A;color:#7DD3FC;box-shadow:0 0 0 1px rgba(125,211,252,.3)}
+.hn-snips{display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin:2px 0 6px}
+.hn-snips .chip{border:0;cursor:pointer;font:500 12px ui-monospace,'SF Mono',Menlo,Consolas,monospace}
+.hn-count{margin-left:auto;font-size:11.5px;color:var(--muted)}
+textarea.mono{font:13.5px/1.55 ui-monospace,'SF Mono',Menlo,Consolas,monospace!important;background:#0F172A!important;color:#E2E8F0!important;caret-color:#7DD3FC;border-color:#1E293B!important;tab-size:2}
+textarea.mono::placeholder{color:#64748B}
+.hn-live{margin-top:8px;border-radius:16px;overflow:hidden;box-shadow:inset 0 0 0 1px var(--line);background:var(--surface)}
+.hn-live-h{display:flex;align-items:center;gap:8px;padding:8px 12px;font-size:13px;font-weight:600;background:var(--surface-2);border-bottom:1px solid var(--line)}
+.hn-live-h span{flex:1}.hn-live-h small{font-weight:400;color:var(--muted)}
+.hn-frame{resize:vertical;overflow:hidden;min-height:120px;max-height:80vh;background:#fff}
+.hn-frame iframe{width:100%;height:100%;border:0;display:block;background:#fff}
+.hn-mini{border:0;width:28px;height:28px;border-radius:9px;background:var(--fill);cursor:pointer;font-size:14px;color:var(--ink);display:grid;place-items:center}
+.hn-mini:hover{background:var(--primary-soft)}
+.hn-text{white-space:pre-wrap;word-break:break-word}
+.hn-box{margin-top:6px;border-radius:16px;overflow:hidden;box-shadow:inset 0 0 0 1px var(--line);background:var(--surface)}
+.hn-tabs{display:flex;align-items:center;gap:4px;padding:6px 8px;background:var(--surface-2);border-bottom:1px solid var(--line)}
+.hn-tabs [data-act=hn-tab]{border:0;background:none;border-radius:10px;padding:5px 10px;font:600 13px var(--f-body);color:var(--muted);cursor:pointer}
+.hn-tabs [data-act=hn-tab].on{background:var(--surface);color:var(--ink);box-shadow:0 1px 3px rgba(0,0,0,.08)}
+.hn-tabs small{font-weight:400;opacity:.7}
+.hn-badge{font:700 11px ui-monospace,Menlo,monospace;color:#0369A1;background:#E0F2FE;padding:3px 7px;border-radius:7px;margin-right:2px}
+.hn-code{margin:0;max-height:320px;overflow:auto;padding:12px 14px;background:#0F172A;color:#E2E8F0;font:13px/1.6 ui-monospace,'SF Mono',Menlo,Consolas,monospace;white-space:pre-wrap;word-break:break-word;tab-size:2}
+.hn-code.tall{max-height:460px;height:460px;border-radius:14px}
+.hn-code .ht{color:#7DD3FC;font-weight:500}.hn-code .ha{color:#FCD34D}.hn-code .hv{color:#86EFAC}.hn-code .hc{color:#64748B}
+.hn-full{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.hn-full-col{min-width:0;display:flex;flex-direction:column;gap:6px}
+.hn-full-col .hn-frame{border-radius:14px;box-shadow:inset 0 0 0 1px var(--line)}
+.hn-full-h{font:600 14px var(--f-head)}.hn-full-h small{font-weight:400;color:var(--muted);font-size:12px}
+.hn-flag{color:#0369A1;font-family:ui-monospace,Menlo,monospace;font-size:11.5px}
+.nb.code{font:700 11px ui-monospace,Menlo,monospace;color:#0369A1;background:#E0F2FE}
+[data-theme=dark] .hn-badge,[data-theme=dark] .nb.code{background:rgba(56,189,248,.15);color:#7DD3FC}[data-theme=dark] .hn-flag{color:#7DD3FC}
+[data-device=mobile] .hn-full{grid-template-columns:1fr}[data-device=mobile] .hn-code.tall{height:260px}
 
 </style>
 </head>
@@ -3110,7 +3144,7 @@ if (typeof module !== 'undefined') module.exports = ExamParser;
 </script>
 <script>
 /* โลโก้: ภาพครูปลื้ม (ไฟล์ต้นฉบับ src/logo.svg ฝังตอน build) */
-const APP_VER = '12.3 · 24 พ.ย. 2569';
+const APP_VER = '13.0 · 24 พ.ย. 2569';
 let LOGO_N = 0;
 function logoSVG() { const k = 'L' + (++LOGO_N); return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><defs><linearGradient id="lgb" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3B9BFF"/><stop offset=".5" stop-color="#0A5BE0"/><stop offset="1" stop-color="#062C78"/></linearGradient><linearGradient id="lgs" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset=".6" stop-color="#FFF4D6"/><stop offset="1" stop-color="#FFD978"/></linearGradient><radialGradient id="lgc" cx=".3" cy=".08" r=".75"><stop offset="0" stop-color="#fff" stop-opacity=".55"/><stop offset=".5" stop-color="#fff" stop-opacity=".08"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient></defs><rect width="48" height="48" rx="13" fill="url(#lgb)"/><rect width="48" height="48" rx="13" fill="url(#lgc)"/><rect x=".75" y=".75" width="46.5" height="46.5" rx="12.3" fill="none" stroke="#fff" stroke-opacity=".45" stroke-width="1.2"/><g fill="none" stroke="#04235F" stroke-opacity=".35" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" transform="translate(0 1.2)"><path d="M21.2 17 C19.8 14.6 17.4 13.6 14.8 13.6 C11 13.6 8.6 15.6 8.6 18.5 C8.6 21.8 11.6 22.9 14.9 23.9 C18.6 25 21.6 26.4 21.6 29.8 C21.6 33 18.8 34.6 15.1 34.6 C12 34.6 9.5 33.4 8 31.1"/><path d="M26.6 14 L39.6 34.2 M39.6 14 L26.6 34.2"/></g><g fill="none" stroke="url(#lgs)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M21.2 17 C19.8 14.6 17.4 13.6 14.8 13.6 C11 13.6 8.6 15.6 8.6 18.5 C8.6 21.8 11.6 22.9 14.9 23.9 C18.6 25 21.6 26.4 21.6 29.8 C21.6 33 18.8 34.6 15.1 34.6 C12 34.6 9.5 33.4 8 31.1"/><path d="M26.6 14 L39.6 34.2 M39.6 14 L26.6 34.2"/></g></svg>`.replace('<svg ', '<svg class="logo" aria-hidden="true" ').replace(/\b(lg[bsc])\b/g, '$1' + k); }
 /* =====================================================================
@@ -4564,11 +4598,11 @@ document.addEventListener('drop', e => { const d = e.target.closest?.('[data-dro
 function noteBadges(sub) {
   if (!sub) return '';
   const n = sub.links?.length || 0;
-  return (sub.student_note ? `<span class="nb" title="${esc(sub.student_note)}">💬</span>` : '') + (n ? `<span class="nb" title="${n} ลิงก์">🔗${n > 1 ? n : ''}</span>` : '');
+  return (sub.student_note ? (isHtmlNote(sub.student_note) ? `<span class="nb code" title="นักเรียนส่งโค้ด HTML มา">&lt;/&gt;</span>` : `<span class="nb" title="${esc(sub.student_note.slice(0, 300))}">💬</span>`) : '') + (n ? `<span class="nb" title="${n} ลิงก์">🔗${n > 1 ? n : ''}</span>` : '');
 }
 function subNoteHTML(sub) {
   if (!sub || (!sub.student_note && !sub.links?.length)) return '';
-  return `<div class="sub-note">${sub.student_note ? `<div class="sn-msg"><span class="muted small">💬 นักเรียนเขียนถึงครู</span><div>${esc(sub.student_note)}</div></div>` : ''}
+  return `<div class="sub-note">${sub.student_note ? `<div class="sn-msg"><span class="muted small">💬 นักเรียนเขียนถึงครู${isHtmlNote(sub.student_note) ? ' · <b class="hn-flag">&lt;/&gt; โค้ด HTML</b>' : ''}</span>${hnViewHTML(sub.student_note, 'โค้ด HTML ที่นักเรียนส่งมา')}</div>` : ''}
     ${(sub.links || []).map(u => /^https?:\/\//i.test(u) ? `<a class="sn-link" href="${esc(u)}" target="_blank" rel="noopener noreferrer">🔗 <span>${esc(u.replace(/^https?:\/\//, ''))}</span></a>` : '').join('')}</div>`;
 }
 
@@ -4773,8 +4807,11 @@ function noteDraft(a) {
 function noteFormHTML(a) {
   const d = noteDraft(a);
   return `<div class="note-box">
-    <label class="field"><span>💬 ข้อความถึงครู <small class="muted">(ไม่บังคับ)</small></span>
-      <textarea class="input" rows="2" maxlength="1000" placeholder="เช่น ทำงานกลุ่มกับเลขที่ 5, 12, 18 หรือบอกอะไรครูก็ได้" data-inp="stu-note" data-id="${a.id}">${esc(d.note)}</textarea></label>
+    <div class="field"><span class="hn-label">💬 ข้อความถึงครู <small class="muted">(ไม่บังคับ · พิมพ์โค้ด HTML ได้)</small>
+        <button type="button" class="hn-mode ${isHtmlNote(d.note) ? 'on' : ''}" data-act="hn-code-mode" data-id="${a.id}">&lt;/&gt; โหมดโค้ด HTML</button></span>
+      <div class="hn-snips" data-for="${a.id}" ${isHtmlNote(d.note) ? '' : 'hidden'}>${[['page', 'โครงหน้า'], ['b', '<b>'], ['a', '<a> ลิงก์'], ['img', '<img> รูป'], ['list', '<ul> รายการ'], ['table', '<table>'], ['style', '<style>']].map(([k, l]) => `<button type="button" class="chip" data-act="hn-snip" data-id="${a.id}" data-k="${k}">${esc(l)}</button>`).join('')}<span class="hn-count" data-for="${a.id}">${(d.note || '').length.toLocaleString()} / ${HN_MAX.toLocaleString()}</span></div>
+      <textarea class="input ${isHtmlNote(d.note) ? 'mono code-on' : ''}" rows="${isHtmlNote(d.note) ? 8 : 2}" maxlength="${HN_MAX}" spellcheck="false" placeholder="เช่น ทำงานกลุ่มกับเลขที่ 5, 12, 18 หรือบอกอะไรครูก็ได้ · พิมพ์โค้ด HTML เช่น <h1>สวัสดี</h1> แล้วจะเห็นผลลัพธ์ด้านล่าง" data-inp="stu-note" data-id="${a.id}">${esc(d.note)}</textarea>
+      ${hnLiveHTML(a.id, d.note)}</div>
     <div class="field"><span>🔗 ลิงก์อ้างอิง / ลิงก์งาน <small class="muted">(ไม่บังคับ · สูงสุด 5 ลิงก์)</small></span>
       <div class="link-rows">${d.links.map((u, k) => `<div class="link-row"><input class="input" type="url" inputmode="url" placeholder="https://… เช่น ลิงก์ Canva, Google Docs, YouTube, เว็บที่ใช้อ้างอิง" value="${esc(u)}" data-inp="stu-link" data-id="${a.id}" data-k="${k}">
         ${d.links.length > 1 || u ? `<button type="button" class="btn ghost icon sm" data-act="stu-link-del" data-id="${a.id}" data-k="${k}" aria-label="ลบลิงก์">${ic('x')}</button>` : ''}</div>`).join('')}</div>
@@ -4783,7 +4820,7 @@ function noteFormHTML(a) {
 }
 function noteReadHTML(a) {
   if (!a.student_note && !(a.links || []).length) return '';
-  return `<div class="note-read">${a.student_note ? `<div><b>💬 ข้อความถึงครู:</b> ${esc(a.student_note)}</div>` : ''}
+  return `<div class="note-read">${a.student_note ? `<div><b>💬 ข้อความถึงครู:</b> ${hnViewHTML(a.student_note, 'ข้อความถึงครู')}</div>` : ''}
     ${(a.links || []).map(u => `<a href="${esc(u)}" target="_blank" rel="noopener noreferrer">🔗 ${esc(u.replace(/^https?:\/\//, '').slice(0, 70))}</a>`).join('')}</div>`;
 }
 function sendBarHTML(a) {
@@ -4800,7 +4837,7 @@ function noteTouched(aid) {
   const slot = document.getElementById('send-' + aid); if (slot) slot.innerHTML = sendBarHTML(a);
 }
 Object.assign(INP, {
-  'stu-note': el => { const a = (stuState.asg || []).find(x => x.id === el.dataset.id); noteDraft(a).note = el.value; noteTouched(a.id); },
+  'stu-note': el => { const a = (stuState.asg || []).find(x => x.id === el.dataset.id); noteDraft(a).note = el.value; noteTouched(a.id); hnLiveUpdate(el); },
   'stu-link': el => { const a = (stuState.asg || []).find(x => x.id === el.dataset.id); noteDraft(a).links[+el.dataset.k] = el.value; noteTouched(a.id); },
 });
 Object.assign(ACT, {
@@ -8725,6 +8762,109 @@ Object.assign(ACT, {
   'pw-req-dismiss': async el => { try { await q(sb.rpc('admin_dismiss_reset', { p_id: el.dataset.id })); await pwReload(); } catch (e) { toast(errMsg(e), true); } },
 });
 Object.assign(CHG, { 'pw-show': el => $$('#modal-root input[name^=new], #modal-root input[name=cur]').forEach(i => { i.type = el.checked ? 'text' : 'password'; }) });
+
+/* =====================================================================
+   ข้อความถึงครูตอนส่งงาน: รองรับโค้ด HTML
+   · นักเรียนพิมพ์โค้ดแล้วเห็นผลลัพธ์ทันที
+   · ครูดูได้ทั้ง "ผลลัพธ์" และ "โค้ด" (มีสีแยกแท็ก) + เปิดเต็มจอ
+   · แสดงผลใน iframe แบบ sandbox (ไม่มีสิทธิ์เข้าถึงหน้าเว็บ/ข้อมูลล็อกอิน) จึงปลอดภัย
+   ===================================================================== */
+const HN_MAX = 20000;
+const isHtmlNote = t => /<\s*(!doctype|[a-z][a-z0-9-]*)(\s[^>]*)?\/?>/i.test(t || '');
+function hnDoc(code) {
+  if (/<html[\s>]/i.test(code)) return code;
+  return `<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><style>body{font-family:system-ui,'Noto Sans Thai',sans-serif;margin:0;padding:14px;line-height:1.6;color:#111}img,video,iframe{max-width:100%}</style></head><body>${code}</body></html>`;
+}
+function hnFrame(code, h = 240) {
+  return `<div class="hn-frame" style="height:${h}px"><iframe sandbox="allow-scripts" referrerpolicy="no-referrer" loading="lazy" title="ผลลัพธ์จากโค้ด HTML" srcdoc="${esc(hnDoc(code))}"></iframe></div>`;
+}
+/* ใส่สีโค้ด: คอมเมนต์ · แท็ก · ชื่อแอตทริบิวต์ · ค่า */
+function hnHighlight(code) {
+  return esc(code)
+    .replace(/(&lt;!--[\s\S]*?--&gt;)/g, '<i class="hc">$1</i>')
+    .replace(/(&lt;\/?)([a-zA-Z][\w-]*)([\s\S]*?)(\/?&gt;)/g, (m, a, tag, attrs, z) =>
+      `<b class="ht">${a}${tag}</b>${attrs.replace(/([\w-:]+)(=)(&quot;[\s\S]*?&quot;|&#39;[\s\S]*?&#39;|[^\s&]+)?/g, (mm, n, eq, v) => `<span class="ha">${n}</span>${eq}${v ? `<span class="hv">${v}</span>` : ''}`)}<b class="ht">${z}</b>`);
+}
+function hnLines(code) { return code.split('\n').length; }
+
+/* กล่องแสดงข้อความ (ใช้ทั้งฝั่งครูและหน้าที่นักเรียนส่งแล้ว) */
+let HN_SEQ = 0;
+function hnViewHTML(note, title = 'ข้อความถึงครู') {
+  if (!isHtmlNote(note)) return `<div class="hn-text">${esc(note)}</div>`;
+  const id = 'hn' + (++HN_SEQ);
+  HN_STORE[id] = { note, title };
+  return `<div class="hn-box" id="${id}">
+    <div class="hn-tabs"><span class="hn-badge">&lt;/&gt; HTML</span>
+      <button class="on" data-act="hn-tab" data-id="${id}" data-t="view">👁 ผลลัพธ์</button><button data-act="hn-tab" data-id="${id}" data-t="code">🧾 โค้ด <small>${hnLines(note)} บรรทัด</small></button>
+      <span class="spacer"></span><button class="hn-mini" data-act="hn-copy" data-id="${id}" title="คัดลอกโค้ด">📋</button><button class="hn-mini" data-act="hn-full" data-id="${id}" title="เปิดเต็มจอ">⤢</button></div>
+    <div class="hn-pane view">${hnFrame(note, 240)}</div>
+    <div class="hn-pane code" hidden><pre class="hn-code">${hnHighlight(note)}</pre></div></div>`;
+}
+var HN_STORE = {};
+function hnFullModal(id) {
+  const o = HN_STORE[id]; if (!o) return;
+  openModal({
+    title: `</> ${o.title}`, wide: true,
+    body: `<div class="hn-full"><div class="hn-full-col"><div class="hn-full-h">🧾 โค้ดที่นักเรียนพิมพ์ <small>${hnLines(o.note)} บรรทัด · ${o.note.length.toLocaleString()} ตัวอักษร</small></div><pre class="hn-code tall">${hnHighlight(o.note)}</pre></div>
+      <div class="hn-full-col"><div class="hn-full-h">👁 ผลลัพธ์</div>${hnFrame(o.note, 460)}</div></div>`,
+    actions: [{ label: '📋 คัดลอกโค้ด', onClick: () => hnCopy(o.note) }, { label: 'ปิด', kind: 'primary', onClick: closeModal }],
+  });
+}
+async function hnCopy(t) { try { await navigator.clipboard.writeText(t); toast('คัดลอกโค้ดแล้ว'); } catch (e) { toast('คัดลอกไม่สำเร็จ', true); } }
+
+/* ---------- ฝั่งนักเรียน: ตัวอย่างผลลัพธ์สด ---------- */
+function hnLiveHTML(aid, note) {
+  if (!isHtmlNote(note)) return `<div class="hn-live" data-for="${aid}" hidden></div>`;
+  return `<div class="hn-live" data-for="${aid}"><div class="hn-live-h"><span>👁 ตัวอย่างผลลัพธ์ <small>(ครูจะเห็นแบบนี้ และเห็นโค้ดด้วย)</small></span><button type="button" class="hn-mini" data-act="hn-live-full" data-id="${aid}" title="ดูเต็มจอ">⤢</button></div>${hnFrame(note, 220)}</div>`;
+}
+const HN_T = {};
+function hnLiveUpdate(el) {
+  const aid = el.dataset.id, box = document.querySelector(`.hn-live[data-for="${aid}"]`); if (!box) return;
+  el.classList.toggle('mono', isHtmlNote(el.value) || el.classList.contains('code-on'));
+  clearTimeout(HN_T[aid]);
+  HN_T[aid] = setTimeout(() => {
+    const v = el.value;
+    if (!isHtmlNote(v)) { box.hidden = true; box.innerHTML = ''; return; }
+    const fr = box.querySelector('iframe');
+    if (fr) fr.srcdoc = hnDoc(v);
+    else { box.outerHTML = hnLiveHTML(aid, v); }
+    const nb = document.querySelector(`.hn-live[data-for="${aid}"]`); if (nb) nb.hidden = false;
+    const cnt = document.querySelector(`.hn-count[data-for="${aid}"]`); if (cnt) cnt.textContent = `${v.length.toLocaleString()} / ${HN_MAX.toLocaleString()}`;
+  }, 350);
+}
+/* แทรกแท็ก/โครงสร้างสำเร็จรูป */
+const HN_SNIP = {
+  page: '<h1>หัวข้อ</h1>\n<p>เนื้อหา…</p>',
+  b: '<b>ตัวหนา</b>', img: '<img src="https://" alt="รูป" width="300">', a: '<a href="https://" target="_blank">ลิงก์</a>',
+  list: '<ul>\n  <li>ข้อ 1</li>\n  <li>ข้อ 2</li>\n</ul>', table: '<table border="1">\n  <tr><th>หัว</th><th>หัว</th></tr>\n  <tr><td>ข้อมูล</td><td>ข้อมูล</td></tr>\n</table>',
+  style: '<style>\n  h1 { color: royalblue; }\n</style>',
+};
+function hnInsert(aid, key) {
+  const ta = document.querySelector(`textarea[data-inp="stu-note"][data-id="${aid}"]`); if (!ta) return;
+  const snip = HN_SNIP[key] || '', s = ta.selectionStart ?? ta.value.length, e = ta.selectionEnd ?? s;
+  ta.value = ta.value.slice(0, s) + snip + ta.value.slice(e);
+  ta.focus(); ta.selectionStart = ta.selectionEnd = s + snip.length;
+  ta.dispatchEvent(new Event('input', { bubbles: true }));
+}
+
+Object.assign(ACT, {
+  'hn-tab': el => { const box = document.getElementById(el.dataset.id); if (!box) return;
+    box.querySelectorAll('.hn-tabs [data-act=hn-tab]').forEach(b => b.classList.toggle('on', b === el));
+    box.querySelector('.hn-pane.view').hidden = el.dataset.t !== 'view'; box.querySelector('.hn-pane.code').hidden = el.dataset.t !== 'code'; },
+  'hn-full': el => hnFullModal(el.dataset.id),
+  'hn-copy': el => { const o = HN_STORE[el.dataset.id]; if (o) hnCopy(o.note); },
+  'hn-live-full': el => { const ta = document.querySelector(`textarea[data-inp="stu-note"][data-id="${el.dataset.id}"]`); if (!ta) return; const id = 'hnl' + el.dataset.id; HN_STORE[id] = { note: ta.value, title: 'ตัวอย่างโค้ดของฉัน' }; hnFullModal(id); },
+  'hn-snip': el => hnInsert(el.dataset.id, el.dataset.k),
+  'hn-code-mode': el => { const ta = document.querySelector(`textarea[data-inp="stu-note"][data-id="${el.dataset.id}"]`); if (!ta) return;
+    const on = !ta.classList.contains('code-on'); ta.classList.toggle('code-on', on); ta.classList.toggle('mono', on || isHtmlNote(ta.value)); ta.rows = on ? 8 : 2;
+    el.classList.toggle('on', on); document.querySelector(`.hn-snips[data-for="${el.dataset.id}"]`)?.toggleAttribute('hidden', !on); if (on) ta.focus(); },
+});
+/* Tab = เว้นวรรค 2 ช่อง ในโหมดโค้ด */
+document.addEventListener('keydown', e => {
+  const t = e.target; if (e.key !== 'Tab' || !t?.matches?.('textarea.code-on')) return;
+  e.preventDefault(); const s = t.selectionStart; t.value = t.value.slice(0, s) + '  ' + t.value.slice(t.selectionEnd); t.selectionStart = t.selectionEnd = s + 2;
+  t.dispatchEvent(new Event('input', { bubbles: true }));
+});
 
 /* =====================================================================
    เวอร์ชันมือถือ — โครงหน้าจอแยกจาก PC
