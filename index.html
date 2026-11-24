@@ -2659,41 +2659,59 @@ textarea.mono::placeholder{color:#64748B}
 .red-pill{display:inline-flex;align-items:center;gap:4px;font:700 12px var(--f-body);color:#fff;background:#FF3B30;padding:2px 9px;border-radius:99px;vertical-align:3px;box-shadow:0 3px 8px -3px rgba(255,59,48,.7)}
 .m-tabs a{position:relative}
 .tab-badge{position:absolute;top:2px;left:calc(50% + 6px);min-width:18px;height:18px;padding:0 5px;border-radius:99px;background:#FF3B30;color:#fff;font:700 11px var(--f-head);font-style:normal;display:grid;place-items:center;box-shadow:0 0 0 2px var(--surface)}
-/* ---------- กล่องแชทแบบแถบด้านล่าง (แทนปุ่มวงกลม) ---------- */
-#stu-chat,#t-chat{right:24px;bottom:0;gap:0}
-.sc-fab.dock{width:300px;height:auto;min-height:58px;border-radius:18px 18px 0 0;display:flex;align-items:center;gap:12px;padding:10px 16px 10px 12px;text-align:left;font:inherit;font-size:inherit;
-  background:linear-gradient(180deg,#14213D,#0B1428);color:#fff;transform:none!important;
-  box-shadow:0 -10px 30px -12px rgba(10,20,50,.55),inset 0 1px 0 rgba(255,255,255,.18),inset 0 0 0 1px rgba(255,255,255,.06)}
-.sc-fab.dock:hover{background:linear-gradient(180deg,#1B2B4E,#0F1A33)}
-.sc-fab.dock .dk-ic{position:relative;flex:none;width:38px;height:38px;border-radius:12px;display:grid;place-items:center;background:linear-gradient(160deg,#3FA0FF,#0A6CF0);box-shadow:0 6px 14px -6px rgba(10,108,240,.9)}
-.sc-fab.dock.t .dk-ic{background:linear-gradient(160deg,#4ADE80,#16A34A);box-shadow:0 6px 14px -6px rgba(22,163,74,.9)}
+/* ---------- กล่องแชท: แถบกระจก Liquid Glass ลอยมุมล่าง + เปิด/ปิดแบบสปริง ---------- */
+#stu-chat,#t-chat{right:22px;bottom:18px;gap:10px}
+.sc-fab.dock{position:relative;width:320px;height:auto;min-height:60px;border-radius:22px;display:flex;align-items:center;gap:12px;padding:10px 14px 10px 10px;text-align:left;font:inherit;color:var(--ink);overflow:hidden;
+  background:linear-gradient(160deg,rgba(255,255,255,.78),rgba(255,255,255,.52));backdrop-filter:blur(24px) saturate(1.8);-webkit-backdrop-filter:blur(24px) saturate(1.8);
+  box-shadow:0 18px 40px -18px rgba(20,50,120,.45),0 2px 6px -2px rgba(20,50,120,.15),inset 0 1.5px 0 rgba(255,255,255,.95),inset 0 -1px 0 rgba(255,255,255,.4),inset 0 0 0 1px rgba(255,255,255,.65);
+  transition:transform .35s cubic-bezier(.2,1.4,.4,1),box-shadow .3s,border-radius .3s;animation:none}
+.sc-fab.dock::before{content:'';position:absolute;inset:0 0 50% 0;border-radius:inherit;background:linear-gradient(180deg,rgba(255,255,255,.55),transparent);pointer-events:none}
+.sc-fab.dock:hover{transform:translateY(-3px)!important;background:linear-gradient(160deg,rgba(255,255,255,.86),rgba(255,255,255,.6));box-shadow:0 24px 46px -18px rgba(20,50,120,.5),0 2px 6px -2px rgba(20,50,120,.15),inset 0 1.5px 0 #fff,inset 0 0 0 1px rgba(255,255,255,.75)}
+.sc-fab.dock:active{transform:scale(.97)!important;transition-duration:.12s}
+.sc-fab.dock.on{transform:none!important}
+.sc-fab.dock .dk-ic{position:relative;flex:none;width:40px;height:40px;border-radius:13px;display:grid;place-items:center;color:#fff;background:linear-gradient(160deg,#5AB0FF,#0A6CF0);box-shadow:0 8px 16px -8px rgba(10,108,240,.9),inset 0 1px 0 rgba(255,255,255,.55)}
+.sc-fab.dock.t .dk-ic{background:linear-gradient(160deg,#5BE38A,#16A34A);box-shadow:0 8px 16px -8px rgba(22,163,74,.9),inset 0 1px 0 rgba(255,255,255,.55)}
 .sc-fab.dock .dk-ic svg{width:22px;height:22px}
-.dk-on{position:absolute;right:-3px;bottom:-3px;width:12px;height:12px;border-radius:50%;background:#34C759;box-shadow:0 0 0 2.5px #14213D}
-.dk-tx{flex:1;min-width:0;display:flex;flex-direction:column;line-height:1.3}
-.dk-tx b{font:700 14.5px var(--f-head);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.dk-tx small{font-size:12px;color:#AFC3E6;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.sc-fab.dock.has-new .dk-tx small{color:#FFD1CE;font-weight:600}
-.sc-fab.dock .sc-badge{position:static;box-shadow:none;flex:none}
-.dk-chev{flex:none;width:9px;height:9px;border-left:2px solid #AFC3E6;border-top:2px solid #AFC3E6;transform:rotate(45deg) translate(2px,2px);transition:transform .25s}
+.dk-on{position:absolute;right:-3px;bottom:-3px;width:12px;height:12px;border-radius:50%;background:#34C759;box-shadow:0 0 0 2.5px rgba(255,255,255,.95)}
+.dk-tx{flex:1;min-width:0;display:flex;flex-direction:column;line-height:1.3;position:relative}
+.dk-tx b{font:700 14.5px var(--f-head);color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.dk-tx small{font-size:12px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sc-fab.dock.has-new .dk-tx small{color:#E5383B;font-weight:600}
+.sc-fab.dock .sc-badge{position:relative;top:auto;right:auto;box-shadow:0 3px 8px -2px rgba(255,59,48,.6);flex:none;animation:none}
+.dk-chev{flex:none;width:9px;height:9px;border-left:2px solid var(--muted);border-top:2px solid var(--muted);transform:rotate(45deg) translate(2px,2px);transition:transform .4s cubic-bezier(.2,1.4,.4,1)}
 .sc-fab.dock.on .dk-chev{transform:rotate(225deg) translate(2px,2px)}
-.sc-fab.dock.on{border-radius:0 0 0 0;background:linear-gradient(180deg,#0F1A33,#0B1428)}
-.sc-fab.dock.has-new:not(.on){animation:dk-glow 2s ease-in-out infinite}
-@keyframes dk-glow{0%,100%{box-shadow:0 -10px 30px -12px rgba(10,20,50,.55),inset 0 1px 0 rgba(255,255,255,.18)}50%{box-shadow:0 -10px 34px -8px rgba(255,59,48,.55),inset 0 1px 0 rgba(255,255,255,.18),inset 0 0 0 1.5px rgba(255,90,80,.7)}}
-/* หน้าต่างแชทต่อกับแถบ */
-#stu-chat .sc-panel,#t-chat .sc-panel{width:300px;border-radius:22px 22px 0 0;height:min(520px,calc(100vh - 140px));animation:sc-up .25s cubic-bezier(.2,.9,.3,1)}
+.sc-fab.dock.has-new:not(.on)::after{content:'';position:absolute;inset:0;border-radius:inherit;pointer-events:none;box-shadow:inset 0 0 0 1.5px rgba(255,59,48,.55);animation:dk-ring 2.2s ease-in-out infinite}
+@keyframes dk-ring{0%,100%{opacity:.25}50%{opacity:1}}
+/* หน้าต่างแชท: กระจกเดียวกัน */
+#stu-chat .sc-panel,#t-chat .sc-panel{width:320px;border-radius:26px;height:min(540px,calc(100vh - 150px));transform-origin:85% 100%;animation:none;
+  background:linear-gradient(170deg,rgba(255,255,255,.8),rgba(255,255,255,.62));backdrop-filter:blur(28px) saturate(1.8);-webkit-backdrop-filter:blur(28px) saturate(1.8);
+  box-shadow:0 30px 60px -24px rgba(20,50,120,.45),inset 0 1.5px 0 rgba(255,255,255,.95),inset 0 0 0 1px rgba(255,255,255,.65)}
+#stu-chat .sc-panel.pop-in,#t-chat .sc-panel.pop-in{animation:glass-in .5s cubic-bezier(.2,1.25,.35,1) both}
+#stu-chat .sc-panel.closing,#t-chat .sc-panel.closing{animation:glass-out .26s cubic-bezier(.5,0,.75,.4) both}
+@keyframes glass-in{0%{opacity:0;transform:translateY(26px) scale(.9);filter:blur(8px)}60%{opacity:1;filter:blur(0)}100%{opacity:1;transform:none;filter:none}}
+@keyframes glass-out{to{opacity:0;transform:translateY(22px) scale(.92);filter:blur(6px)}}
+.sc-panel.pop-in .ch-th,.sc-panel.pop-in .ch-msg{animation:ch-stagger .45s cubic-bezier(.2,.9,.3,1) both}
+.sc-panel.pop-in .ch-th:nth-child(2){animation-delay:.04s}.sc-panel.pop-in .ch-th:nth-child(3){animation-delay:.08s}.sc-panel.pop-in .ch-th:nth-child(n+4){animation-delay:.12s}
+@keyframes ch-stagger{from{opacity:0;transform:translateY(8px)}}
+#stu-chat .sc-head,#t-chat .sc-head{border-bottom-color:rgba(120,140,170,.18)}
 @media (min-width:1100px){#stu-chat .sc-panel,#t-chat .sc-panel,#stu-chat .sc-fab.dock,#t-chat .sc-fab.dock{width:360px}}
-[data-theme=dark] .sc-fab.dock{background:linear-gradient(180deg,#1E2A44,#141C30);box-shadow:0 -10px 30px -12px #000,inset 0 1px 0 rgba(255,255,255,.12),inset 0 0 0 1px rgba(140,190,255,.15)}
-/* มือถือ: แถบเต็มความกว้าง ชิดล่าง (ครู: อยู่เหนือแถบเมนู) */
-[data-device=mobile] #stu-chat{left:10px;right:10px;bottom:0;align-items:stretch}
+/* โหมดมืด: กระจกเทาฟ้าโปร่ง ไม่ดำทึบ */
+[data-theme=dark] .sc-fab.dock{background:linear-gradient(160deg,rgba(70,90,130,.55),rgba(40,55,85,.45));box-shadow:0 18px 40px -18px #000,inset 0 1.5px 0 rgba(255,255,255,.25),inset 0 0 0 1px rgba(255,255,255,.12)}
+[data-theme=dark] .sc-fab.dock::before{background:linear-gradient(180deg,rgba(255,255,255,.12),transparent)}
+[data-theme=dark] .dk-on{box-shadow:0 0 0 2.5px #2B3A58}
+[data-theme=dark] #stu-chat .sc-panel,[data-theme=dark] #t-chat .sc-panel{background:linear-gradient(170deg,rgba(45,60,90,.75),rgba(25,35,55,.7));box-shadow:0 30px 60px -24px #000,inset 0 1.5px 0 rgba(255,255,255,.2),inset 0 0 0 1px rgba(255,255,255,.1)}
+/* มือถือ */
+[data-device=mobile] #stu-chat{left:10px;right:10px;bottom:10px;align-items:stretch}
 [data-device=mobile] #stu-chat .sc-fab.dock,[data-device=mobile] #stu-chat .sc-panel{width:100%}
-[data-device=mobile] #t-chat{left:auto;right:12px;bottom:calc(88px + env(safe-area-inset-bottom));align-items:flex-end}
-[data-device=mobile] #t-chat .sc-fab.dock{width:auto;max-width:calc(100vw - 24px);border-radius:18px;min-height:48px;padding:6px 14px 6px 6px}
+[data-device=mobile] #stu-chat .sc-panel{height:calc(100dvh - 120px)}
+[data-device=mobile] #t-chat{left:auto;right:12px;bottom:calc(92px + env(safe-area-inset-bottom));align-items:flex-end}
+[data-device=mobile] #t-chat .sc-fab.dock{width:auto;max-width:calc(100vw - 24px);border-radius:20px;min-height:50px;padding:6px 14px 6px 6px}
 [data-device=mobile] #t-chat .sc-fab.dock .dk-tx small,[data-device=mobile] #t-chat .sc-fab.dock .dk-chev{display:none}
 [data-device=mobile] #t-chat .sc-fab.dock .dk-tx b{font-size:13.5px}
-[data-device=mobile] #t-chat .sc-fab.dock .dk-ic{width:34px;height:34px}
-[data-device=mobile] #t-chat .sc-panel{width:calc(100vw - 24px);border-radius:22px;margin-bottom:8px}
-[data-device=mobile] .stu{padding-bottom:80px}
-@media (prefers-reduced-motion:reduce){.sc-fab.dock{animation:none!important}}
+[data-device=mobile] #t-chat .sc-fab.dock .dk-ic{width:36px;height:36px}
+[data-device=mobile] #t-chat .sc-panel{width:calc(100vw - 24px);height:calc(100dvh - 210px)}
+[data-device=mobile] .stu{padding-bottom:90px}
+@media (prefers-reduced-motion:reduce){.sc-fab.dock,.sc-panel{animation:none!important;transition:none!important}}
 
 </style>
 </head>
@@ -3188,7 +3206,7 @@ if (typeof module !== 'undefined') module.exports = ExamParser;
 </script>
 <script>
 /* โลโก้: ภาพครูปลื้ม (ไฟล์ต้นฉบับ src/logo.svg ฝังตอน build) */
-const APP_VER = '13.3 · 24 พ.ย. 2569';
+const APP_VER = '13.4 · 24 พ.ย. 2569';
 let LOGO_N = 0;
 function logoSVG() { const k = 'L' + (++LOGO_N); return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><defs><linearGradient id="lgb" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3B9BFF"/><stop offset=".5" stop-color="#0A5BE0"/><stop offset="1" stop-color="#062C78"/></linearGradient><linearGradient id="lgs" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset=".6" stop-color="#FFF4D6"/><stop offset="1" stop-color="#FFD978"/></linearGradient><radialGradient id="lgc" cx=".3" cy=".08" r=".75"><stop offset="0" stop-color="#fff" stop-opacity=".55"/><stop offset=".5" stop-color="#fff" stop-opacity=".08"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient></defs><rect width="48" height="48" rx="13" fill="url(#lgb)"/><rect width="48" height="48" rx="13" fill="url(#lgc)"/><rect x=".75" y=".75" width="46.5" height="46.5" rx="12.3" fill="none" stroke="#fff" stroke-opacity=".45" stroke-width="1.2"/><g fill="none" stroke="#04235F" stroke-opacity=".35" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" transform="translate(0 1.2)"><path d="M21.2 17 C19.8 14.6 17.4 13.6 14.8 13.6 C11 13.6 8.6 15.6 8.6 18.5 C8.6 21.8 11.6 22.9 14.9 23.9 C18.6 25 21.6 26.4 21.6 29.8 C21.6 33 18.8 34.6 15.1 34.6 C12 34.6 9.5 33.4 8 31.1"/><path d="M26.6 14 L39.6 34.2 M39.6 14 L26.6 34.2"/></g><g fill="none" stroke="url(#lgs)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M21.2 17 C19.8 14.6 17.4 13.6 14.8 13.6 C11 13.6 8.6 15.6 8.6 18.5 C8.6 21.8 11.6 22.9 14.9 23.9 C18.6 25 21.6 26.4 21.6 29.8 C21.6 33 18.8 34.6 15.1 34.6 C12 34.6 9.5 33.4 8 31.1"/><path d="M26.6 14 L39.6 34.2 M39.6 14 L26.6 34.2"/></g></svg>`.replace('<svg ', '<svg class="logo" aria-hidden="true" ').replace(/\b(lg[bsc])\b/g, '$1' + k); }
 /* =====================================================================
@@ -8480,14 +8498,15 @@ function stuChatDraw() {
     ${SC.unread ? `<span class="sc-badge">${SC.unread > 99 ? '99+' : SC.unread}</span>` : ''}<i class="dk-chev" aria-hidden="true"></i></button>`;
   if (!SC.open) { box.innerHTML = fab; return; }
   const t = SC.cur;
-  const panel = !t ? `<div class="sc-panel"><div class="sc-head"><div class="sc-hn"><b>💬 แชทกับครู</b><small>เลือกวิชาที่อยากคุย</small></div></div>
+  const pa = SC.anim ? ' pop-in' : ''; SC.anim = false;
+  const panel = !t ? `<div class="sc-panel${pa}"><div class="sc-head"><div class="sc-hn"><b>💬 แชทกับครู</b><small>เลือกวิชาที่อยากคุย</small></div></div>
       <div class="sc-body sc-list">${!SC.threads ? '<div class="ch-empty"><span class="spin"></span></div>' : SC.threads.length ? SC.threads.map(x => `
         <button class="ch-th ${x.unread ? 'new' : ''}" data-act="sc-open" data-sj="${x.subject_id}"><span class="ch-av ${x.online ? 'on' : ''}" style="--c:${esc(x.color || '#0A84FF')}">${esc((x.subject_name || '?')[0])}</span>
           <span class="ch-tb"><span class="ch-tn"><b>${esc(x.subject_name)}</b>${x.last_at ? `<small>${chatTime(x.last_at)}</small>` : ''}</span><span class="ch-ts">${esc(kru(x.teacher))} · ${x.online ? '<span class="on-txt">ออนไลน์</span>' : 'ออฟไลน์'}</span>
           <span class="ch-tl">${x.last_body ? `${x.last_sender === 'student' ? 'คุณ: ' : ''}${esc(x.last_body)}` : 'ยังไม่เคยคุย · กดเพื่อเริ่ม'}</span></span>${x.unread ? `<span class="ch-un">${x.unread}</span>` : ''}</button>`).join('')
         : '<div class="ch-empty">📚<b>ยังไม่มีวิชาในห้องนี้</b>เมื่อครูเพิ่มวิชา จะคุยกับครูได้ที่นี่</div>'}</div>
       <div class="sc-foot">ข้อความถูกเก็บไว้ ครูและผู้ดูแลเว็บอ่านได้ · ใช้ถ้อยคำสุภาพนะ 🙂</div></div>`
-    : `<div class="sc-panel"><div class="sc-head"><button class="btn ghost icon" data-act="sc-back" aria-label="กลับ">${ic('back')}</button>
+    : `<div class="sc-panel${pa}"><div class="sc-head"><button class="btn ghost icon" data-act="sc-back" aria-label="กลับ">${ic('back')}</button>
         <span class="ch-av ${t.online ? 'on' : ''}" style="--c:${esc(t.color || '#0A84FF')}">${esc((t.subject_name || '?')[0])}</span><div class="sc-hn"><b>${esc(t.subject_name)}</b><small>${esc(kru(t.teacher))} · ${seenText(t.online, t.teacher_seen)}</small></div></div>
       <div class="sc-body ch-msgs" id="sc-msgs">${chatBubbles(SC.msgs, 'student')}</div>
       ${t.blocked ? '<div class="ch-blocked">🚫 ครูปิดการส่งข้อความของคุณไว้ อ่านข้อความจากครูได้ตามปกติ</div>' : `<div class="ch-comp"><textarea id="sc-input" class="input" rows="1" maxlength="500" placeholder="พิมพ์ข้อความถึงครู…">${esc(SC.draft[t.subject_id] || '')}</textarea>
@@ -8536,7 +8555,7 @@ async function scSend() {
   SC.sending = false; el.disabled = false; el.focus();
 }
 Object.assign(ACT, {
-  'sc-toggle': () => { SC.open = !SC.open; stuChatDraw(); if (SC.open) { scLoadThreads(); if (SC.cur) scLoadMsgs(); } },
+  'sc-toggle': () => dockToggle('#stu-chat', SC, stuChatDraw, () => { scLoadThreads(); if (SC.cur) { SC.msgs = null; scLoadMsgs(); } }),
   'sc-open': el => { const t = (SC.threads || []).find(x => x.subject_id === el.dataset.sj); if (!t) return; SC.cur = t; SC.msgs = null; stuChatDraw(); scLoadMsgs(); setTimeout(() => $('#sc-input')?.focus(), 60); },
   'sc-back': () => { SC.cur = null; SC.msgs = null; stuChatDraw(); scLoadThreads(); },
   'sc-send': scSend,
@@ -8661,7 +8680,8 @@ function tChatDraw() {
   const t = TC.cur;
   if (!t) {
     const list = (CHAT.threads || []).filter(x => x.mine).slice(0, 30);
-    box.innerHTML = `<div class="sc-panel"><div class="sc-head"><div class="sc-hn"><b>💬 ข้อความจากนักเรียน</b><small>${CHAT.unread ? `ยังไม่อ่าน ${CHAT.unread}` : 'อ่านครบแล้ว'}</small></div><span class="spacer"></span><a class="btn sm ghost" href="#chat">เปิดเต็มจอ</a></div>
+    const pa = TC.anim ? ' pop-in' : ''; TC.anim = false;
+    box.innerHTML = `<div class="sc-panel${pa}"><div class="sc-head"><div class="sc-hn"><b>💬 ข้อความจากนักเรียน</b><small>${CHAT.unread ? `ยังไม่อ่าน ${CHAT.unread}` : 'อ่านครบแล้ว'}</small></div><span class="spacer"></span><a class="btn sm ghost" href="#chat">เปิดเต็มจอ</a></div>
       <div class="sc-body sc-list">${!CHAT.threads ? '<div class="ch-empty"><span class="spin"></span></div>' : list.length ? list.map(x => `
         <button class="ch-th ${x.unread ? 'new' : ''}" data-act="tc-open" data-sj="${x.subject_id}" data-st="${x.student_id}"><span class="ch-av ${x.online ? 'on' : ''}" style="--c:${esc(x.color || '#0A84FF')}">${esc((x.student_name || '?')[0])}</span>
           <span class="ch-tb"><span class="ch-tn"><b>${esc(x.student_name)}${x.blocked ? ' <em class="ch-blk">🚫</em>' : ''}</b><small>${chatTime(x.last_at)}</small></span><span class="ch-ts">${esc(x.classroom)} · ${esc(x.subject_name)}</span>
@@ -8671,7 +8691,8 @@ function tChatDraw() {
     return;
   }
   const k = chatKey(t.subject_id, t.student_id);
-  box.innerHTML = `<div class="sc-panel"><div class="sc-head"><button class="btn ghost icon" data-act="tc-back" aria-label="กลับ">${ic('back')}</button>
+  const pa2 = TC.anim ? ' pop-in' : ''; TC.anim = false;
+  box.innerHTML = `<div class="sc-panel${pa2}"><div class="sc-head"><button class="btn ghost icon" data-act="tc-back" aria-label="กลับ">${ic('back')}</button>
       <span class="ch-av ${t.online ? 'on' : ''}" style="--c:${esc(t.color || '#0A84FF')}">${esc((t.student_name || '?')[0])}</span><div class="sc-hn"><b>${esc(t.student_name)}</b><small>${seenText(t.online, t.seen)} · ${esc(t.classroom)} · ${esc(t.subject_name)}</small></div>
       <span class="spacer"></span><button class="btn icon sm ghost" data-act="tc-full" title="เปิดเต็มจอ" aria-label="เปิดเต็มจอ">⤢</button></div>
     ${t.blocked ? '<div class="ch-blocked">🚫 บล็อกนักเรียนคนนี้อยู่</div>' : ''}
@@ -8716,7 +8737,7 @@ const _lct = loadChatThreads;
 loadChatThreads = async function (force) { await _lct(force); if ($('#t-chat') && !(TC.open && TC.cur)) tChatDraw(); else if ($('#t-chat')) { const f = $('#t-chat .sc-fab'); if (f && !TC.open) tChatDraw(); } titleBadge(); };
 
 Object.assign(ACT, {
-  'tc-toggle': () => { TC.open = !TC.open; if (TC.open) loadChatThreads(true); tChatDraw(); if (TC.open && TC.cur) tcLoadMsgs(); },
+  'tc-toggle': () => dockToggle('#t-chat', TC, tChatDraw, () => { loadChatThreads(true); if (TC.cur) { TC.msgs = null; tcLoadMsgs(); } }),
   'tc-open': el => tcOpen(el.dataset.sj, el.dataset.st),
   'tc-pop-open': el => { if (ui.route === 'chat') { const t = (CHAT.threads || []).find(x => x.subject_id === el.dataset.sj && x.student_id === el.dataset.st); if (t) chatOpen(t); } else tcOpen(el.dataset.sj, el.dataset.st); },
   'tc-back': () => { TC.cur = null; TC.msgs = null; tChatDraw(); },
@@ -8731,6 +8752,16 @@ document.addEventListener('keydown', e => {
 document.addEventListener('input', e => {
   const el = e.target; if (el?.id === 'tc-input') { chatAutoGrow(el); if (TC.cur) CHAT.draft[chatKey(TC.cur.subject_id, TC.cur.student_id)] = el.value; }
 });
+
+/* เปิด/ปิดกล่องแชทแบบนุ่มนวล: เปิด = เด้งขึ้นจากแถบ · ปิด = ยุบลงก่อนแล้วค่อยเอาออก */
+function dockToggle(sel, st, draw, onOpen) {
+  const box = document.querySelector(sel); if (!box || st.busy) return;
+  if (!st.open) { st.open = true; st.anim = true; draw(); onOpen && onOpen(); return; }
+  const panel = box.querySelector('.sc-panel'), dock = box.querySelector('.sc-fab');
+  if (!panel || matchMedia('(prefers-reduced-motion: reduce)').matches) { st.open = false; draw(); return; }
+  st.busy = true; panel.classList.remove('pop-in'); panel.classList.add('closing'); dock?.classList.remove('on');
+  setTimeout(() => { st.busy = false; st.open = false; draw(); }, 260);
+}
 
 /* =====================================================================
    รหัสผ่านนักเรียน: เปลี่ยนรหัสเอง · ลืมรหัส → ส่งคำขอ · ผู้ดูแลรีเซ็ตเป็นเลขประจำตัว
