@@ -2160,6 +2160,42 @@ h2.hello .wave{display:inline-block;transform-origin:70% 75%;animation:wave 2.4s
 [data-theme=dark] .brand small{color:#D9B866!important}
 .side .brand{gap:12px}
 .present-card .brand b{font-size:24px!important}
+.rk-room-top.risk-h{background:var(--danger-soft);color:var(--danger)}
+/* มุมซ้าย-ขวาหน้านักเรียน: ท็อป 5 */
+.stu-rails{width:min(680px,100%);display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px}
+.stu-rail{border-radius:22px;padding:14px 12px 12px;background:linear-gradient(175deg,#26306A,#151A3A 75%);color:#EEF1FA;box-shadow:0 16px 34px -18px rgba(16,20,48,.8),inset 0 0 0 1px rgba(255,215,90,.28);
+  --g0:#C3CAD6;--g1:#7BE08A;--g2:#4FE3CF;--g3:#86B6FF;--g4:#A2A6FF;--g5:#C4A4FF;--g6:#FFAA66;--g7:#FF7590}
+.rail-h{display:flex;align-items:center;gap:10px;padding:0 4px 10px;border-bottom:1px solid rgba(255,255,255,.1);margin-bottom:6px}
+.rail-h>span{font-size:26px;filter:drop-shadow(0 0 8px rgba(255,210,80,.6))}
+.rail-h b{display:block;font:800 16px var(--f-head);background:linear-gradient(180deg,#FFF6CF,#F4C84A 60%,#D99A1E);-webkit-background-clip:text;background-clip:text;color:transparent}
+.rail-h small{font-size:11.5px;color:#AEB6CF}
+.rail-row{display:flex;align-items:center;gap:8px;padding:8px 6px;border-radius:14px}
+.rail-row+.rail-row{margin-top:2px}
+.rail-row.p1{background:linear-gradient(90deg,rgba(255,200,40,.22),rgba(255,200,40,.04));box-shadow:inset 0 0 0 1px rgba(255,210,80,.45)}
+.rail-row.p2{background:rgba(220,228,240,.08)}.rail-row.p3{background:rgba(230,140,70,.1)}
+.rail-row.me{box-shadow:inset 0 0 0 2px #6FA8FF}
+.rail-md{width:28px;flex:none;text-align:center;font-size:22px;line-height:1}
+.rail-md i{font:800 13px var(--f-head);font-style:normal;display:inline-grid;place-items:center;width:24px;height:24px;border-radius:50%;background:rgba(255,255,255,.12);color:#D8DEEE}
+.rail-b{flex:1;min-width:0}
+.rail-n{font-size:15px;line-height:1.25}.rail-n .ntag{gap:4px;flex-wrap:nowrap}.rail-n .ttl{display:none}
+.rail-n .gname:is(.g0,.g1,.g2,.g3,.g4,.g5,.g6,.g7){color:#fff!important;text-shadow:0 0 8px var(--gl,rgba(255,255,255,.35))}
+.rail-n .gname{font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.rail-n .gname.g8{filter:drop-shadow(0 0 5px rgba(255,200,0,.9))}.rail-n .gname.g9{filter:drop-shadow(0 0 6px rgba(190,150,255,1))}
+.rail-b small{display:block;font-size:11.5px;color:#AEB6CF;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.rail-xp{font:800 15px var(--f-head);text-align:right;line-height:1.1;color:#FFE27A}.rail-xp small{display:block;font-size:10px;color:#AEB6CF;font-weight:500}
+.rail-row.p1 .rail-xp{font-size:17px;text-shadow:0 0 10px rgba(255,200,40,.7)}
+.rail-empty{padding:16px;text-align:center;color:#AEB6CF;font-size:13px}
+.rail-more{display:block;width:100%;margin-top:8px;border:0;border-radius:12px;padding:8px;background:rgba(255,255,255,.08);color:#FFE27A;font:600 13px var(--f-body);cursor:pointer}
+.rail-more:hover{background:rgba(255,255,255,.14)}
+/* จอกว้าง: ปักไว้มุมซ้าย-ขวา */
+@media (min-width:1240px){
+  [data-device=pc] .stu-rails{display:contents}
+  [data-device=pc] .stu-rail{position:fixed;top:96px;width:clamp(230px,calc((100vw - 760px)/2 - 48px),300px);z-index:4;max-height:calc(100vh - 120px);overflow:auto;animation:rail-in .6s cubic-bezier(.2,.9,.25,1) both}
+  [data-device=pc] .stu-rail.l{left:max(20px,calc(50% - 340px - 32px - clamp(230px,calc((100vw - 760px)/2 - 48px),300px)))}
+  [data-device=pc] .stu-rail.r{right:max(20px,calc(50% - 340px - 32px - clamp(230px,calc((100vw - 760px)/2 - 48px),300px)))}
+}
+@keyframes rail-in{from{opacity:0;transform:translateY(12px)}}
+[data-device=mobile] .stu-rails{grid-template-columns:1fr}
 
 </style>
 </head>
@@ -2644,7 +2680,7 @@ if (typeof module !== 'undefined') module.exports = ExamParser;
 </script>
 <script>
 /* โลโก้: ตราหนังสือทองบนพื้นกรมท่า สวมมงกุฎ */
-const APP_VER = '8.3 · 24 พ.ย. 2569';
+const APP_VER = '9.0 · 24 พ.ย. 2569';
 function logoSVG() {
   return `<svg class="logo" viewBox="0 0 48 48" aria-hidden="true"><defs>
     <linearGradient id="lg-navy" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2B3A8F"/><stop offset=".55" stop-color="#16205A"/><stop offset="1" stop-color="#0A0F33"/></linearGradient>
@@ -3397,7 +3433,7 @@ function viewStudent() {
   return `<div class="stu">
     <div class="row" style="width:min(${w}px,100%);margin-bottom:18px"><div class="brand" style="padding:0"><div class="brand-mark">${logoSVG()}</div><div><b>ห้องเรียนครูปลื้ม</b><small style="color:var(--muted)">โซนนักเรียน ✨</small></div></div><span class="spacer"></span>
       <button class="btn ghost icon" data-act="theme" aria-label="สลับธีม">${ic(theme === 'dark' ? 'sun' : 'moon')}</button></div>
-    ${v ? studentHome(v) : `<div class="card stu-card stu-login"><div class="stu-login-art">${ART.desk(sceneHour(), 440)}</div><div class="stu-hi">👋</div><form class="stack" data-form="stu">
+    ${v ? studentHome(v) + stuRailsHTML() : `<div class="card stu-card stu-login"><div class="stu-login-art">${ART.desk(sceneHour(), 440)}</div><div class="stu-hi">👋</div><form class="stack" data-form="stu">
         <div style="text-align:center"><h2 style="font-size:26px">สวัสดี! มาส่งงานกัน</h2><p class="muted" style="margin:2px 0 0">เลือกห้อง แล้วกรอกเลขที่กับเลขประจำตัวนักเรียน</p></div>
         <label class="field"><span>🏫 ห้อง</span><select class="input big" name="cid" required ${stuState.classes ? '' : 'disabled'}><option value="">${stuState.classes ? 'เลือกห้องของฉัน' : 'กำลังโหลดรายชื่อห้อง…'}</option>${cls.map(c => `<option value="${c.id}">${esc(c.name)}</option>`).join('')}</select></label>
         <div class="grid2"><label class="field"><span>🔢 เลขที่</span><input class="input big" type="number" min="1" name="num" required inputmode="numeric" placeholder="เช่น 7"></label>
@@ -6919,6 +6955,25 @@ Object.assign(ACT, {
   'shop-equip': el => shopAction('student_equip_title', el.dataset.id),
 });
 
+/* ---------- มุมซ้าย-ขวาหน้านักเรียน: ท็อป 5 โรงเรียน / ท็อป 5 สายชั้น ---------- */
+function railListHTML(list, titles, school) {
+  if (!list.length) return `<div class="rail-empty">ยังไม่มีใครได้แต้ม</div>`;
+  const md = ['', '🥇', '🥈', '🥉', '4', '5'];
+  return list.slice(0, 5).map((x, k) => { const pos = x.rank || k + 1, r = RANKS[rankIdx(x.xp)];
+    return `<div class="rail-row p${Math.min(pos, 4)}${x.me ? ' me' : ''}"><span class="rail-md">${pos <= 3 ? md[pos] : `<i>${pos}</i>`}</span>
+      <div class="rail-b"><div class="rail-n">${nameTag(x.name.split(' ')[0], x.xp, school ? 99 : x.rank, x.title_id, titles, { noBadge: true })}</div>
+      <small>${r.ic} ${r.n} · ${esc(x.classroom)}</small></div><b class="rail-xp">${x.xp.toLocaleString()}<small>XP</small></b></div>`; }).join('');
+}
+function stuRailsHTML() {
+  const g = stuState.game; if (!g || g.missing) return '';
+  const school = g.school || [], lv = (g.top || []).slice(0, 5);
+  return `<div class="stu-rails">
+    ${school.length || g.school ? `<aside class="stu-rail l" aria-label="5 อันดับแรกของโรงเรียน"><div class="rail-h"><span>🏫</span><div><b>ท็อป 5 โรงเรียน</b><small>ทุกสายชั้น</small></div></div>${railListHTML(school, g.titles, true)}</aside>` : ''}
+    <aside class="stu-rail r" aria-label="5 อันดับแรกของสายชั้น"><div class="rail-h"><span>🎓</span><div><b>ท็อป 5 ${esc(g.level)}</b><small>สายชั้นของฉัน</small></div></div>${railListHTML(lv, g.titles, false)}
+      <button class="rail-more" data-act="stu-tab" data-t="rank">ดูอันดับทั้งหมด ›</button></aside>
+  </div>`;
+}
+
 /* =====================================================================
    ติดตามนักเรียนกลุ่มเสี่ยง (#risk) + การ์ดบนแดชบอร์ด
    เกณฑ์ปรับได้ · เวลาเรียนปิดไว้ก่อน (เปิดเมื่อเริ่มใช้เช็คชื่อในเว็บนี้)
@@ -6975,8 +7030,13 @@ function riskCardHTML() {
 }
 function viewRisk() {
   const cfg = riskCfg(), all = riskData();
-  const rooms = [...new Set(all.map(r => r.c.id))].map(id => db.get('classrooms', id)).sort((a, b) => a.name.localeCompare(b.name, 'th', { numeric: true }));
-  const list = ui.riskCid ? all.filter(r => r.c.id === ui.riskCid) : all;
+  const rooms = store.classrooms.filter(c => store.students.some(st => st.classroom_id === c.id)).sort((a, b) => a.name.localeCompare(b.name, 'th', { numeric: true }));
+  const levels = [...new Set(rooms.map(c => roomLevel(c.name)))];
+  if (!levels.includes(ui.riskLv)) ui.riskLv = levels.length === 1 ? levels[0] : null;
+  const lvRooms = rooms.filter(c => roomLevel(c.name) === ui.riskLv);
+  if (ui.riskCid && !lvRooms.some(c => c.id === ui.riskCid)) ui.riskCid = null;
+  const list = ui.riskCid ? all.filter(r => r.c.id === ui.riskCid) : [];
+  const nOf = ids => { const rs = all.filter(r => ids.includes(r.c.id)); return [rs.length, rs.filter(r => r.level === 'high').length]; };
   const hasAtt = store.attendance_sessions.length > 0;
   return `
   <div class="page-head"><div><h2>ติดตามนักเรียน</h2><p>รายชื่อนักเรียนที่เสี่ยงติด 0 / ร / มส ภาคเรียนนี้ เพื่อตามก่อนปิดภาค</p></div><span class="spacer"></span>
@@ -6987,8 +7047,11 @@ function viewRisk() {
     <label>ขาดสอบตั้งแต่ <input class="input" type="number" min="0" max="10" value="${cfg.exam}" data-chg="risk-cfg" data-k="exam"> ชุด</label>
     <label class="rc-att ${cfg.att ? 'on' : ''}"><input type="checkbox" data-chg="risk-cfg" data-k="att" ${cfg.att ? 'checked' : ''}> นับเวลาเรียนจากเช็คชื่อ (ต่ำกว่า ${cfg.attPct}%)</label>
     ${!cfg.att ? `<span class="small muted">ปิดไว้ก่อน ${hasAtt ? '' : '· ยังไม่มีข้อมูลเช็คชื่อในเว็บนี้ '}เปิดได้เมื่อเริ่มเช็คชื่อในเว็บ</span>` : ''}</div>
-  ${rooms.length > 1 ? `<div class="row" style="gap:6px;flex-wrap:wrap;margin-bottom:12px"><button class="tab ${!ui.riskCid ? 'on' : ''}" data-act="risk-room" data-id="">ทุกห้อง (${all.length})</button>${rooms.map(c => `<button class="tab ${ui.riskCid === c.id ? 'on' : ''}" data-act="risk-room" data-id="${c.id}">${esc(c.name)} (${all.filter(r => r.c.id === c.id).length})</button>`).join('')}</div>` : ''}
-  ${list.length ? `<div class="card"><div class="tbl-wrap"><table class="tbl"><thead><tr><th>ระดับ</th><th>ห้อง</th><th>เลขที่</th><th>ชื่อ - สกุล</th><th>เหตุผล</th><th class="act"></th></tr></thead><tbody>
+  <div class="card rk-pick"><div class="card-h"><h3>1. เลือกสายชั้น</h3></div>
+    <div class="rk-rooms">${levels.map(l => { const [n, h] = nOf(rooms.filter(c => roomLevel(c.name) === l).map(c => c.id)); return `<button class="rk-room ${ui.riskLv === l ? 'on' : ''}" data-act="risk-lv" data-l="${esc(l)}"><b>${esc(l)}</b><small>${rooms.filter(c => roomLevel(c.name) === l).length} ห้อง · ต้องติดตาม ${n} คน</small>${h ? `<span class="rk-room-top risk-h">🔴 เสี่ยงสูง ${h}</span>` : ''}</button>`; }).join('')}</div>
+    ${ui.riskLv ? `<div class="card-h" style="border-top:1px solid var(--line)"><h3>2. เลือกห้อง</h3></div>
+    <div class="rk-rooms">${lvRooms.map(c => { const [n, h] = nOf([c.id]); return `<button class="rk-room ${ui.riskCid === c.id ? 'on' : ''}" data-act="risk-room" data-id="${c.id}"><b>${esc(c.name)}</b><small>${n ? `ต้องติดตาม ${n} คน` : 'ไม่มีนักเรียนกลุ่มเสี่ยง ✓'}</small>${h ? `<span class="rk-room-top risk-h">🔴 เสี่ยงสูง ${h}</span>` : ''}</button>`; }).join('')}</div>` : ''}</div>
+  ${!ui.riskCid ? `<div class="card"><div class="empty rk-empty">👆 <b>${ui.riskLv ? 'เลือกห้อง' : 'เลือกสายชั้นและห้อง'}</b>แล้วรายชื่อนักเรียนที่ต้องติดตามจะแสดงที่นี่</div></div>` : list.length ? `<div class="card"><div class="tbl-wrap"><table class="tbl"><thead><tr><th>ระดับ</th><th>ห้อง</th><th>เลขที่</th><th>ชื่อ - สกุล</th><th>เหตุผล</th><th class="act"></th></tr></thead><tbody>
     ${list.map(r => `<tr><td><span class="chip ${RISK_LV[r.level][1]}">${RISK_LV[r.level][0]}</span></td><td>${esc(r.c.name)}</td><td class="num">${r.st.number}</td><td>${esc(Q.fullName(r.st))}</td><td><div class="rk-chips">${riskChips(r)}</div></td>
       <td class="act"><button class="btn sm ghost" data-act="risk-detail" data-id="${r.st.id}">รายละเอียด</button></td></tr>`).join('')}
   </tbody></table></div></div>` : `<div class="card"><div class="empty">${ic('check')}<b>ไม่มีนักเรียนกลุ่มเสี่ยงตามเกณฑ์นี้</b>ลองปรับเกณฑ์ด้านบนได้</div></div>`}`;
@@ -6997,9 +7060,11 @@ function riskText(list) {
   const by = {}; list.forEach(r => { (by[r.c.name] = by[r.c.name] || []).push(r); });
   return `📋 นักเรียนที่ต้องติดตาม (${list.length} คน)\n` + Object.entries(by).map(([room, rs]) => `\n🏫 ${room}\n` + rs.map(r => `• เลขที่ ${r.st.number} ${Q.fullName(r.st)} — ${r.reasons.map(x => x.t).join(', ')}`).join('\n')).join('\n');
 }
-function riskList() { const all = riskData(); return ui.riskCid ? all.filter(r => r.c.id === ui.riskCid) : all; }
+function riskList() { const all = riskData(); return ui.riskCid ? all.filter(r => r.c.id === ui.riskCid) : []; }
+function roomLevel(n) { const m = String(n).match(/^(.*?)\s*\/\s*\d+$/); return m ? m[1].trim() : String(n); }
 Object.assign(ACT, {
-  'risk-room': el => { ui.riskCid = el.dataset.id || null; render(); },
+  'risk-lv': el => { ui.riskLv = el.dataset.l; ui.riskCid = null; render(); },
+  'risk-room': el => { ui.riskCid = ui.riskCid === el.dataset.id ? null : el.dataset.id; render(); },
   'risk-copy': async () => { await copyText(riskText(riskList())); toast('คัดลอกรายชื่อแล้ว'); },
   'risk-line': () => { const t = riskText(riskList()); window.open(`https://line.me/R/share?text=${encodeURIComponent(t)}`, '_blank'); },
   'risk-xlsx': () => {
