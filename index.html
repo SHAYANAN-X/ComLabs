@@ -2227,11 +2227,11 @@ h2.hello .wave{display:inline-block;transform-origin:70% 75%;animation:wave 2.4s
 .rail-more{display:block;width:100%;margin-top:8px;border:0;border-radius:12px;padding:8px;background:rgba(255,255,255,.08);color:#FFE27A;font:600 13px var(--f-body);cursor:pointer}
 .rail-more:hover{background:rgba(255,255,255,.14)}
 /* จอกว้าง: ปักไว้มุมซ้าย-ขวา */
-@media (min-width:1240px){
+@media (min-width:1400px){
   [data-device=pc] .stu-rails{display:contents}
-  [data-device=pc] .stu-rail{position:fixed;top:96px;width:clamp(230px,calc((100vw - 760px)/2 - 48px),300px);z-index:4;max-height:calc(100vh - 120px);overflow:auto;animation:rail-in .6s cubic-bezier(.2,.9,.25,1) both}
-  [data-device=pc] .stu-rail.l{left:max(20px,calc(50% - 340px - 32px - clamp(230px,calc((100vw - 760px)/2 - 48px),300px)))}
-  [data-device=pc] .stu-rail.r{right:max(20px,calc(50% - 340px - 32px - clamp(230px,calc((100vw - 760px)/2 - 48px),300px)))}
+  [data-device=pc] .stu-rail{position:fixed;top:96px;width:clamp(230px,calc((100vw - 860px)/2 - 48px),300px);z-index:4;max-height:calc(100vh - 120px);overflow:auto;animation:rail-in .6s cubic-bezier(.2,.9,.25,1) both}
+  [data-device=pc] .stu-rail.l{left:max(20px,calc(50% - 410px - 24px - clamp(230px,calc((100vw - 860px)/2 - 48px),300px)))}
+  [data-device=pc] .stu-rail.r{right:max(20px,calc(50% - 410px - 24px - clamp(230px,calc((100vw - 860px)/2 - 48px),300px)))}
 }
 @keyframes rail-in{from{opacity:0;transform:translateY(12px)}}
 [data-device=mobile] .stu-rails{grid-template-columns:1fr}
@@ -2848,6 +2848,31 @@ body:has(#t-chat) .main{padding-bottom:96px}body:has(#stu-chat) .stu{padding-bot
 [data-theme=dark] .rc-st.high{color:#FF8A80}[data-theme=dark] .rc-st.mid{color:#FFB86B}[data-theme=dark] .rc-st.low{color:#8CC4FF}
 [data-device=mobile] .stu-tabs2{grid-template-columns:repeat(6,1fr)!important;overflow:visible}[data-device=mobile] .st2-l{font-size:11px;letter-spacing:-.01em}[data-device=mobile] .st2-badge{right:-11px;min-width:18px;height:18px;font-size:10.5px}[data-device=mobile] .st2-pos{right:-14px;font-size:9.5px}
 
+/* ---------- ขยายหน้าเว็บบนจอคอมให้ใหญ่ขึ้น อ่านสบายขึ้น ---------- */
+@media (min-width:1100px){
+  [data-device=pc] .content{zoom:1.1;max-width:1280px}
+  [data-device=pc] .top{zoom:1.08}
+  [data-device=pc] .nav-scroll,[data-device=pc] .side .brand{zoom:1.06}
+  [data-device=pc] .modal{zoom:1.08}
+  [data-device=pc] .stu-wrap{width:min(760px,100%)}
+  [data-device=pc] .stu>*:not(.stu-rails){zoom:1.08}
+  [data-device=pc] .stu-rails .stu-rail{zoom:1.05}
+}
+/* คลังข้อสอบ: เพิ่มไฟล์ */
+.qb-drop{display:flex;align-items:center;gap:12px;padding:14px 16px;border-radius:18px;cursor:pointer;border:2px dashed color-mix(in srgb,var(--primary) 40%,transparent);background:color-mix(in srgb,var(--primary) 6%,var(--surface));transition:background .2s,border-color .2s,transform .25s cubic-bezier(.2,1.4,.4,1)}
+.qb-drop:hover,.qb-drop.over{background:color-mix(in srgb,var(--primary) 12%,var(--surface));border-color:var(--primary);transform:translateY(-1px)}
+.qb-drop.busy{opacity:.6;pointer-events:none}
+.qd-ic{font-size:30px}.qd-tx{flex:1;display:flex;flex-direction:column}.qd-tx b{font:700 15px var(--f-head)}.qd-tx small{font-size:12.5px;color:var(--muted)}
+.qb-drop .btn{pointer-events:none}
+.qb-prev:empty{display:none}
+.qb-prev{border-radius:16px;padding:12px 14px;background:var(--surface-2);box-shadow:inset 0 0 0 1px var(--line);font-size:13.5px}
+.qp-sum b{font-size:15px}.qp-bad{color:var(--danger);font-weight:600}.qp-warn{color:var(--accent);font-weight:600}
+.qp-list{margin:8px 0 4px;padding-left:22px;display:flex;flex-direction:column;gap:6px}
+.qp-list small{display:flex;flex-wrap:wrap;gap:4px 12px;color:var(--muted);margin-top:2px}.qp-list small .ok{color:var(--ok);font-weight:700}
+/* กันยศทับตัวเลข XP ในแถบสุดจัด */
+.rail-b{flex:1;min-width:0}.rail-xp{flex-shrink:0;position:relative;z-index:1}
+.rail-r{display:flex;min-width:0;overflow:hidden;border-radius:999px}.rail-r>*{max-width:100%;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+
 </style>
 </head>
 <body>
@@ -3341,7 +3366,7 @@ if (typeof module !== 'undefined') module.exports = ExamParser;
 </script>
 <script>
 /* โลโก้: ภาพครูปลื้ม (ไฟล์ต้นฉบับ src/logo.svg ฝังตอน build) */
-const APP_VER = '14.0 · 24 พ.ย. 2569';
+const APP_VER = '14.1 · 24 พ.ย. 2569';
 let LOGO_N = 0;
 function logoSVG() { const k = 'L' + (++LOGO_N); return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><defs><linearGradient id="lgb" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3B9BFF"/><stop offset=".5" stop-color="#0A5BE0"/><stop offset="1" stop-color="#062C78"/></linearGradient><linearGradient id="lgs" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset=".6" stop-color="#FFF4D6"/><stop offset="1" stop-color="#FFD978"/></linearGradient><radialGradient id="lgc" cx=".3" cy=".08" r=".75"><stop offset="0" stop-color="#fff" stop-opacity=".55"/><stop offset=".5" stop-color="#fff" stop-opacity=".08"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient></defs><rect width="48" height="48" rx="13" fill="url(#lgb)"/><rect width="48" height="48" rx="13" fill="url(#lgc)"/><rect x=".75" y=".75" width="46.5" height="46.5" rx="12.3" fill="none" stroke="#fff" stroke-opacity=".45" stroke-width="1.2"/><g fill="none" stroke="#04235F" stroke-opacity=".35" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" transform="translate(0 1.2)"><path d="M21.2 17 C19.8 14.6 17.4 13.6 14.8 13.6 C11 13.6 8.6 15.6 8.6 18.5 C8.6 21.8 11.6 22.9 14.9 23.9 C18.6 25 21.6 26.4 21.6 29.8 C21.6 33 18.8 34.6 15.1 34.6 C12 34.6 9.5 33.4 8 31.1"/><path d="M26.6 14 L39.6 34.2 M39.6 14 L26.6 34.2"/></g><g fill="none" stroke="url(#lgs)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M21.2 17 C19.8 14.6 17.4 13.6 14.8 13.6 C11 13.6 8.6 15.6 8.6 18.5 C8.6 21.8 11.6 22.9 14.9 23.9 C18.6 25 21.6 26.4 21.6 29.8 C21.6 33 18.8 34.6 15.1 34.6 C12 34.6 9.5 33.4 8 31.1"/><path d="M26.6 14 L39.6 34.2 M39.6 14 L26.6 34.2"/></g></svg>`.replace('<svg ', '<svg class="logo" aria-hidden="true" ').replace(/\b(lg[bsc])\b/g, '$1' + k); }
 /* =====================================================================
@@ -7738,8 +7763,8 @@ function stuRailsHTML() {
   const g = stuState.game; if (!g || g.missing) return '';
   const school = g.school || [], lv = (g.top || []).slice(0, 5);
   return `<div class="stu-rails">
-    ${school.length || g.school ? `<aside class="stu-rail l" aria-label="5 อันดับแรกของโรงเรียน"><div class="rail-h"><span>🏫</span><div><b>ท็อป 5 โรงเรียน</b><small>ทุกสายชั้น</small></div></div>${railListHTML(school, g.titles, true)}</aside>` : ''}
-    <aside class="stu-rail r" aria-label="5 อันดับแรกของสายชั้น"><div class="rail-h"><span>🎓</span><div><b>ท็อป 5 ${esc(g.level)}</b><small>สายชั้นของฉัน</small></div></div>${railListHTML(lv, g.titles, false)}
+    ${school.length || g.school ? `<aside class="stu-rail l" aria-label="5 อันดับแรกของโรงเรียน"><div class="rail-h"><span>🏫</span><div><b>สุดจัดในโรงเรียน</b><small>5 อันดับแรก · ทุกสายชั้น</small></div></div>${railListHTML(school, g.titles, true)}</aside>` : ''}
+    <aside class="stu-rail r" aria-label="5 อันดับแรกของสายชั้น"><div class="rail-h"><span>🎓</span><div><b>สุดจัดในสายชั้น</b><small>5 อันดับแรก · ${esc(g.level)}</small></div></div>${railListHTML(lv, g.titles, false)}
       <button class="rail-more" data-act="stu-tab" data-t="rank">ดูอันดับทั้งหมด ›</button></aside>
   </div>`;
 }
@@ -7972,7 +7997,10 @@ function qbImportModal(pre) {
     title: 'เพิ่มคำถามเข้าคลัง', wide: true, ctx: { pre },
     body: `<div class="stack"><div class="grid2"><label class="field"><span>หน่วยการเรียนรู้ *</span><input class="input" name="unit" list="qb-units" placeholder="เช่น หน่วยที่ 1 การแก้ปัญหา" value="${esc(ui.qbLastUnit || '')}"><datalist id="qb-units">${qbUnits().map(u => `<option value="${esc(u)}">`).join('')}</datalist></label>
       <label class="field"><span>ระดับความยาก</span><select class="input" name="diff">${Object.entries(DIFF).map(([k, [t]]) => `<option value="${k}" ${k === 'medium' ? 'selected' : ''}>${t}</option>`).join('')}</select></label></div>
-      <label class="field"><span>วางคำถาม (รูปแบบเดียวกับตอนนำเข้าข้อสอบ)</span><textarea class="input mono" name="text" rows="10" placeholder="1. คำถาม\nก. ตัวเลือก\nข. ตัวเลือก\nตอบ ข">${esc(pre || '')}</textarea></label>
+      <label class="qb-drop" id="qb-drop"><input type="file" accept=".docx,.txt,.xlsx,.xls,.csv" data-chg="qb-file" hidden>
+        <span class="qd-ic">📄</span><span class="qd-tx"><b>เพิ่มไฟล์ข้อสอบ</b><small>Word (.docx) · ข้อความ (.txt) · Excel (.xlsx) · .csv — ระบบอ่านแล้วเรียงข้อให้อัตโนมัติ</small></span><span class="btn sm">เลือกไฟล์</span></label>
+      <label class="field"><span>หรือวางคำถาม (แก้ไขได้ก่อนบันทึก)</span><textarea class="input mono" name="text" rows="10" data-inp="qb-text" placeholder="1. คำถาม\nก. ตัวเลือก\nข. ตัวเลือก\nตอบ ข">${esc(pre || '')}</textarea></label>
+      <div class="qb-prev" id="qb-prev">${qbPrevHTML(pre || '')}</div>
       <div class="small muted">ใส่ "ตอบ ถูก/ผิด" = ถูกผิด · "ตอบ คำ1 | คำ2" = เติมคำ · ต่อท้ายคำถามด้วย [อัตนัย] = อัตนัย · "(2 คะแนน)" กำหนดคะแนน</div></div>`,
     actions: [{ label: 'ยกเลิก', onClick: closeModal }, { label: 'เพิ่มเข้าคลัง', kind: 'primary', onClick: async () => {
       const unit = mval('unit').trim(), qs = ExamParser.parseText(mval('text'));
@@ -7983,6 +8011,47 @@ function qbImportModal(pre) {
     } }],
   });
 }
+/* ตัวอย่างผลการอ่าน: จำนวนข้อ แยกประเภท และ 5 ข้อแรก */
+function qbPrevHTML(text) {
+  const qs = text.trim() ? ExamParser.parseText(text) : [];
+  if (!qs.length) return text.trim() ? '<div class="qp-warn">⚠️ ยังอ่านคำถามไม่ได้ ตรวจรูปแบบ: เลขข้อ + ก. ข. ค. ง. + บรรทัด "ตอบ"</div>' : '';
+  const n = t => qs.filter(x => x.qtype === t).length;
+  const noAns = qs.filter(x => x.qtype !== 'essay' && (x.answer == null || (Array.isArray(x.answer) && !x.answer.length))).length;
+  return `<div class="qp-sum">✅ อ่านได้ <b>${qs.length}</b> ข้อ${n('mcq') ? ` · ปรนัย ${n('mcq')}` : ''}${n('true_false') ? ` · ถูก/ผิด ${n('true_false')}` : ''}${n('short') ? ` · เติมคำ ${n('short')}` : ''}${n('essay') ? ` · อัตนัย ${n('essay')}` : ''}${noAns ? ` · <span class="qp-bad">ยังไม่มีเฉลย ${noAns} ข้อ</span>` : ''}</div>
+    <ol class="qp-list">${qs.slice(0, 5).map(x => `<li><b>${esc(x.prompt.slice(0, 90))}</b>${x.qtype === 'mcq' ? `<small>${(x.choices || []).map((c, i) => `<span class="${+x.answer === i ? 'ok' : ''}">${ExamParser.TH[i]}. ${esc(String(c).slice(0, 40))}</span>`).join('')}</small>` : `<small class="muted">${({ true_false: 'ถูก/ผิด', short: 'เติมคำ', essay: 'อัตนัย' })[x.qtype] || ''}</small>`}</li>`).join('')}</ol>${qs.length > 5 ? `<div class="small muted">…และอีก ${qs.length - 5} ข้อ</div>` : ''}`;
+}
+/* อ่านไฟล์ข้อสอบ → แปลงเป็นข้อความรูปแบบมาตรฐาน → ใส่ในช่องให้ตรวจ/แก้ก่อนบันทึก */
+async function qbReadFile(file) {
+  const ta = $('#modal-root [name=text]'), drop = $('#qb-drop'); if (!ta || !file) return;
+  drop?.classList.add('busy');
+  try {
+    const buf = await file.arrayBuffer(); let text = '';
+    if (/\.docx$/i.test(file.name)) {
+      if (!window.mammoth) throw new Error('โหลดตัวอ่าน Word ไม่สำเร็จ ลองใหม่อีกครั้ง หรือคัดลอกข้อความจาก Word มาวางแทน');
+      text = (await window.mammoth.extractRawText({ arrayBuffer: buf })).value;
+    } else if (/\.txt$/i.test(file.name)) {
+      text = RosterParser.decodeText(buf);
+    } else if (/\.(xlsx|xls|csv)$/i.test(file.name)) {
+      let rows;
+      if (/\.csv$/i.test(file.name)) rows = RosterParser.parseCSV(RosterParser.decodeText(buf));
+      else { if (!window.XLSX) throw new Error('โหลดตัวอ่าน Excel ไม่สำเร็จ ลองบันทึกเป็น .csv'); const wb = XLSX.read(buf, { type: 'array' }); rows = XLSX.utils.sheet_to_json(wb.Sheets[wb.SheetNames[0]], { header: 1, defval: '' }); }
+      const r = ExamParser.parseRows(rows); if (r.error) throw new Error(r.error);
+      text = r.questions.map((x, i) => qToText(x, i + 1)).join('\n\n');
+    } else throw new Error('รองรับไฟล์ .docx .txt .xlsx .csv');
+    const qs = ExamParser.parseText(text);
+    if (!qs.length) throw new Error('ไม่พบข้อสอบในไฟล์ ตรวจรูปแบบ (เลขข้อ + ก. ข. ค. ง. + ตอบ)');
+    // เรียงเลขข้อใหม่ให้เป็นระเบียบ 1, 2, 3…
+    ta.value = qs.map((x, i) => qToText(x, i + 1)).join('\n\n');
+    const unit = $('#modal-root [name=unit]'); if (unit && !unit.value.trim()) unit.value = file.name.replace(/\.[^.]+$/, '');
+    $('#qb-prev').innerHTML = qbPrevHTML(ta.value);
+    toast(`อ่านไฟล์แล้ว ${qs.length} ข้อ ตรวจความถูกต้องแล้วกด "เพิ่มเข้าคลัง"`);
+  } catch (e) { toast(e.message || 'อ่านไฟล์ไม่สำเร็จ', true); }
+  drop?.classList.remove('busy');
+}
+let qbPrevT = 0;
+Object.assign(CHG, { 'qb-file': el => { qbReadFile(el.files[0]); el.value = ''; } });
+Object.assign(INP, { 'qb-text': el => { clearTimeout(qbPrevT); qbPrevT = setTimeout(() => { const p = $('#qb-prev'); if (p) p.innerHTML = qbPrevHTML(el.value); }, 300); } });
+
 async function qbInsert(rows) {
   for (let i = 0; i < rows.length; i += 200) { const out = await q(sb.from('qbank_questions').insert(rows.slice(i, i + 200)).select()); store.qbank_questions.push(...out); }
 }
@@ -8049,6 +8118,10 @@ Object.assign(ACT, {
 });
 Object.assign(CHG, { 'qb-f': el => { ui.qbF[el.dataset.k] = el.value; render(); }, 'qb-draw-calc': qbDrawCalc });
 Object.assign(INP, { 'qb-q': el => { ui.qbF.q = el.value; clearTimeout(ui.qbT); ui.qbT = setTimeout(() => { render(); const i = $('[data-inp=qb-q]'); if (i) { i.focus(); i.setSelectionRange(i.value.length, i.value.length); } }, 350); } });
+/* ลากไฟล์มาวางในกรอบได้ */
+document.addEventListener('dragover', e => { const d = e.target.closest?.('#qb-drop'); if (d) { e.preventDefault(); d.classList.add('over'); } });
+document.addEventListener('dragleave', e => { e.target.closest?.('#qb-drop')?.classList.remove('over'); });
+document.addEventListener('drop', e => { const d = e.target.closest?.('#qb-drop'); if (!d) return; e.preventDefault(); d.classList.remove('over'); if (e.dataTransfer?.files?.[0]) qbReadFile(e.dataTransfer.files[0]); });
 
 /* =====================================================================
    แกลเลอรีผลงาน — ครูติดดาวงานเด่น → คัดลอกไฟล์ไปที่เก็บสาธารณะ → โชว์ + กดหัวใจ
