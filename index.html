@@ -3199,6 +3199,49 @@ body.bar-scrolled .top.anav::after,body.bar-scrolled .snav::after{opacity:1}
 .stu-cal .cal-body{grid-template-columns:1fr}
 .stu-cal .cal-agenda{max-height:none}
 .ca-it.s-late .ca-bar{background:#E5484D}.ca-it.s-done .ca-bar,.ca-it.s-examdone .ca-bar{background:#30D158}.ca-it.s-wait .ca-bar{background:#FF9F0A}
+/* =========================================================
+   นำเข้ารายชื่อ (ใหม่)
+   ========================================================= */
+.rw-modes{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.rw-mode{display:flex;flex-direction:column;gap:4px;text-align:left;padding:14px 16px;border-radius:18px;border:0;cursor:pointer;font:inherit;color:var(--text);
+  background:var(--surface-2);box-shadow:inset 0 0 0 1px var(--line);transition:box-shadow .2s,background .2s,transform .3s cubic-bezier(.2,1.5,.4,1)}
+.rw-mode b{font:700 15.5px var(--f-head)}.rw-mode small{font-size:12.5px;color:var(--muted);line-height:1.45}
+.rw-mode:hover{transform:translateY(-1px)}
+.rw-mode.on{background:linear-gradient(135deg,rgba(90,200,250,.16),rgba(10,108,240,.1));box-shadow:inset 0 0 0 2px #0A6CF0}
+.rw-tabs{align-self:flex-start}
+.rw-drop{min-height:170px}
+.rw-types{display:flex;gap:8px;margin-top:6px}.rw-types i{font-style:normal;font-size:12px;padding:3px 10px;border-radius:999px;background:var(--surface-2);box-shadow:inset 0 0 0 1px var(--line)}
+.rw-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(118px,1fr));gap:8px}
+.rw-k{padding:11px 13px;border-radius:16px;background:var(--surface-2);box-shadow:inset 0 0 0 1px var(--line);display:flex;flex-direction:column}
+.rw-k b{font:800 24px var(--f-head);line-height:1.1}.rw-k small{font-size:12px;color:var(--muted)}
+.rw-k.ok b{color:var(--ok)}.rw-k.pri b{color:#0A6CF0}.rw-k.violet b{color:#8E3BC4}.rw-k.bad b{color:var(--danger)}
+.rw-k.zero{opacity:.55}.rw-k.zero b{color:var(--muted)}
+.rw-rooms{display:flex;flex-direction:column;gap:8px}
+.rw-room.off{opacity:.55}
+.rw-name{width:120px;font-weight:700}
+.rw-chips{display:flex;flex-wrap:wrap;gap:5px}
+.chip.violet{background:rgba(191,90,242,.13);color:#8E3BC4}
+.rw-tbl tr.st-conflict td,.rw-tbl tr.st-dup td{background:rgba(229,72,77,.06)}
+.rw-tbl tr.st-new td:first-child{box-shadow:inset 3px 0 0 var(--ok)}.rw-tbl tr.st-update td:first-child{box-shadow:inset 3px 0 0 #0A6CF0}.rw-tbl tr.st-move td:first-child{box-shadow:inset 3px 0 0 #BF5AF2}
+.rw-tbl tr.st-missing td{background:rgba(255,159,10,.06)}
+.rw-tbl tr.st-same td,.rw-tbl tr.st-exists td{color:var(--muted)}
+.rw-sum{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:5px;font-size:14.5px}.rw-sum b{font-size:16px}
+.rw-miss{border:1px dashed rgba(255,159,10,.5)}
+.chip.self-reg{background:rgba(255,159,10,.14);color:#B86E00}
+/* สมัครเอง */
+.su-link{display:flex;align-items:center;justify-content:center;gap:6px;flex-wrap:wrap;margin-top:12px;padding-top:12px;border-top:1px dashed var(--line);font-size:13.5px;color:var(--muted)}
+.su-link .linkbtn{font-weight:700}
+.su-name{display:grid;grid-template-columns:120px 1fr 1fr;gap:10px}
+.su-key input{font-weight:700;letter-spacing:.02em}
+@media (max-width:560px){.su-name{grid-template-columns:1fr 1fr}.su-name .field:first-child{grid-column:1/-1}.rw-modes{grid-template-columns:1fr}}
+.su-stat{font-size:14px}.su-stat b{font:800 20px var(--f-head);color:#0A6CF0}.su-stat small{color:var(--muted)}
+.su-keyrow{gap:8px}.su-keyrow .input{flex:1}
+.switch{display:inline-flex;align-items:center;gap:8px;cursor:pointer;font-size:13px}
+.switch input{position:absolute;opacity:0;pointer-events:none}
+.switch span{position:relative;width:46px;height:28px;border-radius:999px;background:rgba(120,130,150,.35);transition:background .25s}
+.switch span::after{content:"";position:absolute;left:3px;top:3px;width:22px;height:22px;border-radius:50%;background:#fff;box-shadow:0 2px 6px rgba(0,0,0,.25);transition:transform .35s cubic-bezier(.2,1.5,.4,1)}
+.switch input:checked+span{background:#30D158}.switch input:checked+span::after{transform:translateX(18px)}
+.switch input:focus-visible+span{outline:2px solid #0A6CF0;outline-offset:2px}
 
 </style>
 </head>
@@ -3383,27 +3426,33 @@ const RosterParser = (() => {
 
   /* ---------- ห้องเรียน ---------- */
   // แปลงข้อความเป็นชื่อห้องมาตรฐาน เช่น "ม.1/1" (คืน '' ถ้าไม่ใช่)
+  // ห้องย่อย ก/ข/ค… ต่อท้าย เช่น "ม.5-5ก." → "ม.5/5ก" · "ม.5/5 (ข)" → "ม.5/5ข"
+  const SUF = '\\s*\\(?\\s*([ก-ฮ])?\\s*\\)?\\.?(?![ก-ฮ\\u0E30-\\u0E4E])';
+  const RE_FULL = new RegExp('(ม|ป|ปวช|ปวส)\\.?\\s*(\\d{1,2})\\s*[\\/\\-\\\\.]\\s*(\\d{1,2})' + SUF);
+  const RE_SHORT = new RegExp('^(\\d{1,2})\\s*[\\/\\-]\\s*(\\d{1,2})' + SUF + '\\s*$');
   function normClass(v, strict) {
     let s = norm(v);
     if (!s) return '';
-    s = s.replace(/มัธยมศึกษาปีที่|ชั้นมัธยมศึกษาปีที่|มัธยมปีที่/g, 'ม.').replace(/ประถมศึกษาปีที่|ชั้นประถมศึกษาปีที่/g, 'ป.')
+    s = s.replace(/ชั้นมัธยมศึกษาปีที่|มัธยมศึกษาปีที่|มัธยมปีที่/g, 'ม.').replace(/ชั้นประถมศึกษาปีที่|ประถมศึกษาปีที่|ประถมปีที่/g, 'ป.')
          .replace(/^ชั้น\s*/, '').replace(/^M\.?\s*/i, 'ม.').replace(/^P\.?\s*/i, 'ป.');
-    let m = s.match(/(ม|ป|ปวช|ปวส)\.?\s*(\d{1,2})\s*[\/\-\\.]\s*(\d{1,2})/);
-    if (m) return `${m[1]}.${+m[2]}/${+m[3]}`;
+    let m = s.match(RE_FULL);
+    if (m) return `${m[1]}.${+m[2]}/${+m[3]}${m[4] || ''}`;
     if (!strict) {
-      m = s.match(/^(\d{1,2})\s*[\/\-]\s*(\d{1,2})$/);
-      if (m) return `ม.${+m[1]}/${+m[2]}`;
+      m = s.match(RE_SHORT);
+      if (m) return `ม.${+m[1]}/${+m[2]}${m[3] || ''}`;
     }
     return '';
   }
+  // คีย์สำหรับเทียบชื่อห้อง (ไม่สนช่องว่าง/จุด/ขีด)
+  const classKey = v => (normClass(v) || norm(v)).replace(/[\s.\-()]/g, '').toLowerCase();
   function combineLevelRoom(level, room) {
     const L = norm(level), R = norm(room).replace(/^ห้อง\s*/, '');
     if (!L && !R) return '';
     const full = normClass(`${L}/${R}`) || normClass(L);
     if (full) return full;
     const lm = L.match(/(ม|ป)\.?\s*(\d{1,2})/) || L.match(/^(\d{1,2})$/);
-    const rm = R.match(/(\d{1,2})/);
-    if (lm && rm) return `${lm.length === 3 ? lm[1] : 'ม'}.${+(lm[2] || lm[1])}/${+rm[1]}`;
+    const rm = R.match(/(\d{1,2})\s*\(?([ก-ฮ])?(?![ก-ฮ\u0E30-\u0E4E])/);
+    if (lm && rm) return `${lm.length === 3 ? lm[1] : 'ม'}.${+(lm[2] || lm[1])}/${+rm[1]}${rm[2] || ''}`;
     return [L, R].filter(Boolean).join('/');
   }
 
@@ -3415,7 +3464,7 @@ const RosterParser = (() => {
     if (['เลขที่', 'เลขที่นักเรียน', 'no', 'number'].includes(f)) return 'number';
     if (['ที่', 'ลำดับ', 'ลำดับที่'].includes(f)) return 'number_alt';
     if (f.includes('เลขประจำตัว') || f.includes('รหัสนักเรียน') || f === 'รหัส' || f === 'studentid' || f === 'id' || f === 'เลขที่ประจำตัว') return 'code';
-    if (f.includes('คำนำหน้า') || f === 'prefix' || f === 'title') return 'prefix';
+    if (f.includes('คำนำหน้า') || f.includes('นำหน้า') || f === 'prefix' || f === 'title') return 'prefix';
     if (f.includes('ชื่อ') && f.includes('สกุล')) return 'full';
     if (f === 'นามสกุล' || f === 'สกุล' || f === 'lastname' || f === 'surname') return 'last';
     if (f === 'ชื่อ' || f === 'firstname' || f === 'name' || f === 'ชื่อนักเรียน' || f === 'ชื่อจริง') return 'first';
@@ -3473,8 +3522,52 @@ const RosterParser = (() => {
   /* ---------- แปลงทั้งไฟล์ ----------
      sources: [{ name, rows }]  (1 ชีต = 1 source, CSV = 1 source)
      คืน { sources:[{name, headerIdx, header, mapping}], groups:[...] } */
+  /* ---------- ไม่มีหัวตาราง: เดาจากเนื้อหา ----------
+     1) บรรทัดข้อความเดียว เช่น "1 10774 นายจักรี ธนูกัน" → แตกเป็น [เลขที่, รหัส, คำนำหน้า, ชื่อ, สกุล]
+     2) ตารางหลายคอลัมน์ (คัดลอกจาก Excel ไม่ติดหัว) → ดูว่าคอลัมน์ไหนเป็นเลขที่/รหัส/คำนำหน้า/ชื่อ */
+  const isThaiName = v => /^[\u0E00-\u0E7Fa-zA-Z][\u0E00-\u0E7Fa-zA-Z.\s'-]*$/.test(norm(v)) && !/\d/.test(v);
+  function lineToRow(line) {
+    const t = norm(line).split(' ');
+    const m0 = (t[0] || '').match(/^(\d{1,3})\.?$/);
+    if (!m0) return [line];
+    const out = [m0[1]]; let i = 1;
+    out.push(/^\d{3,10}$/.test(t[i] || '') ? t[i++] : '');
+    const sp = splitPrefix(t.slice(i).join(' '));
+    const parts = sp.rest.split(' ').filter(Boolean);
+    if (!parts.length) return [line];
+    out.push(sp.prefix, parts.shift(), parts.join(' '));
+    return out;
+  }
+  function headless(src) {
+    const rows = src.rows.map(r => (r || []).map(c => (c == null ? '' : c)));
+    const filled = rows.filter(r => r.some(c => norm(c)));
+    if (!filled.length) return null;
+    const single = filled.filter(r => r.filter(c => norm(c)).length === 1).length >= filled.length * 0.6;
+    if (single) {
+      const out = rows.map(r => { const c = r.find(x => norm(x)); return c == null ? [] : lineToRow(norm(c)); });
+      const ok = out.filter(r => r.length === 5).length;
+      if (ok < 2) return null;
+      return { ...src, rows: out, headerIdx: -1, headless: true, header: ['เลขที่', 'รหัส', 'คำนำหน้า', 'ชื่อ', 'สกุล'], mapping: { number: 0, code: 1, prefix: 2, first: 3, last: 4 } };
+    }
+    // หลายคอลัมน์
+    const ncol = Math.max(...filled.map(r => r.length));
+    const data = filled.filter(r => r.filter(c => norm(c)).length >= 2);
+    const score = (c, fn) => data.filter(r => norm(r[c]) && fn(r[c])).length / Math.max(1, data.filter(r => norm(r[c])).length);
+    const map = {}; const used = new Set();
+    const pick = (f, fn, min = .8) => { let best = -1, bs = 0; for (let c = 0; c < ncol; c++) { if (used.has(c)) continue; const v = score(c, fn), cnt = data.filter(r => norm(r[c])).length; if (cnt >= data.length * .5 && v >= min && v > bs) { bs = v; best = c; } } if (best >= 0) { map[f] = best; used.add(best); } };
+    pick('number', v => /^\d{1,3}\.?$/.test(norm(v)) && +parseInt(v) <= 200);
+    pick('code', v => /^\d{3,10}$/.test(cellToCode(v)));
+    pick('prefix', v => PREFIXES.includes(norm(v)));
+    pick('classroom', v => !!normClass(v));
+    pick('first', isThaiName);
+    pick('last', isThaiName, .6);
+    if (map.number === undefined || map.first === undefined) return null;
+    const header = Array.from({ length: ncol }, (_, c) => Object.keys(map).find(k => map[k] === c) ? FIELD_LABEL[Object.keys(map).find(k => map[k] === c)].split(' (')[0] : '');
+    return { ...src, rows, headerIdx: -1, headless: true, header, mapping: map };
+  }
   function analyze(sources) {
     return sources.map(src => {
+      if (findHeader(src.rows) < 0) { const h = headless(src); if (h) return h; }
       const headerIdx = findHeader(src.rows);
       const header = headerIdx >= 0 ? src.rows[headerIdx].map(norm) : [];
       const mapping = headerIdx >= 0 ? refineMapping(src.rows, headerIdx, autoMapping(header)) : {};
@@ -3494,7 +3587,7 @@ const RosterParser = (() => {
     const global = [];
     for (const src of analyzed) {
       const { rows, headerIdx, mapping: m } = src;
-      if (headerIdx < 0) { global.push(`ชีต "${src.name}": ไม่พบแถวหัวตารางที่มีคำว่า "ชื่อ"`); continue; }
+      if (headerIdx < 0 && !src.headless) { global.push(`ชีต "${src.name}": ไม่พบแถวหัวตารางที่มีคำว่า "ชื่อ"`); continue; }
       if (m.first === undefined && m.full === undefined) { global.push(`ชีต "${src.name}": ยังไม่ได้เลือกคอลัมน์ชื่อ`); continue; }
       const hasClassCol = m.classroom !== undefined || m.level !== undefined || m.room !== undefined;
       // ห้องจากหัวกระดาษ / ชื่อชีต
@@ -3566,7 +3659,7 @@ const RosterParser = (() => {
     return { ...g, warnings: [...r.warnings, ...g.warnings] };
   }
 
-  return { decodeText, parseCSV, analyze, setHeader, extract, parseSheet, splitPrefix, normClass, FIELDS, FIELD_LABEL };
+  return { decodeText, parseCSV, analyze, setHeader, extract, parseSheet, splitPrefix, normClass, classKey, FIELDS, FIELD_LABEL, PREFIXES };
 })();
 if (typeof module !== 'undefined') module.exports = RosterParser;
 
@@ -3693,7 +3786,7 @@ if (typeof module !== 'undefined') module.exports = ExamParser;
 </script>
 <script>
 /* โลโก้: ภาพครูปลื้ม (ไฟล์ต้นฉบับ src/logo.svg ฝังตอน build) */
-const APP_VER = '15.3 · 25 พ.ย. 2569';
+const APP_VER = '16.0 · 25 พ.ย. 2569';
 let LOGO_N = 0;
 function logoSVG() { const k = 'L' + (++LOGO_N); return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><defs><linearGradient id="lgb" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3B9BFF"/><stop offset=".5" stop-color="#0A5BE0"/><stop offset="1" stop-color="#062C78"/></linearGradient><linearGradient id="lgs" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset=".6" stop-color="#FFF4D6"/><stop offset="1" stop-color="#FFD978"/></linearGradient><radialGradient id="lgc" cx=".3" cy=".08" r=".75"><stop offset="0" stop-color="#fff" stop-opacity=".55"/><stop offset=".5" stop-color="#fff" stop-opacity=".08"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient></defs><rect width="48" height="48" rx="13" fill="url(#lgb)"/><rect width="48" height="48" rx="13" fill="url(#lgc)"/><rect x=".75" y=".75" width="46.5" height="46.5" rx="12.3" fill="none" stroke="#fff" stroke-opacity=".45" stroke-width="1.2"/><g fill="none" stroke="#04235F" stroke-opacity=".35" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" transform="translate(0 1.2)"><path d="M21.2 17 C19.8 14.6 17.4 13.6 14.8 13.6 C11 13.6 8.6 15.6 8.6 18.5 C8.6 21.8 11.6 22.9 14.9 23.9 C18.6 25 21.6 26.4 21.6 29.8 C21.6 33 18.8 34.6 15.1 34.6 C12 34.6 9.5 33.4 8 31.1"/><path d="M26.6 14 L39.6 34.2 M39.6 14 L26.6 34.2"/></g><g fill="none" stroke="url(#lgs)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M21.2 17 C19.8 14.6 17.4 13.6 14.8 13.6 C11 13.6 8.6 15.6 8.6 18.5 C8.6 21.8 11.6 22.9 14.9 23.9 C18.6 25 21.6 26.4 21.6 29.8 C21.6 33 18.8 34.6 15.1 34.6 C12 34.6 9.5 33.4 8 31.1"/><path d="M26.6 14 L39.6 34.2 M39.6 14 L26.6 34.2"/></g></svg>`.replace('<svg ', '<svg class="logo" aria-hidden="true" ').replace(/\b(lg[bsc])\b/g, '$1' + k); }
 /* =====================================================================
@@ -3814,9 +3907,11 @@ const ME = {
 async function fetchStudents(cid) {
   const out = [];
   for (let from = 0; ; from += 1000) {
-    let qb = sb.from('students').select(STU_COLS).order('created_at', { ascending: true }).range(from, from + 999);
-    if (cid) qb = qb.eq('classroom_id', cid);
-    const rows = await q(qb); out.push(...rows);
+    const mk = cols => { let qb = sb.from('students').select(cols).order('created_at', { ascending: true }).range(from, from + 999); return cid ? qb.eq('classroom_id', cid) : qb; };
+    let rows;
+    if (store.noSelfReg) rows = await q(mk(STU_COLS));
+    else { const r = await mk(STU_COLS + ',self_registered'); if (r.error) { store.noSelfReg = true; rows = await q(mk(STU_COLS)); } else rows = r.data; }
+    out.push(...rows);
     if (rows.length < 1000) break;
   }
   if (ME.admin()) {
@@ -4068,7 +4163,7 @@ function render() {
     <div class="main">
       ${topBarHTML(base)}
       <main class="content">${(views[base] || viewDashboard)()}</main>
-      <div class="credit">ห้องเรียนครูปลื้ม · ทำด้วยใจ 💜 · ${esc(store.teacher.name)} · <span title="เวอร์ชันของหน้าเว็บ">v${APP_VER}</span>${devCreditHTML()}</div>
+      <div class="credit"><span title="เวอร์ชันของหน้าเว็บ">${verText()}</span>${devCreditHTML()}</div>
     </div>
   </div>`;
 }
@@ -4123,6 +4218,8 @@ function viewLogin() {
     </section>
   </div>`;
 }
+/* "Version 15.4 · Date 25 พ.ย. 2569" */
+function verText() { const [v, d] = APP_VER.split(' · '); return `Version ${v}${d ? ` · Date ${d}` : ''}`; }
 /* เครดิตผู้พัฒนา (ทุกหน้า: ครู · นักเรียน · หน้าเข้าสู่ระบบ) */
 function devCreditHTML() {
   return `<div class="dev-credit"><span class="dc-l">Developed by</span> <b>Shayanan Maroengsit</b><span class="dc-sep"> · </span><span class="dc-s">Mathayom Vajiralongkorn Wararam School</span></div>`;
@@ -4190,7 +4287,7 @@ async function saveSubject() {
 }
 
 /* ---------- ห้องเรียนและรายชื่อ ---------- */
-function levelOf(name) { const m = String(name).match(/^(.*?)\s*\/\s*\d+$/); return m ? m[1].trim() : 'อื่นๆ'; }
+function levelOf(name) { const m = String(name).match(/^(.*?)\s*\/\s*\d+\s*[ก-ฮ]?\.?$/); return m ? m[1].trim() : 'อื่นๆ'; }
 function viewClasses() {
   const cls = Q.classrooms();
   if (ui.cid && !cls.find(c => c.id === ui.cid)) ui.cid = null;
@@ -4203,7 +4300,8 @@ function viewClasses() {
   return `
   <div class="page-head"><div><h2>ห้องเรียนและรายชื่อ</h2><p>${thaiNum(cls.length)} ห้อง · นักเรียน ${thaiNum(total)} คน</p></div><span class="spacer"></span>
     ${ME.admin() ? `<button class="btn" data-act="class-new">${ic('plus')}เพิ่มห้อง</button>
-    <button class="btn primary" data-act="import-open">${ic('upload')}อัปโหลดรายชื่อ</button>` : `<span class="chip">${ic('lock')}ดูได้อย่างเดียว</span>`}
+    <button class="btn" data-act="roster-open" data-m="update">🔄 อัปเดตรายชื่อ</button>
+    <button class="btn primary" data-act="roster-open" data-m="add">${ic('plus')}เพิ่มรายชื่อใหม่</button>` : `<span class="chip">${ic('lock')}ดูได้อย่างเดียว</span>`}
   </div>
   ${ME.admin() ? '' : `<div class="ro-note">${ic('lock')}<div><b>รายชื่อนักเรียนจัดการโดยผู้ดูแลระบบ</b>ถ้าพบชื่อผิด เลขที่ผิด หรือมีนักเรียนย้ายเข้า-ออก แจ้งผู้ดูแลให้แก้ไข</div></div>`}
   ${ME.admin() ? resetReqCardHTML() : ''}
@@ -4221,7 +4319,7 @@ function viewClasses() {
   </div>
   ${cur ? classPanel(cur) : `<div class="card"><div class="empty"><div style="font-size:40px">👆</div><b>เลือกห้องเพื่อดูรายชื่อนักเรียน</b>${lv ? `ระดับชั้น ${esc(lv)} มี ${thaiNum(shown.length)} ห้อง` : 'เลือกระดับชั้นด้านบน หรือเลือกห้องจากรายการ'}</div></div>`}`
   : ME.admin() ? `<div class="card"><div class="empty">${ic('users')}<b>ยังไม่มีห้องเรียน</b>อัปโหลดไฟล์รายชื่อที่โรงเรียนใช้อยู่ได้เลย ระบบจะแยกห้องและเลขที่ให้อัตโนมัติ<br>
-     <button class="btn primary" data-act="import-open" style="margin-top:12px">${ic('upload')}อัปโหลดรายชื่อ</button></div></div>`
+     <button class="btn primary" data-act="roster-open" data-m="add" style="margin-top:12px">${ic('upload')}นำเข้ารายชื่อนักเรียน</button></div></div>`
   : `<div class="card"><div class="empty">${ic('users')}<b>ยังไม่มีห้องเรียน</b>รอผู้ดูแลระบบอัปโหลดรายชื่อนักเรียน</div></div>`}`;
 }
 function classPanel(c) {
@@ -4256,7 +4354,7 @@ function classPanel(c) {
         <td><input class="input" value="${esc(s.first_name)}" data-chg="cell" data-id="${s.id}" data-f="first_name"></td>
         <td><input class="input" value="${esc(s.last_name)}" data-chg="cell" data-id="${s.id}" data-f="last_name"></td>`
         : `<td class="num">${s.number}</td>${adm ? `<td class="code-mask">${esc(s.student_code) || '<span class="chip warn">ไม่มี</span>'}</td>` : ''}<td>${esc(s.prefix)}</td><td>${esc(s.first_name)}</td><td>${esc(s.last_name)}</td>`}
-        <td>${s.active === false ? '<span class="chip">ย้าย/ลาออก</span>' : '<span class="chip ok">กำลังเรียน</span>'}</td>
+        <td>${s.active === false ? '<span class="chip">ย้าย/ลาออก</span>' : '<span class="chip ok">กำลังเรียน</span>'}${s.self_registered ? ' <span class="chip self-reg" title="นักเรียนสมัครเองด้วยรหัสลับ ตรวจสอบความถูกต้อง">✍️ สมัครเอง</span>' : ''}</td>
         ${adm ? `<td class="act">${(store.customPass || []).includes(s.id) ? '<span class="pw-chip" title="นักเรียนตั้งรหัสผ่านเองแล้ว">🔐</span>' : ''}<button class="btn ghost icon" data-act="stu-pw-reset" data-id="${s.id}" aria-label="รีเซ็ตรหัสผ่าน" title="รีเซ็ตรหัสผ่านเป็นเลขประจำตัว">🔑</button><button class="btn ghost icon" data-act="student-edit" data-id="${s.id}" aria-label="แก้ไข">${ic('edit')}</button><button class="btn ghost icon" data-act="student-del" data-id="${s.id}" aria-label="ลบ" style="color:var(--danger)">${ic('trash')}</button></td>` : ''}
       </tr>`).join('')}</tbody></table></div>
       <datalist id="prefixes">${PREFIX_OPTS.map(p => `<option value="${p}">`).join('')}</datalist>`
@@ -4459,6 +4557,7 @@ function viewSettings() {
           <td class="act">${t.is_current || !ME.admin() ? '' : `<button class="btn ghost icon" data-act="term-del" data-id="${t.id}" aria-label="ลบภาคเรียน" style="color:var(--danger)">${ic('trash')}</button>`}</td></tr>`).join('')}
         </tbody></table></div>
       ${typeof dataCardHTML === 'function' ? dataCardHTML() : ''}
+      ${typeof signupCardHTML === 'function' ? signupCardHTML() : ''}
     </div>
     <div class="stack">
       <div class="card"><div class="card-h"><h3>ข้อมูลครู</h3></div><div class="card-b stack">
@@ -4529,7 +4628,7 @@ function viewStudent() {
           <label class="field"><span>🔑 รหัสผ่าน</span><input class="input big" type="password" name="code" required autocomplete="current-password" placeholder="ครั้งแรก = เลขประจำตัว"></label></div>
         <button class="btn primary big" style="justify-content:center">ไปกันเลย 🚀</button>
         <div class="stu-pass-hint">ยังไม่เคยเปลี่ยนรหัส? ใช้ <b>เลขประจำตัวนักเรียน</b> เป็นรหัสผ่าน · <button type="button" class="linkish" data-act="stu-forgot">ลืมรหัสผ่าน?</button></div>
-      </form></div><div class="credit stu-credit">${devCreditHTML()}</div>`}
+      </form>${typeof signupLinkHTML === 'function' ? signupLinkHTML() : ''}</div><div class="credit stu-credit">${devCreditHTML()}</div>`}
   </div>`;
 }
 
@@ -4634,7 +4733,7 @@ document.addEventListener('click', e => {
   if (ADMIN_ACTS.has(t.dataset.act) && !ME.admin()) return toast('เฉพาะผู้ดูแลระบบเท่านั้น', true);
   Promise.resolve(ACT[t.dataset.act]?.(t, e)).catch(err => console.error(err));
 });
-const ADMIN_ACTS = new Set(['class-new', 'class-edit', 'class-del', 'toggle-edit', 'student-new', 'student-edit', 'student-del', 'bulk-del', 'import-open', 'term-new', 'term-current', 'term-del']);
+const ADMIN_ACTS = new Set(['roster-open', 'rw-go', 'class-new', 'class-edit', 'class-del', 'toggle-edit', 'student-new', 'student-edit', 'student-del', 'bulk-del', 'import-open', 'term-new', 'term-current', 'term-del']);
 const ADMIN_CHG = new Set(['bulk-move', 'cell', 'import-file']);
 document.addEventListener('change', e => { const t = e.target.closest('[data-chg]'); if (t && ADMIN_CHG.has(t.dataset.chg) && !ME.admin()) return toast('เฉพาะผู้ดูแลระบบเท่านั้น', true); if (t) Promise.resolve(CHG[t.dataset.chg]?.(t, e)).catch(err => console.error(err)); });
 document.addEventListener('input', e => { const t = e.target.closest('[data-inp]'); if (t) INP[t.dataset.inp]?.(t, e); });
@@ -5311,7 +5410,7 @@ function studentHome(v) {
       ${list.length ? sec('todo', '📌 งานที่ต้องทำ') + sec('wait', '⏳ ส่งแล้ว รอครูตรวจ') + sec('done', '🌟 ตรวจแล้ว') + sec('closed', '🔒 ปิดรับแล้ว')
         : `<div class="card"><div class="empty"><div style="font-size:44px">🎉</div><b>ยังไม่มีงาน เย้!</b>เมื่อครูปลื้มสั่งงาน งานจะโผล่ตรงนี้</div></div>`}`
     : `<div class="card"><div class="empty"><span class="spin" style="display:inline-block;width:26px;height:26px"></span><br>กำลังโหลดงาน…</div></div>`}
-    <div class="credit stu-credit">ห้องเรียนครูปลื้ม · v${APP_VER}${devCreditHTML()}</div>
+    <div class="credit stu-credit">${verText()}${devCreditHTML()}</div>
   </div>`;
 }
 function studentBadge(a) {
@@ -8294,7 +8393,7 @@ function riskText(list) {
   return `📋 นักเรียนที่ต้องติดตาม (${list.length} คน)\n` + Object.entries(by).map(([room, rs]) => `\n🏫 ${room}\n` + rs.map(r => `• เลขที่ ${r.st.number} ${Q.fullName(r.st)} — ${r.reasons.map(x => x.t).join(', ')}`).join('\n')).join('\n');
 }
 function riskList() { const all = riskData(); return ui.riskCid ? all.filter(r => r.c.id === ui.riskCid) : []; }
-function roomLevel(n) { const m = String(n).match(/^(.*?)\s*\/\s*\d+$/); return m ? m[1].trim() : String(n); }
+function roomLevel(n) { const m = String(n).match(/^(.*?)\s*\/\s*\d+\s*[ก-ฮ]?\.?$/); return m ? m[1].trim() : String(n); }
 Object.assign(ACT, {
   'risk-goto': el => { const c = db.get('classrooms', el.dataset.cid); if (c) { ui.riskLv = roomLevel(c.name); ui.riskCid = c.id; } },
   'risk-lv': el => { ui.riskLv = el.dataset.l; ui.riskCid = null; render(); },
@@ -9043,6 +9142,415 @@ function rankUpShow(from, to, g) {
   try { navigator.vibrate?.([30, 40, 60]); } catch (e) {}
 }
 Object.assign(ACT, { 'rankup-close': () => { const el = $('#rankup'); if (!el) return; el.classList.add('out'); setTimeout(() => el.remove(), 380); } });
+
+/* =====================================================================
+   roster-import.js — นำเข้ารายชื่อนักเรียน (เวอร์ชันใหม่)
+   2 โหมด: 🔄 อัปเดตรายชื่อ (ซิงก์ทั้งห้อง) · ➕ เพิ่มรายชื่อใหม่ (เพิ่มเฉพาะคนที่ยังไม่มี)
+   3 ทาง: ไฟล์ Excel/CSV/Word/ข้อความ · คัดลอก-วาง
+   ขั้นตอน: เลือกข้อมูล → ตรวจสรุป (แยกตามห้อง) → ยืนยัน → บันทึก
+   ===================================================================== */
+const RW = { mode: 'add', tab: 'file', analyzed: null, fname: '', groups: [], plan: null, markMissing: false, pasteText: '', pasteRoom: '', busy: false, open: {} };
+const RW_MODE = {
+  update: { t: '🔄 อัปเดตรายชื่อ', d: 'ใช้ไฟล์ล่าสุดจากโรงเรียนปรับรายชื่อให้ตรง: เพิ่มคนใหม่ · แก้ชื่อ/คำนำหน้า · ย้ายห้อง/เปลี่ยนเลขที่ (จับคู่ด้วยเลขประจำตัวก่อน แล้วค่อยเลขที่)' },
+  add: { t: '➕ เพิ่มรายชื่อใหม่', d: 'เพิ่มเฉพาะนักเรียนที่ยังไม่มีในระบบ คนที่มีอยู่แล้วจะไม่ถูกแก้ไข' },
+};
+const RW_ST = {
+  new: ['เพิ่มใหม่', 'ok'], update: ['แก้ข้อมูล', 'pri'], move: ['ย้ายห้อง/เลขที่', 'violet'], same: ['ไม่เปลี่ยน', ''], exists: ['มีอยู่แล้ว (ข้าม)', ''],
+  conflict: ['ชนกัน (ข้าม)', 'bad'], dup: ['ซ้ำในไฟล์ (ข้าม)', 'bad'], missing: ['ไม่อยู่ในไฟล์', 'warn'],
+};
+
+/* ---------- 1) เลือกข้อมูล ---------- */
+function rosterWizard(mode) {
+  if (mode) { RW.mode = mode; RW.analyzed = null; RW.groups = []; RW.plan = null; RW.markMissing = false; RW.open = {}; }
+  const M = RW_MODE[RW.mode];
+  openModal({
+    title: M.t, wide: true,
+    body: `<div class="stack rw">
+      <div class="rw-modes">${Object.entries(RW_MODE).map(([k, v]) => `<button class="rw-mode ${RW.mode === k ? 'on' : ''}" data-act="rw-mode" data-m="${k}"><b>${v.t}</b><small>${v.d}</small></button>`).join('')}</div>
+      <div class="seg rw-tabs">${[['file', '📁 จากไฟล์'], ['paste', '📋 คัดลอก-วาง']].map(([k, l]) => `<button class="${RW.tab === k ? 'on' : ''}" data-act="rw-tab" data-k="${k}">${l}</button>`).join('')}</div>
+      ${RW.tab === 'file' ? `
+      <label class="drop rw-drop" id="rw-drop">${ic('upload')}<b>ลากไฟล์มาวาง หรือคลิกเพื่อเลือกไฟล์</b>
+        <span class="muted small">Excel (.xlsx .xls) · Word (.docx) · CSV · ข้อความ (.txt) — ไฟล์เดียวมีหลายห้องได้ ระบบแยกห้องให้เอง</span>
+        <span class="rw-types"><i>📗 Excel</i><i>📘 Word</i><i>📄 CSV/TXT</i></span>
+        <input type="file" accept=".xlsx,.xls,.csv,.txt,.docx" data-chg="rw-file" hidden></label>
+      <div class="fmt small"><b>แยกห้องได้จาก</b> ชื่อชีต (เช่น <code>ม.5-5ก.</code> → <b>ม.5/5ก</b>) · คอลัมน์ห้อง/ชั้น · บรรทัดหัวเรื่อง "ชั้นมัธยมศึกษาปีที่ 5/5ข" · ตารางแต่ละตารางในไฟล์ Word
+        <br>ไฟล์ PDF: เปิดแล้วคัดลอกตารางมาวางในแท็บ "คัดลอก-วาง" ได้เลย · Word แบบเก่า (.doc) ให้บันทึกเป็น .docx ก่อน</div>`
+      : `<label class="field"><span>วางรายชื่อที่คัดลอกมาจาก Excel / Word / Google Sheets / PDF</span>
+        <textarea class="input mono" rows="10" data-inp="rw-paste" placeholder="เลขที่	รหัสนักเรียน	คำนำหน้า	ชื่อ	สกุล
+1	10774	นาย	จักรี	ธนูกัน
+2	10777	นาย	ณัฐธิชาญ	เทียวประสงค์
+
+หรือพิมพ์ทีละบรรทัด: 1 10774 นายจักรี ธนูกัน">${esc(RW.pasteText)}</textarea></label>
+      <div class="grid2"><label class="field"><span>ห้อง (ถ้าข้อมูลที่วางไม่ได้บอกห้อง)</span><input class="input" list="rw-cls" placeholder="เช่น ม.5/5ก" value="${esc(RW.pasteRoom)}" data-inp="rw-room"></label>
+        <div class="field"><span>&nbsp;</span><button class="btn primary" data-act="rw-paste-go" style="justify-content:center">อ่านข้อมูล →</button></div></div>
+      <datalist id="rw-cls">${Q.classrooms().map(c => `<option value="${esc(c.name)}">`).join('')}</datalist>
+      <div class="fmt small">มีบรรทัดหัวตารางหรือไม่ก็ได้ · วางหลายห้องต่อกันได้ ถ้ามีบรรทัดคั่น เช่น "ม.5/5ก" / "ชั้นมัธยมศึกษาปีที่ 5/5ข"</div>`}
+    </div>`,
+    actions: [{ label: 'ยกเลิก', onClick: closeModal }],
+  });
+  const drop = $('#rw-drop');
+  if (drop) {
+    ['dragover', 'dragenter'].forEach(ev => drop.addEventListener(ev, e => { e.preventDefault(); drop.classList.add('over'); }));
+    ['dragleave', 'drop'].forEach(ev => drop.addEventListener(ev, e => { e.preventDefault(); drop.classList.remove('over'); }));
+    drop.addEventListener('drop', e => { const f = e.dataTransfer.files[0]; if (f) rwFile(f); });
+  }
+}
+/* Word: แต่ละตาราง = 1 ชุด (ข้อความเหนือตารางใช้หาชื่อห้อง) · ถ้าไม่มีตาราง ใช้ทีละบรรทัด */
+async function docxSources(buf, fname) {
+  if (!window.mammoth) throw new Error('โหลดตัวอ่าน Word ไม่สำเร็จ ลองคัดลอกตารางจาก Word มาวางแทน');
+  const html = (await window.mammoth.convertToHtml({ arrayBuffer: buf })).value;
+  const doc = new DOMParser().parseFromString(`<div>${html}</div>`, 'text/html');
+  const root = doc.body.firstElementChild, out = []; let pre = [], n = 0;
+  const txt = el => (el.textContent || '').replace(/\s+/g, ' ').trim();
+  for (const el of root.children) {
+    if (el.tagName === 'TABLE') {
+      const rows = [...pre.map(t => [t])];
+      el.querySelectorAll('tr').forEach(tr => rows.push([...tr.children].map(td => txt(td))));
+      const title = pre.map(t => RosterParser.normClass(t, true)).filter(Boolean).pop();
+      out.push({ name: title || `${fname} ตาราง ${++n}`, rows }); pre = [];
+    } else { const t = txt(el); if (t) pre.push(t); }
+  }
+  if (!out.length && pre.length) out.push({ name: fname, rows: pre.map(t => [t]) });
+  else if (pre.length && out.length) out[out.length - 1].rows.push(...pre.map(t => [t]));
+  return out;
+}
+async function rwFile(file) {
+  const ext = file.name.split('.').pop().toLowerCase(), base = file.name.replace(/\.[^.]+$/, '');
+  let sources;
+  try {
+    const buf = await file.arrayBuffer();
+    if (ext === 'docx') sources = await docxSources(buf, base);
+    else if (ext === 'doc') throw new Error('ไฟล์ Word แบบเก่า (.doc) ให้เปิดแล้ว "บันทึกเป็น" .docx ก่อน หรือคัดลอกตารางมาวาง');
+    else if (ext === 'pdf') throw new Error('ไฟล์ PDF: เปิดไฟล์ เลือกตาราง คัดลอก แล้ววางในแท็บ "คัดลอก-วาง"');
+    else if (ext === 'csv' || ext === 'txt') sources = [{ name: base, rows: RosterParser.parseCSV(RosterParser.decodeText(buf)) }];
+    else {
+      if (!window.XLSX) throw new Error('โหลดตัวอ่าน Excel ไม่สำเร็จ ลองบันทึกเป็น .csv');
+      const wb = XLSX.read(buf, { type: 'array' });
+      sources = wb.SheetNames.map(n => ({ name: n, rows: XLSX.utils.sheet_to_json(wb.Sheets[n], { header: 1, defval: '', raw: true, blankrows: true }) }));
+    }
+    sources = sources.filter(s => s.rows.some(r => (r || []).some(c => String(c ?? '').trim())));
+    if (!sources.length) throw new Error('ไฟล์นี้ว่างเปล่า');
+  } catch (e) { return toast(e.message || 'อ่านไฟล์ไม่สำเร็จ', true); }
+  RW.fname = file.name; rwAnalyze(sources);
+}
+function rwPasteGo() {
+  const t = RW.pasteText.trim(); if (!t) return toast('ยังไม่ได้วางรายชื่อ', true);
+  RW.fname = 'ข้อมูลที่วาง'; rwAnalyze([{ name: RW.pasteRoom.trim() || 'ข้อมูลที่วาง', rows: RosterParser.parseCSV(t) }]);
+}
+function rwAnalyze(sources) {
+  RW.analyzed = RosterParser.analyze(sources); RW.open = {};
+  rwExtract(); rwReview();
+}
+function rwExtract() {
+  const { groups, warnings } = RosterParser.extract(RW.analyzed);
+  const prev = RW.groups || [];
+  groups.forEach(g => { const p = prev.find(x => x.orig === g.name); g.orig = g.name; g.include = p ? p.include : true; g.name = p ? p.name : g.name; });
+  RW.groups = groups; RW.warnings = warnings; rwPlan();
+}
+
+/* ---------- 2) เทียบกับข้อมูลเดิม ---------- */
+function rwRoom(name) { const k = RosterParser.classKey(name); return store.classrooms.find(c => RosterParser.classKey(c.name) === k); }
+function rwPlan() {
+  const add = RW.mode === 'add';
+  const byCode = new Map(); store.students.forEach(s => { if (s.student_code) byCode.set(String(s.student_code), s); });
+  const seenCode = new Map(), matched = new Set(), rows = [];
+  const inc = RW.groups.filter(g => g.include && g.students.length);
+  const fileCodes = new Set(inc.flatMap(g => g.students.map(s => s.student_code)).filter(Boolean));
+  for (const g of inc) {
+    const room = rwRoom(g.name);
+    for (const fs of g.students) {
+      const r = { g, room, fs, st: 'new', ex: null, diff: [] };
+      if (fs.student_code) {
+        if (seenCode.has(fs.student_code)) { r.st = 'dup'; r.note = `รหัสซ้ำกับ ${seenCode.get(fs.student_code)}`; rows.push(r); continue; }
+        seenCode.set(fs.student_code, `${g.name} เลขที่ ${fs.number}`);
+      }
+      let ex = fs.student_code ? byCode.get(fs.student_code) : null;
+      const slot = room ? store.students.find(s => s.classroom_id === room.id && s.number === fs.number) : null;
+      if (!ex && slot) {
+        const sameName = slot.first_name.trim() === fs.first_name.trim();
+        if (!slot.student_code || !fs.student_code || sameName) ex = slot;
+        else if (!add && fileCodes.has(slot.student_code)) { /* เจ้าของเดิมย้ายไปที่อื่นตามไฟล์ → ที่ว่าง (ตรวจซ้ำด้านล่าง) */ }
+        else { r.st = 'conflict'; r.ex = slot; r.note = `เลขที่ ${fs.number} เป็นของ ${Q.fullName(slot)} (รหัสไม่ตรง)`; rows.push(r); continue; }
+      }
+      if (ex) {
+        r.ex = ex; matched.add(ex.id);
+        if (add) { r.st = 'exists'; rows.push(r); continue; }
+        const moved = !room || ex.classroom_id !== room.id || ex.number !== fs.number;
+        if (moved && slot && slot.id !== ex.id) {
+          // ที่นั่งปลายทางมีคนอื่นอยู่ — ถ้าคนนั้นก็ย้ายออกไปตามไฟล์ ถือว่าโอเค (ตรวจรอบสอง)
+          r.blockBy = slot;
+        }
+        if (moved) { r.st = 'move'; r.diff.push(`${db.get('classrooms', ex.classroom_id)?.name || '?'} เลขที่ ${ex.number} → ${g.name} เลขที่ ${fs.number}`); }
+        const nm = (a, b) => (a || '').trim() !== (b || '').trim();
+        if (nm(ex.prefix, fs.prefix) && fs.prefix) r.diff.push(`คำนำหน้า ${ex.prefix || '–'} → ${fs.prefix}`);
+        if (nm(ex.first_name, fs.first_name) || nm(ex.last_name, fs.last_name)) r.diff.push(`ชื่อ ${Q.fullName({ ...ex, prefix: '' })} → ${fs.first_name} ${fs.last_name}`);
+        if (fs.student_code && nm(ex.student_code, fs.student_code)) r.diff.push(`เลขประจำตัว ${ex.student_code || '–'} → ${fs.student_code}`);
+        if (ex.active === false) r.diff.push('กลับมาเป็น "กำลังเรียน"');
+        if (!moved) r.st = r.diff.length ? 'update' : 'same';
+      }
+      rows.push(r);
+    }
+  }
+  // ที่นั่งชน: ปลายทางมีคน และคนนั้นไม่ได้ย้ายออก
+  const movingOut = new Set(rows.filter(r => r.st === 'move').map(r => r.ex.id));
+  rows.forEach(r => { if (r.st === 'move' && r.blockBy && !movingOut.has(r.blockBy.id) && !rows.some(o => o.ex?.id === r.blockBy.id && o.st === 'move')) { r.st = 'conflict'; r.note = `เลขที่ ${r.fs.number} ใน ${r.g.name} มี ${Q.fullName(r.blockBy)} อยู่แล้ว`; } });
+  rows.forEach(r => { if (r.st === 'new' && r.room && store.students.some(s => s.classroom_id === r.room.id && s.number === r.fs.number && !rows.some(o => o.ex?.id === s.id && o.st === 'move'))) { r.st = 'conflict'; r.note = `เลขที่ ${r.fs.number} มีคนอื่นอยู่แล้ว`; } });
+  // อัปเดต: คนในห้องที่ไฟล์ครอบคลุม แต่ไม่อยู่ในไฟล์
+  const missing = [];
+  if (!add) {
+    const rooms = new Set(inc.map(g => rwRoom(g.name)?.id).filter(Boolean));
+    store.students.filter(s => rooms.has(s.classroom_id) && s.active !== false && !matched.has(s.id)).forEach(s => missing.push(s));
+  }
+  const cnt = k => rows.filter(r => r.st === k).length;
+  RW.plan = { rows, missing, newRooms: inc.filter(g => !rwRoom(g.name)).map(g => g.name), total: rows.length,
+    c: { new: cnt('new'), update: cnt('update'), move: cnt('move'), same: cnt('same'), exists: cnt('exists'), conflict: cnt('conflict'), dup: cnt('dup'), nocode: rows.filter(r => !r.fs.student_code && ['new', 'update', 'move'].includes(r.st)).length } };
+}
+
+/* ---------- 3) หน้าตรวจสรุป ---------- */
+function rwReview() {
+  const P = RW.plan, add = RW.mode === 'add', c = P.c;
+  const work = c.new + c.update + c.move + (RW.markMissing ? P.missing.length : 0);
+  const inc = RW.groups.filter(g => g.include);
+  const stat = (k, n, label, cls) => `<div class="rw-k ${cls || ''} ${n ? '' : 'zero'}"><b>${thaiNum(n)}</b><small>${label}</small></div>`;
+  openModal({
+    title: `${RW_MODE[RW.mode].t} · ตรวจสอบก่อนนำเข้า`, wide: true,
+    body: `<div class="stack rw">
+      <div class="row" style="flex-wrap:wrap;gap:8px"><span class="chip pri">${ic('file')}${esc(RW.fname)}</span>
+        <span class="small">พบ <b>${thaiNum(RW.groups.length)}</b> ห้อง · นักเรียน <b>${thaiNum(RW.groups.reduce((a, g) => a + g.students.length, 0))}</b> คน</span>
+        <span class="spacer"></span><button class="btn ghost sm" data-act="rw-back">← เลือกข้อมูลใหม่</button></div>
+      <div class="rw-stats">
+        ${stat('new', c.new, 'เพิ่มใหม่', 'ok')}
+        ${add ? stat('exists', c.exists, 'มีอยู่แล้ว (ไม่แก้)') : stat('update', c.update, 'แก้ชื่อ/ข้อมูล', 'pri') + stat('move', c.move, 'ย้ายห้อง/เลขที่', 'violet') + stat('same', c.same, 'ตรงกันแล้ว')}
+        ${stat('rooms', P.newRooms.length, 'ห้องใหม่ที่จะสร้าง', 'ok')}
+        ${stat('bad', c.conflict + c.dup, 'มีปัญหา (จะข้าม)', 'bad')}
+      </div>
+      ${RW.warnings.length ? `<div class="note"><ul class="warn-list" style="margin:0">${RW.warnings.map(w => `<li>${esc(w)}</li>`).join('')}</ul></div>` : ''}
+      ${c.nocode ? `<div class="hint warn">⚠️ ${thaiNum(c.nocode)} คนไม่มีเลขประจำตัว — นักเรียนจะเข้าสู่ระบบไม่ได้จนกว่าจะเติม</div>` : ''}
+      <details class="sheet"><summary class="sheet-h" style="cursor:pointer"><b>การจับคู่คอลัมน์</b><span class="small muted">ระบบเลือกให้อัตโนมัติ ถ้าแยกผิดแก้ได้ที่นี่</span></summary>
+        <div class="sheet-b stack">${RW.analyzed.map((src, si) => `${RW.analyzed.length > 1 ? `<b class="small">ชุดข้อมูล: ${esc(src.name)}</b>` : ''}${src.headless ? '<div class="small muted">ไม่มีแถวหัวตาราง — ระบบเดาคอลัมน์จากเนื้อหา</div>' : ''}${mappingUI(src, si).replace(/data-chg="imp-header"/g, 'data-chg="rw-header"').replace(/data-chg="imp-map"/g, 'data-chg="rw-map"')}`).join('<hr style="border:0;border-top:1px solid var(--line);width:100%">')}</div></details>
+      <datalist id="rw-cls">${Q.classrooms().map(x => `<option value="${esc(x.name)}">`).join('')}</datalist>
+      <div class="rw-rooms">${RW.groups.map((g, i) => rwRoomCard(g, i)).join('') || `<div class="empty">${ic('users')}<b>ยังแยกรายชื่อไม่ได้</b>ตรวจ "การจับคู่คอลัมน์" ต้องมีคอลัมน์ชื่อ และเลขที่</div>`}</div>
+      ${!add && P.missing.length ? `<label class="nt-opt rw-miss"><input type="checkbox" data-chg="rw-miss" ${RW.markMissing ? 'checked' : ''}><span><b>ตั้งนักเรียนที่ไม่อยู่ในไฟล์ ${thaiNum(P.missing.length)} คน เป็น "ย้าย/ลาออก"</b>
+        <small>${P.missing.slice(0, 8).map(s => `${esc(db.get('classrooms', s.classroom_id)?.name)} #${s.number} ${esc(Q.fullName(s))}`).join(' · ')}${P.missing.length > 8 ? ' …' : ''} — ไม่ลบข้อมูล คะแนนยังอยู่ ตั้งกลับได้</small></span></label>` : ''}
+    </div>`,
+    actions: [{ label: 'ยกเลิก', onClick: closeModal }, { label: work ? `ตรวจแล้ว ไปยืนยัน (${thaiNum(work)} รายการ) →` : 'ไม่มีอะไรต้องเปลี่ยน', kind: 'primary', onClick: work ? rwConfirm : closeModal }],
+  });
+}
+function rwRoomCard(g, i) {
+  const rows = RW.plan.rows.filter(r => r.g === g), room = rwRoom(g.name);
+  const n = k => rows.filter(r => r.st === k).length;
+  const missing = RW.plan.missing.filter(s => room && s.classroom_id === room.id);
+  const chips = Object.keys(RW_ST).map(k => [k, k === 'missing' ? missing.length : n(k)]).filter(([, v]) => v).map(([k, v]) => `<span class="chip ${RW_ST[k][1]}">${RW_ST[k][0]} ${v}</span>`).join('');
+  const open = RW.open[i] ?? (rows.some(r => ['conflict', 'dup', 'update', 'move'].includes(r.st)) && RW.groups.length <= 3);
+  return `<div class="sheet rw-room ${g.include ? '' : 'off'}"><div class="sheet-h">
+      <input type="checkbox" data-chg="rw-inc" data-i="${i}" ${g.include ? 'checked' : ''} aria-label="นำเข้าห้อง ${esc(g.name)}">
+      <label class="row" style="gap:6px"><span class="small muted">ห้อง</span><input class="input rw-name" list="rw-cls" value="${esc(g.name)}" data-chg="rw-name" data-i="${i}"></label>
+      ${room ? `<span class="chip">มีอยู่แล้ว · ${thaiNum(Q.students(room.id).length)} คน</span>` : '<span class="chip ok">✨ ห้องใหม่</span>'}
+      <span class="spacer"></span><b>${thaiNum(g.students.length)} คน</b></div>
+    <div class="sheet-b">
+      <div class="rw-chips">${g.include ? chips : '<span class="muted small">ไม่นำเข้าห้องนี้</span>'}</div>
+      ${g.warnings.length ? `<ul class="warn-list">${g.warnings.map(w => `<li>${esc(w)}</li>`).join('')}</ul>` : ''}
+      ${g.include ? `<details ${open ? 'open' : ''} data-tog="${i}"><summary class="small" style="cursor:pointer;color:var(--primary);margin-top:4px">ดูรายชื่อและสิ่งที่จะเปลี่ยน</summary>
+        <div class="tbl-wrap" style="max-height:320px;margin-top:6px"><table class="tbl rw-tbl"><thead><tr><th>เลขที่</th><th>เลขประจำตัว</th><th>ชื่อ-สกุล</th><th>ผล</th><th>รายละเอียด</th></tr></thead><tbody>
+        ${rows.map(r => `<tr class="st-${r.st}"><td class="num">${r.fs.number}</td><td class="code-mask">${esc(r.fs.student_code) || '<span class="chip warn">ไม่มี</span>'}</td>
+          <td>${esc([r.fs.prefix, r.fs.first_name].join(''))} ${esc(r.fs.last_name)}</td><td><span class="chip ${RW_ST[r.st][1]}">${RW_ST[r.st][0]}</span></td>
+          <td class="small">${esc(r.note || r.diff.join(' · '))}</td></tr>`).join('')}
+        ${missing.map(s => `<tr class="st-missing"><td class="num">${s.number}</td><td class="code-mask">${esc(s.student_code || '')}</td><td>${esc(Q.fullName(s))}</td><td><span class="chip warn">ไม่อยู่ในไฟล์</span></td><td class="small">${RW.markMissing ? 'จะตั้งเป็น ย้าย/ลาออก' : 'คงไว้ตามเดิม'}</td></tr>`).join('')}
+        </tbody></table></div></details>` : ''}
+    </div></div>`;
+}
+
+/* ---------- 4) ยืนยัน ---------- */
+function rwConfirm() {
+  const P = RW.plan, c = P.c, add = RW.mode === 'add';
+  const w = typeof bkWarn === 'function' && !add ? bkWarn() : '';
+  const li = (n, t) => n ? `<li><b>${thaiNum(n)}</b> ${t}</li>` : '';
+  openModal({
+    title: 'ยืนยันว่าข้อมูลถูกต้อง',
+    body: `<div class="stack">
+      <p style="margin:0">${RW_MODE[RW.mode].t} จาก <b>${esc(RW.fname)}</b> — ระบบจะทำรายการต่อไปนี้:</p>
+      <ul class="rw-sum">
+        ${li(P.newRooms.length, `ห้องใหม่: ${P.newRooms.map(esc).join(', ')}`)}
+        ${li(c.new, 'คน เพิ่มเป็นนักเรียนใหม่')}
+        ${li(c.update, 'คน แก้ไขชื่อ/คำนำหน้า/เลขประจำตัว')}
+        ${li(c.move, 'คน ย้ายห้องหรือเปลี่ยนเลขที่')}
+        ${RW.markMissing ? li(P.missing.length, 'คน ตั้งเป็น "ย้าย/ลาออก" (ไม่อยู่ในไฟล์)') : ''}
+        ${li(c.conflict + c.dup, 'รายการมีปัญหา จะ<b>ข้าม</b> (แก้ทีหลังในหน้าห้องเรียนได้)')}
+        ${li(c.exists + c.same, 'คน มีอยู่แล้ว/ตรงกันแล้ว ไม่แก้ไข')}
+      </ul>
+      ${w ? `<div class="hint warn nt-bk"><span>${w}</span><button class="btn sm" data-act="bk-json">${ic('dl')}สำรองตอนนี้</button></div>` : ''}
+      <label class="nt-opt"><input type="checkbox" id="rw-ok" data-chg="rw-ok"><span><b>ตรวจสอบแล้ว ข้อมูลถูกต้อง</b><small>ห้อง เลขที่ และชื่อตรงกับเอกสารของโรงเรียน</small></span></label>
+    </div>`,
+    actions: [{ label: '← กลับไปแก้', onClick: rwReview }, { label: 'ยืนยัน นำเข้ารายชื่อ', kind: 'primary', onClick: rwRun }],
+  });
+  rwOkSync();
+}
+function rwOkSync() { const b = [...document.querySelectorAll('#modal-root [data-act=modal-action]')].pop(); if (b) b.disabled = !$('#rw-ok')?.checked; }
+
+/* ---------- 5) บันทึก ---------- */
+async function rwRun() {
+  if (!$('#rw-ok')?.checked) return toast('ติ๊ก "ตรวจสอบแล้ว ข้อมูลถูกต้อง" ก่อน', true);
+  if (RW.busy) return; RW.busy = true;
+  const P = RW.plan, btn = [...document.querySelectorAll('#modal-root [data-act=modal-action]')].pop();
+  const prog = t => { if (btn) btn.textContent = t; };
+  const done = { new: 0, update: 0, move: 0, rooms: 0, off: 0 }, touched = new Set();
+  try {
+    // ห้องใหม่
+    const roomOf = {};
+    for (const g of RW.groups.filter(g => g.include && g.students.length)) {
+      let c = rwRoom(g.name);
+      if (!c) { prog(`สร้างห้อง ${g.name}…`); c = await db.insert('classrooms', { name: RosterParser.normClass(g.name) || g.name.trim(), homeroom_teacher: g.homeroom || null, sort_order: 0 }); done.rooms++; }
+      roomOf[g.name] = c; touched.add(c.id);
+    }
+    // ย้าย: 2 จังหวะ (ย้ายไปเลขชั่วคราวก่อน กันเลขที่ชนกันเอง)
+    const moves = P.rows.filter(r => r.st === 'move');
+    for (let i = 0; i < moves.length; i++) { prog(`ย้าย ${i + 1}/${moves.length}…`); touched.add(moves[i].ex.classroom_id); await q(sb.from('students').update({ number: 9000 + i }).eq('id', moves[i].ex.id)); }
+    for (const r of moves) {
+      const c = roomOf[r.g.name];
+      await q(sb.from('students').update({ classroom_id: c.id, number: r.fs.number, first_name: r.fs.first_name, last_name: r.fs.last_name || '', prefix: r.fs.prefix || r.ex.prefix || '', ...(r.fs.student_code ? { student_code: r.fs.student_code } : {}), active: true }).eq('id', r.ex.id));
+      done.move++;
+    }
+    // เพิ่ม + แก้ (ผ่าน admin_upsert_students ตามห้อง+เลขที่)
+    const up = P.rows.filter(r => r.st === 'new' || r.st === 'update').map(r => {
+      const c = roomOf[r.g.name];
+      return { classroom_id: c.id, number: r.fs.number, student_code: r.fs.student_code || r.ex?.student_code || '', prefix: r.fs.prefix || r.ex?.prefix || '', first_name: r.fs.first_name, last_name: r.fs.last_name || '', active: true };
+    });
+    for (let i = 0; i < up.length; i += 300) { prog(`บันทึก ${Math.min(i + 300, up.length)}/${up.length}…`); await q(sb.rpc('admin_upsert_students', { p_rows: up.slice(i, i + 300) })); }
+    done.new = P.c.new; done.update = P.c.update;
+    if (RW.mode === 'update' && RW.markMissing && P.missing.length) {
+      prog('อัปเดตสถานะ…');
+      const ids = P.missing.map(s => s.id);
+      for (let i = 0; i < ids.length; i += 200) await q(sb.from('students').update({ active: false }).in('id', ids.slice(i, i + 200)));
+      done.off = ids.length;
+    }
+    await loadAll();
+  } catch (e) {
+    RW.busy = false; toast('นำเข้าไม่สำเร็จ: ' + (e.message || e), true); await loadAll().catch(() => {}); closeModal(); render(); return;
+  }
+  RW.busy = false; closeModal();
+  const ids = [...touched]; ui.cid = ids.length === 1 ? ids[0] : ui.cid; ui.sel.clear(); render();
+  toast(`เรียบร้อย ✔ ${[done.rooms && `สร้างห้อง ${done.rooms}`, done.new && `เพิ่ม ${done.new} คน`, done.update && `แก้ ${done.update} คน`, done.move && `ย้าย ${done.move} คน`, done.off && `ย้าย/ลาออก ${done.off} คน`].filter(Boolean).join(' · ') || 'ไม่มีการเปลี่ยนแปลง'}`);
+}
+
+Object.assign(ACT, {
+  'roster-open': el => { RW.tab = RW.tab || 'file'; rosterWizard(el.dataset.m || 'add'); },
+  'rw-mode': el => { RW.mode = el.dataset.m; rosterWizard(); },
+  'rw-tab': el => { RW.tab = el.dataset.k; rosterWizard(); },
+  'rw-paste-go': rwPasteGo,
+  'rw-back': () => rosterWizard(),
+});
+Object.assign(CHG, {
+  'rw-file': el => { const f = el.files[0]; el.value = ''; if (f) rwFile(f); },
+  'rw-inc': el => { RW.groups[+el.dataset.i].include = el.checked; rwPlan(); rwReview(); },
+  'rw-name': el => { const g = RW.groups[+el.dataset.i]; g.name = RosterParser.normClass(el.value) || el.value.trim() || g.orig; rwPlan(); rwReview(); },
+  'rw-miss': el => { RW.markMissing = el.checked; rwReview(); },
+  'rw-ok': () => rwOkSync(),
+  'rw-header': el => { const si = +el.dataset.s; RW.analyzed[si] = RosterParser.setHeader(RW.analyzed[si], Math.max(0, +el.value - 1)); rwExtract(); rwReview(); },
+  'rw-map': el => { const si = +el.dataset.s, src = RW.analyzed[si], m = { ...src.mapping }; if (el.value === '') delete m[el.dataset.f]; else m[el.dataset.f] = +el.value; RW.analyzed[si] = { ...src, mapping: m }; rwExtract(); rwReview(); },
+});
+Object.assign(INP, {
+  'rw-paste': el => { RW.pasteText = el.value; },
+  'rw-room': el => { RW.pasteRoom = el.value; },
+});
+// เก็บสถานะ เปิด/ปิด รายชื่อของแต่ละห้อง
+document.addEventListener('toggle', e => { const d = e.target; if (d.dataset?.tog != null) RW.open[+d.dataset.tog] = d.open; }, true);
+ACT['import-open'] = () => rosterWizard('add');
+
+/* =====================================================================
+   ✍️ นักเรียนสมัครเอง (ต้องมีรหัสลับจากครู)
+   ===================================================================== */
+const SIGNUP = { enabled: null, cfg: null, cfgLoading: false };
+async function loadSignupEnabled() {
+  if (SIGNUP.enabled !== null) return;
+  SIGNUP.enabled = false;
+  try { SIGNUP.enabled = !!(await q(sb.rpc('public_signup_enabled'))); } catch (e) { SIGNUP.enabled = false; }
+  if (isStudentRoute()) render();
+}
+function signupLinkHTML() {
+  if (SIGNUP.enabled === null) loadSignupEnabled();
+  return SIGNUP.enabled ? `<div class="su-link"><span>ไม่มีชื่อในระบบ?</span><button type="button" class="linkbtn" data-act="su-open">✍️ สมัครเป็นนักเรียนใหม่</button></div>` : '';
+}
+const SU_ERR = {
+  CLOSED: 'ตอนนี้ปิดรับสมัครแล้ว ติดต่อครูผู้สอน', TOO_MANY: 'มีการลองรหัสลับผิดหลายครั้ง รอ 15 นาทีแล้วลองใหม่',
+  WRONG_KEY: 'รหัสลับจากครูไม่ถูกต้อง', NO_CLASS: 'ไม่พบห้องที่เลือก', BAD_NUMBER: 'เลขที่ไม่ถูกต้อง',
+  BAD_CODE: 'รหัสนักเรียนต้องเป็นตัวเลข 3–10 หลัก', NO_NAME: 'กรอกชื่อและนามสกุลให้ครบ', SHORT_PASSWORD: 'รหัสผ่านต้องยาวอย่างน้อย 6 ตัว',
+  CODE_EXISTS: 'รหัสนักเรียนนี้มีในระบบแล้ว ลองเข้าสู่ระบบด้วยห้อง/เลขที่ของตัวเอง หรือกด "ลืมรหัสผ่าน"',
+  NUMBER_TAKEN: 'เลขที่นี้ในห้องนี้มีคนใช้แล้ว ตรวจสอบห้องและเลขที่อีกครั้ง',
+};
+function signupModal() {
+  const cls = stuState.classes || [];
+  openModal({
+    title: '✍️ สมัครเป็นนักเรียนใหม่',
+    body: `<form class="stack su-form" data-form="su" onsubmit="return false">
+      <div class="hint">สำหรับนักเรียนที่ <b>ไม่มีรายชื่อ</b> ในระบบเท่านั้น · ต้องใช้ <b>รหัสลับ</b> จากครูผู้สอน · กรอกให้ตรงกับข้อมูลจริง ครูตรวจสอบได้</div>
+      <div class="grid2">
+        <label class="field"><span>🏫 ห้อง *</span><select class="input" name="cid" required><option value="">เลือกห้อง</option>${cls.map(c => `<option value="${c.id}">${esc(c.name)}</option>`).join('')}</select></label>
+        <label class="field"><span>🔢 เลขที่ *</span><input class="input" type="number" name="num" min="1" max="150" inputmode="numeric" required></label>
+      </div>
+      <label class="field"><span>🪪 รหัสนักเรียน (เลขประจำตัว) *</span><input class="input" name="code" inputmode="numeric" pattern="[0-9]{3,10}" placeholder="เช่น 10774" required></label>
+      <div class="su-name">
+        <label class="field"><span>คำนำหน้า *</span><select class="input" name="prefix" required>${PREFIX_OPTS.map(p => `<option>${p}</option>`).join('')}</select></label>
+        <label class="field"><span>ชื่อ *</span><input class="input" name="first" required autocomplete="given-name"></label>
+        <label class="field"><span>นามสกุล *</span><input class="input" name="last" required autocomplete="family-name"></label>
+      </div>
+      <div class="grid2">
+        <label class="field"><span>🔑 ตั้งรหัสผ่าน * (6 ตัวขึ้นไป)</span><input class="input" type="password" name="pw" minlength="6" required autocomplete="new-password"></label>
+        <label class="field"><span>ยืนยันรหัสผ่าน *</span><input class="input" type="password" name="pw2" minlength="6" required autocomplete="new-password"></label>
+      </div>
+      <label class="field su-key"><span>🗝️ รหัสลับจากครู *</span><input class="input" name="key" required autocomplete="off" placeholder="ถามครูผู้สอน"></label>
+    </form>`,
+    actions: [{ label: 'ยกเลิก', onClick: closeModal }, { label: 'สมัครและเข้าสู่ระบบ', kind: 'primary', onClick: signupSubmit }],
+  });
+}
+async function signupSubmit() {
+  const v = n => ($(`#modal-root [name=${n}]`)?.value || '').trim();
+  const cid = v('cid'), num = parseInt(v('num'), 10), code = v('code').replace(/\s/g, ''), pw = $('#modal-root [name=pw]').value, pw2 = $('#modal-root [name=pw2]').value;
+  if (!cid) return toast('เลือกห้องก่อน', true);
+  if (!Number.isFinite(num) || num < 1) return toast('ใส่เลขที่ให้ถูกต้อง', true);
+  if (!/^\d{3,10}$/.test(code)) return toast(SU_ERR.BAD_CODE, true);
+  if (!v('first') || !v('last')) return toast(SU_ERR.NO_NAME, true);
+  if (pw.length < 6) return toast(SU_ERR.SHORT_PASSWORD, true);
+  if (pw !== pw2) return toast('รหัสผ่านทั้งสองช่องไม่ตรงกัน', true);
+  if (!v('key')) return toast('ใส่รหัสลับจากครู', true);
+  const btn = [...document.querySelectorAll('#modal-root [data-act=modal-action]')].pop(); if (btn) btn.disabled = true;
+  try {
+    const r = await q(sb.rpc('student_register', { p_key: v('key'), p_classroom_id: cid, p_number: num, p_code: code, p_prefix: v('prefix'), p_first: v('first'), p_last: v('last'), p_password: pw }));
+    if (!r.ok) { if (btn) btn.disabled = false; return toast(SU_ERR[r.error] || 'สมัครไม่สำเร็จ', true); }
+    const row = await studentLogin(cid, num, pw);
+    stuState.verified = { ...row, number: num, code: pw };
+    try { sessionStorage.setItem('cr-student', JSON.stringify(stuState.verified)); } catch (e) {}
+    closeModal(); render(); toast(`สมัครสำเร็จ ยินดีต้อนรับสู่ ${r.classroom_name} 🎉 จำรหัสผ่านไว้ใช้ครั้งต่อไปนะ`);
+  } catch (e) { if (btn) btn.disabled = false; toast(/student_register|function/i.test(e.message || '') ? 'ระบบสมัครยังไม่พร้อม (ครูต้องรัน phase16.sql)' : (e.message || 'สมัครไม่สำเร็จ'), true); }
+}
+/* ---------- ตั้งค่า (แอดมิน) ---------- */
+async function loadSignupCfg(force) {
+  if (SIGNUP.cfgLoading || (SIGNUP.cfg && !force)) return;
+  SIGNUP.cfgLoading = true;
+  try { SIGNUP.cfg = await q(sb.rpc('admin_signup_config')); } catch (e) { SIGNUP.cfg = { err: /function|admin_signup/i.test(e.message || '') ? 'need-sql' : e.message }; }
+  SIGNUP.cfgLoading = false; if (ui.route === 'settings') render();
+}
+function signupCardHTML() {
+  if (!ME.admin()) return '';
+  if (!SIGNUP.cfg) loadSignupCfg();
+  const c = SIGNUP.cfg;
+  return `<div class="card su-card"><div class="card-h"><h3>✍️ นักเรียนสมัครเอง</h3><span class="spacer"></span>
+    ${c && !c.err ? `<label class="switch"><input type="checkbox" data-chg="su-enabled" ${c.enabled ? 'checked' : ''}><span></span><b>${c.enabled ? 'เปิดรับสมัคร' : 'ปิดอยู่'}</b></label>` : ''}</div>
+    <div class="card-b stack">
+    ${!c ? '<div class="muted small">กำลังโหลด…</div>' : c.err === 'need-sql' ? '<div class="hint warn">⚠️ ยังไม่ได้รันไฟล์ <b>phase16.sql</b> ใน Supabase</div>' : c.err ? `<div class="hint warn">${esc(c.err)}</div>` : `
+      <p class="small muted" style="margin:0">นักเรียนที่ไม่มีชื่อในไฟล์ สมัครเองได้ที่หน้าเข้าสู่ระบบของนักเรียน โดยต้องกรอก ห้อง · เลขที่ · รหัสนักเรียน · ชื่อ-สกุล · รหัสผ่าน และ <b>รหัสลับ</b> ที่ครูบอก · ห้ามใช้รหัสนักเรียนหรือเลขที่ซ้ำกับคนที่มีอยู่</p>
+      <div class="su-stat"><b>${thaiNum(c.count || 0)}</b> คนสมัครเองแล้ว <small>(ดูได้ที่หน้าห้องเรียน ป้าย ✍️ สมัครเอง)</small></div>
+      <div class="row su-keyrow"><input class="input" id="su-newkey" placeholder="ตั้งรหัสลับใหม่ (4 ตัวขึ้นไป)" autocomplete="off"><button class="btn" data-act="su-setkey">เปลี่ยนรหัสลับ</button></div>
+      <small class="muted">ระบบเก็บรหัสลับแบบเข้ารหัส จึงแสดงรหัสเดิมไม่ได้ · ค่าเริ่มต้นคือ "ครูปลื้มน่ารัก" · เปลี่ยนล่าสุด ${c.updated_at ? new Date(c.updated_at).toLocaleString('th-TH', { dateStyle: 'medium', timeStyle: 'short' }) : '–'}</small>`}
+    </div></div>`;
+}
+Object.assign(ACT, {
+  'su-open': () => { if (!stuState.classes) loadStudentClasses(); signupModal(); },
+  'su-setkey': async () => {
+    const k = ($('#su-newkey')?.value || '').trim(); if (k.length < 4) return toast('รหัสลับต้องยาวอย่างน้อย 4 ตัว', true);
+    try { SIGNUP.cfg = await q(sb.rpc('admin_set_signup', { p_enabled: null, p_key: k })); render(); toast(`เปลี่ยนรหัสลับเป็น "${k}" แล้ว`); } catch (e) { toast(e.message, true); }
+  },
+});
+Object.assign(CHG, { 'su-enabled': async el => { try { SIGNUP.cfg = await q(sb.rpc('admin_set_signup', { p_enabled: el.checked, p_key: null })); render(); toast(el.checked ? 'เปิดรับสมัครแล้ว' : 'ปิดรับสมัครแล้ว'); } catch (e) { toast(e.message, true); el.checked = !el.checked; } } });
 
 /* =====================================================================
    แกลเลอรีผลงาน — ครูติดดาวงานเด่น → คัดลอกไฟล์ไปที่เก็บสาธารณะ → โชว์ + กดหัวใจ
