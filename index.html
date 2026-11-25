@@ -3252,6 +3252,59 @@ body.bar-scrolled .top.anav::after,body.bar-scrolled .snav::after{opacity:1}
 .modal-b{min-height:0;overscroll-behavior:contain}
 .sn-msg .hn-box,.sn-msg .hn-box div{white-space:normal}
 .sn-msg .hn-box .hn-code{white-space:pre-wrap}
+/* ---------- เช็คชื่อ: เลือกระดับชั้น → ห้อง ---------- */
+.att-roompick{padding:14px 16px;display:flex;flex-direction:column;gap:12px}
+.ap-row{display:flex;align-items:center;gap:14px;min-width:0}
+.ap-lbl{flex:none;width:72px;font:600 13px var(--f-body);color:var(--muted)}
+.ap-levels,.ap-rooms{display:flex;flex-wrap:wrap;gap:6px;min-width:0}
+.ap-levels{padding:4px;border-radius:16px;background:var(--surface-2);box-shadow:inset 0 0 0 1px var(--line)}
+.ap-lv{position:relative;display:flex;align-items:baseline;gap:6px;height:38px;padding:0 14px;border:0;border-radius:12px;background:transparent;cursor:pointer;color:var(--text);font:inherit;transition:background .2s,box-shadow .2s,transform .3s cubic-bezier(.2,1.5,.4,1)}
+.ap-lv b{font:700 15px var(--f-head);align-self:center}.ap-lv small{font-size:11.5px;color:var(--muted);align-self:center}
+.ap-lv:hover{background:rgba(10,108,240,.07)}
+.ap-lv.on{background:var(--surface);box-shadow:0 2px 8px -3px rgba(10,40,100,.25),inset 0 0 0 1px rgba(10,108,240,.25)}
+.ap-lv.on b{color:#0A6CF0}
+.ap-dot{position:absolute;top:6px;right:6px;width:8px;height:8px;border-radius:50%;background:#30D158;box-shadow:0 0 0 2px var(--surface-2),0 0 8px #30D158;animation:ap-pulse 1.6s ease-in-out infinite}
+@keyframes ap-pulse{50%{opacity:.4}}
+.ap-room{display:flex;flex-direction:column;align-items:center;justify-content:center;min-width:64px;height:44px;padding:0 12px;border:0;border-radius:14px;cursor:pointer;font:inherit;color:var(--text);
+  background:var(--surface-2);box-shadow:inset 0 0 0 1px var(--line);transition:background .2s,box-shadow .2s,transform .3s cubic-bezier(.2,1.5,.4,1)}
+.ap-room b{font:700 16px var(--f-head);line-height:1}.ap-room small{font-size:10.5px;color:#1C8C40;font-weight:700;margin-top:2px}
+.ap-room:hover{transform:translateY(-1px);box-shadow:inset 0 0 0 1px rgba(10,108,240,.35)}
+.ap-room:active{transform:scale(.95)}
+.ap-room.on{background:linear-gradient(180deg,#2E95FF,#0A6CF0);color:#fff;box-shadow:0 8px 18px -10px rgba(10,108,240,.9),inset 0 1px 0 rgba(255,255,255,.3)}
+.ap-room.on small{color:#D5FFE0}
+.ap-room.live:not(.on){box-shadow:inset 0 0 0 1.5px rgba(48,209,88,.6)}
+.att-now{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}
+.att-now-it{display:flex;align-items:center;gap:8px;padding:8px 14px;border-radius:14px;text-decoration:none;color:var(--text);
+  background:linear-gradient(135deg,rgba(48,209,88,.14),rgba(48,209,88,.06));box-shadow:inset 0 0 0 1px rgba(48,209,88,.35)}
+.att-now-it i{width:9px;height:9px;border-radius:50%;background:#30D158;box-shadow:0 0 8px #30D158;animation:ap-pulse 1.6s ease-in-out infinite}
+.att-now-it span{font-size:12.5px;color:var(--muted)}.att-now-it em{font-style:normal;font-size:12.5px;font-weight:700;color:#1C8C40}
+@media (max-width:640px){.ap-row{flex-direction:column;align-items:stretch;gap:6px}.ap-lbl{width:auto}.ap-lv{padding:0 10px}.ap-lv small{display:none}}
+@media (prefers-reduced-motion:reduce){.ap-dot,.att-now-it i{animation:none}}
+/* ---------- เช็คเอง ---------- */
+.att-modes{margin-left:8px}
+.aq-bar{display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding:10px 16px;border-bottom:1px solid var(--line)}
+.aq-list{display:flex;flex-direction:column}
+.aq-row{display:grid;grid-template-columns:36px minmax(140px,1fr) auto;align-items:center;gap:10px;padding:8px 16px;border-bottom:1px solid var(--line);transition:background .25s}
+.aq-row:last-child{border-bottom:0}
+.aq-row .att-no{justify-self:center}
+.aq-nm{font-weight:600;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.aq-row.s-present{background:rgba(48,209,88,.06)}.aq-row.s-late{background:rgba(255,159,10,.07)}.aq-row.s-absent{background:rgba(229,72,77,.06)}
+.aq-row.s-leave,.aq-row.s-sick{background:rgba(10,108,240,.05)}.aq-row.s-activity{background:rgba(191,90,242,.07)}
+.aq-btns{display:flex;gap:4px;padding:3px;border-radius:13px;background:var(--surface-2);box-shadow:inset 0 0 0 1px var(--line)}
+.aq-b{display:flex;align-items:center;gap:4px;height:32px;padding:0 9px;border:0;border-radius:10px;background:transparent;cursor:pointer;font:600 12.5px var(--f-body);color:var(--muted);
+  transition:background .15s,color .15s,transform .3s cubic-bezier(.2,1.6,.4,1)}
+.aq-b span{font-size:14px;filter:grayscale(1);opacity:.55;transition:filter .15s,opacity .15s}
+.aq-b em{font-style:normal}
+.aq-b:hover{background:var(--surface);color:var(--text)}.aq-b:hover span{filter:none;opacity:1}
+.aq-b:active{transform:scale(.9)}
+.aq-b.on span{filter:none;opacity:1}
+.aq-b.on.s-present{background:#30D158;color:#fff}.aq-b.on.s-late{background:#FF9F0A;color:#fff}.aq-b.on.s-absent{background:#E5484D;color:#fff}
+.aq-b.on.s-leave,.aq-b.on.s-sick{background:#0A6CF0;color:#fff}.aq-b.on.s-activity{background:#BF5AF2;color:#fff}
+.aq-b.on{box-shadow:0 4px 10px -5px rgba(0,0,0,.4)}
+.att-stu.s-activity{background:rgba(191,90,242,.1);box-shadow:inset 0 0 0 1.5px rgba(191,90,242,.45)}
+.att-c.s-activity{color:#8E3BC4;font-weight:700}
+.att-opt.s-activity.on{background:#BF5AF2;color:#fff}
+@media (max-width:900px){.aq-row{grid-template-columns:30px 1fr;row-gap:6px}.aq-btns{grid-column:1/-1;justify-content:space-between}.aq-b{flex:1;justify-content:center;padding:0 4px;flex-direction:column;height:44px;gap:0}.aq-b em{font-size:10.5px}}
 
 </style>
 </head>
@@ -3796,7 +3849,7 @@ if (typeof module !== 'undefined') module.exports = ExamParser;
 </script>
 <script>
 /* โลโก้: ภาพครูปลื้ม (ไฟล์ต้นฉบับ src/logo.svg ฝังตอน build) */
-const APP_VER = '16.1 · 25 พ.ย. 2569';
+const APP_VER = '16.2 · 25 พ.ย. 2569';
 let LOGO_N = 0;
 function logoSVG() { const k = 'L' + (++LOGO_N); return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><defs><linearGradient id="lgb" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3B9BFF"/><stop offset=".5" stop-color="#0A5BE0"/><stop offset="1" stop-color="#062C78"/></linearGradient><linearGradient id="lgs" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset=".6" stop-color="#FFF4D6"/><stop offset="1" stop-color="#FFD978"/></linearGradient><radialGradient id="lgc" cx=".3" cy=".08" r=".75"><stop offset="0" stop-color="#fff" stop-opacity=".55"/><stop offset=".5" stop-color="#fff" stop-opacity=".08"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient></defs><rect width="48" height="48" rx="13" fill="url(#lgb)"/><rect width="48" height="48" rx="13" fill="url(#lgc)"/><rect x=".75" y=".75" width="46.5" height="46.5" rx="12.3" fill="none" stroke="#fff" stroke-opacity=".45" stroke-width="1.2"/><g fill="none" stroke="#04235F" stroke-opacity=".35" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" transform="translate(0 1.2)"><path d="M21.2 17 C19.8 14.6 17.4 13.6 14.8 13.6 C11 13.6 8.6 15.6 8.6 18.5 C8.6 21.8 11.6 22.9 14.9 23.9 C18.6 25 21.6 26.4 21.6 29.8 C21.6 33 18.8 34.6 15.1 34.6 C12 34.6 9.5 33.4 8 31.1"/><path d="M26.6 14 L39.6 34.2 M39.6 14 L26.6 34.2"/></g><g fill="none" stroke="url(#lgs)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M21.2 17 C19.8 14.6 17.4 13.6 14.8 13.6 C11 13.6 8.6 15.6 8.6 18.5 C8.6 21.8 11.6 22.9 14.9 23.9 C18.6 25 21.6 26.4 21.6 29.8 C21.6 33 18.8 34.6 15.1 34.6 C12 34.6 9.5 33.4 8 31.1"/><path d="M26.6 14 L39.6 34.2 M39.6 14 L26.6 34.2"/></g></svg>`.replace('<svg ', '<svg class="logo" aria-hidden="true" ').replace(/\b(lg[bsc])\b/g, '$1' + k); }
 /* =====================================================================
@@ -7358,7 +7411,9 @@ const ATT_ST = {
   absent: { t: 'ขาด', e: '❌', c: 'bad', short: 'ข' },
   leave: { t: 'ลา', e: '📝', c: 'pri', short: 'ล' },
   sick: { t: 'ป่วย', e: '🤒', c: 'pri', short: 'ป' },
+  activity: { t: 'กิจกรรม', e: '🏅', c: 'violet', short: 'ก' },
 };
+// มาเรียน = มา + สาย + กิจกรรม (ไปทำกิจกรรมของโรงเรียน ไม่นับขาด)
 const ATT = { timer: null, poll: null, token: null, sid: null, left: 30 };
 store.attendance_sessions = store.attendance_sessions || [];
 store.attendance_records = store.attendance_records || [];
@@ -7366,7 +7421,7 @@ store.attendance_records = store.attendance_records || [];
 function isCheckinRoute() { return /^checkin-[0-9a-f-]{36}\.[0-9a-f]{6,16}$/i.test(ui.route); }
 function attRecords(sessId) { return store.attendance_records.filter(r => r.session_id === sessId); }
 function attCounts(sessId) {
-  const c = { present: 0, late: 0, absent: 0, leave: 0, sick: 0 };
+  const c = { present: 0, late: 0, absent: 0, leave: 0, sick: 0, activity: 0 };
   attRecords(sessId).forEach(r => { if (c[r.status] != null) c[r.status]++; });
   return c;
 }
@@ -7376,17 +7431,31 @@ const thDate = d => new Date(d + 'T00:00:00').toLocaleDateString('th-TH', { day:
 /* ---------- หน้ารวม ---------- */
 function viewAttendance() {
   const cls = [...store.classrooms].sort((a, b) => a.name.localeCompare(b.name, 'th', { numeric: true }));
-  if (!cls.some(c => c.id === ui.attCid)) ui.attCid = cls[0]?.id || null;
-  const c = db.get('classrooms', ui.attCid);
+  // จำห้องล่าสุด · เลือกระดับชั้นก่อน แล้วค่อยแสดงเฉพาะห้องในระดับนั้น (ไม่วาดทุกห้องพร้อมกัน)
+  if (ui.attCid && !cls.some(c => c.id === ui.attCid)) ui.attCid = null;
+  if (ui.attCid === undefined || (ui.attCid === null && !ui.attLvTouched)) { try { const k = localStorage.getItem('cr-att-cid'); if (cls.some(c => c.id === k)) ui.attCid = k; } catch (e) {} }
+  let c = ui.attCid ? db.get('classrooms', ui.attCid) : null;
+  if (c && !ui.attLv) ui.attLv = levelOf(c.name);
+  const levels = [...new Set(cls.map(x => levelOf(x.name)))];
+  if (!ui.attLv || !levels.includes(ui.attLv)) ui.attLv = levels[0] || '';
+  const lvRooms = cls.filter(x => levelOf(x.name) === ui.attLv);
+  if (!ui.attCid && lvRooms.length === 1) { ui.attCid = lvRooms[0].id; c = lvRooms[0]; }
+  const openSess = store.attendance_sessions.filter(se => se.is_open);
+  const openByLv = l => openSess.filter(se => levelOf(db.get('classrooms', se.classroom_id)?.name || '') === l).length;
   const tab = ui.attTab || 'sessions';
-  if (store.attMissing) return `<div class="page-head"><div><h2>เช็คชื่อ</h2></div></div><div class="card"><div class="empty">${ic('lock')}<b>ยังไม่ได้ตั้งค่าระบบเช็คชื่อ</b>รันไฟล์ phase6.sql ใน Supabase ก่อน แล้วรีเฟรชหน้านี้</div></div>`;
+  if (store.attMissing) return `<div class="page-head"><div><h2>เช็คชื่อ</h2></div></div><div class="card"><div class="empty">${ic('lock')}<b>ยังไม่ได้ตั้งค่าระบบเช็คชื่อ</b>รันไฟล์ SQL ของระบบเช็คชื่อใน Supabase ก่อน</div></div>`;
   return `
   <div class="page-head"><div><h2>เช็คชื่อ</h2><p>นักเรียนสแกน QR ที่เปลี่ยนทุก 30 วินาที · สรุปเวลาเรียนส่งเข้าตารางคะแนนได้</p></div><span class="spacer"></span>
-    ${c ? `<button class="btn primary" data-act="att-new">${ic('qr')}เริ่มเช็คชื่อ</button>` : ''}</div>
-  ${cls.length ? `<div class="card picker"><div class="picker-row"><span class="picker-lbl">ห้อง</span><div class="room-chips">${cls.map(x => {
-    const open = store.attendance_sessions.some(s => s.classroom_id === x.id && s.is_open);
-    return `<button class="room-chip ${x.id === ui.attCid ? 'on' : ''}" data-act="att-cls" data-id="${x.id}"><b>${esc(x.name)}</b><small>${open ? '🟢 กำลังเช็คชื่อ' : `${thaiNum(attSessions(x.id).length)} คาบ`}</small></button>`; }).join('')}</div></div></div>` : ''}
-  ${!c ? `<div class="card"><div class="empty">${ic('users')}<b>ยังไม่มีห้องเรียน</b>เพิ่มรายชื่อนักเรียนก่อน แล้วค่อยเริ่มเช็คชื่อ</div></div>` : `
+    ${c ? `<button class="btn primary" data-act="att-new">${ic('qr')}เริ่มเช็คชื่อ ${esc(c.name)}</button>` : ''}</div>
+  ${openSess.length ? `<div class="att-now">${openSess.slice(0, 6).map(se => `<a class="att-now-it" href="#att-${se.id}"><i></i><b>${esc(db.get('classrooms', se.classroom_id)?.name || '')}</b><span>กำลังเช็คชื่อ · ${esc(se.title || 'คาบเรียน')}</span><em>เปิด QR →</em></a>`).join('')}</div>` : ''}
+  ${cls.length ? `<div class="card att-roompick">
+    <div class="ap-row"><span class="ap-lbl">ระดับชั้น</span><div class="ap-levels">${levels.map(l => { const o = openByLv(l), n = cls.filter(x => levelOf(x.name) === l).length;
+      return `<button class="ap-lv ${l === ui.attLv ? 'on' : ''}" data-act="att-lv" data-l="${esc(l)}"><b>${esc(l)}</b><small>${n} ห้อง</small>${o ? '<i class="ap-dot" title="มีห้องกำลังเช็คชื่อ"></i>' : ''}</button>`; }).join('')}</div></div>
+    <div class="ap-row"><span class="ap-lbl">ห้อง</span><div class="ap-rooms">${lvRooms.map(x => { const open = openSess.some(se => se.classroom_id === x.id);
+      return `<button class="ap-room ${x.id === ui.attCid ? 'on' : ''} ${open ? 'live' : ''}" data-act="att-cls" data-id="${x.id}"><b>${esc(x.name)}</b>${open ? '<small>เช็คอยู่</small>' : ''}</button>`; }).join('')}</div></div>
+  </div>` : ''}
+  ${!c && cls.length ? `<div class="card"><div class="empty"><div style="font-size:40px">👆</div><b>เลือกห้องที่จะเช็คชื่อ</b>เลือกระดับชั้น แล้วเลือกห้อง ระบบจะจำห้องล่าสุดไว้ให้</div></div>` : ''}
+  ${!cls.length ? `<div class="card"><div class="empty">${ic('users')}<b>ยังไม่มีห้องเรียน</b>เพิ่มรายชื่อนักเรียนก่อน แล้วค่อยเริ่มเช็คชื่อ</div></div>` : !c ? '' : `
   <div class="row" style="margin:4px 0 14px"><div class="seg"><button class="${tab === 'sessions' ? 'on' : ''}" data-act="att-tab" data-t="sessions">คาบเรียน</button><button class="${tab === 'summary' ? 'on' : ''}" data-act="att-tab" data-t="summary">สรุปเวลาเรียน</button></div></div>
   ${tab === 'sessions' ? attSessionList(c) : attSummary(c)}`}`;
 }
@@ -7396,7 +7465,7 @@ function attSessionList(c) {
   return `<div class="card"><div class="tbl-wrap"><table class="tbl"><thead><tr><th>วันที่</th><th>คาบ / วิชา</th><th>มา</th><th>สาย</th><th>ขาด</th><th>ลา/ป่วย</th><th>สถานะ</th><th class="act"></th></tr></thead><tbody>
     ${list.map(s => { const k = attCounts(s.id); const sj = s.subject_id && db.get('subjects', s.subject_id);
       return `<tr><td class="num">${thDate(s.session_date)}</td><td><b>${esc(s.title || 'คาบเรียน')}</b>${sj ? `<div class="small muted">${esc(sj.name)}</div>` : ''}</td>
-        <td><span class="chip ok">${k.present}</span></td><td><span class="chip warn">${k.late}</span></td><td><span class="chip bad">${s.is_open ? Math.max(0, n - k.present - k.late - k.leave - k.sick - k.absent) + k.absent : k.absent}</span></td><td><span class="chip pri">${k.leave + k.sick}</span></td>
+        <td><span class="chip ok">${k.present}</span></td><td><span class="chip warn">${k.late}</span></td><td><span class="chip bad">${s.is_open ? Math.max(0, n - k.present - k.late - k.leave - k.sick - k.activity - k.absent) + k.absent : k.absent}</span></td><td><span class="chip pri">${k.leave + k.sick}</span></td>
         <td>${s.is_open ? '<span class="chip ok">🟢 เปิดอยู่</span>' : '<span class="chip">ปิดแล้ว</span>'}</td>
         <td class="act"><a class="btn sm ${s.is_open ? 'primary' : ''}" href="#att-${s.id}">${s.is_open ? `${ic('qr')}เปิด QR` : 'ดู/แก้ไข'}</a></td></tr>`; }).join('')}
   </tbody></table></div></div>`;
@@ -7405,9 +7474,9 @@ function attStudentStats(c) {
   const sess = attSessions(c.id).filter(s => !s.is_open).reverse();
   const recs = new Map(); store.attendance_records.forEach(r => recs.set(r.session_id + ':' + r.student_id, r.status));
   const rows = Q.students(c.id).filter(s => s.active !== false).map(st => {
-    const k = { present: 0, late: 0, absent: 0, leave: 0, sick: 0 };
+    const k = { present: 0, late: 0, absent: 0, leave: 0, sick: 0, activity: 0 };
     const cells = sess.map(se => { const v = recs.get(se.id + ':' + st.id) || 'absent'; k[v]++; return v; });
-    const pct = sess.length ? (k.present + k.late) / sess.length * 100 : null;
+    const pct = sess.length ? (k.present + k.late + k.activity) / sess.length * 100 : null;
     return { st, k, cells, pct };
   });
   return { sess, rows };
@@ -7420,13 +7489,13 @@ function attSummary(c) {
     <div class="card-h"><h3>📊 สรุปเวลาเรียน ${esc(c.name)}</h3><span class="chip">${thaiNum(sess.length)} คาบ</span>${low ? `<span class="chip bad">ต่ำกว่า 80% · ${thaiNum(low)} คน</span>` : '<span class="chip ok">ทุกคนผ่าน 80%</span>'}<span class="spacer"></span>
       <button class="btn sm" data-act="att-xlsx">${ic('download')}Excel</button><button class="btn sm primary" data-act="att-to-gb">${ic('table')}ส่งเข้าตารางคะแนน</button></div>
     <div class="gb-wrap"><table class="gb att-mx"><thead><tr><th class="gb-sticky gb-no">เลขที่</th><th class="gb-sticky gb-name">ชื่อ - สกุล</th>
-      ${sess.map(s => `<th class="att-h" title="${esc(s.title || '')}">${thDate(s.session_date)}</th>`).join('')}<th>มา</th><th>สาย</th><th>ขาด</th><th>ลา</th><th>เวลาเรียน</th></tr></thead><tbody>
+      ${sess.map(s => `<th class="att-h" title="${esc(s.title || '')}">${thDate(s.session_date)}</th>`).join('')}<th>มา</th><th>สาย</th><th>ขาด</th><th>ลา</th><th>กิจกรรม</th><th>เวลาเรียน</th></tr></thead><tbody>
       ${rows.map(r => `<tr><td class="gb-sticky gb-no">${r.st.number}</td><td class="gb-sticky gb-name">${esc(Q.fullName(r.st))}</td>
         ${r.cells.map(v => `<td class="att-c s-${v}">${ATT_ST[v].short}</td>`).join('')}
-        <td class="gb-avg">${r.k.present}</td><td class="gb-avg">${r.k.late}</td><td class="gb-avg">${r.k.absent}</td><td class="gb-avg">${r.k.leave + r.k.sick}</td>
+        <td class="gb-avg">${r.k.present}</td><td class="gb-avg">${r.k.late}</td><td class="gb-avg">${r.k.absent}</td><td class="gb-avg">${r.k.leave + r.k.sick}</td><td class="gb-avg">${r.k.activity}</td>
         <td class="gb-tot"><span class="att-pct ${r.pct < 80 ? 'low' : ''}">${r.pct == null ? '–' : r.pct.toFixed(0) + '%'}</span></td></tr>`).join('')}
     </tbody></table></div>
-    <div class="card-b small muted">✓ มา · ส สาย · ข ขาด · ล ลา · ป ป่วย — เวลาเรียน = (มา + สาย) ÷ จำนวนคาบ · เกณฑ์มีสิทธิ์สอบ 80%</div></div>`;
+    <div class="card-b small muted">✓ มา · ส สาย · ข ขาด · ล ลา · ป ป่วย · ก กิจกรรม — เวลาเรียน = (มา + สาย + กิจกรรม) ÷ จำนวนคาบ · เกณฑ์มีสิทธิ์สอบ 80%</div></div>`;
 }
 
 /* ---------- เริ่มคาบใหม่ ---------- */
@@ -7441,13 +7510,14 @@ function attNewModal() {
       <label class="field"><span>วิชา (ไม่บังคับ · ใช้ตอนส่งเวลาเรียนเข้าตารางคะแนน)</span><select class="input" name="subject"><option value="">— ไม่ระบุ —</option>${subs.map(s => `<option value="${s.id}" ${subs.length === 1 ? 'selected' : ''}>${esc(s.name)}</option>`).join('')}</select></label>
       <label class="field"><span>นับว่ามาสายเมื่อสแกนหลังเริ่มคาบ</span><select class="input" name="late"><option value="10">10 นาที</option><option value="15" selected>15 นาที</option><option value="20">20 นาที</option><option value="30">30 นาที</option><option value="0">ไม่นับสาย</option></select></label>
       <div class="fmt small">เปิดแล้วจะมี QR ใหญ่ให้ฉายขึ้นจอ รหัสใน QR เปลี่ยนทุก 30 วินาที นักเรียนถ่ายรูปส่งให้เพื่อนที่ไม่ได้มาเรียนไม่ได้</div></div>`,
-    actions: [{ label: 'ยกเลิก', onClick: closeModal }, { label: 'เปิด QR เช็คชื่อ', kind: 'primary', onClick: async () => {
+    actions: [{ label: 'ยกเลิก', onClick: closeModal }, { label: '✍️ เช็คเอง (ไม่ใช้ QR)', onClick: () => attCreate(true) }, { label: 'เปิด QR เช็คชื่อ', kind: 'primary', onClick: () => attCreate(false) }],
+  });
+  async function attCreate(manual) {
       const late = +mval('late');
       const row = { classroom_id: c.id, subject_id: mval('subject') || null, title: mval('title').trim() || 'คาบเรียน', late_after: late ? new Date(Date.now() + late * 60000).toISOString() : null };
       const s = await db.insert('attendance_sessions', row);
-      closeModal(); location.hash = 'att-' + s.id;
-    } }],
-  });
+      ui.attQuick = manual; closeModal(); location.hash = 'att-' + s.id;
+  }
 }
 
 /* ---------- หน้าคาบ (QR สด + รายชื่อ) ---------- */
@@ -7458,22 +7528,24 @@ function viewAttSession() {
   const c = db.get('classrooms', s.classroom_id), sj = s.subject_id && db.get('subjects', s.subject_id);
   const studs = Q.students(c.id).filter(x => x.active !== false);
   const recs = new Map(attRecords(s.id).map(r => [r.student_id, r]));
-  const k = attCounts(s.id), came = k.present + k.late;
+  const k = attCounts(s.id), came = k.present + k.late + k.activity;
   attStartLive(s);
   return `
   <div class="page-head"><div><a href="#attendance" class="small" style="text-decoration:none">‹ เช็คชื่อทั้งหมด</a><h2 style="margin-top:4px">${esc(s.title || 'คาบเรียน')}</h2><p>${esc(c.name)}${sj ? ' · ' + esc(sj.name) : ''} · ${new Date(s.session_date + 'T00:00:00').toLocaleDateString('th-TH', { weekday: 'long', day: 'numeric', month: 'long' })}${s.late_after ? ` · สายหลัง ${new Date(s.late_after).toLocaleTimeString('th-TH', { hour: '2-digit', minute: '2-digit' })} น.` : ''}</p></div><span class="spacer"></span>
     ${s.is_open ? `<button class="btn" data-act="att-present">${ic('expand')}ฉายเต็มจอ</button><button class="btn danger solid" data-act="att-close" data-id="${s.id}">ปิดเช็คชื่อ</button>`
       : `<button class="btn" data-act="att-reopen" data-id="${s.id}">เปิดเช็คชื่ออีกครั้ง</button><button class="btn ghost icon" data-act="att-del" data-id="${s.id}" aria-label="ลบคาบนี้" style="color:var(--danger)">${ic('trash')}</button>`}</div>
-  <div class="att-live ${s.is_open ? '' : 'closed'}">
-    ${s.is_open ? `<div class="card att-qr-card"><div class="att-qr" id="att-qr">${ATT.token && ATT.sid === s.id ? qrSVG(attUrl(s.id, ATT.token), 7) : '<span class="spin"></span>'}</div>
+  <div class="att-live ${s.is_open && !ui.attQuick ? '' : 'closed'}">
+    ${s.is_open && !ui.attQuick ? `<div class="card att-qr-card"><div class="att-qr" id="att-qr">${ATT.token && ATT.sid === s.id ? qrSVG(attUrl(s.id, ATT.token), 7) : '<span class="spin"></span>'}</div>
       <div class="att-ring"><svg viewBox="0 0 36 36"><circle cx="18" cy="18" r="15.5"/><circle id="att-arc" cx="18" cy="18" r="15.5" style="stroke-dashoffset:${(1 - ATT.left / 30) * 97.4}"/></svg><span id="att-left">${Math.ceil(ATT.left)}</span></div>
       <p class="muted small" style="text-align:center;margin:6px 0 0">สแกนด้วยกล้องมือถือ · QR เปลี่ยนใหม่ทุก 30 วินาที</p></div>` : ''}
     <div class="card att-roster">
       <div class="card-h"><h3>มาแล้ว <span id="att-came">${came}</span> / ${studs.length}</h3><span class="spacer"></span>
-        <span class="chip ok">มา ${k.present}</span><span class="chip warn">สาย ${k.late}</span><span class="chip pri">ลา/ป่วย ${k.leave + k.sick}</span>${s.is_open ? '' : `<span class="chip bad">ขาด ${k.absent}</span>`}</div>
+        <span class="chip ok">มา ${k.present}</span><span class="chip warn">สาย ${k.late}</span><span class="chip pri">ลา/ป่วย ${k.leave + k.sick}</span>${k.activity ? `<span class="chip violet">กิจกรรม ${k.activity}</span>` : ''}${s.is_open ? '' : `<span class="chip bad">ขาด ${k.absent}</span>`}
+        <div class="seg sm att-modes"><button class="${ui.attQuick ? '' : 'on'}" data-act="att-quick" data-v="">แตะชื่อ</button><button class="${ui.attQuick ? 'on' : ''}" data-act="att-quick" data-v="1">✍️ เช็คเอง</button></div></div>
+      ${ui.attQuick ? attQuickHTML(s, studs, recs) : `
       <div class="att-grid">${studs.map(st => { const r = recs.get(st.id); const v = r?.status;
         return `<button class="att-stu s-${v || 'none'}" data-act="att-mark" data-sid="${st.id}"><span class="att-no">${st.number}</span><span class="att-nm">${esc(st.first_name)}</span>
-          <span class="att-st">${v ? `${ATT_ST[v].e} ${ATT_ST[v].t}${r.method === 'qr' ? ` <small>${new Date(r.checked_at).toLocaleTimeString('th-TH', { hour: '2-digit', minute: '2-digit' })}</small>` : ''}` : s.is_open ? '<small>รอสแกน</small>' : '—'}</span></button>`; }).join('')}</div>
+          <span class="att-st">${v ? `${ATT_ST[v].e} ${ATT_ST[v].t}${r.method === 'qr' ? ` <small>${new Date(r.checked_at).toLocaleTimeString('th-TH', { hour: '2-digit', minute: '2-digit' })}</small>` : ''}` : s.is_open ? '<small>รอสแกน</small>' : '—'}</span></button>`; }).join('')}</div>`}
       <div class="card-b small muted">แตะชื่อเพื่อเปลี่ยนสถานะเอง เช่น ลา ป่วย หรือคนที่ไม่มีมือถือ${s.is_open ? ' · ตอนกด "ปิดเช็คชื่อ" คนที่ยังไม่สแกนจะถูกบันทึกว่าขาด' : ''}</div>
     </div>
   </div>`;
@@ -7508,7 +7580,7 @@ function attStartLive(s) {
       store.attendance_records = store.attendance_records.filter(r => r.session_id !== s.id).concat(rows);
       if (JSON.stringify(rows.map(r => r.id + r.status).sort()) !== before && stillHere() && !document.querySelector('#modal-root .modal')) {
         const fresh = rows.filter(r => r.method === 'qr' && !before.includes(r.id)).length;
-        render(); const pc = $('#att-present-came'); if (pc) pc.textContent = attCounts(s.id).present + attCounts(s.id).late;
+        render(); const pc = $('#att-present-came'); if (pc) { const kk = attCounts(s.id); pc.textContent = kk.present + kk.late + kk.activity; }
         if (fresh) document.querySelectorAll('.att-stu.s-present, .att-stu.s-late').forEach(el => el.classList.add('pop'));
       }
     } catch (e) {}
@@ -7527,6 +7599,35 @@ function attPresent() {
   document.addEventListener('keydown', function esc_(e) { if (e.key === 'Escape') { box.remove(); document.removeEventListener('keydown', esc_); } });
   document.body.appendChild(box);
   box.requestFullscreen?.().catch(() => {});
+}
+/* ✍️ เช็คเอง: ทุกคนในหน้าเดียว แตะปุ่มสถานะได้ทันที */
+function attQuickHTML(s, studs, recs) {
+  const left = studs.filter(st => !recs.get(st.id)).length;
+  return `<div class="aq-bar"><span class="small muted">ยังไม่เช็ค <b>${left}</b> คน</span><span class="spacer"></span>
+      ${left ? `<button class="btn sm" data-act="att-rest" data-v="present">✅ ที่เหลือ = มา</button><button class="btn sm" data-act="att-rest" data-v="absent">❌ ที่เหลือ = ขาด</button>` : '<span class="chip ok">เช็คครบทุกคนแล้ว</span>'}</div>
+    <div class="aq-list">${studs.map(st => { const v = recs.get(st.id)?.status;
+      return `<div class="aq-row s-${v || 'none'}" id="aq-${st.id}"><span class="att-no">${st.number}</span><span class="aq-nm">${esc(Q.fullName(st))}</span>
+        <div class="aq-btns">${Object.entries(ATT_ST).map(([k, o]) => `<button class="aq-b s-${k} ${v === k ? 'on' : ''}" data-act="att-q" data-sid="${st.id}" data-v="${k}" title="${o.t}"><span>${o.e}</span><em>${o.t}</em></button>`).join('')}</div></div>`; }).join('')}</div>`;
+}
+async function attQuick(sid, v) {
+  const sessId = ATT.sid || ui.route.slice(4), cur = attRecords(sessId).find(r => r.student_id === sid);
+  const row = document.getElementById('aq-' + sid);
+  if (row) { row.className = 'aq-row s-' + v; row.querySelectorAll('.aq-b').forEach(b => b.classList.toggle('on', b.dataset.v === v)); }
+  try {
+    const out = await q(sb.from('attendance_records').upsert({ session_id: sessId, student_id: sid, status: v, method: 'teacher', checked_at: cur?.checked_at || new Date().toISOString() }, { onConflict: 'session_id,student_id' }).select().single());
+    store.attendance_records = store.attendance_records.filter(r => !(r.session_id === sessId && r.student_id === sid)).concat(out);
+  } catch (e) { render(); return; }
+  clearTimeout(ATT.qr_); ATT.qr_ = setTimeout(() => { if (!document.querySelector('#modal-root .modal')) render(); }, 900);
+}
+async function attRest(v) {
+  const s = db.get('attendance_sessions', ATT.sid || ui.route.slice(4));
+  const done = new Set(attRecords(s.id).map(r => r.student_id));
+  const todo = Q.students(s.classroom_id).filter(x => x.active !== false && !done.has(x.id));
+  if (!todo.length) return;
+  const rows = todo.map(st => ({ session_id: s.id, student_id: st.id, status: v, method: 'teacher', checked_at: new Date().toISOString() }));
+  const out = await q(sb.from('attendance_records').upsert(rows, { onConflict: 'session_id,student_id' }).select());
+  store.attendance_records = store.attendance_records.filter(r => !(r.session_id === s.id && todo.some(t => t.id === r.student_id))).concat(out);
+  render(); toast(`ตั้ง ${todo.length} คนเป็น "${ATT_ST[v].t}" แล้ว`);
 }
 function attMarkMenu(sid) {
   const s = db.get('attendance_sessions', ATT.sid || ui.route.slice(4)), st = db.get('students', sid);
@@ -7560,8 +7661,8 @@ async function attClose(id) {
 }
 function attXlsx() {
   const c = db.get('classrooms', ui.attCid); const { sess, rows } = attStudentStats(c);
-  const head = ['เลขที่', 'ชื่อ - สกุล', ...sess.map(s => `${thDate(s.session_date)} ${s.title || ''}`.trim()), 'มา', 'สาย', 'ขาด', 'ลา/ป่วย', 'เวลาเรียน %'];
-  const data = rows.map(r => [r.st.number, Q.fullName(r.st), ...r.cells.map(v => ATT_ST[v].t), r.k.present, r.k.late, r.k.absent, r.k.leave + r.k.sick, r.pct == null ? '' : +r.pct.toFixed(1)]);
+  const head = ['เลขที่', 'ชื่อ - สกุล', ...sess.map(s => `${thDate(s.session_date)} ${s.title || ''}`.trim()), 'มา', 'สาย', 'ขาด', 'ลา/ป่วย', 'กิจกรรม', 'เวลาเรียน %'];
+  const data = rows.map(r => [r.st.number, Q.fullName(r.st), ...r.cells.map(v => ATT_ST[v].t), r.k.present, r.k.late, r.k.absent, r.k.leave + r.k.sick, r.k.activity, r.pct == null ? '' : +r.pct.toFixed(1)]);
   const ws = XLSX.utils.aoa_to_sheet([head, ...data]); ws['!cols'] = [{ wch: 6 }, { wch: 26 }];
   const wb = XLSX.utils.book_new(); XLSX.utils.book_append_sheet(wb, ws, 'เวลาเรียน'); XLSX.writeFile(wb, `เวลาเรียน_${c.name.replace(/[\\/]/g, '-')}.xlsx`);
 }
@@ -7582,7 +7683,7 @@ function attToGbModal() {
       let col = store.grade_columns.find(g => g.subject_id === sid && g.classroom_id === c.id && g.source === 'manual' && g.title === 'เวลาเรียน');
       if (!col) col = await db.insert('grade_columns', { subject_id: sid, classroom_id: c.id, title: 'เวลาเรียน', max_score: max, source: 'manual', sort_order: 5, visible_to_students: true });
       else if (+col.max_score !== max) await db.update('grade_columns', col.id, { max_score: max });
-      const ent = rows.map(r => ({ column_id: col.id, student_id: r.st.id, score: sess.length ? Math.round(max * (r.k.present + r.k.late * lw) / sess.length * 100) / 100 : null }));
+      const ent = rows.map(r => ({ column_id: col.id, student_id: r.st.id, score: sess.length ? Math.round(max * (r.k.present + r.k.activity + r.k.late * lw) / sess.length * 100) / 100 : null }));
       const out = await q(sb.from('grade_entries').upsert(ent, { onConflict: 'column_id,student_id' }).select());
       store.grade_entries = store.grade_entries.filter(e => e.column_id !== col.id).concat(out);
       closeModal(); toast(`ส่งเวลาเรียน ${rows.length} คนเข้าตารางคะแนนแล้ว`);
@@ -7659,12 +7760,16 @@ document.addEventListener('submit', async e => {
 if (!stuState.verified) { try { const k = JSON.parse(localStorage.getItem('cr-student-keep')); if (k) stuState.verified = k; } catch (e) {} }
 
 Object.assign(ACT, {
-  'att-cls': el => { ui.attCid = el.dataset.id; render(); },
+  'att-cls': el => { ui.attCid = el.dataset.id; try { localStorage.setItem('cr-att-cid', ui.attCid); } catch (e) {} render(); },
+  'att-lv': el => { ui.attLv = el.dataset.l; ui.attLvTouched = true; const c = db.get('classrooms', ui.attCid); if (!c || levelOf(c.name) !== ui.attLv) ui.attCid = null; render(); },
   'att-tab': el => { ui.attTab = el.dataset.t; render(); },
   'att-new': attNewModal,
   'att-present': attPresent,
   'att-mark': el => attMarkMenu(el.dataset.sid),
   'att-set': el => attSet(el.dataset.sid, el.dataset.v),
+  'att-q': el => attQuick(el.dataset.sid, el.dataset.v),
+  'att-rest': el => attRest(el.dataset.v),
+  'att-quick': el => { ui.attQuick = !!el.dataset.v; render(); },
   'att-close': el => confirmBox('ปิดเช็คชื่อ', 'ปิดเช็คชื่อคาบนี้? นักเรียนที่ยังไม่สแกนจะถูกบันทึกว่า "ขาด" (แก้ทีหลังได้)', 'ปิดเช็คชื่อ', () => attClose(el.dataset.id)),
   'att-reopen': async el => { await db.update('attendance_sessions', el.dataset.id, { is_open: true, closed_at: null }); render(); toast('เปิดเช็คชื่ออีกครั้งแล้ว'); },
   'att-del': el => confirmBox('ลบคาบนี้', 'ลบคาบเรียนนี้และผลเช็คชื่อทั้งหมดของคาบนี้?', 'ลบ', async () => {
