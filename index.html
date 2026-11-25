@@ -3305,6 +3305,124 @@ body.bar-scrolled .top.anav::after,body.bar-scrolled .snav::after{opacity:1}
 .att-c.s-activity{color:#8E3BC4;font-weight:700}
 .att-opt.s-activity.on{background:#BF5AF2;color:#fff}
 @media (max-width:900px){.aq-row{grid-template-columns:30px 1fr;row-gap:6px}.aq-btns{grid-column:1/-1;justify-content:space-between}.aq-b{flex:1;justify-content:center;padding:0 4px;flex-direction:column;height:44px;gap:0}.aq-b em{font-size:10.5px}}
+/* =========================================================
+   เฟส 18: ภารกิจ · เหรียญ · ทำเนียบฤดูกาล · ผู้ปกครอง · PWA
+   ========================================================= */
+.quest-card,.badge-card,.hof{margin-top:12px;padding:16px 18px;border-radius:24px}
+.qc-h{display:flex;align-items:center;gap:12px;margin-bottom:12px}.qc-h>div{flex:1;min-width:0}
+.qc-h h3{margin:0;font:700 17px var(--f-head)}.qc-h small{color:var(--muted);font-size:12.5px}
+.qc-done{font:800 18px var(--f-head);padding:4px 12px;border-radius:999px;background:var(--surface-2);box-shadow:inset 0 0 0 1px var(--line)}
+.qc-list{display:flex;flex-direction:column;gap:8px}
+.qc-it{display:flex;align-items:center;gap:12px;padding:11px 14px;border-radius:18px;background:var(--surface-2);box-shadow:inset 0 0 0 1px var(--line);transition:transform .3s cubic-bezier(.2,1.5,.4,1)}
+.qc-it.ready{background:linear-gradient(135deg,rgba(255,214,10,.18),rgba(255,159,10,.1));box-shadow:inset 0 0 0 1.5px rgba(255,159,10,.5),0 8px 20px -14px rgba(255,140,0,.8);animation:qc-glow 1.8s ease-in-out infinite}
+@keyframes qc-glow{50%{box-shadow:inset 0 0 0 1.5px rgba(255,159,10,.8),0 10px 24px -10px rgba(255,140,0,.9)}}
+.qc-it.claimed{opacity:.62}
+.qc-ic{font-size:26px;flex:none}
+.qc-b{flex:1;min-width:0;display:flex;flex-direction:column;gap:4px}.qc-b b{font-size:14.5px}.qc-b small{font-size:12px;color:var(--muted)}
+.qc-bar{height:7px;border-radius:4px;background:rgba(120,130,150,.18);overflow:hidden}.qc-bar i{display:block;height:100%;border-radius:4px;background:linear-gradient(90deg,#FFB224,#FF6A00)}
+.qc-it.claimed .qc-bar i{background:#30D158}
+.qc-ok{font:700 12.5px var(--f-body);color:#1C8C40}.qc-wait{font-size:12px;color:var(--muted)}
+.qc-claim{animation:qc-pop 1.2s cubic-bezier(.2,1.6,.4,1) infinite}@keyframes qc-pop{50%{transform:scale(1.06)}}
+.bc-meter{width:120px;height:8px;border-radius:4px;background:rgba(120,130,150,.18);overflow:hidden}.bc-meter i{display:block;height:100%;background:linear-gradient(90deg,#FFD60A,#FF9F0A)}
+.bc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(128px,1fr));gap:8px}
+.bc-it{position:relative;display:flex;flex-direction:column;align-items:center;text-align:center;gap:2px;padding:12px 8px 10px;border-radius:18px;background:var(--surface-2);box-shadow:inset 0 0 0 1px var(--line);filter:grayscale(1);opacity:.6}
+.bc-it.got{filter:none;opacity:1;background:linear-gradient(160deg,rgba(255,244,208,.9),rgba(255,214,107,.35));box-shadow:inset 0 0 0 1px rgba(220,160,0,.35),0 8px 18px -12px rgba(200,140,0,.7)}
+[data-theme=dark] .bc-it.got{background:linear-gradient(160deg,rgba(255,214,107,.18),rgba(255,159,10,.08))}
+.bc-ic{font-size:30px;line-height:1.1}.bc-it b{font-size:13px}.bc-it small{font-size:11px;color:var(--muted);line-height:1.3}
+.bc-p{width:80%;height:4px;border-radius:2px;background:rgba(120,130,150,.2);margin-top:4px;overflow:hidden}.bc-p i{display:block;height:100%;background:#0A6CF0}
+.hof-s{border-radius:16px;background:var(--surface-2);box-shadow:inset 0 0 0 1px var(--line);margin-top:8px}
+.hof-s summary{cursor:pointer;padding:12px 14px;display:flex;gap:10px;align-items:baseline}.hof-s summary small{color:var(--muted)}
+.hof-lv{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px;padding:0 12px 12px}
+.hof-col h4{margin:4px 0 6px;font:700 14px var(--f-head)}
+.hof-row{display:grid;grid-template-columns:26px 1fr auto;gap:2px 8px;align-items:center;padding:6px 8px;border-radius:10px}.hof-row small{grid-column:2;color:var(--muted);font-size:11px}.hof-row em{grid-row:1/3;grid-column:3;font-style:normal;font-weight:700;font-size:12.5px}
+.hof-row.p1{background:rgba(255,214,10,.14)}.hof-row b{font-size:13.5px}
+.q-conf{position:fixed;left:50%;top:60%;width:0;height:0;z-index:210;pointer-events:none}
+.q-conf i{position:absolute;width:8px;height:12px;border-radius:2px;animation:ru-pop 2.2s cubic-bezier(.15,.7,.3,1) var(--d) forwards}
+.season-bar{display:flex;align-items:center;gap:12px;padding:12px 16px;margin-bottom:12px;border-radius:20px;background:linear-gradient(135deg,rgba(90,200,250,.12),rgba(191,90,242,.08));box-shadow:inset 0 0 0 1px rgba(10,108,240,.15)}
+.season-bar .sb-ic{font-size:26px}.season-bar b{display:block;font:700 15px var(--f-head)}.season-bar small{color:var(--muted);font-size:12px}
+.rk-life{display:block;font-size:10.5px}
+.pl-qr{display:grid;place-items:center;padding:8px;background:#fff;border-radius:16px;width:max-content;margin:0 auto}.pl-qr svg{width:180px;height:180px}
+.pl-url .input{flex:1;font-size:12px}
+.btn.line{background:#06C755;color:#fff;border:0}
+.pwa-card{display:flex;align-items:center;gap:12px;padding:10px 14px;margin:0 0 12px;border-radius:20px;background:linear-gradient(135deg,rgba(90,200,250,.14),rgba(10,108,240,.08));box-shadow:inset 0 0 0 1px rgba(10,108,240,.2)}
+.pwa-ic{width:40px;height:40px;border-radius:11px;overflow:hidden;flex:none}.pwa-ic svg{width:100%;height:100%}
+.pwa-card b{display:block;font-size:14px}.pwa-card small{font-size:12px;color:var(--muted)}
+/* ผู้ปกครอง */
+.par{min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:28px 18px 0}
+.par-in{width:min(860px,100%);display:flex;flex-direction:column;gap:12px}
+.par-hero{display:flex;align-items:center;gap:16px;padding:18px 20px;border-radius:26px}
+.ph-ava{font-size:46px;width:72px;height:72px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(150deg,#FFF4D0,#FFD66B);flex:none}
+.par-hero small{color:var(--muted)}.par-hero h2{margin:2px 0}.par-hero p{margin:0;color:var(--muted);font-size:13.5px}
+.par-kpi{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.pk{padding:14px;border-radius:18px;background:var(--surface);box-shadow:var(--lg-rim,0 0 0 1px var(--line));display:flex;flex-direction:column;align-items:center;text-align:center}
+.pk b{font:800 24px var(--f-head)}.pk small{font-size:12px;color:var(--muted)}.pk.bad b{color:var(--danger)}.pk.ok b{color:var(--ok)}
+.par-alert{padding:14px 16px;border-radius:18px;background:rgba(229,72,77,.08);box-shadow:inset 0 0 0 1px rgba(229,72,77,.3);display:flex;flex-direction:column;gap:4px}
+.par-alert small{color:var(--muted)}
+.par-2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.par-att>div{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:6px}
+@media (max-width:640px){.par-kpi{grid-template-columns:1fr 1fr}.par-2{grid-template-columns:1fr}.par{padding:28px 12px 0}}
+
+/* =========================================================
+   🎮 เกมผจญภัย 3D
+   ========================================================= */
+.g3-hub{padding:20px;border-radius:26px;overflow:hidden;position:relative;color:#EAF6FF;background:radial-gradient(120% 120% at 0% 0%,#123A4A,#0B1A2E 60%)}
+.g3-hub.g3-m5{background:radial-gradient(120% 120% at 0% 0%,#2A1A5A,#120B2E 60%)}
+.g3-hero{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:16px}
+.g3-orb{width:70px;height:70px;border-radius:22px;display:grid;place-items:center;font-size:38px;background:linear-gradient(160deg,rgba(255,255,255,.2),rgba(255,255,255,.04));box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 0 30px rgba(90,255,210,.35)}
+.g3-m5 .g3-orb{box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 0 30px rgba(180,140,255,.45)}
+.g3-hero>div:nth-child(2){flex:1;min-width:220px}.g3-hero small{opacity:.7}.g3-hero h2{margin:2px 0 4px;font:800 26px var(--f-head);color:#fff}.g3-hero p{margin:0;opacity:.8;font-size:13.5px}
+.g3-worlds{background:rgba(255,255,255,.08)!important}.g3-worlds button{color:#fff!important}.g3-worlds button.on{background:rgba(255,255,255,.2)!important}
+.g3-path{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.g3-node{position:relative;display:flex;flex-direction:column;align-items:center;gap:4px;padding:16px 10px 12px;border:0;border-radius:20px;cursor:pointer;color:#fff;font:inherit;text-align:center;
+  background:linear-gradient(160deg,rgba(255,255,255,.12),rgba(255,255,255,.03));box-shadow:inset 0 0 0 1px rgba(255,255,255,.16);transition:transform .35s cubic-bezier(.2,1.6,.4,1),box-shadow .2s}
+.g3-node:hover:not([disabled]){transform:translateY(-3px);box-shadow:inset 0 0 0 1px rgba(255,255,255,.35),0 12px 24px -12px rgba(0,0,0,.6)}
+.g3-node .g3-ic{font-size:30px}.g3-node b{font-size:13px;line-height:1.3}.g3-node small{font-size:11px;opacity:.7}
+.g3-node.ok{box-shadow:inset 0 0 0 1.5px rgba(48,209,88,.7)}
+.g3-node.next{box-shadow:inset 0 0 0 2px #FFD60A,0 0 24px rgba(255,214,10,.35);animation:qc-pop 1.6s ease-in-out infinite}
+.g3-node.boss{background:linear-gradient(160deg,rgba(255,79,154,.3),rgba(255,159,10,.12))}
+.g3-node.lock{opacity:.45;cursor:not-allowed}
+.g3-help{display:flex;flex-wrap:wrap;gap:6px 16px;margin-top:14px;font-size:12px;opacity:.75}
+@media (max-width:640px){.g3-path{grid-template-columns:1fr 1fr}}
+.g3t-grid{margin-top:14px}
+/* ตัวเกม (เต็มจอ) */
+html.g3-on,html.g3-on body{overflow:hidden}
+.g3x{position:fixed;inset:0;z-index:300;background:#03060F;display:grid;place-items:center;user-select:none;-webkit-user-select:none;touch-action:none}
+#g3c{width:min(100vw,177.8vh);height:min(56.25vw,100vh);image-rendering:pixelated;image-rendering:crisp-edges;cursor:grab}
+#g3m{position:absolute;top:58px;right:14px;width:132px;height:132px;border-radius:16px;box-shadow:0 0 0 1px rgba(255,255,255,.2),0 10px 30px rgba(0,0,0,.5);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.g3-hud{position:absolute;top:10px;left:12px;right:12px;display:flex;align-items:center;gap:10px;color:#fff;font:700 14px var(--f-body);text-shadow:0 1px 3px rgba(0,0,0,.6)}
+.g3-hud>span{padding:6px 12px;border-radius:999px;background:rgba(10,15,35,.55);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);box-shadow:inset 0 0 0 1px rgba(255,255,255,.15)}
+.g3-hud .spacer{padding:0;background:none;box-shadow:none}
+.g3-x{width:38px;height:38px;border-radius:12px;border:0;cursor:pointer;color:#fff;font-size:16px;background:rgba(10,15,35,.6);box-shadow:inset 0 0 0 1px rgba(255,255,255,.2)}
+.g3-msg{position:absolute;top:64px;left:50%;transform:translate(-50%,-10px);padding:10px 18px;border-radius:14px;color:#fff;font:600 14.5px var(--f-body);background:rgba(10,15,35,.75);box-shadow:inset 0 0 0 1px rgba(255,255,255,.15);opacity:0;transition:opacity .25s,transform .35s cubic-bezier(.2,1.5,.4,1);pointer-events:none;max-width:86vw;text-align:center}
+.g3-msg.on{opacity:1;transform:translate(-50%,0)}
+.g3-pad{position:absolute;bottom:18px;left:18px;display:grid;grid-template-columns:repeat(3,58px);grid-template-rows:58px 58px;gap:6px}
+.g3-pad button{border:0;border-radius:16px;color:#fff;font-size:22px;background:rgba(255,255,255,.14);box-shadow:inset 0 0 0 1px rgba(255,255,255,.25);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);touch-action:none}
+.g3-pad button:active{background:rgba(255,255,255,.3)}
+.g3-pad [data-k=up]{grid-column:2}.g3-pad [data-k=left]{grid-row:1/3;grid-column:1}.g3-pad [data-k=right]{grid-row:1/3;grid-column:3}.g3-pad [data-k=down]{grid-column:2;grid-row:2}
+@media (hover:hover) and (pointer:fine){.g3-pad{opacity:.55}}
+.g3-quiz,.g3-end{position:absolute;inset:0;display:grid;place-items:center;padding:16px;background:rgba(3,6,15,.55);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.g3-quiz[hidden],.g3-end[hidden]{display:none}
+.g3-qc,.g3-ec{width:min(620px,100%);max-height:100%;overflow:auto;padding:20px;border-radius:26px;color:#fff;background:linear-gradient(170deg,rgba(40,52,90,.92),rgba(16,20,40,.94));box-shadow:inset 0 1px 0 rgba(255,255,255,.18),0 0 0 1px rgba(255,255,255,.12),0 30px 80px rgba(0,0,0,.6);animation:spring-in .45s cubic-bezier(.2,1.4,.35,1)}
+.g3-qh{display:flex;justify-content:space-between;gap:8px;font-size:12.5px;opacity:.8;margin-bottom:8px}.g3-qh em{font-style:normal;color:#FFD60A}
+.g3-qt{font:700 19px/1.5 var(--f-head);margin-bottom:14px;white-space:normal}
+.g3-opts{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.g3-opt{display:flex;align-items:center;gap:10px;text-align:left;padding:12px 14px;border:0;border-radius:16px;cursor:pointer;color:#fff;font:600 14.5px var(--f-body);background:rgba(255,255,255,.1);box-shadow:inset 0 0 0 1px rgba(255,255,255,.18);transition:background .15s,transform .3s cubic-bezier(.2,1.6,.4,1)}
+.g3-opt b{flex:none;width:26px;height:26px;border-radius:8px;display:grid;place-items:center;background:rgba(255,255,255,.18);font-size:13px}
+.g3-opt:hover:not([disabled]){background:rgba(255,255,255,.2);transform:translateY(-1px)}
+.g3-opt[disabled]{cursor:default}.g3-opt.dim{opacity:.4}
+.g3-opt.right{background:#1FAF5A;box-shadow:0 0 0 2px #7CFFB0,0 0 26px rgba(48,209,88,.6)}.g3-opt.wrong{background:#D93A48;animation:g3-shake .4s}
+@keyframes g3-shake{25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+.g3-qf{display:flex;align-items:center;gap:10px;margin-top:12px;font-size:12px;opacity:.85;flex-wrap:wrap}
+.g3-hint{border:0;border-radius:12px;padding:8px 12px;cursor:pointer;color:#fff;font:600 12.5px var(--f-body);background:linear-gradient(180deg,#5AC8FA,#0A6CF0)}.g3-hint[disabled]{opacity:.35;cursor:default}
+.g3-ec{text-align:center}.g3-eic{font-size:64px}.g3-ec h2{margin:4px 0;color:#fff;font:800 28px var(--f-head)}
+.g3-stars{font-size:44px;letter-spacing:6px;color:rgba(255,255,255,.2)}.g3-stars .on{color:#FFD60A;text-shadow:0 0 18px rgba(255,214,10,.7)}
+.g3-es{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin:8px 0;font-size:14px;opacity:.9}
+.g3-rw{display:inline-block;margin:6px 0;padding:8px 16px;border-radius:14px;background:linear-gradient(180deg,#FFF3C9,#FFD66B);color:#7A4A00;font-size:15px}
+.g3-eb{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-top:14px}
+@media (max-width:640px){.g3-opts{grid-template-columns:1fr}.g3-qt{font-size:16.5px}#g3m{width:96px;height:96px;top:54px}.g3-hud{font-size:12px;gap:6px}.g3-hud>span{padding:4px 8px}.g3-lv{display:none}}
+.stu-tabs2{grid-template-columns:repeat(8,minmax(0,1fr))}
+[data-device=mobile] .stu-tabs2{grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:4px}
+@media (max-width:520px){.stu-tabs2{grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:4px}}
 
 </style>
 </head>
@@ -3849,7 +3967,7 @@ if (typeof module !== 'undefined') module.exports = ExamParser;
 </script>
 <script>
 /* โลโก้: ภาพครูปลื้ม (ไฟล์ต้นฉบับ src/logo.svg ฝังตอน build) */
-const APP_VER = '16.2 · 25 พ.ย. 2569';
+const APP_VER = '17.0 · 25 พ.ย. 2569';
 let LOGO_N = 0;
 function logoSVG() { const k = 'L' + (++LOGO_N); return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><defs><linearGradient id="lgb" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3B9BFF"/><stop offset=".5" stop-color="#0A5BE0"/><stop offset="1" stop-color="#062C78"/></linearGradient><linearGradient id="lgs" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset=".6" stop-color="#FFF4D6"/><stop offset="1" stop-color="#FFD978"/></linearGradient><radialGradient id="lgc" cx=".3" cy=".08" r=".75"><stop offset="0" stop-color="#fff" stop-opacity=".55"/><stop offset=".5" stop-color="#fff" stop-opacity=".08"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient></defs><rect width="48" height="48" rx="13" fill="url(#lgb)"/><rect width="48" height="48" rx="13" fill="url(#lgc)"/><rect x=".75" y=".75" width="46.5" height="46.5" rx="12.3" fill="none" stroke="#fff" stroke-opacity=".45" stroke-width="1.2"/><g fill="none" stroke="#04235F" stroke-opacity=".35" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" transform="translate(0 1.2)"><path d="M21.2 17 C19.8 14.6 17.4 13.6 14.8 13.6 C11 13.6 8.6 15.6 8.6 18.5 C8.6 21.8 11.6 22.9 14.9 23.9 C18.6 25 21.6 26.4 21.6 29.8 C21.6 33 18.8 34.6 15.1 34.6 C12 34.6 9.5 33.4 8 31.1"/><path d="M26.6 14 L39.6 34.2 M39.6 14 L26.6 34.2"/></g><g fill="none" stroke="url(#lgs)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M21.2 17 C19.8 14.6 17.4 13.6 14.8 13.6 C11 13.6 8.6 15.6 8.6 18.5 C8.6 21.8 11.6 22.9 14.9 23.9 C18.6 25 21.6 26.4 21.6 29.8 C21.6 33 18.8 34.6 15.1 34.6 C12 34.6 9.5 33.4 8 31.1"/><path d="M26.6 14 L39.6 34.2 M39.6 14 L26.6 34.2"/></g></svg>`.replace('<svg ', '<svg class="logo" aria-hidden="true" ').replace(/\b(lg[bsc])\b/g, '$1' + k); }
 /* =====================================================================
@@ -4095,6 +4213,7 @@ const NAV = [
   { group: 'การสอน', key: 'teach', icon: 'inbox' },
   { id: 'assignments', label: 'งานและตรวจงาน', short: 'งาน', icon: 'inbox' },
   { id: 'calendar', label: 'ปฏิทินงานและสอบ', short: 'ปฏิทิน', icon: 'calendar' },
+  { id: 'games', label: 'เกมผจญภัย 3D', short: 'เกม', icon: 'game' },
   { id: 'exams', label: 'ข้อสอบ', short: 'ข้อสอบ', icon: 'quiz' },
   { id: 'qbank', label: 'คลังข้อสอบ', short: 'คลังข้อสอบ', icon: 'bank' },
   { id: 'attendance', label: 'เช็คชื่อ', short: 'เช็คชื่อ', icon: 'attend' },
@@ -4118,7 +4237,7 @@ function navItems() {
   const items = NAV.filter(n => n.group || (n.admin ? ME.admin() : routeAllowed(n.id)));
   return items.filter((n, i) => !n.group || (items[i + 1] && !items[i + 1].group));
 }
-const TITLES = { calendar: 'ปฏิทินงานและสอบ', chat: 'ข้อความจากนักเรียน', ranking: 'Ranking', dashboard: 'แดชบอร์ด', subjects: 'วิชา', classes: 'ห้องเรียนและรายชื่อ', assignments: 'งานและตรวจงาน', grade: 'ตรวจงาน', examedit: 'แก้ไขข้อสอบ', examres: 'ผลสอบ', gradebook: 'ตารางคะแนน', exams: 'ข้อสอบ', settings: 'ตั้งค่า', users: 'ผู้ใช้และสิทธิ์', attendance: 'เช็คชื่อ', attsess: 'เช็คชื่อ', reports: 'รายงานและสำรองข้อมูล', risk: 'ติดตามนักเรียน', qbank: 'คลังข้อสอบ', announce: 'ประกาศ', works: 'แกลเลอรีผลงาน' };
+const TITLES = { games: 'เกมผจญภัย 3D', calendar: 'ปฏิทินงานและสอบ', chat: 'ข้อความจากนักเรียน', ranking: 'Ranking', dashboard: 'แดชบอร์ด', subjects: 'วิชา', classes: 'ห้องเรียนและรายชื่อ', assignments: 'งานและตรวจงาน', grade: 'ตรวจงาน', examedit: 'แก้ไขข้อสอบ', examres: 'ผลสอบ', gradebook: 'ตารางคะแนน', exams: 'ข้อสอบ', settings: 'ตั้งค่า', users: 'ผู้ใช้และสิทธิ์', attendance: 'เช็คชื่อ', attsess: 'เช็คชื่อ', reports: 'รายงานและสำรองข้อมูล', risk: 'ติดตามนักเรียน', qbank: 'คลังข้อสอบ', announce: 'ประกาศ', works: 'แกลเลอรีผลงาน' };
 
 function navSecToggle(el) {
   const k = el.dataset.k, sec = el.closest('.nav-sec'), st = navOpenState();
@@ -4200,6 +4319,7 @@ function render() {
   const root = $('#app');
   setDevice();
   if (isGalleryRoute()) { root.innerHTML = viewGalleryPublic(); return; }
+  if (typeof isParentRoute === 'function' && isParentRoute()) { document.getElementById('stu-chat')?.remove(); document.getElementById('t-chat')?.remove(); root.innerHTML = viewParent(); return; }
   if (isCheckinRoute()) { root.innerHTML = viewCheckin(); return; }
   if (isExamTakeRoute()) { root.innerHTML = viewExamTake(); return; }
   stuChatSync(); tChatSync();
@@ -4211,7 +4331,7 @@ function render() {
   let base = ui.route.startsWith('att-') ? 'attsess' : ui.route.startsWith('grade-') ? 'grade' : ui.route.startsWith('exam-edit-') ? 'examedit' : ui.route.startsWith('exam-res-') ? 'examres' : ui.route;
   if (!TITLES[base] || !routeAllowed(base)) { ui.route = 'dashboard'; base = 'dashboard'; }
   const theme = document.documentElement.dataset.theme;
-  const views = { calendar: viewCalendar, chat: viewChat, ranking: viewRanking, dashboard: viewDashboard, subjects: viewSubjects, classes: viewClasses, settings: viewSettings, users: viewUsers, attendance: viewAttendance, attsess: viewAttSession, reports: viewReports, risk: viewRisk, qbank: viewQbank, announce: viewAnnounce, works: viewWorks, assignments: viewAssignments, grade: viewGrade, gradebook: viewGradebook, exams: viewExams, examedit: viewExamEdit, examres: viewExamResults };
+  const views = { games: viewGames, calendar: viewCalendar, chat: viewChat, ranking: viewRanking, dashboard: viewDashboard, subjects: viewSubjects, classes: viewClasses, settings: viewSettings, users: viewUsers, attendance: viewAttendance, attsess: viewAttSession, reports: viewReports, risk: viewRisk, qbank: viewQbank, announce: viewAnnounce, works: viewWorks, assignments: viewAssignments, grade: viewGrade, gradebook: viewGradebook, exams: viewExams, examedit: viewExamEdit, examres: viewExamResults };
   const navOn = base === 'grade' ? 'assignments' : (base === 'examedit' || base === 'examres') ? 'exams' : base === 'attsess' ? 'attendance' : base;
   ui._navOn = navOn;
   if (isMobile()) { root.innerHTML = mobileShell(base, navOn, (views[base] || viewDashboard)()); return; }
@@ -4399,6 +4519,7 @@ function classPanel(c) {
     <div class="toolbar">
       <div class="search">${ic('search')}<input class="input" placeholder="ค้นหา เลขที่ / ชื่อ${adm ? ' / เลขประจำตัว' : ''}" value="${esc(ui.q)}" data-inp="search" aria-label="ค้นหานักเรียน"></div>
       <span class="spacer"></span>
+      <button class="btn sm" data-act="pl-class" data-id="${c.id}" title="สร้างลิงก์ผู้ปกครองของทุกคนในห้อง (Excel)">👪 ลิงก์ผู้ปกครอง</button>
       ${adm ? `<button class="btn sm ${ed ? 'primary' : ''}" data-act="toggle-edit">${ic('table')}${ed ? 'เสร็จสิ้นการแก้ไข' : 'แก้ไขแบบตาราง'}</button>
       <button class="btn sm" data-act="student-new">${ic('plus')}เพิ่มนักเรียน</button>` : ''}
     </div>
@@ -4407,7 +4528,7 @@ function classPanel(c) {
       <button class="btn sm danger" data-act="bulk-del">${ic('trash')}ลบที่เลือก</button><button class="btn sm ghost" data-act="bulk-clear">ยกเลิก</button></div>` : ''}
     ${list.length ? `<div class="tbl-wrap"><table class="tbl" id="stu-tbl"><thead><tr>
         ${adm ? `<th style="width:36px"><input type="checkbox" data-chg="sel-all" aria-label="เลือกทั้งหมด" ${sel.length && sel.length === list.length ? 'checked' : ''}></th>` : ''}
-        <th>เลขที่</th>${adm ? '<th>เลขประจำตัว</th>' : ''}<th>คำนำหน้า</th><th>ชื่อ</th><th>นามสกุล</th><th>สถานะ</th>${adm ? '<th class="act"></th>' : ''}</tr></thead><tbody>
+        <th>เลขที่</th>${adm ? '<th>เลขประจำตัว</th>' : ''}<th>คำนำหน้า</th><th>ชื่อ</th><th>นามสกุล</th><th>สถานะ</th><th class="act"></th></tr></thead><tbody>
       ${list.map(s => `<tr data-row="${s.id}" class="${s.active === false ? 'inactive' : ''}" ${match(s) ? '' : 'hidden'} data-search="${esc(`${s.number} ${s.student_code} ${Q.fullName(s)}`.toLowerCase())}">
         ${adm ? `<td><input type="checkbox" data-chg="sel" data-id="${s.id}" ${ui.sel.has(s.id) ? 'checked' : ''} aria-label="เลือก ${esc(s.first_name)}"></td>` : ''}
         ${ed ? `
@@ -4418,7 +4539,7 @@ function classPanel(c) {
         <td><input class="input" value="${esc(s.last_name)}" data-chg="cell" data-id="${s.id}" data-f="last_name"></td>`
         : `<td class="num">${s.number}</td>${adm ? `<td class="code-mask">${esc(s.student_code) || '<span class="chip warn">ไม่มี</span>'}</td>` : ''}<td>${esc(s.prefix)}</td><td>${esc(s.first_name)}</td><td>${esc(s.last_name)}</td>`}
         <td>${s.active === false ? '<span class="chip">ย้าย/ลาออก</span>' : '<span class="chip ok">กำลังเรียน</span>'}${s.self_registered ? ' <span class="chip self-reg" title="นักเรียนสมัครเองด้วยรหัสลับ ตรวจสอบความถูกต้อง">✍️ สมัครเอง</span>' : ''}</td>
-        ${adm ? `<td class="act">${(store.customPass || []).includes(s.id) ? '<span class="pw-chip" title="นักเรียนตั้งรหัสผ่านเองแล้ว">🔐</span>' : ''}<button class="btn ghost icon" data-act="stu-pw-reset" data-id="${s.id}" aria-label="รีเซ็ตรหัสผ่าน" title="รีเซ็ตรหัสผ่านเป็นเลขประจำตัว">🔑</button><button class="btn ghost icon" data-act="student-edit" data-id="${s.id}" aria-label="แก้ไข">${ic('edit')}</button><button class="btn ghost icon" data-act="student-del" data-id="${s.id}" aria-label="ลบ" style="color:var(--danger)">${ic('trash')}</button></td>` : ''}
+        ${!adm ? `<td class="act"><button class="btn ghost icon" data-act="pl-open" data-id="${s.id}" title="ลิงก์ผู้ปกครอง" aria-label="ลิงก์ผู้ปกครอง">👪</button></td>` : ''}${adm ? `<td class="act"><button class="btn ghost icon" data-act="pl-open" data-id="${s.id}" title="ลิงก์ผู้ปกครอง" aria-label="ลิงก์ผู้ปกครอง">👪</button>${(store.customPass || []).includes(s.id) ? '<span class="pw-chip" title="นักเรียนตั้งรหัสผ่านเองแล้ว">🔐</span>' : ''}<button class="btn ghost icon" data-act="stu-pw-reset" data-id="${s.id}" aria-label="รีเซ็ตรหัสผ่าน" title="รีเซ็ตรหัสผ่านเป็นเลขประจำตัว">🔑</button><button class="btn ghost icon" data-act="student-edit" data-id="${s.id}" aria-label="แก้ไข">${ic('edit')}</button><button class="btn ghost icon" data-act="student-del" data-id="${s.id}" aria-label="ลบ" style="color:var(--danger)">${ic('trash')}</button></td>` : ''}
       </tr>`).join('')}</tbody></table></div>
       <datalist id="prefixes">${PREFIX_OPTS.map(p => `<option value="${p}">`).join('')}</datalist>`
     : `<div class="empty">${ic('users')}<b>ห้องนี้ยังไม่มีนักเรียน</b>${adm ? 'เพิ่มทีละคน หรืออัปโหลดไฟล์รายชื่อ' : 'รอผู้ดูแลระบบเพิ่มรายชื่อ'}</div>`}
@@ -5465,8 +5586,9 @@ function studentHome(v) {
       <div class="row" style="gap:14px;position:relative;z-index:1">${stuAvaHTML()}<div style="min-width:0"><h2 class="hello"><span class="hello-t"><span class="hello-s">สวัสดี</span> ${esc(first)}!</span> <span class="wave">👋</span></h2>
         <div class="pills"><span class="pill">🏫 ${esc(v.classroom_name)}</span><span class="pill">เลขที่ ${v.number}</span></div>${gameChipHTML()}</div></div></div>
     ${studentAnnHTML()}
+    ${typeof pwaCardHTML === 'function' ? pwaCardHTML() : ''}
     ${stuTabsHTML(groups)}
-    ${stuState.tab === 'cal' ? studentCalendarHTML() : stuState.tab === 'rank' ? studentRankHTML(v) : stuState.tab === 'shop' ? shopHTML() : stuState.tab === 'gallery' ? studentGalleryHTML() : stuState.tab === 'score' ? studentScoresHTML() : stuState.tab === 'exam' ? studentExamsHTML() : stuState.asg ? `<div class="counters">
+    ${stuState.tab === 'game' ? studentGameHTML() : stuState.tab === 'cal' ? studentCalendarHTML() : stuState.tab === 'rank' ? studentRankHTML(v) : stuState.tab === 'shop' ? shopHTML() : stuState.tab === 'gallery' ? studentGalleryHTML() : stuState.tab === 'score' ? studentScoresHTML() : stuState.tab === 'exam' ? studentExamsHTML() : stuState.asg ? `<div class="counters">
         <div class="counter todo"><span class="em">📝</span><div><b>${groups.todo.length}</b><small>ต้องส่ง/แก้</small></div></div>
         <div class="counter wait"><span class="em">⏳</span><div><b>${groups.wait.length}</b><small>รอครูตรวจ</small></div></div>
         <div class="counter done"><span class="em">🌟</span><div><b>${groups.done.length}</b><small>ตรวจแล้ว</small></div></div></div>
@@ -5642,12 +5764,13 @@ function stuTabBadges(groups) {
     const owned = new Set((g.owned || []).map(o => o.title_id));
     b.shop = (g.titles || []).filter(t => !owned.has(t.id) && g.coins >= t.cost && g.xp >= (t.min_xp || 0)).length;
     b.rankPos = g.rank;
+    if (typeof questClaimable === 'function') { if (!EXX.data && !EXX.loading) loadExtras(); b.quest = questClaimable(); }
   }
   return b;
 }
 function stuTabsHTML(groups) {
   const cur = stuState.tab || 'work', b = stuTabBadges(groups);
-  const T = [['work', '📝', 'งาน', b.work], ['exam', '🧪', 'ข้อสอบ', b.exam], ['cal', '📅', 'ปฏิทิน', b.cal], ['score', '📊', 'คะแนน', b.score], ['rank', '🏆', 'Ranking', 0], ['shop', '🛒', 'ร้านค้า', b.shop], ['gallery', '🌟', 'ผลงาน', 0]];
+  const T = [['work', '📝', 'งาน', b.work], ['exam', '🧪', 'ข้อสอบ', b.exam], ['cal', '📅', 'ปฏิทิน', b.cal], ['game', '🎮', 'ผจญภัย', 0], ['score', '📊', 'คะแนน', b.score], ['rank', '🏆', 'Ranking', b.quest], ['shop', '🛒', 'ร้านค้า', b.shop], ['gallery', '🌟', 'ผลงาน', 0]];
   return `<nav class="stu-tabs2" role="tablist" aria-label="เมนูนักเรียน">${T.map(([k, e, l, n]) => `
     <button class="st2 ${cur === k ? 'on' : ''}" role="tab" aria-selected="${cur === k}" data-act="stu-tab" data-t="${k}">
       <span class="st2-ic">${e}${n ? `<i class="st2-badge" aria-label="${n} รายการใหม่">${n > 99 ? '99+' : n}</i>` : ''}${k === 'rank' && b.rankPos && b.rankPos <= 99 ? `<i class="st2-pos">#${b.rankPos}</i>` : ''}</span>
@@ -8120,6 +8243,8 @@ function rkBadge(i, extra = '', title = '') {
   const inner = `<span class="rk g${i}${i >= 5 ? ' rk-hi' : ''}"${title ? ` title="${esc(title)}"` : ''}><span class="rk-ic">${r.ic}</span><b>${r.n}</b>${extra}</span>`;
   return i >= 9 ? `<span class="rk-spk">${inner}<i class="spk s1">✦</i><i class="spk s2">✦</i><i class="spk s3">✧</i><i class="spk s4">✦</i><i class="spk s5">✧</i></span>` : inner;
 }
+/* XP ของฤดูกาลนี้ (ใช้จัดอันดับ) · xp = XP สะสม (ใช้คิดยศ) */
+const SX = x => +(x?.sxp ?? x?.xp) || 0;
 function rankIdx(xp) { let i = 0; RANKS.forEach((r, k) => { if (xp >= r.xp) i = k; }); return i; }
 function lvOf(xp) { return 1 + Math.floor((xp || 0) / 50); }
 function titleOf(id, titles) { return id ? (titles || []).find(t => t.id === id) : null; }
@@ -8234,15 +8359,15 @@ function emblemHTML(k) { return `<span class="pq-emb e${k}" title="${EMBLEM_NAME
 
 /* ---------- ทำเนียบคนเก่ง (โพเดียม 5 อันดับ + 6–10) ---------- */
 function podiumHTML(top, titles, opt = {}) {
-  const list = (top || []).filter(x => x.xp > 0);
+  const list = (top || []).filter(x => SX(x) > 0);
   if (!list.length) return `<div class="pod-empty">ยังไม่มีใครได้แต้ม ส่งงานหรือทำข้อสอบเพื่อขึ้นทำเนียบ! 🚀</div>`;
   const medal = ['', '🥇', '🥈', '🥉', '🎖️', '🎖️'];
   const plaque = (x, k) => x ? `<div class="pq p${k}${x.me ? ' me' : ''}"><div class="pq-medal">${medal[k]}</div>${emblemHTML(k)}
       <div class="pq-name">${nameTag(x.name, x.xp, x.rank, x.title_id, titles, { noBadge: true, noCrown: true })}${fireTag(x.streak)}</div>
-      <div class="pq-rank">${rkBadge(rankIdx(x.xp))}</div><div class="pq-meta">Lv.${lvOf(x.xp)}</div><div class="pq-xp">${x.xp.toLocaleString()} XP</div><div class="pq-cls">${esc(x.classroom)}</div></div>` : `<div class="pq p${k} vacant">${emblemHTML(k)}<div class="pq-meta">ว่าง</div></div>`;
+      <div class="pq-rank">${rkBadge(rankIdx(x.xp))}</div><div class="pq-meta">Lv.${lvOf(x.xp)}</div><div class="pq-xp">${SX(x).toLocaleString()} XP</div><div class="pq-cls">${esc(x.classroom)}</div></div>` : `<div class="pq p${k} vacant">${emblemHTML(k)}<div class="pq-meta">ว่าง</div></div>`;
   const [a, b, c, d, e] = list;
   return `<div class="podium">${plaque(d, 4)}${plaque(b, 2)}${plaque(a, 1)}${plaque(c, 3)}${plaque(e, 5)}</div>
-    ${!opt.noRest && list.length > 5 ? `<div class="pod-rest">${list.slice(5, 10).map(x => `<div class="pr-row${x.me ? ' me' : ''}"><span class="pr-no">${x.rank}</span>${nameTag(x.name, x.xp, x.rank, x.title_id, titles)}<span class="spacer"></span><span class="small muted">${esc(x.classroom)}</span><b class="pr-xp">${x.xp.toLocaleString()} XP</b></div>`).join('')}</div>` : ''}`;
+    ${!opt.noRest && list.length > 5 ? `<div class="pod-rest">${list.slice(5, 10).map(x => `<div class="pr-row${x.me ? ' me' : ''}"><span class="pr-no">${x.rank}</span>${nameTag(x.name, x.xp, x.rank, x.title_id, titles)}<span class="spacer"></span><span class="small muted">${esc(x.classroom)}</span><b class="pr-xp">${SX(x).toLocaleString()} XP</b></div>`).join('')}</div>` : ''}`;
 }
 
 /* ---------- ครู: แดชบอร์ด ---------- */
@@ -8338,9 +8463,12 @@ function studentRankHTML(v) {
   const P = g.parts || {}, i = rankIdx(g.xp);
   const part = (e, l, x) => `<div class="gp"><span>${e}</span><small>${l}</small><b>${(x || 0).toLocaleString()}</b></div>`;
   return `${myGameCard(v, g)}
+    ${typeof questsHTML === 'function' ? questsHTML() : ''}
     ${g.parts ? `<div class="card gparts">${part('📤', 'งาน', P.sub)}${part('🧪', 'ข้อสอบ', P.exam)}${part('🖼', 'ผลงาน', P.gallery)}${part('📋', 'เช็คชื่อ', P.att)}${part('🎁', 'ครูให้', P.bonus)}</div>` : ''}
-    <div class="card hall stu-hall"><div class="hall-h"><div><h3>🏆 ทำเนียบคนเก่ง ${esc(g.level)}</h3><small>5 อันดับแรกขึ้นป้ายเกียรติยศ · อันดับ 1–3 ได้มงกุฎหน้าชื่อ</small></div></div>
+    <div class="card hall stu-hall"><div class="hall-h"><div><h3>🏆 ทำเนียบคนเก่ง ${esc(g.level)}</h3><small>5 อันดับแรกขึ้นป้ายเกียรติยศ · อันดับ 1–3 ได้มงกุฎหน้าชื่อ${g.season ? ` · ฤดูกาล ${esc(g.season.name)}` : ''}</small></div></div>
       ${podiumHTML(g.top, g.titles)}</div>
+    ${typeof badgesHTML === 'function' ? badgesHTML() : ''}
+    ${typeof hallOfFameHTML === 'function' ? hallOfFameHTML(EXX.data?.hall) : ''}
     <div class="rank-2col">
       <div class="card"><div class="card-h"><h3>⚔️ เส้นทางยศ</h3></div><div class="ladder">${RANKS.map((r, k) => `<div class="ld-row${k === i ? ' now' : ''}${k < i ? ' done' : ''}">${rkBadge(k)}<span class="spacer"></span><small>${r.xp.toLocaleString()}+ XP</small>${k === i ? '<span class="chip">ตอนนี้</span>' : k < i ? '✓' : ''}</div>`).join('')}</div></div>
       <div class="card"><div class="card-h"><h3>✨ วิธีได้แต้ม</h3></div><div class="card-b">${xpRules(g.rules).map(([e, a, b]) => `<div class="hr-row"><span>${e}</span><b>${a}</b><span class="spacer"></span><small>${b}</small></div>`).join('')}
@@ -8397,7 +8525,7 @@ function railListHTML(list, titles, school) {
   return list.slice(0, 5).map((x, k) => { const pos = x.rank || k + 1, r = RANKS[rankIdx(x.xp)];
     return `<div class="rail-row p${Math.min(pos, 4)}${x.me ? ' me' : ''}"><span class="rail-md">${pos <= 3 ? md[pos] : `<i>${pos}</i>`}</span>
       <div class="rail-b"><div class="rail-n">${nameTag(x.name.split(' ')[0], x.xp, school ? x.lvl_rank : x.rank, x.title_id, titles, { noBadge: true })}${fireTag(x.streak)}</div>
-      <div class="rail-r">${rkBadge(rankIdx(x.xp))}</div><small>${esc(x.classroom)}${school && x.lvl_rank ? ` · #${x.lvl_rank} ${esc(x.level)}` : ''}</small></div><b class="rail-xp">${x.xp.toLocaleString()}<small>XP</small></b></div>`; }).join('');
+      <div class="rail-r">${rkBadge(rankIdx(x.xp))}</div><small>${esc(x.classroom)}${school && x.lvl_rank ? ` · #${x.lvl_rank} ${esc(x.level)}` : ''}</small></div><b class="rail-xp">${SX(x).toLocaleString()}<small>XP</small></b></div>`; }).join('');
 }
 function stuRailsHTML() {
   const g = stuState.game; if (!g || g.missing) return '';
@@ -8998,6 +9126,7 @@ function newTermWizard() {
       <div class="nt-opts">
         <label class="nt-opt"><input type="checkbox" name="copySub" checked><span><b>คัดลอกรายวิชา ${subs.length} วิชา</b><small>พร้อมห้องที่สอน · ชื่อ รหัส สี เหมือนเดิม</small></span></label>
         <label class="nt-opt"><input type="checkbox" name="copyAsg"><span><b>คัดลอกงาน/ใบงาน</b><small>ไม่รวมกำหนดส่ง และตั้งเป็น "ปิดรับ" ไว้ก่อน ค่อยเปิดทีละงานเมื่อสอน</small></span></label>
+        <label class="nt-opt"><input type="checkbox" name="newSeason" checked><span><b>🏁 เริ่มฤดูกาล Ranking ใหม่</b><small>บันทึก Top 5 ทุกสายชั้นลงทำเนียบแชมป์ แล้วนับอันดับใหม่ · ยศและเหรียญไม่หาย</small></span></label>
         <label class="nt-opt"><input type="checkbox" name="makeCur" checked><span><b>ตั้งเป็นภาคเรียนปัจจุบันทันที</b><small>ภาคเรียนเก่ายังดูย้อนหลังได้จากตัวเลือกภาคเรียนในหน้ารายวิชา</small></span></label>
       </div>
       ${bkWarn() ? `<div class="hint warn nt-bk"><span>${bkWarn()}</span><button class="btn sm primary" data-act="bk-json">${ic('dl')}สำรองตอนนี้</button></div>` : '<div class="hint">✅ สำรองข้อมูลวันนี้แล้ว</div>'}
@@ -9032,6 +9161,7 @@ function newTermWizard() {
           await q(sb.from('terms').update({ is_current: true }).eq('id', t.id));
           store.terms.forEach(x => { x.is_current = x.id === t.id; }); ui.termId = null;
         }
+        if (chk('newSeason')) { try { await q(sb.rpc('admin_new_season', { p_name: 'ภาคเรียน ' + Q.termLabel(t) })); } catch (e) {} }
         closeModal(); render();
         toast(`เริ่มภาคเรียน ${Q.termLabel(t)} แล้ว${nSub ? ` · คัดลอก ${nSub} วิชา` : ''}${nAsg ? ` · ${nAsg} งาน` : ''}`);
       } catch (e) { toast(e.message || 'ทำรายการไม่สำเร็จ', true); }
@@ -9668,6 +9798,790 @@ Object.assign(ACT, {
 Object.assign(CHG, { 'su-enabled': async el => { try { SIGNUP.cfg = await q(sb.rpc('admin_set_signup', { p_enabled: el.checked, p_key: null })); render(); toast(el.checked ? 'เปิดรับสมัครแล้ว' : 'ปิดรับสมัครแล้ว'); } catch (e) { toast(e.message, true); el.checked = !el.checked; } } });
 
 /* =====================================================================
+   extras.js — เฟส 18
+   ภารกิจประจำสัปดาห์ · เหรียญความสำเร็จ · ฤดูกาล Ranking · ลิงก์ผู้ปกครอง · ติดตั้งเป็นแอป
+   ===================================================================== */
+
+/* ---------- นักเรียน: ภารกิจ + เหรียญ ---------- */
+const EXX = { data: null, loading: false, err: false, claiming: '' };
+async function loadExtras(force) {
+  const v = stuState.verified; if (!v || EXX.loading) return;
+  if (EXX.sid !== v.student_id) { EXX.data = null; EXX.err = false; EXX.sid = v.student_id; }
+  if (EXX.data && !force) return;
+  EXX.loading = true;
+  try { EXX.data = await q(sb.rpc('student_extras', { p_student_id: v.student_id, p_code: v.code })); EXX.err = false; }
+  catch (e) { EXX.err = true; }
+  EXX.loading = false; if (isStudentRoute()) render();
+}
+function questClaimable() { return (EXX.data?.quests || []).filter(q => !q.claimed && q.progress >= q.target).length; }
+function weekLeft() {
+  const ws = EXX.data?.week_start ? new Date(EXX.data.week_start) : null; if (!ws) return '';
+  const end = +ws + 7 * 864e5, h = (end - Date.now()) / 36e5;
+  return h < 24 ? `เหลือ ${Math.max(1, Math.round(h))} ชม.` : `เหลือ ${Math.ceil(h / 24)} วัน`;
+}
+function questsHTML() {
+  if (EXX.sid !== stuState.verified?.student_id || (!EXX.data && !EXX.err)) loadExtras();
+  if (EXX.err) return '';
+  if (!EXX.data) return `<div class="card quest-card"><div class="empty small"><span class="spin"></span> กำลังโหลดภารกิจ…</div></div>`;
+  const qs = EXX.data.quests || [];
+  return `<div class="card quest-card"><div class="qc-h"><div><h3>🎯 ภารกิจประจำสัปดาห์</h3><small>สุ่มใหม่ทุกวันจันทร์ · ${weekLeft()}</small></div>
+      <span class="qc-done">${qs.filter(q => q.claimed).length}/${qs.length}</span></div>
+    <div class="qc-list">${qs.map(q => { const done = q.progress >= q.target, pct = Math.min(100, q.progress / q.target * 100);
+      return `<div class="qc-it ${q.claimed ? 'claimed' : done ? 'ready' : ''}"><span class="qc-ic">${q.icon}</span>
+        <div class="qc-b"><b>${esc(q.title)}</b><div class="qc-bar"><i style="width:${pct}%"></i></div><small>${Math.min(q.progress, q.target)}/${q.target} · รางวัล +${q.xp} XP 🪙 ${q.coins}</small></div>
+        ${q.claimed ? '<span class="qc-ok">✓ รับแล้ว</span>' : done ? `<button class="btn sm primary qc-claim" data-act="quest-claim" data-k="${q.key}" ${EXX.claiming ? 'disabled' : ''}>🎁 รับรางวัล</button>` : '<span class="qc-wait">กำลังทำ</span>'}</div>`; }).join('')}</div></div>`;
+}
+function badgesHTML() {
+  if (!EXX.data) return '';
+  const b = EXX.data.badges || [], got = b.filter(x => x.got).length;
+  return `<div class="card badge-card"><div class="qc-h"><div><h3>🏅 เหรียญความสำเร็จ</h3><small>สะสมได้ ${got} จาก ${b.length} เหรียญ</small></div>
+      <div class="bc-meter"><i style="width:${got / Math.max(1, b.length) * 100}%"></i></div></div>
+    <div class="bc-grid">${b.map(x => `<div class="bc-it ${x.got ? 'got' : ''}" title="${esc(x.desc)}"><span class="bc-ic">${x.got ? x.icon : '🔒'}</span><b>${esc(x.name)}</b><small>${esc(x.desc)}</small>
+      ${x.got ? '' : `<div class="bc-p"><i style="width:${Math.min(100, x.p / Math.max(1, x.t) * 100)}%"></i></div>`}</div>`).join('')}</div></div>`;
+}
+function hallOfFameHTML(hall) {
+  if (!hall || !hall.length) return '';
+  return `<div class="card hof"><div class="qc-h"><div><h3>🏛️ ทำเนียบแชมป์ฤดูกาลที่ผ่านมา</h3><small>Top 5 ของแต่ละสายชั้น ตอนปิดฤดูกาล</small></div></div>
+    ${hall.map(h => { const lv = [...new Set(h.top.map(t => t.lvl))];
+      return `<details class="hof-s"><summary><b>${esc(h.season)}</b><small>ปิดเมื่อ ${new Date(h.ended_at).toLocaleDateString('th-TH', { dateStyle: 'medium' })}</small></summary>
+        <div class="hof-lv">${lv.map(l => `<div class="hof-col"><h4>${esc(l)}</h4>${h.top.filter(t => t.lvl === l).map(t => `<div class="hof-row p${t.place}"><span>${['', '🥇', '🥈', '🥉', '4', '5'][t.place]}</span><b>${esc(t.name)}</b><small>${esc(t.classroom || '')}</small><em>${(+t.xp).toLocaleString()} XP</em></div>`).join('')}</div>`).join('')}</div></details>`; }).join('')}</div>`;
+}
+async function questClaim(key) {
+  const v = stuState.verified; if (!v || EXX.claiming) return;
+  EXX.claiming = key; render();
+  try {
+    const r = await q(sb.rpc('student_quest_claim', { p_student_id: v.student_id, p_code: v.code, p_key: key }));
+    if (r.ok) { toast(`🎉 รับรางวัลภารกิจ +${r.xp} XP · 🪙 ${r.coins}`); questConfetti(); }
+    else toast({ CLAIMED: 'รับรางวัลไปแล้ว', NOT_DONE: 'ภารกิจยังไม่สำเร็จ', NOT_THIS_WEEK: 'ภารกิจนี้หมดเวลาแล้ว' }[r.error] || 'รับรางวัลไม่สำเร็จ', true);
+  } catch (e) {}
+  EXX.claiming = ''; await Promise.all([loadExtras(true), loadStudentGame(true)]); render();
+}
+function questConfetti() {
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const el = document.createElement('div'); el.className = 'q-conf';
+  el.innerHTML = Array.from({ length: 40 }, (_, k) => `<i style="--x:${(Math.random() * 2 - 1) * 40}vw;--y:${-(20 + Math.random() * 40)}vh;--r:${Math.random() * 720 - 360}deg;--d:${(Math.random() * .25).toFixed(2)}s;background:${['#FFD60A', '#FF9F0A', '#30D158', '#5AC8FA', '#BF5AF2'][k % 5]}"></i>`).join('');
+  document.body.appendChild(el); setTimeout(() => el.remove(), 2600);
+}
+Object.assign(ACT, { 'quest-claim': el => questClaim(el.dataset.k) });
+
+/* ---------- ครู: ฤดูกาล ---------- */
+function seasonBarHTML(t, can) {
+  const se = t?.season; if (!se && !(t?.hall || []).length) return '';
+  return `<div class="card season-bar"><span class="sb-ic">🏁</span><div><b>ฤดูกาล: ${esc(se?.name || '—')}</b><small>เริ่ม ${se?.started_at ? new Date(se.started_at).toLocaleDateString('th-TH', { dateStyle: 'medium' }) : '–'} · อันดับนับจาก XP ที่ได้ในฤดูนี้ · ยศยังคิดจาก XP สะสมทั้งหมด</small></div>
+    <span class="spacer"></span>${(t.hall || []).length ? `<button class="btn ghost sm" data-act="season-hall">🏛️ ทำเนียบแชมป์</button>` : ''}${can ? `<button class="btn sm" data-act="season-new">เริ่มฤดูกาลใหม่</button>` : ''}</div>`;
+}
+function seasonNewModal(defName) {
+  const cur = Q.currentTerm?.();
+  openModal({
+    title: '🏁 จบฤดูกาลนี้ แล้วเริ่มใหม่',
+    body: `<div class="stack"><p style="margin:0">ระบบจะบันทึก <b>Top 5 ของทุกสายชั้น</b> ลงทำเนียบแชมป์ แล้วเริ่มนับอันดับใหม่จาก 0</p>
+      <ul class="small" style="margin:0;padding-left:18px;color:var(--muted)"><li>ยศ (นูบหัดเดิน → สุดในรุ่น) <b>ไม่หาย</b> เพราะคิดจาก XP สะสม</li><li>เหรียญ 🪙 และฉายาที่ซื้อไว้ยังอยู่ครบ</li><li>ทำเนียบเก่าดูได้ทั้งครูและนักเรียน</li></ul>
+      <label class="field"><span>ชื่อฤดูกาลใหม่</span><input class="input" name="sname" value="${esc(defName || (cur ? 'ภาคเรียน ' + Q.termLabel(cur) : 'ฤดูกาลใหม่'))}"></label></div>`,
+    actions: [{ label: 'ยกเลิก', onClick: closeModal }, { label: 'จบฤดูและเริ่มใหม่', kind: 'primary', onClick: async () => {
+      try { await q(sb.rpc('admin_new_season', { p_name: mval('sname') })); closeModal(); await loadRanking(true); render(); toast('เริ่มฤดูกาลใหม่แล้ว 🏁'); }
+      catch (e) { toast(/admin_new_season|function/i.test(e.message || '') ? 'ยังไม่ได้รัน phase18.sql' : e.message, true); }
+    } }],
+  });
+}
+Object.assign(ACT, {
+  'season-new': () => seasonNewModal(),
+  'season-hall': () => openModal({ title: '🏛️ ทำเนียบแชมป์', wide: true, body: hallOfFameHTML(RK.t?.hall || []).replace(/<details class="hof-s">/, '<details class="hof-s" open>'), actions: [{ label: 'ปิด', onClick: closeModal }] }),
+});
+
+/* ---------- ลิงก์ผู้ปกครอง ---------- */
+const parentUrl = t => `${location.origin}${location.pathname}#parent-${t}`;
+async function parentLinkModal(sid, renew) {
+  const st = db.get('students', sid); if (!st) return;
+  let tok;
+  try { tok = await q(sb.rpc('teacher_parent_link', { p_student: sid, p_new: !!renew })); }
+  catch (e) { return toast(/teacher_parent_link|function/i.test(e.message || '') ? 'ยังไม่ได้รัน phase18.sql' : e.message, true); }
+  const url = parentUrl(tok);
+  openModal({
+    title: `👪 ลิงก์ผู้ปกครอง · ${Q.fullName(st)}`,
+    body: `<div class="stack pl-box">
+      <p class="small muted" style="margin:0">ผู้ปกครองเปิดดูได้โดยไม่ต้องล็อกอิน: งานที่ส่ง/ค้าง · คะแนน · ผลสอบ · เวลาเรียน · อ่านอย่างเดียว แก้ไขอะไรไม่ได้</p>
+      <div class="pl-qr">${typeof qrSVG === 'function' ? qrSVG(url, 5) : ''}</div>
+      <div class="row pl-url"><input class="input mono" readonly value="${esc(url)}" onclick="this.select()"><button class="btn" data-act="pl-copy" data-u="${esc(url)}">📋 คัดลอก</button></div>
+      <div class="row" style="gap:8px;flex-wrap:wrap"><a class="btn line" target="_blank" rel="noopener" href="https://line.me/R/msg/text/?${encodeURIComponent(`รายงานการเรียนของ ${Q.fullName(st)} (${db.get('classrooms', st.classroom_id)?.name || ''})\n${url}`)}">ส่งทาง LINE</a>
+        <span class="spacer"></span><button class="btn ghost sm" data-act="pl-renew" data-id="${sid}">🔄 สร้างลิงก์ใหม่ (ลิงก์เก่าใช้ไม่ได้)</button><button class="btn ghost sm" data-act="pl-revoke" data-id="${sid}" style="color:var(--danger)">ยกเลิกลิงก์</button></div>
+    </div>`,
+    actions: [{ label: 'ปิด', onClick: closeModal }],
+  });
+}
+async function parentLinksClass(cid) {
+  const c = db.get('classrooms', cid), list = Q.students(cid).filter(s => s.active !== false);
+  if (!list.length) return;
+  toast('กำลังสร้างลิงก์ทั้งห้อง…');
+  const rows = [];
+  try { for (const st of list) rows.push([st.number, Q.fullName(st), parentUrl(await q(sb.rpc('teacher_parent_link', { p_student: st.id, p_new: false })))]); }
+  catch (e) { return toast(/function/i.test(e.message || '') ? 'ยังไม่ได้รัน phase18.sql' : e.message, true); }
+  if (!window.XLSX) return toast('โหลดตัวสร้าง Excel ไม่สำเร็จ', true);
+  const ws = XLSX.utils.aoa_to_sheet([['เลขที่', 'ชื่อ - สกุล', 'ลิงก์ผู้ปกครอง'], ...rows]); ws['!cols'] = [{ wch: 6 }, { wch: 28 }, { wch: 70 }];
+  const wb = XLSX.utils.book_new(); XLSX.utils.book_append_sheet(wb, ws, 'ลิงก์ผู้ปกครอง'); XLSX.writeFile(wb, `ลิงก์ผู้ปกครอง_${c.name.replace(/[\\/]/g, '-')}.xlsx`);
+  toast(`สร้างลิงก์ ${rows.length} คนแล้ว ดาวน์โหลดเป็น Excel`);
+}
+Object.assign(ACT, {
+  'pl-open': el => parentLinkModal(el.dataset.id),
+  'pl-class': el => parentLinksClass(el.dataset.id),
+  'pl-copy': el => { navigator.clipboard?.writeText(el.dataset.u).then(() => toast('คัดลอกลิงก์แล้ว'), () => toast('คัดลอกไม่สำเร็จ', true)); },
+  'pl-renew': el => parentLinkModal(el.dataset.id, true),
+  'pl-revoke': async el => { try { await q(sb.rpc('teacher_parent_revoke', { p_student: el.dataset.id })); closeModal(); toast('ยกเลิกลิงก์แล้ว'); } catch (e) {} },
+});
+
+/* ---------- หน้าผู้ปกครอง (#parent-<token>) ---------- */
+const PAR = { tok: null, data: null, loading: false };
+function isParentRoute() { return /^parent-[A-Za-z0-9_-]{16,40}$/.test(ui.route); }
+async function loadParent(tok) {
+  if (PAR.loading) return; PAR.loading = true; PAR.tok = tok;
+  try { PAR.data = await q(sb.rpc('parent_view', { p_token: tok })); } catch (e) { PAR.data = { ok: false }; }
+  PAR.loading = false; render();
+}
+function viewParent() {
+  const tok = ui.route.slice(7);
+  if (PAR.tok !== tok) { PAR.data = null; loadParent(tok); }
+  const d = PAR.data;
+  const shell = inner => `<div class="par"><header class="snav"><div class="snav-in"><div class="sn-brand"><span class="brand-mark">${logoSVG()}</span><span class="sn-wm"><b>ห้องเรียนครูปลื้ม</b><small>รายงานสำหรับผู้ปกครอง</small></span></div></div></header><div class="par-in">${inner}</div><div class="credit stu-credit">${verText()}${devCreditHTML()}</div></div>`;
+  if (!d) return shell(`<div class="card"><div class="empty"><span class="spin"></span> กำลังโหลดรายงาน…</div></div>`);
+  if (!d.ok) return shell(`<div class="card"><div class="empty"><div style="font-size:44px">🔒</div><b>ลิงก์นี้ใช้ไม่ได้แล้ว</b>ลิงก์อาจถูกยกเลิก หรือพิมพ์ไม่ครบ กรุณาขอลิงก์ใหม่จากครูผู้สอน</div></div>`);
+  const A = d.attendance || {}, asg = d.assignments || [], ex = d.exams || [];
+  const att = (A.present || 0) + (A.late || 0) + (A.activity || 0), pct = A.sessions ? att / A.sessions * 100 : null;
+  const miss = asg.filter(a => a.status === 'missing'), todo = asg.filter(a => a.status === 'todo' || a.status === 'returned');
+  const done = asg.filter(a => ['submitted', 'graded', 'late'].includes(a.status));
+  const stTx = { graded: ['ตรวจแล้ว', 'ok'], submitted: ['ส่งแล้ว รอตรวจ', 'pri'], late: ['ส่งช้า', 'warn'], returned: ['ครูให้แก้ไข', 'warn'], missing: ['ยังไม่ส่ง (เลยกำหนด)', 'bad'], todo: ['ยังไม่ส่ง', ''] };
+  const r = RANKS[rankIdx(d.game?.xp || 0)];
+  return shell(`
+    <div class="card par-hero"><div class="ph-ava">${r.ic}</div><div><small>รายงานการเรียนของ</small><h2>${esc(d.student.name)}</h2><p>${esc(d.student.classroom)} · เลขที่ ${d.student.number} · ยศ ${r.n}${d.game?.rank ? ` · อันดับ ${d.game.rank} ของ ${esc(d.game.level)}` : ''}</p></div></div>
+    <div class="par-kpi">
+      <div class="pk ${miss.length ? 'bad' : 'ok'}"><b>${miss.length}</b><small>งานค้าง (เลยกำหนด)</small></div>
+      <div class="pk"><b>${done.length}/${asg.length}</b><small>งานที่ส่งแล้ว</small></div>
+      <div class="pk ${pct != null && pct < 80 ? 'bad' : 'ok'}"><b>${pct == null ? '–' : pct.toFixed(0) + '%'}</b><small>เวลาเรียน (เกณฑ์ 80%)</small></div>
+      <div class="pk"><b>${ex.filter(x => x.best != null).length}/${ex.length}</b><small>ข้อสอบที่ทำแล้ว</small></div>
+    </div>
+    ${miss.length ? `<div class="card par-alert"><b>⚠️ งานที่ยังไม่ส่งและเลยกำหนดแล้ว</b>${miss.map(a => `<div>• ${esc(a.title)} <small>(${esc(a.subject || '')} · กำหนด ${new Date(a.due_at).toLocaleDateString('th-TH', { dateStyle: 'medium' })})</small></div>`).join('')}</div>` : ''}
+    <div class="card"><div class="card-h"><h3>📝 งานทั้งหมด</h3></div><div class="tbl-wrap"><table class="tbl"><thead><tr><th>งาน</th><th>วิชา</th><th>กำหนดส่ง</th><th>สถานะ</th><th class="num">คะแนน</th></tr></thead><tbody>
+      ${asg.map(a => `<tr><td><b>${esc(a.title)}</b></td><td class="small">${esc(a.subject || '')}</td><td class="small">${a.due_at ? new Date(a.due_at).toLocaleDateString('th-TH', { day: 'numeric', month: 'short' }) : '–'}</td><td><span class="chip ${stTx[a.status]?.[1] || ''}">${stTx[a.status]?.[0] || a.status}</span></td><td class="num">${a.score != null ? `${+a.score}/${+a.max}` : '–'}</td></tr>`).join('') || '<tr><td colspan="5" class="muted">ยังไม่มีงาน</td></tr>'}
+    </tbody></table></div></div>
+    <div class="par-2">
+      <div class="card"><div class="card-h"><h3>🧪 ผลสอบ</h3></div><div class="card-b">${ex.map(x => `<div class="hr-row"><span>${x.best != null ? '✅' : '⏳'}</span><b>${esc(x.title)}</b><span class="spacer"></span><span>${x.best != null ? `${+x.best}/${+x.total}` : 'ยังไม่ทำ'}</span></div>`).join('') || '<span class="muted small">ยังไม่มีข้อสอบ</span>'}</div></div>
+      <div class="card"><div class="card-h"><h3>📋 เวลาเรียน</h3></div><div class="card-b par-att">
+        <div><span class="chip ok">มา ${A.present || 0}</span><span class="chip warn">สาย ${A.late || 0}</span><span class="chip bad">ขาด ${Math.max(0, A.absent || 0)}</span><span class="chip pri">ลา/ป่วย ${A.leave || 0}</span><span class="chip violet">กิจกรรม ${A.activity || 0}</span></div>
+        <small class="muted">จากทั้งหมด ${A.sessions || 0} คาบที่เช็คชื่อแล้ว</small></div></div>
+    </div>
+    <p class="small muted" style="text-align:center">ข้อมูลอัปเดตตามเวลาจริง · มีข้อสงสัยติดต่อครูผู้สอน</p>`);
+}
+
+/* ---------- ติดตั้งเป็นแอป (PWA) ---------- */
+let PWA_EVT = null;
+(function pwaInit() {
+  if (!document.querySelector('link[rel=manifest]')) {
+    const l = document.createElement('link'); l.rel = 'manifest'; l.href = 'manifest.webmanifest'; document.head.appendChild(l);
+    const a = document.createElement('link'); a.rel = 'apple-touch-icon'; a.href = 'icon-192.png'; document.head.appendChild(a);
+    const m = document.createElement('meta'); m.name = 'apple-mobile-web-app-capable'; m.content = 'yes'; document.head.appendChild(m);
+  }
+  if ('serviceWorker' in navigator && /^https:/.test(location.protocol)) navigator.serviceWorker.register('sw.js').catch(() => {});
+  window.addEventListener('beforeinstallprompt', e => { e.preventDefault(); PWA_EVT = e; if (isStudentRoute()) render(); });
+})();
+function pwaInstalled() { return matchMedia('(display-mode: standalone)').matches || navigator.standalone; }
+function pwaCardHTML() {
+  if (pwaInstalled()) return '';
+  try { if (localStorage.getItem('cr-pwa-hide')) return ''; } catch (e) {}
+  const ios = /iphone|ipad|ipod/i.test(navigator.userAgent);
+  if (!PWA_EVT && !ios) return '';
+  return `<div class="card pwa-card"><span class="pwa-ic">${logoSVG()}</span><div><b>ติดตั้ง "ห้องเรียนครูปลื้ม" เป็นแอป</b><small>${ios ? 'แตะปุ่ม แชร์ ⬆️ แล้วเลือก "เพิ่มไปยังหน้าจอโฮม"' : 'เปิดได้จากหน้าจอหลัก เต็มจอเหมือนแอปจริง'}</small></div>
+    <span class="spacer"></span>${PWA_EVT ? '<button class="btn sm primary" data-act="pwa-install">ติดตั้ง</button>' : ''}<button class="an-ic sm" data-act="pwa-hide" aria-label="ซ่อน">${ic('x')}</button></div>`;
+}
+Object.assign(ACT, {
+  'pwa-install': async () => { if (!PWA_EVT) return; PWA_EVT.prompt(); try { await PWA_EVT.userChoice; } catch (e) {} PWA_EVT = null; render(); },
+  'pwa-hide': () => { try { localStorage.setItem('cr-pwa-hide', '1'); } catch (e) {} render(); },
+});
+
+/* =====================================================================
+   quest-bank.js — คลังคำถามตั้งต้นของเกมผจญภัย (a = ลำดับคำตอบที่ถูก เริ่มจาก 0)
+   m3: วิทยาการคำนวณ ม.3 · m5: Web Application ม.5
+   ===================================================================== */
+const QB3D = {
+  m3: {
+    name: 'อาณาจักรอัลกอริทึม', sub: 'วิทยาการคำนวณ ม.3', icon: '🤖',
+    levels: [
+      { t: 'ด่าน 1 · คิดเป็นขั้นตอน', ic: '🧩', qs: [
+        { q: 'อัลกอริทึม (Algorithm) หมายถึงข้อใด', c: ['ขั้นตอนการแก้ปัญหาที่เรียงลำดับชัดเจน', 'ภาษาที่ใช้เขียนโปรแกรม', 'อุปกรณ์ประมวลผลของคอมพิวเตอร์', 'โปรแกรมป้องกันไวรัส'], a: 0 },
+        { q: 'การแยกปัญหาใหญ่ออกเป็นปัญหาย่อย ๆ ที่แก้ง่ายขึ้น เรียกว่าอะไร', c: ['การแบ่งปัญหา (Decomposition)', 'การหารูปแบบ (Pattern)', 'การเขียนผังงาน', 'การทดสอบโปรแกรม'], a: 0 },
+        { q: 'ในผังงาน (Flowchart) สัญลักษณ์ "สี่เหลี่ยมขนมเปียกปูน" ใช้แทนอะไร', c: ['การตัดสินใจ / เงื่อนไข', 'จุดเริ่มต้นและจุดจบ', 'การประมวลผล', 'การรับข้อมูล'], a: 0 },
+        { q: 'สัญลักษณ์ "วงรี" ในผังงาน ใช้แทนอะไร', c: ['จุดเริ่มต้น / จุดสิ้นสุด', 'การตัดสินใจ', 'การแสดงผลทางจอภาพ', 'การวนซ้ำ'], a: 0 },
+        { q: 'สัญลักษณ์ "สี่เหลี่ยมผืนผ้า" ในผังงาน ใช้แทนอะไร', c: ['การประมวลผล / คำนวณ', 'การตัดสินใจ', 'จุดเริ่มต้น', 'ทิศทางการทำงาน'], a: 0 },
+        { q: 'ข้อใดเรียงขั้นตอน "ต้มมาม่า" ได้ถูกต้องที่สุด', c: ['ต้มน้ำ → ใส่เส้น → รอ 3 นาที → ใส่เครื่องปรุง', 'ใส่เครื่องปรุง → ต้มน้ำ → กินทันที', 'ใส่เส้น → กิน → ต้มน้ำ', 'รอ 3 นาที → ต้มน้ำ → ใส่เส้น'], a: 0 },
+        { q: 'การมองหาสิ่งที่ "ซ้ำกัน" ในปัญหาเพื่อใช้วิธีเดิมแก้ เรียกว่าอะไร', c: ['การหารูปแบบ (Pattern Recognition)', 'การแบ่งปัญหา', 'การดีบัก', 'การคอมไพล์'], a: 0 },
+        { q: 'ลูกศรในผังงาน ใช้บอกอะไร', c: ['ทิศทางลำดับการทำงาน', 'ค่าของตัวแปร', 'จุดจบของโปรแกรม', 'ข้อผิดพลาด'], a: 0 },
+      ] },
+      { t: 'ด่าน 2 · ตัวแปรและข้อมูล', ic: '📦', qs: [
+        { q: 'ใน Python คำสั่งใดใช้แสดงข้อความบนจอ', c: ['print()', 'input()', 'show()', 'echo()'], a: 0 },
+        { q: 'ใน Python คำสั่งใดใช้รับข้อมูลจากผู้ใช้ทางแป้นพิมพ์', c: ['input()', 'print()', 'get()', 'scan()'], a: 0 },
+        { q: 'x = 5 แล้ว x = x + 3 ตอนนี้ x มีค่าเท่าไร', c: ['8', '5', '3', '53'], a: 0 },
+        { q: 'ข้อมูล "สวัสดี" (มีเครื่องหมายคำพูด) เป็นข้อมูลชนิดใดใน Python', c: ['str (ข้อความ)', 'int (จำนวนเต็ม)', 'float (ทศนิยม)', 'bool (จริง/เท็จ)'], a: 0 },
+        { q: 'ค่า 3.14 เป็นข้อมูลชนิดใด', c: ['float', 'int', 'str', 'bool'], a: 0 },
+        { q: 'ชื่อตัวแปรใดตั้งได้ถูกต้องใน Python', c: ['score_1', '1score', 'my score', 'class'], a: 0 },
+        { q: 'print(7 // 2) จะแสดงผลอะไร', c: ['3', '3.5', '4', '1'], a: 0 },
+        { q: 'print(7 % 2) จะแสดงผลอะไร', c: ['1', '3', '3.5', '0'], a: 0 },
+        { q: 'ถ้า age = input("อายุ: ") ค่าใน age เป็นชนิดใด', c: ['str (ต้องแปลงด้วย int() ก่อนคำนวณ)', 'int', 'float', 'bool'], a: 0 },
+      ] },
+      { t: 'ด่าน 3 · ทางแยกเงื่อนไข', ic: '🔀', qs: [
+        { q: 'คำสั่งใดใช้ตรวจเงื่อนไขใน Python', c: ['if', 'for', 'print', 'def'], a: 0 },
+        { q: 'เครื่องหมายใดใช้ "เปรียบเทียบว่าเท่ากัน" ใน Python', c: ['==', '=', '=>', '!='], a: 0 },
+        { q: 'เครื่องหมาย != หมายถึงอะไร', c: ['ไม่เท่ากับ', 'เท่ากับ', 'มากกว่าหรือเท่ากับ', 'กำหนดค่า'], a: 0 },
+        { q: 'score = 75\nif score >= 50: print("ผ่าน")\nelse: print("ไม่ผ่าน")\nแสดงผลอะไร', c: ['ผ่าน', 'ไม่ผ่าน', 'ผ่าน ไม่ผ่าน', 'Error'], a: 0 },
+        { q: 'เงื่อนไข (x > 5 and x < 10) เป็นจริงเมื่อ x เท่าไร', c: ['7', '5', '10', '12'], a: 0 },
+        { q: 'เงื่อนไข (x < 0 or x > 100) เป็นจริงเมื่อ x เท่าไร', c: ['150', '50', '0', '100'], a: 0 },
+        { q: 'ต้องการตรวจหลายกรณีต่อกัน (เกรด A, B, C) ควรใช้คำสั่งใดคั่นกลาง', c: ['elif', 'else if:', 'when', 'case'], a: 0 },
+        { q: 'ใน Python บรรทัดที่อยู่ "ใต้" if ต้องทำอย่างไร', c: ['ย่อหน้า (indent) เข้าไป', 'ใส่เครื่องหมาย ;', 'ใส่ปีกกา { }', 'เขียนต่อบรรทัดเดียวกันเท่านั้น'], a: 0 },
+      ] },
+      { t: 'ด่าน 4 · ห้องวนซ้ำ', ic: '🔁', qs: [
+        { q: 'คำสั่งใดใช้ทำงานซ้ำ ๆ ใน Python', c: ['for และ while', 'if และ else', 'print และ input', 'int และ str'], a: 0 },
+        { q: 'range(5) ให้ค่าอะไรบ้าง', c: ['0, 1, 2, 3, 4', '1, 2, 3, 4, 5', '0 ถึง 5', '5 อย่างเดียว'], a: 0 },
+        { q: 'for i in range(3): print("Hi")\nจะพิมพ์ Hi กี่ครั้ง', c: ['3 ครั้ง', '2 ครั้ง', '4 ครั้ง', '1 ครั้ง'], a: 0 },
+        { q: 'range(1, 4) ให้ค่าอะไรบ้าง', c: ['1, 2, 3', '1, 2, 3, 4', '0, 1, 2, 3', '4, 3, 2, 1'], a: 0 },
+        { q: 'while ทำงานซ้ำไปจนกว่าอะไร', c: ['เงื่อนไขเป็นเท็จ', 'ครบ 10 รอบ', 'ผู้ใช้กดปุ่ม', 'เงื่อนไขเป็นจริง'], a: 0 },
+        { q: 'ถ้าลูป while ไม่เคยทำให้เงื่อนไขเป็นเท็จ จะเกิดอะไรขึ้น', c: ['วนซ้ำไม่รู้จบ (Infinite loop)', 'โปรแกรมทำงานรอบเดียว', 'โปรแกรมจะไม่ทำงานเลย', 'คอมพิวเตอร์ปิดเอง'], a: 0 },
+        { q: 'total = 0\nfor i in range(1, 4): total = total + i\ntotal มีค่าเท่าไร', c: ['6', '3', '10', '4'], a: 0 },
+        { q: 'คำสั่งใดใช้ "ออกจากลูปทันที"', c: ['break', 'stop', 'exit loop', 'continue'], a: 0 },
+      ] },
+      { t: 'ด่าน 5 · หอคอยข้อมูล', ic: '📊', qs: [
+        { q: 'ข้อมูลที่ผ่านการประมวลผลจนนำไปใช้ประโยชน์ได้ เรียกว่าอะไร', c: ['สารสนเทศ (Information)', 'ข้อมูลดิบ (Data)', 'ฮาร์ดแวร์', 'อัลกอริทึม'], a: 0 },
+        { q: 'คะแนนสอบของนักเรียนทุกคนที่ยังไม่ได้คำนวณอะไร จัดเป็นอะไร', c: ['ข้อมูล (Data)', 'สารสนเทศ', 'ซอฟต์แวร์', 'กราฟ'], a: 0 },
+        { q: 'ต้องการแสดง "สัดส่วน" ของแต่ละส่วนเทียบกับทั้งหมด ควรใช้แผนภูมิแบบใด', c: ['แผนภูมิวงกลม', 'แผนภูมิเส้น', 'ตาราง', 'แผนภาพต้นไม้'], a: 0 },
+        { q: 'ต้องการแสดง "แนวโน้มที่เปลี่ยนไปตามเวลา" ควรใช้แผนภูมิแบบใด', c: ['แผนภูมิเส้น', 'แผนภูมิวงกลม', 'แผนภาพเวนน์', 'รูปภาพ'], a: 0 },
+        { q: 'ข้อใดเป็นการ "ประมวลผลข้อมูล"', c: ['หาค่าเฉลี่ยคะแนนของห้อง', 'จดคะแนนลงสมุด', 'ปิดคอมพิวเตอร์', 'เปลี่ยนวอลเปเปอร์'], a: 0 },
+        { q: 'ข้อมูลที่ดีควรมีลักษณะใด', c: ['ถูกต้อง ทันสมัย ครบถ้วน', 'ยาวที่สุด', 'มีสีสวยงาม', 'มาจากใครก็ได้'], a: 0 },
+        { q: 'โปรแกรมใดเหมาะกับการคำนวณและทำกราฟจากตารางข้อมูล', c: ['Google Sheets / Excel', 'Paint', 'Notepad', 'โปรแกรมเล่นเพลง'], a: 0 },
+        { q: 'ข้อมูลจากการ "สำรวจด้วยตนเอง" เรียกว่าแหล่งข้อมูลแบบใด', c: ['ปฐมภูมิ', 'ทุติยภูมิ', 'ตติยภูมิ', 'สำเร็จรูป'], a: 0 },
+      ] },
+      { t: 'ด่าน 6 · เมืองเทคโนโลยี', ic: '🌐', qs: [
+        { q: 'IoT (Internet of Things) หมายถึงข้อใด', c: ['อุปกรณ์ต่าง ๆ เชื่อมต่ออินเทอร์เน็ตและสื่อสารกันได้', 'เกมออนไลน์', 'โปรแกรมแต่งรูป', 'สายแลน'], a: 0 },
+        { q: 'ข้อใดเป็นตัวอย่างของ IoT', c: ['หลอดไฟที่สั่งเปิด-ปิดผ่านมือถือ', 'ดินสอ', 'หนังสือเรียน', 'โต๊ะไม้'], a: 0 },
+        { q: 'การเก็บไฟล์ไว้บน Google Drive เป็นการใช้บริการแบบใด', c: ['คลาวด์ (Cloud)', 'แฟลชไดรฟ์', 'ซีดีรอม', 'ฮาร์ดดิสก์ในเครื่อง'], a: 0 },
+        { q: 'อุปกรณ์ใดทำหน้าที่ "ประมวลผล" หลักของคอมพิวเตอร์', c: ['CPU', 'Monitor', 'Keyboard', 'Speaker'], a: 0 },
+        { q: 'RAM ทำหน้าที่อะไร', c: ['หน่วยความจำชั่วคราวขณะเครื่องทำงาน', 'เก็บข้อมูลถาวรแม้ปิดเครื่อง', 'แสดงภาพ', 'พิมพ์งาน'], a: 0 },
+        { q: 'ข้อใดเป็นอุปกรณ์รับข้อมูล (Input)', c: ['เมาส์', 'ลำโพง', 'จอภาพ', 'เครื่องพิมพ์'], a: 0 },
+        { q: 'Wi-Fi เป็นการเชื่อมต่อเครือข่ายแบบใด', c: ['ไร้สาย', 'ใช้สายแลน', 'ใช้สาย USB', 'ใช้สายไฟ'], a: 0 },
+        { q: 'AI (ปัญญาประดิษฐ์) คืออะไร', c: ['ระบบที่ทำให้คอมพิวเตอร์คิด เรียนรู้ ตัดสินใจคล้ายมนุษย์', 'ไวรัสคอมพิวเตอร์', 'อุปกรณ์ต่อพ่วง', 'ภาษาสำหรับทำเว็บ'], a: 0 },
+      ] },
+      { t: 'ด่าน 7 · ป้อมพลเมืองดิจิทัล', ic: '🛡️', qs: [
+        { q: 'รหัสผ่านข้อใดปลอดภัยที่สุด', c: ['Kp#9vL!2wQ', '123456', 'password', 'ชื่อเล่นของตัวเอง'], a: 0 },
+        { q: 'ได้ข้อความ "คุณได้รับรางวัล กดลิงก์เพื่อกรอกรหัสบัตร" ควรทำอย่างไร', c: ['ไม่กด และลบทิ้ง เพราะอาจเป็นฟิชชิง', 'รีบกดก่อนหมดเวลา', 'ส่งต่อให้เพื่อน', 'กรอกข้อมูลให้ครบ'], a: 0 },
+        { q: 'ก่อนแชร์ข่าว ควรทำอย่างไร', c: ['ตรวจสอบแหล่งที่มาและหลายแหล่ง', 'แชร์ทันทีถ้าหัวข้อน่าตกใจ', 'ดูยอดไลก์อย่างเดียว', 'เชื่อถ้าเพื่อนส่งมา'], a: 0 },
+        { q: 'การนำรูปของคนอื่นมาใช้โดยไม่ได้รับอนุญาต อาจละเมิดอะไร', c: ['ลิขสิทธิ์', 'กฎจราจร', 'สิทธิเลือกตั้ง', 'ไม่ผิดอะไร'], a: 0 },
+        { q: 'สัญลักษณ์ CC BY ของ Creative Commons หมายถึงอะไร', c: ['ใช้ได้ แต่ต้องอ้างอิงที่มา (ให้เครดิต)', 'ห้ามใช้ทุกกรณี', 'ใช้ได้โดยไม่ต้องให้เครดิต', 'ใช้ได้เฉพาะเชิงการค้า'], a: 0 },
+        { q: 'การยืนยันตัวตน 2 ขั้นตอน (2FA) ช่วยอะไร', c: ['เพิ่มความปลอดภัยแม้รหัสผ่านรั่ว', 'ทำให้เน็ตเร็วขึ้น', 'ประหยัดแบตเตอรี่', 'เพิ่มพื้นที่เก็บข้อมูล'], a: 0 },
+        { q: 'ข้อใดเป็นการกลั่นแกล้งทางไซเบอร์ (Cyberbullying)', c: ['โพสต์ล้อเลียนเพื่อนให้อับอายในโซเชียล', 'ส่งการบ้านทางออนไลน์', 'ชมผลงานเพื่อน', 'ตั้งรหัสผ่านที่ยาก'], a: 0 },
+        { q: 'เมื่อใช้คอมพิวเตอร์สาธารณะเสร็จ ควรทำอย่างไร', c: ['ออกจากระบบทุกบัญชี', 'เปิดค้างไว้ให้คนต่อไป', 'บันทึกรหัสผ่านไว้ในเครื่อง', 'ปิดแค่หน้าจอ'], a: 0 },
+      ] },
+      { t: 'ด่าน 8 · บอสใหญ่ รวมทุกวิชา', ic: '👾', boss: true, qs: [] },
+    ],
+  },
+  m5: {
+    name: 'เมืองเว็บไซเบอร์', sub: 'Web Application ม.5', icon: '🌐',
+    levels: [
+      { t: 'ด่าน 1 · ประตูอินเทอร์เน็ต', ic: '🛰️', qs: [
+        { q: 'อินเทอร์เน็ต (Internet) คืออะไร', c: ['เครือข่ายคอมพิวเตอร์ที่เชื่อมต่อกันทั่วโลก', 'โปรแกรมเปิดเว็บ', 'เว็บไซต์ Google', 'สาย LAN เส้นหนึ่ง'], a: 0 },
+        { q: 'เว็บเบราว์เซอร์ (Web Browser) คืออะไร', c: ['โปรแกรมสำหรับเปิดดูหน้าเว็บ เช่น Chrome, Edge', 'เครื่องเก็บเว็บไซต์', 'ภาษาเขียนเว็บ', 'ผู้ให้บริการอินเทอร์เน็ต'], a: 0 },
+        { q: 'ข้อใดเป็นเว็บเบราว์เซอร์', c: ['Google Chrome', 'Microsoft Word', 'Windows', 'YouTube'], a: 0 },
+        { q: 'WWW ย่อมาจากอะไร', c: ['World Wide Web', 'World Web Wire', 'Wide World Window', 'Web Wide World'], a: 0 },
+        { q: 'อินเทอร์เน็ตกับเว็บ (Web) ต่างกันอย่างไร', c: ['เว็บเป็นบริการหนึ่งที่ทำงานบนอินเทอร์เน็ต', 'เหมือนกันทุกอย่าง', 'อินเทอร์เน็ตเป็นส่วนหนึ่งของเว็บ', 'เว็บไม่ต้องใช้อินเทอร์เน็ต'], a: 0 },
+        { q: 'ISP คือใคร', c: ['ผู้ให้บริการอินเทอร์เน็ต เช่น AIS, True', 'โปรแกรมเปิดเว็บ', 'คนเขียนเว็บ', 'เครื่องพิมพ์'], a: 0 },
+        { q: 'หน้าแรกของเว็บไซต์ เรียกว่าอะไร', c: ['Homepage', 'Endpage', 'Webpage 0', 'Cover'], a: 0 },
+        { q: 'ข้อใดคือ "เว็บแอปพลิเคชัน"', c: ['เว็บที่ผู้ใช้โต้ตอบได้ เช่น ส่งงาน ซื้อของ แชท', 'หน้าเว็บที่มีแต่รูปภาพ', 'ไฟล์ Word', 'โปรแกรมที่ต้องติดตั้งเท่านั้น'], a: 0 },
+      ] },
+      { t: 'ด่าน 2 · ถอดรหัส URL', ic: '🔗', qs: [
+        { q: 'URL คืออะไร', c: ['ที่อยู่ของหน้าเว็บ', 'ชื่อเบราว์เซอร์', 'รหัสผ่านเว็บ', 'ภาษาเขียนเว็บ'], a: 0 },
+        { q: 'ใน https://www.school.ac.th/news ส่วน "https" เรียกว่าอะไร', c: ['โปรโตคอล (Protocol)', 'โดเมน', 'พาธ (Path)', 'พารามิเตอร์'], a: 0 },
+        { q: 'ใน https://www.school.ac.th/news ส่วน "www.school.ac.th" เรียกว่าอะไร', c: ['ชื่อโดเมน (Domain)', 'โปรโตคอล', 'พาธ', 'พอร์ต'], a: 0 },
+        { q: 'ใน https://www.school.ac.th/news ส่วน "/news" เรียกว่าอะไร', c: ['พาธ (Path) บอกหน้าที่ต้องการ', 'โดเมน', 'โปรโตคอล', 'ไอพี'], a: 0 },
+        { q: 'โดเมนที่ลงท้ายด้วย .ac.th เป็นของหน่วยงานประเภทใด', c: ['สถานศึกษาในไทย', 'บริษัทเอกชน', 'หน่วยงานทหาร', 'องค์กรต่างประเทศ'], a: 0 },
+        { q: '"s" ใน https หมายถึงอะไร', c: ['Secure ปลอดภัย มีการเข้ารหัส', 'Speed เร็วกว่า', 'Server', 'Simple'], a: 0 },
+        { q: 'ใน URL ...search?q=cat ส่วน "?q=cat" เรียกว่าอะไร', c: ['Query string (ข้อมูลที่ส่งไปกับลิงก์)', 'โดเมน', 'โปรโตคอล', 'ชื่อไฟล์รูป'], a: 0 },
+        { q: 'โดเมน .go.th เป็นของหน่วยงานใด', c: ['หน่วยงานรัฐบาลไทย', 'โรงเรียน', 'ร้านค้าออนไลน์', 'เว็บส่วนตัว'], a: 0 },
+      ] },
+      { t: 'ด่าน 3 · สะพาน Client–Server', ic: '🖥️', qs: [
+        { q: 'เครื่องที่ "ขอ" ข้อมูล (เช่น มือถือที่เปิดเว็บ) เรียกว่าอะไร', c: ['Client', 'Server', 'Router', 'Database'], a: 0 },
+        { q: 'เครื่องที่ "ให้บริการ" เก็บเว็บและส่งข้อมูลกลับ เรียกว่าอะไร', c: ['Server', 'Client', 'Browser', 'Keyboard'], a: 0 },
+        { q: 'เมื่อพิมพ์ URL แล้วกด Enter เบราว์เซอร์ส่งอะไรไปที่ Server', c: ['Request (คำขอ)', 'Response', 'อีเมล', 'ไวรัส'], a: 0 },
+        { q: 'ข้อมูลที่ Server ส่งกลับมาให้เบราว์เซอร์ เรียกว่าอะไร', c: ['Response (คำตอบกลับ)', 'Request', 'Upload', 'Cookie เท่านั้น'], a: 0 },
+        { q: 'HTTP status 404 หมายถึงอะไร', c: ['ไม่พบหน้าที่ร้องขอ', 'สำเร็จ', 'เซิร์ฟเวอร์ล่ม', 'ต้องเข้าสู่ระบบ'], a: 0 },
+        { q: 'HTTP status 200 หมายถึงอะไร', c: ['สำเร็จ (OK)', 'ไม่พบหน้า', 'ถูกบล็อก', 'เกิดข้อผิดพลาดที่เซิร์ฟเวอร์'], a: 0 },
+        { q: 'HTTP status 500 หมายถึงอะไร', c: ['เซิร์ฟเวอร์เกิดข้อผิดพลาด', 'สำเร็จ', 'ไม่พบหน้า', 'ย้ายหน้าแล้ว'], a: 0 },
+        { q: 'ลำดับใดถูกต้อง', c: ['Client ส่ง Request → Server ส่ง Response กลับ', 'Server ส่ง Request → Client', 'Client ส่ง Response → Server', 'ไม่มีลำดับ'], a: 0 },
+      ] },
+      { t: 'ด่าน 4 · ถนน IP และ DNS', ic: '🧭', qs: [
+        { q: 'IP Address คืออะไร', c: ['หมายเลขประจำเครื่องในเครือข่าย', 'ชื่อเว็บไซต์', 'รหัสผ่าน Wi-Fi', 'ชื่อเบราว์เซอร์'], a: 0 },
+        { q: 'ข้อใดเป็นรูปแบบ IPv4 ที่ถูกต้อง', c: ['192.168.1.10', '192.168.1', '300.1.1.1', 'www.192.com'], a: 0 },
+        { q: 'DNS ทำหน้าที่อะไร', c: ['แปลงชื่อโดเมนเป็น IP Address', 'เก็บรูปภาพ', 'ตกแต่งหน้าเว็บ', 'ป้องกันไวรัส'], a: 0 },
+        { q: 'DNS เปรียบได้กับอะไร', c: ['สมุดโทรศัพท์ของอินเทอร์เน็ต', 'กล่องจดหมาย', 'ถังขยะ', 'กล้องถ่ายรูป'], a: 0 },
+        { q: 'ทำไมเราจึงพิมพ์ชื่อโดเมนแทน IP', c: ['ชื่อจำง่ายกว่าตัวเลข', 'ตัวเลขผิดกฎหมาย', 'IP ใช้ได้แค่บางเครื่อง', 'ชื่อทำให้เน็ตเร็วขึ้น'], a: 0 },
+        { q: 'ตัวเลขแต่ละช่องของ IPv4 มีค่าได้ตั้งแต่เท่าไร', c: ['0 – 255', '0 – 999', '1 – 100', '0 – 9'], a: 0 },
+        { q: 'อุปกรณ์ใดทำหน้าที่ส่งต่อข้อมูลระหว่างเครือข่าย (เช่น บ้านกับอินเทอร์เน็ต)', c: ['Router', 'Monitor', 'Printer', 'Webcam'], a: 0 },
+        { q: 'ขั้นตอนแรกเมื่อพิมพ์ www.google.com คืออะไร', c: ['ถาม DNS เพื่อหา IP ของ google.com', 'โหลดรูปภาพทันที', 'เปิด Word', 'รีสตาร์ตเครื่อง'], a: 0 },
+      ] },
+      { t: 'ด่าน 5 · โรงงาน HTML', ic: '🏗️', qs: [
+        { q: 'HTML ย่อมาจากอะไร', c: ['HyperText Markup Language', 'High Text Machine Language', 'Home Tool Markup Language', 'Hyper Transfer Mail Link'], a: 0 },
+        { q: 'HTML ทำหน้าที่อะไรในหน้าเว็บ', c: ['กำหนดโครงสร้างและเนื้อหา', 'ตกแต่งสีและฟอนต์', 'ทำให้ปุ่มกดแล้วมีการทำงาน', 'เก็บข้อมูลผู้ใช้'], a: 0 },
+        { q: 'แท็กใดใช้ทำ "หัวข้อใหญ่ที่สุด"', c: ['<h1>', '<h6>', '<head>', '<title>'], a: 0 },
+        { q: 'แท็ก <p> ใช้ทำอะไร', c: ['ย่อหน้าข้อความ', 'ใส่รูปภาพ', 'ทำลิงก์', 'ทำตาราง'], a: 0 },
+        { q: 'แท็กปิดของ <body> เขียนอย่างไร', c: ['</body>', '<body/>', '<\\body>', '<end body>'], a: 0 },
+        { q: 'เนื้อหาที่ "แสดงบนหน้าเว็บ" ต้องอยู่ในแท็กใด', c: ['<body>', '<head>', '<title>', '<meta>'], a: 0 },
+        { q: 'ข้อความใน <title> จะแสดงที่ไหน', c: ['ชื่อแท็บของเบราว์เซอร์', 'กลางหน้าเว็บ', 'ท้ายหน้าเว็บ', 'ไม่แสดงเลย'], a: 0 },
+        { q: 'แท็ก <br> ใช้ทำอะไร', c: ['ขึ้นบรรทัดใหม่', 'ตัวหนา', 'เส้นคั่น', 'เว้นวรรค 1 ตัว'], a: 0 },
+        { q: 'แท็กใดทำให้ข้อความเป็น "ตัวหนา"', c: ['<b> หรือ <strong>', '<i>', '<u>', '<p>'], a: 0 },
+      ] },
+      { t: 'ด่าน 6 · ห้องลิงก์และรูปภาพ', ic: '🖼️', qs: [
+        { q: 'แท็กใดใช้สร้างลิงก์', c: ['<a href="...">', '<link>', '<img>', '<url>'], a: 0 },
+        { q: 'แท็กใดใช้ใส่รูปภาพ', c: ['<img src="...">', '<pic>', '<image href>', '<a src>'], a: 0 },
+        { q: 'แอตทริบิวต์ alt ในแท็ก <img> มีไว้ทำอะไร', c: ['ข้อความแทนรูปเมื่อรูปไม่แสดง/ช่วยผู้พิการทางสายตา', 'กำหนดขนาดรูป', 'ทำให้รูปหมุน', 'ใส่ลิงก์ให้รูป'], a: 0 },
+        { q: 'ต้องการให้ลิงก์เปิดในแท็บใหม่ ใส่แอตทริบิวต์ใด', c: ['target="_blank"', 'new="tab"', 'open="new"', 'href="_new"'], a: 0 },
+        { q: 'แท็กใดใช้สร้างรายการแบบ "มีตัวเลขลำดับ"', c: ['<ol>', '<ul>', '<li>', '<dl>'], a: 0 },
+        { q: 'แท็ก <li> ใช้ทำอะไร', c: ['รายการแต่ละข้อใน <ul> หรือ <ol>', 'ลิงก์', 'บรรทัดใหม่', 'ตาราง'], a: 0 },
+        { q: 'ในตาราง แท็ก <tr> หมายถึงอะไร', c: ['แถว (row)', 'ช่องข้อมูล', 'หัวตาราง', 'คอลัมน์ทั้งคอลัมน์'], a: 0 },
+        { q: 'ในตาราง แท็ก <td> หมายถึงอะไร', c: ['ช่องข้อมูล 1 ช่อง', 'แถว', 'ชื่อตาราง', 'เส้นขอบ'], a: 0 },
+      ] },
+      { t: 'ด่าน 7 · สตูดิโอ CSS & JS', ic: '🎨', qs: [
+        { q: 'CSS ทำหน้าที่อะไร', c: ['ตกแต่งหน้าเว็บ เช่น สี ฟอนต์ ระยะห่าง', 'สร้างโครงสร้างหน้าเว็บ', 'เก็บข้อมูลในฐานข้อมูล', 'แปลงชื่อเป็น IP'], a: 0 },
+        { q: 'JavaScript ทำหน้าที่อะไร', c: ['ทำให้หน้าเว็บโต้ตอบได้ เช่น กดปุ่มแล้วมีการทำงาน', 'ใส่รูปภาพ', 'ตั้งชื่อโดเมน', 'เปลี่ยน IP'], a: 0 },
+        { q: 'คำสั่ง CSS ใดเปลี่ยน "สีตัวอักษร"', c: ['color: red;', 'background: red;', 'font: red;', 'text-red: yes;'], a: 0 },
+        { q: 'คำสั่ง CSS ใดเปลี่ยน "สีพื้นหลัง"', c: ['background-color', 'color', 'border', 'font-size'], a: 0 },
+        { q: 'h1 { font-size: 40px; } ทำอะไร', c: ['ทำให้หัวข้อ h1 ตัวอักษรขนาด 40px', 'เปลี่ยนสี h1', 'ซ่อน h1', 'ลบ h1'], a: 0 },
+        { q: 'เขียน CSS ไว้ในไฟล์ HTML โดยใช้แท็กใด', c: ['<style>', '<css>', '<script>', '<design>'], a: 0 },
+        { q: 'เขียน JavaScript ไว้ในไฟล์ HTML โดยใช้แท็กใด', c: ['<script>', '<js>', '<style>', '<code>'], a: 0 },
+        { q: 'สรุปหน้าที่ 3 ภาษาของหน้าเว็บข้อใดถูกต้อง', c: ['HTML = โครงสร้าง, CSS = ความสวยงาม, JS = การทำงาน', 'HTML = สี, CSS = ปุ่ม, JS = ข้อความ', 'ทั้งสามทำหน้าที่เดียวกัน', 'HTML = ฐานข้อมูล'], a: 0 },
+      ] },
+      { t: 'ด่าน 8 · บอสใหญ่ เซิร์ฟเวอร์กลาง', ic: '👾', boss: true, qs: [] },
+    ],
+  },
+};
+// บอส: สุ่มจากทุกด่านในโลกเดียวกัน
+for (const w of Object.values(QB3D)) { const all = w.levels.flatMap(l => l.qs); w.levels.forEach(l => { if (l.boss) l.qs = all; }); }
+
+/* =====================================================================
+   quest3d.js — เกมผจญภัย 3D "ตอบคำถามเปิดประตู"
+   เรนเดอร์ 3D แบบ raycasting บน <canvas> (ไม่ต้องโหลดไลบรารี เบา เล่นได้ทุกเครื่อง) + แผนที่ 2D มุมจอ
+   เดินในเขาวงกต · เจอประตูล็อก 🔒 ต้องตอบคำถามถูกจึงผ่าน · เก็บคริสตัล 💎 ใช้ตัดตัวเลือกผิด · ถึงพอร์ทัล 🌀 = ผ่านด่าน
+   ===================================================================== */
+I.game = '<rect x="2.5" y="7" width="19" height="11" rx="5.5"/><path d="M7 11v3M5.5 12.5h3"/><circle cx="15.5" cy="11.5" r=".9" fill="currentColor"/><circle cx="17.5" cy="13.5" r=".9" fill="currentColor"/>';
+const G3 = { prog: null, custom: {}, world: null, preview: false, loadingProg: false };
+const G3_THEME = {
+  m3: { wall: [32, 201, 151], wall2: [16, 120, 96], gate: [255, 159, 10], sky: ['#0B1A2E', '#123A4A'], floor: ['#0E2A2A', '#04100F'], line: 'rgba(120,255,210,.55)', fog: [6, 18, 24] },
+  m5: { wall: [90, 140, 255], wall2: [60, 70, 190], gate: [255, 79, 154], sky: ['#120B2E', '#2A1A5A'], floor: ['#1A1240', '#07051A'], line: 'rgba(190,170,255,.6)', fog: [10, 6, 28] },
+};
+
+/* ---------- ข้อมูล / ความคืบหน้า ---------- */
+function g3WorldOf() { const lv = levelOf(stuState.verified?.classroom_name || ''); return /5/.test(lv) ? 'm5' : 'm3'; }
+async function g3LoadProg(force) {
+  const v = stuState.verified; if (!v || G3.loadingProg || (G3.prog && !force && G3.progSid === v.student_id)) return;
+  G3.loadingProg = true; G3.progSid = v.student_id;
+  try { G3.prog = await q(sb.rpc('student_game_progress', { p_student_id: v.student_id, p_code: v.code })); }
+  catch (e) { G3.prog = { m3: [], m5: [], missing: true }; }
+  G3.loadingProg = false; if (isStudentRoute()) render();
+}
+async function g3LoadCustom(world) {
+  if (G3.custom[world]) return G3.custom[world];
+  try {
+    if (G3.preview) G3.custom[world] = (await q(sb.from('game_questions').select('*').eq('world', world))).map(x => ({ q: x.prompt, c: x.choices, a: x.answer, custom: true }));
+    else { const v = stuState.verified; G3.custom[world] = (await q(sb.rpc('student_game_questions', { p_student_id: v.student_id, p_code: v.code, p_world: world }))).map(x => ({ q: x.prompt, c: x.choices, a: x.answer, custom: true })); }
+  } catch (e) { G3.custom[world] = []; }
+  return G3.custom[world];
+}
+
+/* ---------- หน้าเลือกด่าน (แท็บ 🎮 ในหน้านักเรียน) ---------- */
+function studentGameHTML() {
+  if (!G3.prog || G3.progSid !== stuState.verified?.student_id) { g3LoadProg(); return `<div class="card"><div class="empty"><span class="spin"></span> กำลังโหลดเกม…</div></div>`; }
+  G3.world = G3.world || g3WorldOf();
+  return g3MapHTML(G3.world, G3.prog[G3.world] || [], false);
+}
+function g3MapHTML(world, cleared, preview) {
+  const W = QB3D[world], done = new Set((cleared || []).map(Number));
+  const next = W.levels.findIndex((_, i) => !done.has(i + 1)) + 1 || W.levels.length;
+  return `<div class="card g3-hub g3-${world}">
+    <div class="g3-hero"><div class="g3-orb">${W.icon}</div><div><small>เกมผจญภัย 3D · ${esc(W.sub)}</small><h2>${esc(W.name)}</h2>
+      <p>เดินสำรวจเขาวงกต ตอบคำถามเพื่อปลดล็อกประตู 🔒 เก็บคริสตัล 💎 แล้วไปให้ถึงพอร์ทัล 🌀</p></div>
+      <div class="seg sm g3-worlds">${Object.entries(QB3D).map(([k, w]) => `<button class="${k === world ? 'on' : ''}" data-act="g3-world" data-w="${k}" data-p="${preview ? 1 : ''}">${w.icon} ${k === 'm3' ? 'ม.3' : 'ม.5'}</button>`).join('')}</div></div>
+    <div class="g3-path">${W.levels.map((l, i) => { const n = i + 1, ok = done.has(n), open = preview || ok || n <= next;
+      return `<button class="g3-node ${ok ? 'ok' : ''} ${open ? '' : 'lock'} ${n === next && !ok ? 'next' : ''} ${l.boss ? 'boss' : ''}" data-act="g3-play" data-w="${world}" data-l="${n}" data-p="${preview ? 1 : ''}" ${open ? '' : 'disabled'}>
+        <span class="g3-ic">${open ? l.ic : '🔒'}</span><b>${esc(l.t)}</b><small>${ok ? '✅ ผ่านแล้ว · เล่นซ้ำได้' : open ? (l.boss ? '👾 ด่านบอส' : `${l.qs.length} คำถาม`) : 'ผ่านด่านก่อนหน้าก่อน'}</small></button>`; }).join('')}</div>
+    <div class="g3-help"><span>⌨️ <b>W/↑</b> เดิน · <b>S/↓</b> ถอย · <b>A D/← →</b> หัน · <b>Q E</b> เดินข้าง</span><span>📱 ใช้ปุ่มบนจอ หรือปัดเพื่อหัน</span>
+      <span>🎁 ผ่านด่านครั้งแรก ได้ XP + 🪙 (ตอบถูก 60% ขึ้นไป)</span>${preview ? '<span>👀 โหมดครูทดลองเล่น ไม่บันทึกแต้ม</span>' : ''}</div>
+  </div>`;
+}
+Object.assign(ACT, {
+  'g3-world': el => { G3.world = el.dataset.w; if (el.dataset.p) ui.g3World = el.dataset.w; render(); },
+  'g3-play': el => g3Start(el.dataset.w, +el.dataset.l, !!el.dataset.p),
+});
+
+/* ---------- สุ่มด่าน ---------- */
+function g3rng(seed) { let a = 0; for (const ch of String(seed)) a = (a * 31 + ch.charCodeAt(0)) >>> 0; return () => { a |= 0; a = a + 0x6D2B79F5 | 0; let t = Math.imul(a ^ a >>> 15, 1 | a); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }; }
+function g3Maze(world, level) {
+  const rnd = g3rng(world + ':' + level + ':' + Math.floor(Date.now() / 864e5));
+  const k = Math.min(4 + level, 10), N = k * 2 + 1;
+  const m = Array.from({ length: N }, () => Array(N).fill(1));
+  const st = [[1, 1]]; m[1][1] = 0;
+  while (st.length) {
+    const [x, y] = st[st.length - 1];
+    const nb = [[2, 0], [-2, 0], [0, 2], [0, -2]].map(([dx, dy]) => [x + dx, y + dy, dx, dy]).filter(([nx, ny]) => nx > 0 && ny > 0 && nx < N - 1 && ny < N - 1 && m[ny][nx] === 1);
+    if (!nb.length) { st.pop(); continue; }
+    const [nx, ny, dx, dy] = nb[Math.floor(rnd() * nb.length)];
+    m[y + dy / 2][x + dx / 2] = 0; m[ny][nx] = 0; st.push([nx, ny]);
+  }
+  // เปิดทางลัดนิดหน่อย ไม่ให้วงกตทางเดียวเกินไป
+  for (let i = 0; i < k; i++) { const x = 1 + Math.floor(rnd() * (N - 2)), y = 1 + Math.floor(rnd() * (N - 2)); if (m[y][x] === 1 && ((m[y][x - 1] === 0 && m[y][x + 1] === 0) || (m[y - 1][x] === 0 && m[y + 1][x] === 0))) m[y][x] = 0; }
+  // BFS หาไกลสุด = ทางออก
+  const dist = Array.from({ length: N }, () => Array(N).fill(-1)), par = {};
+  const Qx = [[1, 1]]; dist[1][1] = 0; let far = [1, 1];
+  while (Qx.length) { const [x, y] = Qx.shift(); if (dist[y][x] > dist[far[1]][far[0]]) far = [x, y];
+    for (const [dx, dy] of [[1, 0], [-1, 0], [0, 1], [0, -1]]) { const nx = x + dx, ny = y + dy; if (m[ny][nx] === 0 && dist[ny][nx] < 0) { dist[ny][nx] = dist[y][x] + 1; par[nx + ',' + ny] = [x, y]; Qx.push([nx, ny]); } } }
+  const path = []; let c = far; while (c) { path.unshift(c); c = par[c[0] + ',' + c[1]]; }
+  // ประตูบนเส้นทางหลัก (ต้องตอบ)
+  const nGate = Math.min(3 + Math.floor(level / 2), 7), gates = [];
+  for (let i = 1; i <= nGate; i++) { const p = path[Math.floor(path.length * i / (nGate + 1))]; if (p && !(p[0] === 1 && p[1] === 1)) { m[p[1]][p[0]] = 2; gates.push(p); } }
+  // คริสตัลตามทางตัน
+  const gems = [];
+  for (let y = 1; y < N - 1; y++) for (let x = 1; x < N - 1; x++) if (m[y][x] === 0 && !(x === 1 && y === 1) && !(x === far[0] && y === far[1])) {
+    const open = [[1, 0], [-1, 0], [0, 1], [0, -1]].filter(([dx, dy]) => m[y + dy][x + dx] !== 1).length;
+    if (open === 1 && rnd() < .7) gems.push({ x: x + .5, y: y + .5, got: false });
+  }
+  return { m, N, exit: { x: far[0] + .5, y: far[1] + .5 }, gates: gates.length, gems: gems.slice(0, 6) };
+}
+
+/* ---------- เริ่มเกม ---------- */
+let G = null;
+async function g3Start(world, level, preview) {
+  G3.preview = preview;
+  const L = QB3D[world].levels[level - 1];
+  const custom = await g3LoadCustom(world);
+  // คำถามของด่าน: คลังตั้งต้นของด่าน + คำถามจากครู (สุ่มผสม)
+  const pool = [...L.qs.map(x => ({ ...x })), ...custom.filter(() => Math.random() < (L.boss ? .6 : .35))];
+  for (let i = pool.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [pool[i], pool[j]] = [pool[j], pool[i]]; }
+  const mz = g3Maze(world, level);
+  G = { world, level, L, preview, mz, pool, qi: 0, th: G3_THEME[world],
+    px: 1.5, py: 1.5, dir: 0, hearts: 3, gems: 0, correct: 0, total: 0, seen: new Set(), keys: {}, quiz: null, done: false, t0: performance.now(), lastBump: 0, anim: 0, msg: null };
+  // หันหน้าไปทางที่เดินได้
+  const m = mz.m; G.dir = m[1][2] !== 1 ? 0 : Math.PI / 2;
+  g3Overlay(); g3Loop();
+}
+function g3Overlay() {
+  document.getElementById('g3')?.remove();
+  const el = document.createElement('div'); el.id = 'g3'; el.className = 'g3x g3-' + G.world;
+  el.innerHTML = `<canvas id="g3c" width="480" height="270"></canvas><canvas id="g3m" width="132" height="132"></canvas>
+    <div class="g3-hud"><span class="g3-lv">${G.L.ic} ${esc(G.L.t)}</span><span id="g3-hp"></span><span id="g3-gem"></span><span id="g3-gate"></span><span class="spacer"></span>
+      <button class="g3-x" data-g3="mute" title="เสียง">${G3.mute ? '🔇' : '🔊'}</button><button class="g3-x" data-g3="quit" aria-label="ออกจากเกม">✕</button></div>
+    <div class="g3-msg" id="g3-msg"></div>
+    <div class="g3-pad"><button data-k="left" aria-label="หันซ้าย">⟲</button><button data-k="up" aria-label="เดินหน้า">▲</button><button data-k="right" aria-label="หันขวา">⟳</button><button data-k="down" aria-label="ถอย">▼</button></div>
+    <div class="g3-quiz" id="g3-quiz" hidden></div><div class="g3-end" id="g3-end" hidden></div>`;
+  document.body.appendChild(el); document.documentElement.classList.add('g3-on');
+  el.addEventListener('click', g3Click);
+  // ปุ่มบนจอ (กดค้าง)
+  el.querySelectorAll('.g3-pad [data-k]').forEach(b => {
+    const on = e => { e.preventDefault(); G.keys[b.dataset.k] = true; }, off = () => { G.keys[b.dataset.k] = false; };
+    b.addEventListener('pointerdown', on); b.addEventListener('pointerup', off); b.addEventListener('pointerleave', off); b.addEventListener('pointercancel', off);
+  });
+  // ปัดเพื่อหัน
+  const cv = el.querySelector('#g3c'); let sx = null;
+  cv.addEventListener('pointerdown', e => { sx = e.clientX; cv.setPointerCapture?.(e.pointerId); });
+  cv.addEventListener('pointermove', e => { if (sx == null || G.quiz) return; G.dir += (e.clientX - sx) * .006; sx = e.clientX; });
+  cv.addEventListener('pointerup', () => { sx = null; });
+  g3Hud(); g3Say(`ด่าน ${G.level}: ${G.L.t.replace(/^ด่าน \d+ · /, '')} — หาทางไปพอร์ทัล 🌀`, 2600);
+}
+function g3Say(t, ms = 1800) { const m = document.getElementById('g3-msg'); if (!m) return; m.textContent = t; m.classList.add('on'); clearTimeout(G.msgT); G.msgT = setTimeout(() => m.classList.remove('on'), ms); }
+function g3Hud() {
+  const h = document.getElementById('g3-hp'); if (!h) return;
+  h.textContent = '❤️'.repeat(G.hearts) + '🖤'.repeat(3 - G.hearts);
+  document.getElementById('g3-gem').textContent = `💎 ${G.gems}`;
+  document.getElementById('g3-gate').textContent = `🔒 ${G.mz.m.flat().filter(v => v === 2).length}`;
+}
+const G3K = { ArrowUp: 'up', KeyW: 'up', ArrowDown: 'down', KeyS: 'down', ArrowLeft: 'left', KeyA: 'left', ArrowRight: 'right', KeyD: 'right', KeyQ: 'sl', KeyE: 'sr' };
+window.addEventListener('keydown', e => {
+  if (!G || G.done) return;
+  if (G.quiz) { const n = +e.key; if (n >= 1 && n <= 4) { const b = document.querySelectorAll('#g3-quiz .g3-opt')[n - 1]; b?.click(); } return; }
+  const k = G3K[e.code]; if (k) { G.keys[k] = true; e.preventDefault(); }
+  if (e.key === 'Escape') g3Quit();
+});
+window.addEventListener('keyup', e => { if (!G) return; const k = G3K[e.code]; if (k) G.keys[k] = false; });
+document.addEventListener('visibilitychange', () => { if (G && document.hidden) G.keys = {}; });
+
+/* ---------- เสียงสั้น ๆ ---------- */
+let G3AC = null;
+function g3Beep(ok) {
+  if (G3.mute) return;
+  try { G3AC = G3AC || new (window.AudioContext || window.webkitAudioContext)(); const o = G3AC.createOscillator(), g = G3AC.createGain();
+    o.type = ok ? 'triangle' : 'sawtooth'; o.frequency.setValueAtTime(ok ? 660 : 180, G3AC.currentTime); if (ok) o.frequency.exponentialRampToValueAtTime(1320, G3AC.currentTime + .18);
+    g.gain.setValueAtTime(.12, G3AC.currentTime); g.gain.exponentialRampToValueAtTime(.001, G3AC.currentTime + .3); o.connect(g); g.connect(G3AC.destination); o.start(); o.stop(G3AC.currentTime + .32); } catch (e) {}
+}
+
+/* ---------- ลูปเกม ---------- */
+function g3Loop() {
+  let last = performance.now();
+  const step = now => {
+    if (!G || !document.getElementById('g3')) return;
+    const dt = Math.min(.05, (now - last) / 1000); last = now;
+    if (!G.quiz && !G.done) g3Update(dt);
+    g3Draw(now); g3Mini();
+    G.raf = requestAnimationFrame(step);
+  };
+  G.raf = requestAnimationFrame(step);
+}
+function g3Cell(x, y) { const m = G.mz.m; return (m[Math.floor(y)] || [])[Math.floor(x)] ?? 1; }
+function g3Update(dt) {
+  const k = G.keys, sp = 2.6 * dt, rs = 2.4 * dt;
+  if (k.left) G.dir -= rs; if (k.right) G.dir += rs;
+  let mx = 0, my = 0; const cx = Math.cos(G.dir), cy = Math.sin(G.dir);
+  if (k.up) { mx += cx; my += cy; } if (k.down) { mx -= cx * .7; my -= cy * .7; }
+  if (k.sl) { mx += cy; my -= cx; } if (k.sr) { mx -= cy; my += cx; }
+  if (mx || my) {
+    const r = .22, nx = G.px + mx * sp, ny = G.py + my * sp;
+    const hit = (x, y) => { const c = g3Cell(x, y); return c; };
+    const cxv = hit(nx + Math.sign(mx) * r, G.py), cyv = hit(G.px, ny + Math.sign(my) * r);
+    if (cxv === 0) G.px = nx; if (cyv === 0) G.py = ny;
+    const gate = [cxv === 2 && [nx + Math.sign(mx) * r, G.py], cyv === 2 && [G.px, ny + Math.sign(my) * r]].find(Boolean);
+    if (gate && performance.now() - G.lastBump > 700) { G.lastBump = performance.now(); g3Quiz(Math.floor(gate[0]), Math.floor(gate[1])); }
+  }
+  // สำรวจ (แผนที่)
+  for (let dy = -2; dy <= 2; dy++) for (let dx = -2; dx <= 2; dx++) G.seen.add((Math.floor(G.px) + dx) + ',' + (Math.floor(G.py) + dy));
+  // เก็บคริสตัล
+  G.mz.gems.forEach(g => { if (!g.got && Math.hypot(g.x - G.px, g.y - G.py) < .45) { g.got = true; G.gems++; g3Hud(); g3Beep(true); g3Say('💎 ได้คริสตัล! ใช้ตัดตัวเลือกผิดตอนตอบคำถาม'); } });
+  // ถึงพอร์ทัล
+  if (Math.hypot(G.mz.exit.x - G.px, G.mz.exit.y - G.py) < .5) g3Finish(true);
+}
+
+/* ---------- วาด 3D ---------- */
+const G3SPR = {};
+function g3Emoji(ch, size = 96) {
+  if (G3SPR[ch]) return G3SPR[ch];
+  const c = document.createElement('canvas'); c.width = c.height = size; const x = c.getContext('2d');
+  x.font = `${size * .8}px "Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",sans-serif`; x.textAlign = 'center'; x.textBaseline = 'middle'; x.fillText(ch, size / 2, size / 2 + size * .05);
+  return (G3SPR[ch] = c);
+}
+function g3Draw(now) {
+  const cv = document.getElementById('g3c'); if (!cv) return;
+  const ctx = cv.getContext('2d'), W = cv.width, H = cv.height, th = G.th;
+  // ท้องฟ้า/พื้น
+  let gr = ctx.createLinearGradient(0, 0, 0, H / 2); gr.addColorStop(0, th.sky[0]); gr.addColorStop(1, th.sky[1]); ctx.fillStyle = gr; ctx.fillRect(0, 0, W, H / 2);
+  gr = ctx.createLinearGradient(0, H / 2, 0, H); gr.addColorStop(0, th.floor[0]); gr.addColorStop(1, th.floor[1]); ctx.fillStyle = gr; ctx.fillRect(0, H / 2, W, H / 2);
+  // เส้นกริดพื้น (ให้รู้สึกว่าเคลื่อนที่)
+  ctx.strokeStyle = th.line.replace(/[\d.]+\)$/, '.12)'); ctx.lineWidth = 1;
+  for (let i = 1; i < 9; i++) { const y = H / 2 + (H / 2) * (i * i) / 81; ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(W, y); ctx.stroke(); }
+  const fov = Math.PI / 3, z = new Float32Array(W);
+  const dx0 = Math.cos(G.dir), dy0 = Math.sin(G.dir), plx = -dy0 * Math.tan(fov / 2), ply = dx0 * Math.tan(fov / 2);
+  for (let col = 0; col < W; col++) {
+    const cam = 2 * col / W - 1, rx = dx0 + plx * cam, ry = dy0 + ply * cam;
+    let mx = Math.floor(G.px), my = Math.floor(G.py);
+    const ddx = Math.abs(1 / rx), ddy = Math.abs(1 / ry);
+    let sx, sy, sdx, sdy;
+    if (rx < 0) { sx = -1; sdx = (G.px - mx) * ddx; } else { sx = 1; sdx = (mx + 1 - G.px) * ddx; }
+    if (ry < 0) { sy = -1; sdy = (G.py - my) * ddy; } else { sy = 1; sdy = (my + 1 - G.py) * ddy; }
+    let side = 0, cell = 0, guard = 0;
+    while (guard++ < 64) { if (sdx < sdy) { sdx += ddx; mx += sx; side = 0; } else { sdy += ddy; my += sy; side = 1; } cell = g3Cell(mx + .5, my + .5); if (cell) break; }
+    const dist = side === 0 ? (mx - G.px + (1 - sx) / 2) / rx : (my - G.py + (1 - sy) / 2) / ry;
+    z[col] = dist;
+    const lh = Math.min(H * 4, H / dist), top = (H - lh) / 2;
+    let wx = side === 0 ? G.py + dist * ry : G.px + dist * rx; wx -= Math.floor(wx);
+    const fog = Math.min(1, dist / 9), sh = side ? .72 : 1;
+    const base = cell === 2 ? th.gate : (((mx + my) & 1) ? th.wall : th.wall2);
+    const pulse = cell === 2 ? .75 + .25 * Math.sin(now / 220) : 1;
+    const c = base.map((v, i) => Math.round(v * sh * pulse * (1 - fog) + th.fog[i] * fog));
+    ctx.fillStyle = `rgb(${c})`; ctx.fillRect(col, top, 1, lh);
+    // ลวดลายผนัง: m3 = เส้นวงจร · m5 = แท็ก/หน้าต่าง
+    if (dist < 7) {
+      ctx.fillStyle = cell === 2 ? 'rgba(255,255,255,.55)' : th.line;
+      if (cell === 2) { if (wx > .46 && wx < .54) ctx.fillRect(col, top + lh * .15, 1, lh * .7); if (wx < .06 || wx > .94) ctx.fillRect(col, top, 1, lh); }
+      else if (G.world === 'm3') { ctx.fillRect(col, top + lh * (.3 + (Math.floor(wx * 4) % 2) * .35), 1, Math.max(1, lh * .02)); if (Math.abs(wx - .5) < .02) ctx.fillRect(col, top + lh * .3, 1, lh * .35); }
+      else { if ((wx > .15 && wx < .4) || (wx > .6 && wx < .85)) { ctx.globalAlpha = .35; ctx.fillRect(col, top + lh * .2, 1, lh * .22); ctx.fillRect(col, top + lh * .55, 1, lh * .22); ctx.globalAlpha = 1; } }
+      if (wx < .015 || wx > .985) { ctx.fillStyle = 'rgba(0,0,0,.35)'; ctx.fillRect(col, top, 1, lh); }
+    }
+  }
+  // สไปรต์: คริสตัล · ป้ายล็อกบนประตู · พอร์ทัล
+  const spr = [];
+  G.mz.gems.forEach(g => { if (!g.got) spr.push({ x: g.x, y: g.y, ch: '💎', s: .45, bob: true }); });
+  spr.push({ x: G.mz.exit.x, y: G.mz.exit.y, ch: '🌀', s: .9, spin: true });
+  for (let y = 0; y < G.mz.N; y++) for (let x = 0; x < G.mz.N; x++) if (G.mz.m[y][x] === 2) {
+    // วางป้าย 🔒 หน้าประตูฝั่งที่ผู้เล่นอยู่
+    const ox = Math.sign(G.px - (x + .5)) * .52, oy = Math.sign(G.py - (y + .5)) * .52;
+    const horiz = G.mz.m[y][x - 1] === 1 && G.mz.m[y][x + 1] === 1;
+    spr.push({ x: x + .5 + (horiz ? 0 : ox), y: y + .5 + (horiz ? oy : 0), ch: '🔒', s: .38 });
+  }
+  spr.forEach(s => { s.d = (s.x - G.px) ** 2 + (s.y - G.py) ** 2; }); spr.sort((a, b) => b.d - a.d);
+  const inv = 1 / (plx * dy0 - dx0 * ply);
+  for (const s of spr) {
+    const rx = s.x - G.px, ry = s.y - G.py;
+    const tx = inv * (dy0 * rx - dx0 * ry), ty = inv * (-ply * rx + plx * ry);
+    if (ty <= .1) continue;
+    const scx = Math.floor(W / 2 * (1 + tx / ty)), size = Math.abs(H / ty) * s.s;
+    const bob = s.bob ? Math.sin(now / 300 + s.x) * size * .12 : 0;
+    const img = g3Emoji(s.ch), x0 = Math.floor(scx - size / 2), y0 = H / 2 - size / 2 + (s.ch === '💎' ? size * .55 : 0) + bob;
+    if (s.spin) { ctx.save(); }
+    for (let c = Math.max(0, x0); c < Math.min(W, x0 + size); c++) {
+      if (ty >= z[c]) continue;
+      const u = (c - x0) / size; ctx.drawImage(img, Math.floor(u * img.width), 0, 1, img.height, c, y0, 1, size);
+    }
+    if (s.spin) ctx.restore();
+  }
+  // แสงขอบจอเมื่อโดนลบหัวใจ
+  if (G.hurt && now - G.hurt < 400) { ctx.fillStyle = `rgba(255,40,60,${.35 * (1 - (now - G.hurt) / 400)})`; ctx.fillRect(0, 0, W, H); }
+}
+function g3Mini() {
+  const cv = document.getElementById('g3m'); if (!cv) return;
+  const x = cv.getContext('2d'), N = G.mz.N, s = cv.width / N;
+  x.clearRect(0, 0, cv.width, cv.height); x.fillStyle = 'rgba(5,10,25,.55)'; x.fillRect(0, 0, cv.width, cv.height);
+  for (let yy = 0; yy < N; yy++) for (let xx = 0; xx < N; xx++) {
+    if (!G.seen.has(xx + ',' + yy)) continue;
+    const v = G.mz.m[yy][xx];
+    x.fillStyle = v === 1 ? 'rgba(255,255,255,.28)' : v === 2 ? '#FF9F0A' : 'rgba(255,255,255,.06)'; x.fillRect(xx * s, yy * s, s, s);
+  }
+  const e = G.mz.exit; if (G.seen.has(Math.floor(e.x) + ',' + Math.floor(e.y))) { x.fillStyle = '#BF5AF2'; x.beginPath(); x.arc(e.x * s, e.y * s, s * .6, 0, 7); x.fill(); }
+  G.mz.gems.forEach(g => { if (!g.got && G.seen.has(Math.floor(g.x) + ',' + Math.floor(g.y))) { x.fillStyle = '#5AC8FA'; x.fillRect(g.x * s - 1.5, g.y * s - 1.5, 3, 3); } });
+  x.save(); x.translate(G.px * s, G.py * s); x.rotate(G.dir); x.fillStyle = '#fff'; x.beginPath(); x.moveTo(s * .9, 0); x.lineTo(-s * .5, -s * .5); x.lineTo(-s * .5, s * .5); x.closePath(); x.fill(); x.restore();
+}
+
+/* ---------- คำถาม ---------- */
+function g3Quiz(gx, gy) {
+  if (!G.pool.length) { G.mz.m[gy][gx] = 0; g3Hud(); return; }
+  const item = G.pool[G.qi++ % G.pool.length];
+  const order = item.c.map((_, i) => i); for (let i = order.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [order[i], order[j]] = [order[j], order[i]]; }
+  G.quiz = { gx, gy, item, order, cut: new Set() }; G.keys = {};
+  g3QuizDraw();
+}
+function g3QuizDraw() {
+  const box = document.getElementById('g3-quiz'), Z = G.quiz; if (!box) return;
+  box.hidden = false;
+  box.innerHTML = `<div class="g3-qc"><div class="g3-qh"><span>🔒 ประตูล็อก · ตอบให้ถูกเพื่อเปิด</span>${Z.item.custom ? '<em>คำถามจากครู</em>' : ''}</div>
+    <div class="g3-qt">${esc(Z.item.q).replace(/\n/g, '<br>')}</div>
+    <div class="g3-opts">${Z.order.map((i, k) => `<button class="g3-opt" data-g3="ans" data-i="${i}" ${Z.cut.has(i) ? 'disabled' : ''}><b>${k + 1}</b><span>${esc(String(Z.item.c[i]))}</span></button>`).join('')}</div>
+    <div class="g3-qf"><button class="g3-hint" data-g3="hint" ${G.gems && Z.cut.size === 0 && Z.item.c.length > 2 ? '' : 'disabled'}>💎 ใช้คริสตัล ตัดตัวเลือกผิด 2 ข้อ (มี ${G.gems})</button><span>กดเลข 1–4 ได้</span></div></div>`;
+}
+function g3Answer(i) {
+  const Z = G.quiz; if (!Z || Z.locked) return;
+  Z.locked = true; G.total++;
+  const ok = i === +Z.item.a;
+  document.querySelectorAll('#g3-quiz .g3-opt').forEach(b => { const v = +b.dataset.i; b.classList.add(v === +Z.item.a ? 'right' : v === i ? 'wrong' : 'dim'); b.disabled = true; });
+  g3Beep(ok);
+  if (ok) { G.correct++; G.mz.m[Z.gy][Z.gx] = 0; }
+  else { G.hearts--; G.hurt = performance.now(); }
+  setTimeout(() => {
+    document.getElementById('g3-quiz').hidden = true; G.quiz = null; g3Hud();
+    if (ok) g3Say('✅ ถูกต้อง! ประตูเปิดแล้ว');
+    else if (G.hearts <= 0) g3Finish(false);
+    else g3Say(`❌ ยังไม่ถูก เหลือ ${'❤️'.repeat(G.hearts)} — ลองประตูนี้อีกครั้ง (คำถามใหม่)`, 2400);
+  }, ok ? 650 : 1500);
+}
+function g3Hint() {
+  const Z = G.quiz; if (!Z || !G.gems || Z.cut.size) return;
+  G.gems--; g3Hud();
+  Z.order.filter(i => i !== +Z.item.a).sort(() => Math.random() - .5).slice(0, 2).forEach(i => Z.cut.add(i));
+  g3QuizDraw();
+}
+
+/* ---------- จบด่าน ---------- */
+async function g3Finish(win) {
+  if (G.done) return; G.done = true; G.keys = {};
+  const sec = Math.round((performance.now() - G.t0) / 1000), wrong = G.total - G.correct;
+  const stars = !win ? 0 : wrong === 0 ? 3 : wrong === 1 ? 2 : 1;
+  let res = null;
+  if (!G.preview && G.total > 0) {
+    const v = stuState.verified;
+    try { res = await q(sb.rpc('student_game_play', { p_student_id: v.student_id, p_code: v.code, p_world: G.world, p_level: G.level, p_correct: G.correct, p_total: Math.min(30, G.total) })); } catch (e) {}
+    if (res?.ok) { if (G3.prog) G3.prog[G.world] = res.progress; loadStudentGame(true); if (typeof loadExtras === 'function') loadExtras(true); }
+  }
+  const box = document.getElementById('g3-end'); if (!box) return;
+  const nextOk = win && G.level < QB3D[G.world].levels.length;
+  box.hidden = false;
+  box.innerHTML = `<div class="g3-ec ${win ? 'win' : 'lose'}"><div class="g3-eic">${win ? '🏆' : '💥'}</div>
+    <h2>${win ? 'ผ่านด่านแล้ว!' : 'หัวใจหมดแล้ว'}</h2>
+    ${win ? `<div class="g3-stars">${[1, 2, 3].map(i => `<span class="${i <= stars ? 'on' : ''}">★</span>`).join('')}</div>` : '<p>ไม่เป็นไร ลองใหม่อีกครั้ง คำถามจะสุ่มใหม่</p>'}
+    <div class="g3-es"><span>✅ ตอบถูก <b>${G.correct}/${G.total}</b></span><span>💎 คริสตัล <b>${G.gems}</b></span><span>⏱ <b>${Math.floor(sec / 60)}:${String(sec % 60).padStart(2, '0')}</b></span></div>
+    ${G.preview ? '<p class="small">โหมดครูทดลองเล่น · ไม่บันทึกแต้ม</p>' : res?.ok ? (res.first ? `<div class="g3-rw">🎁 ผ่านครั้งแรก! <b>+${res.xp} XP</b> · 🪙 <b>${res.coins}</b></div>` : res.cleared ? '<p class="small">เคยผ่านด่านนี้แล้ว (เล่นซ้ำไม่ได้ XP เพิ่ม แต่นับในภารกิจ)</p>' : '<p class="small">ต้องตอบถูก 60% ขึ้นไปจึงนับว่าผ่าน</p>') : res && res.error === 'TOO_FAST' ? '<p class="small">เล่นเร็วเกินไป ระบบยังไม่บันทึกรอบนี้</p>' : ''}
+    <div class="g3-eb"><button class="btn" data-g3="quit">กลับแผนที่</button><button class="btn" data-g3="retry">เล่นอีกครั้ง</button>${nextOk ? `<button class="btn primary" data-g3="next">ด่านต่อไป →</button>` : ''}</div></div>`;
+  if (win) g3Beep(true);
+}
+function g3Quit() {
+  if (G?.raf) cancelAnimationFrame(G.raf);
+  document.getElementById('g3')?.remove(); document.documentElement.classList.remove('g3-on');
+  const wasPreview = G?.preview; G = null; render();
+  if (!wasPreview) g3LoadProg(true);
+}
+function g3Click(e) {
+  const b = e.target.closest('[data-g3]'); if (!b || !G) return;
+  const a = b.dataset.g3;
+  if (a === 'quit') g3Quit();
+  else if (a === 'mute') { G3.mute = !G3.mute; b.textContent = G3.mute ? '🔇' : '🔊'; }
+  else if (a === 'ans') g3Answer(+b.dataset.i);
+  else if (a === 'hint') g3Hint();
+  else if (a === 'retry') { const { world, level, preview } = G; cancelAnimationFrame(G.raf); g3Start(world, level, preview); }
+  else if (a === 'next') { const { world, level, preview } = G; cancelAnimationFrame(G.raf); g3Start(world, level + 1, preview); }
+}
+
+/* ---------- ครู: จัดการเกม (#games) ---------- */
+const G3T = { qs: null, plays: null, world: 'm3' };
+async function g3TeacherLoad(force) {
+  if (G3T.loading || (G3T.qs && !force)) return; G3T.loading = true;
+  try { G3T.qs = await q(sb.from('game_questions').select('*').order('created_at', { ascending: false })); G3T.missing = false; }
+  catch (e) { G3T.qs = []; G3T.missing = true; }
+  try { G3T.plays = await q(sb.from('game_plays').select('student_id,world,level,cleared,created_at').gte('created_at', new Date(Date.now() - 30 * 864e5).toISOString()).limit(5000)); } catch (e) { G3T.plays = []; }
+  G3T.loading = false; if (ui.route === 'games') render();
+}
+function viewGames() {
+  if (!G3T.qs) { g3TeacherLoad(); return `<div class="page-head"><div><h2>เกมผจญภัย 3D</h2></div></div><div class="card"><div class="empty"><span class="spin"></span> กำลังโหลด…</div></div>`; }
+  const w = ui.g3World || 'm3', W = QB3D[w], mine = G3T.qs.filter(x => x.world === w);
+  const plays = G3T.plays || [], wk = Date.now() - 7 * 864e5;
+  const byCls = {}; plays.filter(p => p.world === w).forEach(p => { const st = db.get('students', p.student_id); if (!st) return; const c = db.get('classrooms', st.classroom_id)?.name || '?'; (byCls[c] = byCls[c] || { n: 0, clr: 0, who: new Set(), wk: 0 }); byCls[c].n++; if (p.cleared) byCls[c].clr++; byCls[c].who.add(p.student_id); if (+new Date(p.created_at) > wk) byCls[c].wk++; });
+  return `<div class="page-head"><div><h2>เกมผจญภัย 3D</h2><p>นักเรียนเล่นในหน้านักเรียน แท็บ 🎮 · ผ่านด่านครั้งแรกได้ XP + 🪙 · คำถามตั้งต้นตามบทเรียน + คำถามที่ครูเพิ่ม</p></div><span class="spacer"></span>
+    <button class="btn" data-act="g3t-add">${ic('plus')}เพิ่มคำถามเอง</button><button class="btn primary" data-act="g3t-bank">📚 ดึงจากคลังข้อสอบ</button></div>
+  ${G3T.missing ? '<div class="hint warn">⚠️ ยังไม่ได้รันไฟล์ <b>phase18.sql</b> — ทดลองเล่นได้ แต่เพิ่มคำถาม/ดูสถิติยังไม่ได้</div>' : ''}
+  ${g3MapHTML(w, [], true)}
+  <div class="dash-grid g3t-grid">
+    <div class="card"><div class="card-h"><h3>✍️ คำถามจากครู (${mine.length})</h3><span class="spacer"></span><small class="muted">สุ่มผสมกับคำถามตั้งต้นทุกด่าน · ด่านบอสใช้มากขึ้น</small></div>
+      ${mine.length ? `<div class="tbl-wrap" style="max-height:420px"><table class="tbl"><thead><tr><th>คำถาม</th><th>คำตอบ</th><th class="act"></th></tr></thead><tbody>
+        ${mine.map(x => `<tr><td>${esc(x.prompt.slice(0, 120))}${x.topic ? `<div class="small muted">${esc(x.topic)}</div>` : ''}</td><td class="small">${esc(String((x.choices || [])[x.answer] ?? ''))}</td><td class="act"><button class="btn ghost icon" data-act="g3t-del" data-id="${x.id}" aria-label="ลบ" style="color:var(--danger)">${ic('trash')}</button></td></tr>`).join('')}
+      </tbody></table></div>` : '<div class="empty small">ยังไม่มีคำถามของครู · ใช้คำถามตั้งต้นตามบทเรียนอยู่</div>'}</div>
+    <div class="card"><div class="card-h"><h3>📈 การเล่น 30 วันล่าสุด</h3></div>
+      ${Object.keys(byCls).length ? `<div class="tbl-wrap"><table class="tbl"><thead><tr><th>ห้อง</th><th class="num">ผู้เล่น</th><th class="num">เล่น</th><th class="num">ผ่าน</th><th class="num">7 วันนี้</th></tr></thead><tbody>
+        ${Object.entries(byCls).sort((a, b) => a[0].localeCompare(b[0], 'th', { numeric: true })).map(([c, s]) => `<tr><td>${esc(c)}</td><td class="num">${s.who.size}</td><td class="num">${s.n}</td><td class="num">${s.clr}</td><td class="num">${s.wk}</td></tr>`).join('')}
+      </tbody></table></div>` : '<div class="empty small">ยังไม่มีนักเรียนเล่น</div>'}</div>
+  </div>`;
+}
+function g3tAddModal() {
+  const w = ui.g3World || 'm3';
+  openModal({ title: `เพิ่มคำถามเกม · ${QB3D[w].name}`, body: `<div class="stack">
+      <label class="field"><span>คำถาม *</span><textarea class="input" name="q" rows="3" maxlength="600"></textarea></label>
+      ${[0, 1, 2, 3].map(i => `<label class="field"><span>${i === 0 ? '✅ คำตอบที่ถูก *' : `ตัวเลือกผิด ${i}${i === 1 ? ' *' : ''}`}</span><input class="input" name="c${i}" maxlength="160"></label>`).join('')}
+      <label class="field"><span>หัวข้อ (ไม่บังคับ)</span><input class="input" name="topic" maxlength="80"></label>
+      <small class="muted">ระบบจะสลับตำแหน่งตัวเลือกให้เองตอนเล่น</small></div>`,
+    actions: [{ label: 'ยกเลิก', onClick: closeModal }, { label: 'บันทึก', kind: 'primary', onClick: async () => {
+      const qq = mval('q'), cs = [0, 1, 2, 3].map(i => mval('c' + i)).filter(Boolean);
+      if (!qq || !mval('c0') || cs.length < 2) return toast('ใส่คำถาม คำตอบที่ถูก และตัวเลือกผิดอย่างน้อย 1 ข้อ', true);
+      try { await q(sb.from('game_questions').insert({ world: w, topic: mval('topic') || null, prompt: qq, choices: cs, answer: 0 })); closeModal(); await g3TeacherLoad(true); toast('เพิ่มคำถามแล้ว'); } catch (e) {}
+    } }] });
+}
+async function g3tBankModal() {
+  const w = ui.g3World || 'm3';
+  let rows = store.qbank_questions;
+  if (!rows) { try { rows = store.qbank_questions = await q(sb.from('qbank_questions').select('*').order('created_at', { ascending: false })); } catch (e) { rows = []; } }
+  const ok = rows.filter(x => (x.qtype === 'mcq' && Array.isArray(x.choices) && x.choices.length >= 2 && x.answer != null) || x.qtype === 'true_false');
+  const units = [...new Set(ok.map(x => x.unit || 'ไม่ระบุหน่วย'))];
+  openModal({ title: `📚 ดึงจากคลังข้อสอบ → ${QB3D[w].name}`, wide: true, body: ok.length ? `<div class="stack">
+      <div class="row" style="gap:8px;flex-wrap:wrap"><span class="small muted">ใช้ได้เฉพาะปรนัย / ถูก-ผิด · ${ok.length} ข้อ</span><span class="spacer"></span>${units.map(u => `<button class="chip" data-act="g3t-unit" data-u="${esc(u)}">✓ ${esc(u)}</button>`).join('')}</div>
+      <div class="tbl-wrap" style="max-height:420px"><table class="tbl"><thead><tr><th style="width:34px"></th><th>คำถาม</th><th>หน่วย</th></tr></thead><tbody>
+      ${ok.map(x => `<tr><td><input type="checkbox" class="g3t-ck" value="${x.id}" data-u="${esc(x.unit || 'ไม่ระบุหน่วย')}"></td><td>${esc(String(x.prompt || '').slice(0, 140))}</td><td class="small">${esc(x.unit || '')}</td></tr>`).join('')}
+      </tbody></table></div></div>` : '<div class="empty">ยังไม่มีข้อปรนัยในคลังข้อสอบ</div>',
+    actions: [{ label: 'ยกเลิก', onClick: closeModal }, { label: 'เพิ่มที่เลือกเข้าเกม', kind: 'primary', onClick: async () => {
+      const ids = [...document.querySelectorAll('.g3t-ck:checked')].map(x => x.value); if (!ids.length) return toast('ยังไม่ได้เลือกข้อ', true);
+      const ins = ids.map(id => { const x = rows.find(r => r.id === id); const tf = x.qtype === 'true_false';
+        return { world: w, topic: x.unit || null, prompt: String(x.prompt || '').slice(0, 600), choices: tf ? ['ถูก', 'ผิด'] : x.choices.map(String), answer: tf ? (x.answer === true || x.answer === 'true' ? 0 : 1) : +x.answer }; });
+      try { await q(sb.from('game_questions').insert(ins)); closeModal(); await g3TeacherLoad(true); toast(`เพิ่ม ${ins.length} ข้อเข้าเกมแล้ว`); } catch (e) {}
+    } }] });
+}
+Object.assign(ACT, {
+  'g3t-world': el => { ui.g3World = el.dataset.w; render(); },
+  'g3t-add': g3tAddModal,
+  'g3t-bank': g3tBankModal,
+  'g3t-unit': el => { document.querySelectorAll(`.g3t-ck[data-u="${CSS.escape(el.dataset.u)}"]`).forEach(c => { c.checked = true; }); },
+  'g3t-del': async el => { try { await q(sb.from('game_questions').delete().eq('id', el.dataset.id)); G3.custom = {}; await g3TeacherLoad(true); toast('ลบแล้ว'); } catch (e) {} },
+});
+
+/* =====================================================================
    แกลเลอรีผลงาน — ครูติดดาวงานเด่น → คัดลอกไฟล์ไปที่เก็บสาธารณะ → โชว์ + กดหัวใจ
    หน้าเปิดได้ทุกคน: #gallery · ครูจัดการ: #works · นักเรียน: แท็บ "แกลเลอรี"
    ===================================================================== */
@@ -9845,7 +10759,7 @@ function viewRanking() {
   const allRows = rkRows(), can = rkCan();
   const pages = Math.max(1, Math.ceil(allRows.length / RK_PER)); if (RK.page >= pages) RK.page = pages - 1;
   const rows = allRows.slice(RK.page * RK_PER, RK.page * RK_PER + RK_PER);
-  const top = inLv.filter(r => r.xp > 0).slice(0, 10);
+  const top = inLv.filter(r => SX(r) > 0).slice(0, 10);
   const avg = inLv.length ? Math.round(inLv.reduce((a, r) => a + r.xp, 0) / inLv.length) : 0;
   const best = inLv[0];
   const cell = (n, cls = '') => `<td class="num ${cls}">${n ? n.toLocaleString() : '<span class="muted">–</span>'}</td>`;
@@ -9855,6 +10769,7 @@ function viewRanking() {
       ${can ? `<button class="btn" data-act="rk-rules">⚙️ กติกาแต้ม</button><button class="btn" data-act="rk-history">📜 ประวัติการให้แต้ม</button>` : ''}
       <button class="btn ghost" data-act="rk-xlsx">${ic('download')}Excel</button><button class="btn ghost icon" data-act="rk-reload" title="คำนวณใหม่" aria-label="คำนวณใหม่">${ic('refresh')}</button></div></div>
     ${can ? '' : `<div class="card rk-note">👀 ดูได้อย่างเดียว · การให้แต้มและมอบฉายาต้องได้สิทธิ์ "จัดการ Ranking" จากผู้ดูแล</div>`}
+    ${seasonBarHTML(RK.t, can)}
     <div class="rk-bar">
       ${levels.length ? `<div class="seg">${levels.map(l => `<button class="${l === RK.lv ? 'on' : ''}" data-act="rk-lv" data-l="${esc(l)}">${esc(l)}</button>`).join('')}</div>` : ''}
       <span class="spacer"></span>
@@ -9874,7 +10789,7 @@ function viewRanking() {
         <td><span class="rk-no ${r.rank <= 3 && r.xp ? 'n' + r.rank : ''}">${r.rank}</span></td><td>${esc(r.classroom)}</td><td>${r.number}</td>
         <td>${nameTag(r.name, r.xp, r.rank, r.title_id, titles)}${fireTag(r.streak)}<small class="muted rk-lv">Lv.${lvOf(r.xp)}</small></td>
         ${cell(r.sub)}${cell(r.exam)}${cell(r.gallery)}${cell(r.att)}${cell(r.bonus, r.bonus < 0 ? 'neg' : r.bonus > 0 ? 'pos' : '')}
-        <td class="num"><b>${r.xp.toLocaleString()}</b></td><td class="num ${r.coins < 0 ? 'neg' : ''}">${r.coins}</td>
+        <td class="num"><b>${SX(r).toLocaleString()}</b>${r.sxp != null && r.sxp !== r.xp ? `<small class="muted rk-life">สะสม ${r.xp.toLocaleString()}</small>` : ''}</td><td class="num ${r.coins < 0 ? 'neg' : ''}">${r.coins}</td>
         ${can ? `<td class="rk-act"><button class="btn sm" data-act="rk-plus" data-id="${r.id}" title="+10 XP ตอบคำถาม">+10</button><button class="btn sm ghost" data-act="rk-stu" data-id="${r.id}">จัดการ</button></td>` : ''}
       </tr>`).join('') || `<tr><td colspan="13"><div class="empty">ไม่พบนักเรียน</div></td></tr>`}</tbody></table></div>
       ${pages > 1 ? `<div class="rk-pager"><button class="btn sm" data-act="rk-page" data-d="-1" ${RK.page ? '' : 'disabled'}>‹ ก่อนหน้า</button><span>หน้า ${RK.page + 1} / ${pages} · ทั้งหมด ${allRows.length} คน</span><button class="btn sm" data-act="rk-page" data-d="1" ${RK.page < pages - 1 ? '' : 'disabled'}>ถัดไป ›</button></div>` : ''}</div>`}`;
