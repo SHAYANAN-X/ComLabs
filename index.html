@@ -3078,6 +3078,127 @@ body.bar-scrolled .top.anav::after,body.bar-scrolled .snav::after{opacity:1}
 .dm-top{flex-wrap:wrap}.dm-top b{white-space:nowrap}
 .dm-backup.warn{background:linear-gradient(135deg,rgba(255,193,90,.18),rgba(255,138,31,.1));box-shadow:inset 0 0 0 1px rgba(230,140,0,.3)}
 .nt-bk{display:flex;align-items:center;gap:10px;justify-content:space-between;flex-wrap:wrap}
+/* =========================================================
+   ปฏิทินงานและสอบ
+   ========================================================= */
+.cal-card{padding:18px 18px 14px}
+.stu-cal{border-radius:26px}
+.cal-top{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:12px}
+.cal-mo{display:flex;align-items:baseline;gap:8px}.cal-mo b{font:800 24px var(--f-head);letter-spacing:-.01em}.cal-mo span{font:600 16px var(--f-head);color:var(--muted)}
+.cal-nav{display:flex;align-items:center;gap:4px;padding:3px;border-radius:14px;background:var(--surface-2);box-shadow:inset 0 0 0 1px var(--line)}
+.cal-nav .an-ic{font-size:22px;line-height:1;width:34px;height:34px}
+.cal-sel{width:auto;min-width:130px;height:38px}
+.cal-sum{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:14px}
+.cs-k{display:grid;grid-template-columns:auto 1fr;grid-template-rows:auto auto;column-gap:10px;align-items:center;padding:10px 14px;border-radius:16px;background:var(--surface-2);box-shadow:inset 0 0 0 1px var(--line)}
+.cs-k>span{grid-row:1/3;font-size:24px}.cs-k b{font:800 19px var(--f-head);line-height:1.1}.cs-k small{font-size:12px;color:var(--muted);line-height:1.3}
+.cs-k.warn b{color:#C77700}.cs-k.bad b{color:var(--danger)}.cs-k.ok b{color:var(--ok)}
+.cal-body{display:grid;grid-template-columns:minmax(0,1.65fr) minmax(280px,1fr);gap:16px;align-items:start}
+.cal-grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:5px}
+.cal-h{text-align:center;font:700 12px var(--f-body);color:var(--muted);padding:2px 0 4px}.cal-h.wk{color:#E5484D;opacity:.7}
+.cal-d{position:relative;min-height:92px;display:flex;flex-direction:column;align-items:stretch;gap:3px;padding:6px 5px 5px;border:0;border-radius:14px;cursor:pointer;text-align:left;
+  background:var(--surface-2);color:var(--text);transition:background .2s,box-shadow .2s,transform .3s cubic-bezier(.2,1.5,.4,1);font:inherit}
+.cal-d:hover{background:color-mix(in srgb,var(--primary) 7%,var(--surface-2))}
+.cal-d:active{transform:scale(.97)}
+.cal-d.out{opacity:.38}.cal-d.wk{background:color-mix(in srgb,var(--surface-2) 70%,transparent)}
+.cd-n{font:700 13px var(--f-head);display:flex;align-items:center;gap:4px;padding-left:3px}
+.cal-d.today .cd-n{color:#fff}.cal-d.today .cd-n::before{content:"";position:absolute;left:5px;top:5px;width:24px;height:22px;border-radius:8px;background:linear-gradient(180deg,#2E95FF,#0A6CF0);z-index:-1;box-shadow:0 4px 10px -4px rgba(10,108,240,.8)}
+.cal-d.today{isolation:isolate}
+.cal-d.sel{box-shadow:inset 0 0 0 2px #0A6CF0;background:color-mix(in srgb,#0A6CF0 8%,var(--surface-2))}
+.cal-d.clash{box-shadow:inset 0 0 0 1.5px rgba(229,72,77,.55);background:color-mix(in srgb,#E5484D 6%,var(--surface-2))}
+.cal-d.clash.sel{box-shadow:inset 0 0 0 2px #E5484D}
+.cd-warn{font-style:normal;width:16px;height:16px;border-radius:50%;display:grid;place-items:center;background:#E5484D;color:#fff;font:800 10.5px var(--f-body)}
+.cd-items{display:flex;flex-direction:column;gap:2px;min-width:0}
+.cd-chip{display:flex;align-items:center;gap:3px;min-width:0;padding:2px 5px;border-radius:6px;font-size:10.5px;line-height:1.3;
+  background:color-mix(in srgb,var(--c) 14%,transparent);color:color-mix(in srgb,var(--c) 75%,var(--text));box-shadow:inset 2px 0 0 var(--c)}
+.cd-chip em{font-style:normal;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-weight:600}
+.cd-chip.s-done,.cd-chip.s-examdone,.cd-chip.s-past,.cd-chip.s-miss{opacity:.55}
+.cd-chip.s-late{background:rgba(229,72,77,.12);color:#C2272D;box-shadow:inset 2px 0 0 #E5484D}
+.cd-more{font-size:10.5px;color:var(--muted);padding-left:4px;font-weight:600}
+.cd-dots{display:none;gap:3px;justify-content:center;margin-top:auto}
+.cd-dots i{width:6px;height:6px;border-radius:50%;background:var(--c)}.cd-dots i.s-late{background:#E5484D}.cd-dots i.s-done,.cd-dots i.s-past{opacity:.4}
+/* agenda */
+.cal-agenda{border-radius:20px;background:var(--surface-2);box-shadow:inset 0 0 0 1px var(--line);padding:12px;max-height:640px;overflow:auto;scroll-margin-top:90px}
+.ca-h{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:2px 4px 10px}.ca-h b{font:700 15px var(--f-head)}.ca-h small{font-weight:500;color:var(--muted);margin-left:4px;font-size:12px}
+.ca-day{display:grid;grid-template-columns:46px 1fr;gap:8px;padding:6px 0;border-top:1px solid var(--line)}
+.ca-day:first-of-type{border-top:0}
+.ca-dl{display:flex;flex-direction:column;align-items:center;padding-top:4px;line-height:1.1}.ca-dl b{font:800 20px var(--f-head)}.ca-dl small{font-size:11px;color:var(--muted)}.ca-dl em{font-style:normal;font-size:10px;color:#0A6CF0;font-weight:700;margin-top:3px;text-align:center}
+.ca-list{display:flex;flex-direction:column;gap:6px;min-width:0}
+.ca-it{position:relative;display:flex;align-items:center;gap:9px;padding:9px 10px 9px 14px;border-radius:13px;border:0;text-align:left;cursor:pointer;color:var(--text);text-decoration:none;font:inherit;
+  background:var(--surface);box-shadow:0 1px 2px rgba(10,30,70,.06),inset 0 0 0 1px var(--line);transition:transform .3s cubic-bezier(.2,1.5,.4,1),box-shadow .2s}
+.ca-it:hover{transform:translateY(-1px);box-shadow:0 6px 16px -10px rgba(10,30,70,.35),inset 0 0 0 1px var(--line)}
+.ca-bar{position:absolute;left:5px;top:9px;bottom:9px;width:3.5px;border-radius:2px;background:var(--c)}
+.ca-ic{font-size:17px}.ca-tx{flex:1;min-width:0;display:flex;flex-direction:column}.ca-tx b{font-size:13.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.ca-tx small{font-size:11.5px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ca-r{display:flex;flex-direction:column;align-items:flex-end;gap:2px;flex:none}.ca-r small{font-size:11px;color:var(--muted)}
+.ca-st{font:700 11.5px var(--f-body);padding:2px 8px;border-radius:999px;background:rgba(10,108,240,.1);color:#0A6CF0;white-space:nowrap}
+.s-late .ca-st{background:rgba(229,72,77,.12);color:#C2272D}.s-wait .ca-st{background:rgba(255,159,10,.14);color:#B86E00}
+.s-done .ca-st,.s-examdone .ca-st{background:rgba(48,209,88,.14);color:#1C8C40}.s-exam .ca-st{background:rgba(191,90,242,.13);color:#8E3BC4}
+.s-past .ca-st,.s-miss .ca-st{background:rgba(120,130,150,.14);color:var(--muted)}
+.ca-it.s-done,.ca-it.s-past,.ca-it.s-miss,.ca-it.s-examdone{opacity:.72}
+.ca-empty{text-align:center;color:var(--muted);padding:28px 10px;font-size:13.5px}.ca-empty div{font-size:34px;margin-bottom:6px}
+.cal-leg{display:flex;flex-wrap:wrap;gap:6px 14px;margin-top:12px;font-size:12px;color:var(--muted)}
+.cal-leg span{display:inline-flex;align-items:center;gap:5px}.cal-leg i{width:10px;height:10px;border-radius:3px;background:#0A6CF0}
+.cal-leg .s-late i{background:#E5484D}.cal-leg .s-wait i{background:#FF9F0A}.cal-leg .s-done i{background:#30D158}.cal-leg .s-exam i{background:#BF5AF2}.cal-leg .s-past i{background:#A3AEC2}
+@media (max-width:1100px){.cal-body{grid-template-columns:1fr}.cal-agenda{max-height:none}}
+@media (max-width:640px){
+  .cal-card{padding:14px 10px}.cal-sum{grid-template-columns:1fr 1fr 1fr;gap:6px}.cs-k{grid-template-columns:1fr;text-align:center;padding:8px 6px}.cs-k>span{grid-row:auto;font-size:18px}.cs-k b{font-size:16px}.cs-k small{font-size:10.5px}
+  .cal-grid{gap:3px}.cal-d{min-height:52px;padding:5px 2px;border-radius:11px;align-items:center}.cd-items{display:none}.cd-dots{display:flex}
+  .cd-n{padding:0;justify-content:center}.cal-d.today .cd-n::before{left:50%;transform:translateX(-50%)}.cal-mo b{font-size:20px}
+}
+[data-device=mobile] .cal-d{min-height:52px;align-items:center}[data-device=mobile] .cd-items{display:none}[data-device=mobile] .cd-dots{display:flex}
+
+/* =========================================================
+   🎉 ฉลองเลื่อนยศ
+   ========================================================= */
+.rankup{position:fixed;inset:0;z-index:200;display:grid;place-items:center;padding:20px}
+.ru-bg{position:absolute;inset:0;background:radial-gradient(circle at 50% 45%,rgba(20,30,70,.35),rgba(5,10,30,.72));-webkit-backdrop-filter:blur(10px) saturate(140%);backdrop-filter:blur(10px) saturate(140%);opacity:0;transition:opacity .35s}
+.rankup.in .ru-bg{opacity:1}.rankup.out .ru-bg{opacity:0}
+.ru-conf{position:absolute;left:50%;top:55%;width:0;height:0;pointer-events:none;z-index:2}
+.ru-conf i{position:absolute;left:0;top:0;opacity:0;border-radius:2px}
+.rankup.in .ru-conf i{animation:ru-pop var(--t) cubic-bezier(.15,.7,.3,1) var(--d) forwards}
+@keyframes ru-pop{0%{opacity:1;transform:translate(0,0) rotate(0)}70%{opacity:1}100%{opacity:0;transform:translate(var(--x),calc(var(--y) + 70vh)) rotate(var(--r))}}
+.ru-card{position:relative;z-index:1;width:min(380px,100%);padding:30px 26px 22px;border-radius:32px;text-align:center;overflow:hidden;
+  background:linear-gradient(170deg,rgba(255,255,255,.92),rgba(240,246,255,.82));-webkit-backdrop-filter:blur(30px) saturate(180%);backdrop-filter:blur(30px) saturate(180%);
+  box-shadow:inset 0 1px 0 #fff,inset 0 0 0 1px rgba(255,255,255,.7),0 30px 80px -20px rgba(0,20,80,.6);
+  transform:scale(.6) translateY(40px);opacity:0;transition:transform .7s cubic-bezier(.2,1.5,.35,1),opacity .3s}
+[data-theme=dark] .ru-card{background:linear-gradient(170deg,rgba(40,46,66,.92),rgba(24,28,42,.86));box-shadow:inset 0 1px 0 rgba(255,255,255,.12),0 30px 80px -20px rgba(0,0,0,.8)}
+.rankup.in .ru-card{transform:none;opacity:1}.rankup.out .ru-card{transform:scale(.9);opacity:0;transition-duration:.3s}
+.ru-rays{position:absolute;left:50%;top:150px;width:520px;height:520px;margin:-260px 0 0 -260px;pointer-events:none;opacity:.5;
+  background:repeating-conic-gradient(from 0deg,rgba(255,200,60,.35) 0 8deg,transparent 8deg 22deg);-webkit-mask:radial-gradient(circle,#000 10%,transparent 62%);mask:radial-gradient(circle,#000 10%,transparent 62%);animation:ru-spin 18s linear infinite}
+@keyframes ru-spin{to{transform:rotate(360deg)}}
+.ru-kicker{position:relative;display:inline-block;padding:5px 14px;border-radius:999px;font:800 13px var(--f-body);color:#8A5A00;background:linear-gradient(180deg,#FFF3C9,#FFD66B);box-shadow:inset 0 0 0 1px rgba(220,160,0,.4)}
+.ru-ic{position:relative;font-size:92px;line-height:1;margin:16px 0 8px;filter:drop-shadow(0 10px 18px rgba(255,170,0,.45));animation:ru-bounce 1.1s cubic-bezier(.2,1.6,.4,1) .25s both}
+.ru-ic svg{width:220px;height:auto}
+@keyframes ru-bounce{0%{transform:scale(0) rotate(-25deg)}100%{transform:none}}
+.ru-name{position:relative;font:800 30px var(--f-head);letter-spacing:-.01em;background:linear-gradient(180deg,#1E2A55,#0A6CF0);-webkit-background-clip:text;background-clip:text;color:transparent}
+[data-theme=dark] .ru-name{background:linear-gradient(180deg,#fff,#8EC8FF);-webkit-background-clip:text;background-clip:text}
+.r5 .ru-name,.r6 .ru-name,.r7 .ru-name,.r8 .ru-name,.r9 .ru-name{background:linear-gradient(100deg,#B8860B,#FFD700 40%,#FFF4B0 50%,#FFD700 60%,#B8860B);background-size:220% 100%;-webkit-background-clip:text;background-clip:text;animation:ru-shine 2.6s linear infinite}
+@keyframes ru-shine{to{background-position:-220% 0}}
+.ru-en{position:relative;color:var(--muted);font-size:14px;margin-top:4px}
+.ru-path{position:relative;display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap;margin:16px 0 6px;font-size:13px}
+.ru-path span{padding:5px 10px;border-radius:999px;background:rgba(120,130,150,.12);color:var(--muted)}.ru-path span.new{background:linear-gradient(180deg,#2E95FF,#0A6CF0);color:#fff;font-weight:700;box-shadow:0 6px 14px -6px rgba(10,108,240,.8)}
+.ru-path b{color:var(--muted)}
+.ru-who{position:relative;font-size:12.5px;color:var(--muted)}
+.ru-next{position:relative;margin:12px auto 16px;font-size:13px;padding:8px 12px;border-radius:12px;background:rgba(10,108,240,.07);display:inline-block}
+.ru-ok{position:relative;width:100%;justify-content:center;height:48px;font-size:16px;border-radius:16px}
+.ru-tip{position:relative;display:block;margin-top:10px;color:var(--muted);font-size:12px}
+@media (prefers-reduced-motion:reduce){.ru-rays,.ru-ic,.ru-name{animation:none!important}.ru-card{transition:opacity .2s}}
+/* เครดิตผู้พัฒนา */
+.dev-credit{margin-top:6px;font-size:12px;letter-spacing:.01em;color:var(--muted);line-height:1.6}
+.dev-credit .dc-l{opacity:.8}.dev-credit b{font-weight:700;color:var(--text);opacity:.85}
+.stu-credit{padding:26px 0 10px;width:100%}
+.auth-credit{padding:18px 0 0;margin-top:0}
+@media (max-width:520px){.dev-credit .dc-sep{display:none}.dev-credit .dc-s{display:block}}
+.cal-top{flex-wrap:nowrap}.cal-top .cal-sel{width:auto!important;flex:0 0 auto;max-width:180px}.cal-top .cal-nav{flex:none}
+@media (max-width:640px){.cal-top{flex-wrap:wrap}.cal-top .spacer{display:none}.cal-top .cal-mo{width:100%}}
+/* แท็บนักเรียน 7 ช่อง (เพิ่มปฏิทิน) */
+.stu-tabs2{grid-template-columns:repeat(7,minmax(0,1fr))}
+[data-device=mobile] .stu-tabs2,[data-device=mobile] .stu-tabs2{grid-template-columns:repeat(7,minmax(0,1fr))!important;gap:2px;padding:5px}
+[data-device=mobile] .st2-l{font-size:10.5px!important;letter-spacing:-.02em}
+@media (max-width:420px){.stu-tabs2{grid-template-columns:repeat(7,minmax(0,1fr))!important;gap:2px;padding:5px}.st2-l{font-size:10.5px}}
+/* ปฏิทินในหน้านักเรียน: แคบ → วางรายการไว้ใต้ปฏิทิน */
+.stu-cal .cal-body{grid-template-columns:1fr}
+.stu-cal .cal-agenda{max-height:none}
+.ca-it.s-late .ca-bar{background:#E5484D}.ca-it.s-done .ca-bar,.ca-it.s-examdone .ca-bar{background:#30D158}.ca-it.s-wait .ca-bar{background:#FF9F0A}
 
 </style>
 </head>
@@ -3572,7 +3693,7 @@ if (typeof module !== 'undefined') module.exports = ExamParser;
 </script>
 <script>
 /* โลโก้: ภาพครูปลื้ม (ไฟล์ต้นฉบับ src/logo.svg ฝังตอน build) */
-const APP_VER = '15.2 · 24 พ.ย. 2569';
+const APP_VER = '15.3 · 25 พ.ย. 2569';
 let LOGO_N = 0;
 function logoSVG() { const k = 'L' + (++LOGO_N); return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><defs><linearGradient id="lgb" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3B9BFF"/><stop offset=".5" stop-color="#0A5BE0"/><stop offset="1" stop-color="#062C78"/></linearGradient><linearGradient id="lgs" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset=".6" stop-color="#FFF4D6"/><stop offset="1" stop-color="#FFD978"/></linearGradient><radialGradient id="lgc" cx=".3" cy=".08" r=".75"><stop offset="0" stop-color="#fff" stop-opacity=".55"/><stop offset=".5" stop-color="#fff" stop-opacity=".08"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient></defs><rect width="48" height="48" rx="13" fill="url(#lgb)"/><rect width="48" height="48" rx="13" fill="url(#lgc)"/><rect x=".75" y=".75" width="46.5" height="46.5" rx="12.3" fill="none" stroke="#fff" stroke-opacity=".45" stroke-width="1.2"/><g fill="none" stroke="#04235F" stroke-opacity=".35" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" transform="translate(0 1.2)"><path d="M21.2 17 C19.8 14.6 17.4 13.6 14.8 13.6 C11 13.6 8.6 15.6 8.6 18.5 C8.6 21.8 11.6 22.9 14.9 23.9 C18.6 25 21.6 26.4 21.6 29.8 C21.6 33 18.8 34.6 15.1 34.6 C12 34.6 9.5 33.4 8 31.1"/><path d="M26.6 14 L39.6 34.2 M39.6 14 L26.6 34.2"/></g><g fill="none" stroke="url(#lgs)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M21.2 17 C19.8 14.6 17.4 13.6 14.8 13.6 C11 13.6 8.6 15.6 8.6 18.5 C8.6 21.8 11.6 22.9 14.9 23.9 C18.6 25 21.6 26.4 21.6 29.8 C21.6 33 18.8 34.6 15.1 34.6 C12 34.6 9.5 33.4 8 31.1"/><path d="M26.6 14 L39.6 34.2 M39.6 14 L26.6 34.2"/></g></svg>`.replace('<svg ', '<svg class="logo" aria-hidden="true" ').replace(/\b(lg[bsc])\b/g, '$1' + k); }
 /* =====================================================================
@@ -3815,6 +3936,7 @@ const NAV = [
   { id: 'chat', label: 'ข้อความ', short: 'ข้อความ', icon: 'chat' },
   { group: 'การสอน', key: 'teach', icon: 'inbox' },
   { id: 'assignments', label: 'งานและตรวจงาน', short: 'งาน', icon: 'inbox' },
+  { id: 'calendar', label: 'ปฏิทินงานและสอบ', short: 'ปฏิทิน', icon: 'calendar' },
   { id: 'exams', label: 'ข้อสอบ', short: 'ข้อสอบ', icon: 'quiz' },
   { id: 'qbank', label: 'คลังข้อสอบ', short: 'คลังข้อสอบ', icon: 'bank' },
   { id: 'attendance', label: 'เช็คชื่อ', short: 'เช็คชื่อ', icon: 'attend' },
@@ -3838,7 +3960,7 @@ function navItems() {
   const items = NAV.filter(n => n.group || (n.admin ? ME.admin() : routeAllowed(n.id)));
   return items.filter((n, i) => !n.group || (items[i + 1] && !items[i + 1].group));
 }
-const TITLES = { chat: 'ข้อความจากนักเรียน', ranking: 'Ranking', dashboard: 'แดชบอร์ด', subjects: 'วิชา', classes: 'ห้องเรียนและรายชื่อ', assignments: 'งานและตรวจงาน', grade: 'ตรวจงาน', examedit: 'แก้ไขข้อสอบ', examres: 'ผลสอบ', gradebook: 'ตารางคะแนน', exams: 'ข้อสอบ', settings: 'ตั้งค่า', users: 'ผู้ใช้และสิทธิ์', attendance: 'เช็คชื่อ', attsess: 'เช็คชื่อ', reports: 'รายงานและสำรองข้อมูล', risk: 'ติดตามนักเรียน', qbank: 'คลังข้อสอบ', announce: 'ประกาศ', works: 'แกลเลอรีผลงาน' };
+const TITLES = { calendar: 'ปฏิทินงานและสอบ', chat: 'ข้อความจากนักเรียน', ranking: 'Ranking', dashboard: 'แดชบอร์ด', subjects: 'วิชา', classes: 'ห้องเรียนและรายชื่อ', assignments: 'งานและตรวจงาน', grade: 'ตรวจงาน', examedit: 'แก้ไขข้อสอบ', examres: 'ผลสอบ', gradebook: 'ตารางคะแนน', exams: 'ข้อสอบ', settings: 'ตั้งค่า', users: 'ผู้ใช้และสิทธิ์', attendance: 'เช็คชื่อ', attsess: 'เช็คชื่อ', reports: 'รายงานและสำรองข้อมูล', risk: 'ติดตามนักเรียน', qbank: 'คลังข้อสอบ', announce: 'ประกาศ', works: 'แกลเลอรีผลงาน' };
 
 function navSecToggle(el) {
   const k = el.dataset.k, sec = el.closest('.nav-sec'), st = navOpenState();
@@ -3931,7 +4053,7 @@ function render() {
   let base = ui.route.startsWith('att-') ? 'attsess' : ui.route.startsWith('grade-') ? 'grade' : ui.route.startsWith('exam-edit-') ? 'examedit' : ui.route.startsWith('exam-res-') ? 'examres' : ui.route;
   if (!TITLES[base] || !routeAllowed(base)) { ui.route = 'dashboard'; base = 'dashboard'; }
   const theme = document.documentElement.dataset.theme;
-  const views = { chat: viewChat, ranking: viewRanking, dashboard: viewDashboard, subjects: viewSubjects, classes: viewClasses, settings: viewSettings, users: viewUsers, attendance: viewAttendance, attsess: viewAttSession, reports: viewReports, risk: viewRisk, qbank: viewQbank, announce: viewAnnounce, works: viewWorks, assignments: viewAssignments, grade: viewGrade, gradebook: viewGradebook, exams: viewExams, examedit: viewExamEdit, examres: viewExamResults };
+  const views = { calendar: viewCalendar, chat: viewChat, ranking: viewRanking, dashboard: viewDashboard, subjects: viewSubjects, classes: viewClasses, settings: viewSettings, users: viewUsers, attendance: viewAttendance, attsess: viewAttSession, reports: viewReports, risk: viewRisk, qbank: viewQbank, announce: viewAnnounce, works: viewWorks, assignments: viewAssignments, grade: viewGrade, gradebook: viewGradebook, exams: viewExams, examedit: viewExamEdit, examres: viewExamResults };
   const navOn = base === 'grade' ? 'assignments' : (base === 'examedit' || base === 'examres') ? 'exams' : base === 'attsess' ? 'attendance' : base;
   ui._navOn = navOn;
   if (isMobile()) { root.innerHTML = mobileShell(base, navOn, (views[base] || viewDashboard)()); return; }
@@ -3946,7 +4068,7 @@ function render() {
     <div class="main">
       ${topBarHTML(base)}
       <main class="content">${(views[base] || viewDashboard)()}</main>
-      <div class="credit">ห้องเรียนครูปลื้ม · ทำด้วยใจ 💜 · ${esc(store.teacher.name)} · <span title="เวอร์ชันของหน้าเว็บ">v${APP_VER}</span></div>
+      <div class="credit">ห้องเรียนครูปลื้ม · ทำด้วยใจ 💜 · ${esc(store.teacher.name)} · <span title="เวอร์ชันของหน้าเว็บ">v${APP_VER}</span>${devCreditHTML()}</div>
     </div>
   </div>`;
 }
@@ -3997,8 +4119,13 @@ function viewLogin() {
         </form>
         <div class="auth-switch">ครูยังไม่มีบัญชี? <button class="linkbtn" data-act="auth-mode" data-m="signup">สมัครใช้งาน</button></div>`}
       </div>
+      <div class="credit auth-credit">${devCreditHTML()}</div>
     </section>
   </div>`;
+}
+/* เครดิตผู้พัฒนา (ทุกหน้า: ครู · นักเรียน · หน้าเข้าสู่ระบบ) */
+function devCreditHTML() {
+  return `<div class="dev-credit"><span class="dc-l">Developed by</span> <b>Shayanan Maroengsit</b><span class="dc-sep"> · </span><span class="dc-s">Mathayom Vajiralongkorn Wararam School</span></div>`;
 }
 
 /* แดชบอร์ดอยู่ใน dashboard.js */
@@ -4402,7 +4529,7 @@ function viewStudent() {
           <label class="field"><span>🔑 รหัสผ่าน</span><input class="input big" type="password" name="code" required autocomplete="current-password" placeholder="ครั้งแรก = เลขประจำตัว"></label></div>
         <button class="btn primary big" style="justify-content:center">ไปกันเลย 🚀</button>
         <div class="stu-pass-hint">ยังไม่เคยเปลี่ยนรหัส? ใช้ <b>เลขประจำตัวนักเรียน</b> เป็นรหัสผ่าน · <button type="button" class="linkish" data-act="stu-forgot">ลืมรหัสผ่าน?</button></div>
-      </form></div>`}
+      </form></div><div class="credit stu-credit">${devCreditHTML()}</div>`}
   </div>`;
 }
 
@@ -5177,13 +5304,14 @@ function studentHome(v) {
         <div class="pills"><span class="pill">🏫 ${esc(v.classroom_name)}</span><span class="pill">เลขที่ ${v.number}</span></div>${gameChipHTML()}</div></div></div>
     ${studentAnnHTML()}
     ${stuTabsHTML(groups)}
-    ${stuState.tab === 'rank' ? studentRankHTML(v) : stuState.tab === 'shop' ? shopHTML() : stuState.tab === 'gallery' ? studentGalleryHTML() : stuState.tab === 'score' ? studentScoresHTML() : stuState.tab === 'exam' ? studentExamsHTML() : stuState.asg ? `<div class="counters">
+    ${stuState.tab === 'cal' ? studentCalendarHTML() : stuState.tab === 'rank' ? studentRankHTML(v) : stuState.tab === 'shop' ? shopHTML() : stuState.tab === 'gallery' ? studentGalleryHTML() : stuState.tab === 'score' ? studentScoresHTML() : stuState.tab === 'exam' ? studentExamsHTML() : stuState.asg ? `<div class="counters">
         <div class="counter todo"><span class="em">📝</span><div><b>${groups.todo.length}</b><small>ต้องส่ง/แก้</small></div></div>
         <div class="counter wait"><span class="em">⏳</span><div><b>${groups.wait.length}</b><small>รอครูตรวจ</small></div></div>
         <div class="counter done"><span class="em">🌟</span><div><b>${groups.done.length}</b><small>ตรวจแล้ว</small></div></div></div>
       ${list.length ? sec('todo', '📌 งานที่ต้องทำ') + sec('wait', '⏳ ส่งแล้ว รอครูตรวจ') + sec('done', '🌟 ตรวจแล้ว') + sec('closed', '🔒 ปิดรับแล้ว')
         : `<div class="card"><div class="empty"><div style="font-size:44px">🎉</div><b>ยังไม่มีงาน เย้!</b>เมื่อครูปลื้มสั่งงาน งานจะโผล่ตรงนี้</div></div>`}`
     : `<div class="card"><div class="empty"><span class="spin" style="display:inline-block;width:26px;height:26px"></span><br>กำลังโหลดงาน…</div></div>`}
+    <div class="credit stu-credit">ห้องเรียนครูปลื้ม · v${APP_VER}${devCreditHTML()}</div>
   </div>`;
 }
 function studentBadge(a) {
@@ -5342,6 +5470,7 @@ function stuMarkSeen(k, ids) { const s = stuSeen(); s[k] = ids; try { localStora
 function stuTabBadges(groups) {
   const b = {};
   b.work = (groups?.todo || []).length;
+  b.cal = (stuState.asg || []).filter(a => a.due_at && asgGroup(a) === 'todo' && new Date(a.due_at) - Date.now() < 864e5).length; // ครบกำหนดภายใน 24 ชม./เลยกำหนด
   if (!stuState.exams && !stuState.examsLoading && typeof loadStudentExams === 'function') { stuState.examsLoading = true; Promise.resolve(loadStudentExams()).finally(() => { stuState.examsLoading = false; }); }
   b.exam = (stuState.exams || []).filter(x => x.is_open && (x.in_progress || (x.attempts_used === 0 && x.attempts_used < x.max_attempts))).length;
   const graded = (stuState.asg || []).filter(a => a.status === 'graded').map(a => a.id), seen = stuSeen().score || [];
@@ -5356,7 +5485,7 @@ function stuTabBadges(groups) {
 }
 function stuTabsHTML(groups) {
   const cur = stuState.tab || 'work', b = stuTabBadges(groups);
-  const T = [['work', '📝', 'งาน', b.work], ['exam', '🧪', 'ข้อสอบ', b.exam], ['score', '📊', 'คะแนน', b.score], ['rank', '🏆', 'Ranking', 0], ['shop', '🛒', 'ร้านค้า', b.shop], ['gallery', '🌟', 'ผลงาน', 0]];
+  const T = [['work', '📝', 'งาน', b.work], ['exam', '🧪', 'ข้อสอบ', b.exam], ['cal', '📅', 'ปฏิทิน', b.cal], ['score', '📊', 'คะแนน', b.score], ['rank', '🏆', 'Ranking', 0], ['shop', '🛒', 'ร้านค้า', b.shop], ['gallery', '🌟', 'ผลงาน', 0]];
   return `<nav class="stu-tabs2" role="tablist" aria-label="เมนูนักเรียน">${T.map(([k, e, l, n]) => `
     <button class="st2 ${cur === k ? 'on' : ''}" role="tab" aria-selected="${cur === k}" data-act="stu-tab" data-t="${k}">
       <span class="st2-ic">${e}${n ? `<i class="st2-badge" aria-label="${n} รายการใหม่">${n > 99 ? '99+' : n}</i>` : ''}${k === 'rank' && b.rankPos && b.rankPos <= 99 ? `<i class="st2-pos">#${b.rankPos}</i>` : ''}</span>
@@ -7928,7 +8057,7 @@ async function loadStudentGame(force) {
   stuState.gameLoading = true;
   try { stuState.game = await q(sb.rpc('student_game', { p_student_id: v.student_id, p_code: v.code })); }
   catch (e) { stuState.game = { missing: true }; }
-  stuState.gameLoading = false; if (isStudentRoute() || isExamTakeRoute()) render();
+  stuState.gameLoading = false; try { rankUpCheck(); } catch (e) {} if (isStudentRoute() || isExamTakeRoute()) render();
 }
 function stuFirst(v) { return v.full_name.replace(/^(เด็กชาย|เด็กหญิง|นางสาว|นาย|นาง|ด\.ช\.|ด\.ญ\.|น\.ส\.)\s*/, ''); }
 function myGameCard(v, g) {
@@ -8696,6 +8825,224 @@ function newTermWizard() {
   });
 }
 Object.assign(ACT, { 'term-wizard': newTermWizard });
+
+/* =====================================================================
+   calendar.js — ปฏิทินกำหนดส่ง (ครู + นักเรียน) · ฉลองเลื่อนยศ
+   ===================================================================== */
+I.calendar = '<rect x="3.5" y="5" width="17" height="15.5" rx="3"/><path d="M3.5 10h17M8 3v4M16 3v4"/><circle cx="8.5" cy="14.5" r=".9" fill="currentColor"/><circle cx="12" cy="14.5" r=".9" fill="currentColor"/><circle cx="15.5" cy="14.5" r=".9" fill="currentColor"/>';
+
+const TH_MONTH = ['มกราคม', 'กุมภาพันธ์', 'มีนาคม', 'เมษายน', 'พฤษภาคม', 'มิถุนายน', 'กรกฎาคม', 'สิงหาคม', 'กันยายน', 'ตุลาคม', 'พฤศจิกายน', 'ธันวาคม'];
+const TH_DOW = ['จ', 'อ', 'พ', 'พฤ', 'ศ', 'ส', 'อา'];
+const TH_DOW_L = ['อาทิตย์', 'จันทร์', 'อังคาร', 'พุธ', 'พฤหัสบดี', 'ศุกร์', 'เสาร์'];
+const dKey = d => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+const sameDay = (a, b) => dKey(a) === dKey(b);
+function calMonthOf(st) { const now = new Date(); return st.ym || `${now.getFullYear()}-${now.getMonth()}`; }
+function hhmm(d) { return `${String(d.getHours()).padStart(2, '0')}:${String(d.getMinutes()).padStart(2, '0')}`; }
+function relDay(d) {
+  const t0 = new Date(); t0.setHours(0, 0, 0, 0); const d0 = new Date(d); d0.setHours(0, 0, 0, 0);
+  const n = Math.round((d0 - t0) / 864e5);
+  return n === 0 ? 'วันนี้' : n === 1 ? 'พรุ่งนี้' : n === -1 ? 'เมื่อวาน' : n > 0 ? `อีก ${n} วัน` : `${-n} วันที่แล้ว`;
+}
+/* สถานะ → สี/ไอคอน */
+const CAL_ST = {
+  todo: ['ต้องส่ง', '📝'], late: ['เลยกำหนด', '⏰'], wait: ['รอตรวจ', '⏳'], done: ['เสร็จแล้ว', '✅'], miss: ['ปิดรับแล้ว', '🔒'],
+  exam: ['สอบ', '🧪'], examdone: ['สอบแล้ว', '✅'], past: ['ผ่านกำหนด', '📁'],
+};
+/* items: [{ d: Date, title, color, st, sub, href?, act?, id?, cids? }] */
+function calGridHTML(st, items, opts = {}) {
+  const [y, m] = calMonthOf(st).split('-').map(Number);
+  const first = new Date(y, m, 1), start = new Date(first); start.setDate(1 - ((first.getDay() + 6) % 7));
+  const byDay = {}; items.forEach(x => (byDay[dKey(x.d)] = byDay[dKey(x.d)] || []).push(x));
+  const today = new Date(), sel = st.sel;
+  const cells = [];
+  for (let i = 0; i < 42; i++) {
+    const d = new Date(start); d.setDate(start.getDate() + i);
+    if (i >= 35 && d.getMonth() !== m) break;
+    const k = dKey(d), list = (byDay[k] || []).sort((a, b) => a.d - b.d);
+    const clash = opts.clash ? opts.clash(list) : null;
+    const wk = d.getDay() === 0 || d.getDay() === 6;
+    cells.push(`<button class="cal-d ${d.getMonth() !== m ? 'out' : ''} ${sameDay(d, today) ? 'today' : ''} ${sel === k ? 'sel' : ''} ${wk ? 'wk' : ''} ${list.length ? 'has' : ''} ${clash ? 'clash' : ''}" data-act="cal-day" data-k="${k}" data-who="${opts.who}" ${clash ? `title="${esc(clash)}"` : ''}>
+      <span class="cd-n">${d.getDate()}${clash ? '<i class="cd-warn">!</i>' : ''}</span>
+      <span class="cd-items">${list.slice(0, 3).map(x => `<span class="cd-chip s-${x.st}" style="--c:${esc(x.color || '#0A6CF0')}">${CAL_ST[x.st]?.[1] || ''}<em>${esc(x.title)}</em></span>`).join('')}${list.length > 3 ? `<span class="cd-more">+${list.length - 3}</span>` : ''}</span>
+      <span class="cd-dots">${list.slice(0, 4).map(x => `<i class="s-${x.st}" style="--c:${esc(x.color || '#0A6CF0')}"></i>`).join('')}</span>
+    </button>`);
+  }
+  return `<div class="cal-grid">${TH_DOW.map((w, i) => `<div class="cal-h ${i >= 5 ? 'wk' : ''}">${w}</div>`).join('')}${cells.join('')}</div>`;
+}
+function calHeadHTML(st, who, extra = '') {
+  const [y, m] = calMonthOf(st).split('-').map(Number);
+  return `<div class="cal-top"><div class="cal-mo"><b>${TH_MONTH[m]}</b><span>${y + 543}</span></div><span class="spacer"></span>${extra}
+    <div class="cal-nav"><button class="an-ic" data-act="cal-mv" data-d="-1" data-who="${who}" aria-label="เดือนก่อน">‹</button><button class="btn sm" data-act="cal-mv" data-d="0" data-who="${who}">วันนี้</button><button class="an-ic" data-act="cal-mv" data-d="1" data-who="${who}" aria-label="เดือนถัดไป">›</button></div></div>`;
+}
+function calAgendaHTML(st, items, who, empty) {
+  let list, title;
+  if (st.sel) {
+    const d = new Date(st.sel + 'T00:00:00');
+    list = items.filter(x => dKey(x.d) === st.sel);
+    title = `วัน${TH_DOW_L[d.getDay()]}ที่ ${d.getDate()} ${TH_MONTH[d.getMonth()]} <small>${relDay(d)}</small>`;
+  } else {
+    const t0 = new Date(); t0.setHours(0, 0, 0, 0); const t1 = new Date(t0); t1.setDate(t0.getDate() + 14);
+    list = items.filter(x => x.d >= t0 && x.d < t1 || (x.st === 'late' && x.d < t0));
+    title = '14 วันข้างหน้า';
+  }
+  list.sort((a, b) => a.d - b.d);
+  // จัดกลุ่มตามวัน
+  const groups = []; list.forEach(x => { const k = dKey(x.d); const g = groups.find(g => g.k === k); g ? g.items.push(x) : groups.push({ k, d: x.d, items: [x] }); });
+  return `<div class="cal-agenda"><div class="ca-h"><b>${title}</b>${st.sel ? `<button class="btn ghost sm" data-act="cal-day" data-k="" data-who="${who}">ดู 14 วันข้างหน้า</button>` : ''}</div>
+    ${groups.length ? groups.map(g => `<div class="ca-day"><div class="ca-dl"><b>${g.d.getDate()}</b><small>${TH_MONTH[g.d.getMonth()].slice(0, 3)}.</small><em>${relDay(g.d)}</em></div>
+      <div class="ca-list">${g.items.map(x => { const tag = x.href ? 'a' : 'button';
+        return `<${tag} class="ca-it s-${x.st}" style="--c:${esc(x.color || '#0A6CF0')}" ${x.href ? `href="${esc(x.href)}"` : ''} ${x.act ? `data-act="${x.act}" data-id="${esc(x.id)}"` : ''}>
+          <span class="ca-bar"></span><span class="ca-ic">${CAL_ST[x.st]?.[1] || '📌'}</span>
+          <span class="ca-tx"><b>${esc(x.title)}</b><small>${esc(x.sub || '')}</small></span>
+          <span class="ca-r"><span class="ca-st">${x.badge || CAL_ST[x.st]?.[0] || ''}</span><small>${x.allDay ? '' : 'ถึง ' + hhmm(x.d) + ' น.'}</small></span></${tag}>`; }).join('')}</div></div>`).join('')
+      : `<div class="ca-empty"><div>🌤️</div>${empty}</div>`}
+  </div>`;
+}
+function calLegendHTML(keys) { return `<div class="cal-leg">${keys.map(k => `<span class="s-${k}"><i></i>${CAL_ST[k][0]}</span>`).join('')}</div>`; }
+Object.assign(ACT, {
+  'cal-mv': el => {
+    const st = el.dataset.who === 'stu' ? (stuState.cal = stuState.cal || {}) : (ui.cal = ui.cal || {});
+    const d = +el.dataset.d;
+    if (!d) { const n = new Date(); st.ym = `${n.getFullYear()}-${n.getMonth()}`; st.sel = null; }
+    else { const [y, m] = calMonthOf(st).split('-').map(Number); const n = new Date(y, m + d, 1); st.ym = `${n.getFullYear()}-${n.getMonth()}`; }
+    render();
+  },
+  'cal-day': el => {
+    const st = el.dataset.who === 'stu' ? (stuState.cal = stuState.cal || {}) : (ui.cal = ui.cal || {});
+    const k = el.dataset.k; st.sel = !k || st.sel === k ? null : k; render();
+    if (st.sel && innerWidth < 900) setTimeout(() => $('.cal-agenda')?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 50);
+  },
+  'cal-asg': el => { stuState.tab = 'work'; stuState.open = el.dataset.id; render(); setTimeout(() => $(`.sa.open, [data-id="${el.dataset.id}"]`)?.scrollIntoView({ behavior: 'smooth', block: 'center' }), 80); },
+});
+Object.assign(CHG, { 'cal-cid': el => { ui.cal = ui.cal || {}; ui.cal.cid = el.value || null; render(); } });
+
+/* ---------- นักเรียน ---------- */
+function studentCalItems() {
+  const out = [];
+  (stuState.asg || []).forEach(a => {
+    if (!a.due_at) return;
+    const d = new Date(a.due_at), g = asgGroup(a);
+    const st = g === 'done' ? 'done' : g === 'wait' ? 'wait' : g === 'closed' ? 'miss' : d < new Date() ? 'late' : 'todo';
+    out.push({ d, title: a.title, color: a.subject_color, st, sub: a.subject_name || '', act: 'cal-asg', id: a.id,
+      badge: st === 'todo' ? relDay(d) : null });
+  });
+  (stuState.exams || []).forEach(x => {
+    const when = x.closes_at || x.opens_at; if (!when) return;
+    const d = new Date(when), can = x.is_open && (x.in_progress || x.attempts_used < x.max_attempts);
+    out.push({ d, title: x.title, color: x.subject_color, st: x.best_score != null ? 'examdone' : 'exam',
+      sub: `${x.subject_name || ''} · ${x.closes_at ? 'ปิดสอบ' : 'เปิดสอบ'}`, href: can ? `#exam-${x.share_code}` : null,
+      badge: x.best_score != null ? `ได้ ${+x.best_score}/${+x.total_points}` : x.closes_at ? 'ปิดสอบ' : 'เปิดสอบ' });
+  });
+  return out;
+}
+function studentCalendarHTML() {
+  if (!stuState.exams && typeof loadStudentExams === 'function') loadStudentExams();
+  const st = stuState.cal = stuState.cal || {}, items = studentCalItems();
+  const due = items.filter(x => x.st === 'todo'), late = items.filter(x => x.st === 'late');
+  const next = due.sort((a, b) => a.d - b.d)[0];
+  return `<div class="card cal-card stu-cal">
+    ${calHeadHTML(st, 'stu')}
+    <div class="cal-sum">
+      <div class="cs-k"><span>📝</span><b>${due.length}</b><small>งานที่ต้องส่ง</small></div>
+      <div class="cs-k ${late.length ? 'bad' : ''}"><span>⏰</span><b>${late.length}</b><small>เลยกำหนดแล้ว</small></div>
+      <div class="cs-k ${next && (next.d - Date.now()) < 864e5 ? 'warn' : ''}"><span>🎯</span><b>${next ? relDay(next.d) : '–'}</b><small>${next ? 'งานถัดไป: ' + esc(next.title.slice(0, 24)) : 'ไม่มีงานค้าง เย้!'}</small></div>
+    </div>
+    <div class="cal-body">${calGridHTML(st, items, { who: 'stu' })}${calAgendaHTML(st, items, 'stu', 'ไม่มีงานหรือสอบในช่วงนี้ พักผ่อนได้ 😌')}</div>
+    ${calLegendHTML(['todo', 'late', 'wait', 'done', 'exam'])}
+  </div>`;
+}
+
+/* ---------- ครู ---------- */
+function teacherCalItems(cid) {
+  const term = Q.currentTerm(), subs = Q.subjectsOfTerm(term?.id), sids = new Set(subs.map(s => s.id));
+  const subOf = id => subs.find(s => s.id === id);
+  const cname = id => db.get('classrooms', id)?.name || '';
+  const out = [], now = new Date();
+  store.assignments.filter(a => sids.has(a.subject_id) && a.due_at).forEach(a => {
+    const cids = store.assignment_classes.filter(x => x.assignment_id === a.id).map(x => x.classroom_id);
+    if (cid && !cids.includes(cid)) return;
+    const subs_ = store.submissions.filter(x => x.assignment_id === a.id);
+    const pend = subs_.filter(x => x.status === 'submitted' || x.status === 'late').length;
+    const total = cids.reduce((s, c) => s + Q.students(c).filter(x => x.active !== false).length, 0);
+    const d = new Date(a.due_at), s = subOf(a.subject_id);
+    out.push({ d, title: a.title, color: s?.color, cids, href: `#grade-${a.id}`,
+      st: pend ? 'wait' : d < now ? 'past' : 'todo',
+      sub: `${s?.name || ''} · ${cids.map(cname).join(', ')}`,
+      badge: pend ? `รอตรวจ ${pend}` : `ส่งแล้ว ${subs_.length}/${total}` });
+  });
+  (store.exams || []).filter(e => sids.has(e.subject_id) && (e.closes_at || e.opens_at)).forEach(e => {
+    const cids = store.exam_classes.filter(x => x.exam_id === e.id).map(x => x.classroom_id);
+    if (cid && !cids.includes(cid)) return;
+    const s = subOf(e.subject_id);
+    out.push({ d: new Date(e.closes_at || e.opens_at), title: e.title, color: s?.color, cids, href: `#exam-res-${e.id}`, st: 'exam',
+      sub: `${s?.name || ''} · ${cids.map(cname).join(', ')}`, badge: e.closes_at ? 'ปิดสอบ' : 'เปิดสอบ' });
+  });
+  return out;
+}
+function viewCalendar() {
+  const st = ui.cal = ui.cal || {};
+  const term = Q.currentTerm(), subs = Q.subjectsOfTerm(term?.id);
+  const cls = [...new Set(store.subject_classes.filter(x => subs.some(s => s.id === x.subject_id)).map(x => x.classroom_id))]
+    .map(id => db.get('classrooms', id)).filter(Boolean).sort((a, b) => a.name.localeCompare(b.name, 'th', { numeric: true }));
+  const items = teacherCalItems(st.cid);
+  const clash = list => {
+    const n = {}; list.forEach(x => x.cids.forEach(c => n[c] = (n[c] || 0) + 1));
+    const bad = Object.entries(n).filter(([, v]) => v >= 2).map(([c, v]) => `${db.get('classrooms', c)?.name} มี ${v} รายการ`);
+    return bad.length ? 'งานชนกัน: ' + bad.join(', ') : null;
+  };
+  // วันที่งานชนในเดือนนี้
+  const [y, m] = calMonthOf(st).split('-').map(Number);
+  const byDay = {}; items.filter(x => x.d.getFullYear() === y && x.d.getMonth() === m).forEach(x => (byDay[dKey(x.d)] = byDay[dKey(x.d)] || []).push(x));
+  const clashDays = Object.values(byDay).filter(l => clash(l)).length;
+  const t0 = new Date(), t7 = new Date(); t7.setDate(t0.getDate() + 7);
+  const week = items.filter(x => x.d >= t0 && x.d < t7).length, wait = items.filter(x => x.st === 'wait').length;
+  return `<div class="page-head"><div><h2>ปฏิทินงานและสอบ</h2><p>กำหนดส่งงานและวันสอบของภาคเรียน ${term ? Q.termLabel(term) : ''} · ดูว่าวันไหนงานชนกัน</p></div></div>
+  <div class="card cal-card">
+    ${calHeadHTML(st, 'tch', `<select class="input sm cal-sel" data-chg="cal-cid"><option value="">ทุกห้อง</option>${cls.map(c => `<option value="${c.id}" ${st.cid === c.id ? 'selected' : ''}>${esc(c.name)}</option>`).join('')}</select>`)}
+    <div class="cal-sum">
+      <div class="cs-k"><span>📆</span><b>${week}</b><small>ครบกำหนดใน 7 วัน</small></div>
+      <div class="cs-k ${wait ? 'warn' : ''}"><span>⏳</span><b>${wait}</b><small>งานที่มีรอตรวจ</small></div>
+      <div class="cs-k ${clashDays ? 'bad' : 'ok'}"><span>${clashDays ? '⚠️' : '👌'}</span><b>${clashDays}</b><small>${clashDays ? 'วันที่งานชนกันเดือนนี้ (ห้องเดียวกัน ≥ 2 งาน)' : 'ไม่มีวันที่งานชนกันเดือนนี้'}</small></div>
+    </div>
+    <div class="cal-body">${calGridHTML(st, items, { who: 'tch', clash })}${calAgendaHTML(st, items, 'tch', 'ไม่มีกำหนดส่งในช่วงนี้')}</div>
+    ${calLegendHTML(['todo', 'wait', 'past', 'exam'])}
+  </div>`;
+}
+
+/* ---------- 🎉 ฉลองเลื่อนยศ ---------- */
+function rankUpCheck() {
+  const v = stuState.verified, g = stuState.game; if (!v || !g || g.missing) return;
+  const key = 'cr-rank-' + v.student_id, i = rankIdx(+g.xp || 0);
+  let prev = null; try { prev = localStorage.getItem(key); } catch (e) {}
+  try { localStorage.setItem(key, String(i)); } catch (e) {}
+  if (prev == null || +prev >= i || $('#rankup')) return;
+  setTimeout(() => rankUpShow(+prev, i, g), 400);
+}
+function rankUpShow(from, to, g) {
+  const r = RANKS[to], o = RANKS[from], nx = RANKS[to + 1];
+  const el = document.createElement('div'); el.id = 'rankup'; el.className = `rankup r${to}`;
+  const conf = matchMedia('(prefers-reduced-motion: reduce)').matches ? '' : Array.from({ length: 90 }, (_, k) => {
+    const c = ['#FFD60A', '#FF9F0A', '#FF375F', '#5AC8FA', '#30D158', '#BF5AF2', '#fff'][k % 7];
+    return `<i style="--x:${(Math.random() * 2 - 1) * 46}vw;--y:${-(30 + Math.random() * 55)}vh;--r:${Math.random() * 1080 - 540}deg;--d:${(Math.random() * .35).toFixed(2)}s;--t:${(1.6 + Math.random() * 1.4).toFixed(2)}s;background:${c};${k % 3 ? '' : 'border-radius:50%;'}width:${6 + Math.random() * 6}px;height:${8 + Math.random() * 10}px"></i>`;
+  }).join('');
+  el.innerHTML = `<div class="ru-bg" data-act="rankup-close"></div><div class="ru-conf">${conf}</div>
+    <div class="ru-card" role="dialog" aria-label="เลื่อนยศแล้ว">
+      <div class="ru-rays"></div>
+      <div class="ru-kicker">🎉 เลื่อนยศแล้ว!</div>
+      <div class="ru-ic">${r.ic}</div>
+      <div class="ru-name">${r.n}</div>
+      <div class="ru-en">“${esc(r.en)}”</div>
+      <div class="ru-path"><span>${typeof o.ic === 'string' && o.ic.length < 8 ? o.ic : '⭐'} ${o.n}</span><b>→</b><span class="new">${to >= 9 ? '⭐' : r.ic} ${r.n}</span></div>
+      <div class="ru-who">${esc(stuFirst(stuState.verified))} · ${esc(stuState.verified.classroom_name || '')} · ${(+g.xp).toLocaleString()} XP</div>
+      ${nx ? `<div class="ru-next">ยศถัดไป <b>${nx.n}</b> อีก ${(nx.xp - g.xp).toLocaleString()} XP</div>` : '<div class="ru-next">👑 ยศสูงสุดของโรงเรียนแล้ว!</div>'}
+      <button class="btn primary ru-ok" data-act="rankup-close">เยี่ยมไปเลย! 🎉</button>
+      <small class="ru-tip">📸 แคปหน้าจอไปอวดเพื่อนได้เลย</small>
+    </div>`;
+  document.body.appendChild(el);
+  requestAnimationFrame(() => el.classList.add('in'));
+  try { navigator.vibrate?.([30, 40, 60]); } catch (e) {}
+}
+Object.assign(ACT, { 'rankup-close': () => { const el = $('#rankup'); if (!el) return; el.classList.add('out'); setTimeout(() => el.remove(), 380); } });
 
 /* =====================================================================
    แกลเลอรีผลงาน — ครูติดดาวงานเด่น → คัดลอกไฟล์ไปที่เก็บสาธารณะ → โชว์ + กดหัวใจ
