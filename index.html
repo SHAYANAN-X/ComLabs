@@ -4695,6 +4695,35 @@ img.ii{display:inline-block;width:1.25em;height:1.25em;vertical-align:-.25em;obj
 .gr-card .gc-res{grid-template-columns:repeat(auto-fill,minmax(104px,1fr))}
 @media (max-width:600px){.qt-tut p{display:none}.qt-tut{padding:8px 10px}}
 
+/* ===== v32: กระเป๋า · เงินด้านบน ===== */
+.bag-money{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:2px 0 10px}
+.bag-money span{display:grid;grid-template-columns:auto 1fr;grid-template-rows:auto auto;column-gap:8px;align-items:center;padding:8px 12px;border-radius:14px;background:#FFF8E6;border:1.5px solid #FFE1A0}
+.bag-money span:nth-child(2){background:#FFF6D0;border-color:#F2CF5A}.bag-money span:nth-child(3){background:#F2F6FF;border-color:#CFDDF8}
+.bag-money i{grid-row:1/3;font-style:normal;font-size:22px}.bag-money b{font:800 16px var(--f-head);color:#6A4A00;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.bag-money small{font-size:11.5px;color:#8A6A2A}
+.bag-note{margin:0 0 8px;font-size:12.5px;color:#6E6890}.linkbtn{border:0;background:none;padding:0;font:inherit;font-weight:800;color:#5A3DCC;text-decoration:underline;cursor:pointer}
+@media (max-width:480px){.bag-money{gap:5px}.bag-money span{padding:6px 8px;column-gap:5px}.bag-money i{font-size:17px}.bag-money b{font-size:13.5px}}
+/* ===== v32: กรอบสีตามระดับไอเทม ===== */
+.gfr{outline:3px solid var(--gfc)!important;outline-offset:-3px;box-shadow:0 0 10px -3px var(--gfc)!important}
+.gfr[data-gf="0"]{outline-width:2.5px!important;box-shadow:none!important}
+.gfr[data-gf="4"],.gfr[data-gf="5"]{outline-width:3.5px!important;box-shadow:0 0 14px -2px var(--gfc)!important}
+/* ===== v32: โปรไฟล์ผู้เล่นอื่น ===== */
+.pf32{display:grid;grid-template-columns:200px 1fr;gap:16px;align-items:start}
+.pf-pic{border-radius:20px;background:radial-gradient(circle at 50% 35%,#FFFFFF,#E9E3FF);display:grid;place-items:center;padding:8px}.pf-pic img{width:100%;max-width:200px}
+.pf-tags{display:flex;flex-wrap:wrap;gap:6px}.pf-tags span{padding:4px 10px;border-radius:999px;font-size:12.5px;font-weight:700;background:#F4F1FF;color:#4A3D8A}
+.pf-tags .pf-job{background:var(--c);color:#fff}.pf-tags .pf-lv{background:#2F2A4A;color:#FFE27A}.pf-tags .pf-t{background:#FFE9F2;color:#C2306E}
+.pf-eqs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}
+.pf-eq{display:flex;gap:8px;align-items:center;padding:6px 8px;border-radius:12px;background:#F7F5FF;min-width:0}.pf-eq.empty{opacity:.55}
+.pf-eq .rp-ic{width:40px;height:40px;flex:none}.pf-eq .rp-ic img{width:100%;height:100%;object-fit:contain}
+.pf-eq small{display:block;font-size:11px;color:#8A84A8}.pf-eq b{display:block;font-size:12.5px;line-height:1.3;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.pf-eq em{color:#E8341A;font-style:normal}
+.pf-act{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:12px}
+@media (max-width:600px){.pf32{grid-template-columns:1fr}.pf-pic img{max-width:140px}}
+@media (max-width:600px){
+  .rpg .bag-tabs{flex-wrap:wrap;overflow:visible}.rpg .bag-tabs button{flex:1 1 auto}
+  .rpg .rp-card .rp-list .rp-it:has(.rp-col){display:grid;grid-template-columns:auto minmax(0,1fr);gap:8px}
+  .rpg .rp-card .rp-it .rp-col{grid-column:1/-1;flex-direction:row;flex-wrap:wrap;min-width:0}.rpg .rp-card .rp-it .rp-col>*{flex:1 1 auto}
+}
+.rp-ic img.pet30{transform:scale(1.55);transform-origin:50% 62%}
+
 </style>
 </head>
 <body>
@@ -5238,7 +5267,7 @@ if (typeof module !== 'undefined') module.exports = ExamParser;
 </script>
 <script>
 /* โลโก้: ภาพครูปลื้ม (ไฟล์ต้นฉบับ src/logo.svg ฝังตอน build) */
-const APP_VER = '31.0 · 26 พ.ย. 2569';
+const APP_VER = '32.0 · 27 พ.ย. 2569';
 let LOGO_N = 0;
 function logoSVG() { const k = 'L' + (++LOGO_N); return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><defs><linearGradient id="lgb" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3B9BFF"/><stop offset=".5" stop-color="#0A5BE0"/><stop offset="1" stop-color="#062C78"/></linearGradient><linearGradient id="lgs" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset=".6" stop-color="#FFF4D6"/><stop offset="1" stop-color="#FFD978"/></linearGradient><radialGradient id="lgc" cx=".3" cy=".08" r=".75"><stop offset="0" stop-color="#fff" stop-opacity=".55"/><stop offset=".5" stop-color="#fff" stop-opacity=".08"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient></defs><rect width="48" height="48" rx="13" fill="url(#lgb)"/><rect width="48" height="48" rx="13" fill="url(#lgc)"/><rect x=".75" y=".75" width="46.5" height="46.5" rx="12.3" fill="none" stroke="#fff" stroke-opacity=".45" stroke-width="1.2"/><g fill="none" stroke="#04235F" stroke-opacity=".35" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" transform="translate(0 1.2)"><path d="M21.2 17 C19.8 14.6 17.4 13.6 14.8 13.6 C11 13.6 8.6 15.6 8.6 18.5 C8.6 21.8 11.6 22.9 14.9 23.9 C18.6 25 21.6 26.4 21.6 29.8 C21.6 33 18.8 34.6 15.1 34.6 C12 34.6 9.5 33.4 8 31.1"/><path d="M26.6 14 L39.6 34.2 M39.6 14 L26.6 34.2"/></g><g fill="none" stroke="url(#lgs)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M21.2 17 C19.8 14.6 17.4 13.6 14.8 13.6 C11 13.6 8.6 15.6 8.6 18.5 C8.6 21.8 11.6 22.9 14.9 23.9 C18.6 25 21.6 26.4 21.6 29.8 C21.6 33 18.8 34.6 15.1 34.6 C12 34.6 9.5 33.4 8 31.1"/><path d="M26.6 14 L39.6 34.2 M39.6 14 L26.6 34.2"/></g></svg>`.replace('<svg ', '<svg class="logo" aria-hidden="true" ').replace(/\b(lg[bsc])\b/g, '$1' + k); }
 /* =====================================================================
@@ -13387,7 +13416,7 @@ function draw(x, o) {
   if (cape && !o.back) capeFn();
   // legs: single tapered shapes, boots blend
   const robe = O.shape ? O.shape === 'dress' : job === 'mage' || job === 'priest';
-  const wk = o.walk != null; [-1, 1].forEach(s => { const lx = s * (f ? 3.3 : 3.8), ph = (o.walk || 0) + (s > 0 ? 0 : Math.PI); x.save(); if (wk) x.translate(Math.sin(ph) * 1.4, -Math.max(0, Math.sin(ph)) * 2.6); x.fillStyle = lg(x, lx - 3, 0, lx + 3, 0, pants, .15, .3);
+  const wk = o.walk != null, side = !!o.turn && !o.back; [-1, 1].forEach(s0 => { const s = side ? 1 : s0, lx = side ? s0 * 1.4 : s0 * (f ? 3.3 : 3.8), ph = (o.walk || 0) + (s0 > 0 ? 0 : Math.PI); x.save(); if (wk) { if (side) x.translate(Math.sin(ph) * 5.6, -Math.max(0, Math.cos(ph)) * 2.4); else x.translate(Math.sin(ph) * 1.4, -Math.max(0, Math.sin(ph)) * 2.6); } x.fillStyle = lg(x, lx - 3, 0, lx + 3, 0, pants, .15, .3);
     x.beginPath(); x.moveTo(lx - 3.4, hip - 1); x.bezierCurveTo(lx - 3.6, hip + 5, lx - 2.6, -8, lx - 2.4, -5); x.lineTo(lx + 2.4, -5); x.bezierCurveTo(lx + 2.6, -8, lx + 3.6, hip + 5, lx + 3.4, hip - 1); x.fill();
     if (o.bigBoots || O.bigBoots) { const bc = boot, cuffC = O.cuff || lt(boot, .25); x.fillStyle = lg(x, lx - 4, 0, lx + 4, 0, bc, .25, .32); x.beginPath(); x.moveTo(lx - 3.4, -10.5); x.bezierCurveTo(lx - 3.8, -6, lx - 4.6, -3, lx - 4.4, -1); x.bezierCurveTo(lx - 4.4, .8, lx + s * 2 + 4.6, 1, lx + s * 2 + 5, -.8); x.bezierCurveTo(lx + s * 2 + 5.2, -3, lx + 3.8, -4, lx + 3.4, -10.5); x.closePath(); x.fill();
       x.fillStyle = 'rgba(255,255,255,.28)'; x.beginPath(); x.ellipse(lx + s * 1.6 + .5, -2.2, 2.2, .9, 0, 0, 7); x.fill(); x.fillStyle = lg(x, 0, -12.5, 0, -9, cuffC, .3, .2); x.beginPath(); x.moveTo(lx - 4.2, -12); x.quadraticCurveTo(lx, -13.3, lx + 4.2, -12); x.lineTo(lx + 3.9, -9.2); x.quadraticCurveTo(lx, -8.2, lx - 3.9, -9.2); x.closePath(); x.fill(); x.fillStyle = 'rgba(30,10,40,.25)'; x.fillRect(lx - 3.6, -1.6, 7.6 + s * 1.6, .7); x.restore(); return; }
@@ -13424,7 +13453,7 @@ function draw(x, o) {
   x.fillStyle = dk(skin, .05); [-1, 1].forEach(s => { x.beginPath(); x.ellipse(s * .97 * r, .14 * r, (P0 ? .1 : .14) * r, (P0 ? .17 : .22) * r, 0, 0, 7); x.fill(); });
   // face
   if (o.back) { x.save(); x.translate(0, 0); H.back(x, r, hair); x.fillStyle = HG(x, r, hair); x.beginPath(); x.ellipse(0, -.22 * r, 1.12 * r, 1.04 * r, 0, 0, 7); x.fill(); x.strokeStyle = mix(hair, '#2A1240', .45); x.globalAlpha = .4; x.lineWidth = r * .04; [-.5, -.15, .2, .55].forEach(p => { x.beginPath(); x.moveTo(p * .3 * r, -1.1 * r); x.quadraticCurveTo(p * 1.1 * r, -.4 * r, p * 1.2 * r, .7 * r); x.stroke(); }); x.restore(); if (O.head && !o.noHead) O.head(x, L); if (o.headFn) o.headFn(x, L); x.restore(); if (o._defer) { o._defer(); o._defer = null; } x.restore(); return; }
-  if (o.turn) x.translate(o.turn * .2 * r, 0);
+  if (o.turn) { x.save(); x.translate(o.turn * .34 * r, 0); x.scale(.8, 1); }
   const ey = .22 * r, es = r * (P2 ? .2 : P0 ? .225 : .24), eh = es * (P0 ? (f ? 1.3 : 1.15) : f ? 1.38 : 1.18);
   [-1, 1].forEach(s => { const ex = s * .4 * r;
     x.save(); x.beginPath(); x.ellipse(ex, ey, es, eh, 0, 0, 7); x.fillStyle = '#FFFFFF'; x.fill(); x.clip();
@@ -13444,7 +13473,7 @@ function draw(x, o) {
   x.strokeStyle = 'rgba(230,90,110,.45)'; x.lineWidth = r * .02; [-1, 1].forEach(s => { for (let k = 0; k < 3; k++) { x.beginPath(); x.moveTo(s * .55 * r + k * .07 * r - .05 * r, .6 * r); x.lineTo(s * .55 * r + k * .07 * r, .5 * r); x.stroke(); } });
   x.fillStyle = dk(skin, .2); x.beginPath(); x.ellipse(.02 * r, .5 * r, .035 * r, .025 * r, 0, 0, 7); x.fill();
   x.strokeStyle = f ? '#C24860' : '#7A3A34'; x.lineWidth = r * .06; x.beginPath(); x.moveTo(-.1 * r, .72 * r); x.quadraticCurveTo(0, .78 * r, .1 * r, .72 * r); x.stroke();
-  if (o.turn) x.translate(-o.turn * .2 * r, 0);
+  if (o.turn) x.restore();
   // hair front with sheen
   const hg = x.createLinearGradient(0, -r * 1.15, 0, r * .9); hg.addColorStop(0, lt(hair, .32)); hg.addColorStop(.3, hair); hg.addColorStop(.75, mix(hair, '#3A1E5A', .28)); hg.addColorStop(1, mix(hair, '#FFB0D0', .25)); x.fillStyle = hg; if (H.own && H.tufts) tufts(x, r, hair, H.tufts); H.front(x, r, hair); if (H.own && H.ring !== false) ringHL(x, r, H.ring || -.66, .62, hair); if (H.ahoge) ahoge(x, r, hair);
   if (!H.own) {
@@ -14712,7 +14741,7 @@ function rpgPresenceStart() {
       if (p.k === 'party' || p.k === 'chat' || p.k === 'fr' || p.k === 'buff') return rpgNetMsg(p);
       const o = RS.others[p.id] || (RS.others[p.id] = { x: p.x, y: p.y });
       if (o.m !== p.m) { o.x = p.x; o.y = p.y; }
-      Object.assign(o, { tx: p.x, ty: p.y, n: p.n, c: p.c, k: p.k, o: p.o, p: p.p, l: p.l, d: p.d, dir: p.dir, m: p.m, g: p.g, pt: p.pt, hp: p.hp, sp: p.sp, pn: p.pn, bf: p.bf, bi: p.bi, teacher: p.t, seen: performance.now() });
+      Object.assign(o, { tx: p.x, ty: p.y, n: p.n, c: p.c, k: p.k, o: p.o, p: p.p, l: p.l, d: p.d, dir: p.dir, m: p.m, g: p.g, pt: p.pt, hp: p.hp, sp: p.sp, pn: p.pn, bf: p.bf, bi: p.bi, eq: p.eq, en: p.en, cn: p.cn, teacher: p.t, seen: performance.now() });
       if (p.e && p.e !== o.lastE) { o.em = p.e.split(':')[0]; o.emAt = performance.now(); o.lastE = p.e; }
     });
     RS.chan.subscribe();
@@ -16929,7 +16958,7 @@ rpgLookPub = function () { const L = rpgLookPub28(); L.wenh = rpgWenh(); if (L.w
 // อนุภาคออร่าอาวุธ (เคลื่อนไหว) รอบมือ
 const rpgDrawHero28 = rpgDrawHero;
 rpgDrawHero = function (x, h) {
-  const r = rpgDrawHero28(x, h), n = h.look?.wenh || 0; if (n < 4 || h.pose === 'down') return r;
+  const r = rpgDrawHero28(x, h), n = h.look?.wenh || 0; if (n < 4 || h.pose === 'down' || typeof rpgWGlow32 === 'function') return r;
   const t = h.t || performance.now(), sd = h.dir === 'l' ? -1 : 1, wx = (h.dir === 'u' ? -10 : 13) * sd, wy = -34;
   const dark = n >= 10, fire = n >= 7 && !dark;
   x.save();
@@ -18001,36 +18030,44 @@ function rpgPetURL(ic, S = 96) { const k = 'PU' + ic + S; rpgPetURL.c = rpgPetUR
 /* ---------- 3) หน้าต่างทุกบานล็อกขนาดพอดีจอ + แบ่งหน้า 1 2 3 4 ---------- */
 RS.pg = RS.pg || {};
 function rpgPaginate() {
+  const _c0 = document.querySelector('.rpg .rpg-panel .rp-card'), _k = _c0 && _c0.offsetHeight ? (_c0.getBoundingClientRect().height / _c0.offsetHeight) || 1 : 1;
+  const BR = e => { const r = e.getBoundingClientRect(), c = _c0.getBoundingClientRect(); return { top: (r.top - c.top) / _k, bottom: (r.bottom - c.top) / _k, height: r.height / _k, width: r.width / _k }; };
   const card = document.querySelector('.rpg .rpg-panel .rp-card'); if (!card || card.offsetParent === null) return;
-  card.querySelectorAll('.rp-pager').forEach(p => p.remove());
+  if (!card._pgL) { card._pgL = 1; card.addEventListener('load', e => { if (e.target.tagName === 'IMG') { clearTimeout(card._pgT); card._pgT = setTimeout(rpgPaginate, 60); } }, true); setTimeout(rpgPaginate, 380); }
+  card.querySelectorAll('.rp-pager').forEach(p => p.remove()); card.scrollTop = 0; card.scrollLeft = 0;
   card.querySelectorAll('[data-pgh]').forEach(e => { e.style.display = e.dataset.pgh === '-' ? '' : e.dataset.pgh; delete e.dataset.pgh; });
   // กล่องเลื่อนภายใน → ขยายเต็ม แล้วแบ่งหน้าแทนการเลื่อน
   [...card.querySelectorAll('*')].forEach(e => { if (e.dataset.pgsc) return; const cs = getComputedStyle(e); if ((/(auto|scroll)/.test(cs.overflowY) && e.children.length >= 2 || cs.overflowY === 'hidden' && e.children.length >= 2 && e.scrollHeight > e.clientHeight + 40) && e.scrollHeight > e.clientHeight + 4) e.dataset.pgsc = 1; });
   [...card.children].forEach(e => { if (e.dataset.pgz) { e.style.zoom = ''; delete e.dataset.pgz; } });
-  const kids = [...card.children].filter(e => !e.matches('.rp-x,h3,.rp-pager') && e.getBoundingClientRect().height > 0); if (!kids.length) return;
-  const cr = card.getBoundingClientRect(), padB = parseFloat(getComputedStyle(card).paddingBottom) || 0, limit = cr.bottom - padB - 2, top0 = kids[0].getBoundingClientRect().top;
-  const lastB = Math.max(...kids.map(e => { const r = e.getBoundingClientRect(); return r.top + Math.max(r.height, e.scrollHeight); })); if (lastB <= limit) return;
+  card.querySelectorAll('[data-pgsc]').forEach(e => { e.scrollTop = 0; });
+  const kids = [...card.children].filter(e => !e.matches('.rp-x,h3,.rp-pager,.pg-keep') && BR(e).height > 0); if (!kids.length) return;
+  const cr = { width: card.offsetWidth, height: card.offsetHeight, bottom: card.offsetHeight }, padB = parseFloat(getComputedStyle(card).paddingBottom) || 0, limit = cr.bottom - padB - 2, top0 = BR(kids[0]).top;
+  const lastB = Math.max(...kids.map(e => { const r = BR(e); return r.top + Math.max(r.height, e.scrollHeight); })); if (lastB <= limit) return;
   // ล้นเล็กน้อย (≤ 20%) → ย่อให้พอดีทั้งหน้า แทนการแยกหน้า
   { const z = (limit - top0) / (lastB - top0); if (z >= .8) { kids.forEach(e => { e.dataset.pgz = 1; e.style.zoom = z.toFixed(3); }); return; } }
   const avail = limit - top0 - 58; if (avail < 80) return;
   const units = [], parents = new Map();
-  const collect = (els, depth, par) => els.forEach(el => { const r0 = el.getBoundingClientRect(); if (!r0.height) return; const r = { top: r0.top, height: Math.max(r0.height, el.scrollHeight), bottom: r0.top + Math.max(r0.height, el.scrollHeight) }; const sub = [...el.children].filter(c => c.getBoundingClientRect().height > 0);
+  const collect = (els, depth, par) => els.forEach(el => { const r0 = BR(el); if (!r0.height) return; const r = { top: r0.top, height: Math.max(r0.height, el.scrollHeight), bottom: r0.top + Math.max(r0.height, el.scrollHeight) }; const sub = [...el.children].filter(c => BR(c).height > 0);
     if (r.height > avail * .8 && sub.length >= 1 && depth < 7) { parents.set(el, []); collect(sub, depth + 1, el); } else { const u = { el, t: r.top - top0, b: r.bottom - top0 }; units.push(u); let p = par; while (p) { parents.get(p)?.push(u); p = p.parentElement === card ? null : (parents.has(p.parentElement) ? p.parentElement : null); } } });
   collect(kids, 0, null);
   units.sort((a, b) => a.t - b.t || a.b - b.b);
-  const pages = []; let cur = null;
-  units.forEach(u => { if (!cur || u.b - cur.t0 > avail) { cur = { t0: u.t, u: [] }; pages.push(cur); } cur.u.push(u); });
-  if (pages.length <= 1) return;
-  const key = (RS.panel || 'x') + ':' + ([...card.querySelectorAll('.on,[aria-selected=true]')].map(e => e.textContent.trim().slice(0, 12)).join('|')), pg = Math.min(pages.length - 1, RS.pg[key] || 0);
+  // แบ่งหน้าจากเลย์เอาต์จริงของแต่ละหน้า (กันกรณีซ่อนแล้วคอลัมน์ไหล/สูงขึ้น)
   const hide = e => { if (e.dataset.pgh) return; e.dataset.pgh = e.style.display || '-'; e.style.display = 'none'; };
-  pages.forEach((P, i) => { if (i !== pg) P.u.forEach(u => hide(u.el)); });
-  parents.forEach((us, el) => { if (us.length && us.every(u => u.el.dataset.pgh)) hide(el); });
+  const show = e => { if (!e.dataset.pgh) return; e.style.display = e.dataset.pgh === '-' ? '' : e.dataset.pgh; delete e.dataset.pgh; };
+  const apply = (a, b) => { units.forEach((u, i) => (i < a || i > b) ? hide(u.el) : show(u.el)); parents.forEach((us, el) => show(el)); parents.forEach((us, el) => { if (us.length && us.every(u => u.el.dataset.pgh)) hide(el); }); };
+  const lim = limit - 58, starts = []; let st = 0, guard = 0;
+  while (st < units.length && guard++ < 80) { starts.push(st); apply(st, units.length - 1); let k = st; for (let i = st + 1; i < units.length; i++) { if (BR(units[i].el).bottom <= lim + 1) k = i; else break; } st = k + 1; }
+  if (starts.length <= 1) { apply(0, units.length - 1); return; }
+  const pages = starts.map((a, i) => ({ a, b: (starts[i + 1] ?? units.length) - 1 }));
+  const key = (RS.panel || 'x') + ':' + ([...card.querySelectorAll('.on,[aria-selected=true]')].filter(e => !e.closest('.rp-pager')).map(e => e.textContent.trim().slice(0, 12)).join('|')), pg = Math.min(pages.length - 1, RS.pg[key] || 0);
+  apply(pages[pg].a, pages[pg].b);
   const nav = document.createElement('nav'); nav.className = 'rp-pager'; nav.setAttribute('aria-label', 'เลือกหน้า'); const N = pages.length;
   const btn = (lab, p, on, dis, aria) => `<button type="button" data-pg="${p}" ${on ? 'class="on" aria-current="page"' : ''} ${dis ? 'disabled' : ''} aria-label="${aria || 'หน้า ' + (p + 1)}">${lab}</button>`;
   const MX = cr.width < 440 ? 5 : 7, nums = []; for (let p = 0; p < N; p++) { if (N > MX && p > 0 && p < N - 1 && Math.abs(p - pg) > 1) { if (nums[nums.length - 1] !== '…') nums.push('…'); continue; } nums.push(p); }
   nav.innerHTML = btn('‹', pg - 1, false, pg === 0, 'หน้าก่อน') + nums.map(p => p === '…' ? '<span>…</span>' : btn(p + 1, p, p === pg)).join('') + btn('›', pg + 1, false, pg >= N - 1, 'หน้าถัดไป');
-  nav.addEventListener('click', e => { const b = e.target.closest('button[data-pg]'); if (!b || b.disabled) return; e.stopPropagation(); RS.pg[key] = +b.dataset.pg; rpgSfx('click'); rpgPaginate(); });
-  card.appendChild(nav);
+  nav.addEventListener('mousedown', e => e.preventDefault());
+  nav.addEventListener('click', e => { const b = e.target.closest('button[data-pg]'); if (!b || b.disabled) return; e.stopPropagation(); RS.pg[key] = +b.dataset.pg; rpgSfx('click'); rpgPaginate(); requestAnimationFrame(() => { const c = document.querySelector('.rpg .rpg-panel .rp-card'); if (c) c.scrollTop = 0; }); });
+  card.appendChild(nav); card.scrollTop = 0;
 }
 const rpgPanel30 = rpgPanel;
 rpgPanel = function (k) {
@@ -18634,6 +18671,375 @@ function rpgBtnTip(a) {
   el.innerHTML = `<b>${esc(T[0])}</b><p>${esc(T[1])}</p><button type="button" aria-label="ปิดคำอธิบาย">เข้าใจแล้ว</button>`; el.querySelector('button').onclick = () => el.remove();
   (document.getElementById('rpg') || document.body).appendChild(el); setTimeout(() => el.remove(), 7000);
 }
+
+/* =====================================================================
+   SX Realm v32 — มอนสเตอร์วาดใหม่ทั้งหมด (36 ชนิด · ทุกตัวไม่ซ้ำกัน · ธีมภัยไซเบอร์)
+   พิกัด: หันขวา · เท้าที่ y=0 · สูงราว 30–44 หน่วย · fr 0..7 = เฟรมเคลื่อนไหว
+   ===================================================================== */
+const MON2 = (() => {
+  const T = Math.PI * 2;
+  const hx = h => { const n = parseInt(h.slice(1), 16); return [n >> 16, n >> 8 & 255, n & 255]; };
+  const mix = (a, b, f) => { const A = hx(a), B = hx(b); return `rgb(${A.map((v, i) => Math.round(v + (B[i] - v) * f)).join(',')})`; };
+  const lt = (c, f) => mix(c, '#FFFFFF', f), dk = (c, f) => mix(c, '#140A22', f);
+  const ball = (x, cx, cy, rx, ry, c, rot = 0) => { const g = x.createRadialGradient(cx - rx * .35, cy - ry * .45, Math.min(rx, ry) * .1, cx, cy, Math.max(rx, ry) * 1.1); g.addColorStop(0, lt(c, .35)); g.addColorStop(.55, c); g.addColorStop(1, dk(c, .3)); x.fillStyle = g; x.beginPath(); x.ellipse(cx, cy, Math.max(.1, rx), Math.max(.1, ry), rot, 0, T); x.fill(); };
+  const E = (x, cx, cy, rx, ry, c, rot = 0) => { x.fillStyle = c; x.beginPath(); x.ellipse(cx, cy, Math.max(.1, rx), Math.max(.1, ry), rot, 0, T); x.fill(); };
+  const poly = (x, pts, c) => { x.fillStyle = c; x.beginPath(); pts.forEach(([a, b], i) => i ? x.lineTo(a, b) : x.moveTo(a, b)); x.closePath(); x.fill(); };
+  const line = (x, pts, c, w) => { x.strokeStyle = c; x.lineWidth = w; x.lineCap = 'round'; x.lineJoin = 'round'; x.beginPath(); pts.forEach(([a, b], i) => i ? x.lineTo(a, b) : x.moveTo(a, b)); x.stroke(); };
+  const glow = (x, cx, cy, r, c) => { x.save(); x.shadowColor = c; x.shadowBlur = r * 2.2; E(x, cx, cy, r, r, c); x.restore(); E(x, cx - r * .25, cy - r * .3, r * .35, r * .35, '#FFFFFF'); };
+  // ตา: สไตล์มอนสเตอร์ (ขาว + ม่านตาสี + ประกาย · คิ้วโกรธได้)
+  const eye = (x, cx, cy, s, iris = '#2A1A2E', o = {}) => {
+    if (o.led) return glow(x, cx, cy, s * .9, iris);
+    E(x, cx, cy, s, s * 1.15, '#FFFFFF'); E(x, cx + s * .2, cy + s * .1, s * .7, s * .82, iris); E(x, cx + s * .25, cy + s * .15, s * .38, s * .45, '#140A1A'); E(x, cx + s * .5, cy - s * .35, s * .26, s * .26, '#FFFFFF');
+    if (o.angry) line(x, [[cx - s * 1.1, cy - s * 1.5], [cx + s * 1.1, cy - s * .9]], '#2A1420', s * .45);
+  };
+  const fang = (x, cx, cy, w, n = 2) => { x.fillStyle = '#FFFFFF'; for (let i = 0; i < n; i++) { const px = cx - w / 2 + (i + .5) * w / n; x.beginPath(); x.moveTo(px - 1, cy); x.lineTo(px + 1, cy); x.lineTo(px, cy + 2.2); x.fill(); } };
+  const smile = (x, cx, cy, w, c = '#3A1424') => { x.strokeStyle = c; x.lineWidth = .9; x.lineCap = 'round'; x.beginPath(); x.moveTo(cx - w, cy); x.quadraticCurveTo(cx, cy + w * .8, cx + w, cy); x.stroke(); };
+  const zig = (x, cx, cy, w, c = '#3A1424') => line(x, [[cx - w, cy], [cx - w / 2, cy + 1.2], [cx, cy], [cx + w / 2, cy + 1.2], [cx + w, cy]], c, .9);
+  const circuit = (x, pts, c = '#4FF0FF') => { x.save(); x.shadowColor = c; x.shadowBlur = 3; line(x, pts, c, .8); pts.forEach(([a, b], i) => { if (i && i < pts.length - 1) return; E(x, a, b, 1, 1, c); }); x.restore(); };
+  const leg = (x, x0, y0, x1, y1, w, c, foot) => { line(x, [[x0, y0], [x1, y1]], c, w); if (foot) E(x, x1 + w * .3, y1 - .2, w * .8, w * .5, foot); };
+  const sh = (x, w = 12, cx = 0) => E(x, cx, -.4, w, 2.2, 'rgba(20,10,40,.22)');
+  const ph = fr => fr / 8 * T;
+
+  const D = {};
+  /* ---------- ป่าบั๊กเขียว ---------- */
+  D['🐌'] = (x, fr) => { const p = ph(fr), st = Math.sin(p) * 1.2; sh(x, 13);           // หอยทากเมือก: เปลือกไอคอนดาวน์โหลด
+    ball(x, 1 + st * .3, -4, 14, 4.6, '#B8E07A'); E(x, -6, -2, 5, 1.6, 'rgba(160,255,120,.5)');
+    line(x, [[9, -6], [11, -14]], '#9CCB5E', 1.6); line(x, [[12, -6], [15, -13]], '#9CCB5E', 1.6); glow(x, 11, -14.5, 1.3, '#7CFF6A'); glow(x, 15.3, -13.5, 1.3, '#7CFF6A');
+    ball(x, -2, -14, 10, 10.5, '#FF9A3D'); x.strokeStyle = '#C8601A'; x.lineWidth = 1.4; x.beginPath(); for (let a = 0; a < 9; a += .2) { const r = 1 + a * .95; x.lineTo(-2 + Math.cos(a) * r, -14 + Math.sin(a) * r); } x.stroke();
+    eye(x, 8.5, -7.5, 1.8); eye(x, 12.5, -7.5, 1.6); smile(x, 11, -4.6, 1.6); };
+  D['🐛'] = (x, fr) => { const p = ph(fr); sh(x, 14);                                       // หนอนบั๊ก: ปล้องเป็นบล็อกโค้ด
+    for (let i = 4; i >= 0; i--) { const bx = -13 + i * 5.2, by = -5 - Math.max(0, Math.sin(p + i * .9)) * 3; ball(x, bx, by, 4.2, 4.4, i % 2 ? '#7AD86A' : '#5CC85A'); x.fillStyle = 'rgba(30,80,40,.35)'; x.fillRect(bx - 2, by - 1, 4, .8); x.fillRect(bx - 1, by + 1, 3, .8); }
+    const hy = -10 - Math.max(0, Math.sin(p + 4.6)) * 2; ball(x, 12, hy, 7.2, 7, '#8CEB7A'); eye(x, 12.5, hy - 1, 2.1); eye(x, 16.8, hy - 1, 1.8); fang(x, 15, hy + 3.2, 3, 2);
+    line(x, [[10, hy - 6], [8, hy - 11]], '#5CC85A', 1.2); line(x, [[14, hy - 6.5], [16, hy - 11.5]], '#5CC85A', 1.2); E(x, 8, hy - 11.5, 1.3, 1.3, '#FF4D6A'); E(x, 16, hy - 12, 1.3, 1.3, '#FF4D6A'); };
+  D['🐀'] = (x, fr) => { const p = ph(fr), s = Math.sin(p); sh(x, 12);                     // หนูไวรัส: ตาแดง LED หางสายไฟ
+    line(x, [[-9, -6], [-15, -8 + s * 2], [-19, -4], [-22, -7]], '#D88A9A', 1.4); E(x, -22, -7, 1.2, 1.2, '#FFD23F');
+    leg(x, -5, -4, -6 - s * 2, 0, 2.2, '#8A7A90', '#E8A8B8'); leg(x, 5, -4, 5 + s * 2, 0, 2.2, '#8A7A90', '#E8A8B8');
+    ball(x, -1, -9, 10, 7.6, '#9A8AA6'); ball(x, 8, -13, 6.6, 6, '#A898B4'); E(x, 13.6, -12, 2.4, 2, '#FF9AB0');
+    E(x, 4, -19, 3.4, 4, '#A898B4'); E(x, 4, -19, 2, 2.6, '#FFB8C8'); eye(x, 9.5, -14.5, 1.7, '#FF2E4A', { led: 1 }); E(x, 13.5, -10.4, .6, .6, '#2A1A2E');
+    line(x, [[14, -11], [19, -12]], 'rgba(60,40,60,.6)', .4); line(x, [[14, -10.5], [19, -9.5]], 'rgba(60,40,60,.6)', .4); circuit(x, [[-8, -10], [-3, -10], [-1, -6]], '#7CFF6A'); };
+  D['🦇'] = (x, fr) => { const p = ph(fr), f = Math.sin(p * 2), y = -20 + Math.sin(p) * 2; sh(x, 9);   // ค้างคาวสแปม: ปีกซองจดหมาย
+    [-1, 1].forEach(sd => { x.save(); x.translate(0, y); x.scale(sd, 1); x.rotate(-.2 - f * .45); poly(x, [[3, -1], [13, -9], [19, -4], [16, -1], [18, 3], [12, 1], [9, 5]], '#6A4AB8'); line(x, [[4, 0], [13, -8]], '#9A7AE8', .8); x.restore(); });
+    ball(x, 0, y, 6.4, 7, '#7A58C8'); poly(x, [[-4, y - 5], [-3, y - 11], [-1, y - 6]], '#7A58C8'); poly(x, [[1, y - 6], [3, y - 11], [4, y - 5]], '#7A58C8');
+    x.fillStyle = '#FFFFFF'; x.fillRect(-3.4, y + .6, 6.8, 4.6); line(x, [[-3.4, y + .6], [0, y + 3], [3.4, y + .6]], '#B8A0E8', .7);
+    eye(x, -2.2, y - 2.6, 1.7); eye(x, 2.4, y - 2.6, 1.7); fang(x, 0, y - .4, 3, 2); };
+  D['🍄'] = (x, fr) => { const p = ph(fr), b = Math.abs(Math.sin(p)) * 1.6; sh(x, 11);       // เห็ดพิษป๊อปอัป: หมวกเป็นหน้าต่างป๊อปอัป
+    ball(x, 0, -8, 6.4, 8, '#FFF0DC'); leg(x, -3, -2, -4, 0, 2.6, '#E8D0B0'); leg(x, 3, -2, 4, 0, 2.6, '#E8D0B0');
+    x.save(); x.translate(0, -b); ball(x, 0, -19, 13, 9, '#FF4D6A'); [[-6, -22, 2.4], [3, -25, 2], [8, -19, 1.8], [-1, -18, 1.6]].forEach(([a, c, r]) => E(x, a, c, r, r * .8, '#FFF6F0'));
+    x.fillStyle = '#2A2440'; x.fillRect(-11, -27, 22, 3.2); x.fillStyle = '#FF4D6A'; E(x, 8.4, -25.4, 1, 1, '#FF8A8A'); E(x, 5.6, -25.4, 1, 1, '#FFD23F'); x.restore();
+    eye(x, -2.4, -9, 1.7, '#2A1A2E', { angry: 1 }); eye(x, 2.6, -9, 1.7, '#2A1A2E', { angry: 1 }); smile(x, .2, -5.6, 1.6); };
+  D['🐝'] = (x, fr) => { const p = ph(fr), f = Math.sin(p * 3), y = -21 + Math.sin(p) * 2.4; sh(x, 8);  // ผึ้งคลิกเบต: เหล็กไนเป็นเคอร์เซอร์
+    [-1, 1].forEach(sd => { x.save(); x.translate(-1, y - 5); x.rotate(sd * .3 + f * .25 * sd - .4); E(x, 0, -5, 3.6, 6.4, 'rgba(210,240,255,.85)'); x.restore(); });
+    ball(x, -2, y, 8, 6.4, '#FFD23F'); x.fillStyle = '#2A1A2E'; [-5, -1.2, 2.6].forEach(px => x.fillRect(px, y - 6, 1.8, 12)); poly(x, [[-10, y], [-15, y + 1], [-14, y + 4], [-12.6, y + 2.4]], '#FFFFFF');
+    ball(x, 7, y - 1.5, 5.6, 5.4, '#FFE27A'); eye(x, 7.4, y - 2.4, 1.6); eye(x, 10.4, y - 2.4, 1.4); smile(x, 9, y + 1, 1.2);
+    line(x, [[6, y - 6], [5, y - 10]], '#2A1A2E', .8); line(x, [[9, y - 6], [11, y - 10]], '#2A1A2E', .8); E(x, 5, y - 10, 1.2, 1.2, '#FF4D6A'); E(x, 11, y - 10, 1.2, 1.2, '#FF4D6A'); };
+  D['🐞'] = (x, fr) => { const p = ph(fr), s = Math.sin(p); sh(x, 20);                      // ราชาบั๊กยักษ์ (บอส): เต่าทองมงกุฎ
+    [-12, -4, 4].forEach((lx, i) => { leg(x, lx, -6, lx - 3 + (i % 2 ? s : -s) * 2, 0, 2, '#2A1A2E'); leg(x, lx + 3, -6, lx + 5 + (i % 2 ? -s : s) * 2, 0, 2, '#2A1A2E'); });
+    ball(x, -2, -14, 18, 13, '#E8323A'); line(x, [[-2, -27], [-2, -2]], '#5A0A14', 1.6); [[-10, -18, 3.4], [-8, -9, 2.6], [5, -19, 3.2], [7, -9, 2.4], [-2, -24, 2]].forEach(([a, b, r]) => E(x, a, b, r, r, '#2A1A2E'));
+    circuit(x, [[-14, -14], [-10, -14], [-10, -10]], '#FFD23F'); circuit(x, [[10, -15], [13, -15], [13, -11]], '#FFD23F');
+    ball(x, 16, -12, 8, 7, '#2A1A2E'); eye(x, 16, -14, 2.4, '#FF4D6A', { angry: 1 }); eye(x, 21, -14, 2, '#FF4D6A', { angry: 1 }); fang(x, 19.5, -9, 5, 3);
+    poly(x, [[10, -19], [11, -26], [14, -22], [16, -28], [18, -22], [21, -26], [22, -19]], '#FFD23F'); E(x, 16, -22, 1.3, 1.3, '#4FF0FF'); };
+
+  /* ---------- ถ้ำมัลแวร์ ---------- */
+  D['🕷️'] = (x, fr) => { const p = ph(fr); sh(x, 16);                                         // แมงมุมมัลแวร์: หลังลายหัวกะโหลกเครื่องหมายไวรัส
+    for (let i = 0; i < 4; i++) [-1, 1].forEach(sd => { const a = Math.sin(p + i + (sd > 0 ? Math.PI : 0)) * 1.6, bx = -2 + i * 3; line(x, [[bx, -8], [bx + sd * 0 - 6 + i * 4, -15 + a], [bx - 9 + i * 6 + sd * 2, 0]], '#3A2A4A', 1.6); });
+    ball(x, -6, -10, 10, 8.6, '#4A3A6A'); x.save(); x.shadowColor = '#7CFF6A'; x.shadowBlur = 4; E(x, -6, -12, 3.4, 3, '#7CFF6A'); x.restore(); E(x, -7.2, -12.6, .9, .9, '#2A1A2E'); E(x, -4.8, -12.6, .9, .9, '#2A1A2E'); x.fillStyle = '#2A1A2E'; x.fillRect(-7.2, -10.4, 2.4, .8);
+    ball(x, 6, -8, 6.4, 5.6, '#5A4A80'); for (let i = 0; i < 3; i++) { glow(x, 6 + i * 2.2, -10.4 + (i === 1 ? -1 : 0), .9, '#FF2E4A'); } fang(x, 9, -4.6, 3, 2); };
+  D['🐍'] = (x, fr) => { const p = ph(fr); sh(x, 14);                                          // งูเวิร์ม: ลำตัวเป็นสายเคเบิล
+    const pts = []; for (let i = 0; i <= 14; i++) { const t = i / 14; pts.push([-16 + t * 22, -3 - Math.sin(p + t * 6) * 2.6 * (1 - t * .4) - t * 2]); }
+    x.lineCap = 'round'; x.lineJoin = 'round'; x.strokeStyle = '#3A9A5A'; x.lineWidth = 7; x.beginPath(); pts.forEach(([a, b], i) => i ? x.lineTo(a, b) : x.moveTo(a, b)); x.stroke(); x.strokeStyle = '#5CD87A'; x.lineWidth = 4.6; x.stroke();
+    x.setLineDash([1.6, 2.2]); x.strokeStyle = '#2A6A3A'; x.lineWidth = 1.2; x.stroke(); x.setLineDash([]);
+    ball(x, 9, -17, 4.6, 4, '#5CD87A'); line(x, [[6, -7], [8, -14]], '#5CD87A', 5); ball(x, 11, -19, 6.4, 5, '#6AE88A'); eye(x, 11, -21, 1.6, '#FFD23F'); eye(x, 14.4, -21, 1.4, '#FFD23F');
+    line(x, [[16.6, -18], [20, -17.6], [21.4, -16.4]], '#FF4D6A', .8); line(x, [[20, -17.6], [21.4, -18.8]], '#FF4D6A', .8); E(x, -16, -3, 2, 2, '#C8C8D8'); E(x, -16, -3, 1, 1, '#FFD23F'); };
+  D['🦂'] = (x, fr) => { const p = ph(fr), s = Math.sin(p); sh(x, 16);                         // แมงป่องโทรจัน: หางเป็นกล่องของขวัญ
+    for (let i = 0; i < 3; i++) { leg(x, -6 + i * 4, -5, -9 + i * 4 + s * (i % 2 ? 1.5 : -1.5), 0, 1.4, '#A8582A'); }
+    ball(x, -1, -6, 10, 5, '#D8742A'); for (let i = 0; i < 4; i++) line(x, [[-8 + i * 4, -10.6], [-8 + i * 4, -2]], 'rgba(90,30,10,.35)', .7);
+    const tp = [[-10, -7], [-15, -12], [-14, -20], [-8, -24 + s * 1.2]]; line(x, tp, '#D8742A', 3.4); x.fillStyle = '#FF4D9A'; x.fillRect(-11, -29 + s * 1.2, 6, 5); line(x, [[-8, -29 + s * 1.2], [-8, -24 + s * 1.2]], '#FFD23F', 1); line(x, [[-11, -26.5 + s * 1.2], [-5, -26.5 + s * 1.2]], '#FFD23F', 1); poly(x, [[-9.6, -29 + s], [-8, -31 + s], [-6.4, -29 + s]], '#FFD23F');
+    [[8, -9], [8, -3]].forEach(([a, b], i) => { line(x, [[6, -6], [a + 2, b]], '#D8742A', 1.8); poly(x, [[a + 1, b - 2.4], [a + 6, b - 1 - (i ? s : -s)], [a + 2, b], [a + 6, b + 1.4 + (i ? -s : s)], [a + 1, b + 2.4]], '#E8843A'); });
+    eye(x, 5, -9.6, 1.4, '#2A1A2E', { angry: 1 }); eye(x, 8, -9.6, 1.2, '#2A1A2E', { angry: 1 }); };
+  D['👻'] = (x, fr) => { const p = ph(fr), y = -16 + Math.sin(p) * 2.4; sh(x, 9);                   // ผีฟิชชิง: ถือเบ็ดตกปลาล่อด้วยการ์ดรางวัล
+    x.save(); x.globalAlpha = .95; x.fillStyle = (() => { const g = x.createLinearGradient(0, y - 12, 0, y + 12); g.addColorStop(0, '#FFFFFF'); g.addColorStop(1, '#C8D8FF'); return g; })();
+    x.beginPath(); x.arc(0, y - 2, 10, Math.PI, 0); for (let i = 0; i <= 5; i++) { const px = 10 - i * 4, py = y + 10 + (i % 2 ? -2 : 1) + Math.sin(p * 2 + i) * 1; x.lineTo(px, py); } x.closePath(); x.fill(); x.restore();
+    E(x, -3.4, y - 3, 1.9, 2.6, '#2A2A5A'); E(x, 3.4, y - 3, 1.9, 2.6, '#2A2A5A'); E(x, -3, y - 4, .6, .6, '#FFFFFF'); E(x, 3.8, y - 4, .6, .6, '#FFFFFF'); E(x, 0, y + 2, 2, 1.6, '#2A2A5A'); E(x, -6.6, y + .4, 1.6, 1, 'rgba(255,140,180,.6)');
+    line(x, [[8, y], [14, y - 14]], '#8A5A34', 1); line(x, [[14, y - 14], [17, y - 4]], 'rgba(255,255,255,.7)', .5); x.fillStyle = '#FFD23F'; x.fillRect(15, y - 4, 5.4, 4); x.fillStyle = '#FF4D6A'; x.fillRect(16, y - 3.2, 3.4, .8); x.fillRect(16, y - 1.8, 2.4, .8); };
+  D['🦇⁠'] = (x, fr) => { const p = ph(fr), f = Math.sin(p * 2), y = -22 + Math.sin(p) * 2; sh(x, 9);   // ค้างคาวรูทคิต: เงามืด ฮู้ด ตาแดง
+    [-1, 1].forEach(sd => { x.save(); x.translate(0, y); x.scale(sd, 1); x.rotate(-.1 - f * .5); poly(x, [[3, -2], [10, -12], [14, -8], [19, -11], [20, -3], [16, 1], [13, -1], [9, 3]], '#2A1E3A'); line(x, [[4, -1], [10, -11]], '#5A3A8A', .8); line(x, [[6, 0], [19, -10]], '#5A3A8A', .6); x.restore(); });
+    ball(x, 0, y, 6.6, 7.4, '#3A2A50'); poly(x, [[-6, y - 2], [-4, y - 12], [0, y - 7], [4, y - 12], [6, y - 2]], '#3A2A50');
+    glow(x, -2.4, y - 2, 1.3, '#FF2E4A'); glow(x, 2.6, y - 2, 1.3, '#FF2E4A'); fang(x, 0, y + 2, 3.4, 2); circuit(x, [[-4, y + 4], [0, y + 4], [0, y + 6]], '#B36BFF'); };
+
+  /* ---------- ทุ่งน้ำแข็งสแปม ---------- */
+  D['☃️'] = (x, fr) => { const p = ph(fr), s = Math.sin(p) * .6; sh(x, 12);                    // มนุษย์หิมะบอท: หน้าจอ LED + เสาอากาศ
+    ball(x, 0, -9, 11, 9.6, '#F4FAFF'); ball(x, 0, -24 + s, 8, 7.4, '#FFFFFF'); [[0, -12], [0, -7]].forEach(([a, b]) => { E(x, a, b, 1.4, 1.4, '#3A6ACF'); E(x, a - .4, b - .4, .5, .5, '#BFE4FF'); });
+    x.fillStyle = '#1A2A4A'; x.beginPath(); x.roundRect(-5.6, -28 + s, 11.2, 6.4, 2); x.fill(); glow(x, -2.2, -25 + s, 1, '#4FF0FF'); glow(x, 2.4, -25 + s, 1, '#4FF0FF');
+    poly(x, [[0, -21 + s], [5, -20 + s], [0, -19 + s]], '#FF8A3D'); x.fillStyle = '#E8323A'; x.fillRect(-7, -18.6 + s, 14, 2.4); x.fillRect(3, -18 + s, 2.4, 6);
+    line(x, [[0, -31 + s], [0, -35 + s]], '#8A8A9A', .9); glow(x, 0, -35.5 + s, 1.2, '#FF4D6A'); line(x, [[-10, -12], [-16, -17 - s * 2]], '#7A4A2A', 1.2); line(x, [[10, -12], [16, -16 + s * 2]], '#7A4A2A', 1.2); };
+  D['🐋'] = (x, fr) => { const p = ph(fr), b = Math.sin(p); sh(x, 14);                          // แมวน้ำคุกกี้: ถือคุกกี้ติดตามตัว
+    ball(x, -2, -8, 14, 7.6, '#9AB4C8'); E(x, 0, -5, 9, 3.2, '#D8E6F0'); poly(x, [[-15, -7], [-21, -12 + b * 2], [-20, -3], [-16, -5]], '#8AA4B8');
+    ball(x, 10, -14, 7, 6.6, '#A8C0D4'); E(x, 15, -12.4, 2.4, 1.8, '#5A6A7A'); eye(x, 10, -16, 1.8); eye(x, 13.8, -16, 1.6);
+    [[13, -12], [13.4, -11]].forEach(([a, b2]) => { line(x, [[a + 2, b2], [a + 7, b2 - .5]], 'rgba(40,50,60,.5)', .4); });
+    ball(x, 6, -3 - Math.abs(b), 4.2, 4.2, '#D8A060'); [[5, -4], [7.4, -2.6], [5.6, -1.8]].forEach(([a, c]) => E(x, a, c - Math.abs(b), .7, .7, '#5A2A10')); poly(x, [[2, -3], [5, -2], [2, -1]], '#8AA4B8'); };
+  D['🐺⁠'] = (x, fr) => { const p = ph(fr), s = Math.sin(p); sh(x, 14);                       // หมาป่าคีย์ล็อกเกอร์: ปลอกคอคีย์บอร์ด
+    line(x, [[-11, -12], [-17, -16 - s * 2], [-19, -13]], '#6A7A94', 4);
+    [[-8, 1], [-3, -1], [4, 1], [8, -1]].forEach(([lx, k]) => leg(x, lx, -7, lx + s * 2.4 * k, 0, 2.6, '#5A6A84', '#4A5674'));
+    ball(x, -2, -11, 12, 6.6, '#7A8AA4'); E(x, -1, -8, 7, 3, '#C8D4E4'); x.fillStyle = '#2A2A3A'; x.beginPath(); x.roundRect(3, -17, 8, 4, 1); x.fill(); for (let i = 0; i < 3; i++) { x.fillStyle = i === 1 ? '#4FF0FF' : '#8A8AA0'; x.fillRect(4 + i * 2.4, -16.2, 1.8, 1.2); x.fillRect(4 + i * 2.4, -14.4, 1.8, 1.2); }
+    ball(x, 11, -19, 6.4, 5.6, '#8A9AB4'); poly(x, [[14, -18], [21, -16], [20, -14], [14, -14]], '#8A9AB4'); E(x, 20.6, -15.6, 1.2, 1, '#1A1A2A');
+    poly(x, [[7, -22], [8, -29], [11, -23]], '#6A7A94'); poly(x, [[11, -23], [13, -29], [14, -22]], '#6A7A94'); eye(x, 13.4, -20, 1.5, '#FF2E4A', { led: 1 }); fang(x, 18, -14, 3, 2); };
+  D['🥶'] = (x, fr) => { const p = ph(fr), y = -15 + Math.sin(p) * 2; sh(x, 9);                    // ภูตน้ำแข็งแอดแวร์: มีป้ายโฆษณาลอยรอบตัว
+    for (let i = 0; i < 6; i++) { const a = i / 6 * T + p * .5; poly(x, [[Math.cos(a) * 9, y + Math.sin(a) * 9], [Math.cos(a + .2) * 15, y + Math.sin(a + .2) * 15], [Math.cos(a + .4) * 9, y + Math.sin(a + .4) * 9]], '#BFEFFF'); }
+    ball(x, 0, y, 9, 9.6, '#7FD0FF'); E(x, -3, y - 4, 3, 2, 'rgba(255,255,255,.6)'); eye(x, -3, y - 1, 1.8, '#1A4A9A'); eye(x, 3, y - 1, 1.8, '#1A4A9A'); E(x, 0, y + 4, 2.4, 1.4, '#1A3A6A'); E(x, -1, y + 4, .5, .8, '#FFFFFF');
+    const ax = 12 + Math.sin(p) * 2, ay = y - 12; x.fillStyle = '#FFD23F'; x.beginPath(); x.roundRect(ax - 5, ay - 3.2, 10, 6.4, 1.4); x.fill(); x.fillStyle = '#E8323A'; x.font = '900 4px sans-serif'; x.textAlign = 'center'; x.fillText('AD', ax, ay + 1.4); };
+  D['🐻‍❄️'] = (x, fr) => { const p = ph(fr), s = Math.sin(p); sh(x, 15);                          // หมีขาวไฟร์วอลล์ปลอม: เกราะอิฐไฟร์วอลล์ร้าว
+    [[-8, 1], [-2, -1], [5, 1], [10, -1]].forEach(([lx, k]) => leg(x, lx, -8, lx + s * 2 * k, 0, 3.6, '#E8EEF6', '#C8D0DC'));
+    ball(x, 0, -14, 14, 9.6, '#F4F8FF'); x.fillStyle = '#C84A2A'; for (let j = 0; j < 2; j++) for (let i = 0; i < 3; i++) { x.fillRect(-9 + i * 5.4 + (j % 2) * 2.6, -21 + j * 3.6, 4.8, 3); } line(x, [[-4, -22], [-2, -18], [-5, -14]], '#2A1A2E', .6);
+    ball(x, 13, -21, 7.4, 6.8, '#FFFFFF'); E(x, 9, -27, 2.4, 2.4, '#FFFFFF'); E(x, 17, -27, 2.4, 2.4, '#FFFFFF'); E(x, 18.6, -19.6, 2.6, 2, '#E8EEF6'); E(x, 20, -20.4, 1.2, .9, '#1A1A2A');
+    eye(x, 12, -22.6, 1.5); eye(x, 16, -22.6, 1.3); smile(x, 18.4, -17.6, 1.2); };
+  D['🐘'] = (x, fr) => { const p = ph(fr), s = Math.sin(p); sh(x, 22);                         // แมมมอธบอตเน็ต (บอส): ขนยาว งาเป็นเสาอากาศ
+    [[-12, 1], [-4, -1], [6, 1], [13, -1]].forEach(([lx, k]) => { x.fillStyle = '#6A4A3A'; x.beginPath(); x.roundRect(lx - 3 + s * k, -12, 6, 12, 2); x.fill(); E(x, lx + s * k, -.6, 3.4, 1.4, '#3A2A24'); });
+    ball(x, 0, -20, 20, 14, '#8A5A44'); for (let i = 0; i < 9; i++) line(x, [[-16 + i * 4, -12], [-17 + i * 4, -6 + (i % 2) * 2]], '#6A3A2A', 2);
+    ball(x, 17, -26, 10, 10, '#9A6A52'); line(x, [[24, -22], [27, -14], [25, -6], [28, -3]], '#9A6A52', 4.4); line(x, [[19, -17], [26, -13], [31, -19]], '#F4EEDC', 2.4); glow(x, 31, -19.6, 1.4, '#4FF0FF');
+    eye(x, 19, -29, 2.2, '#FF2E4A', { angry: 1 }); E(x, 11, -27, 5, 7, '#7A4A3A'); circuit(x, [[-12, -28], [-6, -28], [-6, -22], [2, -22]], '#4FF0FF'); for (let i = 0; i < 3; i++) glow(x, -14 + i * 5, -32, 1, i === 1 ? '#7CFF6A' : '#4FF0FF'); };
+
+  /* ---------- ทะเลทรายคุกกี้ ---------- */
+  D['🐪'] = (x, fr) => { const p = ph(fr), s = Math.sin(p); sh(x, 15);                          // อูฐบอต: โหนกเป็นจานดาวเทียม
+    [[-9, 1], [-4, -1], [5, 1], [9, -1]].forEach(([lx, k]) => leg(x, lx, -10, lx + s * 2.4 * k, 0, 2.4, '#C89A5A', '#8A6A3A'));
+    ball(x, 0, -15, 13, 7.4, '#E0B070'); ball(x, -3, -22, 6, 5, '#D8A060'); x.fillStyle = '#C8C8D8'; x.beginPath(); x.ellipse(-3, -27, 5, 2, -.2, 0, T); x.fill(); line(x, [[-3, -27], [-1, -32]], '#8A8AA0', .9); glow(x, -1, -32.6, 1.1, '#FF4D6A');
+    line(x, [[10, -17], [14, -27]], '#E0B070', 4.6); ball(x, 16, -29, 5.4, 4, '#E8BA7A'); E(x, 20.6, -28.4, 1.4, 1.2, '#8A6A3A'); eye(x, 16, -30.6, 1.3, '#2A1A2E', { angry: 1 });
+    x.fillStyle = '#2A2440'; x.fillRect(11, -31.6, 7.6, 1.8); glow(x, 13, -30.7, .7, '#4FF0FF'); glow(x, 16, -30.7, .7, '#4FF0FF'); };
+  D['🐍⁠'] = (x, fr) => { const p = ph(fr); sh(x, 14);                                     // งูทะเลทรายสปายแวร์: แว่นสายลับ + ลายทราย
+    const pts = []; for (let i = 0; i <= 14; i++) { const t = i / 14; pts.push([-17 + t * 23, -3 - Math.sin(p + t * 7) * 2.2 - t * 2]); }
+    x.lineCap = 'round'; x.strokeStyle = '#A8783A'; x.lineWidth = 7; x.beginPath(); pts.forEach(([a, b], i) => i ? x.lineTo(a, b) : x.moveTo(a, b)); x.stroke(); x.strokeStyle = '#E8B860'; x.lineWidth = 4.6; x.stroke();
+    pts.forEach(([a, b], i) => { if (i % 3 === 0) poly(x, [[a - 1.4, b - 1.6], [a + 1.4, b - 1.6], [a, b + 1.4]], '#8A4A1A'); });
+    line(x, [[6, -7], [8, -14]], '#E8B860', 5); ball(x, 11, -18, 6.6, 5, '#F0C870'); x.fillStyle = '#1A1A2A'; x.beginPath(); x.roundRect(8, -21.6, 9, 3.4, 1.4); x.fill(); E(x, 15, -20.4, 1, .6, 'rgba(255,255,255,.7)');
+    line(x, [[17.4, -16.6], [21, -16.4], [22.4, -15.2]], '#FF4D6A', .8); line(x, [[21, -16.4], [22.4, -17.6]], '#FF4D6A', .8); };
+  D['🦅'] = (x, fr) => { const p = ph(fr), f = Math.sin(p * 2), y = -22 + Math.sin(p) * 2; sh(x, 10);   // แร้งฟิชชิง: ถือลิงก์ปลอมในกรงเล็บ
+    x.save(); x.translate(-2, y - 2); x.rotate(-.3 - f * .55); poly(x, [[0, 0], [-6, -12], [-14, -14], [-20, -10], [-16, -6], [-20, -3], [-12, 0]], '#7A5A3A'); for (let i = 0; i < 4; i++) line(x, [[-6 - i * 3.4, -2], [-9 - i * 3, -11]], '#5A3A24', .7); x.restore();
+    ball(x, 0, y, 9, 7.4, '#8A6444'); poly(x, [[-8, y + 2], [-15, y + 6], [-8, y + 5]], '#6A4A30'); E(x, 7, y - 7, 5, 3, '#E8D8C8'); ball(x, 9, y - 10, 4.8, 4.4, '#F0DCC0'); E(x, 10, y - 11.6, 1.1, 1.1, '#E8323A');
+    poly(x, [[12.4, y - 11], [17, y - 9], [12.4, y - 7.6]], '#FFB020'); eye(x, 9.4, y - 11, 1.4, '#2A1A2E', { angry: 1 });
+    line(x, [[2, y + 6], [3, y + 12]], '#FFB020', 1); x.fillStyle = '#3DA8FF'; x.beginPath(); x.roundRect(-1, y + 12, 9, 4, 1); x.fill(); line(x, [[0, y + 14.2], [7, y + 14.2]], '#FFFFFF', .7); };
+  D['🧟'] = (x, fr) => { const p = ph(fr), s = Math.sin(p); sh(x, 10);                           // มัมมี่ข้อมูลเก่า: ผ้าพันเป็นเทปข้อมูล
+    leg(x, -3, -10, -3 - s * 2, 0, 3.6, '#E8DCC0', '#B8A880'); leg(x, 3, -10, 3 + s * 2, 0, 3.6, '#E8DCC0', '#B8A880');
+    ball(x, 0, -16, 7.6, 9, '#F0E6CC'); line(x, [[4, -20], [14, -21 + s], [14, -18 + s]], '#F0E6CC', 3.2); line(x, [[-4, -19], [8, -16 - s]], '#E8DCC0', 3);
+    for (let i = 0; i < 5; i++) line(x, [[-7, -22 + i * 3], [7, -20 + i * 3]], 'rgba(150,130,90,.6)', .7);
+    ball(x, 1, -30, 7.4, 7, '#F4ECD6'); for (let i = 0; i < 4; i++) line(x, [[-6, -33 + i * 2.6], [8, -32 + i * 2.6]], 'rgba(150,130,90,.6)', .7);
+    x.fillStyle = '#2A2440'; x.fillRect(-3, -32, 9, 2.6); glow(x, 0, -30.8, .9, '#7CFF6A'); glow(x, 4, -30.8, .9, '#7CFF6A');
+    line(x, [[-7, -26], [-10, -20 + s], [-8, -14]], '#C8B890', .6); x.fillStyle = '#5A4A3A'; x.fillRect(-11, -14, 4, 3); };
+  D['🦁'] = (x, fr) => { const p = ph(fr), s = Math.sin(p) * .8; sh(x, 15);                       // สฟิงซ์ปริศนา: แผงคอทอง ผ้าคลุมฟาโรห์ + เครื่องหมายคำถาม
+    [[-8, 1], [-3, -1], [5, 1], [9, -1]].forEach(([lx, k]) => leg(x, lx, -7, lx + s * 2 * k, 0, 3, '#D8A050', '#B8803A'));
+    line(x, [[-12, -10], [-17, -16], [-15, -20]], '#D8A050', 2.2); E(x, -15, -21, 2, 2.4, '#8A5A24');
+    ball(x, 0, -11, 12, 6.6, '#E8B060'); ball(x, 11, -19, 9.6, 9.6, '#C8802A');
+    poly(x, [[4, -27], [18, -27], [21, -12], [17, -13], [15, -24], [7, -24], [5, -13], [1, -12]], '#3A6ACF'); for (let i = 0; i < 4; i++) line(x, [[3 + i * .4, -24 + i * 3], [6, -24 + i * 3]], '#FFD23F', 1);
+    ball(x, 11, -18, 6, 6, '#F0C070'); eye(x, 10, -19.6, 1.5, '#1A6A3A'); eye(x, 14, -19.6, 1.3, '#1A6A3A'); E(x, 13.6, -15.6, 1.2, .8, '#5A2A10'); smile(x, 13, -14.4, 1.2);
+    x.fillStyle = '#FFD23F'; x.font = '900 7px sans-serif'; x.textAlign = 'center'; x.fillText('?', 20 + s, -29); };
+
+  /* ---------- ภูเขาไฟแรนซัม ---------- */
+  D['🔥'] = (x, fr) => { const p = ph(fr), y = -12; sh(x, 9);                                     // ภูตไฟแรนซัม: ถือกุญแจล็อกไฟล์
+    const fl = (s, c, w) => { x.fillStyle = c; x.beginPath(); x.moveTo(-w, y + 8); x.quadraticCurveTo(-w - 2, y - 4, -w * .3 + Math.sin(p * 2) * 2, y - 20 * s); x.quadraticCurveTo(w * .2, y - 10 * s, w * .5 + Math.sin(p * 2 + 1) * 2, y - 16 * s); x.quadraticCurveTo(w + 2, y - 4, w, y + 8); x.closePath(); x.fill(); };
+    fl(1.05, '#E8341A', 10); fl(.85, '#FF7A1F', 8); fl(.6, '#FFD23F', 5.6);
+    eye(x, -2.6, y + 1, 1.8, '#3A0A0A', { angry: 1 }); eye(x, 2.8, y + 1, 1.8, '#3A0A0A', { angry: 1 }); zig(x, 0, y + 5, 2.6, '#3A0A0A');
+    const kx = 11, ky = y + 2 + Math.sin(p) * 1.4; x.fillStyle = '#C8C8D8'; x.beginPath(); x.roundRect(kx - 3, ky - 1, 6, 5, 1); x.fill(); x.strokeStyle = '#C8C8D8'; x.lineWidth = 1.2; x.beginPath(); x.arc(kx, ky - 1, 2.2, Math.PI, 0); x.stroke(); E(x, kx, ky + 1.4, .8, .8, '#2A1A2E'); };
+  D['🦎'] = (x, fr) => { const p = ph(fr), s = Math.sin(p); sh(x, 14);                          // กิ้งก่าสปายแวร์: ตาเป็นกล้องวงจรปิด เปลี่ยนสีลายพราง
+    line(x, [[-9, -5], [-16, -4 - s * 2], [-21, -7]], '#4AA86A', 3);
+    [[-6, 1], [-1, -1], [5, 1], [9, -1]].forEach(([lx, k]) => leg(x, lx, -5, lx + s * 2.6 * k, 0, 2, '#3A8A5A', '#2A6A4A'));
+    ball(x, 0, -7, 11, 4.6, '#5CC87A'); [[-6, -8, '#3A8A5A'], [-1, -9, '#8ACB4A'], [4, -8, '#3A8A5A']].forEach(([a, b, c]) => E(x, a, b, 2.4, 1.4, c));
+    ball(x, 12, -9, 5.6, 4, '#6AD88A'); E(x, 13, -13, 2.6, 2.6, '#2A2A3A'); E(x, 13.4, -13, 1.6, 1.6, '#3DA8FF'); glow(x, 13.6, -13.2, .7, '#FF2E4A');
+    line(x, [[17, -8], [22, -7 + s], [24, -9]], '#FF6A9A', .9); };
+  D['🦖'] = (x, fr) => { const p = ph(fr), s = Math.sin(p); sh(x, 16);                          // ไดโนบั๊กยักษ์: หนามหลังเป็นแมลง/บั๊ก
+    line(x, [[-8, -12], [-18, -8 - s * 2], [-24, -4]], '#5A9A3A', 5);
+    leg(x, -3, -9, -4 - s * 3, 0, 4.2, '#4A8A2A', '#3A6A24'); leg(x, 4, -9, 4 + s * 3, 0, 4.2, '#4A8A2A', '#3A6A24');
+    ball(x, 0, -15, 11, 9, '#6AB84A'); E(x, 2, -12, 7, 5, '#C8E6A0'); for (let i = 0; i < 4; i++) { poly(x, [[-10 + i * 4, -22 + i * .6], [-8 + i * 4, -27 + i * .4], [-6 + i * 4, -22 + i * .6]], '#E8323A'); E(x, -8 + i * 4, -26 + i * .4, 1, .7, '#2A1A2E'); }
+    line(x, [[8, -14], [12, -12]], '#5A9A3A', 2); ball(x, 13, -24, 8, 6, '#78C858'); poly(x, [[15, -21], [23, -21], [21, -18], [15, -18]], '#5A9A3A'); fang(x, 19, -21, 6, 3);
+    eye(x, 13, -26, 1.8, '#FF4D1A', { angry: 1 }); };
+  D['👹'] = (x, fr) => { const p = ph(fr), s = Math.sin(p); sh(x, 13);                          // ยักษ์แฮกเกอร์: ฮู้ด + แล็ปท็อป + เขา
+    leg(x, -4, -10, -4 - s * 2, 0, 4, '#3A2A4A', '#1A1A2A'); leg(x, 4, -10, 4 + s * 2, 0, 4, '#3A2A4A', '#1A1A2A');
+    ball(x, 0, -19, 10, 10, '#2A2A3A'); x.fillStyle = '#4FF0FF'; x.font = '700 3px monospace'; x.textAlign = 'center'; x.fillText('0101', 0, -16);
+    ball(x, 1, -32, 8.4, 8, '#D84A3A'); poly(x, [[-5, -37], [-8, -45], [-2, -39]], '#F4EEDC'); poly(x, [[5, -38], [7, -46], [8, -37]], '#F4EEDC');
+    x.fillStyle = '#2A2A3A'; x.beginPath(); x.arc(1, -32, 9.6, Math.PI * 1.05, Math.PI * 1.95); x.lineTo(9, -26); x.lineTo(-7, -26); x.fill();
+    eye(x, -1.6, -32, 1.8, '#FFD23F', { angry: 1 }); eye(x, 3.6, -32, 1.6, '#FFD23F', { angry: 1 }); fang(x, 1, -28.4, 4, 2);
+    x.save(); x.translate(10, -17); x.rotate(-.2); x.fillStyle = '#8A8AA0'; x.fillRect(-1, -6, 9, 6.4); x.fillStyle = '#1A2A3A'; x.fillRect(0, -5, 7, 4.4); x.fillStyle = '#7CFF6A'; x.fillRect(1, -4, 4, .7); x.fillRect(1, -2.6, 3, .7); x.fillStyle = '#6A6A80'; x.fillRect(-2, .4, 11, 1.4); x.restore(); };
+  D['🦅⁠'] = (x, fr) => { const p = ph(fr), f = Math.sin(p * 2), y = -22 + Math.sin(p) * 2; sh(x, 10);  // นกไฟมืด: ปีกเปลวไฟสีม่วงดำ
+    x.save(); x.translate(-1, y - 2); x.rotate(-.35 - f * .5); x.globalCompositeOperation = 'source-over';
+    [['#3A1A5A', 1], ['#7A3ACF', .8], ['#FF6A3D', .55]].forEach(([c, k]) => { x.fillStyle = c; x.beginPath(); x.moveTo(0, 0); x.quadraticCurveTo(-8 * k, -18 * k, -22 * k, -14 * k); x.quadraticCurveTo(-14 * k, -8 * k, -20 * k, -2 * k); x.quadraticCurveTo(-10 * k, -2 * k, 0, 2); x.fill(); }); x.restore();
+    ball(x, 0, y, 8, 6.6, '#4A2A6A'); poly(x, [[-7, y + 2], [-16, y + 8 + f], [-12, y + 3], [-17, y + 4 - f], [-8, y]], '#FF6A3D');
+    ball(x, 8, y - 8, 5, 4.6, '#5A3A7A'); poly(x, [[12, y - 9], [17, y - 7.4], [12, y - 6]], '#FFB020'); glow(x, 9.4, y - 9, 1.2, '#FF6A3D');
+    poly(x, [[5, y - 12], [6, y - 17 + f], [8, y - 12]], '#FF6A3D'); };
+  D['🐉'] = (x, fr) => { const p = ph(fr), f = Math.sin(p * 2), s = Math.sin(p); sh(x, 22);       // มังกรดาร์กเว็บ (บอส)
+    x.save(); x.translate(-2, -26); x.rotate(-.25 - f * .35); poly(x, [[0, 0], [-6, -16], [-14, -22], [-26, -18], [-20, -12], [-28, -8], [-18, -4], [-22, 2], [-8, 2]], '#3A1A4A'); [[-6, -15], [-14, -21], [-26, -17]].forEach(([a, b]) => line(x, [[0, 0], [a, b]], '#7A3ACF', .9)); x.restore();
+    line(x, [[-12, -12], [-22, -8 + s * 2], [-28, -3], [-32, -6]], '#4A2A5A', 6); poly(x, [[-32, -9], [-36, -5], [-31, -3]], '#E8341A');
+    leg(x, -6, -10, -7 - s * 2, 0, 5, '#3A2A4A', '#2A1A2A'); leg(x, 6, -10, 6 + s * 2, 0, 5, '#3A2A4A', '#2A1A2A');
+    ball(x, 0, -18, 13, 11, '#5A2A6A'); E(x, 4, -14, 8, 6, '#C8783A'); for (let i = 0; i < 4; i++) line(x, [[-2 + i * 3, -9], [0 + i * 3, -19]], 'rgba(90,40,20,.4)', .7);
+    line(x, [[9, -24], [14, -32]], '#5A2A6A', 7); ball(x, 18, -35, 8.4, 6.4, '#6A3A7A'); poly(x, [[22, -33], [30, -32], [28, -28], [22, -29]], '#5A2A6A'); fang(x, 26, -30, 6, 3);
+    poly(x, [[13, -40], [10, -48], [16, -42]], '#E8D8C8'); poly(x, [[18, -41], [19, -49], [21, -41]], '#E8D8C8'); eye(x, 19, -36.6, 2, '#FF2E4A', { angry: 1 });
+    for (let i = 0; i < 5; i++) poly(x, [[-10 + i * 4, -28 + i], [-8 + i * 4, -33 + i], [-6 + i * 4, -28 + i]], '#E8341A');
+    x.save(); x.globalCompositeOperation = 'lighter'; for (let i = 0; i < 4; i++) { const k = (fr / 8 + i / 4) % 1; E(x, 30 + k * 8, -30 + Math.sin(i * 2) * 2, 2.4 * (1 - k), 2 * (1 - k), i % 2 ? '#B36BFF' : '#FF6A3D'); } x.restore(); };
+
+  /* ---------- ปราสาทดาร์กเว็บ ---------- */
+  D['💀'] = (x, fr) => { const p = ph(fr), s = Math.sin(p); sh(x, 10);                          // โครงกระดูกโค้ดเน่า: ถือดาบสนิม มีโค้ด error ลอย
+    leg(x, -3, -11, -3 - s * 2, 0, 1.6, '#F0EAD8', '#C8C0A8'); leg(x, 3, -11, 3 + s * 2, 0, 1.6, '#F0EAD8', '#C8C0A8');
+    line(x, [[0, -12], [0, -24]], '#E8E0CC', 2); for (let i = 0; i < 4; i++) { x.strokeStyle = '#E8E0CC'; x.lineWidth = 1.2; x.beginPath(); x.ellipse(0, -21 + i * 2.6, 5 - i * .6, 1.2, 0, 0, T); x.stroke(); }
+    line(x, [[0, -22], [-6, -16 + s]], '#E8E0CC', 1.4); line(x, [[0, -22], [7, -17 - s]], '#E8E0CC', 1.4); line(x, [[7, -17 - s], [13, -27 - s]], '#9A7A5A', 1.6); poly(x, [[6, -16 - s], [9, -18 - s], [8, -15 - s]], '#6A4A2A');
+    ball(x, 0, -31, 7.6, 7, '#F4EEDC'); E(x, -2.8, -31, 2.2, 2.6, '#1A1A2A'); E(x, 2.8, -31, 2.2, 2.6, '#1A1A2A'); glow(x, -2.6, -31, .8, '#4FF0FF'); glow(x, 3, -31, .8, '#4FF0FF');
+    poly(x, [[0, -28.6], [-1, -26.8], [1, -26.8]], '#1A1A2A'); for (let i = 0; i < 4; i++) x.fillRect(-2.6 + i * 1.4, -25, .8, 1.6);
+    x.fillStyle = '#FF4D6A'; x.font = '700 3.4px monospace'; x.textAlign = 'center'; x.fillText('404', -9, -36 + s); };
+  D['🧛'] = (x, fr) => { const p = ph(fr), s = Math.sin(p); sh(x, 11);                          // แวมไพร์ขโมยข้อมูล: ผ้าคลุมค้างคาว ถือแฟลชไดรฟ์
+    poly(x, [[-7, -26], [-12, -4 + s], [-4, -7], [0, -2], [4, -7], [12, -4 - s], [7, -26]], '#2A1A3A'); poly(x, [[-6, -25], [-9, -10], [0, -8], [9, -10], [6, -25]], '#8A1A2A');
+    leg(x, -2.4, -9, -3 - s * 1.5, 0, 2.6, '#1A1A2A', '#0A0A14'); leg(x, 2.4, -9, 3 + s * 1.5, 0, 2.6, '#1A1A2A', '#0A0A14');
+    ball(x, 0, -16, 5.6, 8, '#2A2A3A'); poly(x, [[-2, -22], [0, -15], [2, -22]], '#FFFFFF'); E(x, 0, -21, .8, .8, '#E8323A');
+    ball(x, 0, -30, 6.6, 6.6, '#E8E0F0'); x.fillStyle = '#1A1A2A'; x.beginPath(); x.moveTo(-7, -31); x.quadraticCurveTo(0, -42, 7, -31); x.lineTo(4, -33); x.lineTo(0, -30); x.lineTo(-4, -33); x.fill();
+    eye(x, -2.4, -29.6, 1.4, '#E8323A', { angry: 1 }); eye(x, 2.6, -29.6, 1.4, '#E8323A', { angry: 1 }); fang(x, 0, -26.8, 2.6, 2);
+    x.fillStyle = '#3DA8FF'; x.fillRect(7, -19 - s, 5, 2.6); x.fillStyle = '#C8C8D8'; x.fillRect(12, -18.6 - s, 2, 1.8); glow(x, 8.6, -17.7 - s, .5, '#7CFF6A'); };
+  D['🤖'] = (x, fr) => { const p = ph(fr), s = Math.sin(p); sh(x, 11);                          // หุ่นบอตเถื่อน: ตาไซคลอปส์ แขนเลื่อย
+    x.fillStyle = '#4A5266'; x.beginPath(); x.roundRect(-6 - s, -9, 4, 9, 1); x.roundRect(2 + s, -9, 4, 9, 1); x.fill(); E(x, -4 - s, -.6, 3, 1.2, '#2A3040'); E(x, 4 + s, -.6, 3, 1.2, '#2A3040');
+    x.fillStyle = '#7A8398'; x.beginPath(); x.roundRect(-8, -24, 16, 15, 3); x.fill(); x.fillStyle = '#5A6278'; x.fillRect(-6, -20, 12, 7); for (let i = 0; i < 3; i++) glow(x, -3 + i * 3, -16.5, .8, ['#FF4D6A', '#FFD23F', '#7CFF6A'][i]);
+    x.fillStyle = '#9AA3B8'; x.beginPath(); x.roundRect(-6, -34, 12, 10, 3); x.fill(); x.fillStyle = '#1A1E2A'; x.beginPath(); x.roundRect(-4.4, -31.6, 8.8, 4.6, 2); x.fill(); glow(x, 1 + Math.sin(p) * 2, -29.3, 1.6, '#FF2E4A');
+    line(x, [[0, -34], [0, -38]], '#5A6278', .9); glow(x, 0, -38.6, 1, '#4FF0FF');
+    line(x, [[8, -20], [13, -15 + s]], '#7A8398', 2.4); x.save(); x.translate(14, -14 + s); x.rotate(p * 2); x.fillStyle = '#C8C8D8'; for (let i = 0; i < 8; i++) { x.rotate(T / 8); poly(x, [[0, -3.4], [1, -4.4], [1.4, -3]], '#C8C8D8'); } E(x, 0, 0, 3.2, 3.2, '#9AA3B8'); x.restore(); };
+  D['👾'] = (x, fr) => { const p = ph(fr), y = -15 + Math.sin(p) * 2; sh(x, 10);                   // เอเลี่ยนไวรัส: ทรงพิกเซลอาร์เคด เรืองแสง
+    const px = 2.2, M = ['..X.....X..', '...X...X...', '..XXXXXXX..', '.XX.XXX.XX.', 'XXXXXXXXXXX', 'X.XXXXXXX.X', 'X.X.....X.X', '...XX.XX...'];
+    const alt = fr % 4 < 2; x.save(); x.shadowColor = '#B36BFF'; x.shadowBlur = 5;
+    M.forEach((row, j) => [...row].forEach((ch, i) => { let on = ch === 'X'; if (j === 7) on = alt ? ch === 'X' : (i === 1 || i === 9 || i === 3 || i === 7); if (!on) return; x.fillStyle = j < 3 ? '#C89AFF' : '#9A5AEF'; x.fillRect(-12 + i * px, y - 9 + j * px, px + .1, px + .1); })); x.restore();
+    E(x, -5.4, y - .4, 1.4, 1.4, '#FFFFFF'); E(x, 4.4, y - .4, 1.4, 1.4, '#FFFFFF'); E(x, -5, y - .2, .7, .7, '#2A1A2E'); E(x, 4.8, y - .2, .7, .7, '#2A1A2E'); };
+  D['🧟⁠'] = (x, fr) => { const p = ph(fr), s = Math.sin(p); sh(x, 10);                        // ซอมบี้บอตเน็ต: ผิวเขียว เสื้อขาด สายแลน
+    leg(x, -3, -10, -3 - s * 2, 0, 3.4, '#3A4A7A', '#2A2A3A'); leg(x, 3, -10, 3 + s * 1.4, 0, 3.4, '#3A4A7A', '#2A2A3A');
+    ball(x, 0, -17, 7.4, 8.4, '#8A5A9A'); poly(x, [[-6, -12], [-3, -9], [0, -12], [3, -9], [6, -12], [6, -10], [-6, -10]], '#6A3A7A');
+    line(x, [[4, -21], [15, -20 + s], [16, -18 + s]], '#8AB87A', 2.6); line(x, [[-3, -21], [10, -17 - s]], '#7AA86A', 2.4);
+    ball(x, 1, -30, 7.2, 7, '#9AC88A'); E(x, -3, -34, 2, 1.4, '#6A8A5A'); eye(x, -1, -31, 1.7, '#E8E840'); E(x, 4, -31, 1.4, 1.4, '#2A2A2A'); zig(x, 1.6, -26.6, 2.2);
+    line(x, [[-7, -20], [-12, -14], [-10, -6]], '#3DA8FF', 1); x.fillStyle = '#C8C8D8'; x.fillRect(-11.6, -6, 3.2, 2.4); };
+  return { D, has: ic => !!D[ic] };
+})();
+
+// คู่ที่เคยใช้รูปเดียวกัน → แยกเป็นคนละชนิด (อักษรมองไม่เห็นต่อท้าย)
+(() => { const V = { cave: { 'ค้างคาวรูทคิต': '🦇⁠' }, ice: { 'หมาป่าคีย์ล็อกเกอร์': '🐺⁠' }, desert: { 'งูทะเลทรายสปายแวร์': '🐍⁠' }, volcano: { 'นกไฟมืด': '🦅⁠' }, castle: { 'ซอมบี้บอตเน็ต': '🧟⁠' } };
+  Object.entries(V).forEach(([r, m]) => (RPG_REGIONS[r]?.pool || []).forEach(e => { if (m[e[0]]) e[1] = m[e[0]]; })); })();
+function rpgMon2Img(ic, fr, res) {
+  if (!MON2.has(ic)) return null; res = res || RPG_ART_RES; fr = (fr | 0) % 8;
+  return rpgArtGet('M2' + ic + fr + '@' + res, () => { const M0 = MON.draw; MON.draw = x => { x.save(); x.scale(1.24, 1.24); MON2.D[ic](x, fr); x.restore(); }; try { return rpgArtRender({ ic, fr }, 'mon', res); } finally { MON.draw = M0; } });
+}
+const rpgMonImg32 = rpgMonImg;
+rpgMonImg = function (ic, fr, res) { if (MON2.has(ic)) { const im = rpgMon2Img(ic, fr, res); if (im) return im; } return rpgMonImg32(ic, fr, res); };
+
+/* =====================================================================
+   SX Realm v32 — กระเป๋า (ของใช้ล้วน + เงินด้านบน) · กรอบสีตามระดับไอเทม · โปรไฟล์ผู้เล่นอื่น
+   ท่าเดินหันข้าง · แสงอาวุธตีบวกใหม่ · หมุนกาชาด้วยเหรียญจริงของนักเรียน
+   ===================================================================== */
+
+/* ---------- 1) กระเป๋า: แสดงเฉพาะของใช้ · แฟชั่นไปอยู่ที่ "แต่งตัว" · เงิน/เหรียญอยู่บนสุดทุกหน้า ---------- */
+const RPG_FASHION_T = new Set(['hat', 'cos', 'wsk']);
+function rpgMoneyBar() {
+  const coins = R.teacher ? '∞' : (stuState.game?.coins ?? 0).toLocaleString?.() ?? stuState.game?.coins, s = R.save;
+  return `<div class="bag-money pg-keep" aria-label="เงินและเหรียญ"><span title="ทองในเกม"><i>💰</i><b>${R.gold.toLocaleString()}</b><small>ทอง</small></span><span title="เหรียญจากเว็บ ใช้หมุนกาชา"><i>🟡</i><b>${coins}</b><small>เหรียญ</small></span><span title="ขนนกสำหรับอัปปีก"><i>🕊️</i><b>${(s.inv.fth || 0).toLocaleString()}</b><small>ขนนก</small></span></div>`;
+}
+const rpgPanel32 = rpgPanel;
+rpgPanel = function (k, arg) {
+  if (k === 'bag' && R.save) {
+    const s = R.save, inv = s.inv, hid = {}; Object.keys(inv).forEach(id => { if (RPG_FASHION_T.has(RPG_ITEMS[id]?.t)) { hid[id] = inv[id]; delete inv[id]; } });
+    let r; try { r = rpgPanel32.apply(this, arguments); } finally { Object.assign(inv, hid); }
+    const card = document.querySelector('.rpg .rpg-panel .rp-card'); if (card) {
+      card.querySelector('.bag-gold')?.remove(); card.querySelector('.bag-money')?.remove(); card.querySelector('.bag-tabs')?.classList.add('pg-keep');
+      const h3 = card.querySelector('h3'); h3?.insertAdjacentHTML('afterend', rpgMoneyBar());
+      const nf = Object.keys(hid).length; if (nf) card.querySelector('.bag-tabs')?.insertAdjacentHTML('afterend', `<p class="bag-note pg-keep">👗 แฟชั่น ${nf} ชิ้น (หมวก ชุด แฟชั่นอาวุธ) อยู่ที่ <button type="button" class="linkbtn" data-r="wardrobe2">เมนู → แต่งตัว</button></p>`);
+      card.querySelectorAll('[data-r=incub]').forEach(b => { b.textContent = 'ไปฟัก'; b.title = 'นำไปฝากลุงฟาร์มที่ฟาร์มสัตว์มหัศจรรย์'; });
+      requestAnimationFrame(() => rpgPaginate?.());
+    }
+    return r;
+  }
+  const r = rpgPanel32.apply(this, arguments);
+  if (k === 'profile' && arg?.id) rpgProfile32(arg);
+  return r;
+};
+
+/* ---------- 2) กรอบไอเทมสีตามระดับ (หนา) ---------- */
+function rpgGradeOf(id) { const it = RPG_ITEMS[id]; if (!it) return null; const g = it.g ?? (it.tier != null ? Math.min(5, Math.floor(it.tier / 1.5)) : 0); return RPG_GRADE[g] ? g : 0; }
+function rpgFrameAll(root = document) {
+  root.querySelectorAll?.('img.ii[data-ii]').forEach(im => {
+    const box = im.closest('.rp-ic, .sp-cell, .kb-cell, .eq-slot, .gc-cap .rp-ic, .ht-egg, .wd-grid button, .pf-eq i'); if (!box || box.dataset.gf) return;
+    const g = rpgGradeOf(im.dataset.ii); if (g == null) return; box.dataset.gf = g; box.style.setProperty('--gfc', RPG_GRADE[g].c); box.classList.add('gfr');
+  });
+}
+new MutationObserver(ms => { if (!document.getElementById('rpg')) return; for (const m of ms) m.addedNodes.forEach(n => n.nodeType === 1 && rpgFrameAll(n.parentElement || n)); }).observe(document.body, { childList: true, subtree: true });
+
+/* ---------- 3) คลิกผู้เล่นอื่น: ดูอาชีพ เลเวล ของที่สวมใส่ (แทนบ้าน) ---------- */
+const rpgSend32 = rpgSend;
+rpgSend = function (payload) {
+  if (payload && payload.l != null && payload.x != null && R.save) { try { payload.eq = { ...(R.save.equip || {}) }; payload.en = typeof rpgWenh === 'function' ? rpgWenh() : 0; payload.cn = rpgClassName?.() || ''; } catch (e) {} }
+  return rpgSend32(payload);
+};
+function rpgProfile32(pr) {
+  const card = document.querySelector('.rpg .rpg-panel .rp-card'); if (!card) return; card.classList.add('pk-profile');
+  const o = RS.others?.[pr.id] || {}, look = { ...(o.o || pr.outfit || {}) }, j = RPG_JOBS[o.k || pr.cls?.j] || null, eq = o.eq || {}, en = o.en || 0;
+  card.querySelector('.rp-house')?.remove(); [...card.querySelectorAll('small.muted')].forEach(e => { if (/บ้านของ/.test(e.textContent)) e.remove(); });
+  const keep = card.querySelector('.rp-ward .stack'); const btns = keep ? [...keep.querySelectorAll('[data-r=pt-inv], .pill, .fr-slot, .rp-emo')].map(e => e.outerHTML).join('') : '';
+  const slots = RPG_SLOTS.map(([sl, n]) => { const id = eq[sl], it = id && RPG_ITEMS[id];
+    return `<div class="pf-eq ${it ? '' : 'empty'}"><i class="rp-ic">${it ? `<img class="ii" data-ii="${id}" src="${rpgItemURL(id)}" alt="">` : ''}</i><div><small>${n}</small><b>${it ? esc(it.n) + (sl === 'w' && en ? ` <em>+${en}</em>` : '') : 'ไม่ได้สวม'}</b></div></div>`; }).join('');
+  const ward = card.querySelector('.rp-ward');
+  const html = `<div class="pf32"><div class="pf-pic"><img src="${rpgLookImg(look.job ? look : { ...look, job: o.k || pr.cls?.j }, 200)}" alt=""></div>
+    <div class="pf-info"><div class="pf-tags"><span class="pf-job" style="--c:${j?.col || '#8A7AE8'}">${j ? j.ic : '🧭'} ${esc(o.cn || (j ? j.n : 'นักผจญภัย'))}</span><span class="pf-lv">Lv.${o.l || pr.lvl || 1}</span>${pr.classroom ? `<span>${esc(pr.classroom)}</span>` : ''}${o.g || pr.guild ? `<span>🏰 ${esc(o.g || pr.guild)}</span>` : ''}${o.p || pr.cls?.p ? `<span>สัตว์เลี้ยง ${o.p || pr.cls.p}</span>` : ''}${o.teacher ? '<span class="pf-t">👩‍🏫 ครู</span>' : ''}</div>
+      <h4 class="qx-h">ของที่สวมใส่</h4><div class="pf-eqs">${slots}</div>${Object.keys(eq).length ? '' : '<p class="rp-p">ข้อมูลอุปกรณ์จะแสดงเมื่อผู้เล่นคนนี้ออนไลน์อยู่</p>'}
+      <div class="pf-act">${btns}</div></div></div>`;
+  if (ward) ward.outerHTML = html; else card.insertAdjacentHTML('beforeend', html);
+  requestAnimationFrame(() => { rpgFrameAll(card); rpgPaginate?.(); });
+}
+
+/* ---------- 4) ท่าเดินหันข้างซ้าย/ขวา: แขนแกว่งหน้า-หลัง (ขาก้าวยาวอยู่ใน C2.draw) ---------- */
+const rpgArtOpts32 = rpgArtOpts;
+rpgArtOpts = function (L, h = {}) {
+  const o = rpgArtOpts32(L, h);
+  if (o.turn && !o.back && o.pose) { const w = h.walk != null ? Math.sin(h.walk) : 0;
+    o.pose.R = [o.pose.R[0] - 3 + w * 3.4, o.pose.R[1] + Math.abs(w) * .6]; o.pose.L = [o.pose.L[0] + 6 - w * 3, o.pose.L[1] + .4];
+    if (o.wpn && !o.wpn.two) o.wpn.rot += w * .12; }
+  return o;
+};
+
+/* ---------- 5) แสงอาวุธตีบวกใหม่: ไล่ตามใบอาวุธจริง ---------- */
+const RPG_WLEN = { sword: 40, shield: 18, bow: 28, staff: 50, wand: 26, dagger: 18, dagger1: 20, fist: 14, pawhammer: 34, mace: 32, orb: 22, lute: 36, hammer: 34, tablet: 16 };
+const RPG_WAX = new Map();
+function rpgWAxis(look, dir) {
+  const k = JSON.stringify([look.job, look.wt, look.wtier, dir]); if (RPG_WAX.has(k)) return RPG_WAX.get(k);
+  let r = null; try { const o = rpgArtOpts32(look, { dir }); const w = o.wpn; if (w) { const hand = o.pose?.[w.hand || 'R'] || [10, -21], L = (RPG_WLEN[w.type] || 30) * (w.sc || 1), c = Math.cos(w.rot), sn = Math.sin(w.rot);
+      const at = d => [hand[0] + sn * d, hand[1] - c * d]; r = { a: at(L * .12), b: at(L * .95), type: w.type, behind: !!w.behind }; } } catch (e) {}
+  RPG_WAX.set(k, r); return r;
+}
+function rpgWGlow32(x, h) {
+  const n = h.look?.wenh || 0; if (n < 4 || !h.look || h.pose === 'down') return;
+  const dir = h.dir === 'l' ? 'r' : h.dir || 'd', ax = rpgWAxis(h.look, dir); if (!ax) return;
+  const sd = h.dir === 'l' ? -1 : 1, t = h.t || performance.now(), P = k => [ (ax.a[0] + (ax.b[0] - ax.a[0]) * k) * sd, ax.a[1] + (ax.b[1] - ax.a[1]) * k ];
+  const tier = n >= 10 ? 3 : n >= 7 ? 2 : 1, A = P(0), B = P(1), len = Math.hypot(B[0] - A[0], B[1] - A[1]) || 1, nx = -(B[1] - A[1]) / len, ny = (B[0] - A[0]) / len;
+  x.save();
+  if (tier === 3) {   // +10 อเวจี: ควันดำม่วงพันใบ + สายฟ้าม่วงแตก + อักษรรูนหมุน
+    for (let i = 0; i < 14; i++) { const k = ((t / 1600 + i / 14) % 1), p = P(k), w = Math.sin(t / 300 + i * 1.7) * 5; const g = x.createRadialGradient(p[0] + nx * w, p[1] + ny * w, 0, p[0] + nx * w, p[1] + ny * w, 6 + (1 - k) * 3); g.addColorStop(0, 'rgba(70,10,120,.55)'); g.addColorStop(1, 'rgba(10,0,20,0)'); x.fillStyle = g; x.beginPath(); x.arc(p[0] + nx * w, p[1] + ny * w, 9, 0, 7); x.fill(); }
+    x.globalCompositeOperation = 'lighter';
+    for (let s = 0; s < 3; s++) { x.strokeStyle = `rgba(${150 + s * 40},90,255,${.18 - s * .04})`; x.lineWidth = 7 - s * 2; x.lineCap = 'round'; x.beginPath(); x.moveTo(A[0], A[1]); x.lineTo(B[0], B[1]); x.stroke(); }
+    if ((t / 90 | 0) % 5 < 2) { x.strokeStyle = 'rgba(220,170,255,.95)'; x.lineWidth = 1; x.shadowColor = '#B36BFF'; x.shadowBlur = 6; x.beginPath(); let q = P(0); x.moveTo(q[0], q[1]); for (let k = 1; k <= 6; k++) { q = P(k / 6); const j = ((t * 7 + k * 31) % 13 - 6.5) * .7; x.lineTo(q[0] + nx * j, q[1] + ny * j); } x.stroke(); x.shadowBlur = 0; }
+    for (let i = 0; i < 4; i++) { const a = t / 600 + i * Math.PI / 2, c = P(.6); x.fillStyle = 'rgba(210,150,255,.85)'; x.font = '700 5px serif'; x.textAlign = 'center'; x.fillText('ᚱᛟᚾᛖ'[i], c[0] + Math.cos(a) * 11, c[1] + Math.sin(a) * 6); }
+  } else if (tier === 2) {   // +7 นรกเพลิง: เปลวไฟเลียตามใบ + ลูกไฟปลิว + ไอร้อน
+    x.globalCompositeOperation = 'lighter';
+    for (let s = 0; s < 3; s++) { x.strokeStyle = `rgba(255,${120 + s * 50},40,${.2 - s * .05})`; x.lineWidth = 8 - s * 2.5; x.lineCap = 'round'; x.beginPath(); x.moveTo(A[0], A[1]); x.lineTo(B[0], B[1]); x.stroke(); }
+    for (let i = 0; i < 16; i++) { const k0 = i / 16, ph = (t / 620 + i * .37) % 1, p = P(k0), sz = 3.2 * (1 - ph) + 1, ux = p[0] + nx * Math.sin(i * 2.1 + t / 180) * 2.4, uy = p[1] - ph * 12;
+      x.globalAlpha = Math.sin(ph * Math.PI); x.fillStyle = ph < .3 ? '#FFF2A0' : ph < .65 ? '#FF9A2A' : '#E8341A'; x.beginPath(); x.moveTo(ux, uy - sz * 2); x.quadraticCurveTo(ux + sz, uy, ux, uy + sz); x.quadraticCurveTo(ux - sz, uy, ux, uy - sz * 2); x.fill(); }
+    for (let i = 0; i < 5; i++) { const ph = (t / 1100 + i / 5) % 1, p = P(.3 + (i % 3) * .3); x.globalAlpha = 1 - ph; x.fillStyle = '#FFD23F'; x.beginPath(); x.arc(p[0] + Math.sin(i * 5 + t / 400) * 7, p[1] - ph * 26, 1, 0, 7); x.fill(); }
+  } else {   // +4 ฟ้าคราม: แสงไหลตามใบ + ประกายดาววิ่งขึ้นปลาย
+    x.globalCompositeOperation = 'lighter';
+    const pulse = .7 + Math.sin(t / 380) * .3;
+    for (let s = 0; s < 3; s++) { x.strokeStyle = `rgba(120,${200 + s * 20},255,${(.16 - s * .04) * pulse})`; x.lineWidth = 6 - s * 1.8; x.lineCap = 'round'; x.beginPath(); x.moveTo(A[0], A[1]); x.lineTo(B[0], B[1]); x.stroke(); }
+    const k = (t / 900) % 1, q = P(k); const g = x.createRadialGradient(q[0], q[1], 0, q[0], q[1], 5); g.addColorStop(0, 'rgba(255,255,255,.95)'); g.addColorStop(1, 'rgba(120,220,255,0)'); x.fillStyle = g; x.beginPath(); x.arc(q[0], q[1], 5, 0, 7); x.fill();
+    if (Math.sin(t / 500) > .6) { const tp = P(1), s2 = 3.4; x.fillStyle = 'rgba(220,245,255,.95)'; x.beginPath(); x.moveTo(tp[0], tp[1] - s2); x.lineTo(tp[0] + s2 * .25, tp[1] - s2 * .25); x.lineTo(tp[0] + s2, tp[1]); x.lineTo(tp[0] + s2 * .25, tp[1] + s2 * .25); x.lineTo(tp[0], tp[1] + s2); x.lineTo(tp[0] - s2 * .25, tp[1] + s2 * .25); x.lineTo(tp[0] - s2, tp[1]); x.lineTo(tp[0] - s2 * .25, tp[1] - s2 * .25); x.fill(); }
+    for (let i = 0; i < 6; i++) { const ph = (t / 1400 + i / 6) % 1, p = P(Math.random() * .1 + i / 6); x.globalAlpha = Math.sin(ph * Math.PI) * .9; x.fillStyle = '#DFF6FF'; x.beginPath(); x.arc(p[0] + nx * Math.sin(i + t / 300) * 4, p[1] - ph * 8, .9, 0, 7); x.fill(); }
+  }
+  x.restore();
+}
+const rpgDrawHero32 = rpgDrawHero;
+rpgDrawHero = function (x, h) {
+  const ax = (h.look?.wenh || 0) >= 4 && h.pose !== 'down' ? rpgWAxis(h.look, h.dir === 'l' ? 'r' : h.dir || 'd') : null;
+  if (ax?.behind) { x.save(); rpgWGlow32(x, h); x.restore(); }
+  const r = rpgDrawHero32(x, h);
+  if (ax && !ax.behind) rpgWGlow32(x, h);
+  return r;
+};
+
+/* ---------- 6) กาชา: นักเรียนใช้เหรียญจริงได้ (ต้องรัน phase25.sql) · อัปเดตเหรียญทุกที่ ---------- */
+const rpgGacha32 = rpgGacha;
+rpgGacha = async function (n) {
+  if (!R.teacher && stuState.game?.coins == null) { try { stuState.game = await q(sb.rpc('student_game', { p_student_id: rpgMe().student_id, p_code: rpgMe().code })); } catch (e) {} }
+  const r = await rpgGacha32(n); document.querySelectorAll('.bag-money span:nth-child(2) b').forEach(b => b.textContent = R.teacher ? '∞' : (stuState.game?.coins ?? 0)); return r;
+};
 
 /* =====================================================================
    rpg-net.js — หน้าเกมของครู: จัดการตัวละคร (เลือกชั้น → ห้อง) · คำถามในเกม · ตรวจแชท · กิลด์ · โหมดครู
