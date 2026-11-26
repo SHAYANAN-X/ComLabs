@@ -4617,6 +4617,84 @@ img.ii{display:inline-block;width:1.25em;height:1.25em;vertical-align:-.25em;obj
 .rp-ic img.pet30{width:100%;height:100%;object-fit:contain}
 @media (max-width:480px){.rp-pager{gap:4px;flex-wrap:nowrap}.rp-pager button{min-width:34px;height:38px;padding:0 6px;font-size:14px}}
 
+/* ===== v31: ซื้อแบบระบุจำนวน ===== */
+.rpg-qty{position:absolute;inset:0;z-index:40;display:grid;place-items:center;background:rgba(20,14,50,.42);animation:rp-fade .15s}
+.qy-card{width:min(360px,calc(100vw - 28px));padding:18px;border-radius:22px;background:#fff;color:#2F2A4A;box-shadow:0 24px 50px rgba(30,20,80,.45)}
+.qy-top{display:flex;gap:12px;align-items:center}.qy-top img{width:56px;height:56px;border-radius:14px;background:#F4F1FF}.qy-top b{display:block;font-size:16px}.qy-top small{color:#6E6890}
+.qy-step{display:grid;grid-template-columns:52px 1fr 52px;gap:8px;margin:14px 0 8px}
+.qy-step button{height:52px;border-radius:14px;border:0;background:#EFEBFF;color:#3D2F8A;font:900 26px var(--f-head);cursor:pointer}
+.qy-step input{height:52px;border-radius:14px;border:2px solid #E4DDF7;text-align:center;font:800 22px var(--f-head);color:#2F2A4A;min-width:0}
+.qy-step input:focus-visible,.qy-step button:focus-visible,.qy-quick button:focus-visible{outline:3px solid #FFB020;outline-offset:2px}
+.qy-quick{display:flex;flex-wrap:wrap;gap:6px}.qy-quick button{flex:1;min-width:44px;height:38px;border-radius:12px;border:1.5px solid #E4DDF7;background:#fff;font:800 14px var(--f-body);color:#3D2F8A;cursor:pointer}
+.qy-sum{margin:12px 0;font-size:14px;color:#6E6890}.qy-sum b{color:#B07A00;font-size:17px}
+.qy-btns{display:grid;grid-template-columns:1fr 1.4fr;gap:8px}.qy-btns .rp-btn{height:46px;justify-content:center}
+
+/* ===== v31: ฝากฟักไข่ ===== */
+.ht-list{display:grid;gap:8px;margin:8px 0 4px}
+.ht-slot{display:grid;grid-template-columns:auto 1fr auto;gap:10px;align-items:center;padding:10px 12px;border-radius:16px;background:#F7F5FF;border:1.5px solid #E4DDF7}
+.ht-slot.done{background:#ECFFF3;border-color:#3DDC84}.ht-slot.empty{opacity:.7;border-style:dashed}
+.ht-slot b{display:block}.ht-slot small{display:block;color:#6E6890;margin:2px 0 4px}.ht-slot .rp-mini{height:7px}
+.ht-egg{width:46px;height:46px;display:grid;place-items:center;font:800 20px var(--f-head);color:#9A93B8}
+.rp-egg2{display:grid;gap:2px;margin:6px 0 10px;padding:10px 12px;border-radius:14px;background:#FFF8E6;border:1.5px solid #FFE1A0}.rp-egg2 span{font-weight:700}.rp-egg2 small{color:#8A6A2A}
+
+/* ===== v31: ตู้กาชาใหม่ (ลูกบอลกลิ้ง · ตัวตู้นิ่ง) ===== */
+.gcm2{position:relative;width:180px;height:230px;margin:0 auto}
+.g2-dome{position:absolute;left:5px;top:0;width:170px;height:150px;border-radius:50%;overflow:hidden;background:radial-gradient(circle at 35% 28%,#FFFFFF,rgba(200,230,255,.6));box-shadow:inset 0 0 0 5px #FF5A9A,inset 0 -18px 30px rgba(120,160,220,.25)}
+.g2-dome i{position:absolute;left:var(--x);top:var(--y);width:28px;height:28px;border-radius:50%;background:linear-gradient(180deg,#FFFFFF 0 46%,var(--c) 46%);box-shadow:inset 0 0 0 2px rgba(0,0,0,.12),inset -4px -5px 0 rgba(0,0,0,.12)}
+.gcm2.roll .g2-dome i{animation:g2-roll .32s ease-in-out var(--d) 4 alternate}
+@keyframes g2-roll{0%{transform:translate(0,0) rotate(0)}50%{transform:translate(8px,-22px) rotate(140deg)}100%{transform:translate(-6px,-8px) rotate(260deg)}}
+.g2-body{position:absolute;left:15px;top:142px;width:150px;height:72px;border-radius:12px 12px 20px 20px;background:linear-gradient(180deg,#FF7AB0,#E0408A);box-shadow:0 4px 0 #A02060;display:grid;place-items:center}
+.g2-body b{position:absolute;top:8px;font:900 16px var(--f-head);color:#fff!important;letter-spacing:.14em}
+.g2-knob{position:absolute;left:22px;bottom:12px;width:30px;height:30px;border-radius:50%;background:#FFE27A;box-shadow:inset 0 0 0 4px #E8A92E}
+.g2-knob::after{content:'';position:absolute;left:12px;top:3px;width:6px;height:24px;border-radius:3px;background:#C88A1A}
+.gcm2.roll .g2-knob{animation:g2-knob 1.2s ease-in-out}@keyframes g2-knob{to{transform:rotate(360deg)}}
+.g2-slot{position:absolute;right:24px;bottom:12px;width:40px;height:26px;border-radius:8px;background:#5A1A3A;box-shadow:inset 0 3px 0 rgba(0,0,0,.35)}
+.g2-out{position:absolute;right:30px;top:184px;width:26px;height:26px;border-radius:50%;opacity:0;background:linear-gradient(180deg,#FFFFFF 0 46%,#FFD23F 46%);box-shadow:inset 0 0 0 2px rgba(0,0,0,.15)}
+.gcm2.drop .g2-out{animation:g2-out .6s cubic-bezier(.3,1.6,.5,1) forwards}@keyframes g2-out{from{opacity:0;transform:translateY(-14px)}to{opacity:1;transform:translateY(16px)}}
+.gc-tier .rp-ic{width:40px;height:40px;border-radius:10px;cursor:pointer}.gc-tier .rp-ic img{width:100%;height:100%;object-fit:contain}
+.gc-cap .rp-ic{width:64px;height:64px;margin:0 auto}.gc-cap .rp-ic img{width:100%;height:100%;object-fit:contain}
+@media (prefers-reduced-motion:reduce){.gcm2.roll .g2-dome i,.gcm2.roll .g2-knob{animation:none}}
+
+/* ===== v31: คำอธิบายไอเทม ===== */
+.ii-guide{display:grid;gap:6px;margin-top:10px;padding:10px 12px;border-radius:14px;background:#F7F5FF}
+.ii-guide p{margin:0;display:grid;grid-template-columns:78px 1fr;gap:8px;font-size:13.5px;line-height:1.5}.ii-guide b{color:#5A3DCC}.ii-guide span{color:#3F3960}
+
+/* ===== v31: คำอธิบายบนแผนที่ใหญ่ ===== */
+.bm-legend31{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;padding:8px;font-size:12.5px;font-weight:700;color:#fff}
+.bm-legend31 span{display:inline-flex;align-items:center;gap:6px}.bm-legend31 i{width:12px;height:12px;border-radius:50%;display:inline-block}
+.bm-legend31 i.w{background:#50DCFF;box-shadow:0 0 0 2px #fff}.bm-legend31 i.c{background:#B58CFF;border-radius:2px;transform:rotate(45deg)}.bm-legend31 i.n{background:#F6C343;border-radius:2px}.bm-legend31 i.m{background:#FF5A5F}
+
+/* ===== v31: ปาร์ตี้ (ย้ายไม่ทับภารกิจ) + ไอคอนบัพ ===== */
+.rpg-party{overflow:hidden}
+.rpg-party .pt-bf{display:inline-flex;gap:2px;margin-left:6px;font-style:normal;vertical-align:middle}
+.rpg-party .pt-bf i{display:grid;place-items:center;width:18px;height:18px;border-radius:6px;font-style:normal;font-size:12px;background:rgba(255,255,255,.18);box-shadow:inset 0 0 0 1px rgba(255,255,255,.35)}
+.rpg-party .pt-bf i img{width:15px;height:15px}
+.rpg-party.tight .pt-m img{width:30px;height:30px}.rpg-party.tight .pt-m small{display:none}
+
+/* ===== v31: บทแนะนำ ===== */
+.tut-ring{position:absolute;z-index:24;pointer-events:none;border-radius:18px;box-shadow:0 0 0 3px #FFD23F,0 0 0 7px rgba(255,210,63,.35),0 0 26px 6px rgba(255,210,63,.55);animation:tut-p 1.2s ease-in-out infinite}
+@keyframes tut-p{50%{box-shadow:0 0 0 3px #FFD23F,0 0 0 12px rgba(255,210,63,.12),0 0 34px 10px rgba(255,210,63,.4)}}
+.tut-bub{position:absolute;z-index:25;pointer-events:none;padding:10px 14px;border-radius:16px;color:#2F2A4A;background:#FFFDF4;box-shadow:0 0 0 2.5px #FFD23F,0 14px 30px rgba(20,10,60,.4)}
+.tut-bub small{display:block;font-weight:800;font-size:11.5px;color:#B07A00}.tut-bub b{display:block;font:800 15px var(--f-head)}.tut-bub p{margin:3px 0 0;font-size:13px;line-height:1.5}
+.tut-bub[data-arrow]::after{content:'';position:absolute;left:calc(var(--ax) - 9px);width:18px;height:18px;background:#FFFDF4;box-shadow:2.5px 2.5px 0 #FFD23F;transform:rotate(45deg)}
+.tut-bub[data-arrow=down]::after{bottom:-8px}.tut-bub[data-arrow=up]::after{top:-8px;transform:rotate(225deg)}.tut-bub[data-arrow=""]::after{display:none}
+.tut-ring[hidden],.tut-bub[hidden]{display:none}
+@media (prefers-reduced-motion:reduce){.tut-ring{animation:none}}
+.qt-tut{margin:6px 0;padding:10px 12px;border-radius:14px;background:rgba(255,249,224,.96);color:#2F2A4A;box-shadow:inset 0 0 0 2px #FFD23F}
+.qt-tut small{display:block;font-weight:800;font-size:11.5px;color:#B07A00}.qt-tut b{display:block;font-size:14px}.qt-tut p{margin:2px 0 6px;font-size:12.5px;line-height:1.45;color:#5A5070}
+.qt-tbar{height:6px;border-radius:99px;background:#F2E6B8;overflow:hidden}.qt-tbar i{display:block;height:100%;background:#FFB020}
+.qt-tut button{margin-top:6px;border:0;background:none;padding:4px 0;font:700 12px var(--f-body);color:#8A7A50;text-decoration:underline;cursor:pointer}
+.tut-again{margin-top:12px}
+.rpg-btip{position:absolute;left:50%;bottom:150px;transform:translateX(-50%);z-index:26;width:min(360px,calc(100% - 24px));padding:12px 16px;border-radius:18px;background:#1E1848;color:#fff;box-shadow:0 0 0 2px #FFD23F,0 18px 40px rgba(0,0,0,.45);animation:cu-pop .25s}
+.rpg-btip b{display:block;font:800 15px var(--f-head);color:#FFE27A}.rpg-btip p{margin:4px 0 8px;font-size:13.5px;line-height:1.5}
+.rpg-btip button{border:0;border-radius:999px;padding:6px 14px;font:800 13px var(--f-body);background:#FFD23F;color:#2A1A00;cursor:pointer}
+.wsk-grid .rp-ic{width:46px;height:46px;margin:0 auto}.wsk-grid .rp-ic img{width:100%;height:100%;object-fit:contain}
+.ht-slot>div{text-align:left;min-width:0}
+.gcm2{border:0!important;box-shadow:none!important;background:none!important;outline:0}
+.gr-card{width:min(640px,calc(100vw - 28px));max-height:calc(100dvh - 40px);overflow:auto}.gr-card h3{margin:0 0 6px;font:800 19px var(--f-head)}
+.gr-card .gc-res{grid-template-columns:repeat(auto-fill,minmax(104px,1fr))}
+@media (max-width:600px){.qt-tut p{display:none}.qt-tut{padding:8px 10px}}
+
 </style>
 </head>
 <body>
@@ -5160,7 +5238,7 @@ if (typeof module !== 'undefined') module.exports = ExamParser;
 </script>
 <script>
 /* โลโก้: ภาพครูปลื้ม (ไฟล์ต้นฉบับ src/logo.svg ฝังตอน build) */
-const APP_VER = '30.0 · 26 พ.ย. 2569';
+const APP_VER = '31.0 · 26 พ.ย. 2569';
 let LOGO_N = 0;
 function logoSVG() { const k = 'L' + (++LOGO_N); return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><defs><linearGradient id="lgb" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3B9BFF"/><stop offset=".5" stop-color="#0A5BE0"/><stop offset="1" stop-color="#062C78"/></linearGradient><linearGradient id="lgs" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset=".6" stop-color="#FFF4D6"/><stop offset="1" stop-color="#FFD978"/></linearGradient><radialGradient id="lgc" cx=".3" cy=".08" r=".75"><stop offset="0" stop-color="#fff" stop-opacity=".55"/><stop offset=".5" stop-color="#fff" stop-opacity=".08"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient></defs><rect width="48" height="48" rx="13" fill="url(#lgb)"/><rect width="48" height="48" rx="13" fill="url(#lgc)"/><rect x=".75" y=".75" width="46.5" height="46.5" rx="12.3" fill="none" stroke="#fff" stroke-opacity=".45" stroke-width="1.2"/><g fill="none" stroke="#04235F" stroke-opacity=".35" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" transform="translate(0 1.2)"><path d="M21.2 17 C19.8 14.6 17.4 13.6 14.8 13.6 C11 13.6 8.6 15.6 8.6 18.5 C8.6 21.8 11.6 22.9 14.9 23.9 C18.6 25 21.6 26.4 21.6 29.8 C21.6 33 18.8 34.6 15.1 34.6 C12 34.6 9.5 33.4 8 31.1"/><path d="M26.6 14 L39.6 34.2 M39.6 14 L26.6 34.2"/></g><g fill="none" stroke="url(#lgs)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M21.2 17 C19.8 14.6 17.4 13.6 14.8 13.6 C11 13.6 8.6 15.6 8.6 18.5 C8.6 21.8 11.6 22.9 14.9 23.9 C18.6 25 21.6 26.4 21.6 29.8 C21.6 33 18.8 34.6 15.1 34.6 C12 34.6 9.5 33.4 8 31.1"/><path d="M26.6 14 L39.6 34.2 M39.6 14 L26.6 34.2"/></g></svg>`.replace('<svg ', '<svg class="logo" aria-hidden="true" ').replace(/\b(lg[bsc])\b/g, '$1' + k); }
 /* =====================================================================
@@ -12377,7 +12455,7 @@ function rpgDraw(now) {
   const ents = [];
   mp.trees.forEach(tr => { if (vis(tr.x, tr.y, 3)) ents.push({ y: tr.y + .92, d: () => { const T2 = rpgTree2(tr.k, tr.v), k = T2.w > 100 ? (tr.dense ? .62 : .8) : 1; x.drawImage(T2.img, tr.x * TS + 16 - (T2.ox + 16) * k, tr.y * TS + TS - 4 - T2.oy * k, T2.w * k, T2.h * k); } }); });
   RS.mon.forEach(mo => { if (vis(mo.x, mo.y, 4)) ents.push({ y: mo.y, d: () => rpgDrawMon(x, mo, t) }); });
-  Object.entries(RS.others || {}).forEach(([id, o]) => { if (t - o.seen < 12000 && o.m === mp.scene) ents.push({ y: o.y, d: () => rpgCharAt(x, { x: o.x, y: o.y, look: o.o, dir: o.dir || 'd', anim: t / 90, moving: o.mv ?? Math.hypot((o.tx ?? o.x) - o.x, (o.ty ?? o.y) - o.y) > .02, name: (o.teacher ? '👑 ' : '') + o.n, col: RPG_JOBS[o.k]?.col, guild: o.g, party: R.party?.mem.some(m => m.id === id), pn: o.pn, hp: o.hp, sp: o.sp, bf: o.bf, teacher: o.teacher, emote: o.em && t - o.emAt < 3500 ? o.em : null, emAge: t - o.emAt, say: o.say && t - o.sayAt < 4000 ? o.say : null, pet: o.p, t, seed: id.length * 97 }) }); });
+  Object.entries(RS.others || {}).forEach(([id, o]) => { if (t - o.seen < 180000 && o.m === mp.scene) ents.push({ y: o.y, d: () => rpgCharAt(x, { x: o.x, y: o.y, look: o.o, dir: o.dir || 'd', anim: t / 90, moving: o.mv ?? Math.hypot((o.tx ?? o.x) - o.x, (o.ty ?? o.y) - o.y) > .02, name: (o.teacher ? '👑 ' : '') + o.n, col: RPG_JOBS[o.k]?.col, guild: o.g, party: R.party?.mem.some(m => m.id === id), pn: o.pn, hp: o.hp, sp: o.sp, bf: o.bf, teacher: o.teacher, emote: o.em && t - o.emAt < 3500 ? o.em : null, emAge: t - o.emAt, say: o.say && t - o.sayAt < 4000 ? o.say : null, pet: o.p, t, seed: id.length * 97 }) }); });
   rpgLifeEnts(x, t, ents);
   if (mp.board) ents.push({ y: mp.board.y + .1, d: () => rpgTopBoard2(x, t) });
   (mp.npcs || []).forEach(n => ents.push({ y: n.y, d: () => rpgCharAt(x, { x: n.x, y: n.y, look: { ...n.look, job: n.job, wt: RPG_JOBS[n.job].wt, wtier: n.gear, atier: n.gear }, dir: 'd', t, name: n.n, npc: true, col: '#F6C343', mark: rpgNpcMark(n.id), seed: n.x * 99 }) }));
@@ -14634,7 +14712,7 @@ function rpgPresenceStart() {
       if (p.k === 'party' || p.k === 'chat' || p.k === 'fr' || p.k === 'buff') return rpgNetMsg(p);
       const o = RS.others[p.id] || (RS.others[p.id] = { x: p.x, y: p.y });
       if (o.m !== p.m) { o.x = p.x; o.y = p.y; }
-      Object.assign(o, { tx: p.x, ty: p.y, n: p.n, c: p.c, k: p.k, o: p.o, p: p.p, l: p.l, d: p.d, dir: p.dir, m: p.m, g: p.g, pt: p.pt, hp: p.hp, sp: p.sp, pn: p.pn, bf: p.bf, teacher: p.t, seen: performance.now() });
+      Object.assign(o, { tx: p.x, ty: p.y, n: p.n, c: p.c, k: p.k, o: p.o, p: p.p, l: p.l, d: p.d, dir: p.dir, m: p.m, g: p.g, pt: p.pt, hp: p.hp, sp: p.sp, pn: p.pn, bf: p.bf, bi: p.bi, teacher: p.t, seen: performance.now() });
       if (p.e && p.e !== o.lastE) { o.em = p.e.split(':')[0]; o.emAt = performance.now(); o.lastE = p.e; }
     });
     RS.chan.subscribe();
@@ -14681,7 +14759,7 @@ function rpgPartyLeave(quiet) {
   else { rpgSend({ k: 'party', a: 'leave', to: R.party.id, n: rpgName().split(' ')[0] }); R.party = null; }
   if (!quiet) { rpgSay('ออกจากปาร์ตี้แล้ว'); rpgPartyHud(); }
 }
-function rpgPartyBonus() { if (!R.party) return 0; const now = performance.now(); return R.party.mem.filter(m => { const o = RS.others[m.id]; return o && o.m === RS.map.scene && now - o.seen < 15000; }).length * .15; }
+function rpgPartyBonus() { if (!R.party) return 0; const now = performance.now(); return R.party.mem.filter(m => { const o = RS.others[m.id]; return o && o.m === RS.map.scene && now - o.seen < 45000; }).length * .15; }
 function rpgPartyHud() {
   const el = document.getElementById('rpg-party'); if (!el) return;
   if (!R.party) { el.innerHTML = ''; return; }
@@ -15258,7 +15336,7 @@ function rpgFriendsHTML() {
   if (R.teacher) return '<h3>👥 เพื่อน</h3><p class="rp-p">โหมดครูไม่มีรายชื่อเพื่อน · ครูดูแชทได้จากแท็บโลก/ปาร์ตี้/กิลด์</p>';
   if (!RPG_FR.list) { rpgFriend('list').then(() => document.querySelector('.fr-wrap') && rpgPanel('friends')); return '<h3>👥 เพื่อน</h3><p class="rp-p"><span class="spin"></span> กำลังโหลด…</p>'; }
   const L = RPG_FR.list, inc = L.filter(f => f.incoming), ok = L.filter(f => f.status === 'ok'), out = L.filter(f => f.status !== 'ok' && !f.incoming);
-  const on = id => RS.others?.[id] && performance.now() - RS.others[id].seen < 12000;
+  const on = id => RS.others?.[id] && performance.now() - RS.others[id].seen < 45000;
   const row = (f, btns) => `<div class="fr-row"><img src="${rpgLookImg({ ...(f.outfit || {}), job: f.job }, 64, 'bust')}" alt=""><div><b>${esc(f.name)}</b><small>${f.job ? (RPG_JOBS[f.job]?.ic || '') + ' ' + (RPG_JOBS[f.job]?.n || '') + ' · ' : ''}Lv.${f.lvl || 1} · ${esc(f.classroom || '')}</small>${on(f.id) ? '<em class="on">● ออนไลน์</em>' : '<em>● ออฟไลน์</em>'}</div><div class="fr-btns">${btns}</div></div>`;
   return `<div class="fr-wrap"><h3>👥 เพื่อน <small>${ok.length}/50</small></h3>
     <p class="rp-p">คลิกตัวละครเพื่อนในเกม แล้วกด “➕ เพิ่มเพื่อน” · เมื่อเป็นเพื่อนกันแล้วคุยส่วนตัวได้ในแท็บ 💌 ของแชท</p>
@@ -16171,7 +16249,7 @@ function rpgWingHTML() {
     ${N ? `<div class="wg-next"><div><small>ขั้นถัดไป</small><b>${esc(N.n)}</b><p>HP ${pct(nx.mhp)} · โจมตี ${pct(nx.atk)} · ป้องกัน ${pct(nx.def)} · หลบ +${nx.eva}</p></div>
       <ul><li class="${s.lvl >= N.lv ? 'ok' : ''}">⭐ ต้องการ Lv.${N.lv}</li><li class="${R.gold >= N.g ? 'ok' : ''}">💰 ${N.g.toLocaleString()} ทอง</li><li class="${have >= N.fth ? 'ok' : ''}">🕊️ ขนนก ${have}/${N.fth}</li></ul>
       <button class="rp-btn primary wide" data-r="wing-up" ${can ? '' : 'disabled'}>${n ? '⬆️ อัปปีกขั้นต่อไป' : '✨ ปลดล็อกปีก'}</button></div>` : '<div class="wg-next max"><b>👑 ปีกขั้นสูงสุดแล้ว!</b></div>'}
-    <p class="rp-p">🕊️ ขนนกเวทมนต์ดรอปจากมอนสเตอร์ทุกแผนที่ (บอสดรอปเยอะ) หรือซื้อที่ร้านตัดชุด</p>`;
+    <p class="rp-p">🕊️ ขนนกเวทมนต์ได้จากภารกิจหลัก (บทยิ่งสูงยิ่งได้เยอะ) ภารกิจประจำวัน และบทแนะนำ</p>`;
 }
 function rpgWingUp() {
   const s = R.save, n = s.wing?.lv || 0, N = RPG_WINGS[n + 1]; if (!N || s.lvl < N.lv || R.gold < N.g || (s.inv.fth || 0) < N.fth) return;
@@ -16184,7 +16262,6 @@ rpgQEvent = function (k, d = {}) {
   const s = R.save; if (!s?.job) return;
   const cq = s.cq, Q = cq && RPG_CQ[cq.t];
   if (Q) { if (k === 'kill' && d.map === Q.z && cq.kill < Q.kill) { cq.kill++; if (cq.kill === Q.kill) rpgSay('⚔️ ปราบมอนสเตอร์ครบแล้ว!'); } if (k === 'quiz' && cq.quiz < Q.quiz) cq.quiz++; if (cq.kill >= Q.kill && cq.quiz >= Q.quiz && !cq.done) { cq.done = 1; rpgSay(`🎓 ผ่านการทดสอบ! กลับไปหา ${RPG_NPCS[Q.m].n}`, 3800); } }
-  if (k === 'kill') { const n = d.boss ? 4 + Math.floor(Math.random() * 3) : Math.random() < .3 ? 1 : 0; if (n) { rpgGive('fth', n); RS.fthMsg = n; } }
   rpgQEvent27(k, d);
 };
 function rpgClassUpFx(t) {
@@ -17964,6 +18041,599 @@ rpgPanel = function (k) {
 window.addEventListener('resize', () => { clearTimeout(rpgPaginate._t); rpgPaginate._t = setTimeout(rpgPaginate, 150); });
 // ใส่รูปสัตว์เลี้ยงที่วาดใหม่ในหน้าต่างสัตว์เลี้ยง (แทนอีโมจิ)
 function rpgPetIcons() { if (RS.panel !== 'pets') return; document.querySelectorAll('.rpg .rpg-panel .rp-list .rp-it').forEach(row => { const id = row.querySelector('[data-p]')?.dataset.p, p = (R.save.pets || []).find(q => q.id === id), ic = row.querySelector('.rp-ic'); if (!p || !ic || ic.querySelector('img.pet30')) return; const u = rpgPetURL(p.ic); if (u) ic.innerHTML = `<img class="pet30" src="${u}" alt="${esc(p.n)}">`; }); }
+
+/* =====================================================================
+   SX Realm v31 — เศรษฐกิจ/ร้านค้า · ร้านลับ · ไข่ฟักกับ NPC · กาชาแฟชั่นอาวุธ · ผ้าคลุม
+   จุดวาร์ปบนแผนที่ · ปาร์ตี้ · ออนไลน์/ออฟไลน์ · ครูมีเพื่อน+แชท · คำอธิบายไอเทม
+   ===================================================================== */
+
+/* ---------- 0) ตัวช่วย ---------- */
+const rpgFmtDur = ms => { ms = Math.max(0, ms); const m = Math.ceil(ms / 60000); if (m >= 60) { const h = Math.floor(m / 60), mm = m % 60; return `${h} ชม.${mm ? ` ${mm} นาที` : ''}`; } if (ms < 60000) return `${Math.ceil(ms / 1000)} วินาที`; return `${m} นาที`; };
+function rpgPanelRefresh() { if (RS.panel && !document.getElementById('rpg-panel')?.hidden) rpgPanel(RS.panel); }
+
+/* ---------- 1) ขนนก: ได้จากภารกิจเท่านั้น ---------- */
+RPG_SHOPS.tailor.items = RPG_SHOPS.tailor.items.filter(i => i !== 'fth');
+RPG_ITEMS.fth.d = 'วัสดุอัปเกรดปีก · ได้จากภารกิจหลัก ภารกิจประจำวัน และบทแนะนำเท่านั้น';
+delete RPG_ITEMS.fth.p;
+RPG_MAINQ.forEach((Q, i) => { Q.r.it = { ...(Q.r.it || {}), fth: 4 + i * 2 }; });
+const rpgDailyReward31 = rpgDailyReward;
+rpgDailyReward = function (x) { const r = rpgDailyReward31(x); return { ...r, it: { ...(r.it || {}), fth: 2 } }; };
+/* ---------- 2) ราคาร้านค้าแพงขึ้น · ขายคืนเท่าเดิม ---------- */
+Object.entries(RPG_ITEMS).forEach(([id, it]) => {
+  if (!it.p || it._p31) return; it._p31 = 1; it.sell = it.sell || Math.floor(it.p * .4);
+  const k = it.t === 'w' || it.t === 'a' || it.t === 'hat' || 'hcsr'.includes(it.t) && it.t.length === 1 ? 3 : 2; it.p = Math.round(it.p * k / 10) * 10;
+});
+
+/* ---------- 3) ร้านในเมืองขายแค่ของระดับต้น · ร้านลับซ่อนในแผนที่ขายของเลเวลสูง ---------- */
+RPG_SHOPS.egg.items = RPG_SHOPS.egg.items.filter(i => !/^egg/.test(i));   // ไข่ไม่ขายแล้ว
+const RPG_SECRET = {
+  forest3: { tier: 3, extra: ['hp3', 'mp2', 'net2'], hi: 'ชู่ว… เจอข้าจนได้นะ ข้าขายของดีที่ร้านในเมืองไม่มี' },
+  cave3: { tier: 4, extra: ['hp3', 'mp3', 'net3'], hi: 'ในถ้ำมืดแบบนี้ ของดีมักซ่อนอยู่… อยากได้อะไรล่ะ' },
+  ice3: { tier: 5, extra: ['hp4', 'mp3', 'elx'], hi: 'อากาศหนาวแต่ของข้าร้อนแรง! อาวุธคริสตัลเลยนะ' },
+  desert3: { tier: 6, extra: ['hp4', 'mp3', 'elx'], hi: 'โอเอซิสลวงตาไม่ได้มีแค่ภาพลวง… ของทับทิมแท้ ๆ' },
+  castle2: { tier: 7, extra: ['hp4', 'mp3', 'elx'], hi: 'ผู้กล้าที่มาถึงตรงนี้ได้ สมควรได้อาวุธระดับตำนาน' },
+};
+Object.entries(RPG_SECRET).forEach(([z, S]) => {
+  if (!RPG_ZONES[z]) return; const k = 'sec_' + z;
+  RPG_SHOPS[k] = { n: 'ร้านลับ · ' + RPG_ZONES[z].n, ic: '🗝️', items: () => [`w_${rpgJob().wt}_${S.tier}`, `a_${S.tier}`, ...(S.tier < 7 ? [`w_${rpgJob().wt}_${S.tier + 1}`] : []), ...S.extra] };
+  RPG_NPCS[k] = { n: 'พ่อค้าลึกลับ', x: 0, y: 0, job: 'ninja', look: { g: 'm', skin: 2, hs: 3, hc: 0, os: 0, oc: 0 }, gear: 4, scene: z, shop: k, secret: 1, hi: [S.hi] };
+});
+// ร้านตีเหล็กในเมือง: ระดับไม้–เหล็กกล้า (Lv.1–14)
+const RPG_TOWN_MAXT = 2;
+rpgShopHTML = (rpgShopHTML0 => function (k) {
+  const sh = RPG_SHOPS[k]; if (!sh) return ''; const keep = sh.items;
+  if (keep === 'gear') sh.items = [...RPG_TIER.slice(0, RPG_TOWN_MAXT + 1).map((_, t) => `w_${rpgJob().wt}_${t}`), ...RPG_TIER.slice(0, RPG_TOWN_MAXT + 1).map((_, t) => `a_${t}`)];
+  else if (typeof keep === 'function') sh.items = keep();
+  try { let h = rpgShopHTML0(k); if (keep === 'gear') h = h.replace('<h4>สินค้าในร้าน</h4>', '<h4>สินค้าในร้าน <small>อุปกรณ์ระดับสูงกว่านี้ ขายที่ร้านลับที่ซ่อนอยู่ตามแผนที่</small></h4>'); if (RPG_NPCS[k]?.secret) h = h.replace('<h4>สินค้าในร้าน</h4>', '<h4>สินค้าในร้าน <small>🗝️ ร้านลับ · ของระดับสูงหาซื้อที่อื่นไม่ได้</small></h4>'); return h; }
+  finally { sh.items = keep; }
+})(rpgShopHTML);
+// วางพ่อค้าลับไว้มุมที่ไกลจากทางเข้าที่สุด (ตำแหน่งเดิมทุกครั้ง)
+const rpgMapFinish31 = rpgMapFinish;
+rpgMapFinish = function (mp) {
+  const r = rpgMapFinish31(mp), M = r || mp;
+  (M.npcs || []).filter(n => n.secret).forEach(n => {
+    const ex = (M.exits || []).map(e => [e.x + e.w / 2, e.y + e.h / 2]).concat([[M.spawn?.x || 0, M.spawn?.y || 0]]);
+    let best = null, bs = -1; const ok = (i, j) => M.m[j] && !RPG_SOLID.has(M.m[j][i]);
+    const mx = Math.min(7, Math.floor(M.W / 4)), my = Math.min(6, Math.floor(M.H / 4)); for (let j = my; j < M.H - my; j++) for (let i = mx; i < M.W - mx; i++) { if (!ok(i, j) || !ok(i + 1, j) || !ok(i - 1, j) || !ok(i, j + 1) || !ok(i, j - 1)) continue;
+      const d = Math.min(...ex.map(([a, b]) => Math.hypot(a - i, b - j))) + ((i * 7 + j * 13) % 5) * .01; if (d > bs) { bs = d; best = [i + .5, j + .6]; } }
+    if (best) { n.x = best[0]; n.y = best[1]; RPG_NPCS[n.id].x = n.x; RPG_NPCS[n.id].y = n.y; }
+  });
+  return r;
+};
+
+/* ---------- 4) ซื้อแบบระบุจำนวน · ไม่เด้งกลับขึ้นบน ---------- */
+function rpgBuyAsk(id) {
+  const it = RPG_ITEMS[id], s = R.save; if (!it) return; document.getElementById('rpg-qty')?.remove();
+  const lock = it.lv && s.lvl < it.lv, stack = !['w', 'a', 'hat'].includes(it.t) && !('hcsr'.includes(it.t) && it.t.length === 1);
+  const max = lock ? 0 : Math.max(0, Math.min(stack ? 99 : 1, Math.floor(R.gold / it.p)));
+  if (!max) return rpgSay(lock ? `ต้องการ Lv.${it.lv}` : 'ทองไม่พอ');
+  if (max === 1 && !stack) return rpgBuyDo(id, 1);
+  const el = document.createElement('div'); el.id = 'rpg-qty'; el.className = 'rpg-qty';
+  el.innerHTML = `<div class="qy-card" role="dialog" aria-label="ระบุจำนวนที่จะซื้อ"><div class="qy-top"><img src="${rpgItemURL(id)}" alt=""><div><b>${esc(it.n)}</b><small>ราคาชิ้นละ 💰 ${it.p.toLocaleString()} · มีอยู่ ${s.inv[id] || 0}</small></div></div>
+    <div class="qy-step"><button type="button" data-q="-1" aria-label="ลดจำนวน">−</button><input type="number" inputmode="numeric" min="1" max="${max}" value="1" aria-label="จำนวน"><button type="button" data-q="1" aria-label="เพิ่มจำนวน">+</button></div>
+    <div class="qy-quick">${[1, 5, 10, 20].filter(v => v <= max).map(v => `<button type="button" data-v="${v}">${v}</button>`).join('')}<button type="button" data-v="${max}">สูงสุด ${max}</button></div>
+    <p class="qy-sum">รวม <b>💰 0</b> · เหลือ <span>0</span></p>
+    <div class="qy-btns"><button type="button" class="rp-btn ghost" data-x="1">ยกเลิก</button><button type="button" class="rp-btn primary" data-ok="1">ซื้อ</button></div></div>`;
+  const inp = el.querySelector('input'), sum = () => { let n = Math.max(1, Math.min(max, Math.floor(+inp.value || 1))); inp.value = n; el.querySelector('.qy-sum b').textContent = `💰 ${(n * it.p).toLocaleString()}`; el.querySelector('.qy-sum span').textContent = `${(R.gold - n * it.p).toLocaleString()} ทอง`; return n; };
+  el.addEventListener('click', e => { e.stopPropagation(); const b = e.target.closest('button'); if (e.target === el || b?.dataset.x) return el.remove(); if (!b) return;
+    if (b.dataset.q) { inp.value = (+inp.value || 1) + +b.dataset.q; sum(); } else if (b.dataset.v) { inp.value = b.dataset.v; sum(); } else if (b.dataset.ok) { const n = sum(); el.remove(); rpgBuyDo(id, n); } });
+  inp.addEventListener('input', sum); inp.addEventListener('keydown', e => { e.stopPropagation(); if (e.key === 'Enter') el.querySelector('[data-ok]').click(); if (e.key === 'Escape') el.remove(); });
+  (document.getElementById('rpg') || document.body).appendChild(el); sum(); setTimeout(() => inp.select(), 30);
+}
+function rpgBuyDo(id, n) {
+  const it = RPG_ITEMS[id], s = R.save, cost = it.p * n; if (R.gold < cost || (it.lv && s.lvl < it.lv)) return rpgSay('ทองไม่พอ');
+  R.gold -= cost; rpgGive(id, n); rpgSfx('coin'); rpgSay(`ซื้อ ${it.ic} ${it.n} ×${n} แล้ว${it.t === 'w' || it.t === 'a' ? ' · เปิดสวมใส่เพื่อใช้งาน' : ''}`); rpgSave(); rpgHud(); rpgPanelKeep();
+}
+// วาดหน้าต่างเดิมใหม่ โดยคงหน้า/ตำแหน่งเลื่อนไว้
+function rpgPanelKeep() {
+  const card = document.querySelector('.rpg .rpg-panel .rp-card'), keep = card ? [...card.querySelectorAll('*')].filter(e => e.scrollTop > 0).map(e => [rpgElPath(e, card), e.scrollTop]).concat([['', card.scrollTop]]) : [];
+  rpgPanel(RS.panel);
+  const c2 = document.querySelector('.rpg .rpg-panel .rp-card'); if (!c2) return;
+  const put = () => keep.forEach(([p, t]) => { const e = p ? rpgElAt(c2, p) : c2; if (e) e.scrollTop = t; }); put(); requestAnimationFrame(() => requestAnimationFrame(put));
+}
+function rpgElPath(e, root) { const p = []; while (e && e !== root) { p.unshift([...e.parentElement.children].indexOf(e)); e = e.parentElement; } return p.join('.'); }
+function rpgElAt(root, p) { return p.split('.').reduce((e, i) => e?.children[+i], root); }
+
+/* ---------- 5) ผ้าคลุม: เอาออกจากชุดอาชีพ · ได้จากกาชาเท่านั้น ---------- */
+(() => { const fashion = new Set(typeof RPG_FASHION !== 'undefined' ? RPG_FASHION : []); Object.values(RPG_JOBART).forEach(J => { const O = C2.OUTFIT?.[J.out]; if (O && O.back && !fashion.has(J.out)) { O._back31 = O.back; delete O.back; } }); })();
+const RPG_CAPES = Object.keys(RPG_ITEMS).filter(k => RPG_ITEMS[k].t === 'c');
+RPG_CAPES.forEach(k => { const it = RPG_ITEMS[k]; it.gacha = 1; delete it.p; it.d = 'ผ้าคลุมจากตู้กาชา · สวมได้ทุกอาชีพ'; });
+Object.values(RPG_REGIONS).forEach(R0 => { if (R0.drops) R0.drops = R0.drops.filter(i => RPG_ITEMS[i]?.t !== 'c'); });
+Object.values(RPG_DUNGEONS).forEach(D => { if (D.drops) D.drops = D.drops.filter(i => RPG_ITEMS[i]?.t !== 'c'); });
+
+/* ---------- 6) แฟชั่นอาวุธตามคลาส (วาดเองทั้งหมด) ---------- */
+const RPG_WSK = [
+  { k: 'fire', n: 'เพลิงมังกร', c: ['#FFF0B0', '#FF7A2A', '#B3200E'], hi: '#FFB020', fx: 'flame', g: 4 },
+  { k: 'ice', n: 'น้ำแข็งพันปี', c: ['#FFFFFF', '#8FE4FF', '#2E6BD8'], hi: '#9FE8FF', fx: 'frost', g: 4 },
+  { k: 'sakura', n: 'ซากุระวสันต์', c: ['#FFF4FA', '#FF9AC8', '#C2306E'], hi: '#FFB8DA', fx: 'petal', g: 4 },
+  { k: 'neon', n: 'ไซเบอร์นีออน', c: ['#C8FFF6', '#22E0C8', '#5A2CE0'], hi: '#00FFE0', fx: 'neon', g: 4 },
+  { k: 'gold', n: 'ราชันย์ทองคำ', c: ['#FFF8D0', '#FFC53D', '#8A4E08'], hi: '#FFE27A', fx: 'spark', g: 5 },
+  { k: 'abyss', n: 'เงาอเวจี', c: ['#D8C0FF', '#7A45E0', '#14062A'], hi: '#B36BFF', fx: 'smoke', g: 5 },
+];
+Object.entries(RPG_WT).forEach(([wt, W]) => RPG_WSK.forEach((S, i) => {
+  RPG_ITEMS[`wk_${wt}_${i}`] = { t: 'wsk', wt, wsk: i, n: `${(W.n[4] || '').replace(/ทอง.*$/, '').trim() || 'อาวุธ'} ${S.n}`, ic: '⚔️', g: S.g, gacha: 1, d: `แฟชั่นอาวุธ${S.n} · เปลี่ยนหน้าตาอาวุธ ไม่เปลี่ยนค่าพลัง` };
+}));
+let RPG_WSK_NOW = null;
+const RPG_WSK_C1 = document.createElement('canvas'), RPG_WSK_C2 = document.createElement('canvas');
+function rpgWskDraw(x, f, t, sk) {
+  const S = RPG_WSK[sk]; if (!S || !x.canvas) return f(x, t);
+  const W = x.canvas.width, H = x.canvas.height, A = RPG_WSK_C1, B = RPG_WSK_C2; [A, B].forEach(c => { if (c.width !== W || c.height !== H) { c.width = W; c.height = H; } });
+  const y = A.getContext('2d'), z = B.getContext('2d'), T = x.getTransform();
+  y.setTransform(1, 0, 0, 1, 0, 0); y.clearRect(0, 0, W, H); y.setTransform(T); y.lineJoin = 'round'; f(y, Math.max(5, t));
+  z.setTransform(1, 0, 0, 1, 0, 0); z.clearRect(0, 0, W, H); z.globalCompositeOperation = 'source-over'; z.filter = 'grayscale(1) contrast(1.2) brightness(1.18)'; z.drawImage(A, 0, 0); z.filter = 'none';
+  z.globalCompositeOperation = 'multiply'; z.setTransform(T); const g = z.createLinearGradient(0, -46, 0, 14); g.addColorStop(0, S.c[0]); g.addColorStop(.45, S.c[1]); g.addColorStop(1, S.c[2]); z.fillStyle = g; z.fillRect(-90, -90, 180, 180);
+  z.setTransform(1, 0, 0, 1, 0, 0); z.globalCompositeOperation = 'destination-in'; z.drawImage(A, 0, 0); z.globalCompositeOperation = 'source-over';
+  // ลายเฉพาะธีม (พิกัดของอาวุธ: ด้ามที่ 0 · ปลายประมาณ -40)
+  z.setTransform(T); const sd = [[.2, .1], [.8, .35], [.35, .6], [.7, .85], [.5, .2], [.15, .75]];
+  if (S.fx === 'flame') { z.globalCompositeOperation = 'lighter'; sd.forEach(([a, b], i) => { const px = (a - .5) * 14, py = -6 - b * 34, s = 3.2 - i * .3; const gg = z.createLinearGradient(px, py - s * 2, px, py + s); gg.addColorStop(0, 'rgba(255,90,20,0)'); gg.addColorStop(.5, '#FF7A1F'); gg.addColorStop(1, '#FFE27A'); z.fillStyle = gg; z.beginPath(); z.moveTo(px, py - s * 2.2); z.quadraticCurveTo(px + s, py - s * .2, px, py + s); z.quadraticCurveTo(px - s, py - s * .2, px, py - s * 2.2); z.fill(); }); }
+  if (S.fx === 'frost') { z.fillStyle = 'rgba(255,255,255,.92)'; sd.forEach(([a, b], i) => { const px = (a - .5) * 16, py = -4 - b * 36, s = 2.6 - i * .2; z.beginPath(); z.moveTo(px, py - s * 1.8); z.lineTo(px + s * .6, py); z.lineTo(px, py + s * 1.8); z.lineTo(px - s * .6, py); z.closePath(); z.fill(); }); }
+  if (S.fx === 'petal') { sd.forEach(([a, b], i) => { const px = (a - .5) * 18, py = -2 - b * 38; z.save(); z.translate(px, py); z.rotate(i * 1.3); z.fillStyle = i % 2 ? '#FFC8E0' : '#FF8AC0'; z.beginPath(); z.ellipse(0, 0, 2.4, 1.3, 0, 0, 7); z.fill(); z.restore(); }); }
+  if (S.fx === 'neon') { z.strokeStyle = '#00FFE0'; z.lineWidth = .7; z.globalCompositeOperation = 'lighter'; for (let i = 0; i < 3; i++) { z.beginPath(); z.moveTo(-1 + i, -4 - i * 8); z.lineTo(1 + i, -12 - i * 8); z.lineTo(-1 + i, -18 - i * 8); z.stroke(); } }
+  if (S.fx === 'spark') { z.globalCompositeOperation = 'lighter'; sd.slice(0, 4).forEach(([a, b]) => { const px = (a - .5) * 16, py = -6 - b * 34, s = 3; z.fillStyle = '#FFF6C0'; z.beginPath(); z.moveTo(px, py - s); z.lineTo(px + s * .25, py - s * .25); z.lineTo(px + s, py); z.lineTo(px + s * .25, py + s * .25); z.lineTo(px, py + s); z.lineTo(px - s * .25, py + s * .25); z.lineTo(px - s, py); z.lineTo(px - s * .25, py - s * .25); z.fill(); }); }
+  if (S.fx === 'smoke') { sd.forEach(([a, b], i) => { const px = (a - .5) * 18, py = -b * 40, r = 3 + i * .4; const gg = z.createRadialGradient(px, py, 0, px, py, r); gg.addColorStop(0, 'rgba(90,40,160,.55)'); gg.addColorStop(1, 'rgba(20,0,40,0)'); z.fillStyle = gg; z.beginPath(); z.arc(px, py, r, 0, 7); z.fill(); }); }
+  z.globalCompositeOperation = 'source-over';
+  x.save(); x.setTransform(1, 0, 0, 1, 0, 0); x.shadowColor = S.hi; x.shadowBlur = Math.max(4, Math.abs(T.a) * 3.2); x.drawImage(B, 0, 0); x.restore();
+}
+Object.keys(WP.D).forEach(k => { const f = WP.D[k]; WP.D[k] = function (x, t) { const sk = RPG_WSK_NOW; if (sk == null || x._wsk) return f(x, t); RPG_WSK_NOW = null; try { return rpgWskDraw(x, f, t, sk); } finally { RPG_WSK_NOW = sk; } }; });
+const C2draw31 = C2.draw;
+C2.draw = function (x, o) { const keep = RPG_WSK_NOW; RPG_WSK_NOW = o && o.wskin != null ? o.wskin : null; try { return C2draw31.apply(this, arguments); } finally { RPG_WSK_NOW = keep; } };
+const rpgArtOpts31 = rpgArtOpts;
+rpgArtOpts = function (L, h = {}) {
+  const o = rpgArtOpts31(L, h), it = L?.wsk && RPG_ITEMS[L.wsk];
+  if (it?.t === 'wsk') { const wt = L.wt && L.wt !== 'any' ? L.wt : RPG_JOBS[L.job]?.wt; if (wt === it.wt) o.wskin = it.wsk; }
+  return o;
+};
+// ไอคอนแฟชั่นอาวุธ = อาวุธจริงที่ใส่สกินแล้ว
+const rpgItemCanvas31 = rpgItemCanvas;
+rpgItemCanvas = function (key, S = 96) {
+  const it = RPG_ITEMS[key]; if (it?.t !== 'wsk') return rpgItemCanvas31(key, S);
+  const ck = key + '@' + S; if (RPG_ICANV.has(ck)) return RPG_ICANV.get(ck);
+  const c = document.createElement('canvas'); c.width = c.height = S; const x = c.getContext('2d'), Sk = RPG_WSK[it.wsk];
+  const g = x.createRadialGradient(S / 2, S / 2, 4, S / 2, S / 2, S / 2); g.addColorStop(0, rpgHexA(Sk.hi, .5)); g.addColorStop(1, 'rgba(0,0,0,0)'); x.fillStyle = g; x.fillRect(0, 0, S, S);
+  const type = (typeof RPG_WT2 !== 'undefined' && RPG_WT2[it.wt]) || it.wt, d = WP.D[type] ? type : 'sword';
+  x.translate(S * .52, S * .62); x.rotate(.62); const k = S / 96 * (['bow', 'staff', 'lute', 'orb'].includes(d) ? 1.25 : 1.55); x.scale(k, k);
+  RPG_WSK_NOW = it.wsk; try { WP.D[d](x, 6); } catch (e) {} finally { RPG_WSK_NOW = null; }
+  RPG_ICANV.set(ck, c); return c;
+};
+RPG_TNAME.wsk = 'แฟชั่นอาวุธ'; RPG_TNAME.c = RPG_TNAME.c || 'ผ้าคลุม';
+// เพิ่มไอเทมใหม่เข้าระบบไอคอนวาดเอง
+rpgPuaAll();
+
+/* ---------- 7) ตู้กาชา: ร้านกาชามีห้องข้างใน · เครื่องหมุนแค่ลูกบอล · ของรางวัลวาดเอง ---------- */
+RPG_SHOPIN.gacha = { n: 'ร้านกาชาแฟชั่น', ic: '🎰', wall: '#FBE3F2', trim: '#E0479E', npc: ['น้องกาชาปอง', 'bard', { g: 'f', skin: 0, hs: 2, hc: 6, os: 0, oc: 0 }], hi: ['ยินดีต้อนรับสู่ร้านกาชาค่า! หมุนลุ้นชุดแฟชั่น หมวก ผ้าคลุม และแฟชั่นอาวุธ'], items: ['cs1', 'h5', 'cp2', 'cs5', 'cp3', 'cs9', 'wk_sword_0', 'wk_bow_3'].map(k => RPG_ITEMS[k]?.ic).filter(Boolean) };
+RPG_ZONES.shop_gacha = { n: RPG_SHOPIN.gacha.n, ic: '🎰', biome: 'house', shop: 'gacha' };
+RPG_NPCS.m_gacha = { n: 'น้องกาชาปอง', x: 7, y: 4.75, job: 'bard', look: RPG_SHOPIN.gacha.npc[2], gear: 3, scene: 'shop_gacha', shop: 'gacha', hi: RPG_SHOPIN.gacha.hi };
+const rpgPaintShop31 = rpgPaintShop;
+rpgPaintShop = function (mp) {
+  const c = rpgPaintShop31(mp); if (mp.shop !== 'gacha') return c;
+  const x = c.getContext('2d'); x.save(); x.setTransform(RPG_P, 0, 0, RPG_P, 0, 0);
+  [[2.2, 4.4], [11.6, 4.4]].forEach(([tx, ty], i) => { const X = tx * TS, Y = ty * TS;
+    x.fillStyle = 'rgba(0,0,0,.18)'; x.beginPath(); x.ellipse(X, Y + 30, 18, 5, 0, 0, 7); x.fill();
+    x.fillStyle = i ? '#3DA8FF' : '#FF5A9A'; x.beginPath(); x.roundRect(X - 15, Y + 6, 30, 24, 5); x.fill();
+    x.fillStyle = '#FFFFFF'; x.fillRect(X - 6, Y + 14, 12, 7); x.fillStyle = '#2A2A3A'; x.beginPath(); x.arc(X, Y + 17.5, 2.4, 0, 7); x.fill();
+    const g = x.createRadialGradient(X - 5, Y - 8, 2, X, Y - 4, 17); g.addColorStop(0, '#FFFFFF'); g.addColorStop(1, 'rgba(190,225,255,.85)'); x.fillStyle = g; x.beginPath(); x.arc(X, Y - 4, 16, 0, 7); x.fill();
+    ['#FF5A5A', '#FFD23F', '#3DDC84', '#3DA8FF', '#B58CFF'].forEach((cc, k) => { x.fillStyle = cc; x.beginPath(); x.arc(X - 9 + (k % 3) * 8, Y + 2 - Math.floor(k / 3) * 7, 3.6, 0, 7); x.fill(); });
+    x.strokeStyle = i ? '#1E6FC8' : '#C2386E'; x.lineWidth = 2; x.beginPath(); x.arc(X, Y - 4, 16, 0, 7); x.stroke(); });
+  x.restore(); return c;
+};
+const RPG_GCAPS = ['#FF5A5A', '#FFD23F', '#3DA8FF', '#B58CFF', '#3DDC84', '#FF9A3D', '#FF7AC8', '#7AE0FF'];
+rpgGachaPool = function () {
+  const it = k => RPG_ITEMS[k], wt = rpgJob().wt, hats = Object.keys(RPG_ITEMS).filter(k => it(k).t === 'hat' && it(k).gacha), cos = Object.keys(RPG_ITEMS).filter(k => it(k).t === 'cos'), wsk = RPG_WSK.map((_, i) => `wk_${wt}_${i}`);
+  return [{ r: 'legend', n: 'ตำนาน', w: 3, c: '#FF9F1A', items: [...cos.filter(k => it(k).g >= 4), ...hats.filter(k => it(k).g >= 4), ...wsk.filter(k => it(k).g >= 5), 'cp6'].filter(it) },
+    { r: 'epic', n: 'หายากมาก', w: 12, c: '#B36BFF', items: [...cos.filter(k => it(k).g < 4), ...wsk.filter(k => it(k).g < 5), 'cp5', 'cp4'].filter(it) },
+    { r: 'rare', n: 'หายาก', w: 30, c: '#3DA8FF', items: [...hats.filter(k => it(k).g < 4), 'cp1', 'cp2', 'cp3'].filter(it) },
+    { r: 'common', n: 'ธรรมดา', w: 55, c: '#9AA3B2', items: ['hp3', 'mp2', 'elx', 'cake', 'net2'] }];
+};
+rpgGachaPick = function (u) { const P = rpgGachaPool(), tot = P.reduce((m, p) => m + p.w, 0); let a = u * tot; for (const p of P) { if (a < p.w) { const id = p.items[Math.floor((a / p.w) * p.items.length) % p.items.length]; return { ...p, id }; } a -= p.w; } return { ...P[3], id: 'hp3' }; };
+const rpgGachaOne = id => ['cos', 'hat', 'wsk', 'c'].includes(RPG_ITEMS[id].t);
+const RPG_GACHA_DUPG = 3000;
+rpgGachaHTML = function () {
+  const coins = R.teacher ? '∞' : (stuState.game?.coins ?? '…'), P = rpgGachaPool();
+  return `<h3>🎰 ตู้กาชาแฟชั่น</h3>
+    <div class="gc-top"><div class="gcm2" id="gcm2" aria-hidden="true"><div class="g2-dome">${Array.from({ length: 11 }, (_, i) => `<i style="--c:${RPG_GCAPS[i % 8]};--x:${14 + (i % 4) * 34 + (i > 7 ? 16 : 0)}px;--y:${40 + Math.floor(i / 4) * 30}px;--d:${(i * .07).toFixed(2)}s"></i>`).join('')}</div><div class="g2-body"><b>GACHA</b><span class="g2-knob"></span><span class="g2-slot"></span></div><div class="g2-out"></div></div>
+      <div class="gc-info"><p>ลุ้น <b>ชุดแฟชั่น หมวก ผ้าคลุม และแฟชั่นอาวุธของคลาส${esc(RPG_JOBS[R.save.job]?.n || '')}</b> · ใช้เหรียญ 🟡 ที่ได้จากการทำข้อสอบและส่งงานในเว็บ</p>
+        <div class="gc-coin">🟡 เหรียญของฉัน <b>${coins}</b></div>
+        <div class="gc-btns"><button class="rp-btn" data-r="gacha" data-n="1">หมุน 1 ครั้ง · 🟡 ${RPG_GACHA_COST}</button><button class="rp-btn primary" data-r="gacha" data-n="10">หมุน 10 ครั้ง · 🟡 ${RPG_GACHA_COST * 9}</button></div>
+        <small>หมุน 10 ครั้ง ลด 1 ครั้ง · ได้ของแฟชั่นซ้ำ แปลงเป็นทอง ${RPG_GACHA_DUPG.toLocaleString()}</small></div></div>
+    <h4 class="qx-h">ของรางวัลในตู้ <small>แตะรูปเพื่อดูรายละเอียด</small></h4><div class="gc-pool">${P.map(p => `<div class="gc-tier" style="--c:${p.c}"><b>${p.n} ${p.w}%</b><div>${p.items.map(i => `<span class="rp-ic" title="${esc(RPG_ITEMS[i].n)}"><img class="ii" data-ii="${i}" src="${rpgItemURL(i)}" alt="${esc(RPG_ITEMS[i].n)}"></span>`).join('')}</div></div>`).join('')}</div>`;
+};
+rpgGacha = async function (n) {
+  if (RS.gachaBusy) return; const s = R.save, cost = n >= 10 ? RPG_GACHA_COST * 9 : RPG_GACHA_COST * n; let rolls;
+  if (R.teacher) rolls = Array.from({ length: n }, () => Math.random());
+  else { const have = stuState.game?.coins ?? 0; if (have < cost) return rpgSay('เหรียญ 🟡 ไม่พอ · ทำข้อสอบหรือส่งงานในเว็บเพื่อสะสมเหรียญ', 3200);
+    RS.gachaBusy = true; try { const v = rpgMe(), r = await q(sb.rpc('student_rpg_gacha', { p_student_id: v.student_id, p_code: v.code, p_n: n })); if (!r.ok) { RS.gachaBusy = false; return rpgSay(r.error === 'NO_COINS' ? 'เหรียญ 🟡 ไม่พอ' : 'หมุนไม่สำเร็จ'); } rolls = r.rolls; if (stuState.game) stuState.game.coins = r.coins; } catch (e) { RS.gachaBusy = false; return rpgSay('หมุนไม่สำเร็จ ลองใหม่อีกครั้ง'); } }
+  RS.gachaBusy = true; const m = document.getElementById('gcm2'); document.querySelectorAll('[data-r=gacha]').forEach(b => b.disabled = true);
+  if (m) { m.classList.remove('roll', 'drop'); void m.offsetWidth; m.classList.add('roll'); } rpgSfx('click');
+  const got = rolls.map(u => { const p = rpgGachaPick(u), it = RPG_ITEMS[p.id]; let dup = false;
+    if (rpgGachaOne(p.id)) { if (s.inv[p.id] || (it.t === 'c' && Object.values(s.equip || {}).includes(p.id))) { dup = true; R.gold += RPG_GACHA_DUPG; } else rpgGive(p.id); }
+    else rpgGive(p.id, 3); return { ...p, dup }; });
+  rpgSave(true); rpgHud();
+  setTimeout(() => {
+    RS.gachaBusy = false; if (m) { m.classList.remove('roll'); m.classList.add('drop'); } rpgSfx('coin'); document.querySelectorAll('[data-r=gacha]').forEach(b => b.disabled = false);
+    document.getElementById('rpg-gres')?.remove(); const ov = document.createElement('div'); ov.id = 'rpg-gres'; ov.className = 'rpg-qty rpg-gres';
+    ov.innerHTML = `<div class="qy-card gr-card" role="dialog" aria-label="ผลการหมุนกาชา"><h3>🎉 ผลการหมุน ${got.length} ครั้ง</h3><div class="gc-res">${got.map((g, i) => { const it = RPG_ITEMS[g.id]; return `<div class="gc-cap ${g.r}" style="--c:${g.c};--d:${(i * .12).toFixed(2)}s"><span class="rp-ic"><img class="ii" data-ii="${g.id}" src="${rpgItemURL(g.id)}" alt=""></span><b>${esc(it.n)}</b><small>${g.dup ? `ได้ซ้ำ → 💰 ${RPG_GACHA_DUPG.toLocaleString()}` : g.n}${rpgGachaOne(g.id) ? '' : ' ×3'}</small></div>`; }).join('')}</div>
+      <p class="rp-p">แตะรูปเพื่อดูรายละเอียด · ชุด หมวก และแฟชั่นอาวุธ ใส่ได้ที่เมนู → 👗 แต่งตัว · ผ้าคลุมใส่ที่ 🛡️ สวมใส่</p><button type="button" class="rp-btn primary wide" data-gx="1">เก็บของรางวัล</button></div>`;
+    ov.addEventListener('click', e => { if (e.target === ov || e.target.closest('[data-gx]')) ov.remove(); });
+    (document.getElementById('rpg') || document.body).appendChild(ov);
+    const cb = document.querySelector('.gc-coin b'); if (cb) cb.textContent = R.teacher ? '∞' : stuState.game?.coins;
+    if (got.some(g => g.r === 'legend')) { rpgConfetti(); rpgSfx('lvl'); }
+  }, 1300);
+};
+
+/* ---------- 8) ไข่: ดรอปจากมอนสเตอร์ · ฝากฟักกับลุงฟาร์มตามเวลาจริง ---------- */
+const RPG_HATCHT = { egg1: 60, egg2: 6 * 60, egg3: 24 * 60 };   // นาที
+const RPG_HATCHN = 3;
+Object.entries(RPG_HATCHT).forEach(([id, m]) => { const it = RPG_ITEMS[id]; if (!it) return; delete it.p; it.need = 0; it.mins = m; it.d = `ไข่จากมอนสเตอร์ · ฝากลุงฟาร์มฟักนาน ${rpgFmtDur(m * 60000)}`; });
+function rpgHatch(s = R.save) {
+  s.hatch = s.hatch || [];
+  if (s.egg) { const it = RPG_ITEMS[s.egg.type], dur = (it?.mins || 60) * 60000, f = s.egg.need ? Math.min(1, s.egg.steps / s.egg.need) : 0; s.hatch.push({ id: s.egg.type, t0: Date.now() - dur * f, t1: Date.now() + dur * (1 - f) }); s.egg = null; }
+  return s.hatch;
+}
+// ดรอปไข่จากมอนสเตอร์บ่อยขึ้นเล็กน้อย · บอสดรอปไข่หายาก/ตำนาน
+const rpgWin31 = rpgWin;
+rpgWin = function () {
+  const B = RS.battle, mo = B?.mo, s = R.save; const r = rpgWin31.apply(this, arguments);
+  try { if (mo && s) { const p = mo.boss ? .5 : .02 + mo.lv * .0006; if (Math.random() < p) { const id = mo.boss ? (mo.lv >= 40 ? 'egg3' : 'egg2') : mo.lv >= 40 ? (Math.random() < .25 ? 'egg3' : 'egg2') : mo.lv >= 15 ? 'egg2' : 'egg1'; rpgGive(id); setTimeout(() => rpgSay(`🥚 ได้ ${RPG_ITEMS[id].n}! นำไปฝากลุงฟาร์มที่ฟาร์มสัตว์มหัศจรรย์เพื่อฟัก`, 3600), 1600); } } } catch (e) {}
+  return r;
+};
+function rpgHatchHTML() {
+  const s = R.save, L = rpgHatch(), now = Date.now(), eggs = Object.keys(RPG_HATCHT).filter(id => s.inv[id] > 0), full = L.length >= RPG_HATCHN;
+  const slot = (h, i) => { if (!h) return `<div class="ht-slot empty"><span class="ht-egg">?</span><div><b>ช่องว่าง</b><small>เลือกไข่ด้านล่างเพื่อฝากฟัก</small></div></div>`;
+    const it = RPG_ITEMS[h.id], done = now >= h.t1, f = Math.min(1, (now - h.t0) / Math.max(1, h.t1 - h.t0));
+    return `<div class="ht-slot ${done ? 'done' : ''}"><span class="rp-ic ht-egg">${it.ic}</span><div><b>${esc(it.n)}</b><small data-ht="${i}">${done ? '✅ ฟักเสร็จแล้ว! รับสัตว์เลี้ยงได้เลย' : `เหลืออีก ${rpgFmtDur(h.t1 - now)}`}</small><div class="rp-mini"><i style="width:${Math.round(f * 100)}%"></i></div></div>
+      ${done ? `<button class="rp-btn primary" data-r="ht-take" data-i="${i}">🐣 รับสัตว์</button>` : R.teacher ? `<button class="rp-btn" data-r="ht-now" data-i="${i}" title="โหมดครูเร่งเวลาได้">⚡ ฟักทันที</button>` : ''}</div>`; };
+  return `<h3>🥚 ฝากฟักไข่กับลุงฟาร์ม <small>${L.length}/${RPG_HATCHN} ช่อง</small></h3>
+    <p class="rp-p">ไข่ได้จากการต่อสู้กับมอนสเตอร์ · ฝากไว้แล้วเวลาจะเดินต่อแม้ปิดเกม · ครบเวลาแล้วกลับมารับที่นี่</p>
+    <div class="ht-list">${Array.from({ length: RPG_HATCHN }, (_, i) => slot(L[i], i)).join('')}</div>
+    <h4 class="qx-h">ไข่ในกระเป๋า</h4><div class="rp-list">${eggs.length ? eggs.map(id => { const it = RPG_ITEMS[id];
+      return `<div class="rp-it"><span class="rp-ic">${it.ic}</span><div><b>${esc(it.n)} <em>×${s.inv[id]}</em></b><small>ฟักนาน ${rpgFmtDur(it.mins * 60000)} · ได้ ${it.pool.map(p => RPG_PETS[p]?.n).filter(Boolean).join(' / ')}</small></div><button class="rp-btn" data-r="ht-put" data-i="${id}" ${full ? 'disabled' : ''}>${full ? 'ช่องเต็ม' : 'ฝากฟัก'}</button></div>`; }).join('') : '<p class="rp-p">ยังไม่มีไข่ · ชนะมอนสเตอร์มีโอกาสได้ไข่ (บอสได้แน่นอนครึ่งหนึ่ง)</p>'}</div>`;
+}
+function rpgHatchTake(i) {
+  const s = R.save, L = rpgHatch(), h = L[i]; if (!h || Date.now() < h.t1) return;
+  if ((s.pets || []).length >= 12) return rpgSay('สัตว์เลี้ยงเต็ม 12 ตัวแล้ว ปล่อยบางตัวก่อนนะ');
+  const it = RPG_ITEMS[h.id], sp = it.pool[Math.floor(Math.random() * it.pool.length)], pet = rpgPetFrom(sp);
+  s.pets.push(pet); if (!s.petOut) s.petOut = pet.id; L.splice(i, 1); rpgQEvent('hatch');
+  rpgSay(`🎉 ไข่ฟักแล้ว! ได้ ${pet.ic} ${pet.n}`, 3500); rpgConfetti(); rpgSfx('lvl'); rpgHud(); rpgSave(); rpgPanelKeep();
+}
+setInterval(() => {
+  const s = R.save; if (!s?.job || !document.getElementById('rpg')) return; const now = Date.now();
+  (s.hatch || []).forEach(h => { if (now >= h.t1 && !h.told) { h.told = 1; rpgSay(`🐣 ${RPG_ITEMS[h.id]?.n || 'ไข่'} ฟักเสร็จแล้ว! ไปรับที่ลุงฟาร์ม (ฟาร์มสัตว์มหัศจรรย์)`, 4200); rpgSfx('lvl'); } });
+  if (RS.panel === 'hatch') document.querySelectorAll('[data-ht]').forEach(el => { const h = s.hatch?.[+el.dataset.ht]; if (!h) return; if (now >= h.t1) { if (!el.dataset.d) { el.dataset.d = 1; rpgPanelKeep(); } } else el.textContent = `เหลืออีก ${rpgFmtDur(h.t1 - now)}`; });
+}, 1000);
+
+/* ---------- 9) คำอธิบายไอเทม: ใช้ทำอะไร · ใช้ที่ไหน/อย่างไร · หาได้จากไหน ---------- */
+function rpgItemGuide(id) {
+  const it = RPG_ITEMS[id]; if (!it) return null; const wtn = it.wt && it.wt !== 'any' ? RPG_WT[it.wt]?.n?.[0]?.replace(/ไม้|ฝึก(หัด)?|ผ้า|ขุ่น|รุ่นแรก/g, '').trim() : '';
+  const jobs = it.wt && it.wt !== 'any' ? Object.values(RPG_JOBS).filter(j => j.wt === it.wt).map(j => j.n).join(' / ') : '';
+  const slotN = { h: 'หมวก', c: 'ผ้าคลุม', s: 'รองเท้า', r: 'เครื่องประดับ' }[it.t];
+  const G = {
+    w: [`อาวุธ เพิ่มพลังโจมตี${it.matk ? '/พลังเวท' : ''} ยิ่งระดับสูงยิ่งแรง`, `กด 🛡️ สวมใส่ (เมนูขวาบน) → ช่องอาวุธ → กด “สวม” · ${it.wt === 'any' ? 'ใช้ได้ทุกอาชีพ' : `สำหรับ ${jobs || 'อาชีพที่ใช้' + (wtn || 'อาวุธนี้')}`} · ตีบวกเพิ่มพลังได้ที่ช่างบรูโน่ในโรงตีเหล็ก`, it.drop ? 'ดรอปจากมอนสเตอร์/บอส ในพื้นที่ระดับสูง' : (it.tier ?? 0) <= RPG_TOWN_MAXT ? 'ร้านโรงตีเหล็กในเมือง' : 'ร้านลับที่ซ่อนอยู่ตามแผนที่ (หาพ่อค้าลึกลับ) หรือรางวัลภารกิจ'],
+    a: ['ชุดเกราะ เพิ่มพลังป้องกันและ HP สูงสุด', 'กด 🛡️ สวมใส่ → ช่องชุดเกราะ → กด “สวม” · ตีบวกได้ที่ช่างบรูโน่', it.drop ? 'ดรอปจากมอนสเตอร์/บอส' : (it.tier ?? 0) <= RPG_TOWN_MAXT ? 'ร้านโรงตีเหล็กในเมือง' : 'ร้านลับที่ซ่อนอยู่ตามแผนที่ หรือรางวัลภารกิจ'],
+    pot: [`ยาฟื้นฟู ${it.hp ? `HP ${it.hp >= 99999 ? 'เต็ม' : it.hp}` : ''}${it.hp && it.mp ? ' และ ' : ''}${it.mp ? `MP ${it.mp >= 99999 ? 'เต็ม' : it.mp}` : ''}`, 'ระหว่างเดิน: กดปุ่ม 🧪 ยา HP / 💧 ยา MP ขวาล่าง หรือเปิด 🎒 กระเป๋า → “ใช้” · ระหว่างต่อสู้: กดปุ่ม “ไอเทม”', 'ร้านยาคุณหมอเว็บในเมือง หรือดรอปจากมอนสเตอร์'],
+    food: [`อาหารสัตว์เลี้ยง${it.food ? ` อิ่ม +${it.food}` : ''}${it.happy ? ` รัก +${it.happy}` : ''} · สัตว์ที่อิ่มและรักเราจะสู้เก่งขึ้น`, 'เปิด 🐾 สัตว์เลี้ยง (ปุ่มขวาล่าง หรือเมนู) → กดปุ่มรูปอาหารที่สัตว์ตัวนั้น', 'ฟาร์มสัตว์มหัศจรรย์ในเมือง หรือดรอปจากมอนสเตอร์'],
+    net: [`ตาข่ายจับสัตว์${it.rate ? ` โอกาสจับ ×${it.rate}` : ''}${it.boss ? ' · จับบอสได้' : ''}`, 'ระหว่างต่อสู้ ทำให้มอนสเตอร์ HP ต่ำ แล้วกด “🎣 จับ” · ตาข่ายดีกว่าจะถูกใช้ก่อน', it.boss ? 'ดรอปจากบอสระดับสูง' : 'ฟาร์มสัตว์มหัศจรรย์ในเมือง หรือดรอปจากมอนสเตอร์'],
+    egg: [`ไข่สัตว์เลี้ยง ฟักแล้วได้ ${(it.pool || []).map(p => RPG_PETS[p]?.n).filter(Boolean).join(' / ')}`, `เดินไปฟาร์มสัตว์มหัศจรรย์ในเมือง → คุยกับลุงฟาร์ม → “ฝากฟักไข่” · ใช้เวลา ${rpgFmtDur((it.mins || 60) * 60000)} (นับต่อแม้ปิดเกม)`, 'ดรอปจากการชนะมอนสเตอร์ (มอนเลเวลสูงได้ไข่ดีกว่า · บอสมีโอกาสสูง)'],
+    mat: ['วัสดุอัปเกรดปีก ยิ่งปีกขั้นสูงยิ่งเพิ่มค่าพลังทุกด้าน', 'เปิดเมนู → 👼 ปีก → กด “อัปเกรดปีก” เมื่อเลเวล ทอง และขนนกครบ', 'รางวัลภารกิจหลัก ภารกิจประจำวัน และบทแนะนำเท่านั้น'],
+    loot: ['ของมีค่าสำหรับขายเป็นทอง', 'เข้าร้านค้าใดก็ได้ แล้วแตะไอเทมในช่อง “กระเป๋าของฉัน” เพื่อขาย', 'ดรอปจากมอนสเตอร์'],
+    hat: ['หมวกแฟชั่น แต่งตัวให้เท่ แสดงทับหมวกเกราะ (ค่าพลังยังได้จากหมวกเกราะตามเดิม)', 'เปิด 🎒 กระเป๋า → “ใส่” หรือเมนู → 👗 แต่งตัว', it.gacha ? 'ตู้กาชาในร้านกาชาแฟชั่น' : 'ร้านแฟชั่นในเมือง'],
+    cos: ['ชุดแฟชั่น เปลี่ยนชุดที่ตัวละครใส่ ไม่เปลี่ยนค่าพลัง', 'เมนู → 👗 แต่งตัว → เลือกชุด', 'ตู้กาชาในร้านกาชาแฟชั่น'],
+    wsk: [`แฟชั่นอาวุธ เปลี่ยนหน้าตา${RPG_WT[it.wt]?.n?.[1]?.replace(/เหล็ก/g, '').trim() || 'อาวุธ'}ให้เป็นธีม${RPG_WSK[it.wsk]?.n || ''} ไม่เปลี่ยนค่าพลัง`, `ใช้ได้เมื่ออาชีพใช้อาวุธประเภทนี้ (${jobs}) · เมนู → 👗 แต่งตัว → แฟชั่นอาวุธ`, 'ตู้กาชาในร้านกาชาแฟชั่น (ตู้จะสุ่มแฟชั่นอาวุธตามคลาสปัจจุบัน)'],
+  };
+  if (slotN) return [`${slotN} เพิ่มค่าพลังตามที่แสดงด้านบน`, `กด 🛡️ สวมใส่ → ช่อง${slotN} → กด “สวม”`, it.t === 'c' ? 'ตู้กาชาในร้านกาชาแฟชั่น' : it.drop ? 'ดรอปจากมอนสเตอร์/บอส' : 'ดรอปจากมอนสเตอร์ในแต่ละพื้นที่'];
+  return G[it.t] || (it.d ? [it.d, '', ''] : null);
+}
+const rpgItemInfo31 = rpgItemInfo;
+rpgItemInfo = function (id, opt) {
+  const r = rpgItemInfo31.apply(this, arguments); const card = document.querySelector('#rpg-iinfo .ii-card'), G = rpgItemGuide(id); if (!card || !G) return r;
+  card.querySelector('.ii-d')?.remove();
+  const box = document.createElement('div'); box.className = 'ii-guide';
+  box.innerHTML = [['ใช้ทำอะไร', G[0]], ['ใช้อย่างไร', G[1]], ['หาได้จาก', G[2]]].filter(([, t]) => t).map(([h, t]) => `<p><b>${h}</b><span>${esc(t)}</span></p>`).join('');
+  card.querySelector('.ii-meta')?.before(box); return r;
+};
+
+/* ---------- 10) จุดวาร์ปบนแผนที่เล็ก + แผนที่ใหญ่ ---------- */
+const rpgMini31 = rpgMini;
+rpgMini = function () {
+  rpgMini31(); const c = document.getElementById('rpg-mini'), mp = RS.map; if (!c || !mp?.mini) return; const x = c.getContext('2d'), k = c.width / mp.W, t = performance.now();
+  (mp.exits || []).forEach(e => { const cx = (e.x + e.w / 2) * k, cy = (e.y + e.h / 2) * k, r = 3.4 + Math.sin(t / 260) * .8; x.fillStyle = 'rgba(80,220,255,.9)'; x.strokeStyle = '#FFFFFF'; x.lineWidth = 1.2; x.beginPath(); x.arc(cx, cy, r, 0, 7); x.fill(); x.stroke(); });
+  const cr = mp.crystal; if (cr) { const cx = cr.x * k, cy = cr.y * k, s = 5; x.fillStyle = '#B58CFF'; x.strokeStyle = '#FFFFFF'; x.lineWidth = 1.2; x.beginPath(); x.moveTo(cx, cy - s * 1.4); x.lineTo(cx + s, cy); x.lineTo(cx, cy + s * 1.4); x.lineTo(cx - s, cy); x.closePath(); x.fill(); x.stroke(); }
+};
+const rpgBigMapDraw31 = rpgBigMapDraw;
+rpgBigMapDraw = function () {
+  const mp = RS.map; if (!mp) return; const keep = mp.npcs; mp.npcs = (keep || []).filter(n => !n.secret || R.save.secret?.[n.id]);
+  try { rpgBigMapDraw31(); } finally { mp.npcs = keep; }
+  const cv = document.getElementById('bm-cv'); if (!cv) return; const x = cv.getContext('2d'), d = Math.min(2, devicePixelRatio || 1), W = cv.width / d, k = W / mp.W, t = performance.now();
+  x.setTransform(d, 0, 0, d, 0, 0); x.font = '800 12px Sarabun, sans-serif'; x.textAlign = 'center';
+  const label = (txt, px, py) => { x.lineWidth = 3.5; x.strokeStyle = 'rgba(20,10,40,.85)'; x.strokeText(txt, px, py); x.fillStyle = '#FFFFFF'; x.fillText(txt, px, py); };
+  (mp.exits || []).forEach(e => { const cx = Math.min(W - 14, Math.max(14, (e.x + e.w / 2) * k)), cy = Math.min(cv.height / d - 14, Math.max(14, (e.y + e.h / 2) * k)), r = 12 + Math.sin(t / 240) * 2.5; x.strokeStyle = 'rgba(120,230,255,.95)'; x.lineWidth = 3; x.beginPath(); x.arc(cx, cy, r, 0, 7); x.stroke(); x.fillStyle = 'rgba(80,200,255,.5)'; x.beginPath(); x.arc(cx, cy, r * .6, 0, 7); x.fill(); });
+  const cr = mp.crystal; if (cr) { const cx = cr.x * k, cy = cr.y * k, s = 8 + Math.sin(t / 300) * 1.2; x.fillStyle = '#B58CFF'; x.strokeStyle = '#FFFFFF'; x.lineWidth = 2; x.beginPath(); x.moveTo(cx, cy - s * 1.5); x.lineTo(cx + s, cy); x.lineTo(cx, cy + s * 1.5); x.lineTo(cx - s, cy); x.closePath(); x.fill(); x.stroke(); label('🌀 เครื่องวาร์ป', cx, cy - s * 1.5 - 6); }
+  (mp.npcs || []).filter(n => n.secret && R.save.secret?.[n.id]).forEach(n => label('🗝️ ร้านลับ', n.x * k, n.y * k - 8));
+  const leg = document.querySelector('#rpg-bigmap .bm-leg'); if (leg && !leg.querySelector('.l31')) leg.insertAdjacentHTML('beforeend', '<span class="l31"><i style="background:#50DCFF;box-shadow:0 0 0 2px #fff"></i>ทางวาร์ปไปแผนที่อื่น</span><span class="l31"><i style="background:#B58CFF;border-radius:2px;transform:rotate(45deg)"></i>เครื่องวาร์ป</span>');
+};
+
+/* ---------- 11) ปาร์ตี้: ไม่ทับภารกิจ · ไอคอนบัพหลังชื่อ ---------- */
+rpgPartyHud = function () {
+  const el = document.getElementById('rpg-party'); if (!el) return;
+  if (!R.party) { el.innerHTML = ''; el.removeAttribute('style'); return; }
+  const me = rpgMe().student_id, now = performance.now();
+  el.innerHTML = `<b>⚔️ ปาร์ตี้ ${R.party.mem.length}/4</b>${R.party.mem.filter(m => m.id !== me).map(m => { const o = RS.others[m.id], on = o && now - o.seen < 45000, bi = (o?.bi || []).slice(0, 4);
+    return `<div class="pt-m ${on ? '' : 'off'}"><img src="${o?.o ? rpgLookImg(o.o, 48, 'bust') : ''}" alt=""><div><span>${esc(m.n)}${m.id === R.party.id ? ' 👑' : ''}${bi.length ? `<em class="pt-bf" title="บัพที่ทำงานอยู่">${bi.map(ic => `<i>${ic}</i>`).join('')}</em>` : ''}</span><small>Lv.${o?.l || m.l} · ${on ? esc(RPG_ZONES[o.m]?.n || '') : 'ออฟไลน์'}</small><i><u style="width:${o?.hp ?? 100}%"></u></i></div></div>`; }).join('')}
+    <button data-r="pt-leave">ออกจากปาร์ตี้</button>`;
+  rpgPartyPlace();
+};
+function rpgPartyPlace() {
+  const el = document.getElementById('rpg-party'); if (!el || !R.party) return; const root = document.getElementById('rpg'); if (!root) return;
+  const rr = root.getBoundingClientRect(), qt = document.getElementById('rpg-qt')?.getBoundingClientRect(), tools = document.querySelector('#rpg-mtools .mt-row, #rpg-mtools')?.getBoundingClientRect(), act = document.getElementById('rpg-act')?.getBoundingClientRect();
+  const qtLeft = qt && qt.width && qt.left - rr.left < rr.width / 2;
+  if (tools && tools.width && qtLeft) {   // ภารกิจอยู่ซ้าย → ปาร์ตี้ไปขวา ใต้ปุ่มวาร์ป
+    const top = tools.bottom - rr.top + 10, bot = act && act.height ? act.top - rr.top - 10 : rr.height - 120;
+    Object.assign(el.style, { left: 'auto', right: Math.max(8, rr.right - tools.right) + 'px', top: top + 'px', maxHeight: Math.max(120, bot - top) + 'px', alignItems: 'flex-end' });
+  } else if (qt && qt.width) {           // ภารกิจอยู่ขวา → ปาร์ตี้ซ้าย
+    Object.assign(el.style, { right: 'auto', left: '8px', top: '96px', maxHeight: '', alignItems: '' });
+  }
+  el.classList.toggle('tight', el.scrollHeight > el.clientHeight + 2);
+}
+addEventListener('resize', () => rpgPartyPlace());
+// ส่งไอคอนบัพไปให้เพื่อนเห็น
+const rpgSend31 = rpgSend;
+rpgSend = function (payload) { if (payload && payload.l != null && payload.x != null && typeof rpgBuffs === 'function') { try { payload.bi = rpgBuffs().map(b => b.ic).slice(-4); } catch (e) {} } return rpgSend31(payload); };
+
+/* ---------- 12) ออนไลน์: ยืนเฉย ๆ ไม่หาย · ออกจากเกมแล้วออฟไลน์ทันที ---------- */
+setInterval(() => { if (!RS.chan || !R.save?.job || !document.getElementById('rpg')) return; if (performance.now() - (RS.sentAt || 0) > 3000) { RS.sentAt = performance.now(); try { rpgPresenceSend(); } catch (e) {} } if (R.party) rpgPartyHud(); }, 3000);
+rpgPresenceStop = function () {
+  clearInterval(RS.lerp); if (R.party) { try { rpgPartyLeave(true); } catch (e) {} }
+  const ch = RS.chan; try { rpgSend({ bye: true }); } catch (e) {}
+  RS.chan = null; RS.others = {};
+  setTimeout(() => { try { ch?.unsubscribe?.(); sb.removeChannel?.(ch); } catch (e) {} }, 900);
+};
+addEventListener('pagehide', () => { if (!R.save?.job || !document.getElementById('rpg')) return; try { rpgSave(true); } catch (e) {} try { rpgSend({ bye: true }); } catch (e) {} });
+document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'visible' && RS.chan && R.save?.job) { RS.sentAt = performance.now(); try { rpgPresenceSend(); } catch (e) {} } });
+
+/* ---------- 13) ครู: เพิ่มเพื่อน + แชทได้ ---------- */
+const rpgEnterTeacher31 = rpgEnterTeacher;
+rpgEnterTeacher = async function () { const p = rpgEnterTeacher31.apply(this, arguments); if (R.tme && store.me?.user_id) R.tme.student_id = 'teacher-' + store.me.user_id; await p; if (R.teacher) rpgFriend('list').then(() => rpgChatUI?.()); return p; };
+const rpgTid = id => String(id || '').startsWith('teacher-') ? String(id).slice(8) : null;
+rpgChatCh = (f => function () {
+  if (RPG_CHAT.ch === 'dm' && RPG_CHAT.dm) { const me = rpgMe()?.student_id, a = rpgTid(me), b = rpgTid(RPG_CHAT.dm);
+    if (a) return 'tdm:' + a + ':' + RPG_CHAT.dm; if (b) return 'tdm:' + b + ':' + me; }
+  return f();
+})(rpgChatCh);
+const rpgFriend31 = rpgFriend;
+rpgFriend = async function (action, other) {
+  if (R.teacher) { if (rpgTid(other)) return { ok: false, error: 'TEACHER' }; RPG_FR.busy = true;
+    try { const r = await q(sb.rpc('teacher_rpg_friend', { p_action: action, p_student: other || null })); if (r.ok) RPG_FR.list = r.list; return r; } catch (e) { return { ok: false, error: 'NET' }; } finally { RPG_FR.busy = false; } }
+  const v = rpgMe(), tl = async (a, t) => { try { const r = await q(sb.rpc('student_rpg_tfriend', { p_student_id: v.student_id, p_code: v.code, p_action: a, p_teacher: t || null })); if (r.ok) RPG_FR.tlist = r.list.map(f => ({ ...f, id: 'teacher-' + f.id })); return r; } catch (e) { return { ok: false, error: 'NET' }; } };
+  const merge = () => { RPG_FR.list = [...(RPG_FR.list || []).filter(f => !rpgTid(f.id)), ...(RPG_FR.tlist || [])]; };
+  if (rpgTid(other)) { const r = await tl(action, rpgTid(other)); if (!RPG_FR.list) await rpgFriend31('list'); merge(); return r; }
+  const r = await rpgFriend31(action, other); if (action === 'list' || !RPG_FR.tlist) await tl('list'); merge(); return r;
+};
+rpgFriendBtn = function (pr) {
+  const me = rpgMe()?.student_id; if (!pr?.id || pr.id === me || pr.id === 'teacher-local') return '';
+  if (R.teacher && rpgTid(pr.id)) return '';
+  const f = rpgFriendOf(pr.id);
+  if (!f) return `<button class="rp-btn fr" data-r="fr-add" data-id="${pr.id}">➕ เพิ่มเพื่อน</button>`;
+  if (f.status === 'ok') return `<button class="rp-btn fr ok" data-r="fr-dm" data-id="${pr.id}">💌 แชทกับเพื่อน</button>`;
+  return f.incoming ? `<button class="rp-btn fr" data-r="fr-ok" data-id="${pr.id}">✅ ตอบรับเป็นเพื่อน</button>` : '<span class="pill">⏳ ส่งคำขอแล้ว</span>';
+};
+rpgFriendsHTML = (f => function () {
+  if (!R.teacher) return f();
+  if (!RPG_FR.list) { rpgFriend('list').then(() => RS.panel === 'friends' && rpgPanel('friends')); return '<h3>👥 เพื่อน</h3><p class="rp-p"><span class="spin"></span> กำลังโหลด…</p>'; }
+  R.teacher = false; try { return f().replace('คลิกตัวละครเพื่อนในเกม', 'คลิกตัวละครนักเรียนในเกม'); } finally { R.teacher = true; }
+})(rpgFriendsHTML);
+const rpgPanel31f = rpgPanel;
+rpgPanel = function (k, arg) {
+  const r = rpgPanel31f.apply(this, arguments);
+  if (k === 'profile' && arg?.id && R.teacher) { const sl = document.querySelector('#rpg-panel .fr-slot'); const go = () => { const s2 = document.querySelector('#rpg-panel .fr-slot'); if (s2) s2.innerHTML = rpgFriendBtn(arg); };
+    if (!sl) { document.querySelector('#rpg-panel .rp-emo')?.insertAdjacentHTML('beforebegin', `<div class="fr-slot" data-id="${arg.id}"></div>`); } if (!RPG_FR.list) rpgFriend('list').then(go); else go(); }
+  return r;
+};
+const rpgNetMsg31 = rpgNetMsg;
+rpgNetMsg = function (p) {
+  if (p.k === 'fr' && R.teacher && p.to === rpgMe()?.student_id) {
+    if (p.a === 'req') { rpgSay(`👥 ${p.n} ขอเป็นเพื่อนกับครู · เปิดเมนู → เพื่อน`); rpgSfx('chat'); rpgFriend('list'); }
+    else if (p.a === 'ok') { rpgSay(`🎉 ${p.n} ตอบรับเป็นเพื่อนแล้ว`); rpgFriend('list').then(() => RPG_CHAT.ch === 'dm' && rpgChatUI()); }
+    else if (p.a === 'dm') { if (RPG_CHAT.ch === 'dm' && RPG_CHAT.dm === p.id) rpgChatLoad(); else { rpgSay(`💌 ข้อความใหม่จาก ${p.n}`); document.querySelector('#rpg-chat .ch-fab')?.classList.add('new'); RPG_CHAT.unread = { ...(RPG_CHAT.unread || {}), [p.id]: 1 }; } rpgSfx('chat'); }
+    return;
+  }
+  return rpgNetMsg31(p);
+};
+const rpgChatLoad31 = rpgChatLoad;
+rpgChatLoad = async function () {
+  if (!R.teacher) return rpgChatLoad31();
+  const ch = rpgChatCh(); if (!ch || ch.startsWith('guild:')) return rpgChatDraw();
+  try { const r = await q(sb.rpc('teacher_rpg_chat', { p_ch: ch, p_body: null, p_name: rpgName() })); if (r.ok) RPG_CHAT.msgs[ch] = r.list.map(m => ({ name: m.name, body: rpgClean(m.body), me: m.me })); } catch (e) {}
+  rpgChatDraw();
+};
+const rpgChatSend31 = rpgChatSend;
+rpgChatSend = async function () {
+  if (!R.teacher) return rpgChatSend31();
+  const inp = document.getElementById('ch-txt'), body = rpgClean(inp.value.trim()), ch = rpgChatCh(); if (!body || !ch) return; if (ch.startsWith('guild:')) return rpgSay('ครูไม่ได้อยู่ในกิลด์');
+  inp.value = '';
+  try { const r = await q(sb.rpc('teacher_rpg_chat', { p_ch: ch, p_body: body, p_name: rpgName() }));
+    if (!r.ok) return rpgSay({ RATE: 'ส่งเร็วเกินไป รอสักครู่นะ', NOT_FRIEND: 'ต้องเป็นเพื่อนกันก่อนถึงจะคุยส่วนตัวได้' }[r.error] || 'ส่งไม่สำเร็จ');
+    RPG_CHAT.msgs[ch] = r.list.map(m => ({ name: m.name, body: rpgClean(m.body), me: m.me })); rpgChatDraw();
+    if (RPG_CHAT.ch === 'dm') rpgSend({ k: 'fr', a: 'dm', to: RPG_CHAT.dm, n: rpgName() }); else rpgSend({ k: 'chat', ch, n: rpgName(), body });
+    RS.say = body; RS.sayAt = performance.now();
+  } catch (e) { rpgSay('ส่งไม่สำเร็จ ลองใหม่อีกครั้ง'); }
+};
+const rpgChatUI31 = rpgChatUI;
+rpgChatUI = function () {
+  const r = rpgChatUI31.apply(this, arguments); if (!R.teacher) return r;
+  const inp = document.getElementById('ch-txt'), btn = document.querySelector('#ch-form .ch-send'); if (inp) { inp.disabled = false; inp.placeholder = RPG_CHAT.ch === 'dm' ? (RPG_CHAT.dm ? 'พิมพ์ถึงนักเรียน…' : 'เลือกนักเรียนก่อน') : 'ครูพิมพ์ข้อความ แล้วกด Enter'; } if (btn) btn.disabled = false;
+  return r;
+};
+
+/* ---------- 14) คลิก: ซื้อ · ฟักไข่ · แฟชั่นอาวุธ ---------- */
+const rpgClick31 = rpgClick;
+rpgClick = function (e) {
+  const b = e.target.closest?.('[data-r]'); const a = b?.dataset.r;
+  if (a === 'buy') { e.stopPropagation?.(); return rpgBuyAsk(b.dataset.i); }
+  if (a === 'incub') { return rpgSay('🥚 นำไข่ไปฝากลุงฟาร์มที่ “ฟาร์มสัตว์มหัศจรรย์” ในเมือง แล้วเลือก “ฝากฟักไข่”', 4200); }
+  if (a === 'ht-put') { const s = R.save, id = b.dataset.i, L = rpgHatch(); if (L.length >= RPG_HATCHN || !s.inv[id]) return; rpgGive(id, -1); const m = (RPG_ITEMS[id].mins || 60) * 60000; L.push({ id, t0: Date.now(), t1: Date.now() + m }); rpgSfx('equip'); rpgSay(`🥚 ฝาก${RPG_ITEMS[id].n}แล้ว · กลับมารับในอีก ${rpgFmtDur(m)}`, 3200); rpgQEvent('hatchput'); rpgSave(); return rpgPanelKeep(); }
+  if (a === 'ht-take') return rpgHatchTake(+b.dataset.i);
+  if (a === 'ht-now') { const h = rpgHatch()[+b.dataset.i]; if (h && R.teacher) { h.t1 = Date.now() - 1; h.told = 1; rpgPanelKeep(); } return; }
+  if (a === 'wsk') { const s = R.save, id = b.dataset.i || ''; s.outfit.wsk = s.outfit.wsk === id ? '' : id; rpgSfx('equip'); rpgHud(); rpgSave(); rpgPresenceSend?.(); return rpgPanelKeep(); }
+  return rpgClick31(e);
+};
+
+/* ---------- 15) หน้าต่าง: ฝากฟักไข่ · แฟชั่นอาวุธในตู้เสื้อผ้า · สถานะไข่ในหน้าสัตว์เลี้ยง ---------- */
+const rpgPanel31 = rpgPanel;
+rpgPanel = function (k, arg) {
+  const p = document.getElementById('rpg-panel'); if (!p) return;
+  ['rpg-btip', 'rpg-gres', 'rpg-qty'].forEach(i => document.getElementById(i)?.remove());
+  if (k === 'hatch') { RS.keys = {}; RS.walkTo = null; p.innerHTML = `<div class="rp-card pk-hatch fixed v30fit"><button class="rp-x" data-r="close" aria-label="ปิด">✕</button>${rpgHatchHTML()}</div>`; p.hidden = false; RS.panel = k; requestAnimationFrame(() => rpgPaginate?.()); return; }
+  const r = rpgPanel31.apply(this, arguments);
+  if (k === 'wardrobe') { const side = p.querySelector('.wd-side'), s = R.save, wt = rpgJob().wt, own = Object.keys(RPG_ITEMS).filter(i => RPG_ITEMS[i].t === 'wsk' && s.inv[i] > 0);
+    if (side) { side.insertAdjacentHTML('beforeend', `<h4 class="qx-h">แฟชั่นอาวุธ <small>ได้จากตู้กาชา · ใช้กับอาวุธ${esc(RPG_WT[wt]?.n?.[1] || '')}ของคลาสปัจจุบัน</small></h4>
+      <div class="wd-grid wsk-grid"><button class="${!s.outfit.wsk ? 'on' : ''}" data-r="wsk" data-i=""><span class="rp-ic"><img class="ii" src="${rpgItemURL('@wt:' + wt)}" alt=""></span><small>อาวุธจริง</small></button>${own.map(i => { const it = RPG_ITEMS[i], ok = it.wt === wt;
+        return `<button class="${s.outfit.wsk === i ? 'on' : ''}" data-r="${ok ? 'wsk' : 'noop'}" data-i="${i}" ${ok ? '' : 'disabled title="ใช้ไม่ได้กับอาวุธของคลาสนี้"'}><span class="rp-ic"><img class="ii" src="${rpgItemURL(i)}" alt=""></span><small>${esc(RPG_WSK[it.wsk].n)}</small></button>`; }).join('')}</div>${own.length ? '' : '<p class="rp-p">ยังไม่มีแฟชั่นอาวุธ · ลองหมุนตู้กาชาในร้านกาชาแฟชั่น</p>'}`);
+      requestAnimationFrame(() => rpgPaginate?.()); } }
+  if (k === 'pets') { const L = rpgHatch(), h3 = p.querySelector('.rp-card h3'); p.querySelector('.rp-egg')?.remove();
+    const now = Date.now(), txt = L.length ? L.map(h => `${RPG_ITEMS[h.id].n} ${now >= h.t1 ? '✅ พร้อมรับ' : 'เหลือ ' + rpgFmtDur(h.t1 - now)}`).join(' · ') : 'ยังไม่ได้ฝากไข่';
+    h3?.insertAdjacentHTML('afterend', `<div class="rp-egg2"><b>🥚 ฟักไข่กับลุงฟาร์ม</b><span>${esc(txt)}</span><small>ได้ไข่จากการชนะมอนสเตอร์ → ไปฟาร์มสัตว์มหัศจรรย์ในเมือง → คุยกับลุงฟาร์ม → ฝากฟักไข่</small></div>`);
+    p.querySelectorAll('.rp-p').forEach(el => { if (/ซื้อไข่ที่ฟาร์ม/.test(el.textContent)) el.textContent = 'ชนะมอนสเตอร์แล้วโยน 🎣 ตาข่ายเพื่อจับเป็นสัตว์เลี้ยง · หรือฝากไข่ที่ได้จากมอนสเตอร์ให้ลุงฟาร์มฟัก'; }); }
+  if (RPG_NPCS[k]?.secret || (k || '').startsWith('sec_')) { R.save.secret = R.save.secret || {}; if (!R.save.secret[k]) { R.save.secret[k] = 1; rpgSay('🗝️ พบร้านลับ! ของระดับสูงขายที่นี่ · แผนที่ใหญ่จะจำตำแหน่งไว้ให้', 3600); rpgSave(); } }
+  return r;
+};
+// คุยกับ NPC: ลุงฟาร์ม (ฝากไข่) · น้องกาชาปอง (เปิดตู้)
+const rpgTalk31 = rpgTalk;
+rpgTalk = function (id) {
+  const close = { l: 'ไว้มาใหม่นะ', f: () => rpgDlgClose() };
+  if (id === 'm_egg') { rpgSfx('click'); const L = rpgHatch(), ready = L.filter(h => Date.now() >= h.t1).length;
+    return rpgDlg(id, [{ t: ready ? `ไข่ของเจ้าฟักออกมาแล้ว ${ready} ตัว! มารับไปเลย` : 'ไข่ที่ได้จากมอนสเตอร์ ฝากข้าฟักได้นะ ข้าจะดูแลจนกว่าจะออกมาเป็นตัว', ch: [{ l: ready ? '🐣 รับสัตว์ที่ฟักแล้ว' : '🥚 ฝากฟักไข่', f: () => { rpgDlgClose(); rpgPanel('hatch'); } }, { l: '🛒 ร้านอาหาร & ตาข่าย', f: () => { rpgDlgClose(); rpgPanel('egg'); } }, close] }]); }
+  if (id === 'm_gacha') { rpgSfx('click'); return rpgDlg(id, [{ t: RPG_SHOPIN.gacha.hi[0], ch: [{ l: '🎰 เปิดตู้กาชา', f: () => { rpgDlgClose(); rpgPanel('gacha'); } }, close] }]); }
+  return rpgTalk31(id);
+};
+// ประตูร้านกาชาพาเข้าไปในร้าน
+const rpgDoor31 = rpgDoor;
+rpgDoor = function (d) { if (d?.k === 'gacha' && RPG_ZONES.shop_gacha) { if (RS.map?.city) R.save.back = { scene: RS.map.scene, x: d.x + 1, y: d.y + 1.6 }; return rpgScene('shop_gacha'); } return rpgDoor31(d); };
+
+/* =====================================================================
+   SX Realm v31 — บทแนะนำการเล่นตั้งแต่ 0 (ชี้ปุ่มจริงบนจอ ทีละขั้น) + คำอธิบายปุ่มครั้งแรกที่กด
+   ===================================================================== */
+const RPG_TUT = [
+  { k: 'move', t: 'เดินสำรวจเมือง', d: 'แตะค้างแล้วลากบนจอ (จอยสติ๊กลอย) · คอมใช้ W A S D หรือปุ่มลูกศร · หรือคลิกพื้นเพื่อเดินไปตรงนั้น', sel: null },
+  { k: 'talk', t: 'คุยกับหัวหน้ากิลด์ลีออน', d: 'เดินตามลูกศรสีทองไปหาลีออนที่ลานน้ำพุ แล้วกดปุ่ม 💬 คุย (หรือ Space) เมื่ออยู่ใกล้ เพื่อรับภารกิจแรก', sel: '[data-r=act-talk]' },
+  { k: 'stat', t: 'ดูสถานะตัวละคร', d: 'ปุ่ม 📊 สถานะ ดูค่าพลัง และใช้แต้มสถานะที่ได้ตอนเลเวลอัป', sel: '.rpg-menu [data-r=stat], [data-r=stat]' },
+  { k: 'bag', t: 'เปิดกระเป๋า', d: 'ปุ่ม 🎒 กระเป๋า เก็บไอเทมทั้งหมด · แตะรูปไอเทมเพื่ออ่านว่าใช้ทำอะไร ใช้ที่ไหน', sel: '[data-r=bag]' },
+  { k: 'equip', t: 'สวมใส่อุปกรณ์', d: 'ปุ่ม 🛡️ สวมใส่ เปลี่ยนอาวุธ ชุดเกราะ หมวก รองเท้า เครื่องประดับ', sel: '[data-r=equip]' },
+  { k: 'skill', t: 'จัดสกิล', d: 'ปุ่ม ✨ สกิล อัปเลเวลสกิล และลากสกิลใส่ 5 ช่องที่ใช้ตอนต่อสู้', sel: '[data-r=skill]' },
+  { k: 'buff', t: 'ร่ายบัพ', d: 'ปุ่ม บัพ (ขวาล่าง) เพิ่มพลังให้ตัวเองนานหลายนาที · บางอาชีพบัพให้เพื่อนในปาร์ตี้ได้ด้วย', sel: '[data-r=act-buff]' },
+  { k: 'peace', t: 'โหมดสันติ / พร้อมสู้', d: 'ปุ่มนี้ใต้แผนที่เล็ก กดสลับได้ · 🕊️ สันติ = มอนสเตอร์ไม่เข้ามาท้าสู้ เดินผ่านได้สบาย · ⚔️ พร้อมสู้ = มอนสเตอร์เข้ามาสู้', sel: '[data-r=peace]' },
+  { k: 'map', t: 'ดูแผนที่ใหญ่', d: 'แตะแผนที่เล็กมุมขวาบน · วงกลมสีฟ้าคือทางวาร์ปไปแผนที่อื่น เพชรสีม่วงคือเครื่องวาร์ป', sel: '[data-r=minimap]' },
+  { k: 'chat', t: 'ทักทายในแชท', d: 'แตะช่องแชท (หรือกด Enter) แล้วพิมพ์ทักทายเพื่อน ๆ · แท็บ 💌 ใช้คุยส่วนตัวกับเพื่อน', sel: '#rpg-chat [data-r=ch-open]' },
+  { k: 'kill', t: 'ชนะมอนสเตอร์ 1 ตัว', d: 'ออกจากเมืองไปทุ่งหญ้า เดินชนมอนสเตอร์ หรือกด ⚔️ โจมตี · ตอบคำถามบทเรียนให้ถูก สกิลจะแรงขึ้น', sel: '[data-r=act-atk]' },
+  { k: 'potion', t: 'ดื่มยาฟื้นพลัง', d: 'ปุ่ม 🧪 ยา HP / 💧 ยา MP ขวาล่าง ใช้ฟื้นพลังได้ทุกเมื่อ · ซื้อเพิ่มที่ร้านยาในเมือง', sel: '[data-r=act-hp]' },
+  { k: 'pets', t: 'สัตว์เลี้ยงคู่ใจ', d: 'ปุ่ม 🐾 สัตว์ ดูสัตว์เลี้ยง ให้อาหาร และเลือกตัวที่จะพาไปช่วยสู้', sel: '[data-r=act-pet]' },
+  { k: 'egg', t: 'ฝากฟักไข่กับลุงฟาร์ม', d: 'ลุงฟาร์มฝากไข่มาให้ 1 ฟองในกระเป๋า · เข้าร้าน “ฟาร์มสัตว์มหัศจรรย์” ในเมือง คุยกับลุงฟาร์ม แล้วเลือก “ฝากฟักไข่”', sel: null },
+];
+const RPG_TUT_REWARD = { gold: 800, it: { fth: 10, hp2: 5, mp1: 5 } };
+function rpgTutOn() { const s = R.save; return s?.job && typeof s.tut === 'number' && s.tut < RPG_TUT.length; }
+function rpgTutStep() { return rpgTutOn() ? RPG_TUT[R.save.tut] : null; }
+function rpgTutInit() {
+  const s = R.save; if (!s?.job) return;
+  if (s.tut == null) s.tut = R.teacher || (s.q?.main || 0) > 0 || s.lvl >= 5 ? 'done' : 0;
+  rpgTutBegin();
+}
+function rpgTutBegin() {
+  const S = rpgTutStep(); if (!S) return rpgTutHL(null);
+  const s = R.save; s.tutAt = { x: s.x, y: s.y, sc: RS.map?.scene };
+  if (S.k === 'egg' && !s.tutEgg) { s.tutEgg = 1; rpgGive('egg1'); rpgSay('🥚 ลุงฟาร์มฝากไข่มาให้ 1 ฟอง · ดูในกระเป๋าได้เลย', 3600); }
+  rpgQTrack(); rpgTutHL(S);
+}
+function rpgTutEvent(k, v) {
+  const S = rpgTutStep(); if (!S || S.k !== k) return;
+  const s = R.save; s.tut++; rpgSfx('coin');
+  if (!s.tutReplay) { R.gold += 200; rpgHud(); }
+  if (s.tut >= RPG_TUT.length) {
+    s.tut = 'done'; rpgTutHL(null);
+    if (!s.tutReplay) { const got = rpgQReward(RPG_TUT_REWARD); rpgSay(`🎓 จบบทแนะนำแล้ว! รางวัล ${got.join(' · ')} · ต่อไปทำภารกิจหลักกับลีออนได้เลย`, 5200); }
+    else rpgSay('🎓 ทบทวนบทแนะนำครบแล้ว', 3000);
+    delete s.tutReplay; rpgSave(); return rpgQTrack();
+  }
+  rpgSay(`✅ ${S.t} · ${s.tutReplay ? 'ต่อไป' : '+💰200 · ต่อไป'}: ${RPG_TUT[s.tut].t}`, 3000); rpgSave(); rpgTutBegin();
+}
+// ไฮไลต์ปุ่มเป้าหมายบนจอ
+function rpgTutHL(S) {
+  let ring = document.getElementById('tut-ring'), bub = document.getElementById('tut-bub'); const root = document.getElementById('rpg');
+  if (!S || !root) { ring?.remove(); bub?.remove(); return; }
+  if (!ring) { ring = document.createElement('div'); ring.id = 'tut-ring'; ring.className = 'tut-ring'; ring.setAttribute('aria-hidden', 'true'); root.appendChild(ring); }
+  if (!bub) { bub = document.createElement('div'); bub.id = 'tut-bub'; bub.className = 'tut-bub'; bub.setAttribute('role', 'status'); root.appendChild(bub); }
+  bub.innerHTML = `<small>บทแนะนำ ${R.save.tut + 1}/${RPG_TUT.length}</small><b>${esc(S.t)}</b><p>${esc(S.d)}</p>`;
+  rpgTutPlace();
+}
+function rpgTutPlace() {
+  const S = rpgTutStep(), ring = document.getElementById('tut-ring'), bub = document.getElementById('tut-bub'), root = document.getElementById('rpg'); if (!S || !ring || !bub || !root) return;
+  const busy = RS.battle || !document.getElementById('rpg-panel')?.hidden || !document.getElementById('rpg-dlg')?.hidden || !document.getElementById('rpg-bigmap')?.hidden;
+  const tgt = S.sel ? [...root.querySelectorAll(S.sel)].find(e => e.offsetParent && e.getBoundingClientRect().width) : null;
+  ring.hidden = bub.hidden = !!busy; if (busy) return;
+  const rr = root.getBoundingClientRect();
+  if (!tgt) { ring.hidden = true; const bw0 = Math.min(300, rr.width - 16); Object.assign(bub.style, { width: bw0 + 'px', left: Math.max(8, rr.width / 2 - bw0 / 2) + 'px', top: Math.max(70, rr.height * .2) + 'px' }); bub.dataset.arrow = ''; return; }
+  const r = tgt.getBoundingClientRect(), pad = 6; Object.assign(ring.style, { left: r.left - rr.left - pad + 'px', top: r.top - rr.top - pad + 'px', width: r.width + pad * 2 + 'px', height: r.height + pad * 2 + 'px' }); ring.hidden = false;
+  const bw = Math.min(280, rr.width - 16), bh = bub.offsetHeight || 110, cx = r.left - rr.left + r.width / 2;
+  let left = Math.min(rr.width - bw - 8, Math.max(8, cx - bw / 2)), top, arrow;
+  if (r.top - rr.top > bh + 24) { top = r.top - rr.top - bh - 16; arrow = 'down'; } else { top = r.bottom - rr.top + 16; arrow = 'up'; }
+  Object.assign(bub.style, { left: left + 'px', top: top + 'px', width: bw + 'px', '--ax': (cx - left) + 'px' }); bub.dataset.arrow = arrow;
+}
+setInterval(() => {
+  if (!rpgTutOn() || !document.getElementById('rpg')) return; rpgTutPlace();
+  const S = rpgTutStep(), s = R.save;
+  if (S.k === 'move' && s.tutAt && (s.tutAt.sc !== RS.map?.scene || Math.hypot(s.x - s.tutAt.x, s.y - s.tutAt.y) > 5)) rpgTutEvent('move');
+}, 250);
+// เกี่ยวเหตุการณ์ในเกม
+const rpgPanelT = rpgPanel; rpgPanel = function (k) { const r = rpgPanelT.apply(this, arguments); if (k && ['stat', 'bag', 'equip', 'skill', 'pets'].includes(k)) rpgTutEvent(k); setTimeout(rpgTutPlace, 30); return r; };
+const rpgCastBuffT = rpgCastBuff; rpgCastBuff = function () { const n = (R.save.buffs || []).map(b => b.until).join(); const r = rpgCastBuffT.apply(this, arguments); if ((R.save.buffs || []).map(b => b.until).join() !== n) rpgTutEvent('buff'); return r; };
+const rpgPeaceT = rpgPeaceToggle; rpgPeaceToggle = function () { const r = rpgPeaceT.apply(this, arguments); rpgTutEvent('peace'); return r; };
+const rpgBigMapT = rpgBigMap; rpgBigMap = function (tab) { const r = rpgBigMapT.apply(this, arguments); rpgTutEvent('map'); return r; };
+const rpgChatOpenT = rpgChatOpen; rpgChatOpen = function () { const r = rpgChatOpenT.apply(this, arguments); rpgTutEvent('chat'); return r; };
+const rpgTalkT = rpgTalk; rpgTalk = function (id) { const r = rpgTalkT.apply(this, arguments); if (id === 'leon') rpgTutEvent('talk'); return r; };
+const rpgQEventT = rpgQEvent; rpgQEvent = function (k) { const r = rpgQEventT.apply(this, arguments); if (k === 'kill') rpgTutEvent('kill'); if (k === 'hatchput') rpgTutEvent('egg'); return r; };
+const rpgEnterT = rpgEnter; rpgEnter = function () { const r = rpgEnterT.apply(this, arguments); setTimeout(() => { rpgTutInit(); rpgTutPlace(); }, 600); return r; };
+const rpgCreatorDoneT = rpgCreatorDone; rpgCreatorDone = function () { const r = rpgCreatorDoneT.apply(this, arguments); if (R.save && !R.teacher) { R.save.tut = 0; R.save.tutEgg = 0; setTimeout(rpgTutBegin, 900); } return r; };
+const rpgQuitT = rpgQuit; rpgQuit = function () { rpgTutHL(null); document.getElementById('rpg-qty')?.remove(); return rpgQuitT.apply(this, arguments); };
+
+// แถบภารกิจ: บทแนะนำอยู่บนสุด
+const rpgQTrackT = rpgQTrack;
+rpgQTrack = function () {
+  const r = rpgQTrackT.apply(this, arguments), S = rpgTutStep(), el = document.getElementById('rpg-qt'); if (!el) return r;
+  el.querySelector('.qt-tut')?.remove(); if (!S || el.classList.contains('hide')) return r;
+  const box = document.createElement('div'); box.className = 'qt-tut';
+  box.innerHTML = `<small>📘 บทแนะนำการเล่น ${R.save.tut + 1}/${RPG_TUT.length}</small><b>${esc(S.t)}</b><p>${esc(S.d)}</p><div class="qt-tbar"><i style="width:${Math.round(R.save.tut / RPG_TUT.length * 100)}%"></i></div><button type="button" data-r="tut-skip">ข้ามบทแนะนำ</button>`;
+  const head = el.querySelector('.qt-head, [data-r=qt-hide]'); head ? head.after(box) : el.prepend(box); return r;
+};
+// ข้าม / ทบทวนบทแนะนำ
+const rpgClickT = rpgClick;
+rpgClick = function (e) {
+  const b = e.target.closest?.('[data-r]'), a = b?.dataset.r, s = R.save;
+  if (a === 'tut-skip') { if (!b.dataset.sure) { b.dataset.sure = 1; b.textContent = 'แตะอีกครั้งเพื่อยืนยันการข้าม'; return; } s.tut = 'done'; delete s.tutReplay; rpgTutHL(null); rpgQTrack(); rpgSave(); return rpgSay('ข้ามบทแนะนำแล้ว · เปิดอีกครั้งได้ที่หน้าภารกิจ'); }
+  if (a === 'tut-again') { s.tut = 0; s.tutReplay = 1; rpgPanel(null); rpgTutBegin(); return; }
+  if (a === 'act-hp' || a === 'act-mp') setTimeout(() => rpgTutEvent('potion'), 50);
+  rpgBtnTip(a);
+  return rpgClickT(e);
+};
+// หน้าภารกิจ: ปุ่มทบทวนบทแนะนำ
+const rpgQuestHTMLT = rpgQuestHTML;
+rpgQuestHTML = function () { const h = rpgQuestHTMLT.apply(this, arguments); return h + (rpgTutOn() ? '' : '<button class="rp-btn wide tut-again" data-r="tut-again">📘 ดูบทแนะนำการเล่นอีกครั้ง</button>'); };
+
+// คำอธิบายปุ่มตอนกดครั้งแรก
+const RPG_BTNTIP = {
+  peace: ['🕊️ โหมดสันติ / ⚔️ พร้อมสู้', 'สันติ: มอนสเตอร์จะไม่วิ่งเข้ามาท้าสู้ เหมาะกับการเดินทางหรือทำเควสคุย · พร้อมสู้: มอนสเตอร์เข้ามาสู้ เหมาะกับการเก็บเลเวล'],
+  warpmenu: ['🌀 วาร์ป', 'เปิดแผนที่โลกแล้ววาร์ปไปแผนที่ที่เคยไปแล้ว (เสียทองเล็กน้อย) · ใช้เครื่องวาร์ปในเมืองลดราคาครึ่งหนึ่ง'],
+  'act-buff': ['บัพอาชีพ', 'เพิ่มพลังนานหลายนาที ใช้ MP และต้องรอคูลดาวน์ 1 นาที · ไอคอนบัพจะขึ้นที่มุมจอ'],
+  'act-pet': ['🐾 สัตว์เลี้ยง', 'ดูสัตว์เลี้ยง ให้อาหาร เลือกตัวที่พาไปด้วย · สัตว์ที่พาไปจะช่วยโจมตีในการต่อสู้'],
+  'act-talk': ['💬 คุย', 'คุยกับ NPC ที่อยู่ใกล้ · หรือกด Space'],
+  'act-atk': ['⚔️ โจมตี', 'เริ่มต่อสู้กับมอนสเตอร์ที่อยู่ใกล้ที่สุด · ในการต่อสู้เลือกโจมตี สกิล ไอเทม หรือจับสัตว์'],
+  'act-hp': ['🧪 ยา HP', 'ดื่มยาฟื้น HP ทันที (ใช้ยาที่มีในกระเป๋า) · ตัวเลขคือจำนวนยาที่เหลือ'],
+  'act-mp': ['💧 ยา MP', 'ดื่มยาฟื้น MP สำหรับใช้สกิลและบัพ'],
+  nav: ['🚶 นำทาง', 'ให้ตัวละครเดินไปยังเป้าหมายของภารกิจอัตโนมัติ · กดอีกครั้งเพื่อหยุด'],
+  more: ['☰ เมนู', 'รวมเมนูอื่น ๆ เช่น ปีก แต่งตัว เพื่อน กิลด์ ตั้งค่า และออกจากเกม'],
+};
+function rpgBtnTip(a) {
+  const T = RPG_BTNTIP[a], s = R.save; if (!T || !s) return; s.tips = s.tips || {}; if (s.tips[a]) return; s.tips[a] = 1;
+  document.getElementById('rpg-btip')?.remove(); const el = document.createElement('div'); el.id = 'rpg-btip'; el.className = 'rpg-btip'; el.setAttribute('role', 'status');
+  el.innerHTML = `<b>${esc(T[0])}</b><p>${esc(T[1])}</p><button type="button" aria-label="ปิดคำอธิบาย">เข้าใจแล้ว</button>`; el.querySelector('button').onclick = () => el.remove();
+  (document.getElementById('rpg') || document.body).appendChild(el); setTimeout(() => el.remove(), 7000);
+}
 
 /* =====================================================================
    rpg-net.js — หน้าเกมของครู: จัดการตัวละคร (เลือกชั้น → ห้อง) · คำถามในเกม · ตรวจแชท · กิลด์ · โหมดครู
