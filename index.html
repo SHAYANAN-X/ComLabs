@@ -4556,6 +4556,42 @@ html.g3-on,html.g3-on body{overflow:hidden}
 }
 @media (max-width:760px){.rpg .rpg-bot{white-space:nowrap;font-size:10px;overflow:hidden}.rpg .rpg-bot *{white-space:nowrap}}
 
+/* ===================== v29 ===================== */
+img.ii{display:inline-block;width:1.25em;height:1.25em;vertical-align:-.25em;object-fit:contain;pointer-events:auto}
+.rpg :is(.rp-ic,.sp-it .rp-ic) img.ii{width:84%;height:84%;vertical-align:middle;cursor:zoom-in}
+.rpg .sp-cell img.ii{width:70%;height:70%}
+.rpg .eq-slot img.ii{width:78%;height:78%}
+.rpg .rpg-menu img.ii,.rpg .rm-card img.ii{width:1em;height:1em}
+.rpg-iinfo{position:absolute;inset:0;z-index:30;display:grid;place-items:center;background:rgba(20,14,50,.35);animation:rp-fade .15s}
+.ii-card{position:relative;width:min(380px,calc(100vw - 32px));padding:18px;border-radius:24px;color:#2F2A4A;background:#fff;box-shadow:0 0 0 4px #fff,0 0 0 7px var(--gc),0 24px 50px rgba(30,20,80,.45);animation:cu-pop .3s cubic-bezier(.2,1.4,.4,1)}
+.ii-x{position:absolute;right:12px;top:12px;width:36px;height:36px;border:0;border-radius:50%;cursor:pointer;font-size:15px;color:#fff;background:linear-gradient(180deg,#FF8AA0,#F2557A);box-shadow:0 3px 0 #C23A5E}
+.ii-top{display:flex;gap:14px;align-items:center;margin-right:40px}
+.ii-pic{flex:none;width:96px;height:96px;border-radius:20px;display:grid;place-items:center;background:radial-gradient(circle at 40% 35%,#FFFFFF,color-mix(in srgb,var(--gc) 30%,#EEE9FF));box-shadow:inset 0 0 0 2px color-mix(in srgb,var(--gc) 60%,#fff)}
+.ii-pic img{width:88px;height:88px}
+.ii-top b{display:block;font:800 18px var(--f-head);line-height:1.3}.ii-top b em{font-style:normal;color:#E8553D}
+.ii-tags{display:flex;flex-wrap:wrap;gap:4px;margin-top:6px}.ii-tags span{padding:2px 9px;border-radius:999px;font-size:12px;font-weight:700;color:#5A5280;background:#F1EDFF}.ii-tags span.ok{color:#16803C;background:#E3F8EA}
+.ii-st{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin:14px 0 0;padding:0;list-style:none}.ii-st li{display:flex;justify-content:space-between;padding:7px 10px;border-radius:12px;background:#F8F6FF;font-size:13.5px}.ii-st b{color:#3A2F6B}
+.ii-line{margin:12px 0 0;font-size:14px;color:#5A5280}
+.ii-d{margin:10px 0 0;font-size:13.5px;line-height:1.55;color:#6E6890}
+.ii-meta{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}.ii-meta span{padding:3px 10px;border-radius:999px;font-size:12.5px;font-weight:700;color:#8A6A2A;background:#FFF6DC}.ii-meta span.no{color:#C2413B;background:#FFECEC}
+.ii-sell{width:100%;margin-top:14px}
+/* คลัง */
+.pk-store .stw section{min-height:0}
+.st-gold{flex:none;display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px;padding:12px;border-radius:18px;background:#FFF9EA;border:1.5px solid #FFE1A0}
+.st-gold>div:not(.st-amt):not(.st-act){display:flex;flex-direction:column}.st-gold span{font-size:12.5px;font-weight:700;color:#8A6A2A}.st-gold b{font:900 19px var(--f-body);color:#B07A00!important}
+.st-amt{grid-column:1/-1;display:flex;gap:8px;align-items:center;flex-wrap:wrap}.st-amt input{flex:1;min-width:130px;height:40px;padding:0 12px;border:0;border-radius:12px;font:700 15px var(--f-body);color:#2F2A4A;background:#fff;box-shadow:inset 0 0 0 1.5px #FFD98A}
+.st-amt>div{display:flex;gap:6px}.st-amt .rp-btn{min-height:34px;padding:0 10px;font-size:12.5px}
+.st-act{grid-column:1/-1;display:flex;gap:8px}.st-act .rp-btn{flex:1}
+@media (max-width:760px){.pk-store .sp-wrap{max-height:42vh}}
+/* จอยสติ๊กลอย */
+#rpg-c{touch-action:none}
+.rpg-fjoy{position:absolute;z-index:6;width:112px;height:112px;margin:-56px 0 0 -56px;border-radius:50%;pointer-events:none;opacity:0;transition:opacity .12s;background:radial-gradient(circle,rgba(255,255,255,.12),rgba(255,255,255,.04));box-shadow:inset 0 0 0 2px rgba(255,255,255,.45)}
+.rpg-fjoy.on{opacity:1}
+.rpg-fjoy i{position:absolute;left:50%;top:50%;width:48px;height:48px;margin:-24px 0 0 -24px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#FFFFFF,#C9C2FF);box-shadow:0 4px 12px rgba(0,0,0,.35)}
+.rpg .rp-card.fixed .sp-wrap{grid-template-rows:minmax(0,1fr)}
+.rpg .rp-card.fixed .sp-wrap section{overflow:hidden}
+@media (max-width:760px){.rpg .rp-card.fixed .sp-wrap{grid-template-rows:minmax(0,1fr) minmax(0,1fr);max-height:none}.pk-store .sp-wrap{max-height:none}}
+
 </style>
 </head>
 <body>
@@ -5099,7 +5135,7 @@ if (typeof module !== 'undefined') module.exports = ExamParser;
 </script>
 <script>
 /* โลโก้: ภาพครูปลื้ม (ไฟล์ต้นฉบับ src/logo.svg ฝังตอน build) */
-const APP_VER = '28.0 · 26 พ.ย. 2569';
+const APP_VER = '29.0 · 26 พ.ย. 2569';
 let LOGO_N = 0;
 function logoSVG() { const k = 'L' + (++LOGO_N); return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><defs><linearGradient id="lgb" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3B9BFF"/><stop offset=".5" stop-color="#0A5BE0"/><stop offset="1" stop-color="#062C78"/></linearGradient><linearGradient id="lgs" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset=".6" stop-color="#FFF4D6"/><stop offset="1" stop-color="#FFD978"/></linearGradient><radialGradient id="lgc" cx=".3" cy=".08" r=".75"><stop offset="0" stop-color="#fff" stop-opacity=".55"/><stop offset=".5" stop-color="#fff" stop-opacity=".08"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient></defs><rect width="48" height="48" rx="13" fill="url(#lgb)"/><rect width="48" height="48" rx="13" fill="url(#lgc)"/><rect x=".75" y=".75" width="46.5" height="46.5" rx="12.3" fill="none" stroke="#fff" stroke-opacity=".45" stroke-width="1.2"/><g fill="none" stroke="#04235F" stroke-opacity=".35" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" transform="translate(0 1.2)"><path d="M21.2 17 C19.8 14.6 17.4 13.6 14.8 13.6 C11 13.6 8.6 15.6 8.6 18.5 C8.6 21.8 11.6 22.9 14.9 23.9 C18.6 25 21.6 26.4 21.6 29.8 C21.6 33 18.8 34.6 15.1 34.6 C12 34.6 9.5 33.4 8 31.1"/><path d="M26.6 14 L39.6 34.2 M39.6 14 L26.6 34.2"/></g><g fill="none" stroke="url(#lgs)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M21.2 17 C19.8 14.6 17.4 13.6 14.8 13.6 C11 13.6 8.6 15.6 8.6 18.5 C8.6 21.8 11.6 22.9 14.9 23.9 C18.6 25 21.6 26.4 21.6 29.8 C21.6 33 18.8 34.6 15.1 34.6 C12 34.6 9.5 33.4 8 31.1"/><path d="M26.6 14 L39.6 34.2 M39.6 14 L26.6 34.2"/></g></svg>`.replace('<svg ', '<svg class="logo" aria-hidden="true" ').replace(/\b(lg[bsc])\b/g, '$1' + k); }
 /* =====================================================================
@@ -11662,7 +11698,7 @@ function studentGameHTML() {
       </div>
     </div>
     <button class="rh-play" data-act="rpg-enter"><span>▶</span>เข้าสู่ SX Realm</button>
-    <p class="rh-note">ยศในเว็บของคุณให้โบนัสพลัง +${st.rb}% · ทองในเกม 100 💰 แลกได้ 1 🟡 (วันละไม่เกิน 10) · ภารกิจหลักบทที่ ${Math.min(s.q.main + 1, RPG_MAINQ.length)}/${RPG_MAINQ.length}</p>
+    <p class="rh-note">ยศในเว็บของคุณให้โบนัสพลัง +${st.rb}% · ทองในเกม 100,000 💰 แลกได้ 1 🟡 (วันละไม่เกิน 10) · ภารกิจหลักบทที่ ${Math.min(s.q.main + 1, RPG_MAINQ.length)}/${RPG_MAINQ.length}</p>
     ${R.err === 'need-sql' ? '<div class="hint warn">⚠️ ครูยังไม่ได้รันไฟล์ phase19.sql · เล่นได้ แต่เซฟไว้ในเครื่องนี้เท่านั้น</div>' : ''}
   </div>`;
 }
@@ -11939,9 +11975,9 @@ function rpgPanel(k, arg) {
     body = `<h3>${sh.ic} ${sh.n}</h3>${gold}${rpgNpcHTML(k)}${sh.items === 'gear' ? `<p class="rp-p">แสดงอาวุธสำหรับ ${rpgJob().ic} ${rpgJob().n} · ระดับสูงจะมีออร่าเรืองแสงรอบตัว</p>` : ''}<div class="rp-list grid">${list.map(i => card(i, 'buy')).join('')}</div>
       ${k === 'potion' && (s.inv.gem || s.inv.chip) ? `<button class="rp-btn wide" data-r="sellloot">ขายของดรอป 💠${s.inv.gem || 0} 🔩${s.inv.chip || 0} (+${((s.inv.gem || 0) * 40 + (s.inv.chip || 0) * 120).toLocaleString()} 💰)</button>` : ''}`;
   } else if (k === 'bank') {
-    const can = Math.min(10 - R.exToday, Math.floor(R.gold / 100));
-    body = `<h3>💱 ธนาคารแลกทอง</h3>${gold}${rpgNpcHTML('bank')}<p class="rp-p">แลกทองในเกมเป็นเหรียญ 🟡 ของเว็บ เอาไปซื้อฉายาในร้านค้า · <b>100 💰 = 1 🟡</b> · วันละไม่เกิน 10 🟡 (วันนี้แลกแล้ว ${R.exToday})</p>
-      <div class="rp-ex">${[1, 5, 10].map(n => `<button class="rp-btn" data-r="exch" data-n="${n}" ${can >= n ? '' : 'disabled'}>แลก ${n} 🟡<small>${n * 100} 💰</small></button>`).join('')}</div>`;
+    const can = Math.min(10 - R.exToday, Math.floor(R.gold / 100000));
+    body = `<h3>💱 ธนาคารแลกทอง</h3>${gold}${rpgNpcHTML('bank')}<p class="rp-p">แลกทองในเกมเป็นเหรียญ 🟡 ของเว็บ เอาไปซื้อฉายาในร้านค้า · <b>100,000 💰 = 1 🟡</b> · วันละไม่เกิน 10 🟡 (วันนี้แลกแล้ว ${R.exToday})</p>
+      <div class="rp-ex">${[1, 5, 10].map(n => `<button class="rp-btn" data-r="exch" data-n="${n}" ${can >= n ? '' : 'disabled'}>แลก ${n} 🟡<small>${(n * 100000).toLocaleString()} 💰</small></button>`).join('')}</div>`;
   } else if (k === 'board') {
     body = `<h3>🏆 กิลด์ผู้กล้า</h3>${rpgNpcHTML('board')}
       <div class="rp-stats"><div><b>${s.stats.kills}</b><small>มอนสเตอร์ที่ชนะ</small></div><div><b>${s.stats.boss}</b><small>ปราบบอส</small></div><div><b>${s.stats.caps || 0}</b><small>จับสัตว์ได้</small></div><div><b>${s.q.main}/${RPG_MAINQ.length}</b><small>ภารกิจหลัก</small></div></div>`;
@@ -12316,7 +12352,7 @@ function rpgDraw(now) {
   const ents = [];
   mp.trees.forEach(tr => { if (vis(tr.x, tr.y, 3)) ents.push({ y: tr.y + .92, d: () => { const T2 = rpgTree2(tr.k, tr.v), k = T2.w > 100 ? (tr.dense ? .62 : .8) : 1; x.drawImage(T2.img, tr.x * TS + 16 - (T2.ox + 16) * k, tr.y * TS + TS - 4 - T2.oy * k, T2.w * k, T2.h * k); } }); });
   RS.mon.forEach(mo => { if (vis(mo.x, mo.y, 4)) ents.push({ y: mo.y, d: () => rpgDrawMon(x, mo, t) }); });
-  Object.entries(RS.others || {}).forEach(([id, o]) => { if (t - o.seen < 12000 && o.m === mp.scene) ents.push({ y: o.y, d: () => rpgCharAt(x, { x: o.x, y: o.y, look: o.o, dir: o.dir || 'd', anim: t / 90, moving: Math.hypot((o.tx ?? o.x) - o.x, (o.ty ?? o.y) - o.y) > .02, name: (o.teacher ? '👑 ' : '') + o.n, col: RPG_JOBS[o.k]?.col, guild: o.g, party: R.party?.mem.some(m => m.id === id), pn: o.pn, hp: o.hp, sp: o.sp, bf: o.bf, teacher: o.teacher, emote: o.em && t - o.emAt < 3500 ? o.em : null, emAge: t - o.emAt, say: o.say && t - o.sayAt < 4000 ? o.say : null, pet: o.p, t, seed: id.length * 97 }) }); });
+  Object.entries(RS.others || {}).forEach(([id, o]) => { if (t - o.seen < 12000 && o.m === mp.scene) ents.push({ y: o.y, d: () => rpgCharAt(x, { x: o.x, y: o.y, look: o.o, dir: o.dir || 'd', anim: t / 90, moving: o.mv ?? Math.hypot((o.tx ?? o.x) - o.x, (o.ty ?? o.y) - o.y) > .02, name: (o.teacher ? '👑 ' : '') + o.n, col: RPG_JOBS[o.k]?.col, guild: o.g, party: R.party?.mem.some(m => m.id === id), pn: o.pn, hp: o.hp, sp: o.sp, bf: o.bf, teacher: o.teacher, emote: o.em && t - o.emAt < 3500 ? o.em : null, emAge: t - o.emAt, say: o.say && t - o.sayAt < 4000 ? o.say : null, pet: o.p, t, seed: id.length * 97 }) }); });
   rpgLifeEnts(x, t, ents);
   if (mp.board) ents.push({ y: mp.board.y + .1, d: () => rpgTopBoard2(x, t) });
   (mp.npcs || []).forEach(n => ents.push({ y: n.y, d: () => rpgCharAt(x, { x: n.x, y: n.y, look: { ...n.look, job: n.job, wt: RPG_JOBS[n.job].wt, wtier: n.gear, atier: n.gear }, dir: 'd', t, name: n.n, npc: true, col: '#F6C343', mark: rpgNpcMark(n.id), seed: n.x * 99 }) }));
@@ -13268,7 +13304,7 @@ function draw(x, o) {
   x.fillStyle = '#4A2E1C'; x.beginPath(); x.moveTo(-waist - .2, hip - 4.2); x.quadraticCurveTo(0, hip - 3, waist + .2, hip - 4.2); x.lineTo(waist + .3, hip - 2); x.quadraticCurveTo(0, hip - .8, -waist - .3, hip - 2); x.fill(); x.fillStyle = c2; x.beginPath(); x.roundRect(-1.6, hip - 4.4, 3.2, 2.8, .8); x.fill(); }
   if (job === 'sword') { [-1, 1].forEach(s => { x.fillStyle = lg(x, s * sh - 3, neck - 1, s * sh + 3, neck + 5, '#C3CCDA', .5, .35); x.beginPath(); x.ellipse(s * (sh - .4), neck + 2.6, 4, 3.1, s * .35, Math.PI * 1.0, Math.PI * 2.1); x.quadraticCurveTo(s * (sh - .4), neck + 4.8, s * (sh - 4), neck + 3); x.fill(); }); }
   // arms: tapered single shapes, sleeve->hand without seam (hand tinted gradient)
-  if (o.pose) { poseArms(x, o, L, c1, skin); } else [-1, 1].forEach(s => { const ax = s * (sh - .2), ay = neck + 3.2, ex = s * (sh + 1.6), ey = neck + 9, hx = s * (sh + 1.4), hy = hip - 1.5;
+  if (o.pose) { if (o.back) { x.save(); x.scale(-1, 1); poseArms(x, o, L, c1, skin); x.restore(); } else poseArms(x, o, L, c1, skin); } else [-1, 1].forEach(s => { const ax = s * (sh - .2), ay = neck + 3.2, ex = s * (sh + 1.6), ey = neck + 9, hx = s * (sh + 1.4), hy = hip - 1.5;
     x.fillStyle = lg(x, ax - 2, ay, ax + 2, hy, c1, .2, .32); x.beginPath(); x.moveTo(ax - s * 2.8, ay - 1.5); x.quadraticCurveTo(ax + s * 3.6, ay - 2, ex + s * 2.4, ey); x.quadraticCurveTo(hx + s * 2.2, hy - 4, hx + s * 1.6, hy - 2.6); x.lineTo(hx - s * 1.8, hy - 2.6); x.quadraticCurveTo(ex - s * 1.2, ey + 1, ax - s * 2.8, ay - 1.5); x.fill();
     const sg = x.createRadialGradient(hx - .5, hy - .8, .3, hx, hy, 2.6); sg.addColorStop(0, lt(skin, .3)); sg.addColorStop(1, dk(skin, .12)); x.fillStyle = sg; x.beginPath(); x.ellipse(hx, hy - .4, 2.1, 2.4, 0, 0, 7); x.fill(); });
   if (O.arms && !o.pose) O.arms(x, L);
@@ -17006,6 +17042,414 @@ rpgBSkill = function (idx, ok) {
 };
 const rpgBCutin28 = rpgBCutin;
 rpgBCutin = function (k, idx, lv) { const B = RS.battle; if (B?.cineSkip) { B.cineSkip = false; return 80; } return rpgBCutin28(k, idx, lv); };
+
+/* =====================================================================
+   SX Realm v29 — ไอคอนไอเทมวาดเองทั้งหมด (ไม่ใช้อีโมจิ) + กดดูรายละเอียดไอเทม
+   ===================================================================== */
+const RPG_IPAL = [
+  { m: '#A87A4E', l: '#E2BE8C', d: '#5E3E22', g: null },        // ไม้
+  { m: '#9AA3AE', l: '#EEF2F6', d: '#545C68', g: '#7FB8E8' },   // เหล็ก
+  { m: '#7FA6C9', l: '#E2EEFA', d: '#36577A', g: '#5BC8FF' },   // เหล็กกล้า
+  { m: '#C6D0E2', l: '#FFFFFF', d: '#6E7C96', g: '#8FD3FF' },   // เงินจันทรา
+  { m: '#E8B93A', l: '#FFF2B8', d: '#8E5E08', g: '#FF4D5E' },   // ทอง
+  { m: '#6FD8EE', l: '#EAFFFF', d: '#1E7FA0', g: '#C08CFF', glow: '#7FE8FF' },   // คริสตัล
+  { m: '#E0303A', l: '#FF9C8E', d: '#6E0812', g: '#FFD23F', glow: '#FF5A3D' },   // ทับทิม
+  { m: '#B58CFF', l: '#FFFFFF', d: '#4E2E96', g: '#FFE27A', glow: '#D8B8FF', rb: 1 },  // ตำนาน
+];
+const RPG_WXTHEME = { wx1: ['#5BC85A', '#E8FFB0', '#1E6A22', '#FFE27A'], wx2: ['#C8303A', '#FF9A8A', '#4A0610', '#FFB020'], wx3: ['#8FDFFF', '#FFFFFF', '#2A7FB8', '#E0F8FF'], wx4: ['#E8B93A', '#FFF2B8', '#7A4E08', '#3DA8FF'], wx5: ['#FF6A3D', '#FFD0A0', '#7A1A08', '#FFE27A'], wx6: ['#6A2FB8', '#C8A0FF', '#1E0A3A', '#FF3B5C'] };
+function rpgIPal(it, id) {
+  const t = Math.max(0, Math.min(7, it?.tier ?? (it?.g != null ? it.g + 1 : 2)));
+  const P = { ...RPG_IPAL[t], t };
+  const W = RPG_WXTHEME[id]; if (W) Object.assign(P, { m: W[0], l: W[1], d: W[2], g: W[3], glow: W[0] });
+  else if (it?.col && it.t !== 'w') { P.m = it.col; P.l = rpgShadeC(it.col, 1.45); P.d = rpgShadeC(it.col, .5); }
+  return P;
+}
+function rpgIGrad(x, x0, y0, x1, y1, P) { const g = x.createLinearGradient(x0, y0, x1, y1); g.addColorStop(0, P.l); g.addColorStop(.45, P.m); g.addColorStop(1, P.d); return g; }
+function rpgIPath(x, pts) { x.beginPath(); pts.forEach(([a, b], i) => i ? x.lineTo(a, b) : x.moveTo(a, b)); x.closePath(); }
+function rpgIFill(x, fill, lw = 2.2) { x.fillStyle = fill; x.fill(); x.lineJoin = 'round'; x.strokeStyle = 'rgba(22,14,34,.9)'; x.lineWidth = lw; x.stroke(); }
+function rpgIGem(x, cx, cy, r, col) { const g = x.createRadialGradient(cx - r * .35, cy - r * .35, r * .1, cx, cy, r); g.addColorStop(0, '#FFFFFF'); g.addColorStop(.35, col); g.addColorStop(1, rpgShadeC(col, .45)); x.beginPath(); x.arc(cx, cy, r, 0, 7); rpgIFill(x, g, 1.4); }
+function rpgIShine(x, pts) { x.save(); x.globalAlpha = .55; x.fillStyle = '#FFFFFF'; rpgIPath(x, pts); x.fill(); x.restore(); }
+
+/* ---------- อาวุธ ---------- */
+function rpgIBlade(x, P, len = 62, w = 11, curve = 0) {   // ใบดาบตั้งตรง (ปลายชี้ขึ้น) โคนที่ y=0
+  rpgIPath(x, [[-w / 2, 0], [-w / 2 - curve, -len * .72], [0, -len], [w / 2 - curve * .3, -len * .74], [w / 2, 0]]); rpgIFill(x, rpgIGrad(x, -w / 2, 0, w / 2, 0, P));
+  x.strokeStyle = P.d; x.globalAlpha = .55; x.lineWidth = 1.6; x.beginPath(); x.moveTo(0, -4); x.lineTo(0, -len * .78); x.stroke(); x.globalAlpha = 1;
+  rpgIShine(x, [[-w / 2 + 1.5, -2], [-w / 2 + 1.5 - curve, -len * .7], [-1, -len * .9], [-1.2, -3]]);
+}
+function rpgIHilt(x, P, gw = 30, gripL = 16) {
+  const gp = { m: '#7A4A2A', l: '#C08A5A', d: '#3A1E0E' };
+  x.save(); rpgIPath(x, [[-gw / 2, -1], [-gw / 2 + 3, -6], [gw / 2 - 3, -6], [gw / 2, -1], [gw / 2 - 3, 4], [-gw / 2 + 3, 4]]); rpgIFill(x, rpgIGrad(x, 0, -6, 0, 4, { l: P.t >= 3 ? '#FFF2B8' : P.l, m: P.t >= 3 ? '#E8B93A' : P.m, d: P.t >= 3 ? '#8E5E08' : P.d }));
+  x.beginPath(); x.rect(-3.4, 4, 6.8, gripL); rpgIFill(x, rpgIGrad(x, -3.4, 0, 3.4, 0, gp), 1.8);
+  x.strokeStyle = 'rgba(0,0,0,.35)'; x.lineWidth = 1; for (let k = 7; k < gripL + 3; k += 3.2) { x.beginPath(); x.moveTo(-3.4, k); x.lineTo(3.4, k + 1.6); x.stroke(); }
+  rpgIGem(x, 0, gripL + 8, 4.6, P.g || '#C9D2E0'); if (P.t >= 2) rpgIGem(x, 0, -1, 2.6, P.g || '#7FB8E8'); x.restore();
+}
+const RPG_IWPN = {
+  sword(x, P) { x.translate(48, 52); x.rotate(Math.PI / 4); rpgIBlade(x, P, 58, 11); rpgIHilt(x, P); },
+  any(x, P) { x.translate(48, 52); x.rotate(Math.PI / 4); rpgIBlade(x, P, 60, 13, 3); x.save(); x.globalAlpha = .9; x.fillStyle = P.g; [-20, -32, -44].forEach(y => { x.beginPath(); x.arc(0, y, 1.8, 0, 7); x.fill(); }); x.restore(); rpgIHilt(x, P, 34, 15); },
+  shield(x, P) {
+    x.save(); x.translate(60, 46); x.rotate(Math.PI / 4); rpgIBlade(x, { ...P, t: P.t }, 50, 9); rpgIHilt(x, P, 24, 12); x.restore();
+    x.save(); x.translate(38, 50); rpgIPath(x, [[-22, -26], [22, -26], [22, 0], [0, 28], [-22, 0]]); rpgIFill(x, rpgIGrad(x, -22, -26, 22, 20, P), 2.4);
+    x.beginPath(); rpgIPath(x, [[-16, -20], [16, -20], [16, -1], [0, 20], [-16, -1]]); x.fillStyle = P.t >= 4 ? 'rgba(160,20,40,.85)' : 'rgba(40,70,140,.75)'; x.fill();
+    x.fillStyle = P.t >= 3 ? '#FFE27A' : P.l; x.fillRect(-2.5, -17, 5, 30); x.fillRect(-11, -6, 22, 5); rpgIGem(x, 0, -3.5, 3.4, P.g || '#FFFFFF'); x.restore();
+  },
+  bow(x, P) {
+    x.translate(46, 50); x.rotate(-Math.PI / 4);
+    x.strokeStyle = 'rgba(240,240,250,.95)'; x.lineWidth = 1.3; x.beginPath(); x.moveTo(-6, -38); x.lineTo(-6, 38); x.stroke();
+    // ลูกศร
+    x.fillStyle = '#C08A5A'; x.fillRect(-30, -1.5, 54, 3); x.strokeStyle = 'rgba(22,14,34,.8)'; x.lineWidth = 1; x.strokeRect(-30, -1.5, 54, 3);
+    rpgIPath(x, [[22, -6], [34, 0], [22, 6]]); rpgIFill(x, rpgIGrad(x, 22, -6, 22, 6, P), 1.4); x.fillStyle = '#E8553D'; rpgIPath(x, [[-32, 0], [-26, -7], [-20, -7], [-25, 0], [-20, 7], [-26, 7]]); x.fill();
+    const limb = s => { x.beginPath(); x.moveTo(6, s * 5); x.quadraticCurveTo(20, s * 22, -4, s * 38); x.quadraticCurveTo(-9, s * 41, -6, s * 44); x.quadraticCurveTo(1, s * 40, 2, s * 36); x.quadraticCurveTo(12, s * 22, 0, s * 5); x.closePath(); rpgIFill(x, rpgIGrad(x, -6, s * 4, 18, s * 40, P), 2); };
+    limb(-1); limb(1);
+    x.beginPath(); x.rect(-2, -8, 10, 16); rpgIFill(x, rpgIGrad(x, -2, -8, 8, 8, { l: '#C08A5A', m: '#7A4A2A', d: '#3A1E0E' }), 1.6);
+    if (P.g && P.t >= 2) { rpgIGem(x, 10, -20, 2.8, P.g); rpgIGem(x, 10, 20, 2.8, P.g); }
+  },
+  staff(x, P) {
+    x.translate(48, 50); x.rotate(Math.PI / 4.6);
+    x.beginPath(); x.rect(-3, -18, 6, 58); rpgIFill(x, rpgIGrad(x, -3, 0, 3, 0, { l: '#D8A878', m: '#8A5A33', d: '#4A2A14' }), 1.8);
+    x.fillStyle = P.m; [0, 14, 28].forEach(y => { x.fillRect(-3.6, y, 7.2, 2.6); });
+    x.beginPath(); x.moveTo(-3, -18); x.bezierCurveTo(-16, -22, -16, -40, -4, -44); x.lineTo(-2, -40); x.bezierCurveTo(-11, -36, -10, -25, 0, -22); x.closePath(); rpgIFill(x, rpgIGrad(x, -16, -40, 0, -18, P), 1.6);
+    x.beginPath(); x.moveTo(3, -18); x.bezierCurveTo(16, -22, 16, -40, 4, -44); x.lineTo(2, -40); x.bezierCurveTo(11, -36, 10, -25, 0, -22); x.closePath(); rpgIFill(x, rpgIGrad(x, 0, -40, 16, -18, P), 1.6);
+    x.save(); x.globalCompositeOperation = 'lighter'; const gg = x.createRadialGradient(0, -32, 1, 0, -32, 16); gg.addColorStop(0, P.glow || P.g || '#7FD3FF'); gg.addColorStop(1, 'rgba(0,0,0,0)'); x.fillStyle = gg; x.beginPath(); x.arc(0, -32, 16, 0, 7); x.fill(); x.restore();
+    rpgIGem(x, 0, -32, 8, P.g || '#7FD3FF');
+  },
+  wand(x, P) {
+    x.translate(46, 54); x.rotate(Math.PI / 4);
+    x.beginPath(); x.rect(-2.6, -8, 5.2, 40); rpgIFill(x, rpgIGrad(x, -2.6, 0, 2.6, 0, { l: '#FFFFFF', m: '#F2E8FF', d: '#B8A8D8' }), 1.6); x.fillStyle = P.m; x.fillRect(-3.4, 22, 6.8, 6);
+    const st = (r1, r2) => { const p = []; for (let i = 0; i < 10; i++) { const a = -Math.PI / 2 + i * Math.PI / 5, r = i % 2 ? r2 : r1; p.push([Math.cos(a) * r, -22 + Math.sin(a) * r]); } return p; };
+    x.save(); x.globalCompositeOperation = 'lighter'; const gg = x.createRadialGradient(0, -22, 1, 0, -22, 22); gg.addColorStop(0, P.glow || '#FFE27A'); gg.addColorStop(1, 'rgba(0,0,0,0)'); x.fillStyle = gg; x.beginPath(); x.arc(0, -22, 22, 0, 7); x.fill(); x.restore();
+    rpgIPath(x, st(15, 6.5)); rpgIFill(x, rpgIGrad(x, -14, -36, 14, -8, { l: '#FFFFFF', m: P.t >= 4 ? P.m : '#FFD84A', d: P.t >= 4 ? P.d : '#C88A10' })); rpgIGem(x, 0, -22, 3.6, P.g || '#FF8AC8');
+  },
+  dagger(x, P) {
+    [[-1, 0], [1, 1]].forEach(([s]) => { x.save(); x.translate(48 + s * 8, 52); x.rotate(s * Math.PI / 4.4); x.scale(.8, .8); rpgIBlade(x, P, 44, 10, s * 4); rpgIHilt(x, P, 22, 12); x.restore(); });
+  },
+  fist(x, P) {
+    x.translate(48, 50); x.rotate(-.35);
+    x.beginPath(); x.moveTo(-14, 8); x.lineTo(14, 8); x.lineTo(12, 32); x.lineTo(-12, 32); x.closePath(); rpgIFill(x, rpgIGrad(x, -14, 8, 14, 32, P));
+    x.fillStyle = P.d; x.fillRect(-13, 20, 26, 3);
+    x.beginPath(); x.moveTo(-20, 10); x.bezierCurveTo(-22, -10, -14, -22, 2, -22); x.bezierCurveTo(20, -22, 24, -8, 20, 10); x.closePath(); rpgIFill(x, rpgIGrad(x, -22, -22, 22, 10, { l: '#E8C8A8', m: '#B08060', d: '#5A3A22' }), 2.2);
+    x.strokeStyle = 'rgba(60,30,10,.6)'; x.lineWidth = 1.3; [-8, 1, 10].forEach(a => { x.beginPath(); x.moveTo(a, -20); x.lineTo(a, -4); x.stroke(); });
+    x.beginPath(); x.moveTo(-20, 2); x.quadraticCurveTo(-28, -6, -16, -10); x.quadraticCurveTo(-8, -6, -10, 4); rpgIFill(x, '#C89878', 1.6);
+    x.beginPath(); x.rect(-20, -24, 42, 9); rpgIFill(x, rpgIGrad(x, -20, -24, 22, -15, P), 2);
+    for (let i = 0; i < 4; i++) { x.fillStyle = P.l; rpgIPath(x, [[-16 + i * 10.5, -24], [-12.5 + i * 10.5, -34], [-9 + i * 10.5, -24]]); rpgIFill(x, rpgIGrad(x, -16 + i * 10, -34, -9 + i * 10, -24, P), 1.4); }
+    if (P.g) rpgIGem(x, 1, -19.5, 3, P.g);
+  },
+  lute(x, P) {
+    x.translate(48, 50); x.rotate(-Math.PI / 5);
+    x.beginPath(); x.rect(-3.2, -42, 6.4, 34); rpgIFill(x, rpgIGrad(x, -3, 0, 3, 0, { l: '#C08A5A', m: '#7A4A2A', d: '#3A1E0E' }), 1.6);
+    x.beginPath(); x.rect(-5, -48, 10, 9); rpgIFill(x, P.m, 1.6);
+    x.beginPath(); x.moveTo(0, -12); x.bezierCurveTo(-22, -10, -24, 26, 0, 30); x.bezierCurveTo(24, 26, 22, -10, 0, -12); rpgIFill(x, rpgIGrad(x, -20, -10, 20, 30, P.t >= 3 ? P : { l: '#F2C890', m: '#C0783A', d: '#6A3A14' }), 2.2);
+    x.beginPath(); x.arc(0, 6, 6.5, 0, 7); x.fillStyle = '#2A1408'; x.fill(); x.strokeStyle = P.t >= 3 ? P.g || '#FFE27A' : '#E8C080'; x.lineWidth = 1.4; x.stroke();
+    x.strokeStyle = 'rgba(255,255,255,.85)'; x.lineWidth = .7; [-1.6, 0, 1.6].forEach(a => { x.beginPath(); x.moveTo(a, -44); x.lineTo(a, 22); x.stroke(); }); x.fillStyle = '#3A1E0E'; x.fillRect(-6, 20, 12, 3);
+    x.fillStyle = P.g || '#FF6FA8'; x.font = '900 14px sans-serif'; x.textAlign = 'center'; x.fillText('♪', 18, -30);
+  },
+  orb(x, P) {
+    x.translate(48, 52);
+    x.beginPath(); x.moveTo(-18, 32); x.lineTo(18, 32); x.lineTo(10, 18); x.lineTo(-10, 18); x.closePath(); rpgIFill(x, rpgIGrad(x, -18, 18, 18, 32, P.t >= 3 ? P : { l: '#D8A878', m: '#8A5A33', d: '#4A2A14' }));
+    [-1, 1].forEach(s => { x.beginPath(); x.moveTo(s * 9, 20); x.quadraticCurveTo(s * 22, 8, s * 15, -6); x.lineTo(s * 12, -4); x.quadraticCurveTo(s * 16, 8, s * 6, 18); x.closePath(); rpgIFill(x, rpgIGrad(x, 0, -6, 0, 20, P), 1.4); });
+    const g = x.createRadialGradient(-6, -10, 2, 0, -2, 19); g.addColorStop(0, '#FFFFFF'); g.addColorStop(.35, P.glow || P.g || '#7FE8D8'); g.addColorStop(1, rpgShadeC(P.glow || P.g || '#14B8A6', .35)); x.beginPath(); x.arc(0, -2, 19, 0, 7); rpgIFill(x, g, 2);
+    x.save(); x.beginPath(); x.arc(0, -2, 18, 0, 7); x.clip(); x.strokeStyle = 'rgba(255,255,255,.7)'; x.lineWidth = 2; x.beginPath(); for (let a = 0; a < 9; a += .2) { const r = a * 1.8; x.lineTo(Math.cos(a) * r, -2 + Math.sin(a) * r); } x.stroke(); x.restore();
+  },
+  hammer(x, P) {
+    x.translate(48, 52); x.rotate(Math.PI / 4.2);
+    x.beginPath(); x.rect(-3.2, -20, 6.4, 50); rpgIFill(x, rpgIGrad(x, -3, 0, 3, 0, { l: '#C08A5A', m: '#7A4A2A', d: '#3A1E0E' }), 1.8); x.fillStyle = '#2A1A10'; [16, 22].forEach(y => x.fillRect(-3.6, y, 7.2, 2.4));
+    x.beginPath(); x.rect(-22, -38, 30, 20); rpgIFill(x, rpgIGrad(x, -22, -38, 8, -18, P), 2.4); rpgIPath(x, [[8, -36], [22, -28], [8, -20]]); rpgIFill(x, rpgIGrad(x, 8, -36, 22, -20, P), 2);
+    x.fillStyle = P.d; x.fillRect(-22, -30, 30, 3); if (P.g) rpgIGem(x, -7, -28, 3.6, P.g); rpgIShine(x, [[-20, -36], [6, -36], [6, -33], [-20, -33]]);
+  },
+  tablet(x, P) {
+    x.translate(48, 48); x.rotate(-.18);
+    x.beginPath(); x.roundRect ? x.roundRect(-24, -30, 48, 60, 7) : x.rect(-24, -30, 48, 60); rpgIFill(x, rpgIGrad(x, -24, -30, 24, 30, P.t >= 3 ? P : { l: '#8A93A8', m: '#4A5266', d: '#22283A' }), 2.4);
+    x.fillStyle = '#081420'; x.fillRect(-19, -24, 38, 44);
+    x.save(); x.beginPath(); x.rect(-19, -24, 38, 44); x.clip(); x.globalCompositeOperation = 'lighter';
+    const c = P.glow || '#3DFFA8'; x.fillStyle = c; for (let i = 0; i < 9; i++) { x.globalAlpha = .45 + (i % 3) * .2; x.fillRect(-16 + (i % 2) * 4, -21 + i * 4.6, 14 + (i * 7 % 17), 2.2); }
+    x.globalAlpha = .5; x.fillStyle = '#FFFFFF'; x.fillRect(-19, -24, 38, 2); x.restore(); x.beginPath(); x.arc(0, 25, 2, 0, 7); x.fillStyle = P.l; x.fill();
+  },
+};
+/* ---------- ชุดเกราะ / หมวก / รองเท้า / ผ้าคลุม / เครื่องประดับ ---------- */
+function rpgIArmor(x, P, it) {
+  x.translate(48, 50); const t = P.t;
+  if (t === 0) { x.beginPath(); x.moveTo(-14, -26); x.lineTo(-30, -16); x.lineTo(-24, -2); x.lineTo(-17, -6); x.lineTo(-17, 30); x.lineTo(17, 30); x.lineTo(17, -6); x.lineTo(24, -2); x.lineTo(30, -16); x.lineTo(14, -26); x.quadraticCurveTo(0, -16, -14, -26); rpgIFill(x, rpgIGrad(x, -30, -26, 30, 30, { l: '#BFE3FF', m: '#6FA8DC', d: '#2E5E8C' }));
+    x.strokeStyle = 'rgba(255,255,255,.7)'; x.lineWidth = 1.5; x.setLineDash([3, 3]); x.beginPath(); x.moveTo(-17, 24); x.lineTo(17, 24); x.stroke(); x.setLineDash([]); return; }
+  if (t === 1) { x.beginPath(); x.moveTo(-15, -26); x.lineTo(-26, -18); x.lineTo(-22, 28); x.lineTo(22, 28); x.lineTo(26, -18); x.lineTo(15, -26); x.lineTo(5, -10); x.lineTo(-5, -10); x.closePath(); rpgIFill(x, rpgIGrad(x, -26, -26, 26, 28, { l: '#D8A878', m: '#9A6438', d: '#4A2A14' }));
+    x.strokeStyle = '#3A1E0E'; x.lineWidth = 1.2; for (let y = -6; y < 22; y += 6) { x.beginPath(); x.moveTo(-5, y); x.lineTo(5, y + 3); x.moveTo(5, y); x.lineTo(-5, y + 3); x.stroke(); } x.fillStyle = '#5A3A22'; x.fillRect(-22, 14, 44, 5); return; }
+  // เกราะเหล็ก: ไหล่ + อก + เข็มขัด
+  rpgIPath(x, [[-16, -24], [-20, 26], [20, 26], [16, -24], [6, -18], [-6, -18]]); rpgIFill(x, rpgIGrad(x, -20, -24, 20, 26, P));
+  x.strokeStyle = P.d; x.lineWidth = 1.4; x.beginPath(); x.moveTo(0, -16); x.lineTo(0, 12); x.moveTo(-14, -2); x.quadraticCurveTo(0, 4, 14, -2); x.stroke();
+  [-1, 1].forEach(s => { x.beginPath(); x.ellipse(s * 24, -18, 13, 10, s * .35, 0, 7); rpgIFill(x, rpgIGrad(x, s * 14, -28, s * 34, -8, P)); x.beginPath(); x.ellipse(s * 25, -12, 11, 5, s * .35, 0, Math.PI); x.strokeStyle = P.d; x.lineWidth = 1.2; x.stroke(); if (t >= 4) { x.fillStyle = P.l; rpgIPath(x, [[s * 26, -28], [s * 32, -38], [s * 30, -26]]); x.fill(); } });
+  x.beginPath(); x.rect(-21, 14, 42, 7); rpgIFill(x, '#4A2E1C', 1.6); x.beginPath(); x.rect(-5, 13, 10, 9); rpgIFill(x, rpgIGrad(x, -5, 13, 5, 22, { l: '#FFF2B8', m: '#E8B93A', d: '#8E5E08' }), 1.4);
+  if (t >= 3) rpgIGem(x, 0, -4, t >= 5 ? 5.5 : 4.2, P.g || '#7FB8E8'); rpgIShine(x, [[-14, -20], [-10, -20], [-14, 8], [-17, 8]]);
+}
+function rpgIHelm(x, P, id) {
+  x.translate(48, 54); const k = { hd1: 'leaf', hd2: 'miner', hd3: 'wolf', hd4: 'turban', hd5: 'dragon', hd6: 'crown', hd7: 'mask' }[id] || 'knight';
+  if (k === 'mask') { x.beginPath(); x.moveTo(-26, -14); x.quadraticCurveTo(0, -30, 26, -14); x.quadraticCurveTo(28, 10, 0, 22); x.quadraticCurveTo(-28, 10, -26, -14); rpgIFill(x, rpgIGrad(x, -26, -26, 26, 22, { l: '#5A6A80', m: '#1E2433', d: '#06080E' }));
+    x.fillStyle = '#3DFFA8'; x.shadowColor = '#3DFFA8'; x.shadowBlur = 8; rpgIPath(x, [[-18, -6], [-5, -4], [-7, 2], [-18, 0]]); x.fill(); rpgIPath(x, [[18, -6], [5, -4], [7, 2], [18, 0]]); x.fill(); x.shadowBlur = 0;
+    x.strokeStyle = '#10B981'; x.lineWidth = 1.2; x.beginPath(); x.moveTo(-10, 12); x.lineTo(10, 12); x.stroke(); return; }
+  if (k === 'crown' || k === 'leaf' && false) {}
+  if (k === 'crown') { rpgIPath(x, [[-26, 10], [-28, -18], [-14, -4], [-6, -26], [0, -8], [6, -26], [14, -4], [28, -18], [26, 10]]); rpgIFill(x, rpgIGrad(x, -28, -26, 28, 10, { l: '#C8A0FF', m: '#5B2FA0', d: '#1E0A3A' })); x.beginPath(); x.rect(-26, 2, 52, 9); rpgIFill(x, '#2A1040', 1.6); [-14, 0, 14].forEach(a => rpgIGem(x, a, 6.5, 3.4, '#FF3B5C')); return; }
+  const dome = (fill) => { x.beginPath(); x.moveTo(-26, 12); x.bezierCurveTo(-28, -30, 28, -30, 26, 12); x.closePath(); rpgIFill(x, fill); };
+  if (k === 'leaf') { dome(rpgIGrad(x, -26, -26, 26, 12, { l: '#B8F0A0', m: '#4CAF50', d: '#1E5A22' })); x.strokeStyle = '#1E5A22'; x.lineWidth = 1.2; for (let i = -2; i <= 2; i++) { x.beginPath(); x.moveTo(i * 9, 10); x.quadraticCurveTo(i * 11, -6, i * 5, -18); x.stroke(); } x.fillStyle = '#7ED957'; rpgIPath(x, [[2, -22], [14, -34], [10, -20]]); x.fill(); return; }
+  if (k === 'miner') { dome(rpgIGrad(x, -26, -26, 26, 12, { l: '#FFF2A0', m: '#F2C230', d: '#8E6A08' })); x.beginPath(); x.rect(-30, 6, 60, 7); rpgIFill(x, '#8E6A08', 1.6); x.beginPath(); x.arc(0, -8, 8, 0, 7); rpgIFill(x, '#3A3A44', 1.6);
+    x.save(); x.globalCompositeOperation = 'lighter'; const g = x.createRadialGradient(0, -8, 1, 0, -8, 18); g.addColorStop(0, '#FFFBE0'); g.addColorStop(1, 'rgba(255,240,150,0)'); x.fillStyle = g; x.beginPath(); x.arc(0, -8, 18, 0, 7); x.fill(); x.restore(); return; }
+  if (k === 'wolf') { dome(rpgIGrad(x, -26, -26, 26, 12, { l: '#E8E8EE', m: '#9A9AAA', d: '#4A4A58' })); [-1, 1].forEach(s => { rpgIPath(x, [[s * 10, -20], [s * 22, -38], [s * 24, -14]]); rpgIFill(x, '#7A7A8A', 1.8); }); x.fillStyle = '#FFFFFF'; rpgIPath(x, [[-26, 12], [-20, 4], [-14, 12], [-8, 4], [-2, 12], [4, 4], [10, 12], [16, 4], [22, 12]]); x.fill(); x.fillStyle = '#FFD23F'; [-9, 9].forEach(a => { x.beginPath(); x.ellipse(a, -6, 3, 2, 0, 0, 7); x.fill(); }); return; }
+  if (k === 'turban') { for (let i = 0; i < 4; i++) { x.beginPath(); x.ellipse(0, 6 - i * 8, 28 - i * 4, 9, (i % 2 ? .12 : -.12), 0, 7); rpgIFill(x, rpgIGrad(x, -26, -20, 26, 12, { l: '#FFF2D0', m: '#E8C890', d: '#8E6A3A' }), 1.8); } rpgIGem(x, 0, -2, 5, '#3DA8FF'); x.fillStyle = '#FFFFFF'; rpgIPath(x, [[0, -6], [-4, -24], [4, -24]]); x.fill(); return; }
+  if (k === 'dragon') { dome(rpgIGrad(x, -26, -26, 26, 12, { l: '#FF9A6A', m: '#C8303A', d: '#4A0610' })); [-1, 1].forEach(s => { x.beginPath(); x.moveTo(s * 14, -16); x.quadraticCurveTo(s * 34, -24, s * 30, -44); x.quadraticCurveTo(s * 26, -26, s * 8, -20); x.closePath(); rpgIFill(x, rpgIGrad(x, 0, -44, 0, -16, { l: '#FFF6D8', m: '#E8D0A0', d: '#8E7A50' }), 1.8); }); x.fillStyle = '#FFD23F'; rpgIPath(x, [[-14, 0], [-4, -4], [-6, 4]]); x.fill(); rpgIPath(x, [[14, 0], [4, -4], [6, 4]]); x.fill(); return; }
+  // หมวกอัศวิน
+  dome(rpgIGrad(x, -26, -26, 26, 12, P)); x.fillStyle = '#10121A'; x.fillRect(-18, -4, 36, 4); x.fillRect(-2, -4, 4, 14); x.fillStyle = '#E8553D'; x.beginPath(); x.moveTo(0, -24); x.quadraticCurveTo(20, -40, 30, -28); x.quadraticCurveTo(16, -30, 4, -20); x.fill();
+}
+function rpgIBoot(x, P, id) {
+  x.translate(46, 50);
+  x.beginPath(); x.moveTo(-14, -30); x.lineTo(6, -30); x.lineTo(8, 10); x.quadraticCurveTo(28, 10, 30, 22); x.lineTo(30, 28); x.lineTo(-16, 28); x.lineTo(-16, 8); x.closePath(); rpgIFill(x, rpgIGrad(x, -16, -30, 30, 28, P));
+  x.beginPath(); x.rect(-17, 24, 48, 6); rpgIFill(x, '#3A2414', 1.6); x.beginPath(); x.rect(-16, -32, 24, 7); rpgIFill(x, P.d, 1.6);
+  x.strokeStyle = P.d; x.lineWidth = 1.2; [-14, -6, 2].forEach(y => { x.beginPath(); x.moveTo(-6, y); x.lineTo(4, y + 3); x.stroke(); });
+  if (id === 'sh6') [-1].forEach(() => { x.fillStyle = '#FFFFFF'; x.strokeStyle = 'rgba(22,14,34,.8)'; x.lineWidth = 1.2; for (let i = 0; i < 3; i++) { x.beginPath(); x.ellipse(-22 - i * 4, -16 + i * 6, 12 - i * 2, 4, -.6, 0, 7); x.fill(); x.stroke(); } });
+  if (id === 'sh5') { x.save(); x.globalCompositeOperation = 'lighter'; for (let i = 0; i < 5; i++) { x.fillStyle = i % 2 ? '#FF8A1F' : '#FFD23F'; x.beginPath(); x.moveTo(-10 + i * 9, 30); x.quadraticCurveTo(-4 + i * 9, 22, -6 + i * 9, 12); x.quadraticCurveTo(-1 + i * 9, 22, -1 + i * 9, 30); x.fill(); } x.restore(); }
+  if (id === 'sh4') { x.strokeStyle = 'rgba(200,240,255,.9)'; x.lineWidth = 2; [0, 1].forEach(i => { x.beginPath(); x.arc(20 + i * 4, -10 - i * 8, 8 - i * 2, Math.PI * .8, Math.PI * 2.1); x.stroke(); }); }
+  if (P.t >= 4) rpgIGem(x, -4, -28.5, 2.8, P.g);
+}
+function rpgICape(x, P, id) {
+  x.translate(48, 48);
+  if (id === 'cp6') { [-1, 1].forEach(s => { x.beginPath(); x.moveTo(0, -10); x.lineTo(s * 16, -30); x.lineTo(s * 40, -22); x.quadraticCurveTo(s * 34, -14, s * 38, -4); x.quadraticCurveTo(s * 28, -8, s * 26, 6); x.quadraticCurveTo(s * 18, -2, s * 14, 12); x.quadraticCurveTo(s * 8, 0, 0, 6); x.closePath(); rpgIFill(x, rpgIGrad(x, 0, -30, s * 40, 12, { l: '#8A6AC8', m: '#3A1E66', d: '#12061E' })); }); x.beginPath(); x.ellipse(0, -2, 6, 10, 0, 0, 7); rpgIFill(x, '#1E0A30', 1.6); return; }
+  x.beginPath(); x.moveTo(-14, -30); x.quadraticCurveTo(0, -24, 14, -30); x.quadraticCurveTo(26, 0, 30, 32); x.quadraticCurveTo(20, 28, 12, 34); x.quadraticCurveTo(0, 28, -12, 34); x.quadraticCurveTo(-20, 28, -30, 32); x.quadraticCurveTo(-26, 0, -14, -30); rpgIFill(x, rpgIGrad(x, -30, -30, 30, 34, P));
+  x.strokeStyle = 'rgba(0,0,0,.25)'; x.lineWidth = 1.4; [-10, 0, 10].forEach(a => { x.beginPath(); x.moveTo(a * .6, -24); x.quadraticCurveTo(a * 1.3, 6, a * 1.8, 30); x.stroke(); });
+  x.beginPath(); x.rect(-16, -34, 32, 7); rpgIFill(x, P.d, 1.6); rpgIGem(x, 0, -30.5, 4.4, P.g || '#FFD23F');
+  if (id === 'cp1') { x.fillStyle = '#E8A040'; [[-14, 4], [10, 14], [-4, 22], [16, -6]].forEach(([a, b]) => { x.beginPath(); x.ellipse(a, b, 5, 2.6, .6, 0, 7); x.fill(); }); }
+  if (id === 'cp3') { x.strokeStyle = '#FFFFFF'; x.lineWidth = 1.6; for (let i = 0; i < 3; i++) { const a = i * Math.PI / 3; x.beginPath(); x.moveTo(Math.cos(a) * -8, 6 + Math.sin(a) * -8); x.lineTo(Math.cos(a) * 8, 6 + Math.sin(a) * 8); x.stroke(); } }
+  if (id === 'cp5') { x.save(); x.globalCompositeOperation = 'lighter'; for (let i = 0; i < 6; i++) { x.fillStyle = i % 2 ? '#FF8A1F' : '#FFD23F'; x.beginPath(); x.moveTo(-26 + i * 10, 34); x.quadraticCurveTo(-20 + i * 10, 22, -22 + i * 10, 14); x.quadraticCurveTo(-16 + i * 10, 24, -16 + i * 10, 34); x.fill(); } x.restore(); }
+}
+function rpgIAcc(x, P, id) {
+  x.translate(48, 48);
+  if (id === 'ac1' || id === 'ac4') { x.strokeStyle = '#E8B93A'; x.lineWidth = 2.4; x.beginPath(); x.arc(0, -10, 22, Math.PI * .1, Math.PI * .9); x.stroke(); x.beginPath(); x.moveTo(-15, 6); x.lineTo(0, 14); x.lineTo(15, 6); x.stroke();
+    if (id === 'ac4') { x.beginPath(); x.ellipse(0, 22, 12, 9, 0, 0, 7); rpgIFill(x, rpgIGrad(x, -12, 13, 12, 31, { l: '#FFF2B8', m: '#E8B93A', d: '#8E5E08' })); x.beginPath(); x.ellipse(0, 22, 7, 5, 0, 0, 7); x.fillStyle = '#FFFFFF'; x.fill(); x.beginPath(); x.arc(0, 22, 3.4, 0, 7); x.fillStyle = '#1E5AC8'; x.fill(); return; }
+    x.save(); x.globalCompositeOperation = 'lighter'; const g = x.createRadialGradient(0, 22, 1, 0, 22, 16); g.addColorStop(0, '#F8FFB0'); g.addColorStop(1, 'rgba(200,255,100,0)'); x.fillStyle = g; x.beginPath(); x.arc(0, 22, 16, 0, 7); x.fill(); x.restore(); rpgIGem(x, 0, 22, 7, '#C8F060'); return; }
+  if (id === 'ac3') { rpgIPath(x, [[-28, 14], [-24, -6], [-14, 4], [-8, -22], [0, -2], [8, -22], [14, 4], [24, -6], [28, 14]]); rpgIFill(x, rpgIGrad(x, -28, -22, 28, 14, { l: '#FFFFFF', m: '#A8E4FF', d: '#3A8EC8' })); [-14, 0, 14].forEach(a => rpgIGem(x, a, 8, 3, '#E0F8FF')); return; }
+  if (id === 'ac6') { x.save(); x.globalCompositeOperation = 'lighter'; const g = x.createRadialGradient(0, 0, 4, 0, 0, 34); g.addColorStop(0, 'rgba(180,140,255,.7)'); g.addColorStop(1, 'rgba(60,20,160,0)'); x.fillStyle = g; x.beginPath(); x.arc(0, 0, 34, 0, 7); x.fill(); x.restore();
+    x.lineWidth = 6; const rg = x.createLinearGradient(-26, 0, 26, 0); ['#FF5A8A', '#FFD23F', '#3DDC84', '#3DA8FF', '#B58CFF'].forEach((c, i) => rg.addColorStop(i / 4, c)); x.strokeStyle = 'rgba(22,14,34,.9)'; x.lineWidth = 9; x.beginPath(); x.ellipse(0, 0, 26, 14, -.4, 0, 7); x.stroke(); x.strokeStyle = rg; x.lineWidth = 5.4; x.stroke(); rpgIGem(x, 0, 0, 7, '#B58CFF'); return; }
+  // แหวน
+  x.strokeStyle = 'rgba(22,14,34,.9)'; x.lineWidth = 10; x.beginPath(); x.ellipse(0, 8, 20, 16, 0, 0, 7); x.stroke(); x.strokeStyle = rpgIGrad(x, -20, -8, 20, 24, { l: '#FFF2B8', m: P.t >= 4 ? '#E8B93A' : '#C6D0E2', d: P.t >= 4 ? '#8E5E08' : '#6E7C96' }); x.lineWidth = 6.4; x.stroke();
+  rpgIPath(x, [[0, -24], [12, -12], [0, 0], [-12, -12]]); rpgIFill(x, rpgIGrad(x, -12, -24, 12, 0, { l: '#FFFFFF', m: P.g || '#7FE8FF', d: rpgShadeC(P.g || '#7FE8FF', .4) }), 1.8);
+}
+/* ---------- ยา · อาหาร · ไข่ · อื่น ๆ ---------- */
+function rpgIPotion(x, id) {
+  const C = { hp1: ['#FF4D5E', 'round', 0], hp2: ['#FF9A2A', 'round', 1], hp3: ['#F4F6FF', 'tall', 1], hp4: ['#FFC83A', 'fancy', 2], mp1: ['#3DA8FF', 'round', 0], mp2: ['#2A56E8', 'tall', 1], mp3: ['#A64DFF', 'fancy', 2], elx: ['#FFFFFF', 'star', 3] }[id] || ['#FF4D5E', 'round', 0];
+  const [col, sh, lvl] = C; x.translate(48, 52);
+  const glass = () => { if (sh === 'tall') { x.beginPath(); x.moveTo(-7, -26); x.lineTo(-7, -10); x.quadraticCurveTo(-18, -4, -18, 12); x.quadraticCurveTo(-18, 30, 0, 30); x.quadraticCurveTo(18, 30, 18, 12); x.quadraticCurveTo(18, -4, 7, -10); x.lineTo(7, -26); x.closePath(); }
+    else if (sh === 'star') { x.beginPath(); x.moveTo(-6, -26); x.lineTo(-6, -14); for (let i = 0; i <= 10; i++) { const a = -Math.PI / 2 - Math.PI + i * Math.PI / 5 + Math.PI, r = i % 2 ? 11 : 24; x.lineTo(Math.cos(a - Math.PI / 2) * r, 8 + Math.sin(a - Math.PI / 2) * r); } x.lineTo(6, -14); x.lineTo(6, -26); x.closePath(); }
+    else { x.beginPath(); x.moveTo(-7, -26); x.lineTo(-7, -12); x.arc(0, 8, 22, -Math.PI / 2 - .33, Math.PI * 1.5 + .33, false); x.lineTo(7, -26); x.closePath(); } };
+  x.save(); glass(); x.fillStyle = 'rgba(230,245,255,.35)'; x.fill(); x.clip();
+  const g = x.createLinearGradient(0, -6, 0, 30); g.addColorStop(0, rpgShadeC(col, 1.35)); g.addColorStop(1, rpgShadeC(col, .62)); x.fillStyle = sh === 'star' ? (() => { const r = x.createLinearGradient(-24, 0, 24, 0); ['#FF5A8A', '#FFD23F', '#3DDC84', '#3DA8FF', '#B58CFF'].forEach((c, i) => r.addColorStop(i / 4, c)); return r; })() : g;
+  x.fillRect(-30, sh === 'star' ? -6 : -2, 60, 40); x.fillStyle = 'rgba(255,255,255,.45)'; for (let i = 0; i < 4; i++) { x.beginPath(); x.arc(-8 + i * 6, 6 + (i % 2) * 8, 1.6 + i % 2, 0, 7); x.fill(); } x.restore();
+  glass(); x.lineJoin = 'round'; x.strokeStyle = 'rgba(22,14,34,.9)'; x.lineWidth = 2.2; x.stroke();
+  rpgIShine(x, [[-14, 0], [-10, -4], [-12, 16], [-15, 14]]);
+  x.beginPath(); x.rect(-9, -34, 18, 9); rpgIFill(x, rpgIGrad(x, -9, -34, 9, -25, { l: '#E8C090', m: '#A87A4E', d: '#5E3E22' }), 1.8);
+  if (lvl >= 2) { x.strokeStyle = '#E8B93A'; x.lineWidth = 2.2; x.beginPath(); x.moveTo(-8, -24); x.lineTo(8, -24); x.stroke(); }
+  if (lvl >= 1) { x.fillStyle = '#FFF6E0'; x.strokeStyle = 'rgba(22,14,34,.6)'; x.lineWidth = 1; x.beginPath(); x.rect(-9, 6, 18, 11); x.fill(); x.stroke(); x.fillStyle = col === '#F4F6FF' ? '#FF4D5E' : col; x.fillRect(-2, 8, 4, 7); x.fillRect(-5, 10, 10, 3); }
+}
+function rpgIMisc(x, it, id, P) {
+  x.translate(48, 50); const t = it.t;
+  if (t === 'net') { x.strokeStyle = '#7A4A2A'; x.lineWidth = 5; x.beginPath(); x.moveTo(10, 10); x.lineTo(30, 32); x.stroke(); const c = P.m; x.beginPath(); x.arc(-6, -6, 22, 0, 7); x.fillStyle = 'rgba(255,255,255,.12)'; x.fill(); x.save(); x.clip(); x.strokeStyle = 'rgba(255,255,255,.85)'; x.lineWidth = 1.2; for (let k = -30; k < 30; k += 6) { x.beginPath(); x.moveTo(k, -30); x.lineTo(k + 24, 20); x.moveTo(k + 24, -30); x.lineTo(k, 20); x.stroke(); } x.restore(); x.strokeStyle = 'rgba(22,14,34,.9)'; x.lineWidth = 6; x.beginPath(); x.arc(-6, -6, 22, 0, 7); x.stroke(); x.strokeStyle = c; x.lineWidth = 3.6; x.stroke(); return; }
+  if (t === 'food' && id === 'cake') { rpgIPath(x, [[-26, 6], [22, -14], [26, 22], [-22, 30]]); rpgIFill(x, '#FFE8C8'); x.fillStyle = '#FF8FB1'; rpgIPath(x, [[-26, 6], [22, -14], [24, -2], [-24, 16]]); x.fill(); x.fillStyle = '#FFFFFF'; rpgIPath(x, [[-26, 6], [22, -14], [14, -22], [-30, -2]]); x.fill(); x.strokeStyle = 'rgba(22,14,34,.85)'; x.lineWidth = 2; rpgIPath(x, [[-30, -2], [14, -22], [22, -14], [26, 22], [-22, 30], [-26, 6]]); x.stroke(); rpgIGem(x, 0, -14, 5.4, '#FF3B5C'); return; }
+  if (t === 'food') { x.save(); x.rotate(-.5); x.fillStyle = '#FFF6E8'; x.strokeStyle = 'rgba(22,14,34,.85)'; x.lineWidth = 2; x.beginPath(); x.rect(10, -4, 22, 8); x.fill(); x.stroke(); [[32, -5], [32, 5]].forEach(([a, b]) => { x.beginPath(); x.arc(a, b, 5, 0, 7); x.fill(); x.stroke(); });
+    x.beginPath(); x.ellipse(-6, 0, 24, 18, 0, 0, 7); rpgIFill(x, rpgIGrad(x, -26, -18, 14, 18, { l: '#E8905A', m: '#A0482A', d: '#4A1A0E' })); x.strokeStyle = 'rgba(60,20,8,.6)'; x.lineWidth = 2; [-14, -4, 6].forEach(a => { x.beginPath(); x.moveTo(a, -12); x.lineTo(a - 4, 12); x.stroke(); }); x.restore(); return; }
+  if (t === 'egg') { const col = { egg1: ['#FFF4E0', '#C8A878'], egg2: ['#C8F0FF', '#3DA8FF'], egg3: ['#E8D0FF', '#8A3DFF'] }[id] || ['#FFF4E0', '#C8A878'];
+    if (id === 'egg3') { x.save(); x.globalCompositeOperation = 'lighter'; const g = x.createRadialGradient(0, 2, 4, 0, 2, 38); g.addColorStop(0, 'rgba(200,150,255,.7)'); g.addColorStop(1, 'rgba(120,60,255,0)'); x.fillStyle = g; x.beginPath(); x.arc(0, 2, 38, 0, 7); x.fill(); x.restore(); }
+    x.beginPath(); x.moveTo(0, -30); x.bezierCurveTo(22, -30, 26, 30, 0, 30); x.bezierCurveTo(-26, 30, -22, -30, 0, -30); rpgIFill(x, rpgIGrad(x, -20, -30, 20, 30, { l: '#FFFFFF', m: col[0], d: rpgShadeC(col[0], .72) }));
+    x.fillStyle = col[1]; [[-8, -8, 4], [8, 4, 5], [-6, 14, 3.4], [10, -16, 2.6], [0, 22, 2.8]].forEach(([a, b, r]) => { x.beginPath(); x.arc(a, b, r, 0, 7); x.fill(); }); rpgIShine(x, [[-12, -16], [-6, -22], [-10, -2], [-14, -4]]); return; }
+  if (t === 'mat') { x.rotate(.5); x.beginPath(); x.moveTo(0, 34); x.lineTo(0, -32); x.strokeStyle = '#8A6A4A'; x.lineWidth = 2; x.stroke(); x.beginPath(); x.moveTo(0, 26); x.bezierCurveTo(-20, 10, -16, -24, 0, -34); x.bezierCurveTo(16, -24, 20, 10, 0, 26); rpgIFill(x, rpgIGrad(x, -16, -34, 16, 26, { l: '#FFFFFF', m: '#C8F0E8', d: '#5AB8A8' }), 1.8);
+    x.strokeStyle = 'rgba(40,120,110,.55)'; x.lineWidth = 1; for (let k = -24; k < 20; k += 5) { x.beginPath(); x.moveTo(0, k); x.lineTo(-12, k + 6); x.moveTo(0, k); x.lineTo(12, k + 6); x.stroke(); } return; }
+  if (id === 'gem' || t === 'loot' && id !== 'chip') { rpgIPath(x, [[0, -30], [22, -10], [14, 26], [-14, 26], [-22, -10]]); rpgIFill(x, rpgIGrad(x, -22, -30, 22, 26, { l: '#FFFFFF', m: '#5BC8FF', d: '#1E5AA8' })); x.strokeStyle = 'rgba(255,255,255,.6)'; x.lineWidth = 1.2; x.beginPath(); x.moveTo(-22, -10); x.lineTo(0, -2); x.lineTo(22, -10); x.moveTo(0, -2); x.lineTo(0, 26); x.stroke(); return; }
+  if (id === 'chip') { x.beginPath(); x.rect(-20, -20, 40, 40); rpgIFill(x, rpgIGrad(x, -20, -20, 20, 20, { l: '#5A6A80', m: '#2A3448', d: '#0E1420' })); x.fillStyle = '#C8D0DC'; for (let i = -14; i <= 14; i += 7) { x.fillRect(i - 1.5, -28, 3, 8); x.fillRect(i - 1.5, 20, 3, 8); x.fillRect(-28, i - 1.5, 8, 3); x.fillRect(20, i - 1.5, 8, 3); } x.fillStyle = '#3DFFA8'; x.fillRect(-8, -8, 16, 16); return; }
+  if (t === 'hat') { const H = RPG_ITEMS[id]; x.translate(0, 26); try { rpgHatDraw(x, 30, H.hst, H.hcol, false); } catch (e) {} return; }
+  if (t === 'cos') { try { const L = { g: 'm', skin: 0, hs: 1, hc: 0, job: R.save?.job || 'warrior', os: it.os, wtier: -1 }; x.translate(0, 40); x.scale(.95, .95); const res = 4; rpgArtBlit(x, rpgArtGet(JSON.stringify([L, 'd', 'icon', res]), () => rpgArtRender(rpgArtOpts(L, { dir: 'd' }), null, res)), false); } catch (e) {} return; }
+  // อื่น ๆ: กล่องของขวัญ
+  x.beginPath(); x.rect(-22, -12, 44, 36); rpgIFill(x, rpgIGrad(x, -22, -12, 22, 24, { l: '#FFB0C8', m: '#FF6A9A', d: '#A02A5A' })); x.beginPath(); x.rect(-26, -20, 52, 10); rpgIFill(x, '#FF8AB0'); x.fillStyle = '#FFE27A'; x.fillRect(-4, -20, 8, 44);
+}
+/* ---------- ตัวสร้างไอคอน ---------- */
+const RPG_ICANV = new Map(), RPG_IURL = new Map();
+function rpgItemCanvas(key, S = 96) {
+  const ck = key + '@' + S; if (RPG_ICANV.has(ck)) return RPG_ICANV.get(ck);
+  const c = document.createElement('canvas'); c.width = c.height = S; const x = c.getContext('2d'); x.scale(S / 96, S / 96);
+  const wtKey = key.startsWith('@wt:') ? key.slice(4) : null, it = wtKey ? { t: 'w', wt: wtKey, tier: 4 } : RPG_ITEMS[key];
+  if (!it) return c;
+  const P = rpgIPal(it, key);
+  // ประกายพื้นหลังตามระดับ
+  if (P.glow || (it.g ?? 0) >= 4) { const g = x.createRadialGradient(48, 48, 6, 48, 48, 46); g.addColorStop(0, rpgHexA(P.glow || P.g || '#FFD23F', .55)); g.addColorStop(1, 'rgba(0,0,0,0)'); x.fillStyle = g; x.fillRect(0, 0, 96, 96); }
+  x.save(); x.shadowColor = 'rgba(0,0,0,.28)'; x.shadowOffsetY = 2.5; x.shadowBlur = 3;
+  try {
+    if (it.t === 'w') (RPG_IWPN[it.wt] || RPG_IWPN.sword)(x, P);
+    else if (it.t === 'a') rpgIArmor(x, P, it);
+    else if (it.t === 'h') rpgIHelm(x, P, key);
+    else if (it.t === 's') rpgIBoot(x, P, key);
+    else if (it.t === 'c') rpgICape(x, P, key);
+    else if (it.t === 'r') rpgIAcc(x, P, key);
+    else if (it.t === 'pot') rpgIPotion(x, key);
+    else rpgIMisc(x, it, key, P);
+  } catch (e) { console.warn('icon', key, e); }
+  x.restore();
+  if (P.rb || (it.g ?? 0) >= 5) { x.save(); x.globalCompositeOperation = 'lighter'; [[18, 20], [78, 30], [70, 80]].forEach(([a, b], i) => { x.fillStyle = 'rgba(255,255,255,.9)'; x.beginPath(); x.moveTo(a, b - 5); x.lineTo(a + 1.4, b - 1.4); x.lineTo(a + 5, b); x.lineTo(a + 1.4, b + 1.4); x.lineTo(a, b + 5); x.lineTo(a - 1.4, b + 1.4); x.lineTo(a - 5, b); x.lineTo(a - 1.4, b - 1.4); x.fill(); }); x.restore(); }
+  RPG_ICANV.set(ck, c); return c;
+}
+function rpgHexA(h, a) { if (!h || h[0] !== '#') return `rgba(255,220,120,${a})`; const n = parseInt(h.slice(1), 16); return `rgba(${n >> 16},${n >> 8 & 255},${n & 255},${a})`; }
+function rpgItemURL(key) { if (RPG_IURL.has(key)) return RPG_IURL.get(key); let u = ''; try { u = rpgItemCanvas(key, 96).toDataURL(); } catch (e) {} RPG_IURL.set(key, u); return u; }
+
+/* ---------- แทนอีโมจิของไอเทมด้วยอักขระพิเศษ (Private Use) → แปลงเป็นรูปอัตโนมัติ ---------- */
+const RPG_PUA = {}; let RPG_PUAN = 0xE100;
+function rpgPuaAll() {
+  Object.entries(RPG_ITEMS).forEach(([id, it]) => { if (it.emo != null) return; it.emo = it.ic; const ch = String.fromCodePoint(RPG_PUAN++); it.ic = ch; RPG_PUA[ch] = id; });
+  Object.entries(RPG_WT).forEach(([k, w]) => { if (w.emo != null) return; w.emo = w.ic; const ch = String.fromCodePoint(RPG_PUAN++); w.ic = ch; RPG_PUA[ch] = '@wt:' + k; });
+}
+rpgPuaAll();
+const RPG_PUARE = /[-]/, RPG_PUARE_G = /[-]/g;
+// รูปบนแคนวาส (rpgEmo) ก็ใช้ไอคอนวาดเอง
+const rpgEmo29 = rpgEmo;
+rpgEmo = function (ch, s = 64) { const k = RPG_PUA[ch]; if (k) return rpgItemCanvas(k, Math.max(64, s * 2)); return rpgEmo29(ch, s); };
+function rpgPuaText(str) { return String(str ?? '').replace(RPG_PUARE_G, ch => { const k = RPG_PUA[ch]; return k ? (k.startsWith('@wt:') ? RPG_WT[k.slice(4)].emo : RPG_ITEMS[k].emo) : ''; }); }
+function rpgPuaSwap(root) {
+  const tw = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, { acceptNode: n => RPG_PUARE.test(n.nodeValue) ? 1 : 3 }); const list = []; let n; while ((n = tw.nextNode())) list.push(n);
+  list.forEach(tn => { const p = tn.parentNode; if (!p || p.nodeName === 'SCRIPT' || p.nodeName === 'TEXTAREA' || p.nodeName === 'OPTION') { tn.nodeValue = rpgPuaText(tn.nodeValue); return; }
+    const frag = document.createDocumentFragment(); let last = 0; const v = tn.nodeValue;
+    v.replace(RPG_PUARE_G, (ch, i) => { if (i > last) frag.appendChild(document.createTextNode(v.slice(last, i))); const k = RPG_PUA[ch]; if (k) { const im = document.createElement('img'); im.className = 'ii'; im.alt = ''; im.draggable = false; im.src = rpgItemURL(k); if (!k.startsWith('@wt:')) im.dataset.ii = k; frag.appendChild(im); } last = i + 1; return ch; });
+    if (last < v.length) frag.appendChild(document.createTextNode(v.slice(last))); p.replaceChild(frag, tn); });
+  if (root.querySelectorAll) root.querySelectorAll('[title],[aria-label]').forEach(e => { ['title', 'aria-label'].forEach(a => { const v = e.getAttribute(a); if (v && RPG_PUARE.test(v)) e.setAttribute(a, rpgPuaText(v)); }); });
+}
+(() => {
+  const go = muts => { for (const m of muts) { if (m.type === 'characterData') { if (RPG_PUARE.test(m.target.nodeValue || '')) rpgPuaSwap(m.target.parentNode || m.target); continue; } m.addedNodes.forEach(nd => { if (nd.nodeType === 3) { if (RPG_PUARE.test(nd.nodeValue)) rpgPuaSwap(nd.parentNode); } else if (nd.nodeType === 1 && RPG_PUARE.test(nd.textContent + (nd.title || ''))) rpgPuaSwap(nd); }); } };
+  const start = () => { new MutationObserver(go).observe(document.body, { childList: true, subtree: true, characterData: true }); rpgPuaSwap(document.body); };
+  if (document.body) start(); else addEventListener('DOMContentLoaded', start);
+})();
+// ข้อความแจ้งเตือนเสียง/ข้อความในแคนวาส ใช้อีโมจิเดิม
+const rpgBubble29 = rpgBubble; rpgBubble = function (x, px, py, txt) { return rpgBubble29(x, px, py, rpgPuaText(txt)); };
+
+/* ---------- กดที่ไอเทมเพื่อดูรายละเอียด ---------- */
+const RPG_TNAME = { w: 'อาวุธ', a: 'ชุดเกราะ', h: 'หมวก/หน้ากาก', s: 'รองเท้า', c: 'ผ้าคลุม/ปีก', r: 'เครื่องประดับ', pot: 'ยา', food: 'อาหารสัตว์เลี้ยง', egg: 'ไข่สัตว์เลี้ยง', net: 'ตาข่ายจับสัตว์', hat: 'หมวกแฟชั่น', cos: 'ชุดแฟชั่น', mat: 'วัตถุดิบ', loot: 'ของดรอป', furn: 'ของตกแต่ง' };
+function rpgItemInfo(id, opt = {}) {
+  const it = RPG_ITEMS[id]; if (!it) return; const s = R.save, host = document.getElementById('rpg') || document.body;
+  document.getElementById('rpg-iinfo')?.remove();
+  const own = s?.inv?.[id] || 0, enh = s?.enh?.[id] || 0, eq = s && (Object.values(s.equip || {}).includes(id) || s.outfit?.hat === id);
+  const wtn = it.wt ? (it.wt === 'any' ? 'ใช้ได้ทุกอาชีพ' : RPG_WT[it.wt]?.n || it.wt) : '';
+  const stat = [['atk', '⚔️ โจมตี'], ['matk', '🔮 พลังเวท'], ['def', '🛡️ ป้องกัน'], ['hp', '❤️ HP'], ['mp', '💧 MP'], ['eva', '💨 หลบ'], ['crit', '🎯 คริติคอล'], ['str', 'STR'], ['int', 'INT'], ['vit', 'VIT'], ['agi', 'AGI']].filter(([k]) => it[k]).map(([k, n]) => `<li><span>${n}</span><b>+${Math.round(it[k] * (['atk', 'matk'].includes(k) ? 1 + enh * .1 : ['def', 'hp', 'mp'].includes(k) ? 1 + enh * .06 : 1))}${['eva', 'crit'].includes(k) ? '%' : ''}</b></li>`).join('');
+  const sell = typeof rpgSellPrice === 'function' ? rpgSellPrice(it) : 0;
+  const el = document.createElement('div'); el.id = 'rpg-iinfo'; el.className = 'rpg-iinfo';
+  el.innerHTML = `<div class="ii-card" style="--gc:${RPG_GRADE[it.g]?.c || '#B8C0CC'}"><button class="ii-x" data-ix="1" aria-label="ปิด">✕</button>
+    <div class="ii-top"><div class="ii-pic"><img src="${rpgItemURL(id)}" alt=""></div><div><b>${esc(it.n)}${enh ? ` <em>+${enh}</em>` : ''}</b><div class="ii-tags">${rpgTierTag(it)}<span>${RPG_TNAME[it.t] || 'ไอเทม'}</span>${wtn ? `<span>${esc(wtn)}</span>` : ''}${eq ? '<span class="ok">สวมอยู่</span>' : ''}</div></div></div>
+    ${stat ? `<ul class="ii-st">${stat}</ul>` : `<p class="ii-line">${rpgItemLine(it)}</p>`}
+    ${it.d && !String(it.d).includes(",") ? `<p class="ii-d">${esc(it.d)}</p>` : ''}
+    <div class="ii-meta">${it.lv ? `<span class="${s && s.lvl < it.lv ? 'no' : ''}">⭐ ต้องการ Lv.${it.lv}</span>` : ''}${it.p ? `<span>💰 ราคา ${it.p.toLocaleString()}</span>` : ''}${sell ? `<span>🪙 ขายได้ ${sell.toLocaleString()}</span>` : ''}${own ? `<span>🎒 มี ${own}</span>` : ''}</div>
+    ${opt.sell && sell && !eq ? `<button class="rp-btn primary ii-sell" data-ix="sell">ขาย 1 ชิ้น · ${sell.toLocaleString()} ทอง</button>` : ''}</div>`;
+  el.addEventListener('click', e => { const b = e.target.closest('[data-ix]'); if (e.target === el || b?.dataset.ix === '1') el.remove(); else if (b?.dataset.ix === 'sell') { el.remove(); opt.sell(); } });
+  host.appendChild(el);
+}
+document.addEventListener('click', e => {
+  const im = e.target.closest?.('img.ii[data-ii], .rp-ic, .sp-cell'); if (!im) return;
+  const img = im.matches('img.ii') ? im : im.querySelector('img.ii[data-ii]'); if (!img) return; const id = img.dataset.ii, act = img.closest('[data-r]');
+  if (act && act.dataset.r === 'sell') { e.preventDefault(); e.stopPropagation(); return rpgItemInfo(id, { sell: () => rpgV23Click('sell', act) }); }
+  if (act && !['eq-slot'].includes(act.dataset.r) && !act.classList.contains('rp-it')) return;   // ปุ่มคำสั่งอื่นทำงานตามเดิม
+  if (act?.dataset.r === 'eq-slot') return;
+  e.stopPropagation(); rpgItemInfo(id);
+}, true);
+
+/* =====================================================================
+   SX Realm v29 — คลังฝากไอเทม/เงิน · จอยสติ๊กลอยแตะตรงไหนก็ได้ · ผู้เล่นอื่นเดินลื่น
+   ===================================================================== */
+
+/* ---------- คลังฝากของ + เงิน ---------- */
+const RPG_STORE_MAX = 80;
+function rpgStore(s = R.save) { s.store = s.store || { inv: {} }; s.store.inv = s.store.inv || {}; return s.store; }
+async function rpgBankRpc(action, amount) {
+  if (R.teacher) { const st = rpgStore(); st.gold = st.gold || 0; let n = Math.max(0, Math.floor(amount || 0));
+    if (action === 'deposit') { n = Math.min(n, R.gold); R.gold -= n; st.gold += n; } else if (action === 'withdraw') { n = Math.min(n, st.gold); st.gold -= n; R.gold += n; }
+    rpgSave(); return { ok: n > 0 || action === 'view', gold: R.gold, bank: st.gold, error: n > 0 ? null : 'NOT_ENOUGH' }; }
+  const v = rpgMe();
+  try { await q(sb.rpc('student_rpg_save', { p_student_id: v.student_id, p_code: v.code, p_data: R.save, p_gold: R.gold, p_lvl: R.save.lvl })); } catch (e) {}
+  try { const r = await q(sb.rpc('student_rpg_bank', { p_student_id: v.student_id, p_code: v.code, p_action: action, p_amount: Math.floor(amount || 0) })); if (r.gold != null) R.gold = +r.gold; return r; }
+  catch (e) { return { ok: false, error: 'NET' }; }
+}
+function rpgStoreHTML() {
+  const s = R.save, st = rpgStore(), eqd = id => Object.values(s.equip || {}).includes(id) || s.outfit?.hat === id;
+  const cell = (id, n, where) => { const it = RPG_ITEMS[id]; if (!it) return ''; const e = where === 'bag' && eqd(id);
+    return `<button class="sp-cell ${e ? 'eq' : ''}" data-r="${where === 'bag' ? 'kb-in' : 'kb-out'}" data-i="${id}" ${e ? 'disabled' : ''} title="${esc(it.n)}${e ? ' (สวมอยู่)' : ''}"><span>${it.wt === 'any' ? RPG_WT[rpgJob().wt].ic : it.ic}</span><em>${n}</em>${(s.enh?.[id]) ? `<small>+${s.enh[id]}</small>` : ''}</button>`; };
+  const bag = Object.entries(s.inv).filter(([i, n]) => n > 0 && RPG_ITEMS[i]), box = Object.entries(st.inv).filter(([i, n]) => n > 0 && RPG_ITEMS[i]);
+  const bank = RS.bankGold;
+  return `<h3>📦 คลังเก็บของ</h3>
+    <p class="rp-p">แตะไอเทมเพื่อย้ายทั้งกองระหว่างกระเป๋ากับคลัง · คลังใช้ร่วมกันได้ทุกเมือง · เก็บได้ ${RPG_STORE_MAX} ช่อง</p>
+    <div class="sp-wrap stw"><section><h4>🎒 กระเป๋า <small>${bag.length} ช่อง</small></h4><div class="sp-grid">${bag.map(([i, n]) => cell(i, n, 'bag')).join('') || '<p class="rp-p">กระเป๋าว่าง</p>'}</div></section>
+      <section><h4>📦 ในคลัง <small>${box.length}/${RPG_STORE_MAX} ช่อง</small></h4><div class="sp-grid">${box.map(([i, n]) => cell(i, n, 'box')).join('') || '<p class="rp-p">ยังไม่มีของฝาก</p>'}</div></section></div>
+    <div class="st-gold"><div><span>💰 เงินติดตัว</span><b>${R.gold.toLocaleString()}</b></div><div><span>🏦 เงินในคลัง</span><b>${bank == null ? '…' : (+bank).toLocaleString()}</b></div>
+      <div class="st-amt"><input id="st-amt" type="number" min="1" step="1000" inputmode="numeric" placeholder="จำนวนเงิน"><div>${[[10000, '1 หมื่น'], [100000, '1 แสน'], [1000000, '1 ล้าน']].map(([v, l]) => `<button class="rp-btn ghost" data-r="kb-q" data-v="${v}">${l}</button>`).join('')}</div></div>
+      <div class="st-act"><button class="rp-btn primary" data-r="kb-dep">ฝากเงิน</button><button class="rp-btn" data-r="kb-wd">ถอนเงิน</button><button class="rp-btn ghost" data-r="kb-all">ฝากทั้งหมด</button></div></div>`;
+}
+function rpgStoreMove(id, toBox) {
+  const s = R.save, st = rpgStore(), from = toBox ? s.inv : st.inv, to = toBox ? st.inv : s.inv, n = from[id] || 0; if (!n) return;
+  if (toBox && !to[id] && Object.values(st.inv).filter(v => v > 0).length >= RPG_STORE_MAX) return rpgSay('คลังเต็มแล้ว');
+  if (toBox && (Object.values(s.equip || {}).includes(id) || s.outfit?.hat === id)) return rpgSay('ถอดของออกก่อนจึงจะฝากได้');
+  to[id] = (to[id] || 0) + n; delete from[id]; rpgSfx('click'); rpgSave(); rpgPanel('store');
+}
+async function rpgStoreGold(kind) {
+  const inp = document.getElementById('st-amt'); let n = kind === 'all' ? R.gold : Math.floor(+inp?.value || 0); if (n < 1) return rpgSay('ใส่จำนวนเงินก่อน');
+  const r = await rpgBankRpc(kind === 'wd' ? 'withdraw' : 'deposit', n);
+  if (!r.ok) return rpgSay(r.error === 'NOT_ENOUGH' ? 'เงินไม่พอ' : 'ทำรายการไม่สำเร็จ ลองใหม่อีกครั้ง');
+  RS.bankGold = r.bank; rpgSfx('coin'); rpgSay(kind === 'wd' ? `ถอนเงิน ${n.toLocaleString()} ทองแล้ว` : `ฝากเงินแล้ว · ในคลังมี ${(+r.bank).toLocaleString()} ทอง`); rpgHud(); rpgSave(); rpgPanel('store');
+}
+const rpgPanel29 = rpgPanel;
+rpgPanel = function (k, arg) {
+  if (k === 'store') { const p = document.getElementById('rpg-panel'); if (!p) return; RS.keys = {}; RS.walkTo = null; p.innerHTML = `<div class="rp-card pk-store pk-shop fixed"><button class="rp-x" data-r="close" aria-label="ปิด">✕</button>${rpgStoreHTML()}</div>`; p.hidden = false; RS.panel = k;
+    if (RS.bankGold == null) rpgBankRpc('view').then(r => { if (r.ok) { RS.bankGold = r.bank; if (RS.panel === 'store') rpgPanel('store'); } }); return; }
+  return rpgPanel29.apply(this, arguments);
+};
+const rpgTalk29 = rpgTalk;
+rpgTalk = function (id) {
+  const N = RPG_NPCS[id];
+  if (N?.shop === 'bank') { const close = { l: 'ไว้มาใหม่นะ', f: () => rpgDlgClose() };
+    return rpgDlg(id, [{ t: 'ยินดีต้อนรับสู่ธนาคาร จะฝากของ ฝากเงิน หรือแลกเหรียญดีคะ', ch: [{ l: '📦 คลังเก็บของ / ฝากเงิน', f: () => { rpgDlgClose(); RS.bankGold = null; rpgPanel('store'); } }, { l: '💱 แลกทองเป็นเหรียญเว็บ', f: () => { rpgDlgClose(); rpgPanel('bank'); } }, close] }]); }
+  return rpgTalk29(id);
+};
+const rpgV23Click29 = rpgV23Click;
+rpgV23Click = function (a, b) {
+  if (a === 'kb-in') { rpgStoreMove(b.dataset.i, true); return true; }
+  if (a === 'kb-out') { rpgStoreMove(b.dataset.i, false); return true; }
+  if (a === 'kb-q') { const i = document.getElementById('st-amt'); if (i) i.value = b.dataset.v; return true; }
+  if (a === 'kb-dep') { rpgStoreGold('dep'); return true; }
+  if (a === 'kb-wd') { rpgStoreGold('wd'); return true; }
+  if (a === 'kb-all') { rpgStoreGold('all'); return true; }
+  return rpgV23Click29(a, b);
+};
+// กันปุ่มพิมพ์ตัวเลขไปขยับตัวละคร
+addEventListener('keydown', e => { if (e.target?.id === 'st-amt') e.stopPropagation(); }, true);
+
+/* ---------- ผู้เล่นอื่นเดินลื่น (เคลื่อนที่ทุกเฟรมด้วยความเร็วคงที่) ---------- */
+function rpgOthersStep(dt) {
+  const t = performance.now();
+  Object.values(RS.others || {}).forEach(o => {
+    if (o.tx == null) return; const dx = o.tx - o.x, dy = o.ty - o.y, d = Math.hypot(dx, dy);
+    if (d > 8) { o.x = o.tx; o.y = o.ty; o.mv = false; return; }
+    if (d < .01) { o.mv = t - (o.mvT || 0) < 120; return; }
+    const sp = Math.max(4.2, d * 4.5) * dt, k = Math.min(1, sp / d); o.x += dx * k; o.y += dy * k; o.mv = true; o.mvT = t;
+    if (Math.abs(dx) > .02 || Math.abs(dy) > .02) o.dirL = Math.abs(dx) > Math.abs(dy) ? (dx > 0 ? 'r' : 'l') : (dy > 0 ? 'd' : 'u');
+  });
+}
+const rpgDraw29 = rpgDraw;
+rpgDraw = function (now) { const dt = Math.min(.05, (now - (RS.othT || now)) / 1000); RS.othT = now; rpgOthersStep(dt); return rpgDraw29(now); };
+// หยุดตัวขยับแบบเดิม (ทุก 50ms)
+const rpgPresenceStart29 = rpgPresenceStart;
+rpgPresenceStart = function () { const r = rpgPresenceStart29.apply(this, arguments); clearInterval(RS.lerp); RS.lerp = null; return r; };
+
+/* ---------- จอยสติ๊กลอย: แตะ-ลากตรงไหนของจอก็เดินได้ ---------- */
+(() => {
+  let sid = null, sx = 0, sy = 0, on = false, el = null, knob = null;
+  const M = 48;
+  const ensure = () => { el = document.getElementById('rpg-fjoy'); if (!el) { const host = document.getElementById('rpg'); if (!host) return null; el = document.createElement('div'); el.id = 'rpg-fjoy'; el.className = 'rpg-fjoy'; el.innerHTML = '<i></i>'; host.appendChild(el); } knob = el.firstElementChild; return el; };
+  document.addEventListener('pointerdown', e => {
+    if (e.target?.id !== 'rpg-c' || RS.battle || sid != null || e.button > 0) return;
+    sid = e.pointerId; sx = e.clientX; sy = e.clientY; on = false;
+  }, true);
+  document.addEventListener('pointermove', e => {
+    if (e.pointerId !== sid) return; let dx = e.clientX - sx, dy = e.clientY - sy; const L = Math.hypot(dx, dy);
+    if (!on) { if (L < 14) return; on = true; if (!ensure()) return; el.style.left = sx + 'px'; el.style.top = sy + 'px'; el.classList.add('on'); RS.walkTo = null; RS.path = null; RS.autoNav = false; try { e.target.setPointerCapture?.(sid); } catch (er) {} }
+    if (L > M) { dx *= M / L; dy *= M / L; } if (knob) knob.style.transform = `translate(${dx}px,${dy}px)`; RS.joy = L > 8 ? { x: dx / M, y: dy / M } : null;
+  }, true);
+  const up = e => { if (e.pointerId !== sid) return; sid = null; if (on) { RS.joy = null; RS.joyEnd = performance.now(); el?.classList.remove('on'); if (knob) knob.style.transform = ''; } on = false; };
+  document.addEventListener('pointerup', up, true); document.addEventListener('pointercancel', up, true);
+})();
+const rpgCanvasClick29 = rpgCanvasClick;
+rpgCanvasClick = function (e) { if (performance.now() - (RS.joyEnd || 0) < 250) return; return rpgCanvasClick29(e); };
 
 /* =====================================================================
    rpg-net.js — หน้าเกมของครู: จัดการตัวละคร (เลือกชั้น → ห้อง) · คำถามในเกม · ตรวจแชท · กิลด์ · โหมดครู
