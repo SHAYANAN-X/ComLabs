@@ -4104,6 +4104,79 @@ html.g3-on,html.g3-on body{overflow:hidden}
 .rb-combo b,.rb-combo em{-webkit-text-stroke:0;text-shadow:2px 2px 0 #3A1400,-2px 2px 0 #3A1400,2px -2px 0 #3A1400,-2px -2px 0 #3A1400,0 0 18px var(--c)}
 .hd2-name span{white-space:nowrap}
 @media (max-width:760px){.hd2-name span{font-size:10.5px}.rpg-chat.dock .ch-emo{display:none}.rpg-chat.dock .ch-in input{padding:0 8px;font-size:13px}.rpg-chat.dock .ch-send{padding:0 10px}}
+/* =====================================================================
+   v23 · เลย์เอาต์ HUD แบบเกม MMORPG มือถือ (อ้างอิงภาพที่ครูส่ง)
+   ซ้ายบน: สถานะ+ภารกิจ · ขวาบน: ไอคอนเมนู+มินิแมป · ขวาล่าง: วงล้อแอ็กชัน
+   ล่างกลาง: แชทโปร่งแสง · ล่างสุด: แถบ Lv/Exp
+   ===================================================================== */
+.rpg .rpg-menu{top:8px;right:8px;padding:0;gap:4px;background:none;box-shadow:none;-webkit-backdrop-filter:none;backdrop-filter:none}
+.rpg .rpg-menu button{width:54px;height:54px;border-radius:12px;background:radial-gradient(circle at 50% 35%,rgba(70,60,40,.75),rgba(20,16,10,.75));box-shadow:inset 0 0 0 1.5px rgba(232,200,120,.55),0 3px 6px rgba(0,0,0,.4)}
+.rpg .rpg-menu button span{font-size:24px;filter:drop-shadow(0 1px 1px #000)}
+.rpg .rpg-menu button small{font-size:10.5px}
+.rpg .rpg-menu button[data-r=more]{background:radial-gradient(circle at 50% 35%,#5A4A2A,#2A2010);box-shadow:inset 0 0 0 1.5px #F6C343}
+.rpg .rpg-menu button[data-r=more] span{color:#FFE27A}.rpg .rpg-menu button[data-r=more] small{color:#FFE27A;text-shadow:0 1px 2px #000}
+.rpg .rpg-minirim{top:70px;right:8px;width:210px;height:150px;border-radius:6px;box-shadow:0 0 0 2px rgba(20,16,10,.9),0 0 0 3px rgba(232,200,120,.6),0 6px 14px rgba(0,0,0,.4);background:rgba(10,14,24,.7)}
+.rpg .rpg-minirim canvas{width:100%;height:100%;object-fit:cover;opacity:.92}
+.rpg .rpg-qt.qt2{left:10px;right:auto;top:118px;width:min(250px,34vw)}
+.qt2 .qt-head{border-radius:6px 6px 0 0;background:rgba(10,40,40,.8);border-color:rgba(120,220,200,.45)}
+.qt2 .qt-q{background:rgba(10,40,40,.55)!important;border-color:rgba(120,220,200,.3)!important}
+.qt2 .qt-q:last-child{border-radius:0 0 6px 6px}
+.qt2 .qt-q>b{color:#FFE27A}
+.rpg .hd2-por{width:72px;height:72px;box-shadow:0 0 0 3px #2A1A0A,0 0 0 5px #C8955A,0 0 0 7px #2A1A0A}
+.rpg .hd2-main{min-width:210px;border-radius:0 8px 8px 0;background:linear-gradient(90deg,rgba(20,14,8,.85),rgba(20,14,8,.55));border-color:rgba(200,150,90,.6)}
+.rpg .hd2-bar{border-radius:3px;height:15px}.rpg .hd2-bar i{border-radius:3px}.rpg .hd2-bar span{text-align:center;padding:0;line-height:15px}
+/* แชทโปร่งแสงด้านล่างกลาง */
+.rpg .rpg-chat.dock{left:50%;transform:translateX(-50%);bottom:30px;width:min(460px,46vw);background:rgba(0,0,0,.28);border-color:transparent;-webkit-backdrop-filter:none;backdrop-filter:none}
+.rpg .rpg-chat.dock .ch-list{height:96px}
+.rpg .rpg-chat.dock .ch-head{background:none}
+/* วงล้อแอ็กชันขวาล่าง */
+.rpg-act{position:absolute;right:16px;bottom:34px;width:250px;height:250px;z-index:3;pointer-events:none}
+.rpg-act .ac-ring{position:absolute;right:14px;bottom:14px;width:190px;height:190px;border-radius:50%;border:2px solid rgba(232,200,120,.35);background:radial-gradient(circle,rgba(0,0,0,0) 55%,rgba(0,0,0,.18) 70%,rgba(0,0,0,0) 72%)}
+.rpg-act button{position:absolute;pointer-events:auto;border:0;cursor:pointer;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;padding:0}
+.rpg-act .ac-main{right:58px;bottom:58px;width:96px;height:96px;background:radial-gradient(circle at 38% 30%,#FFB36A,#D8401E 60%,#7A1A0A);box-shadow:0 0 0 3px #2A1A0A,0 0 0 5px #F6C343,0 0 22px rgba(255,140,40,.6),0 6px 10px rgba(0,0,0,.5)}
+.rpg-act .ac-main span{font-size:40px;filter:drop-shadow(0 2px 2px rgba(0,0,0,.5))}.rpg-act .ac-main small{font:900 12px var(--f-head);text-shadow:0 1px 2px #000}
+.rpg-act .ac-main:active{transform:scale(.93)}
+.rpg-act .ac-s{width:56px;height:56px;background:radial-gradient(circle at 38% 30%,#5A6AA8,#1A2050 70%);box-shadow:0 0 0 2px #0A0A18,0 0 0 3.5px rgba(232,200,120,.7),0 4px 8px rgba(0,0,0,.45)}
+.rpg-act .ac-s span{font-size:24px;line-height:1}.rpg-act .ac-s small{font-size:9.5px;font-weight:800;text-shadow:0 1px 2px #000}
+.rpg-act .ac-s em{position:absolute;bottom:-4px;right:-2px;min-width:20px;padding:0 4px;border-radius:8px;font:900 11px/16px var(--f-head);font-style:normal;background:#0A0A18;color:#FFE27A;box-shadow:0 0 0 1px rgba(232,200,120,.6)}
+.rpg-act .s0{right:168px;bottom:12px}.rpg-act .s1{right:176px;bottom:84px}.rpg-act .s2{right:150px;bottom:152px}.rpg-act .s3{right:86px;bottom:186px}.rpg-act .s4{right:14px;bottom:170px}
+.rpg-act .ac-s:active{transform:scale(.9)}
+.rpg .rpg-talk{display:none!important}
+/* แถบล่างสุด Lv/Exp */
+.rpg-bot{position:absolute;left:0;right:0;bottom:0;z-index:3;height:22px;display:flex;align-items:center;gap:18px;padding:0 12px;font:800 12px var(--f-body);color:#fff;background:rgba(0,0,0,.6);text-shadow:0 1px 2px #000;pointer-events:none}
+.rpg-bot .bb-xp{position:absolute;left:0;top:0;height:3px;background:linear-gradient(90deg,#F6B93B,#FFE27A)}
+.rpg-bot .bb-t{color:#9FF0C0}.rpg-bot .bb-g{margin-left:auto;color:#FFE27A}
+.rpg:has(#rpg-battle:not([hidden])) :is(.rpg-act,.rpg-bot){display:none}
+.rpg .rpg-stick{left:24px;bottom:40px}
+/* ตีบวก */
+.fg-hero{display:flex;align-items:center;gap:12px;margin:6px 0 12px;padding:10px 14px;border-radius:12px;background:linear-gradient(90deg,rgba(255,120,40,.22),rgba(255,255,255,.03));border:1px solid rgba(255,160,80,.4)}
+.fg-anvil{font-size:38px;animation:fg-bob 1.2s ease-in-out infinite}.fg-hero p{margin:0;font-size:12.5px}
+@keyframes fg-bob{50%{transform:rotate(-12deg) translateY(-3px)}}
+.fg-list{display:flex;flex-direction:column;gap:8px}
+.fg-row{display:flex;align-items:center;gap:12px;padding:8px 10px;border-radius:12px;background:var(--ui-cell);border:1px solid rgba(255,255,255,.08)}
+.fg-row.empty{opacity:.5}.fg-row>div{flex:1;min-width:0}.fg-row b{display:block;font-size:14px}.fg-row small{display:block;font-size:12px}.fg-row small em{font-style:normal;color:#7CF0A8;font-weight:800}
+.fg-row .rp-ic{position:relative;width:48px;height:48px;font-size:26px;display:grid;place-items:center;flex:none}
+.fg-plus{position:absolute;right:-4px;top:-6px;font:900 11px var(--f-head);font-style:normal;color:#FFE27A;text-shadow:0 1px 2px #000}
+.fg-n{color:#FFE27A}.fg-max{color:#FFE27A!important;font-weight:800}
+.fg-rate{position:relative;height:14px;margin-top:5px;border-radius:7px;background:rgba(0,0,0,.45);overflow:hidden}.fg-rate i{position:absolute;inset:0 auto 0 0;background:linear-gradient(90deg,#3DDC84,#FFE27A)}.fg-rate span{position:relative;display:block;padding-left:8px;font:800 10.5px/14px var(--f-body);color:#fff;text-shadow:0 1px 2px #000}
+.rpg .rp-card .fg-go{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:46px;line-height:1.1}.fg-go small{font-size:10.5px;color:#4A2A00!important}
+.rpg .rp-card{position:relative}
+.fg-fx{position:absolute;inset:0;z-index:5;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;background:rgba(5,6,20,.78);border-radius:18px;animation:rp-fade .2s}
+.fg-ham{font-size:84px;transform-origin:80% 80%;animation:fg-ham .5s ease-in 2}
+.fg-fx b{font:900 30px var(--f-head);opacity:0;animation:fg-res .5s .95s forwards}
+.fg-fx.ok b{color:#FFE27A;text-shadow:0 0 20px #FFB020}.fg-fx.bad b{color:#FF8A8A}
+@keyframes fg-ham{0%{transform:rotate(-50deg)}70%{transform:rotate(20deg)}100%{transform:rotate(-50deg)}}
+@keyframes fg-res{from{opacity:0;transform:scale(2)}to{opacity:1;transform:scale(1)}}
+@media (max-width:760px){
+  .rpg .rpg-menu{top:6px;bottom:auto;right:6px;display:flex;grid-template-columns:none;padding:0;background:none;box-shadow:none}
+  .rpg .rpg-menu button{width:44px;height:44px}.rpg .rpg-menu button span{font-size:19px}.rpg .rpg-menu button small{font-size:9px}
+  .rpg .rpg-minirim{display:block;top:56px;width:120px;height:90px}
+  .rpg .rpg-qt.qt2{top:92px;width:min(200px,52vw)}
+  .rpg .rpg-chat.dock{left:8px;transform:none;bottom:26px;width:calc(100vw - 230px);min-width:150px}
+  .rpg-act{right:4px;bottom:24px;transform:scale(.78);transform-origin:100% 100%}
+  .rpg .rpg-stick{bottom:150px}
+}
+.rpg .rpg-panel{z-index:12}.rpg .rpg-bigmap{z-index:12}.rpg .rpg-more{z-index:11}.rpg .rpg-dlg{z-index:12}
 
 </style>
 </head>
@@ -4648,7 +4721,7 @@ if (typeof module !== 'undefined') module.exports = ExamParser;
 </script>
 <script>
 /* โลโก้: ภาพครูปลื้ม (ไฟล์ต้นฉบับ src/logo.svg ฝังตอน build) */
-const APP_VER = '22.0 · 26 พ.ย. 2569';
+const APP_VER = '23.0 · 26 พ.ย. 2569';
 let LOGO_N = 0;
 function logoSVG() { const k = 'L' + (++LOGO_N); return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><defs><linearGradient id="lgb" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3B9BFF"/><stop offset=".5" stop-color="#0A5BE0"/><stop offset="1" stop-color="#062C78"/></linearGradient><linearGradient id="lgs" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset=".6" stop-color="#FFF4D6"/><stop offset="1" stop-color="#FFD978"/></linearGradient><radialGradient id="lgc" cx=".3" cy=".08" r=".75"><stop offset="0" stop-color="#fff" stop-opacity=".55"/><stop offset=".5" stop-color="#fff" stop-opacity=".08"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient></defs><rect width="48" height="48" rx="13" fill="url(#lgb)"/><rect width="48" height="48" rx="13" fill="url(#lgc)"/><rect x=".75" y=".75" width="46.5" height="46.5" rx="12.3" fill="none" stroke="#fff" stroke-opacity=".45" stroke-width="1.2"/><g fill="none" stroke="#04235F" stroke-opacity=".35" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" transform="translate(0 1.2)"><path d="M21.2 17 C19.8 14.6 17.4 13.6 14.8 13.6 C11 13.6 8.6 15.6 8.6 18.5 C8.6 21.8 11.6 22.9 14.9 23.9 C18.6 25 21.6 26.4 21.6 29.8 C21.6 33 18.8 34.6 15.1 34.6 C12 34.6 9.5 33.4 8 31.1"/><path d="M26.6 14 L39.6 34.2 M39.6 14 L26.6 34.2"/></g><g fill="none" stroke="url(#lgs)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M21.2 17 C19.8 14.6 17.4 13.6 14.8 13.6 C11 13.6 8.6 15.6 8.6 18.5 C8.6 21.8 11.6 22.9 14.9 23.9 C18.6 25 21.6 26.4 21.6 29.8 C21.6 33 18.8 34.6 15.1 34.6 C12 34.6 9.5 33.4 8 31.1"/><path d="M26.6 14 L39.6 34.2 M39.6 14 L26.6 34.2"/></g></svg>`.replace('<svg ', '<svg class="logo" aria-hidden="true" ').replace(/\b(lg[bsc])\b/g, '$1' + k); }
 /* =====================================================================
@@ -11159,7 +11232,7 @@ function rpgGear(s = R.save) {
   const w = RPG_ITEMS[s.equip.w], a = RPG_ITEMS[s.equip.a];
   return { wt: RPG_JOBS[s.job]?.wt || 'sword', wtier: w ? w.tier : -1, atier: a ? a.tier : -1 };
 }
-function rpgEqItems(s = R.save) { return RPG_SLOTS.map(([k]) => RPG_ITEMS[s.equip?.[k]]).filter(Boolean); }
+function rpgEqItems(s = R.save) { return RPG_SLOTS.map(([k]) => { const id = s.equip?.[k], it = RPG_ITEMS[id]; if (!it) return null; const n = s.enh?.[id] || 0; if (!n) return it; const f = 1 + n * .1, g = 1 + n * .06; return { ...it, atk: it.atk ? Math.round(it.atk * f) : it.atk, matk: it.matk ? Math.round(it.matk * f) : it.matk, def: it.def ? Math.round(it.def * f) : it.def, hp: it.hp ? Math.round(it.hp * g) : it.hp, mp: it.mp ? Math.round(it.mp * g) : it.mp }; }).filter(Boolean); }
 function rpgPassive(k) { const s = R.save, P = RPG_PASSIVE[s.job] || []; let v = 0; P.forEach((p, i) => { if (p[2] === k) v += p[3] * (s.ps?.[i] || 0); }); return v; }
 function rpgAttr(s = R.save) { const b = rpgJob().st, a = s.st || {}, eq = rpgEqItems(s), add = k => eq.reduce((m, it) => m + (it[k] || 0), 0);
   return { str: b.str + (a.str || 0) + add('str'), int: b.int + (a.int || 0) + add('int'), vit: b.vit + (a.vit || 0) + add('vit'), agi: b.agi + (a.agi || 0) + add('agi') }; }
@@ -11221,7 +11294,7 @@ Object.assign(ACT, { 'rpg-enter': () => rpgEnter() });
 /* =====================================================================
    แผนที่ · 0 หญ้า 1 ทาง 2 ต้นไม้ 3 น้ำ 4 หิน/ผนัง 5 ประตู 6 ดอกไม้ 7 ทางออก 8 พื้นบ้าน 9 พื้นหิน 10 ลาวา 11 พุ่ม 12 ผนังบ้าน
    ===================================================================== */
-const RPG_SOLID = new Set([2, 3, 4, 10, 12]);
+const RPG_SOLID = new Set([2, 3, 4, 10, 12, 14]);
 function rpgRng(seed) { let a = 0; for (const ch of String(seed)) a = (a * 31 + ch.charCodeAt(0)) >>> 0; return () => { a |= 0; a = a + 0x6D2B79F5 | 0; let t = Math.imul(a ^ a >>> 15, 1 | a); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }; }
 const RPG_MAPS = {};
 const RPG_TOWNSPAWN = { forest: { x: 37.5, y: 15.5 }, cave: { x: 20.5, y: 2.5 }, desert: { x: 20.5, y: 27.5 } };
@@ -11249,6 +11322,10 @@ function rpgMap(scene) {
     W = 12; H = 9; m = fill(8); rect(0, 0, W, 1, 12); rect(0, 0, 1, H, 12); rect(W - 1, 0, 1, H, 12); rect(0, H - 1, W, 1, 12);
     m[H - 1][5] = 7; m[H - 1][6] = 7; exits.push({ x: 5, y: H - 1, w: 2, h: 1, to: 'town', tx: 28, ty: 25.6 });
     doors.push({ x: 10, y: 1, w: 1, k: 'wardrobe' }); spawn = { x: 6, y: 7 };
+  } else if (Z.shop) {
+    W = 14; H = 10; m = fill(8); rect(0, 0, W, 2, 12); rect(0, 0, 1, H, 12); rect(W - 1, 0, 1, H, 12); rect(0, H - 1, W, 1, 12);
+    rect(3, 3, 8, 1, 14); if (Z.shop === 'smith') rect(10, 6, 2, 1, 14);
+    const TD = RPG_TOWNDOOR[Z.shop] || [20, 14]; m[H - 1][6] = 7; m[H - 1][7] = 7; exits.push({ x: 6, y: H - 1, w: 2, h: 1, to: 'town', tx: TD[0], ty: TD[1] }); spawn = { x: 7, y: H - 2.2 };
   } else if (Z.dungeon) {
     // เขาวงกตดันเจี้ยน: ช่องละ 3 (ทางเดิน 2 + กำแพง 1)
     const D = RPG_DUNGEONS[Z.dungeon], rnd = rpgRng(scene), CW = 13, CH = 9; W = CW * 3 + 1; H = CH * 3 + 1; m = fill(4);
@@ -11282,8 +11359,8 @@ function rpgMap(scene) {
     if (Z.boss) { rect(36, 11, 7, 9, base); bossAt = { x: 40, y: 15.5 }; }
     Object.entries(RPG_DUNGEONS).forEach(([d, D]) => { if (D.from !== scene) return; const [px, py] = D.at; rect(px - 2, py - 2, 5, 6, base); rect(px, py + 1, 1, 3, base === 0 ? 1 : 9); m[py][px] = 7; exits.push({ x: px, y: py, w: 1, h: 1, to: d + 'f1', tx: 2.5, ty: 2.5, dungeon: d }); });
   }
-  const mp = { scene, W, H, m, doors, exits, spawn, bossAt, biome: Z.biome || 'forest', tint: Z.tint };
-  mp.npcs = scene === 'town' ? Object.entries(RPG_NPCS).map(([id, n]) => ({ id, ...n })) : [];
+  const mp = { scene, W, H, m, doors, exits, spawn, bossAt, biome: Z.biome || 'forest', tint: Z.tint, shop: Z.shop };
+  mp.npcs = Object.entries(RPG_NPCS).filter(([, n]) => (n.scene || 'town') === scene).map(([id, n]) => ({ id, ...n }));
   mp.img = rpgPaint(mp);
   return (RPG_MAPS[scene] = mp);
 }
@@ -11317,6 +11394,7 @@ function rpgOverlay() {
     <div class="rpg-more" id="rpg-more" hidden><div class="rm-card"><b>เมนูทั้งหมด</b>${[['map', '🗺️', 'แผนที่โลก'], ['pets', '🐾', 'สัตว์เลี้ยง'], ['guild', '🏰', 'กิลด์'], ['top', '🏆', 'อันดับ'], ['snd', SND.on ? '🔊' : '🔇', 'เสียง'], ['exit', '🚪', 'ออกจากเกม']].map(([k, i, l]) => `<button data-r="${k}"><span>${i}</span><small>${l}</small></button>`).join('')}</div></div>
     <div class="rpg-party" id="rpg-party"></div><div class="rpg-chat" id="rpg-chat"></div><div class="rpg-bigmap" id="rpg-bigmap" hidden></div>${R.teacher ? '<div class="rpg-tmode">👩‍🏫 โหมดครู · ทองไม่จำกัด · ไม่บันทึกลงคะแนนนักเรียน</div>' : ''}
     <button class="rpg-talk" id="rpg-talk" data-r="talk" hidden>💬</button>
+    <div class="rpg-act" id="rpg-act">${rpgActHTML()}</div><div class="rpg-bot" id="rpg-bot"></div>
     <div class="rpg-stick" id="rpg-stick"><i></i></div>
     <div class="rpg-panel" id="rpg-panel" hidden></div><div class="rpg-dlg" id="rpg-dlg" hidden></div>
     <div class="rpg-battle" id="rpg-battle" hidden></div>`;
@@ -11456,7 +11534,7 @@ function rpgSay(t, ms = 2400) { const el = document.getElementById('rpg-toast');
 /* =====================================================================
    แผง UI
    ===================================================================== */
-function rpgDoor(d) { if (!d) return; if (d.k === 'home') return rpgScene('house'); if (d.k === 'wardrobe') return rpgPanel('wardrobe'); rpgPanel(d.k); }
+function rpgDoor(d) { if (!d) return; if (d.k === 'home') return rpgScene('house'); if (d.k === 'wardrobe') return rpgPanel('wardrobe'); if (RPG_ZONES['shop_' + d.k]) return rpgScene('shop_' + d.k); rpgPanel(d.k); }
 function rpgItemLine(it) {
   if (it.t === 'w') return `${it.atk ? `⚔️${it.atk}` : ''}${it.matk ? ` 🔮${it.matk}` : ''}${it.mp ? ` 💧+${it.mp}` : ''}`;
   if (it.t === 'a') return `🛡️${it.def} ❤️+${it.hp}`;
@@ -11673,6 +11751,7 @@ function rpgTree(kind, v) {
 
 /* ---------- ระบายแผนที่ครั้งเดียว ---------- */
 function rpgPaint(mp) {
+  if (mp.shop) return rpgPaintShop(mp);
   const P = RPG_P, c = document.createElement('canvas'); c.width = mp.W * TS * P; c.height = mp.H * TS * P;
   const x = c.getContext('2d'); x.scale(P, P);
   const rnd = rpgRng(mp.scene + 'p'), sc = mp.biome, M = mp.m;
@@ -11692,7 +11771,7 @@ function rpgPaint(mp) {
   // 1) พื้น
   for (let j = 0; j < mp.H; j++) for (let i = 0; i < mp.W; i++) {
     const px = i * TS, py = j * TS;
-    x.fillStyle = PAL.g[(rnd() * PAL.g.length) | 0]; x.fillRect(px, py, TS + .5, TS + .5);
+    rnd(); x.fillStyle = (sc === 'castle' || sc === 'dungeon' || sc === 'house') ? PAL.g[(i + j) % PAL.g.length] : PAL.g[0]; x.fillRect(px, py, TS + .5, TS + .5);
     if (sc === 'house') { x.fillStyle = 'rgba(120,70,30,.18)'; for (let k = 1; k < 4; k++) x.fillRect(px, py + k * 8, TS, .8); x.fillRect(px + ((j % 2) ? 10 : 22), py, .8, TS); continue; }
     for (let k = 0; k < 7; k++) { const a = px + rnd() * TS, b = py + rnd() * TS; x.strokeStyle = rnd() < .75 ? PAL.bl : PAL.li; x.lineWidth = .9; x.beginPath(); x.moveTo(a, b); x.lineTo(a + (rnd() - .5) * 2, b - 2.5 - rnd() * 2); x.stroke(); }
     if (sc === 'castle' || sc === 'dungeon') { x.strokeStyle = 'rgba(0,0,0,.25)'; x.lineWidth = .8; x.strokeRect(px + .5, py + .5, TS - 1, TS - 1); }
@@ -11720,7 +11799,8 @@ function rpgPaint(mp) {
       if (sc === 'town' || sc === 'forest') { const g = sc === 'town' ? ['#3F8F3A', '#56AD4C', '#8CD678'] : ['#367F33', '#4C9E44', '#80C96D']; x.fillStyle = 'rgba(0,0,0,.18)'; x.beginPath(); x.ellipse(px + 16, py + 25, 12, 4, 0, 0, 7); x.fill(); [[10, 18, 7], [22, 18, 7], [16, 13, 8]].forEach(([a, b, r], n) => { x.fillStyle = RPG_OL + '55'; x.beginPath(); x.arc(px + a, py + b, r + 1.2, 0, 7); x.fill(); }); [[10, 18, 7], [22, 18, 7], [16, 13, 8]].forEach(([a, b, r]) => { x.fillStyle = g[1]; x.beginPath(); x.arc(px + a, py + b, r, 0, 7); x.fill(); }); x.fillStyle = g[2]; x.beginPath(); x.arc(px + 13, py + 10, 3, 0, 7); x.fill(); }
       else { x.fillStyle = 'rgba(0,0,0,.25)'; x.beginPath(); x.ellipse(px + 16, py + 24, 11, 4, 0, 0, 7); x.fill(); x.fillStyle = sc === 'cave' ? '#6A6F8E' : '#6B4C44'; x.beginPath(); x.moveTo(px + 6, py + 23); x.lineTo(px + 9, py + 12); x.lineTo(px + 17, py + 8); x.lineTo(px + 26, py + 14); x.lineTo(px + 27, py + 23); x.closePath(); x.fill(); x.fillStyle = 'rgba(255,255,255,.18)'; x.beginPath(); x.moveTo(px + 9, py + 12); x.lineTo(px + 17, py + 8); x.lineTo(px + 16, py + 15); x.closePath(); x.fill(); }
     }
-    if (v === 2) mp.trees.push({ x: i, y: j, v: (rnd() * 4) | 0, k: sc === 'ice' ? 'snow' : sc === 'desert' ? (rnd() < .7 ? 'cactus' : 'palm') : sc === 'forest' && rnd() < .3 ? 'pine' : 'oak' });
+    if (v === 2 && at(i - 1, j) === 2 && at(i + 1, j) === 2 && at(i, j - 1) === 2 && at(i, j + 1) === 2 && (i + j) % 2) { x.fillStyle = 'rgba(20,50,20,.35)'; x.beginPath(); x.ellipse(px + 16, py + 20, 20, 10, 0, 0, 7); x.fill(); continue; }
+    if (v === 2) mp.trees.push({ x: i, y: j, v: (rnd() * 4) | 0, dense: at(i - 1, j) === 2 && at(i + 1, j) === 2, k: sc === 'ice' ? 'snow' : sc === 'desert' ? (rnd() < .7 ? 'cactus' : 'palm') : sc === 'forest' && rnd() < .3 ? 'pine' : 'oak' });
     if (v === 4 && (sc === 'castle' || sc === 'dungeon')) {
       x.fillStyle = sc === 'dungeon' ? '#18211F' : '#231E36'; x.fillRect(px, py, TS, TS); x.fillStyle = sc === 'dungeon' ? (mp.tint || '#2A3A38') : '#332C4D'; for (let r = 0; r < 4; r++) for (let q = 0; q < 2; q++) { rr(x, px + 1 + q * 16 + (r % 2 ? 8 : 0) - (r % 2 && q ? 16 : 0), py + 1 + r * 8, 14, 6.5, 1.5); x.fill(); }
       x.fillStyle = 'rgba(255,255,255,.06)'; x.fillRect(px, py, TS, 2);
@@ -11736,6 +11816,7 @@ function rpgPaint(mp) {
       else { x.fillStyle = '#8F5F35'; x.fillRect(px, py, TS, TS); x.fillStyle = '#A5713F'; x.fillRect(px + (i === 0 ? TS - 5 : 0), py, 5, TS); if (j === mp.H - 1) { x.fillStyle = '#7A4E2A'; x.fillRect(px, py, TS, 5); } }
     }
   }
+  rpgPaintPlus(x, mp, PAL, rnd, at);
   // 4) ทางออก (พอร์ทัลเคลื่อนไหวตอนวาดสด)
   mp.exits.forEach(e => mp.portals.push([(e.x + e.w / 2) * TS, (e.y + e.h / 2) * TS, Math.max(e.w, e.h) * TS / 2]));
   // 5) ตึกในเมือง
@@ -11899,11 +11980,11 @@ function rpgDraw(now) {
   if (RS.walkTo) { x.strokeStyle = 'rgba(255,255,255,.9)'; x.lineWidth = 2; const r = 5 + (t / 90 % 8); x.globalAlpha = 1 - (t / 90 % 8) / 8; x.beginPath(); x.ellipse(RS.walkTo.x * TS, RS.walkTo.y * TS, r * 1.4, r * .7, 0, 0, 7); x.stroke(); x.globalAlpha = 1; }
   // เอนทิตี้ เรียงตามแกน y
   const ents = [];
-  mp.trees.forEach(tr => { if (vis(tr.x, tr.y, 3)) ents.push({ y: tr.y + .92, d: () => x.drawImage(rpgTree(tr.k, tr.v), tr.x * TS - 16, tr.y * TS + TS - 80, 64, 84) }); });
+  mp.trees.forEach(tr => { if (vis(tr.x, tr.y, 3)) ents.push({ y: tr.y + .92, d: () => { const T2 = rpgTree2(tr.k, tr.v), k = T2.w > 100 ? (tr.dense ? .62 : .8) : 1; x.drawImage(T2.img, tr.x * TS + 16 - (T2.ox + 16) * k, tr.y * TS + TS - 4 - T2.oy * k, T2.w * k, T2.h * k); } }); });
   RS.mon.forEach(mo => { if (vis(mo.x, mo.y, 4)) ents.push({ y: mo.y, d: () => rpgDrawMon(x, mo, t) }); });
   Object.entries(RS.others || {}).forEach(([id, o]) => { if (t - o.seen < 12000 && o.m === mp.scene) ents.push({ y: o.y, d: () => rpgCharAt(x, { x: o.x, y: o.y, look: o.o, dir: o.dir || 'd', anim: t / 90, moving: Math.hypot((o.tx ?? o.x) - o.x, (o.ty ?? o.y) - o.y) > .02, name: (o.teacher ? '👑 ' : '') + o.n, col: RPG_JOBS[o.k]?.col, guild: o.g, party: R.party?.mem.some(m => m.id === id), teacher: o.teacher, emote: o.em && t - o.emAt < 3500 ? o.em : null, emAge: t - o.emAt, say: o.say && t - o.sayAt < 4000 ? o.say : null, pet: o.p, t, seed: id.length * 97 }) }); });
   rpgLifeEnts(x, t, ents);
-  if (mp.scene === 'town') ents.push({ y: 9.7, d: () => rpgTopBoard(x, t) });
+  if (mp.scene === 'town') ents.push({ y: 9.7, d: () => rpgTopBoard2(x, t) });
   (mp.npcs || []).forEach(n => ents.push({ y: n.y, d: () => rpgCharAt(x, { x: n.x, y: n.y, look: { ...n.look, job: n.job, wt: RPG_JOBS[n.job].wt, wtier: n.gear, atier: n.gear }, dir: 'd', t, name: n.n, npc: true, col: '#F6C343', mark: rpgNpcMark(n.id), seed: n.x * 99 }) }));
   const pet = rpgPet(); if (pet && RS.pet) ents.push({ y: RS.pet.y - .01, d: () => { const hop = Math.abs(Math.sin(t / 140)) * (RS.petMoving ? 4 : 1.2); x.fillStyle = 'rgba(20,30,40,.22)'; x.beginPath(); x.ellipse(RS.pet.x * TS, RS.pet.y * TS + 1, 8, 2.8, 0, 0, 7); x.fill(); x.save(); x.translate(RS.pet.x * TS, RS.pet.y * TS - hop); const pim = rpgMonImg(pet.ic, Math.floor(t / (RS.petMoving ? 90 : 160)) % 8); if (pim) { const k = .62; x.scale(RS.pet.fx < 0 ? -k : k, k); rpgArtBlit(x, pim, false); } else { if (RS.pet.fx > 0) x.scale(-1, 1); x.drawImage(rpgEmo(pet.ic, 64), -13, -24, 26, 26); } x.restore(); } });
   ents.push({ y: s.y, d: () => rpgCharAt(x, { x: s.x, y: s.y, look: rpgLookMe(), dir: RS.dir || 'd', anim: RS.anim, moving: RS.walking, emote: RS.emote && t - RS.emAt < 3500 ? RS.emote : null, emAge: t - RS.emAt, say: RS.say && t - RS.sayAt < 4000 ? RS.say : null, guild: R.guild ? R.guild.emblem + ' ' + R.guild.name : null, me: true, t }) });
@@ -11985,6 +12066,7 @@ function rpgHud() {
       <div class="hd2-bar mp"><i style="width:${pc(s.mp, st.mmp)}%"></i><span>MP ${Math.round(s.mp).toLocaleString()} / ${st.mmp.toLocaleString()}</span></div>
       <div class="hd2-bar xp"><i style="width:${xp}%"></i><span>EXP ${max ? 'MAX' : xp + '%'}</span></div>
       <div class="hd2-chips"><span class="gold">💰 ${R.gold.toLocaleString()}</span>${pet ? `<span>${pet.ic} อิ่ม ${pet.hunger}%</span>` : ''}${s.egg ? `<span class="egg">${RPG_ITEMS[s.egg.type].ic} อีก ${Math.max(0, s.egg.need - s.egg.steps)} ก้าว</span>` : ''}</div></div></div>`;
+  rpgBottomBar(); rpgActUpdate();
   ['stat', 'skill'].forEach(k => { const dot = document.getElementById('rpg-' + k + 'dot'), n = k === 'stat' ? s.pts : s.skp; if (dot) { dot.hidden = !n; dot.textContent = n; } });
   rpgQTrack();
 }
@@ -13403,6 +13485,7 @@ function rpgNpcMark(id) {
 /* ---------- บทพูด NPC (กล่องข้อความแบบ MMORPG) ---------- */
 function rpgTalk(id) {
   const N = RPG_NPCS[id]; if (!N) return;
+  if (N.shop) { rpgSfx('click'); RS.bubble = { id, t: N.hi[Math.floor(Math.random() * N.hi.length)], at: performance.now() }; return rpgPanel(N.shop); }
   const s = R.save, hi = N.hi[Math.floor(Math.random() * N.hi.length)], close = { l: 'ไว้คุยกันใหม่', f: () => rpgDlgClose() };
   let nodes = [];
   if (id === 'leon') {
@@ -14277,6 +14360,7 @@ async function rpgEnterTeacher() {
   R.save = null; R.sid = null; await rpgLoad(true); rpgEnter();
 }
 function rpgPanelX(k, arg) {
+  if (k === 'forge') return rpgForgeHTML();
   if (k === 'equip') { setTimeout(rpgEquipPreview, 30); return rpgEquipHTML(); }
   if (k === 'skill') return rpgSkillHTML();
   if (k === 'guild') return rpgGuildHTML();
@@ -14284,6 +14368,7 @@ function rpgPanelX(k, arg) {
   return '';
 }
 function rpgSocialClick(a, b) {
+  if (rpgV23Click(a, b)) return;
   if (a === 'top') { document.getElementById('rpg-more').hidden = true; return rpgPanel('top'); }
   if (a === 'ch-min') { RPG_CHAT.min = !RPG_CHAT.min; return rpgChatUI(); }
   if (a === 'qt-hide') { RS.qtHide = !RS.qtHide; try { localStorage.setItem('rpg-qth', RS.qtHide ? '1' : ''); } catch (e) {} return rpgQTrack(); }
@@ -14309,6 +14394,251 @@ function rpgSocialClick(a, b) {
   if (a === 'gd-leave') { if (!confirm('ออกจากกิลด์ใช่ไหม?')) return; return rpgGuildAct('leave'); }
   if (a === 'noop') return;
   return rpgBattleClick(a, b);
+}
+
+/* =====================================================================
+   rpg-v23.js — ร้านค้าแบบเข้าไปข้างใน · ช่างตีบวก · ป้ายอันดับถ้วยทอง
+                แผนที่ภาพวาดละเอียด · เลย์เอาต์ HUD แบบเกม MMORPG บนมือถือ
+   ===================================================================== */
+const RPG_TOWNDOOR = { potion: [6, 8.6], smith: [13, 8.6], egg: [28, 8.6], tailor: [35, 8.6], furn: [6, 25.6], bank: [13, 25.6], board: [35, 25.6] };
+const RPG_SHOPIN = {
+  potion: { n: 'ร้านยาคุณหมอเว็บ', ic: '🧪', wall: '#E8F4EC', trim: '#3E9A6A', npc: ['หมอเว็บ', 'priest', { g: 'f', skin: 0, hs: 4, hc: 7, os: 0, oc: 0 }], hi: ['ยาแดงฟื้นพลัง ยาฟ้าฟื้นมานา เลือกได้เลยจ้ะ', 'ก่อนออกไปล่า อย่าลืมพกยาติดตัวนะ'], items: ['🧪', '💧', '🍯', '🥛', '🧴', '💊'] },
+  smith: { n: 'โรงตีเหล็ก & เกราะ', ic: '⚒️', wall: '#4A3A34', trim: '#B87333', npc: ['ช่างเกราะไอรอน', 'knight', { g: 'm', skin: 2, hs: 4, hc: 1, os: 0, oc: 0 }], hi: ['อาวุธดีมีชัยไปกว่าครึ่ง!', 'อยากให้ของแรงขึ้น ไปหาบรูโน่ช่างตีบวกตรงเตาหลอมได้เลย'], items: ['⚔️', '🛡️', '🪓', '🗡️', '🏹', '🔱'] },
+  egg: { n: 'ฟาร์มสัตว์มหัศจรรย์', ic: '🥚', wall: '#F6EBD0', trim: '#C89A3A', npc: ['ลุงฟาร์ม', 'summon', { g: 'm', skin: 1, hs: 5, hc: 2, os: 0, oc: 0 }], hi: ['ไข่ใบนี้ฟักเป็นอะไรก็ไม่รู้นะ ลุ้นสนุก!', 'ตาข่ายดี ๆ ช่วยให้จับสัตว์ง่ายขึ้นเยอะเลย'], items: ['🥚', '🐣', '🪺', '🥕', '🍖', '🕸️'] },
+  tailor: { n: 'ร้านแฟชั่น', ic: '🎀', wall: '#FBE6F0', trim: '#E0479E', npc: ['มาดามมิวมิว', 'bard', { g: 'f', skin: 0, hs: 6, hc: 8, os: 0, oc: 0 }], hi: ['ชุดใหม่ล่าสุดเข้าร้านแล้วจ้า~', 'หมวกใบนี้เข้ากับหน้าเธอมาก!'], items: ['👒', '🎩', '👑', '🎀', '👗', '🧢'] },
+  furn: { n: 'ร้านเฟอร์นิเจอร์', ic: '🛋️', wall: '#EDE0CC', trim: '#9B6B43', npc: ['ช่างไม้ทิมเบอร์', 'engineer', { g: 'm', skin: 3, hs: 0, hc: 0, os: 0, oc: 0 }], hi: ['แต่งบ้านให้น่าอยู่ พักผ่อนแล้วฟื้นพลังได้นะ', 'โซฟาตัวนี้นุ่มสุดในเมือง!'], items: ['🛋️', '🪑', '🛏️', '🪴', '🕰️', '🖼️'] },
+  bank: { n: 'ธนาคารแลกทอง', ic: '💱', wall: '#E6F2EA', trim: '#2FAE66', npc: ['พนักงานธนาคาร', 'hacker', { g: 'f', skin: 1, hs: 3, hc: 0, os: 0, oc: 0 }], hi: ['แลกทองในเกมเป็นเหรียญได้ที่นี่เลยค่ะ', 'สะสมทองไว้ แล้วมาแลกนะคะ'], items: ['💰', '🪙', '💎', '📜', '🏦', '💳'] },
+  board: { n: 'หอเกียรติยศ', ic: '🏆', wall: '#EAE2F8', trim: '#8E5CE6', npc: ['ผู้ดูแลหอเกียรติยศ', 'knight', { g: 'm', skin: 0, hs: 2, hc: 7, os: 0, oc: 0 }], hi: ['ที่นี่บันทึกชื่อผู้กล้าที่เก่งที่สุดของโรงเรียน', 'วันหนึ่งชื่อเจ้าอาจอยู่บนป้ายนั้นก็ได้'], items: ['🏆', '🥇', '🎖️', '📜', '🛡️', '⭐'] },
+};
+Object.entries(RPG_SHOPIN).forEach(([k, S]) => {
+  RPG_ZONES['shop_' + k] = { n: S.n, ic: S.ic, biome: 'house', shop: k };
+  RPG_NPCS['m_' + k] = { n: S.npc[0], x: 7, y: 4.75, job: S.npc[1], look: S.npc[2], gear: 3, scene: 'shop_' + k, shop: k, hi: S.hi };
+});
+RPG_NPCS.forge = { n: 'ช่างตีบวกบรูโน่', x: 9.3, y: 6.2, job: 'engineer', look: { g: 'm', skin: 3, hs: 3, hc: 0, os: 0, oc: 6 }, gear: 5, scene: 'shop_smith', shop: 'forge', hi: ['เอาของมาตีบวกสิ! ยิ่งบวกสูงยิ่งแรง', 'ตั้งแต่ +7 ขึ้นไปถ้าพลาดจะลดลง 1 ขั้นนะ ระวังหน่อย'] };
+
+/* ---------- ตีบวกอุปกรณ์ (+1 ถึง +10) ---------- */
+const RPG_ENH_RATE = [100, 100, 95, 90, 80, 70, 60, 50, 40, 30];
+const rpgEnhCost = (it, n) => Math.round(((it.p || 300) * .2 + 150) * (n + 1) * (1 + n * .15));
+function rpgForgeHTML() {
+  const s = R.save; s.enh = s.enh || {};
+  const rows = RPG_SLOTS.map(([k, nm, ic]) => { const id = s.equip?.[k], it = RPG_ITEMS[id]; if (!it) return `<div class="fg-row empty"><span class="rp-ic">${ic}</span><div><b>${nm}</b><small>ยังไม่ได้สวมใส่</small></div></div>`;
+    const n = s.enh[id] || 0, max = n >= 10, cost = max ? 0 : rpgEnhCost(it, n), rate = max ? 0 : RPG_ENH_RATE[n], g = RPG_GRADE[it.g ?? 0];
+    const cur = rpgEqItems().find(x => x.n === it.n) || it, nxt = { atk: it.atk ? Math.round(it.atk * (1 + (n + 1) * .1)) : 0, matk: it.matk ? Math.round(it.matk * (1 + (n + 1) * .1)) : 0, def: it.def ? Math.round(it.def * (1 + (n + 1) * .1)) : 0 };
+    const stat = ['atk', 'matk', 'def'].filter(k2 => it[k2]).map(k2 => `${{ atk: '⚔️', matk: '🔮', def: '🛡️' }[k2]} ${cur[k2]}${max ? '' : ` → <em>${nxt[k2]}</em>`}`).join(' · ');
+    return `<div class="fg-row" style="--gc:${g?.c || '#9AA3B2'}"><span class="rp-ic gr">${it.wt === 'any' ? RPG_WT[rpgJob().wt].ic : it.ic}<i class="fg-plus">${n ? '+' + n : ''}</i></span>
+      <div><b>${n ? `<span class="fg-n">+${n}</span> ` : ''}${esc(it.n)}</b><small>${stat || rpgItemLine(it)}</small>${max ? '<small class="fg-max">✨ ตีบวกสูงสุดแล้ว</small>' : `<div class="fg-rate"><i style="width:${rate}%"></i><span>โอกาสสำเร็จ ${rate}%${n >= 6 ? ' · พลาดลด 1 ขั้น' : ''}</span></div>`}</div>
+      ${max ? '' : `<button class="rp-btn fg-go" data-r="enh" data-i="${id}" ${R.gold < cost ? 'disabled' : ''}>🔨 ตีบวก<small>💰 ${cost.toLocaleString()}</small></button>`}</div>`; }).join('');
+  return `<h3>🔨 ช่างตีบวกบรูโน่ <small>ตีบวกอุปกรณ์ที่สวมอยู่ให้แรงขึ้น</small></h3><span class="rp-gold">💰 ${R.gold.toLocaleString()}</span>
+    <div class="fg-hero"><div class="fg-anvil">⚒️</div><p>ทุก +1 เพิ่มพลังโจมตี/พลังเวท/ป้องกันของชิ้นนั้น 10% · ตั้งแต่ +7 ถ้าพลาดจะลดลง 1 ขั้น · ของไม่แตก</p></div>
+    <div class="fg-list">${rows}</div>`;
+}
+function rpgEnhance(id) {
+  const s = R.save, it = RPG_ITEMS[id]; if (!it) return; s.enh = s.enh || {}; const n = s.enh[id] || 0; if (n >= 10) return;
+  const cost = rpgEnhCost(it, n); if (R.gold < cost) return rpgSay('ทองไม่พอ'); R.gold -= cost; if (!R.teacher) RS.dirty = true;
+  const ok = Math.random() * 100 < RPG_ENH_RATE[n];
+  const card = document.querySelector('#rpg-panel .rp-card'); const fx = document.createElement('div'); fx.className = 'fg-fx ' + (ok ? 'ok' : 'bad');
+  fx.innerHTML = `<div class="fg-ham">🔨</div><b>${ok ? `สำเร็จ! +${n + 1}` : n >= 6 ? `ล้มเหลว… ลดเป็น +${n - 1}` : 'ล้มเหลว… ระดับคงเดิม'}</b>`; card?.appendChild(fx);
+  rpgSfx('hit'); setTimeout(() => rpgSfx(ok ? 'lvl' : 'miss'), 520);
+  if (ok) s.enh[id] = n + 1; else if (n >= 6) s.enh[id] = n - 1;
+  setTimeout(() => { rpgClamp(); rpgHud(); rpgSave(); rpgPanel('forge'); }, 1400);
+}
+
+/* ---------- ภายในร้าน (วาดครั้งเดียว) ---------- */
+function rpgPaintShop(mp) {
+  const P = RPG_P, S = RPG_SHOPIN[mp.shop], c = document.createElement('canvas'); c.width = mp.W * TS * P; c.height = mp.H * TS * P;
+  const x = c.getContext('2d'); x.scale(P, P); const W = mp.W * TS, H = mp.H * TS, rnd = rpgRng(mp.scene);
+  // พื้นไม้
+  for (let j = 0; j < mp.H; j++) for (let i = 0; i < mp.W; i++) { const px = i * TS, py = j * TS; for (let r = 0; r < 4; r++) { const g = x.createLinearGradient(0, py + r * 8, 0, py + r * 8 + 8); const b = ['#C8925A', '#BE8650', '#D29C62'][(i + j + r) % 3]; g.addColorStop(0, rpgLite(b, .08)); g.addColorStop(1, rpgShade(b, .9)); x.fillStyle = g; x.fillRect(px, py + r * 8, TS, 8); x.fillStyle = 'rgba(80,40,10,.25)'; x.fillRect(px, py + r * 8 + 7.4, TS, .6); x.fillRect(px + ((i * 7 + r * 13) % 24) + 4, py + r * 8, .6, 8); } }
+  // พรมกลางห้อง
+  const rg = x.createRadialGradient(W / 2, H * .68, 10, W / 2, H * .68, W * .35); rg.addColorStop(0, rpgLite(S.trim, .25)); rg.addColorStop(1, rpgShade(S.trim, .75)); x.fillStyle = rg; rr(x, W * .24, H * .48, W * .52, H * .36, 16); x.fill(); x.strokeStyle = 'rgba(255,240,200,.75)'; x.lineWidth = 2; rr(x, W * .24 + 6, H * .48 + 6, W * .52 - 12, H * .36 - 12, 12); x.stroke();
+  // ผนังหลัง + ชั้นวางของ
+  const wg = x.createLinearGradient(0, 0, 0, TS * 2.2); wg.addColorStop(0, rpgShade(S.wall, .82)); wg.addColorStop(1, S.wall); x.fillStyle = wg; x.fillRect(0, 0, W, TS * 2.2);
+  x.fillStyle = 'rgba(0,0,0,.05)'; for (let i = 0; i < W; i += 16) x.fillRect(i, 0, 1, TS * 2.2);
+  x.fillStyle = rpgShade(S.trim, .8); x.fillRect(0, TS * 2.05, W, 6); x.fillStyle = 'rgba(0,0,0,.22)'; x.fillRect(0, TS * 2.2, W, 6);
+  [[1.2, .9], [4.6, .9], [8.4, .9], [11.2, .9]].forEach(([sx, sy], q) => { if (q === 3 && mp.shop === 'smith') return; const bx = sx * TS, by = sy * TS;
+    x.fillStyle = '#6A4428'; x.fillRect(bx - 4, by - 18, 76, 52); x.fillStyle = '#8A5A35'; x.fillRect(bx - 2, by - 16, 72, 48);
+    for (let r = 0; r < 2; r++) { x.fillStyle = '#5A3A20'; x.fillRect(bx - 2, by - 2 + r * 22, 72, 4); for (let k = 0; k < 3; k++) x.drawImage(rpgEmo(S.items[(q * 2 + r * 3 + k) % S.items.length], 64), bx + 3 + k * 23, by - 20 + r * 22, 18, 18); } });
+  [[3, 0.2], [9.2, 0.2]].forEach(([wx2, wy2]) => { if (mp.shop === 'smith' && wx2 > 8) return; const a = wx2 * TS, b = wy2 * TS; x.fillStyle = '#FFFFFF'; rr(x, a, b + 2, 44, 22, 4); x.fill(); x.fillStyle = '#9FD8FF'; x.fillRect(a + 3, b + 5, 38, 16); x.fillStyle = 'rgba(255,255,255,.6)'; x.beginPath(); x.moveTo(a + 6, b + 19); x.lineTo(a + 16, b + 6); x.lineTo(a + 21, b + 6); x.lineTo(a + 11, b + 19); x.fill(); });
+  // ป้ายร้าน
+  x.font = '800 12px Sarabun, sans-serif'; const tw = x.measureText(S.n).width + 34; x.fillStyle = '#5B3A20'; rr(x, W / 2 - tw / 2 - 2, 4, tw + 4, 22, 6); x.fill(); x.fillStyle = '#C8955A'; rr(x, W / 2 - tw / 2, 6, tw, 18, 5); x.fill(); x.fillStyle = '#3A2410'; x.textAlign = 'center'; x.textBaseline = 'middle'; x.fillText(`${S.ic} ${S.n}`, W / 2, 15.5);
+  // เคาน์เตอร์
+  const cx0 = 3 * TS, cy0 = 3 * TS; x.fillStyle = 'rgba(0,0,0,.25)'; rr(x, cx0 + 4, cy0 + 10, 8 * TS, TS, 6); x.fill();
+  const cg = x.createLinearGradient(0, cy0 - 6, 0, cy0 + TS); cg.addColorStop(0, '#A86E3E'); cg.addColorStop(1, '#6A4022'); x.fillStyle = cg; rr(x, cx0, cy0 - 8, 8 * TS, TS + 8, 6); x.fill();
+  x.fillStyle = '#D4A16A'; rr(x, cx0 - 3, cy0 - 12, 8 * TS + 6, 10, 4); x.fill(); x.fillStyle = 'rgba(255,255,255,.3)'; x.fillRect(cx0, cy0 - 11, 8 * TS, 2);
+  x.fillStyle = 'rgba(0,0,0,.18)'; for (let k = 1; k < 8; k++) x.fillRect(cx0 + k * TS, cy0, 1.2, TS - 2);
+  [1.5, 4, 6.5].forEach((k, q) => x.drawImage(rpgEmo(S.items[q], 64), cx0 + k * TS - 9, cy0 - 26, 18, 18));
+  x.drawImage(rpgEmo('🔔', 48), cx0 + 7.4 * TS - 7, cy0 - 24, 14, 14);
+  // ของตกแต่งตามร้าน
+  const deco = (e, a, b, s2 = 22) => { x.fillStyle = 'rgba(0,0,0,.2)'; x.beginPath(); x.ellipse(a, b + s2 * .45, s2 * .45, s2 * .15, 0, 0, 7); x.fill(); x.drawImage(rpgEmo(e, 64), a - s2 / 2, b - s2 / 2, s2, s2); };
+  deco('🪴', 1.4 * TS, 7.6 * TS, 26); deco('🪴', 12.6 * TS, 7.6 * TS, 26);
+  if (mp.shop === 'smith') { // เตาหลอม + ทั่ง
+    const fx = 11.6 * TS, fy = 1.2 * TS; x.fillStyle = '#3A3036'; rr(x, fx - 30, fy - 26, 60, 60, 8); x.fill(); x.fillStyle = '#5A4A50'; rr(x, fx - 26, fy - 22, 52, 52, 6); x.fill();
+    const fg = x.createRadialGradient(fx, fy + 14, 2, fx, fy + 14, 24); fg.addColorStop(0, '#FFF3B0'); fg.addColorStop(.4, '#FF8A2A'); fg.addColorStop(1, 'rgba(200,40,0,0)'); x.fillStyle = '#1A1012'; rr(x, fx - 16, fy, 32, 24, 10); x.fill(); x.fillStyle = fg; x.fillRect(fx - 24, fy - 8, 48, 40);
+    mp.forge = [fx, fy + 14];
+    const ax = 10 * TS, ay = 6 * TS; x.fillStyle = 'rgba(0,0,0,.3)'; x.beginPath(); x.ellipse(ax + TS, ay + 26, 30, 7, 0, 0, 7); x.fill();
+    x.fillStyle = '#6A4428'; rr(x, ax + 14, ay + 8, 36, 20, 3); x.fill(); const ag = x.createLinearGradient(0, ay - 6, 0, ay + 10); ag.addColorStop(0, '#9AA4B8'); ag.addColorStop(1, '#3E4658'); x.fillStyle = ag;
+    x.beginPath(); x.moveTo(ax + 2, ay - 4); x.lineTo(ax + 58, ay - 4); x.quadraticCurveTo(ax + 64, ay + 2, ax + 50, ay + 4); x.lineTo(ax + 44, ay + 10); x.lineTo(ax + 20, ay + 10); x.lineTo(ax + 14, ay + 4); x.quadraticCurveTo(ax, ay + 2, ax + 2, ay - 4); x.fill();
+    x.fillStyle = 'rgba(255,255,255,.35)'; x.fillRect(ax + 6, ay - 3, 50, 2);
+    [[1.4, 5.2, '⚔️'], [1.4, 6.2, '🛡️']].forEach(([a, b, e]) => deco(e, a * TS, b * TS, 22));
+  }
+  if (mp.shop === 'egg') { deco('🪺', 2 * TS, 5.5 * TS, 28); deco('🥚', 12 * TS, 5.5 * TS, 22); deco('🐣', 11.6 * TS, 4.6 * TS, 18); }
+  if (mp.shop === 'tailor') { deco('👗', 1.6 * TS, 5.2 * TS, 30); deco('🥻', 12.4 * TS, 5.2 * TS, 30); }
+  if (mp.shop === 'furn') { deco('🛋️', 2 * TS, 5.6 * TS, 34); deco('🕰️', 12.2 * TS, 4.8 * TS, 26); }
+  if (mp.shop === 'bank') { deco('💰', 1.8 * TS, 5.4 * TS, 26); deco('🏦', 12.2 * TS, 5 * TS, 30); }
+  if (mp.shop === 'board') { deco('🏆', 1.8 * TS, 5.2 * TS, 30); deco('🎖️', 12.2 * TS, 5.2 * TS, 26); }
+  if (mp.shop === 'potion') { deco('⚗️', 1.8 * TS, 5.4 * TS, 28); deco('🧴', 12.2 * TS, 5.4 * TS, 24); }
+  // ผนังข้าง/ล่าง + ประตู
+  x.fillStyle = '#7A4E2A'; x.fillRect(0, 0, 10, H); x.fillRect(W - 10, 0, 10, H); x.fillRect(0, H - 14, W, 14);
+  x.fillStyle = '#5A3A20'; x.fillRect(6 * TS, H - 16, 2 * TS, 16); x.fillStyle = '#7CC060'; rr(x, 6 * TS + 6, H - 12, 2 * TS - 12, 8, 3); x.fill();
+  // แสงจากหน้าต่าง
+  const lg2 = x.createLinearGradient(0, 0, 0, H); lg2.addColorStop(0, 'rgba(255,240,200,.18)'); lg2.addColorStop(1, 'rgba(40,20,10,.18)'); x.fillStyle = lg2; x.fillRect(0, 0, W, H);
+  const mini = document.createElement('canvas'); mini.width = 150; mini.height = Math.round(150 * mp.H / mp.W); mini.getContext('2d').drawImage(c, 0, 0, mini.width, mini.height); mp.mini = mini;
+  mp.trees = []; mp.water = []; mp.lava = []; mp.crystals = []; mp.portals = []; mp.exits.forEach(e => mp.portals.push([(e.x + e.w / 2) * TS, (e.y + e.h / 2) * TS, Math.max(e.w, e.h) * TS / 2]));
+  return c;
+}
+
+/* ---------- ต้นไม้ภาพวาด (ใหญ่ ใบหนา แรเงา) ---------- */
+const RPG_TREES2 = {};
+function rpgTree2(kind, v) {
+  if (kind === 'cactus' || kind === 'palm') return { img: rpgTree(kind, v), w: 64, h: 84, ox: 16, oy: 80 };
+  const key = kind + v; if (RPG_TREES2[key]) return RPG_TREES2[key];
+  const W = 112, H = 140, rnd = rpgRng(key), pal = { oak: [['#2F6A2E', '#4E9A3C', '#8ACB5A', '#C8EE84', '#1B3F1E'], ['#2C6440', '#3F8F55', '#7CC77A', '#BFEAA0', '#183A26'], ['#4A6A22', '#6E9A2E', '#A8D04A', '#E4F48A', '#2A3E12'], ['#245A4A', '#357F66', '#6EC0A0', '#B4E8D0', '#143A30']][v % 4], pine: [['#1F4A38', '#2E6A4E', '#4E9A6E', '#8CCB9A', '#10281E']][0], snow: [['#24483E', '#356A5A', '#5E9A86', '#FFFFFF', '#142A24']][0] }[kind];
+  const img = rpgSprite(W, H, x => {
+    const cx = W / 2, by = H - 6;
+    x.fillStyle = 'rgba(15,35,15,.32)'; x.beginPath(); x.ellipse(cx + 6, by, 34, 9, 0, 0, 7); x.fill();
+    // ลำต้น + ราก
+    const tg = x.createLinearGradient(cx - 9, 0, cx + 9, 0); tg.addColorStop(0, '#8A5A36'); tg.addColorStop(.5, '#6A4226'); tg.addColorStop(1, '#3E2414'); x.fillStyle = tg;
+    x.beginPath(); x.moveTo(cx - 8, by - 48); x.bezierCurveTo(cx - 9, by - 20, cx - 12, by - 8, cx - 18, by); x.lineTo(cx + 18, by); x.bezierCurveTo(cx + 12, by - 8, cx + 9, by - 20, cx + 8, by - 48); x.fill();
+    x.strokeStyle = 'rgba(40,20,10,.45)'; x.lineWidth = 1; for (let i = 0; i < 6; i++) { const a = cx - 6 + i * 2.4; x.beginPath(); x.moveTo(a, by - 44); x.quadraticCurveTo(a + (rnd() - .5) * 3, by - 22, a + (i - 2.5) * 2, by - 4); x.stroke(); }
+    if (kind === 'oak') {
+      const CY = 50, RX = 46, RY = 40, cl = [];
+      for (let i = 0; i < 26; i++) { const a = rnd() * Math.PI * 2, d = Math.sqrt(rnd()); cl.push([cx + Math.cos(a) * RX * d * .82, CY + Math.sin(a) * RY * d * .8, 10 + rnd() * 9]); }
+      cl.sort((p, q) => p[1] - q[1]);
+      x.fillStyle = pal[4]; cl.forEach(([a, b, r]) => { x.beginPath(); x.arc(a + 2, b + 4, r + 3, 0, 7); x.fill(); });
+      cl.forEach(([a, b, r]) => { const t = (b - (CY - RY)) / (RY * 2), base = t > .62 ? pal[0] : t > .3 ? pal[1] : pal[2];
+        for (let k = 0; k < 9; k++) { const aa = k / 9 * Math.PI * 2 + rnd(), dd = r * (.35 + rnd() * .5), lx = a + Math.cos(aa) * dd, ly = b + Math.sin(aa) * dd * .8, lr = r * (.38 + rnd() * .2);
+          const g = x.createRadialGradient(lx - lr * .4, ly - lr * .5, lr * .1, lx, ly, lr); g.addColorStop(0, rpgLite(base, .25)); g.addColorStop(1, rpgShade(base, .82)); x.fillStyle = g; x.beginPath(); x.ellipse(lx, ly, lr, lr * .82, aa, 0, 7); x.fill(); }
+        if (t < .45) { x.fillStyle = pal[3]; for (let k = 0; k < 5; k++) { x.globalAlpha = .7; x.beginPath(); x.ellipse(a - r * .3 + rnd() * r * .5, b - r * .45 + rnd() * r * .3, 2.4, 1.5, -.5, 0, 7); x.fill(); } x.globalAlpha = 1; } });
+      x.fillStyle = 'rgba(10,30,10,.22)'; x.beginPath(); x.ellipse(cx + 8, CY + RY * .55, RX * .8, RY * .35, 0, 0, 7); x.fill();
+      if (v % 3 === 0) { for (let k = 0; k < 7; k++) { const a = cx + (rnd() - .5) * RX * 1.3, b = CY + (rnd() - .2) * RY * .9; x.fillStyle = '#E8404A'; x.beginPath(); x.arc(a, b, 2.6, 0, 7); x.fill(); x.fillStyle = 'rgba(255,255,255,.7)'; x.beginPath(); x.arc(a - .8, b - .9, .8, 0, 7); x.fill(); } }
+      if (v % 4 === 1) { for (let k = 0; k < 10; k++) { const a = cx + (rnd() - .5) * RX * 1.4, b = CY + (rnd() - .4) * RY; x.fillStyle = ['#FFFFFF', '#FFD6E6'][k % 2]; x.beginPath(); x.arc(a, b, 1.8, 0, 7); x.fill(); } }
+    } else {
+      const tiers = 6; for (let i = tiers - 1; i >= 0; i--) { const yy = by - 40 - i * 15, w = 44 - i * 6.2, h = 26;
+        const g = x.createLinearGradient(0, yy - h, 0, yy + 4); g.addColorStop(0, pal[2]); g.addColorStop(.6, pal[1]); g.addColorStop(1, pal[0]); x.fillStyle = pal[4];
+        const tier = (off) => { x.beginPath(); x.moveTo(cx, yy - h + off); for (let k = 0; k <= 10; k++) { const px = cx - w + k * w * .2, py = yy + off + (k % 2 ? 4 : -1) + Math.sin(k) * 1.5; x.lineTo(px, py); } x.closePath(); };
+        tier(3); x.fill(); x.fillStyle = g; tier(0); x.fill();
+        x.strokeStyle = 'rgba(255,255,255,.18)'; x.lineWidth = 1; for (let k = 0; k < 6; k++) { x.beginPath(); x.moveTo(cx, yy - h + 4); x.lineTo(cx - w * .8 + k * w * .32, yy - 2); x.stroke(); }
+        if (kind === 'snow') { x.fillStyle = '#FFFFFF'; x.beginPath(); x.moveTo(cx, yy - h); x.quadraticCurveTo(cx - w * .5, yy - h * .45, cx - w * .75, yy - 4); x.quadraticCurveTo(cx - w * .3, yy - h * .4, cx, yy - h * .55); x.quadraticCurveTo(cx + w * .3, yy - h * .4, cx + w * .75, yy - 4); x.quadraticCurveTo(cx + w * .5, yy - h * .45, cx, yy - h); x.fill(); } }
+    }
+  });
+  return (RPG_TREES2[key] = { img, w: W, h: H, ox: W / 2 - 16, oy: H - 30 });
+}
+
+/* ---------- ระบายพื้นแบบภาพวาด (เพิ่มทับแผนที่เดิม) ---------- */
+function rpgPaintPlus(x, mp, PAL, rnd, at) {
+  const sc = mp.biome, W = mp.W * TS, H = mp.H * TS; if (sc === 'house') return;
+  // 1) จุดสีนุ่ม ๆ ทั่วพื้น ให้ไม่เป็นตาราง
+  for (let i = 0; i < mp.W * mp.H * .22; i++) { const a = rnd() * W, b = rnd() * H, r = 30 + rnd() * 90, c = rnd() < .5 ? PAL.li : PAL.bl, g = x.createRadialGradient(a, b, 0, a, b, r); g.addColorStop(0, c); g.addColorStop(1, 'rgba(0,0,0,0)'); x.globalAlpha = .16 + rnd() * .12; x.fillStyle = g; x.fillRect(a - r, b - r, r * 2, r * 2); }
+  x.globalAlpha = 1;
+  const grassy = sc === 'town' || sc === 'forest' || sc === 'ice' || sc === 'desert';
+  const blade = (a, b, h, c1, c2) => { const g = x.createLinearGradient(0, b - h, 0, b); g.addColorStop(0, c2); g.addColorStop(1, c1); x.fillStyle = g; x.beginPath(); x.moveTo(a - 1.6, b); x.quadraticCurveTo(a - 1, b - h * .6, a + (rnd() - .5) * 4, b - h); x.quadraticCurveTo(a + .6, b - h * .5, a + 1.6, b); x.fill(); };
+  const tuft = (a, b, s2) => { const n = 4 + (rnd() * 4 | 0); x.fillStyle = 'rgba(0,0,0,.15)'; x.beginPath(); x.ellipse(a, b + 1, 5 * s2, 1.8 * s2, 0, 0, 7); x.fill(); for (let k = 0; k < n; k++) blade(a + (k - n / 2) * 1.8 * s2, b, (6 + rnd() * 6) * s2, sc === 'ice' ? '#9FC4D8' : sc === 'desert' ? '#A08850' : PAL.bl, sc === 'ice' ? '#FFFFFF' : sc === 'desert' ? '#E8D090' : PAL.li); };
+  const rock = (a, b, s2) => { x.fillStyle = 'rgba(0,0,0,.22)'; x.beginPath(); x.ellipse(a + 1, b + 2, 6 * s2, 2.4 * s2, 0, 0, 7); x.fill(); const base = sc === 'desert' ? '#C8A878' : sc === 'ice' ? '#B8CCDC' : sc === 'volcano' ? '#5A4440' : '#9A9AA8', g = x.createLinearGradient(a - 5 * s2, b - 6 * s2, a + 5 * s2, b + 2); g.addColorStop(0, rpgLite(base, .35)); g.addColorStop(1, rpgShade(base, .7)); x.fillStyle = g; x.beginPath(); x.moveTo(a - 6 * s2, b + 1); x.quadraticCurveTo(a - 6 * s2, b - 5 * s2, a - 1, b - 6 * s2); x.quadraticCurveTo(a + 6 * s2, b - 5 * s2, a + 6 * s2, b + 1); x.closePath(); x.fill(); x.fillStyle = 'rgba(255,255,255,.3)'; x.beginPath(); x.ellipse(a - 2 * s2, b - 4 * s2, 2 * s2, 1 * s2, -.4, 0, 7); x.fill(); };
+  const flowers = (a, b) => { const col = ['#FFFFFF', '#FFD23F', '#FF8FB1', '#B18CFF', '#7FD0FF'][(rnd() * 5) | 0]; for (let k = 0; k < 5; k++) { const fa = a + (rnd() - .5) * 14, fb = b + (rnd() - .5) * 8; x.strokeStyle = PAL.bl; x.lineWidth = .8; x.beginPath(); x.moveTo(fa, fb + 4); x.lineTo(fa, fb); x.stroke(); x.fillStyle = col; for (let p = 0; p < 5; p++) { const an = p / 5 * 6.28; x.beginPath(); x.arc(fa + Math.cos(an) * 1.6, fb + Math.sin(an) * 1.6, 1.3, 0, 7); x.fill(); } x.fillStyle = '#FFC83D'; x.beginPath(); x.arc(fa, fb, .9, 0, 7); x.fill(); } };
+  const fern = (a, b) => { x.strokeStyle = PAL.bl; x.fillStyle = rpgLite(PAL.bl, .15); for (let k = 0; k < 5; k++) { const an = -Math.PI / 2 + (k - 2) * .45; x.save(); x.translate(a, b); x.rotate(an + Math.PI / 2); for (let q = 0; q < 6; q++) { x.beginPath(); x.ellipse(-2.2, -q * 2.4, 2.4 - q * .3, 1, .5, 0, 7); x.ellipse(2.2, -q * 2.4, 2.4 - q * .3, 1, -.5, 0, 7); x.fill(); } x.restore(); } };
+  const shroom = (a, b) => { x.fillStyle = '#F4E8D4'; x.fillRect(a - .8, b - 4, 1.6, 4); x.fillStyle = ['#E8404A', '#B070F0', '#FFB020'][(rnd() * 3) | 0]; x.beginPath(); x.ellipse(a, b - 4, 3.2, 2.2, 0, Math.PI, 0); x.fill(); x.fillStyle = '#fff'; x.beginPath(); x.arc(a - 1, b - 5, .6, 0, 7); x.fill(); };
+  // 2) ขอบทางเดินมีหญ้าคลุม
+  for (let j = 1; j < mp.H - 1; j++) for (let i = 1; i < mp.W - 1; i++) { const v = at(i, j); const px = i * TS, py = j * TS;
+    if ((v === 1 || v === 7) && grassy) { [[1, 0], [-1, 0], [0, 1], [0, -1]].forEach(([a, b]) => { const n = at(i + a, j + b); if (n === 0 || n === 6 || n === 11) for (let k = 0; k < 3; k++) tuft(px + TS / 2 + a * TS * .45 + (b ? (rnd() - .5) * TS : 0), py + TS / 2 + b * TS * .45 + (a ? (rnd() - .5) * TS : 0) + 4, .7); }); for (let k = 0; k < 2; k++) { x.fillStyle = 'rgba(90,70,40,.25)'; x.beginPath(); x.ellipse(px + rnd() * TS, py + rnd() * TS, 1.5 + rnd(), 1, 0, 0, 7); x.fill(); } }
+    if (v === 0 || v === 9) { const r0 = rnd();
+      if (grassy || v === 0) { if (r0 < .5) tuft(px + rnd() * TS, py + 8 + rnd() * (TS - 8), .8 + rnd() * .5); if (r0 < .12) rock(px + rnd() * TS, py + 10 + rnd() * 18, .6 + rnd() * .6);
+        if (sc === 'forest') { if (r0 > .86) fern(px + 16, py + 24); else if (r0 > .8) shroom(px + rnd() * TS, py + 20 + rnd() * 10); }
+        if ((sc === 'town' || sc === 'forest') && r0 > .93) flowers(px + 16, py + 16);
+        if (sc === 'ice' && r0 > .9) { x.fillStyle = 'rgba(255,255,255,.85)'; x.beginPath(); x.ellipse(px + 16, py + 20, 12, 5, 0, Math.PI, 0); x.fill(); }
+        if (sc === 'desert' && r0 > .9) { x.strokeStyle = 'rgba(170,130,70,.35)'; x.lineWidth = 1.2; for (let k = 0; k < 3; k++) { x.beginPath(); x.moveTo(px + 2, py + 10 + k * 7); x.quadraticCurveTo(px + 16, py + 6 + k * 7, px + 30, py + 10 + k * 7); x.stroke(); } } }
+      else { if (r0 < .18) rock(px + rnd() * TS, py + 10 + rnd() * 18, .5 + rnd() * .6); if (r0 > .9) { x.fillStyle = 'rgba(0,0,0,.18)'; x.beginPath(); x.ellipse(px + rnd() * TS, py + rnd() * TS, 6, 3, rnd(), 0, 7); x.fill(); } } } }
+  // 3) แสงแดด/แสงลอดใบไม้ + ขอบมืด
+  if (sc === 'forest' || sc === 'town') for (let i = 0; i < mp.W * mp.H * .05; i++) { const a = rnd() * W, b = rnd() * H, r = 12 + rnd() * 30, g = x.createRadialGradient(a, b, 0, a, b, r); g.addColorStop(0, 'rgba(255,250,200,.28)'); g.addColorStop(1, 'rgba(255,250,200,0)'); x.fillStyle = g; x.beginPath(); x.ellipse(a, b, r, r * .6, 0, 0, 7); x.fill(); }
+  const sun = x.createRadialGradient(W * .2, H * .1, 40, W * .3, H * .3, Math.max(W, H)); const warm = { town: 'rgba(255,236,190,.16)', forest: 'rgba(230,255,190,.12)', ice: 'rgba(220,240,255,.14)', desert: 'rgba(255,220,150,.16)', cave: 'rgba(120,140,255,.08)', volcano: 'rgba(255,120,60,.12)', castle: 'rgba(200,120,255,.08)', dungeon: 'rgba(120,255,220,.06)' }[sc] || 'rgba(0,0,0,0)';
+  sun.addColorStop(0, warm); sun.addColorStop(.6, 'rgba(0,0,0,0)'); sun.addColorStop(1, 'rgba(10,20,40,.18)'); x.fillStyle = sun; x.fillRect(0, 0, W, H);
+}
+
+/* ---------- ป้ายอันดับ 1–3 (อันดับ 1 อยู่กลาง สูงสุด · ถ้วยทอง) ---------- */
+function rpgTrophy(x, cx, cy, s2, t) {
+  x.save(); x.translate(cx, cy); x.scale(s2, s2);
+  const shine = .5 + .5 * Math.sin(t / 500), gold = (a, b) => { const g = x.createLinearGradient(a, 0, b, 0); g.addColorStop(0, '#FFF3B0'); g.addColorStop(.35, '#FFD23F'); g.addColorStop(.7, '#E0A020'); g.addColorStop(1, '#9A6410'); return g; };
+  const halo = x.createRadialGradient(0, -14, 2, 0, -14, 30); halo.addColorStop(0, `rgba(255,230,120,${.45 + shine * .25})`); halo.addColorStop(1, 'rgba(255,230,120,0)'); x.fillStyle = halo; x.beginPath(); x.arc(0, -14, 30, 0, 7); x.fill();
+  x.fillStyle = '#5A3A20'; rr(x, -11, 6, 22, 8, 2); x.fill(); x.fillStyle = gold(-11, 11); rr(x, -8, 2, 16, 5, 2); x.fill(); x.fillRect(-2.5, -6, 5, 9);
+  x.strokeStyle = gold(-18, 18); x.lineWidth = 3; [-1, 1].forEach(s => { x.beginPath(); x.arc(s * 12, -18, 5.5, s > 0 ? -1.6 : 1.6 - Math.PI, s > 0 ? 1.6 : Math.PI + 1.6, s < 0); x.stroke(); });
+  x.fillStyle = gold(-13, 13); x.beginPath(); x.moveTo(-13, -26); x.lineTo(13, -26); x.quadraticCurveTo(13, -6, 0, -5); x.quadraticCurveTo(-13, -6, -13, -26); x.fill();
+  x.fillStyle = 'rgba(255,255,255,.55)'; x.beginPath(); x.ellipse(-6, -19, 2.2, 5, .2, 0, 7); x.fill(); x.fillStyle = '#C0303A'; x.beginPath(); x.arc(0, -17, 3, 0, 7); x.fill();
+  x.fillStyle = '#FFF8D0'; [[-16, -30], [15, -33], [2, -36]].forEach(([a, b], i) => { x.globalAlpha = .5 + .5 * Math.sin(t / 300 + i * 2); rpgStar(x, a, b, 3); x.fill(); }); x.globalAlpha = 1;
+  x.restore();
+}
+function rpgTopBoard2(x, t) {
+  const bx = 23.5 * TS, by = 9.6 * TS, top = R.top || [];
+  x.save(); x.textAlign = 'center'; x.textBaseline = 'middle';
+  x.fillStyle = 'rgba(0,0,0,.28)'; x.beginPath(); x.ellipse(bx, by + 6, 86, 12, 0, 0, 7); x.fill();
+  // ฐานหิน + ซุ้มประตูโค้ง
+  const stone = x.createLinearGradient(0, by - 150, 0, by); stone.addColorStop(0, '#5A4AA0'); stone.addColorStop(1, '#241C50');
+  x.fillStyle = '#F6C343'; x.beginPath(); x.moveTo(bx - 84, by + 2); x.lineTo(bx - 84, by - 100); x.quadraticCurveTo(bx, by - 160, bx + 84, by - 100); x.lineTo(bx + 84, by + 2); x.closePath(); x.fill();
+  x.fillStyle = stone; x.beginPath(); x.moveTo(bx - 80, by); x.lineTo(bx - 80, by - 98); x.quadraticCurveTo(bx, by - 154, bx + 80, by - 98); x.lineTo(bx + 80, by); x.closePath(); x.fill();
+  x.fillStyle = 'rgba(255,255,255,.07)'; for (let i = 0; i < 9; i++) { x.beginPath(); x.moveTo(bx, by - 40); x.lineTo(bx - 80 + i * 20, by - 150); x.lineTo(bx - 72 + i * 20, by - 150); x.closePath(); x.fill(); }
+  // ป้ายหัว
+  x.fillStyle = '#8A1A2A'; x.beginPath(); x.moveTo(bx - 66, by - 128); x.lineTo(bx + 66, by - 128); x.lineTo(bx + 58, by - 116); x.lineTo(bx + 66, by - 104); x.lineTo(bx - 66, by - 104); x.lineTo(bx - 58, by - 116); x.closePath(); x.fill();
+  x.fillStyle = '#C0303A'; rr(x, bx - 56, by - 127, 112, 22, 4); x.fill(); x.strokeStyle = '#F6C343'; x.lineWidth = 1.2; rr(x, bx - 56, by - 127, 112, 22, 4); x.stroke();
+  x.font = '800 10.5px Sarabun, sans-serif'; x.fillStyle = '#FFF3C8'; x.fillText('ทำเนียบผู้กล้า TOP 3', bx, by - 116);
+  rpgTrophy(x, bx, by - 128, 1.05, t);
+  // แท่นรับรางวัล: 2 ซ้าย · 1 กลาง (สูงสุด) · 3 ขวา
+  const pod = [{ rk: 1, ox: -50, h: 26, c: ['#F4F8FF', '#B8C4D8'], m: '🥈' }, { rk: 0, ox: 0, h: 42, c: ['#FFF3B0', '#E0A020'], m: '🥇' }, { rk: 2, ox: 50, h: 18, c: ['#F8D2AA', '#B86A30'], m: '🥉' }];
+  pod.forEach(P => { const px = bx + P.ox, top0 = by - P.h, g = x.createLinearGradient(px - 22, 0, px + 22, 0); g.addColorStop(0, P.c[0]); g.addColorStop(1, P.c[1]);
+    x.fillStyle = 'rgba(0,0,0,.3)'; rr(x, px - 22, top0 + 3, 46, P.h, 4); x.fill(); x.fillStyle = g; rr(x, px - 23, top0, 46, P.h, 4); x.fill(); x.fillStyle = 'rgba(255,255,255,.45)'; x.fillRect(px - 23, top0, 46, 3);
+    x.font = '900 15px Sarabun, sans-serif'; x.fillStyle = 'rgba(60,30,0,.75)'; x.fillText(String(P.rk + 1), px, top0 + P.h / 2 + 2);
+    const p = top[P.rk]; if (!p) { x.font = '700 8px Sarabun'; x.fillStyle = 'rgba(255,255,255,.6)'; x.fillText('ว่าง', px, top0 - 10); return; }
+    x.save(); x.translate(px, top0); const k = P.rk === 0 ? .62 : .54; x.scale(k, k); rpgDrawHero(x, { look: rpgTopLook(p), dir: 'd', t: t + P.rk * 500 }); x.restore();
+    const ny = top0 - (P.rk === 0 ? 50 : 44), nm = `${p.name}`, lv = `Lv.${p.lvl}`;
+    x.font = '800 8.5px Sarabun, sans-serif'; const w = Math.max(x.measureText(nm).width, 30) + 14; x.fillStyle = 'rgba(10,10,30,.82)'; rr(x, px - w / 2, ny - 7, w, 14, 7); x.fill(); x.strokeStyle = P.c[1]; x.lineWidth = 1.2; rr(x, px - w / 2, ny - 7, w, 14, 7); x.stroke();
+    x.fillStyle = '#fff'; x.fillText(nm, px, ny); x.font = '800 7.5px Sarabun'; x.fillStyle = '#FFE27A'; x.fillText(`${lv}${p.classroom ? ' · ' + p.classroom : ''}`, px, ny + 11);
+    x.drawImage(rpgEmo(P.m, 48), px - 8, ny - 25, 16, 16); });
+  x.restore();
+}
+
+/* ---------- ปุ่มแอ็กชันมุมขวาล่าง (แบบวงล้อสกิล) ---------- */
+function rpgActHTML() {
+  return `<div class="ac-ring"></div>
+    <button class="ac-main" data-r="act-atk" aria-label="โจมตี / คุย"><span>⚔️</span><small>โจมตี</small></button>
+    ${[['act-hp', '🧪', 'ยา HP'], ['act-mp', '💧', 'ยา MP'], ['act-talk', '💬', 'คุย'], ['act-pet', '🐾', 'สัตว์'], ['act-emote', '😀', 'อีโมต']].map(([k, i, l], n) => `<button class="ac-s s${n}" data-r="${k}" aria-label="${l}"><span>${i}</span><small>${l}</small>${k === 'act-hp' || k === 'act-mp' ? `<em id="${k}-n"></em>` : ''}</button>`).join('')}`;
+}
+function rpgActUpdate() {
+  const s = R.save; if (!s) return; const n = ids => ids.reduce((m, i) => m + (s.inv?.[i] || 0), 0);
+  const a = document.getElementById('act-hp-n'), b = document.getElementById('act-mp-n'); if (a) a.textContent = n(['hp1', 'hp2', 'hp3', 'hp4', 'elx']); if (b) b.textContent = n(['mp1', 'mp2', 'mp3', 'elx']);
+}
+function rpgActAttack() {
+  const s = R.save; if (RS.nearNpc) return rpgTalk(RS.nearNpc);
+  let best = null, bd = 1e9; (RS.mon || []).forEach(mo => { const d = Math.hypot(mo.x - s.x, mo.y - s.y); if (d < bd) { bd = d; best = mo; } });
+  if (best && bd < 2.6) return rpgBattle(best);
+  if (best && bd < 10) { RS.walkTo = { x: best.x, y: best.y }; return rpgSay('🎯 เดินเข้าหามอนสเตอร์…', 1200); }
+  rpgInteract(); if (!RS.nearNpc) rpgSay('ไม่มีศัตรูอยู่ใกล้ ๆ', 1200);
+}
+function rpgActPotion(kind) {
+  const s = R.save, list = kind === 'hp' ? ['hp4', 'hp3', 'hp2', 'hp1', 'elx'] : ['mp3', 'mp2', 'mp1', 'elx'], id = list.find(i => (s.inv?.[i] || 0) > 0);
+  if (!id) return rpgSay(kind === 'hp' ? 'ไม่มียา HP · ซื้อได้ที่ร้านยา' : 'ไม่มียา MP · ซื้อได้ที่ร้านยา');
+  const it = RPG_ITEMS[id], st = rpgStats(); s.hp = Math.min(st.mhp, s.hp + (it.hp || 0)); s.mp = Math.min(st.mmp, s.mp + (it.mp || 0)); rpgGive(id, -1); rpgHud(); rpgSfx('heal'); rpgSay(`ใช้ ${it.ic} ${it.n}`); RS.dirty = true;
+  rpgPart({ k: 'trail', x: s.x, y: s.y - .6, vx: 0, vy: -.4, max: .9, c: kind === 'hp' ? '#FF7A8A' : '#7FD0FF' });
+}
+function rpgV23Click(a, b) {
+  if (a === 'enh') { rpgEnhance(b.dataset.i); return true; }
+  if (a === 'act-atk') { rpgActAttack(); return true; }
+  if (a === 'act-hp' || a === 'act-mp') { rpgActPotion(a === 'act-hp' ? 'hp' : 'mp'); return true; }
+  if (a === 'act-talk') { if (RS.nearNpc) rpgTalk(RS.nearNpc); else rpgInteract(); return true; }
+  if (a === 'act-pet') { rpgPanel('pets'); return true; }
+  if (a === 'act-emote') { rpgPanel('emote'); return true; }
+  return false;
+}
+function rpgBottomBar() {
+  const el = document.getElementById('rpg-bot'), s = R.save; if (!el || !s?.job) return; const max = s.lvl >= RPG_MAXLV, xp = max ? 100 : Math.min(100, s.exp / Math.max(1, rpgNeed(s.lvl)) * 100);
+  const d = new Date(), tm = d.toLocaleTimeString('th-TH', { hour: '2-digit', minute: '2-digit' });
+  el.innerHTML = `<i class="bb-xp" style="width:${xp.toFixed(1)}%"></i><span>Lv. ${s.lvl}</span><span>Exp ${max ? 'MAX' : xp.toFixed(1) + '%'}</span><span class="bb-t">🔋 ${tm}</span><span class="bb-g">💰 ${R.gold.toLocaleString()}</span>`;
 }
 
 /* =====================================================================
