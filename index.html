@@ -3933,6 +3933,177 @@ html.g3-on,html.g3-on body{overflow:hidden}
   .rpg-more{place-items:end center;padding:14px 10px 160px}
   .rm-card{grid-template-columns:repeat(3,minmax(84px,1fr));width:100%;max-width:380px}.rm-card button{height:88px}
 }
+/* ===== v22 คัทอินสกิลแบบภาพยนตร์ (Seven Knights-like) ===== */
+.rb-cutin.sk{position:absolute;inset:0;z-index:6;pointer-events:none;overflow:hidden}
+.rb-cutin.sk .ci-bar{position:absolute;left:0;right:0;height:0;background:#05040C;z-index:3;animation:ci-bar var(--life,1s) cubic-bezier(.2,.8,.2,1) forwards}
+.rb-cutin.sk .ci-bar.t{top:0}.rb-cutin.sk .ci-bar.b{bottom:0}
+.rb-cutin.sk.small .ci-bar{display:none}
+.rb-cutin.sk .ci-speed{position:absolute;inset:-40%;z-index:1;background:repeating-conic-gradient(from 0deg at 50% 50%,rgba(255,255,255,0) 0deg 4deg,color-mix(in srgb,var(--c) 70%,#fff) 4.6deg 5.4deg,rgba(255,255,255,0) 6deg 11deg);-webkit-mask:radial-gradient(circle,transparent 18%,#000 46%);mask:radial-gradient(circle,transparent 18%,#000 46%);opacity:0;animation:ci-speed 1.2s linear forwards}
+.rb-cutin.sk .ci-flash{position:absolute;inset:0;z-index:2;background:radial-gradient(circle at 40% 50%,color-mix(in srgb,var(--c) 55%,transparent),rgba(5,4,20,.78) 70%);opacity:0;animation:ci-dimx var(--life,1s) ease forwards}
+.rb-cutin.sk .ci-hero,.rb-cutin.sk .ci-ghost{position:absolute;left:4%;bottom:-6%;height:118%;z-index:4;filter:drop-shadow(0 0 24px var(--c));animation:ci-hero var(--life,1s) cubic-bezier(.15,.9,.25,1) forwards}
+.rb-cutin.sk .ci-ghost{z-index:3;filter:blur(2px) brightness(1.6);opacity:.35}
+.rb-cutin.sk .ci-ghost.g1{animation-delay:.04s}.rb-cutin.sk .ci-ghost.g2{animation-delay:.09s;opacity:.18}
+.rb-cutin.sk .ci-name{position:absolute;right:5%;top:50%;z-index:5;transform:translateY(-50%);text-align:right;animation:ci-name var(--life,1s) cubic-bezier(.15,.9,.25,1) forwards}
+.rb-cutin.sk .ci-name small{display:inline-block;margin-bottom:4px;padding:3px 14px;font:900 13px var(--f-head);letter-spacing:.06em;color:#1A0A00;background:linear-gradient(90deg,#FFE89A,#F6C343);clip-path:polygon(8px 0,100% 0,calc(100% - 8px) 100%,0 100%)}
+.rb-cutin.sk .ci-name b{display:block;font:900 clamp(30px,5.4vw,64px)/1.05 var(--f-head);font-style:italic;color:#FFF7D6;-webkit-text-stroke:2px #3A1A00;text-shadow:0 0 18px var(--c),0 0 40px var(--c),4px 4px 0 #2A0A00;transform:skewX(-8deg)}
+.rb-cutin.sk.small .ci-name{top:22%;right:50%;transform:translate(50%,-50%);text-align:center}.rb-cutin.sk.small .ci-name b{font-size:clamp(22px,3vw,34px)}
+.rb-cutin.sk.mid{--life:.9s}.rb-cutin.sk.big{--life:1.15s}.rb-cutin.sk.ult{--life:1.7s}.rb-cutin.sk.small{--life:.65s}
+.rb-cutin.sk.ult .ci-name b{font-size:clamp(36px,6.6vw,84px);background:linear-gradient(180deg,#FFFFFF,#FFE27A 45%,#FF9A3D);-webkit-background-clip:text;background-clip:text;color:transparent}
+.rb-cutin.sk.ult .ci-hero{height:132%}
+@keyframes ci-bar{0%{height:0}12%,82%{height:13%}100%{height:0}}
+@keyframes ci-speed{0%{opacity:0;transform:rotate(0)}15%{opacity:.85}80%{opacity:.75}100%{opacity:0;transform:rotate(40deg)}}
+@keyframes ci-dimx{0%{opacity:0}12%,80%{opacity:1}100%{opacity:0}}
+@keyframes ci-hero{0%{transform:translateX(-70vw) scale(1.1)}22%{transform:translateX(0) scale(1)}78%{transform:translateX(3vw) scale(1.02);opacity:1}100%{transform:translateX(40vw) scale(1.05);opacity:0}}
+@keyframes ci-name{0%{transform:translate(60vw,-50%);opacity:0}24%{transform:translate(0,-50%);opacity:1}80%{transform:translate(-2vw,-50%);opacity:1}100%{transform:translate(-30vw,-50%);opacity:0}}
+.rb-combo{position:absolute;right:6%;top:20%;z-index:5;pointer-events:none;text-align:right;color:#fff;animation:rb-combo 1.7s cubic-bezier(.2,1.4,.3,1) forwards}
+.rb-combo div{display:flex;align-items:baseline;justify-content:flex-end;gap:6px}
+.rb-combo b{font:900 clamp(44px,6vw,76px)/1 var(--f-head);font-style:italic;color:#FFE27A;-webkit-text-stroke:2px #3A1A00;text-shadow:0 0 20px var(--c),4px 4px 0 #2A0A00}
+.rb-combo span{font:900 22px var(--f-head);font-style:italic;color:#fff;text-shadow:0 0 10px var(--c),2px 2px 0 #2A0A00}
+.rb-combo em{display:block;font:900 clamp(26px,3.4vw,40px) var(--f-head);font-style:normal;color:#fff;-webkit-text-stroke:1.5px #3A1A00;text-shadow:0 0 14px var(--c)}
+.rb-combo small{font:800 11px var(--f-head);letter-spacing:.12em;color:#FFE27A}
+@keyframes rb-combo{0%{transform:scale(2.2);opacity:0}14%{transform:scale(1);opacity:1}80%{opacity:1}100%{transform:translateY(-20px);opacity:0}}
+@media (prefers-reduced-motion:reduce){.rb-cutin.sk .ci-speed{animation:none;opacity:0}}
+/* =====================================================================
+   v22 · ธีม UI แบบเกมออนไลน์ MMORPG (กระจกเข้ม · ขอบทอง · ช่องไอเทม)
+   ===================================================================== */
+.rpg{--ui-bg:linear-gradient(180deg,rgba(30,34,74,.97),rgba(14,16,38,.97));--ui-cell:rgba(255,255,255,.055);--ui-cell2:rgba(255,255,255,.09);--ui-line:rgba(232,200,120,.55);--ui-txt:#EEF0FF;--ui-sub:#AEB4DA;--ui-gold:#F6C343}
+/* หน้าต่างหลัก */
+.rpg .rpg-panel{background:rgba(4,6,20,.55);-webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px)}
+.rpg .rp-card{width:min(720px,100%);padding:0 18px 18px;border-radius:18px;color:var(--ui-txt);background:var(--ui-bg);border:1.5px solid var(--ui-line);box-shadow:0 0 0 1px rgba(0,0,0,.6),0 0 30px rgba(246,195,67,.12),0 30px 60px rgba(0,0,0,.6);scrollbar-color:rgba(246,195,67,.5) transparent}
+.rpg .rp-card::before{content:"";position:sticky;top:0;display:block;height:3px;margin:0 -18px;background:linear-gradient(90deg,transparent,var(--ui-gold),transparent)}
+.rpg .rp-card h3{position:sticky;top:3px;z-index:2;margin:0 -18px 14px;padding:14px 64px 12px 18px;font:800 19px var(--f-head);color:#FFE8A8;background:linear-gradient(180deg,rgba(40,44,92,.98),rgba(26,28,62,.98));border-bottom:1px solid rgba(232,200,120,.35);text-shadow:0 1px 0 #000}
+.rpg .rp-card h3 small{color:var(--ui-sub)}
+.rpg .rp-card h4{color:#FFE8A8}
+.rpg .rp-x{position:sticky;float:right;top:12px;z-index:3;width:38px;height:38px;margin:12px -6px -50px 0;border-radius:11px;border:1.5px solid var(--ui-line);background:linear-gradient(180deg,#5A2232,#3A1020);color:#FFD8D8;font-size:17px;box-shadow:0 3px 0 rgba(0,0,0,.5);cursor:pointer}
+.rpg .rp-x:hover{background:linear-gradient(180deg,#8A2A40,#5A1428)}
+.rpg .rp-card :is(p,small,label,.rp-p,.muted){color:var(--ui-sub)}
+.rpg .rp-card :is(b,strong){color:var(--ui-txt)}
+/* แถวไอเทม/การ์ดย่อย → ช่องเข้ม */
+.rpg .rp-card :is(.rp-it,.sk-c,.gd-m,.gd-new,.gd-head,.wm-n,.tp-c,.rp-npc,.rp-zone,.rp-egg,.rp-row,.rp-stats>*,.rp-tier,.st-row,.qe,.rq-box,.rp-house){background:var(--ui-cell)!important;border:1px solid rgba(255,255,255,.08);box-shadow:none!important;color:var(--ui-txt)}
+.rpg .rp-card :is(.rp-it,.sk-c,.gd-m,.wm-n,.rp-zone):hover{background:var(--ui-cell2)!important;border-color:rgba(232,200,120,.45)}
+.rpg .rp-card .rp-it{border-radius:14px;padding:8px 10px}
+.rpg .rp-card .rp-it.eq{border-color:#3DDC84;box-shadow:inset 3px 0 0 #3DDC84!important}
+.rpg .rp-card .rp-it.lock{opacity:.55}
+.rpg .rp-card .rp-ic{border-radius:12px;background:radial-gradient(circle at 35% 30%,rgba(255,255,255,.18),rgba(0,0,0,.35))!important;box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.14),inset 0 -6px 12px rgba(0,0,0,.35)!important}
+.rpg .rp-card .rp-ic.gr{box-shadow:inset 0 0 0 2px var(--gc),0 0 12px color-mix(in srgb,var(--gc) 55%,transparent)!important}
+.rpg .rp-card .rp-btn{min-height:36px;padding:0 16px;border:0;border-radius:10px;font:800 13.5px var(--f-body);color:#2A1600;background:linear-gradient(180deg,#FFE89A,#F6B93B);box-shadow:inset 0 1px 0 rgba(255,255,255,.7),0 3px 0 #8A5A10;cursor:pointer}
+.rpg .rp-card .rp-btn:disabled{filter:grayscale(1);opacity:.5}
+.rpg .rp-card .rp-btn:hover:not(:disabled){filter:brightness(1.08)}
+.rpg .rp-gold{color:#FFE27A;background:rgba(0,0,0,.35);border:1px solid rgba(246,195,67,.4)}
+/* แท็บต่างๆ */
+.rpg .rp-card :is(.rp-tabs,.ch-tabs,.bm-tabs){background:rgba(0,0,0,.3);border-radius:12px;padding:4px}
+.rpg .rp-card :is(.rp-tabs,.bm-tabs) button{color:var(--ui-sub)}
+.rpg .rp-card :is(.rp-tabs,.bm-tabs) button.on{color:#2A1600;background:linear-gradient(180deg,#FFE89A,#F6B93B)}
+/* สถานะ / สกิล */
+.rpg .rp-card .sk-c{border-radius:16px}.rpg .rp-card .sk-c small,.rpg .rp-card .sk-c .sk-mp{color:var(--ui-sub)}
+.rpg .rp-card .sk-pips i{background:rgba(255,255,255,.12)}
+.rpg .rp-card .st-add,.rpg .rp-card .sk-c .st-add{border-radius:10px}
+/* สวมใส่ */
+.rpg .eq-doll{background:radial-gradient(circle,rgba(120,140,255,.22) 0%,rgba(40,44,92,.4) 55%,rgba(0,0,0,0) 72%)}
+.rpg .eq-doll::before{border-color:rgba(232,200,120,.35)}
+.rpg .eq-slot span{border-radius:16px;background:radial-gradient(circle at 35% 30%,rgba(255,255,255,.16),rgba(10,12,30,.9))!important;box-shadow:0 0 0 2px var(--g),0 0 14px color-mix(in srgb,var(--g) 55%,transparent)}
+.rpg .eq-slot small{color:var(--ui-txt);background:rgba(10,12,30,.85);border:1px solid rgba(255,255,255,.12)}
+.rpg .eq-st span{background:rgba(0,0,0,.35)!important;color:var(--ui-txt);border:1px solid rgba(255,255,255,.1)}
+/* กิลด์ / อันดับ / แผนที่โลก */
+.rpg .gd-row input,.rpg .rp-card .input,.rpg .rp-card input[type=text]{background:rgba(0,0,0,.4);color:var(--ui-txt);box-shadow:inset 0 0 0 1px rgba(255,255,255,.18)}
+.rpg .gd-em span{background:rgba(0,0,0,.35)}.rpg .gd-head small,.rpg .gd-m small{color:var(--ui-sub)}
+.rpg .tp-c b{color:#fff}.rpg .tp-c small{color:var(--ui-sub)}
+.rpg .tp-c.r1{background:linear-gradient(180deg,rgba(255,226,122,.35),rgba(246,195,67,.12))!important;border-color:#F6C343}
+/* ---------- แผนที่ใหญ่: เต็มจอ ---------- */
+.rpg .rpg-bigmap{padding:10px;background:rgba(4,6,20,.7)}
+.rpg .bm-card{width:min(1500px,100%);height:min(96vh,1000px);max-height:none;padding:12px;border-radius:18px;color:var(--ui-txt);background:var(--ui-bg);border:1.5px solid var(--ui-line);box-shadow:0 30px 60px rgba(0,0,0,.6)}
+.rpg .bm-head .rp-x{float:none;position:static;margin:0 0 0 auto}
+.rpg .bm-wrap{flex:1 1 auto;height:auto;min-height:0;border-radius:14px;background:#0C0E24;position:relative}
+.rpg .bm-wrap>#bm-cv{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%)}
+.rpg .bm-wrap>.wm{position:absolute;inset:0;max-height:none}
+.rpg .bm-leg{color:var(--ui-sub)}
+.rpg .wm-chain{background:rgba(255,255,255,.04)}.rpg .wm-n b{color:#fff}.rpg .wm-n small{color:var(--ui-sub)}.rpg .wm-n.here{box-shadow:0 0 0 2px #FFD23F,0 0 16px #FFD23F!important}
+/* ---------- แผ่นเมนูทั้งหมด ---------- */
+.rpg .rm-card{background:var(--ui-bg);border:1.5px solid var(--ui-line);border-radius:18px;box-shadow:0 20px 40px rgba(0,0,0,.55)}
+.rpg .rm-card>b{color:#FFE8A8}
+.rpg .rm-card button{border-radius:14px;background:var(--ui-cell);border:1px solid rgba(255,255,255,.1);box-shadow:none}.rpg .rm-card button small{color:var(--ui-txt)}
+.rpg .rm-card button:hover{background:var(--ui-cell2);border-color:var(--ui-line)}
+/* ---------- HUD มุมซ้ายบน ---------- */
+.rpg .rpg-hud{left:10px;top:10px;padding:0;background:none;box-shadow:none}
+.hd2{display:flex;align-items:center;gap:0;filter:drop-shadow(0 6px 14px rgba(0,0,0,.45))}
+.hd2-por{position:relative;z-index:2;flex:none;width:84px;height:84px;border-radius:50%;background:radial-gradient(circle at 40% 30%,#3A4290,#141838);box-shadow:0 0 0 3px #0C0E24,0 0 0 5px var(--ui-gold),0 0 18px color-mix(in srgb,var(--c) 70%,transparent);overflow:hidden}
+.hd2-por img{width:100%;height:100%;object-fit:cover}
+.hd2-por em{position:absolute;left:50%;bottom:-2px;transform:translateX(-50%);padding:1px 9px;border-radius:8px 8px 0 0;font:900 12px var(--f-head);font-style:normal;color:#2A1600;background:linear-gradient(180deg,#FFE89A,#F6B93B)}
+.hd2-main{min-width:230px;margin-left:-14px;padding:7px 12px 8px 22px;border-radius:0 16px 16px 0;background:linear-gradient(90deg,rgba(14,16,40,.9),rgba(24,28,64,.82));border:1.5px solid var(--ui-line);border-left:0}
+.hd2-name{display:flex;align-items:baseline;gap:8px;margin-bottom:4px}.hd2-name b{font:800 15px var(--f-head);color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:150px}.hd2-name span{font-size:12px;font-weight:700;color:color-mix(in srgb,var(--c) 70%,#fff)}
+.hd2-bar{position:relative;height:16px;margin-top:3px;border-radius:5px;background:rgba(0,0,0,.55);box-shadow:inset 0 0 0 1px rgba(255,255,255,.12);overflow:hidden}
+.hd2-bar i{position:absolute;inset:0 auto 0 0;border-radius:5px;transition:width .35s ease}
+.hd2-bar.hp i{background:linear-gradient(180deg,#FF8A8A,#E8323A 55%,#A81424)}.hd2-bar.mp i{background:linear-gradient(180deg,#8AD0FF,#2E86E8 55%,#1452A8)}
+.hd2-bar.xp{height:7px;margin-top:4px}.hd2-bar.xp i{background:linear-gradient(90deg,#F6B93B,#FFE27A)}.hd2-bar.xp span{display:none}
+.hd2-bar span{position:relative;display:block;padding-left:7px;font:800 11px/16px var(--f-body);color:#fff;text-shadow:0 1px 2px #000}
+.hd2-chips{display:flex;gap:5px;margin-top:5px}.hd2-chips span{padding:1px 8px;border-radius:7px;font-size:11.5px;font-weight:800;color:#fff;background:rgba(0,0,0,.4);border:1px solid rgba(255,255,255,.12)}.hd2-chips .gold{color:#FFE27A}
+/* ---------- ภารกิจด้านขวา ---------- */
+.rpg .rpg-qt.qt2{position:absolute;right:12px;top:226px;width:min(300px,40vw);display:block;padding:0;pointer-events:auto}
+.qt2 .qt-head{display:flex;align-items:center;justify-content:space-between;padding:8px 12px;border-radius:14px 14px 0 0;background:rgba(10,12,32,.72);border:1px solid rgba(232,200,120,.45);border-bottom:0}
+.qt2 .qt-head b{font:800 14.5px var(--f-head);color:#FFE8A8}
+.qt2 .qt-head button,.qt2 .qt-tab{border:0;cursor:pointer;font:800 12px var(--f-body);color:#fff;background:rgba(255,255,255,.12);padding:4px 10px;border-radius:8px}
+.qt2 .qt-q{display:block;width:100%;text-align:left;padding:10px 12px;border:1px solid rgba(232,200,120,.3);border-top-color:rgba(255,255,255,.06);background:rgba(10,12,32,.55);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);color:#fff;font:inherit}
+.qt2 .qt-q:last-child{border-radius:0 0 14px 14px}
+.qt2 button.qt-q{cursor:pointer}.qt2 button.qt-q:hover{background:rgba(30,34,80,.7)}
+.qt2 .qt-q small{display:block;font-size:11px;font-weight:800;color:#FFD23F;letter-spacing:.02em}
+.qt2 .qt-q>b{display:block;font:800 15px var(--f-head);margin:1px 0 2px}
+.qt2 .qt-q>span{display:block;font-size:12.5px;line-height:1.45;color:#D6DAF6}
+.qt2 .qt-q em{display:block;margin-top:3px;font-size:12px;font-style:normal;font-weight:800;color:#9FF0C0}
+.qt2 .qt-q.done{box-shadow:inset 3px 0 0 #3DDC84}
+.qt2 .qt-bar{height:6px;margin-top:6px;border-radius:3px;background:rgba(255,255,255,.15);overflow:hidden}.qt2 .qt-bar i{display:block;height:100%;background:linear-gradient(90deg,#3DDC84,#9FF0C0)}
+.qt2 .qt-d{margin-top:7px}.qt2 .qt-d span{font-size:12.5px;color:#E6E8FF}.qt2 .qt-d.ok span{color:#9FF0C0}
+.qt2.hide{width:auto}.qt2 .qt-tab{padding:8px 14px;border-radius:12px;background:rgba(10,12,32,.75);border:1px solid rgba(232,200,120,.45);font-size:13px}
+/* ---------- แชทด้านล่าง ---------- */
+.rpg .rpg-chat.dock{left:12px;bottom:12px;top:auto;width:min(420px,calc(100vw - 24px));z-index:4;border-radius:14px;background:rgba(8,10,28,.45);border:1px solid rgba(255,255,255,.12);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);overflow:hidden;transition:background .2s}
+.rpg .rpg-chat.dock.typing{background:rgba(8,10,28,.78);border-color:rgba(232,200,120,.55)}
+.rpg-chat.dock .ch-head{display:flex;gap:2px;padding:4px;background:rgba(0,0,0,.25)}
+.rpg-chat.dock .ch-head button{border:0;cursor:pointer;padding:4px 10px;border-radius:8px;font:800 12px var(--f-body);color:#C8CCF0;background:transparent}
+.rpg-chat.dock .ch-head button.on{color:#2A1600;background:linear-gradient(180deg,#FFE89A,#F6B93B)}
+.rpg-chat.dock .ch-head .ch-min{margin-left:auto;width:30px;padding:0;color:#fff;background:rgba(255,255,255,.1)}
+.rpg-chat.dock .ch-list{height:132px;padding:6px 10px;display:block;overflow:auto;scrollbar-width:thin}
+.rpg-chat.dock .ch-m{display:block;max-width:none;margin:0 0 2px;padding:0;border-radius:0;background:none!important;font-size:13px;line-height:1.45;color:#F2F3FF;text-shadow:0 1px 2px #000}
+.rpg-chat.dock .ch-m b{display:inline;font-size:13px;color:#8FD0FF}.rpg-chat.dock .ch-m.me b{color:#FFE27A}
+.rpg-chat.dock .ch-empty{color:#C8CCF0;font-size:12.5px;text-align:left;margin:4px 0}
+.rpg-chat.dock .ch-in{display:flex;gap:4px;margin:0;padding:6px;background:rgba(0,0,0,.3)}
+.rpg-chat.dock .ch-in input{flex:1;min-width:0;height:34px;padding:0 12px;border:0;border-radius:9px;font:600 14px var(--f-body);color:#fff;background:rgba(255,255,255,.1)}
+.rpg-chat.dock .ch-in input::placeholder{color:#AEB4DA}.rpg-chat.dock .ch-in input:focus{outline:2px solid #F6C343;background:rgba(0,0,0,.5)}
+.rpg-chat.dock .ch-emo{width:34px;height:34px;border-radius:9px;background:rgba(255,255,255,.1)}.rpg-chat.dock .ch-send{height:34px;border-radius:9px}
+.rpg-chat.dock.min .ch-list{display:none}
+.rpg .rpg-stick{bottom:190px}
+@media (max-width:760px){
+  .hd2-por{width:62px;height:62px}.hd2-main{min-width:0;width:200px;padding:5px 10px 6px 20px}.hd2-name b{font-size:13.5px;max-width:110px}.hd2-bar{height:14px}.hd2-bar span{font-size:10px;line-height:14px}.hd2-chips{display:none}
+  .rpg .rpg-qt.qt2{top:110px;right:8px;width:min(230px,58vw)}.qt2 .qt-q>span{display:none}.qt2 .qt-d{display:none}
+  .rpg .rpg-chat.dock{left:8px;bottom:8px;width:calc(100vw - 222px);min-width:170px}.rpg-chat.dock .ch-list{height:78px}.rpg-chat.dock .ch-head button{padding:3px 6px;font-size:11px}
+  .rpg .rpg-stick{bottom:150px;left:14px}
+  .rpg .bm-card{height:100%;padding:8px}
+}
+.rb-cutin.sk .ci-hero,.rb-cutin.sk .ci-ghost{height:86%;bottom:4%;left:3%}
+.rb-cutin.sk.ult .ci-hero,.rb-cutin.sk.ult .ci-ghost{height:96%;bottom:2%}
+.rb-cutin.sk.ult .ci-name b{background:none;-webkit-background-clip:border-box;background-clip:border-box;color:#FFF3B0;-webkit-text-stroke:2.5px #4A1A00;text-shadow:0 0 22px #FFB020,0 0 46px var(--c),5px 5px 0 #2A0A00}
+.qt2 .qt-q,.rpg-qt.qt2 button.qt-q{display:block;border-radius:0;padding:10px 12px;gap:0;background:rgba(10,12,32,.62)}
+.rpg-qt.qt2 button.qt-q.done{animation:none}
+.rpg-qt.qt2 b{max-width:none;white-space:normal;font-size:15px}
+/* ธีมเข้ม: ส่วนย่อยที่ยังสว่าง */
+.rpg .rp-card :is(.qx,.qx.main,.st-sk span,.st-der span,.st-pts){background:var(--ui-cell)!important;border:1px solid rgba(255,255,255,.08);box-shadow:none!important;color:var(--ui-txt)}
+.rpg .rp-card .qx.main{border-color:rgba(232,200,120,.5);background:linear-gradient(90deg,rgba(246,195,67,.16),rgba(255,255,255,.04))!important}
+.rpg .rp-card .qx.done{box-shadow:inset 3px 0 0 #3DDC84!important}
+.rpg .rp-card :is(.qx-ic,.st-ic,.st-sk em){background:radial-gradient(circle at 35% 30%,rgba(255,255,255,.2),rgba(0,0,0,.35))!important}
+.rpg .rp-card :is(.qx-h,.st-head b){color:#FFE8A8}
+.rpg .rp-card .qx-ok,.rpg .rp-card .st-row small{color:var(--ui-sub)}
+.rpg .rp-card .qx-go{color:#7CF0A8}
+.rpg .rp-card .st-row em{color:#FFE27A}
+.rpg .rp-card .st-pts.on{color:#2A1600;background:linear-gradient(90deg,#FFE89A,#F6B93B)!important}.rpg .rp-card .st-pts.on *{color:#2A1600}
+.rpg .rp-card .st-head img{background:radial-gradient(circle at 50% 40%,#4A52A8,#1A1E48)}
+.rpg .rp-card .st-add{border-radius:10px}
+.rpg .rp-card progress,.rpg .rp-card .bar,.rpg .rp-card .qx .rb>div{background:rgba(255,255,255,.12)}
+.rpg .bm-tabs button{color:#C8CCF0}.rpg .bm-tabs button.on{color:#2A1600;background:linear-gradient(180deg,#FFE89A,#F6B93B)}
+.rpg .bm-head{color:#FFE8A8}
+.rb-cutin.sk .ci-name b,.rb-cutin.sk.ult .ci-name b{-webkit-text-stroke:0;color:#FFF6D2;text-shadow:2px 2px 0 #3A1400,-2px 2px 0 #3A1400,2px -2px 0 #3A1400,-2px -2px 0 #3A1400,0 3px 0 #3A1400,0 0 18px var(--c),0 0 40px var(--c),6px 7px 0 rgba(0,0,0,.45)}
+.rb-cutin.sk.ult .ci-name b{color:#FFE680;text-shadow:2px 2px 0 #4A1A00,-2px 2px 0 #4A1A00,2px -2px 0 #4A1A00,-2px -2px 0 #4A1A00,0 3px 0 #4A1A00,0 0 22px #FFB020,0 0 50px var(--c),7px 8px 0 rgba(0,0,0,.45)}
+.rb-cutin.sk.ult .ci-hero,.rb-cutin.sk.ult .ci-ghost{height:84%;bottom:3%}
+.rb-combo b,.rb-combo em{-webkit-text-stroke:0;text-shadow:2px 2px 0 #3A1400,-2px 2px 0 #3A1400,2px -2px 0 #3A1400,-2px -2px 0 #3A1400,0 0 18px var(--c)}
+.hd2-name span{white-space:nowrap}
+@media (max-width:760px){.hd2-name span{font-size:10.5px}.rpg-chat.dock .ch-emo{display:none}.rpg-chat.dock .ch-in input{padding:0 8px;font-size:13px}.rpg-chat.dock .ch-send{padding:0 10px}}
 
 </style>
 </head>
@@ -4477,7 +4648,7 @@ if (typeof module !== 'undefined') module.exports = ExamParser;
 </script>
 <script>
 /* โลโก้: ภาพครูปลื้ม (ไฟล์ต้นฉบับ src/logo.svg ฝังตอน build) */
-const APP_VER = '21.0 · 26 พ.ย. 2569';
+const APP_VER = '22.0 · 26 พ.ย. 2569';
 let LOGO_N = 0;
 function logoSVG() { const k = 'L' + (++LOGO_N); return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><defs><linearGradient id="lgb" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3B9BFF"/><stop offset=".5" stop-color="#0A5BE0"/><stop offset="1" stop-color="#062C78"/></linearGradient><linearGradient id="lgs" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset=".6" stop-color="#FFF4D6"/><stop offset="1" stop-color="#FFD978"/></linearGradient><radialGradient id="lgc" cx=".3" cy=".08" r=".75"><stop offset="0" stop-color="#fff" stop-opacity=".55"/><stop offset=".5" stop-color="#fff" stop-opacity=".08"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient></defs><rect width="48" height="48" rx="13" fill="url(#lgb)"/><rect width="48" height="48" rx="13" fill="url(#lgc)"/><rect x=".75" y=".75" width="46.5" height="46.5" rx="12.3" fill="none" stroke="#fff" stroke-opacity=".45" stroke-width="1.2"/><g fill="none" stroke="#04235F" stroke-opacity=".35" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" transform="translate(0 1.2)"><path d="M21.2 17 C19.8 14.6 17.4 13.6 14.8 13.6 C11 13.6 8.6 15.6 8.6 18.5 C8.6 21.8 11.6 22.9 14.9 23.9 C18.6 25 21.6 26.4 21.6 29.8 C21.6 33 18.8 34.6 15.1 34.6 C12 34.6 9.5 33.4 8 31.1"/><path d="M26.6 14 L39.6 34.2 M39.6 14 L26.6 34.2"/></g><g fill="none" stroke="url(#lgs)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M21.2 17 C19.8 14.6 17.4 13.6 14.8 13.6 C11 13.6 8.6 15.6 8.6 18.5 C8.6 21.8 11.6 22.9 14.9 23.9 C18.6 25 21.6 26.4 21.6 29.8 C21.6 33 18.8 34.6 15.1 34.6 C12 34.6 9.5 33.4 8 31.1"/><path d="M26.6 14 L39.6 34.2 M39.6 14 L26.6 34.2"/></g></svg>`.replace('<svg ', '<svg class="logo" aria-hidden="true" ').replace(/\b(lg[bsc])\b/g, '$1' + k); }
 /* =====================================================================
@@ -11151,6 +11322,13 @@ function rpgOverlay() {
     <div class="rpg-battle" id="rpg-battle" hidden></div>`;
   document.body.appendChild(el); document.documentElement.classList.add('g3-on');
   el.addEventListener('click', rpgClick);
+  // คลิกพื้นที่นอกหน้าต่าง (ฉากเกม) = ปิดหน้าต่างนั้น
+  el.addEventListener('pointerdown', e => { const t = e.target;
+    if (t.id === 'rpg-panel') { e.stopPropagation(); rpgPanel(null); }
+    else if (t.id === 'rpg-more') t.hidden = true;
+    else if (t.id === 'rpg-bigmap') t.hidden = true;
+    else if (t.id === 'rpg-c') { const mo = document.getElementById('rpg-more'); if (mo && !mo.hidden) mo.hidden = true; document.getElementById('ch-txt')?.blur(); } });
+  RS.qtHide = (() => { try { return !!localStorage.getItem('rpg-qth'); } catch (e) { return false; } })();
   const cv = el.querySelector('#rpg-c');
   const fit = () => { const d = Math.min(1.5, devicePixelRatio || 1); cv.width = Math.round(innerWidth * d); cv.height = Math.round(innerHeight * d); if (RS.battle) rpgBFit(); };
   fit(); RS.fit = fit; addEventListener('resize', fit);
@@ -11169,8 +11347,9 @@ addEventListener('keydown', e => {
   if (RS.quiz) { const n = +e.key; if (n >= 1 && n <= 4) document.querySelectorAll('#rpg-battle .rq-opt')[n - 1]?.click(); return; }
   if (!document.getElementById('rpg-dlg').hidden && (e.code === 'Space' || e.code === 'Enter')) { rpgDlgNext(); e.preventDefault(); return; }
   const k = RPG_KEY[e.code]; if (k && !rpgBusy()) { RS.keys[k] = true; e.preventDefault(); }
-  if ((e.code === 'Space' || e.code === 'Enter') && !rpgBusy()) { rpgInteract(); e.preventDefault(); }
-  if (e.key === 'Escape') { if (!document.getElementById('rpg-panel').hidden) rpgPanel(null); else if (!document.getElementById('rpg-dlg').hidden) rpgDlgClose(); }
+  if (e.code === 'Enter' && !rpgBusy()) { const ci = document.getElementById('ch-txt'); if (ci && !ci.disabled) { if (RPG_CHAT.min) { RPG_CHAT.min = false; rpgChatUI(); } document.getElementById('ch-txt')?.focus(); e.preventDefault(); return; } }
+  if (e.code === 'Space' && !rpgBusy()) { rpgInteract(); e.preventDefault(); }
+  if (e.key === 'Escape') { const mo = document.getElementById('rpg-more'), bm = document.getElementById('rpg-bigmap'); if (mo && !mo.hidden) mo.hidden = true; else if (bm && !bm.hidden) bm.hidden = true; else if (!document.getElementById('rpg-panel').hidden) rpgPanel(null); else if (!document.getElementById('rpg-dlg').hidden) rpgDlgClose(); }
 });
 addEventListener('keyup', e => { const k = RPG_KEY[e.code]; if (k && RS.keys) RS.keys[k] = false; });
 document.addEventListener('visibilitychange', () => { if (document.hidden && RS.keys) { RS.keys = {}; if (R.save) rpgSave(true); } });
@@ -11799,11 +11978,13 @@ function rpgRing(v, m, r, w, col, start = -90, sweep = 360) {
 function rpgHud() {
   const el = document.getElementById('rpg-hud'); if (!el || !R.save?.job) return;
   rpgClamp(); const s = R.save, st = rpgStats(), j = rpgJob(), pet = rpgPet(), max = s.lvl >= RPG_MAXLV;
-  el.innerHTML = `<div class="hd-por" style="--c:${j.col}"><svg viewBox="0 0 100 100">${rpgRing(s.hp, st.mhp, 46, 6, '#FF5D5D', 135, 270)}${rpgRing(s.mp, st.mmp, 38, 5, '#3DA8FF', 135, 270)}${rpgRing(max ? 1 : s.exp, max ? 1 : rpgNeed(s.lvl), 46, 3, '#F6C343', 45, 90)}</svg>
-      <img src="${rpgLookImg(rpgLookMe(), 96, 'bust')}" alt=""><em>${s.lvl}</em></div>
-    <div class="hd-info"><b>${esc(rpgName())}</b><small style="--c:${j.col}">${j.ic} ${j.n}</small>
-      <div class="hd-nums"><span class="h">❤ ${Math.round(s.hp)}/${st.mhp}</span><span class="m">◆ ${Math.round(s.mp)}/${st.mmp}</span></div>
-      <div class="hd-chips"><span class="gold">💰 ${R.gold.toLocaleString()}</span>${pet ? `<span>${pet.ic} ${pet.hunger}%</span>` : ''}${s.egg ? `<span class="egg">${RPG_ITEMS[s.egg.type].ic} ${Math.max(0, s.egg.need - s.egg.steps)}</span>` : ''}</div></div>`;
+  const pc = (a, b) => Math.max(0, Math.min(100, a / Math.max(1, b) * 100)).toFixed(1), xp = max ? 100 : pc(s.exp, rpgNeed(s.lvl));
+  el.innerHTML = `<div class="hd2" style="--c:${j.col}"><div class="hd2-por"><img src="${rpgLookImg(rpgLookMe(), 112, 'bust')}" alt=""><em>Lv.${s.lvl}</em></div>
+    <div class="hd2-main"><div class="hd2-name"><b>${esc(rpgName())}</b><span>${j.ic} ${j.n}</span></div>
+      <div class="hd2-bar hp"><i style="width:${pc(s.hp, st.mhp)}%"></i><span>HP ${Math.round(s.hp).toLocaleString()} / ${st.mhp.toLocaleString()}</span></div>
+      <div class="hd2-bar mp"><i style="width:${pc(s.mp, st.mmp)}%"></i><span>MP ${Math.round(s.mp).toLocaleString()} / ${st.mmp.toLocaleString()}</span></div>
+      <div class="hd2-bar xp"><i style="width:${xp}%"></i><span>EXP ${max ? 'MAX' : xp + '%'}</span></div>
+      <div class="hd2-chips"><span class="gold">💰 ${R.gold.toLocaleString()}</span>${pet ? `<span>${pet.ic} อิ่ม ${pet.hunger}%</span>` : ''}${s.egg ? `<span class="egg">${RPG_ITEMS[s.egg.type].ic} อีก ${Math.max(0, s.egg.need - s.egg.steps)} ก้าว</span>` : ''}</div></div></div>`;
   ['stat', 'skill'].forEach(k => { const dot = document.getElementById('rpg-' + k + 'dot'), n = k === 'stat' ? s.pts : s.skp; if (dot) { dot.hidden = !n; dot.textContent = n; } });
   rpgQTrack();
 }
@@ -13202,8 +13383,14 @@ function rpgQuestHTML() {
 function rpgQTrack() {
   const el = document.getElementById('rpg-qt'); if (!el || !R.save?.job) return;
   const s = R.save, Q = rpgMainQ(), d = (s.daily?.list || []).filter(x => !x.claimed);
-  el.innerHTML = `${Q ? `<button data-r="quest" class="${s.q.acc && s.q.prog >= Q.n ? 'done' : ''}"><i>📜</i><span><b>${esc(Q.t)}</b><small>${s.q.acc ? `${Math.min(s.q.prog, Q.n)}/${Q.n}${s.q.prog >= Q.n ? ' · รายงานลีออน' : ''}` : 'คุยกับลีออนเพื่อรับ'}</small></span></button>` : ''}
-    ${d.length ? `<button data-r="quest"><i>📅</i><span><b>ประจำวัน</b><small>สำเร็จ ${d.filter(x => x.prog >= x.n).length}/${d.length}</small></span></button>` : ''}`;
+  el.className = 'rpg-qt qt2' + (RS.qtHide ? ' hide' : '');
+  if (RS.qtHide) { el.innerHTML = `<button class="qt-tab" data-r="qt-hide" aria-label="แสดงภารกิจ">📜 ภารกิจ <i>◂</i></button>`; return; }
+  const bar = (a, b) => `<div class="qt-bar"><i style="width:${Math.min(100, a / Math.max(1, b) * 100)}%"></i></div>`;
+  const goal = Q ? (Q.say && Q.say[1] ? Q.say[1] : Q.say?.[0] || '') : '';
+  el.innerHTML = `<div class="qt-head"><b>📜 ภารกิจ</b><button data-r="qt-hide" aria-label="ซ่อนภารกิจ">ซ่อน ▸</button></div>
+    ${Q ? `<button class="qt-q main ${s.q.acc && s.q.prog >= Q.n ? 'done' : ''}" data-r="quest"><small>ภารกิจหลัก</small><b>${esc(Q.t)}</b><span>${esc(goal)}</span>
+      ${s.q.acc ? `${bar(s.q.prog, Q.n)}<em>${Math.min(s.q.prog, Q.n)} / ${Q.n}${s.q.prog >= Q.n ? ' · กลับไปรายงานลีออน ✔' : ''}</em>` : `<em>💬 ไปคุยกับลีออนเพื่อรับภารกิจ</em>`}</button>` : ''}
+    ${d.length ? `<div class="qt-q"><small>ภารกิจประจำวัน</small>${d.map(x => `<div class="qt-d ${x.prog >= x.n ? 'ok' : ''}"><span>${esc(String(x.t).replace('{n}', x.n))}</span>${bar(x.prog, x.n)}<em>${Math.min(x.prog, x.n)}/${x.n}${x.prog >= x.n ? ' ✔' : ''}</em></div>`).join('')}</div>` : ''}`;
 }
 function rpgNpcMark(id) {
   const s = R.save, Q = rpgMainQ();
@@ -13413,6 +13600,7 @@ function rpgBFrame(now, dt) {
   const x = cv.getContext('2d'), G = B.G, d = G.d, s = R.save;
   x.setTransform(d, 0, 0, d, 0, 0); x.clearRect(0, 0, G.W, G.H);
   if (B.shake) { const p = (now - B.shake.t0) / B.shake.ms; if (p < 1) x.translate((Math.random() - .5) * B.shake.m * (1 - p) * 2, (Math.random() - .5) * B.shake.m * (1 - p) * 2); }
+  if (B.cam && now >= B.cam.t0) { const p = (now - B.cam.t0) / B.cam.dur; if (p < 1) { const e = p < .2 ? ease(p / .2) : p > .8 ? 1 - ease((p - .8) / .2) : 1, z = 1 + (B.cam.z - 1) * e, fx = G.W / 2 + (B.cam.fx - G.W / 2) * e * .6, fy = G.H / 2 + (B.cam.fy - G.H / 2) * e * .6; x.translate(G.W / 2, G.H / 2); x.scale(z, z); x.translate(-fx, -fy); } else B.cam = null; }
   const me = rpgBPos('me'), mo = rpgBPos('mon'), j = rpgJob(), lk = rpgLookMe();
   // วงเวทใต้เท้า
   const ring = (cx, cy, r, col, rot) => { x.save(); x.translate(cx, cy); x.scale(1, .32); x.strokeStyle = col; x.globalAlpha = .55; x.lineWidth = 3; x.beginPath(); x.arc(0, 0, r, 0, 7); x.stroke(); x.setLineDash([8, 10]); x.lineDashOffset = rot; x.lineWidth = 2; x.beginPath(); x.arc(0, 0, r * .78, 0, 7); x.stroke(); x.setLineDash([]); x.globalAlpha = .18; x.fillStyle = col; x.beginPath(); x.arc(0, 0, r, 0, 7); x.fill(); x.restore(); };
@@ -13455,7 +13643,25 @@ function rpgBFrame(now, dt) {
 function rpgBDrawFx(x, f, p, now) {
   const B = RS.battle, G = B.G, M = { x: G.M.x, y: G.M.y - G.msz * .45 }, P = { x: G.P.x + G.hs * 8, y: G.P.y - G.hs * 34 }, col = f.col || '#fff';
   x.save(); x.lineCap = 'round'; x.lineJoin = 'round';
-  if (f.k === 'slash') { const a0 = -2.4 + (f.flip ? 1.2 : 0), sweep = 2.6 * ease(p), r = G.msz * .55; x.globalAlpha = 1 - p * .8; x.translate(M.x, M.y); if (f.flip) x.scale(-1, 1);
+  const cl = v => Math.max(0, Math.min(1, v));
+  if (f.k === 'xslash') { const R0 = G.msz * (f.big ? 1.15 : .85); x.translate(M.x, M.y); x.shadowColor = col; x.shadowBlur = 30;
+    [0, 1, 2].slice(0, f.big ? 3 : 2).forEach(k => { const pp = cl((p - k * .14) / .5); if (pp <= 0) return; const fade = 1 - cl((p - k * .14 - .35) / .4); x.save(); x.rotate([-.75, .85, -.05][k]); x.globalAlpha = fade;
+      const a0 = Math.PI * .85, sw = Math.PI * 1.3 * ease(pp); x.strokeStyle = col; x.lineWidth = (f.big ? 34 : 24) * (1 - pp * .6); x.beginPath(); x.ellipse(0, 0, R0 * 1.35, R0 * .45, 0, a0, a0 + sw); x.stroke();
+      x.strokeStyle = '#FFFFFF'; x.lineWidth = (f.big ? 12 : 8) * (1 - pp * .5); x.beginPath(); x.ellipse(0, 0, R0 * 1.35, R0 * .45, 0, a0 + sw * .25, a0 + sw); x.stroke(); x.restore(); });
+    x.globalAlpha = 1 - p; for (let i = 0; i < 14; i++) { const a = i * 2.39, r1 = R0 * (.3 + p * 1.6), r2 = r1 + R0 * .5 * (1 - p); x.strokeStyle = i % 2 ? '#FFFFFF' : col; x.lineWidth = 3; x.beginPath(); x.moveTo(Math.cos(a) * r1, Math.sin(a) * r1 * .7); x.lineTo(Math.cos(a) * r2, Math.sin(a) * r2 * .7); x.stroke(); } }
+  else if (f.k === 'nova') { x.translate(M.x, M.y); x.shadowColor = col; x.shadowBlur = 24;
+    for (let i = 0; i < 3; i++) { const rp = cl((p - i * .12) / .7); if (rp <= 0 || rp >= 1) continue; x.globalAlpha = 1 - rp; x.strokeStyle = i ? col : '#FFFFFF'; x.lineWidth = 18 * (1 - rp) + 2; x.beginPath(); x.ellipse(0, G.msz * .3, G.msz * (.3 + 1.7 * ease(rp)), G.msz * (.1 + .55 * ease(rp)), 0, 0, 7); x.stroke(); }
+    x.globalAlpha = cl(1 - p * 1.4); const g = x.createRadialGradient(0, 0, 4, 0, 0, G.msz * (.4 + p)); g.addColorStop(0, '#FFFFFF'); g.addColorStop(.35, col); g.addColorStop(1, 'rgba(0,0,0,0)'); x.fillStyle = g; x.beginPath(); x.arc(0, 0, G.msz * (.4 + p), 0, 7); x.fill();
+    for (let i = 0; i < 16; i++) { const a = i / 16 * Math.PI * 2 + .2, r1 = G.msz * (.2 + p * 1.3); x.fillStyle = i % 2 ? '#FFFFFF' : col; x.save(); x.rotate(a); x.beginPath(); x.moveTo(r1, -3); x.lineTo(r1 + G.msz * .35 * (1 - p), 0); x.lineTo(r1, 3); x.fill(); x.restore(); } }
+  else if (f.k === 'beam') { const w = G.msz * (f.big ? .7 : .45) * Math.sin(Math.min(1, p * 1.2) * Math.PI), gy = G.M.y + 6; const g = x.createLinearGradient(M.x - w, 0, M.x + w, 0); g.addColorStop(0, 'rgba(255,255,255,0)'); g.addColorStop(.3, col); g.addColorStop(.5, '#FFFFFF'); g.addColorStop(.7, col); g.addColorStop(1, 'rgba(255,255,255,0)');
+    x.globalAlpha = .95; x.shadowColor = col; x.shadowBlur = 40; x.fillStyle = g; x.fillRect(M.x - w, -40, w * 2, gy + 40); x.globalAlpha = 1 - p; x.strokeStyle = col; x.lineWidth = 6; x.beginPath(); x.ellipse(M.x, gy, G.msz * (.4 + p), G.msz * (.12 + p * .3), 0, 0, 7); x.stroke();
+    if (f.bolt) { x.strokeStyle = '#FFFFFF'; x.lineWidth = 4; x.globalAlpha = p < .5 ? 1 : 0; x.beginPath(); let yy = -20, xx = M.x; x.moveTo(xx, yy); while (yy < M.y) { yy += 30; xx = M.x + (Math.sin(yy * 7.3 + now / 40) * 22); x.lineTo(xx, yy); } x.stroke(); } }
+  else if (f.k === 'crystal') { const gy = G.M.y + 4; x.shadowColor = '#BFF4FF'; x.shadowBlur = 14;
+    for (let i = 0; i < 9; i++) { const dx = (i - 4) * G.msz * .18, h = G.msz * (.5 + ((i * 37) % 5) * .18) * ease(cl(p / .35)) * (p > .75 ? 1 - (p - .75) * 3 : 1), w = G.msz * .08; if (h <= 0) continue; const g = x.createLinearGradient(0, gy - h, 0, gy); g.addColorStop(0, '#FFFFFF'); g.addColorStop(.4, '#9FE4FF'); g.addColorStop(1, '#3A8AD8'); x.fillStyle = g; x.save(); x.translate(M.x + dx, gy); x.rotate((i - 4) * .12); x.beginPath(); x.moveTo(-w, 0); x.lineTo(0, -h); x.lineTo(w, 0); x.closePath(); x.fill(); x.restore(); } }
+  else if (f.k === 'vortex') { x.translate(M.x, M.y); x.shadowColor = col; x.shadowBlur = 20; for (let i = 0; i < 5; i++) { const rr = G.msz * (1.1 - p * .8) * (1 - i * .15), a = now / 120 + i * 1.25; x.globalAlpha = (1 - p) * .9; x.strokeStyle = i % 2 ? '#FFFFFF' : col; x.lineWidth = 8 - i; x.beginPath(); x.arc(0, 0, rr, a, a + 2.4); x.stroke(); }
+    const g = x.createRadialGradient(0, 0, 2, 0, 0, G.msz * .5); g.addColorStop(0, '#0A0010'); g.addColorStop(1, 'rgba(60,0,90,0)'); x.globalAlpha = Math.sin(p * Math.PI); x.fillStyle = g; x.beginPath(); x.arc(0, 0, G.msz * .5, 0, 7); x.fill(); }
+  else if (f.k === 'speed') { x.globalAlpha = Math.sin(p * Math.PI) * .8; for (let i = 0; i < 34; i++) { const yy = ((i * 97) % 100) / 100 * G.H, len = 80 + (i * 53) % 220, xx = ((i * 131 + now * (1.6 + (i % 5) * .4)) % (G.W + len)) - len; x.strokeStyle = i % 3 ? 'rgba(255,255,255,.7)' : col; x.lineWidth = 1 + (i % 3); x.beginPath(); x.moveTo(G.W - xx, yy); x.lineTo(G.W - xx - len, yy); x.stroke(); } }
+  else if (f.k === 'slash') { const a0 = -2.4 + (f.flip ? 1.2 : 0), sweep = 2.6 * ease(p), r = G.msz * .55; x.globalAlpha = 1 - p * .8; x.translate(M.x, M.y); if (f.flip) x.scale(-1, 1);
     x.strokeStyle = col; x.shadowColor = col; x.shadowBlur = 18; x.lineWidth = 14 * (1 - p) + 2; x.beginPath(); x.arc(0, 0, r, a0, a0 + sweep); x.stroke(); x.strokeStyle = '#fff'; x.lineWidth = 4 * (1 - p) + 1; x.beginPath(); x.arc(0, 0, r, a0 + sweep * .3, a0 + sweep); x.stroke(); }
   if (f.k === 'proj') { const e = f.arc ? p : easeIn(p), px = P.x + (M.x - P.x) * e, py = P.y + (M.y - P.y) * e - (f.arc || 0) * Math.sin(p * Math.PI);
     if (f.ic) { const s = (f.size || 44) * (G.mob ? .8 : 1); x.translate(px, py); x.rotate(f.spin ? now / 60 : 0); x.drawImage(rpgEmo(f.ic, 96), -s / 2, -s / 2, s, s); }
@@ -13578,14 +13784,18 @@ function rpgQuizAnswer(i) {
 }
 const RPG_FXSND = { fire: 'fire', meteor: 'fire', bomb: 'fire', ice: 'ice', light: 'light', thunder: 'thunder', wind: 'magic', glitch: 'magic', music: 'magic', summon: 'magic', dark: 'magic', laser: 'magic', slash: 'slash', punch: 'slash', pierce: 'slash', quake: 'thunder', arrow: 'slash', star: 'slash' };
 function rpgBCutin(k, idx, lv) {
-  const sc = document.getElementById('rb-scene'); if (!sc) return 0; const j = rpgJob(), ult = idx === 4, big = idx >= 2;
-  const el = document.createElement('div'); el.className = 'rb-cutin' + (ult ? ' ult' : big ? ' big' : '');
-  el.style.setProperty('--c', j.col);
-  el.innerHTML = `<i class="ci-dim"></i><i class="ci-band"></i>${ult ? `<img src="${rpgLookImg(rpgLookMe(), 220, 'bust')}" alt="">` : ''}<div class="ci-t"><span>${k[1]}</span><b>${esc(k[0])}</b><small>Lv.${lv}</small></div>`;
-  sc.appendChild(el); setTimeout(() => el.remove(), ult ? 1400 : big ? 950 : 700);
-  rpgSfx(ult ? 'ult' : 'magic'); if (ult) rpgBShake(10, 600);
-  return ult ? 1000 : big ? 560 : 300;
+  const sc = document.getElementById('rb-scene'); if (!sc) return 0; const j = rpgJob(), ult = idx === 4, big = idx >= 2, mid = idx === 1;
+  const el = document.createElement('div'); el.className = 'rb-cutin sk' + (ult ? ' ult' : big ? ' big' : mid ? ' mid' : ' small');
+  el.style.setProperty('--c', j.col); const hero = big || mid ? rpgLookImg(rpgLookMe(), 360) : '';
+  el.innerHTML = `<i class="ci-bar t"></i><i class="ci-bar b"></i>${big || mid ? '<i class="ci-speed"></i>' : ''}<i class="ci-flash"></i>
+    ${hero ? `<img class="ci-ghost g2" src="${hero}" alt=""><img class="ci-ghost g1" src="${hero}" alt=""><img class="ci-hero" src="${hero}" alt="">` : ''}
+    <div class="ci-name"><small>${ult ? 'ULTIMATE SKILL' : 'SKILL'} · Lv.${lv}</small><b>${k[1]} ${esc(k[0])}</b></div>`;
+  sc.appendChild(el); const life = ult ? 1700 : big ? 1150 : mid ? 900 : 650; setTimeout(() => el.remove(), life);
+  rpgSfx(ult ? 'ult' : 'magic'); if (ult) rpgBShake(12, 700); else if (big) rpgBShake(5, 300);
+  return ult ? 1250 : big ? 800 : mid ? 560 : 260;
 }
+function rpgBCombo(n, total, col) { const sc = document.getElementById('rb-scene'); if (!sc) return; const el = document.createElement('div'); el.className = 'rb-combo'; el.style.setProperty('--c', col);
+  el.innerHTML = `<div><b>${n}</b><span>HITS</span></div><em>${total.toLocaleString()}</em><small>TOTAL DAMAGE</small>`; sc.appendChild(el); setTimeout(() => el.remove(), 1700); }
 function rpgBSkill(idx, ok) {
   const B = RS.battle, s = R.save, st = rpgStats(), j = rpgJob(), k = j.sk[idx], [name, ic, , mult0, type, fx, ex = {}] = k, lv = s.sk[idx] || 1; rpgBHud(); rpgQEvent('skill');
   const D = rpgBCutin(k, idx, lv);
@@ -13607,11 +13817,17 @@ function rpgBSkillGo(idx, ok, lv) {
   const dash = RPG_DASHFX.has(fx) && RPG_MELEE.has(j.wt);
   if (dash) rpgBA('me', 'dash', 380 + n * gap + 260); else { rpgBA('me', 'cast', 400 + n * gap); rpgBFx('circle', 500 + n * gap, { col }); rpgBFx('pillarMe', 500 + n * gap, { col }); }
   if (ult || idx >= 2) { rpgBFx('rays', 900 + n * gap, { col }); rpgBFx('circle', 700 + n * gap, { col, at: 'mon' }); }
+  if (idx >= 1) { const span = 520 + n * gap + (ult ? 500 : 200), now0 = performance.now(), G0 = B.G; B.cam = { t0: now0 + 120, dur: span, z: ult ? 1.22 : idx >= 2 ? 1.15 : 1.08, fx: G0.M.x, fy: G0.M.y - G0.msz * .4 }; if (idx >= 2) rpgBFx('speed', span, { col });
+    const big = idx >= 2, melee = RPG_MELEE.has(j.wt), kind = fx === 'fire' || fx === 'meteor' ? 'nova' : fx === 'ice' ? 'crystal' : fx === 'light' ? 'beam' : fx === 'thunder' ? 'beamB' : fx === 'dark' ? 'vortex' : melee ? 'xslash' : 'nova';
+    const fire = (t, isBig) => rpgBLater(t, () => { if (kind === 'beamB') rpgBFx('beam', 650, { col, big: isBig, bolt: 1 }); else rpgBFx(kind, kind === 'crystal' ? 900 : 650, { col, big: isBig }); if (isBig) { rpgBFlash('rgba(255,255,255,.55)'); rpgBShake(14, 380); } });
+    fire(Math.max(0, 140), false); if (big) fire(200 + Math.floor(n / 2) * gap, false); if (big || ult) fire(260 + n * gap, true); }
   rpgSfx(RPG_FXSND[fx] || 'magic');
   const hits = rpgBFxFor(fx, col, ex.ic, n, gap); let total = 0;
   hits.forEach((t, i) => rpgBLater(t, () => { const d = rpgBHit(pow, mult * (ok ? 1.8 : .6), false); total += d; rpgBImpact(d, ok ? 'crit' : '', col); if (ult) rpgBSpark(B.G.M.x, B.G.M.y - B.G.msz * .45, col, 26, 420); if (i % 2 === 0 && n > 1) rpgSfx(RPG_FXSND[fx] || 'hit');
+    if (idx >= 1) { B.cam && (B.cam.z += .015); rpgBShake(idx >= 2 ? 7 : 4, 160); }
     if (ex.drain && i === n - 1) { const h = Math.round(total * ex.drain), h0 = s.hp; s.hp = Math.min(st.mhp, s.hp + h); rpgBLater(150, () => rpgBNum(`+${s.hp - h0}`, 'me', 'heal')); } }));
   if (ult) rpgBLater(hits[hits.length - 1], () => { rpgBFlash('rgba(255,255,255,.5)'); rpgBShake(18, 600); rpgBFx('boom', 700, { col, r: B.G.msz * 1.1 }); });
+  if (idx >= 1) rpgBLater(hits[hits.length - 1] + 120, () => rpgBCombo(n, total, col));
   rpgBLater(hits[hits.length - 1] + 40, () => { if (ex.stun && B.hp > 0 && Math.random() < ex.stun * (ok ? 1.3 : .5)) { B.stun = 1; rpgBNum('มึนงง!', 'mon', 'txt'); } rpgBSay(`${ic} ${name} Lv.${lv}${n > 1 ? ` ${n} ครั้ง` : ''} รวม ${total.toLocaleString()}${ok ? ' ✅ คริติคอล!' : ' ❌ ตอบผิด พลังลดลง'}`); });
   rpgBLater(hits[hits.length - 1] + 420, rpgAfterMe);
 }
@@ -13939,18 +14155,20 @@ async function rpgChatLoad() {
 }
 function rpgChatUI() {
   const el = document.getElementById('rpg-chat'); if (!el) return;
-  el.className = 'rpg-chat ' + (RPG_CHAT.open ? 'open' : '');
-  el.innerHTML = RPG_CHAT.open ? `<div class="ch-box"><div class="ch-tabs">${[['world', '🌏 โลก'], ['party', '⚔️ ปาร์ตี้'], ['guild', '🏰 กิลด์']].map(([k, l]) => `<button class="${RPG_CHAT.ch === k ? 'on' : ''}" data-r="ch-tab" data-k="${k}">${l}</button>`).join('')}<button class="ch-x" data-r="ch-close" aria-label="ปิดแชท">✕</button></div>
-      <div class="ch-list" id="ch-list"></div>
-      <form class="ch-in" id="ch-form"><button type="button" class="ch-emo" data-r="emote" aria-label="อีโมจิ">😀</button><input id="ch-txt" maxlength="140" placeholder="${R.teacher ? 'โหมดครู: ดูอย่างเดียว' : 'พิมพ์ข้อความสุภาพ…'}" ${R.teacher ? 'disabled' : ''} autocomplete="off"><button class="ch-send" ${R.teacher ? 'disabled' : ''}>ส่ง</button></form>
-      <small class="ch-note">ข้อความถูกบันทึก ครูตรวจย้อนหลังได้ · ห้ามบอกข้อมูลส่วนตัว</small></div>`
-    : `<button class="ch-fab" data-r="ch-open" aria-label="เปิดแชท">💬<small>แชท</small></button>`;
-  if (RPG_CHAT.open) { document.getElementById('ch-form').onsubmit = e => { e.preventDefault(); rpgChatSend(); }; rpgChatLoad(); }
+  el.className = 'rpg-chat dock' + (RPG_CHAT.min ? ' min' : '');
+  el.innerHTML = `<div class="ch-head">${[['world', '🌏 โลก'], ['party', '⚔️ ปาร์ตี้'], ['guild', '🏰 กิลด์']].map(([k, l]) => `<button class="${RPG_CHAT.ch === k ? 'on' : ''}" data-r="ch-tab" data-k="${k}">${l}</button>`).join('')}<button class="ch-min" data-r="ch-min" aria-label="${RPG_CHAT.min ? 'ขยายแชท' : 'ย่อแชท'}">${RPG_CHAT.min ? '▴' : '▾'}</button></div>
+    <div class="ch-list" id="ch-list"></div>
+    <form class="ch-in" id="ch-form"><button type="button" class="ch-emo" data-r="emote" aria-label="อีโมจิ">😀</button><input id="ch-txt" maxlength="140" autocomplete="off" placeholder="${R.teacher ? 'โหมดครู: ดูอย่างเดียว' : 'กด Enter เพื่อพิมพ์ข้อความ…'}" ${R.teacher ? 'disabled' : ''}><button class="ch-send" ${R.teacher ? 'disabled' : ''}>ส่ง</button></form>`;
+  const f = document.getElementById('ch-form'), inp = document.getElementById('ch-txt');
+  f.onsubmit = e => { e.preventDefault(); if (inp.value.trim()) rpgChatSend(); inp.blur(); };
+  inp.onkeydown = e => { if (e.key === 'Escape') { inp.value = ''; inp.blur(); } e.stopPropagation(); };
+  inp.onfocus = () => { RS.keys = {}; el.classList.add('typing'); }; inp.onblur = () => el.classList.remove('typing');
+  rpgChatLoad(); rpgChatDraw();
 }
 function rpgChatDraw() {
   const el = document.getElementById('ch-list'); if (!el) return; const ch = rpgChatCh();
   el.innerHTML = !ch ? `<p class="ch-empty">${RPG_CHAT.ch === 'party' ? 'ยังไม่มีปาร์ตี้ · คลิกตัวละครเพื่อนเพื่อชวน' : 'ยังไม่มีกิลด์ · เปิดเมนูกิลด์เพื่อตั้งหรือเข้าร่วม'}</p>`
-    : (RPG_CHAT.msgs[ch] || []).map(m => `<div class="ch-m ${m.me ? 'me' : ''}"><b>${esc(m.name)}</b><span>${esc(m.body)}</span></div>`).join('') || '<p class="ch-empty">ยังไม่มีข้อความ ทักทายเพื่อน ๆ ได้เลย</p>';
+    : (RPG_CHAT.msgs[ch] || []).slice(-40).map(m => `<div class="ch-m ${m.me ? 'me' : ''}"><b>${esc(m.name)}:</b> <span>${esc(m.body)}</span></div>`).join('') || '<p class="ch-empty">ยังไม่มีข้อความ ทักทายเพื่อน ๆ ได้เลย</p>';
   el.scrollTop = el.scrollHeight;
 }
 async function rpgChatSend() {
@@ -14067,6 +14285,8 @@ function rpgPanelX(k, arg) {
 }
 function rpgSocialClick(a, b) {
   if (a === 'top') { document.getElementById('rpg-more').hidden = true; return rpgPanel('top'); }
+  if (a === 'ch-min') { RPG_CHAT.min = !RPG_CHAT.min; return rpgChatUI(); }
+  if (a === 'qt-hide') { RS.qtHide = !RS.qtHide; try { localStorage.setItem('rpg-qth', RS.qtHide ? '1' : ''); } catch (e) {} return rpgQTrack(); }
   if (a === 'more') { const m = document.getElementById('rpg-more'); if (m) m.hidden = !m.hidden; rpgSfx('click'); return; }
   const s = R.save;
   if (RS.battle && !RS.battle.closed && a === 'skill' && b.dataset.i != null) return rpgBattleClick(a, b);
@@ -14145,7 +14365,10 @@ function g3tEditModal(id) {
       <label class="row" style="gap:8px"><input type="checkbox" name="muted" ${r.muted ? 'checked' : ''}> ปิดการแชทในเกมของนักเรียนคนนี้</label>
       <label class="row" style="gap:8px"><input type="checkbox" name="reset"> รีเซ็ตตัวละคร (ให้สร้างอาชีพใหม่ · เลเวล ทอง สัตว์เลี้ยงยังอยู่ · คืนแต้มสถานะและแต้มสกิล)</label>
       <small class="muted">ถ้านักเรียนกำลังเล่นอยู่ ต้องออกจากเกมแล้วเข้าใหม่ การเปลี่ยนแปลงจึงจะมีผล</small></div>`,
-    actions: [{ label: 'ยกเลิก', onClick: closeModal }, { label: 'บันทึก', kind: 'primary', onClick: async () => {
+    actions: [{ label: '🗑️ ลบตัวละคร', kind: 'danger', onClick: async () => {
+      if (!confirm(`ลบตัวละครของ ${st?.first_name || 'นักเรียน'} ทั้งหมด?\nเลเวล ทอง ไอเทม สัตว์เลี้ยง และกิลด์จะหายทั้งหมด นักเรียนต้องสร้างตัวละครใหม่ตั้งแต่ต้น`)) return;
+      try { await q(sb.rpc('teacher_rpg_delete', { p_student: id })); closeModal(); await g3TeacherLoad(true); toast('ลบตัวละครแล้ว · นักเรียนจะได้สร้างใหม่ครั้งถัดไปที่เข้าเกม'); } catch (e) {}
+    } }, { label: 'ยกเลิก', onClick: closeModal }, { label: 'บันทึก', kind: 'primary', onClick: async () => {
       const reset = document.querySelector('#modal-root [name=reset]').checked; if (reset && !confirm('ยืนยันรีเซ็ตตัวละคร?')) return;
       try { await q(sb.rpc('teacher_rpg_set', { p_student: id, p_gold: +mval('gold'), p_lvl: +mval('lvl'), p_reset: reset, p_muted: document.querySelector('#modal-root [name=muted]').checked })); closeModal(); await g3TeacherLoad(true); toast('บันทึกแล้ว'); } catch (e) {}
     } }] });
