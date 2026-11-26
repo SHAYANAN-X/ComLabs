@@ -4592,6 +4592,31 @@ img.ii{display:inline-block;width:1.25em;height:1.25em;vertical-align:-.25em;obj
 .rpg .rp-card.fixed .sp-wrap section{overflow:hidden}
 @media (max-width:760px){.rpg .rp-card.fixed .sp-wrap{grid-template-rows:minmax(0,1fr) minmax(0,1fr);max-height:none}.pk-store .sp-wrap{max-height:none}}
 
+/* ===== v30: คัทซีนสกิลใหม่ · ตัวเลขดาเมจกลางจอ ===== */
+.rb-cine.v30 .cn-hero{animation-name:cn-hero30;height:54%}
+@keyframes cn-hero30{0%{transform:translateX(-60%);opacity:0}8%{transform:translateX(0);opacity:1}26%{transform:translateX(4%);opacity:1}36%{opacity:0;transform:translateX(24%)}100%{opacity:0}}
+.rb-cine.v30 .cn-name{animation-name:cn-name30}
+@keyframes cn-name30{0%{transform:translateX(-40px);opacity:0}7%{transform:none;opacity:1}40%{opacity:1}52%{opacity:0;transform:translateY(-8px)}100%{opacity:0}}
+.cn-dmg{position:absolute;inset:0;pointer-events:none}
+.cn-dmg b{position:absolute;transform:translate(-50%,-50%);font:900 clamp(26px,4.6vw,52px) var(--f-head);color:#fff;-webkit-text-stroke:2px rgba(0,0,0,.55);text-shadow:0 0 16px var(--c),0 3px 0 rgba(0,0,0,.45);animation:cn-dmg 1.1s cubic-bezier(.2,1.4,.4,1) both}
+@keyframes cn-dmg{0%{transform:translate(-50%,-50%) scale(2.2);opacity:0}12%{transform:translate(-50%,-50%) scale(1);opacity:1}70%{opacity:1}100%{transform:translate(-50%,-130%) scale(.9);opacity:0}}
+@media (prefers-reduced-motion:reduce){.cn-dmg b{animation-duration:.6s}}
+
+/* ===== v30: หน้าต่างพอดีจอ + ตัวแบ่งหน้า ===== */
+.rpg .rpg-panel .rp-card.v30fit{max-height:min(640px,calc(100dvh - 40px));overflow:hidden;display:flex;flex-direction:column}
+.rpg .rpg-panel .rp-card.v30fit > *{flex-shrink:0}
+.rpg .rpg-panel .rp-card.v30fit [data-pgsc]{overflow:visible!important;max-height:none!important;height:auto!important;flex:none!important;min-height:auto!important}
+.rpg .rpg-panel .rp-card.v30fit .sp-wrap{grid-template-rows:auto!important;height:auto!important}
+.rpg .rpg-panel .rp-card.v30fit > .rp-pager{margin-top:auto;padding-top:10px;border-top:1px solid var(--ui-line,#E4DDF7)}
+.rp-pager{display:flex;align-items:center;justify-content:center;gap:6px;padding:8px 4px 2px;flex-wrap:wrap}
+.rp-pager button{min-width:38px;height:38px;padding:0 10px;border-radius:10px;border:2px solid #D8DEEA;background:#fff;color:#2A3348;font:800 15px var(--f-body);cursor:pointer}
+.rp-pager button.on{background:#3D6BFF;border-color:#3D6BFF;color:#fff}
+.rp-pager button:disabled{opacity:.35;cursor:default}
+.rp-pager button:focus-visible{outline:3px solid #FFB020;outline-offset:2px}
+.rp-pager span{color:#8A93A8;font-weight:800}
+.rp-ic img.pet30{width:100%;height:100%;object-fit:contain}
+@media (max-width:480px){.rp-pager{gap:4px;flex-wrap:nowrap}.rp-pager button{min-width:34px;height:38px;padding:0 6px;font-size:14px}}
+
 </style>
 </head>
 <body>
@@ -5135,7 +5160,7 @@ if (typeof module !== 'undefined') module.exports = ExamParser;
 </script>
 <script>
 /* โลโก้: ภาพครูปลื้ม (ไฟล์ต้นฉบับ src/logo.svg ฝังตอน build) */
-const APP_VER = '29.0 · 26 พ.ย. 2569';
+const APP_VER = '30.0 · 26 พ.ย. 2569';
 let LOGO_N = 0;
 function logoSVG() { const k = 'L' + (++LOGO_N); return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><defs><linearGradient id="lgb" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3B9BFF"/><stop offset=".5" stop-color="#0A5BE0"/><stop offset="1" stop-color="#062C78"/></linearGradient><linearGradient id="lgs" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset=".6" stop-color="#FFF4D6"/><stop offset="1" stop-color="#FFD978"/></linearGradient><radialGradient id="lgc" cx=".3" cy=".08" r=".75"><stop offset="0" stop-color="#fff" stop-opacity=".55"/><stop offset=".5" stop-color="#fff" stop-opacity=".08"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient></defs><rect width="48" height="48" rx="13" fill="url(#lgb)"/><rect width="48" height="48" rx="13" fill="url(#lgc)"/><rect x=".75" y=".75" width="46.5" height="46.5" rx="12.3" fill="none" stroke="#fff" stroke-opacity=".45" stroke-width="1.2"/><g fill="none" stroke="#04235F" stroke-opacity=".35" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" transform="translate(0 1.2)"><path d="M21.2 17 C19.8 14.6 17.4 13.6 14.8 13.6 C11 13.6 8.6 15.6 8.6 18.5 C8.6 21.8 11.6 22.9 14.9 23.9 C18.6 25 21.6 26.4 21.6 29.8 C21.6 33 18.8 34.6 15.1 34.6 C12 34.6 9.5 33.4 8 31.1"/><path d="M26.6 14 L39.6 34.2 M39.6 14 L26.6 34.2"/></g><g fill="none" stroke="url(#lgs)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M21.2 17 C19.8 14.6 17.4 13.6 14.8 13.6 C11 13.6 8.6 15.6 8.6 18.5 C8.6 21.8 11.6 22.9 14.9 23.9 C18.6 25 21.6 26.4 21.6 29.8 C21.6 33 18.8 34.6 15.1 34.6 C12 34.6 9.5 33.4 8 31.1"/><path d="M26.6 14 L39.6 34.2 M39.6 14 L26.6 34.2"/></g></svg>`.replace('<svg ', '<svg class="logo" aria-hidden="true" ').replace(/\b(lg[bsc])\b/g, '$1' + k); }
 /* =====================================================================
@@ -16813,7 +16838,7 @@ function rpgHatDraw(x, r, st, col, back) {
 const rpgArtOpts28 = rpgArtOpts;
 rpgArtOpts = function (L, h = {}) {
   const o = rpgArtOpts28(L, h), it = L.hat && RPG_ITEMS[L.hat];
-  if (!L.hd && it?.hst) o.headFn = (x, L2) => rpgHatDraw(x, L2.r, it.hst, it.hcol, o.back);
+  if (it?.hst) o.headFn = (x, L2) => rpgHatDraw(x, L2.r, it.hst, it.hcol, o.back);
   if (o.wpn) o.wpn.enh = L.wenh || 0; if (o.wpn2) o.wpn2.enh = L.wenh || 0;
   return o;
 };
@@ -17450,6 +17475,495 @@ rpgPresenceStart = function () { const r = rpgPresenceStart29.apply(this, argume
 })();
 const rpgCanvasClick29 = rpgCanvasClick;
 rpgCanvasClick = function (e) { if (performance.now() - (RS.joyEnd || 0) < 250) return; return rpgCanvasClick29(e); };
+
+/* =====================================================================
+   SX Realm v30 — เอฟเฟกต์สกิลเขียนใหม่ทั้งหมด: ทุกสกิลมีท่าเฉพาะของตัวเอง (72 สกิล)
+   โครงสร้าง: คลังท่าพื้นฐาน (FX) → สูตรต่อสกิล (RPG_SKFX) → ไทม์ไลน์คัทซีน + ดาเมจตามจังหวะท่า
+   ===================================================================== */
+const SKX = (() => {
+  const TAU = Math.PI * 2, cl = v => Math.max(0, Math.min(1, v)), eo = t => 1 - Math.pow(1 - t, 3), ei = t => t * t * t, bell = t => Math.sin(cl(t) * Math.PI);
+  const rgba = (h, a) => { if (!h || h[0] !== '#') return h; const n = parseInt(h.slice(1), 16); return `rgba(${n >> 16},${n >> 8 & 255},${n & 255},${a})`; };
+  const glow = (x, cx, cy, r, col, a = 1) => { if (r <= 0) return; const g = x.createRadialGradient(cx, cy, 0, cx, cy, r); g.addColorStop(0, rgba(col, a)); g.addColorStop(1, rgba(col, 0)); x.fillStyle = g; x.beginPath(); x.arc(cx, cy, r, 0, TAU); x.fill(); };
+  const ring = (x, cx, cy, r, col, w, a = 1, sy = 1) => { if (r <= 0 || a <= 0) return; x.save(); x.globalAlpha = a; x.strokeStyle = col; x.lineWidth = w; x.beginPath(); x.ellipse(cx, cy, r, r * sy, 0, 0, TAU); x.stroke(); x.restore(); };
+  const star = (x, cx, cy, s, col, a = 1, rot = 0) => { x.save(); x.globalAlpha = a; x.translate(cx, cy); x.rotate(rot); x.fillStyle = col; x.beginPath(); x.moveTo(0, -s); x.lineTo(s * .22, -s * .22); x.lineTo(s, 0); x.lineTo(s * .22, s * .22); x.lineTo(0, s); x.lineTo(-s * .22, s * .22); x.lineTo(-s, 0); x.lineTo(-s * .22, -s * .22); x.fill(); x.restore(); };
+  const crescent = (x, cx, cy, r, a0, sweep, w, col, a = 1) => { x.save(); x.globalAlpha = a; x.translate(cx, cy); x.rotate(a0); const g = x.createLinearGradient(-r, 0, r, 0); g.addColorStop(0, rgba(col, 0)); g.addColorStop(.6, rgba(col, .9)); g.addColorStop(1, '#FFFFFF'); x.fillStyle = g; x.beginPath(); x.arc(0, 0, r, -sweep / 2, sweep / 2); x.arc(w * .5, 0, r - w * .2, sweep / 2, -sweep / 2, true); x.closePath(); x.fill(); x.restore(); };
+  const beam = (x, x0, y0, x1, y1, w, col, a = 1) => { x.save(); x.globalAlpha = a; x.lineCap = 'round'; x.strokeStyle = rgba(col, .35); x.lineWidth = w * 2.4; x.beginPath(); x.moveTo(x0, y0); x.lineTo(x1, y1); x.stroke(); x.strokeStyle = col; x.lineWidth = w; x.stroke(); x.strokeStyle = '#FFFFFF'; x.lineWidth = w * .35; x.stroke(); x.restore(); };
+  const bolt = (x, x0, y0, x1, y1, col, w, R, jag = 34) => { const pts = [[x0, y0]]; const n = 10; for (let i = 1; i < n; i++) { const f = i / n; pts.push([x0 + (x1 - x0) * f + (R() - .5) * jag, y0 + (y1 - y0) * f + (R() - .5) * jag * .4]); } pts.push([x1, y1]);
+    x.save(); x.lineJoin = 'round'; [[w * 3, rgba(col, .3)], [w, col], [w * .35, '#FFFFFF']].forEach(([lw, c]) => { x.strokeStyle = c; x.lineWidth = lw; x.beginPath(); pts.forEach(([a, b], i) => i ? x.lineTo(a, b) : x.moveTo(a, b)); x.stroke(); }); x.restore(); };
+  const flame = (x, cx, cy, s, col, a = 1) => { x.save(); x.globalAlpha = a; const g = x.createLinearGradient(cx, cy - s * 1.8, cx, cy + s); g.addColorStop(0, rgba(col, 0)); g.addColorStop(.4, col); g.addColorStop(1, '#FFF6C0'); x.fillStyle = g; x.beginPath(); x.moveTo(cx, cy - s * 1.9); x.quadraticCurveTo(cx + s, cy - s * .2, cx, cy + s); x.quadraticCurveTo(cx - s, cy - s * .2, cx, cy - s * 1.9); x.fill(); x.restore(); };
+  const crystal = (x, cx, cy, h, w, rot, col, a = 1) => { x.save(); x.globalAlpha = a; x.translate(cx, cy); x.rotate(rot); const g = x.createLinearGradient(-w, 0, w, 0); g.addColorStop(0, '#FFFFFF'); g.addColorStop(.5, col); g.addColorStop(1, rgba(col, .5)); x.fillStyle = g; x.beginPath(); x.moveTo(0, -h); x.lineTo(w, -h * .3); x.lineTo(w * .7, 0); x.lineTo(-w * .7, 0); x.lineTo(-w, -h * .3); x.closePath(); x.fill(); x.strokeStyle = 'rgba(255,255,255,.8)'; x.lineWidth = 1.2; x.stroke(); x.restore(); };
+  const text = (x, t, cx, cy, s, col, a = 1, font = 'sans-serif') => { x.save(); x.globalAlpha = a; x.font = `900 ${s}px ${font}`; x.textAlign = 'center'; x.textBaseline = 'middle'; x.fillStyle = col; x.fillText(t, cx, cy); x.restore(); };
+  const sigil = (x, cx, cy, r, col, rot, a = 1, sides = 6) => { x.save(); x.globalAlpha = a; x.translate(cx, cy); x.scale(1, .36); x.rotate(rot); x.strokeStyle = col; x.lineWidth = 3; x.beginPath(); x.arc(0, 0, r, 0, TAU); x.stroke(); x.lineWidth = 1.6; x.beginPath(); x.arc(0, 0, r * .82, 0, TAU); x.stroke(); x.beginPath(); for (let i = 0; i <= sides * 2; i++) { const q = i / sides * TAU * (sides % 2 ? 2 : 1) / 2 * 2; x[i ? 'lineTo' : 'moveTo'](Math.cos(q) * r * .8, Math.sin(q) * r * .8); } x.stroke();
+    for (let i = 0; i < 16; i++) { const q = i / 16 * TAU; x.fillStyle = col; x.fillRect(Math.cos(q) * r * .91 - 2, Math.sin(q) * r * .91 - 2, 4, 4); } x.restore(); };
+  const img = (x, im, cx, cy, s, a = 1, flip) => { if (!im) return; x.save(); x.globalAlpha = a; x.translate(cx, cy); if (flip) x.scale(-1, 1); x.drawImage(im, -s / 2, -s / 2, s, s); x.restore(); };
+  const fist = (x, cx, cy, s, col, a = 1, rot = 0) => { x.save(); x.globalAlpha = a; x.translate(cx, cy); x.rotate(rot); x.scale(s / 40, s / 40); x.fillStyle = col; x.strokeStyle = 'rgba(255,255,255,.9)'; x.lineWidth = 2.5; x.beginPath(); x.moveTo(-22, -16); x.quadraticCurveTo(-24, -26, -10, -26); x.lineTo(16, -26); x.quadraticCurveTo(26, -26, 26, -12); x.lineTo(26, 14); x.quadraticCurveTo(26, 24, 14, 24); x.lineTo(-10, 24); x.quadraticCurveTo(-24, 24, -24, 10); x.closePath(); x.fill(); x.stroke();
+    x.beginPath(); [-12, -2, 8].forEach(v => { x.moveTo(v + 6, -26); x.lineTo(v + 6, -6); }); x.moveTo(-24, 2); x.quadraticCurveTo(-6, 2, -4, -6); x.stroke(); x.restore(); };
+  const parts = (x, c, n, fn) => { for (let i = 0; i < n; i++) fn(i, c.R[i % c.R.length]); };
+  const shake = (c, m) => { c.shake = Math.max(c.shake || 0, m); };
+  const flash = (c, a, col = '#FFFFFF') => { c.flash = Math.max(c.flash || 0, Math.min(.38, a)); c.flashCol = col; };
+
+  /* ---------- ท่าพื้นฐาน: (x, c, e, o) · c = {P, M, S, sz, col, col2, R, t, ult, W, H} ---------- */
+  const L = {
+    // --- ชาร์จพลัง ---
+    gather(x, c, e, o) { const col = o.col || c.col; glow(x, c.P.x, c.P.y - 40 * c.S, 90 * c.S * bell(e), col, .55); parts(x, c, 26, (i, r) => { const f = (e * 1.6 + r[0]) % 1, a = r[1] * TAU, d = (1 - f) * 150 * c.S; star(x, c.P.x + Math.cos(a) * d, c.P.y - 40 * c.S + Math.sin(a) * d * .7, (3 + r[2] * 4) * c.S, col, Math.sin(f * Math.PI)); }); },
+    rune(x, c, e, o) { const col = o.col || c.col; sigil(x, c.P.x, c.P.y + 4 * c.S, 110 * c.S * eo(cl(e * 2)), col, c.t / 900, bell(e) * .95, o.sides || 6); glow(x, c.P.x, c.P.y - 10 * c.S, 80 * c.S, col, .3 * bell(e)); },
+    pillar(x, c, e, o) { const col = o.col || c.col, w = 70 * c.S * bell(e); const g = x.createLinearGradient(0, 0, 0, c.P.y); g.addColorStop(0, rgba(col, 0)); g.addColorStop(1, rgba(col, .75)); x.fillStyle = g; x.fillRect(c.P.x - w / 2, 0, w, c.P.y + 10 * c.S); x.fillStyle = `rgba(255,255,255,${.55 * bell(e)})`; x.fillRect(c.P.x - w / 8, 0, w / 4, c.P.y); },
+    aura(x, c, e, o) { const col = o.col || c.col; parts(x, c, 18, (i, r) => { const f = (e * 2 + r[0]) % 1; flame(x, c.P.x + (r[1] - .5) * 90 * c.S, c.P.y - f * 130 * c.S, (8 + r[2] * 10) * c.S * (1 - f * .6), col, Math.sin(f * Math.PI) * .9); }); glow(x, c.P.x, c.P.y - 40 * c.S, 100 * c.S, col, .35 * bell(e)); },
+    // --- กายภาพ: ดาบ ---
+    dash(x, c, e, o) { const im = c.hero; if (!im) return; const p = eo(cl(e * 1.4)); for (let i = 0; i < 6; i++) { const f = cl(p - i * .07), px = c.P.x + (c.M.x - c.P.x - 60 * c.S) * f, py = c.P.y - 60 * c.S; img(x, im, px, py, 150 * c.S, (1 - i / 6) * .5 * bell(e)); } beam(x, c.P.x, c.P.y - 40 * c.S, c.P.x + (c.M.x - c.P.x) * p, c.P.y - 40 * c.S, 4 * c.S, o.col || c.col, .7 * bell(e)); },
+    slash(x, c, e, o) { const n = o.n || 3, col = o.col || c.col; for (let i = 0; i < n; i++) { const r = c.R[i], f = cl((e - i / n * .8) * 3); if (f <= 0 || f >= 1) continue; const a = (o.ang ?? r[0] * TAU) + (o.ang != null ? i * 1.1 : 0); crescent(x, c.M.x + (r[1] - .5) * 30 * c.S, c.M.y + (r[2] - .5) * 30 * c.S, (o.r || 95) * c.S, a, 2.2 * eo(f) + .4, 22 * c.S, col, 1 - ei(f)); } },
+    xslash(x, c, e, o) { const col = o.col || c.col; [-.78, .78].forEach((a, i) => { const f = cl((e - i * .18) * 2.6); if (f <= 0 || f >= 1) return; x.save(); x.translate(c.M.x, c.M.y); x.rotate(a); const len = 230 * c.S * eo(f); beam(x, -len / 2, 0, len / 2, 0, 10 * c.S * (1 - f * .6), col, 1 - ei(f)); x.restore(); }); if (e > .5) ring(x, c.M.x, c.M.y, 160 * c.S * eo((e - .5) * 2), '#FFFFFF', 5 * c.S, 1 - (e - .5) * 2); },
+    tornado(x, c, e, o) { const col = o.col || c.col; for (let i = 0; i < 14; i++) { const h = i / 14, a = c.t / 90 + i * 1.3, r = (40 + h * 70) * c.S * (.6 + .4 * bell(e)); crescent(x, c.M.x + Math.cos(a) * r * .5, c.M.y + 60 * c.S - h * 170 * c.S, r * .9, a, 1.5, 12 * c.S, col, bell(e) * (1 - h * .4)); } glow(x, c.M.x, c.M.y, 140 * c.S, col, .3 * bell(e)); },
+    pierce(x, c, e, o) { const col = o.col || c.col, f = eo(cl(e * 1.6)), y0 = c.M.y; beam(x, c.P.x, y0, c.P.x + (c.W - c.P.x) * f, y0, 16 * c.S * (1 - cl(e - .6)), col, 1 - cl((e - .7) * 3)); for (let i = 0; i < 4; i++) { const q = cl((e - .2 - i * .1) * 3); if (q > 0 && q < 1) ring(x, c.P.x + (c.M.x - c.P.x) * (.4 + i * .2), y0, 50 * c.S * q, '#FFFFFF', 4 * c.S, 1 - q, 1.6); } if (e > .45 && e < .55) flash(c, .5); },
+    skyBolt(x, c, e, o) { const col = o.col || '#BFE4FF'; const n = o.n || 5; for (let i = 0; i < n; i++) { const f = cl((e - i / n * .6) * 4); if (f <= 0 || f >= 1) continue; const r = c.R[i]; bolt(x, c.M.x + (r[0] - .5) * 200 * c.S, 0, c.M.x + (r[1] - .5) * 40 * c.S, c.M.y + 30 * c.S, col, 6 * c.S, c.Rf, 50 * c.S); if (f < .2) flash(c, .45, '#DDEEFF'); } glow(x, c.M.x, c.M.y, 160 * c.S, col, .4 * bell(e)); },
+    giantBlade(x, c, e, o) { const col = o.col || c.col, f = eo(cl(e * 1.5)), y = -200 * c.S + (c.M.y + 240 * c.S) * f; x.save(); x.translate(c.M.x, y); const g = x.createLinearGradient(-30 * c.S, 0, 30 * c.S, 0); g.addColorStop(0, rgba(col, .7)); g.addColorStop(.5, '#FFFFFF'); g.addColorStop(1, rgba(col, .7)); x.fillStyle = g; x.globalAlpha = 1 - cl((e - .75) * 4); x.beginPath(); x.moveTo(0, 60 * c.S); x.lineTo(-26 * c.S, -40 * c.S); x.lineTo(-26 * c.S, -260 * c.S); x.lineTo(26 * c.S, -260 * c.S); x.lineTo(26 * c.S, -40 * c.S); x.closePath(); x.fill(); x.fillStyle = col; x.fillRect(-60 * c.S, -280 * c.S, 120 * c.S, 18 * c.S); x.restore(); if (f >= 1 && e < .8) { ring(x, c.M.x, c.M.y + 40 * c.S, 220 * c.S * (e - .66) * 7, col, 8 * c.S, .8, .35); shake(c, 10); } },
+    // --- โล่ / อัศวิน ---
+    shieldBash(x, c, e, o) { const col = o.col || '#8FC0FF', f = eo(cl(e * 1.8)), px = c.P.x + (c.M.x - c.P.x) * f, py = c.M.y; x.save(); x.translate(px, py); x.globalAlpha = 1 - cl((e - .7) * 3); x.fillStyle = rgba(col, .85); x.strokeStyle = '#FFFFFF'; x.lineWidth = 4 * c.S; x.beginPath(); for (let i = 0; i < 6; i++) { const a = i / 6 * TAU; x.lineTo(Math.cos(a) * 54 * c.S, Math.sin(a) * 54 * c.S); } x.closePath(); x.fill(); x.stroke(); text(x, '✚', 0, 0, 50 * c.S, '#FFFFFF'); x.restore();
+      if (e > .55) { const q = (e - .55) / .45; for (let i = 0; i < 3; i++) ring(x, c.M.x, c.M.y + 60 * c.S, (60 + i * 60) * c.S * eo(q), col, 6 * c.S, 1 - q, .3); parts(x, c, 10, (i, r) => { const s2 = q * (100 + r[0] * 120) * c.S; x.fillStyle = `rgba(150,120,90,${1 - q})`; x.fillRect(c.M.x + Math.cos(r[1] * TAU) * s2, c.M.y + 50 * c.S - Math.abs(Math.sin(r[1] * TAU)) * s2 * .8 + q * q * 80 * c.S, 10 * c.S, 10 * c.S); }); shake(c, 8 * (1 - q)); } },
+    dome(x, c, e, o) { const col = o.col || '#7FD0FF', r = 120 * c.S * eo(cl(e * 2)); x.save(); x.globalAlpha = bell(e) * .9; x.beginPath(); x.ellipse(c.P.x, c.P.y, r, r * 1.05, 0, Math.PI, TAU); x.fillStyle = rgba(col, .18); x.fill(); x.clip(); x.strokeStyle = rgba(col, .9); x.lineWidth = 2; const hs = 22 * c.S; for (let j = -6; j < 2; j++) for (let i = -7; i < 7; i++) { const cx = c.P.x + i * hs * 1.5, cy = c.P.y + j * hs * 1.73 + (i % 2 ? hs * .86 : 0); x.beginPath(); for (let k = 0; k < 6; k++) { const a = k / 6 * TAU; x.lineTo(cx + Math.cos(a) * hs * .9, cy + Math.sin(a) * hs * .9); } x.closePath(); x.stroke(); } x.restore(); ring(x, c.P.x, c.P.y, r, col, 4 * c.S, bell(e), .25); },
+    lightSword(x, c, e, o) { L.giantBlade(x, c, e, { col: o.col || '#FFE27A' }); parts(x, c, 20, (i, r) => { const f = (e * 2 + r[0]) % 1; star(x, c.M.x + (r[1] - .5) * 220 * c.S, c.M.y - f * 220 * c.S, 5 * c.S, '#FFF6C0', Math.sin(f * Math.PI) * bell(e)); }); },
+    holyCross(x, c, e, o) { const col = o.col || '#FFF0A0', f = eo(cl(e * 2)), a = bell(e); x.save(); x.globalAlpha = a; x.fillStyle = rgba(col, .85); const w = 34 * c.S * f, h = 280 * c.S * f; x.fillRect(c.M.x - w / 2, c.M.y - h * .65, w, h); x.fillRect(c.M.x - h * .38, c.M.y - h * .32, h * .76, w); x.restore(); glow(x, c.M.x, c.M.y - 40 * c.S, 230 * c.S * f, col, .5 * a); parts(x, c, 16, (i, r) => { const q = (e * 1.2 + r[0]) % 1; x.save(); x.globalAlpha = a * (1 - q); x.translate(c.M.x + (r[1] - .5) * 300 * c.S, -20 + q * c.H); x.rotate(q * 6 + r[2] * 6); x.fillStyle = '#FFFFFF'; x.beginPath(); x.ellipse(0, 0, 10 * c.S, 4 * c.S, 0, 0, TAU); x.fill(); x.restore(); }); },
+    // --- รักษา ---
+    healBloom(x, c, e, o) { const col = o.col || '#5BFF9A'; glow(x, c.P.x, c.P.y - 40 * c.S, 140 * c.S, col, .4 * bell(e)); parts(x, c, 14, (i, r) => { const a = r[0] * TAU + e * 4, d = (40 + r[1] * 70) * c.S * eo(cl(e * 2)), px = c.P.x + Math.cos(a) * d, py = c.P.y - 40 * c.S + Math.sin(a) * d * .6 - e * 40 * c.S; x.save(); x.globalAlpha = bell(e); x.translate(px, py); x.rotate(a); for (let k = 0; k < 5; k++) { x.rotate(TAU / 5); x.fillStyle = k % 2 ? '#FFFFFF' : col; x.beginPath(); x.ellipse(0, 6 * c.S, 3.5 * c.S, 7 * c.S, 0, 0, TAU); x.fill(); } x.restore(); });
+      const s = 60 * c.S * eo(cl(e * 2)); x.save(); x.globalAlpha = bell(e); x.fillStyle = col; x.fillRect(c.P.x - s * .18, c.P.y - 90 * c.S - s / 2, s * .36, s); x.fillRect(c.P.x - s / 2, c.P.y - 90 * c.S - s * .18, s, s * .36); x.restore(); },
+    healRain(x, c, e, o) { const col = o.col || '#7CFFB0'; L.pillar(x, c, e, { col }); parts(x, c, 30, (i, r) => { const f = (e * 2.2 + r[0]) % 1; text(x, i % 3 ? '✚' : '✦', c.P.x + (r[1] - .5) * 160 * c.S, f * c.P.y, (12 + r[2] * 12) * c.S, i % 2 ? '#FFFFFF' : col, bell(e) * (1 - f * .5)); }); if (e > .6) ring(x, c.P.x, c.P.y, 200 * c.S * (e - .6) * 2.5, col, 6 * c.S, 1 - (e - .6) * 2.5, .3); },
+    // --- ธนู ---
+    arrow(x, c, e, o) { const n = o.n || 1, col = o.col || c.col; for (let i = 0; i < n; i++) { const f = eo(cl((e - i * .14) * 2.4)); if (f <= 0) continue; const y = c.M.y + (i - (n - 1) / 2) * 26 * c.S, px = c.P.x + 40 * c.S + (c.M.x - c.P.x - 40 * c.S) * f; if (f < 1) { x.save(); const g = x.createLinearGradient(px - 180 * c.S, 0, px, 0); g.addColorStop(0, rgba(col, 0)); g.addColorStop(1, rgba(col, .9)); x.strokeStyle = g; x.lineWidth = 6 * c.S; x.beginPath(); x.moveTo(px - 180 * c.S, y); x.lineTo(px, y); x.stroke(); x.fillStyle = '#FFFFFF'; x.beginPath(); x.moveTo(px + 18 * c.S, y); x.lineTo(px - 4 * c.S, y - 8 * c.S); x.lineTo(px - 4 * c.S, y + 8 * c.S); x.fill(); x.restore(); }
+      else { const q = cl((e - i * .14 - .42) * 4); ring(x, c.M.x, y, 70 * c.S * eo(q), col, 5 * c.S, 1 - q); star(x, c.M.x, y, 30 * c.S * (1 - q), '#FFFFFF', 1 - q, q * 2); } } },
+    arrowRain(x, c, e, o) { const col = o.col || c.col; sigil(x, c.M.x, 60 * c.S, 160 * c.S, col, c.t / 600, bell(e) * .8); parts(x, c, 34, (i, r) => { const f = (e * 2.4 + r[0]) % 1, px = c.M.x + (r[1] - .5) * 260 * c.S, py = 60 * c.S + f * (c.M.y + 40 * c.S - 60 * c.S); x.save(); x.globalAlpha = bell(e); x.strokeStyle = col; x.lineWidth = 3 * c.S; x.beginPath(); x.moveTo(px, py - 50 * c.S); x.lineTo(px, py); x.stroke(); x.fillStyle = '#FFFFFF'; x.beginPath(); x.moveTo(px, py + 10 * c.S); x.lineTo(px - 5 * c.S, py); x.lineTo(px + 5 * c.S, py); x.fill(); x.restore(); if (f > .92) ring(x, px, c.M.y + 40 * c.S, 18 * c.S, '#FFFFFF', 2, bell(e), .3); }); },
+    hawkEye(x, c, e, o) { const col = o.col || '#FFD23F', a = bell(e); x.save(); x.globalAlpha = a; x.translate(c.P.x, c.P.y - 140 * c.S); x.strokeStyle = col; x.lineWidth = 4 * c.S; x.beginPath(); x.moveTo(-60 * c.S, 0); x.quadraticCurveTo(0, -46 * c.S, 60 * c.S, 0); x.quadraticCurveTo(0, 46 * c.S, -60 * c.S, 0); x.stroke(); glow(x, 0, 0, 30 * c.S, col, 1); x.fillStyle = '#2A1A00'; x.beginPath(); x.arc(0, 0, 10 * c.S, 0, TAU); x.fill(); x.restore();
+      x.save(); x.globalAlpha = a; x.translate(c.M.x, c.M.y); x.rotate(c.t / 500); x.strokeStyle = '#FF4D5E'; x.lineWidth = 3 * c.S; const r = 70 * c.S * (1.6 - eo(cl(e * 2)) * .6); x.beginPath(); x.arc(0, 0, r, 0, TAU); x.stroke(); [0, 1, 2, 3].forEach(k => { x.rotate(Math.PI / 2); x.beginPath(); x.moveTo(r * .6, 0); x.lineTo(r * 1.2, 0); x.stroke(); }); x.restore(); },
+    rainbow(x, c, e, o) { const f = eo(cl(e * 1.3)), cols = ['#FF5A8A', '#FFB020', '#FFE27A', '#3DDC84', '#3DA8FF', '#B58CFF']; cols.forEach((col, i) => { x.save(); x.globalAlpha = bell(e); x.strokeStyle = col; x.lineWidth = 10 * c.S; x.beginPath(); for (let k = 0; k <= 40; k++) { const q = k / 40 * f, px = c.P.x + (c.M.x - c.P.x) * q, py = c.P.y - 50 * c.S + (c.M.y - c.P.y + 50 * c.S) * q + Math.sin(q * 12 + c.t / 120 + i) * 30 * c.S * (1 - q) + (i - 2.5) * 6 * c.S; k ? x.lineTo(px, py) : x.moveTo(px, py); } x.stroke(); x.restore(); });
+      if (e > .7) { const q = (e - .7) / .3; for (let i = 0; i < 6; i++) ring(x, c.M.x, c.M.y, (40 + i * 30) * c.S * eo(q), cols[i], 6 * c.S, 1 - q); flash(c, .3 * (1 - q)); } },
+    windStep(x, c, e, o) { const col = o.col || '#BFF5FF'; for (let i = 0; i < 5; i++) { x.save(); x.globalAlpha = bell(e) * .9; x.strokeStyle = col; x.lineWidth = 3 * c.S; x.beginPath(); x.ellipse(c.P.x, c.P.y - i * 26 * c.S, (70 - i * 8) * c.S, 16 * c.S, 0, c.t / 200 + i, c.t / 200 + i + 4); x.stroke(); x.restore(); } parts(x, c, 12, (i, r) => { const f = (e * 2 + r[0]) % 1; x.save(); x.globalAlpha = Math.sin(f * Math.PI); x.fillStyle = '#8FE08A'; x.translate(c.P.x + Math.cos(r[1] * TAU + f * 6) * 70 * c.S, c.P.y - f * 140 * c.S); x.rotate(f * 8); x.beginPath(); x.ellipse(0, 0, 7 * c.S, 3 * c.S, 0, 0, TAU); x.fill(); x.restore(); }); },
+    // --- ไฟ ---
+    fireball(x, c, e, o) { const col = o.col || '#FF7A1F', s = (o.s || 1), f = ei(cl(e * 1.6)), px = c.P.x + 40 * c.S + (c.M.x - c.P.x - 40 * c.S) * f, py = c.P.y - 60 * c.S + (c.M.y - c.P.y + 60 * c.S) * f - Math.sin(f * Math.PI) * 60 * c.S;
+      if (f < 1) { parts(x, c, 14, (i, r) => flame(x, px - i * 12 * c.S * s, py + (r[0] - .5) * 12 * c.S, (16 - i) * c.S * s, i % 2 ? col : '#FFD23F', (1 - i / 14) * .9)); glow(x, px, py, 50 * c.S * s, col, .8); glow(x, px, py, 18 * c.S * s, '#FFFFFF', 1); }
+      else { const q = cl((e - .62) * 3); glow(x, c.M.x, c.M.y, 170 * c.S * s * eo(q), col, 1 - q); ring(x, c.M.x, c.M.y, 140 * c.S * s * eo(q), '#FFD23F', 8 * c.S, 1 - q); parts(x, c, 18, (i, r) => flame(x, c.M.x + Math.cos(r[0] * TAU) * q * 130 * c.S * s, c.M.y + Math.sin(r[0] * TAU) * q * 90 * c.S * s, 12 * c.S * (1 - q), col, 1 - q)); if (q < .15) { flash(c, .35, '#FFE0B0'); shake(c, 8); } } },
+    fireWall(x, c, e, o) { const col = o.col || '#FF5A1F', n = 9; for (let i = 0; i < n; i++) { const f = cl((e - i * .04) * 2.2); if (f <= 0) continue; const h = (90 + c.R[i][0] * 80) * c.S * bell(cl(f)) * (1 + .15 * Math.sin(c.t / 70 + i)); const px = c.M.x + (i - (n - 1) / 2) * 34 * c.S, py = c.M.y + 60 * c.S; flame(x, px, py - h * .4, h * .45, i % 2 ? col : '#FFB020', bell(e)); } glow(x, c.M.x, c.M.y + 40 * c.S, 200 * c.S, col, .35 * bell(e)); },
+    meteors(x, c, e, o) { const n = o.n || 3, col = o.col || '#FF6A1F', big = o.big || 1; for (let i = 0; i < n; i++) { const t0 = i / n * .55, f = cl((e - t0) * 2.6); if (f <= 0) continue; const r = c.R[i], tx = c.M.x + (r[0] - .5) * 120 * c.S, ty = c.M.y + 30 * c.S, sx = tx + 360 * c.S, sy = -80 * c.S;
+      if (f < 1) { const px = sx + (tx - sx) * ei(f), py = sy + (ty - sy) * ei(f); for (let k = 0; k < 10; k++) flame(x, px + k * 14 * c.S, py - k * 10 * c.S, (26 - k * 2) * c.S * big, k % 2 ? col : '#FFD23F', .9 - k * .08); glow(x, px, py, 60 * c.S * big, col, .9); x.fillStyle = '#5A2A10'; x.beginPath(); x.arc(px, py, 18 * c.S * big, 0, TAU); x.fill(); }
+      else { const q = cl((e - t0 - 1 / 2.6) * 4); glow(x, tx, ty, 200 * c.S * big * eo(q), '#FFB020', 1 - q); ring(x, tx, ty, 180 * c.S * big * eo(q), col, 10 * c.S, 1 - q, .4); if (q < .1) { shake(c, 14); flash(c, .4, '#FFD0A0'); } } } },
+    drain(x, c, e, o) { const col = o.col || '#FF3B5C'; parts(x, c, 16, (i, r) => { const a = r[0] * TAU + c.t / 160; flame(x, c.M.x + Math.cos(a) * 70 * c.S, c.M.y + Math.sin(a) * 40 * c.S, 14 * c.S, i % 2 ? col : '#FF8A1F', bell(e)); }); if (e > .4) parts(x, c, 8, (i, r) => { const f = cl((e - .4) * 1.8 - r[0] * .3), px = c.M.x + (c.P.x - c.M.x) * eo(f), py = c.M.y + (c.P.y - 40 * c.S - c.M.y) * eo(f) - Math.sin(f * Math.PI) * (60 + r[1] * 60) * c.S; if (f > 0 && f < 1) { glow(x, px, py, 22 * c.S, col, .9); text(x, '♥', px, py, 16 * c.S, '#FFFFFF'); } }); },
+    sun(x, c, e, o) { const f = eo(cl(e * 1.4)), cy = -160 * c.S + (c.M.y + 160 * c.S) * f, r = 120 * c.S * (.4 + .6 * f); for (let i = 0; i < 16; i++) { const a = i / 16 * TAU + c.t / 900; beam(x, c.M.x, cy, c.M.x + Math.cos(a) * r * 2.2, cy + Math.sin(a) * r * 2.2, 6 * c.S, '#FFB020', .5 * bell(e)); } glow(x, c.M.x, cy, r * 1.6, '#FF7A1F', .9 * bell(e)); glow(x, c.M.x, cy, r * .8, '#FFF6C0', bell(e)); if (f >= 1) { shake(c, 16); flash(c, .5 * bell((e - .7) * 3), '#FFE0A0'); } },
+    // --- น้ำแข็ง ---
+    iceLance(x, c, e, o) { const col = o.col || '#9FE4FF', f = ei(cl(e * 1.7)), px = c.P.x + 40 * c.S + (c.M.x - c.P.x - 40 * c.S) * f, py = c.M.y; if (f < 1) { crystal(x, px, py, 70 * c.S, 14 * c.S, Math.PI / 2, col); parts(x, c, 10, (i, r) => star(x, px - i * 22 * c.S, py + (r[0] - .5) * 30 * c.S, 4 * c.S, '#FFFFFF', 1 - i / 10)); }
+      else { const q = cl((e - .59) * 3); parts(x, c, 14, (i, r) => crystal(x, c.M.x + Math.cos(r[0] * TAU) * q * 120 * c.S, c.M.y + Math.sin(r[0] * TAU) * q * 90 * c.S, 22 * c.S * (1 - q), 6 * c.S, r[0] * TAU, col, 1 - q)); ring(x, c.M.x, c.M.y, 110 * c.S * eo(q), '#FFFFFF', 4 * c.S, 1 - q); } },
+    iceSeal(x, c, e, o) { const col = o.col || '#7FD8FF'; parts(x, c, 12, (i, r) => { const a = i / 12 * TAU, f = eo(cl((e - r[0] * .2) * 2.5)); crystal(x, c.M.x + Math.cos(a) * 80 * c.S, c.M.y + 70 * c.S + Math.sin(a) * 26 * c.S, (80 + r[1] * 60) * c.S * f, 16 * c.S, Math.cos(a) * -.35, col, 1 - cl((e - .85) * 6)); }); if (e > .45) { x.save(); x.globalAlpha = .45 * bell((e - .45) * 1.8); x.fillStyle = '#CFF4FF'; x.fillRect(c.M.x - 90 * c.S, c.M.y - 110 * c.S, 180 * c.S, 190 * c.S); x.restore(); } },
+    blizzard(x, c, e, o) { const col = o.col || '#E6F8FF'; x.fillStyle = `rgba(200,235,255,${.18 * bell(e)})`; x.fillRect(0, 0, c.W, c.H); parts(x, c, 60, (i, r) => { const f = (e * 2 + r[0]) % 1, a = r[1] * TAU + c.t / 400; const px = c.M.x + Math.cos(a) * (60 + r[2] * 160) * c.S, py = c.M.y + Math.sin(a) * (40 + r[2] * 80) * c.S + (f - .5) * 60 * c.S; star(x, px, py, (3 + r[2] * 5) * c.S, col, bell(e), a); }); for (let i = 0; i < 6; i++) { const y = c.M.y + (i - 3) * 30 * c.S, sh = (c.t / 3 + i * 120) % (c.W + 400) - 200; beam(x, sh, y, sh + 160 * c.S, y, 2 * c.S, '#FFFFFF', .6 * bell(e)); } },
+    iceArmor(x, c, e, o) { const col = o.col || '#9FE4FF'; for (let i = 0; i < 8; i++) { const a = i / 8 * TAU + c.t / 500, r = 80 * c.S * (1.6 - eo(cl(e * 2)) * .6); crystal(x, c.P.x + Math.cos(a) * r, c.P.y - 40 * c.S + Math.sin(a) * r * .45, 40 * c.S, 10 * c.S, a + Math.PI / 2, col, bell(e)); } glow(x, c.P.x, c.P.y - 40 * c.S, 110 * c.S, col, .35 * bell(e)); },
+    glacier(x, c, e, o) { const col = o.col || '#BDEBFF', f = ei(cl(e * 1.6)), y = -260 * c.S + (c.M.y + 260 * c.S) * f; x.save(); x.globalAlpha = 1 - cl((e - .8) * 5); x.translate(c.M.x, y); x.fillStyle = col; x.strokeStyle = '#FFFFFF'; x.lineWidth = 3; x.beginPath(); x.moveTo(-170 * c.S, 40 * c.S); x.lineTo(-120 * c.S, -150 * c.S); x.lineTo(-30 * c.S, -230 * c.S); x.lineTo(60 * c.S, -180 * c.S); x.lineTo(160 * c.S, -60 * c.S); x.lineTo(180 * c.S, 40 * c.S); x.closePath(); x.fill(); x.stroke(); x.fillStyle = 'rgba(255,255,255,.5)'; x.beginPath(); x.moveTo(-100 * c.S, -140 * c.S); x.lineTo(-40 * c.S, -200 * c.S); x.lineTo(-60 * c.S, 0); x.fill(); x.restore();
+      if (f >= 1) { const q = cl((e - .62) * 3); parts(x, c, 20, (i, r) => crystal(x, c.M.x + (r[0] - .5) * 500 * c.S * q, c.M.y + 40 * c.S - r[1] * 160 * c.S * q + q * q * 120 * c.S, 30 * c.S, 8 * c.S, r[2] * 6, col, 1 - q)); if (q < .1) { shake(c, 18); flash(c, .5, '#E8FBFF'); } } },
+    // --- แสง / นักบวช ---
+    lightOrb(x, c, e, o) { const col = o.col || '#FFF3A8'; const f = eo(cl(e * 1.5)), px = c.P.x + (c.M.x - c.P.x) * f, py = c.P.y - 60 * c.S + (c.M.y - c.P.y + 60 * c.S) * f; parts(x, c, 12, (i, r) => { const a = c.t / 150 + i; star(x, px + Math.cos(a) * 26 * c.S, py + Math.sin(a) * 26 * c.S, 5 * c.S, '#FFFFFF', 1 - f * .3, a); }); glow(x, px, py, 50 * c.S, col, .9); if (f >= 1) L.holyCross(x, c, cl((e - .66) * 3), { col }); },
+    heavenBeam(x, c, e, o) { const col = o.col || '#FFF6C8', w = 160 * c.S * bell(e); const g = x.createLinearGradient(c.M.x - w / 2, 0, c.M.x + w / 2, 0); g.addColorStop(0, rgba(col, 0)); g.addColorStop(.5, '#FFFFFF'); g.addColorStop(1, rgba(col, 0)); x.fillStyle = g; x.fillRect(c.M.x - w / 2, 0, w, c.M.y + 80 * c.S);
+      parts(x, c, 6, (i, r) => { const a = i / 6 * TAU + c.t / 700; const im = c.wing; x.save(); x.globalAlpha = bell(e) * .7; x.translate(c.M.x + Math.cos(a) * 160 * c.S, 80 * c.S + Math.sin(a) * 30 * c.S + i * 10 * c.S); text(x, '😇', 0, 0, 40 * c.S, '#FFF'); x.restore(); }); if (e > .5) { shake(c, 6); flash(c, .2); } },
+    blessing(x, c, e, o) { const col = o.col || '#FFD23F'; for (let i = 0; i < 3; i++) { const f = cl((e - i * .15) * 1.8); ring(x, c.P.x, c.P.y - 150 * c.S + f * 150 * c.S, (80 - i * 16) * c.S, col, 5 * c.S, bell(f), .3); } glow(x, c.P.x, c.P.y - 140 * c.S, 40 * c.S, '#FFFFFF', bell(e)); L.pillar(x, c, e, { col }); },
+    // --- นินจา ---
+    shuriken(x, c, e, o) { const n = o.n || 3, col = o.col || '#C9C2FF'; for (let i = 0; i < n; i++) { const f = cl((e - i * .12) * 2.2); if (f <= 0 || f >= 1) continue; const px = c.P.x + (c.M.x - c.P.x) * f, py = c.P.y - 50 * c.S + (c.M.y - c.P.y + 50 * c.S) * f - Math.sin(f * Math.PI) * (i - 1) * 80 * c.S; x.save(); x.translate(px, py); x.rotate(c.t / 30); x.fillStyle = col; x.strokeStyle = '#FFFFFF'; x.lineWidth = 2; for (let k = 0; k < 4; k++) { x.rotate(Math.PI / 2); x.beginPath(); x.moveTo(0, 0); x.lineTo(8 * c.S, -6 * c.S); x.lineTo(30 * c.S, 0); x.lineTo(8 * c.S, 6 * c.S); x.closePath(); x.fill(); x.stroke(); } x.restore(); } if (e > .6) L.slash(x, c, (e - .6) / .4, { n: 3, col, r: 70 }); },
+    shadowStrike(x, c, e, o) { const col = o.col || '#7A3FD8', im = c.hero; x.fillStyle = `rgba(20,0,40,${.4 * bell(e)})`; x.fillRect(0, 0, c.W, c.H); for (let i = 0; i < 5; i++) { const f = cl((e - i * .12) * 3); if (f <= 0 || f >= 1) continue; const a = i / 5 * TAU + .6; if (im) { x.save(); x.filter = 'brightness(0.35) drop-shadow(0 0 8px #B36BFF)'; img(x, im, c.M.x + Math.cos(a) * 160 * c.S * (1 - f), c.M.y - 20 * c.S + Math.sin(a) * 90 * c.S * (1 - f), 150 * c.S, (1 - f) * .9, Math.cos(a) > 0); x.restore(); } if (f > .7) crescent(x, c.M.x, c.M.y, 90 * c.S, a + Math.PI, 2.6, 20 * c.S, col, (1 - f) * 3); } },
+    clones(x, c, e, o) { const im = c.hero; if (!im) return; [-1, 1, -2, 2].forEach((s2, i) => { const f = eo(cl((e - i * .1) * 2.5)); x.save(); x.filter = `hue-rotate(${i * 40 + 200}deg) brightness(1.1)`; img(x, im, c.P.x + s2 * 80 * c.S * f, c.P.y - 60 * c.S, 160 * c.S, .45 * bell(e)); x.restore(); }); },
+    cobra(x, c, e, o) { const col = o.col || '#4CE06A'; const f = eo(cl(e * 1.6)); x.save(); x.strokeStyle = col; x.lineCap = 'round'; for (let k = 0; k < 3; k++) { x.globalAlpha = bell(e) * (1 - k * .25); x.lineWidth = (22 - k * 6) * c.S; x.beginPath(); for (let i = 0; i <= 40; i++) { const q = i / 40 * f, px = c.P.x + (c.M.x - c.P.x) * q, py = c.M.y + Math.sin(q * 14 - c.t / 90) * 40 * c.S * (1 - q * .5); i ? x.lineTo(px, py) : x.moveTo(px, py); } x.stroke(); } x.restore();
+      if (f > .9) { text(x, '🐍', c.M.x - 20 * c.S, c.M.y - 40 * c.S, 80 * c.S, '#FFF', bell(e)); parts(x, c, 12, (i, r) => { const q = (e * 2 + r[0]) % 1; x.save(); x.globalAlpha = (1 - q) * bell(e); x.fillStyle = '#9BFF6A'; x.beginPath(); x.arc(c.M.x + (r[1] - .5) * 120 * c.S, c.M.y + 40 * c.S - q * 120 * c.S, (4 + r[2] * 6) * c.S, 0, TAU); x.fill(); x.restore(); }); } },
+    thousandCuts(x, c, e, o) { const col = o.col || '#B36BFF'; x.fillStyle = `rgba(10,0,25,${.5 * bell(e)})`; x.fillRect(0, 0, c.W, c.H); parts(x, c, 60, (i, r) => { const ti = r[0] * .8, f = cl((e - ti) * 6); if (f <= 0 || f >= 1) return; const a = r[1] * TAU, len = (160 + r[2] * 260) * c.S; x.save(); x.translate(c.M.x + (r[2] - .5) * 120 * c.S, c.M.y + (r[1] - .5) * 90 * c.S); x.rotate(a); beam(x, -len / 2 * f, 0, len / 2 * f, 0, 7 * c.S * (1 - f * .7), i % 3 ? col : '#FFFFFF', 1 - f); x.restore(); }); glow(x, c.M.x, c.M.y, 150 * c.S, col, .35 * bell(e)); if (e > .85) flash(c, .7 * (e - .85) / .15); },
+    // --- นักสู้หมัด ---
+    ironFist(x, c, e, o) { const col = o.col || '#FF7A4A', f = ei(cl(e * 1.8)), px = c.P.x + (c.M.x - c.P.x - 40 * c.S) * f; if (f < 1) { for (let k = 0; k < 5; k++) fist(x, px - k * 30 * c.S, c.M.y, (70 - k * 8) * c.S, rgba(col, 1 - k * .2), 1 - k * .18); } else { const q = cl((e - .55) * 3); fist(x, c.M.x - 30 * c.S, c.M.y, 80 * c.S * (1 + q * .4), col, 1 - q); star(x, c.M.x, c.M.y, 120 * c.S * eo(q), '#FFFFFF', 1 - q, .3); ring(x, c.M.x, c.M.y, 140 * c.S * eo(q), col, 8 * c.S, 1 - q); if (q < .1) shake(c, 12); } },
+    barrage(x, c, e, o) { const col = o.col || '#FFB04A'; parts(x, c, 30, (i, r) => { const ti = r[0] * .85, f = cl((e - ti) * 7); if (f <= 0 || f >= 1) return; const px = c.M.x + (r[1] - .5) * 160 * c.S, py = c.M.y + (r[2] - .5) * 120 * c.S; fist(x, px, py, 40 * c.S, col, 1 - f, (r[1] - .5)); star(x, px, py, 40 * c.S * f, '#FFFFFF', 1 - f); }); if (Math.floor(c.t / 80) % 2) shake(c, 5); },
+    lotus(x, c, e, o) { const col = o.col || '#FFD0F0'; for (let i = 0; i < 8; i++) { const a = i / 8 * TAU + c.t / 1500; x.save(); x.globalAlpha = bell(e) * .85; x.translate(c.P.x, c.P.y + 6 * c.S); x.scale(1, .45); x.rotate(a); const g = x.createLinearGradient(0, 0, 0, -90 * c.S); g.addColorStop(0, '#FFFFFF'); g.addColorStop(1, col); x.fillStyle = g; x.beginPath(); x.moveTo(0, 0); x.quadraticCurveTo(30 * c.S, -50 * c.S, 0, -100 * c.S * eo(cl(e * 2))); x.quadraticCurveTo(-30 * c.S, -50 * c.S, 0, 0); x.fill(); x.restore(); } L.gather(x, c, e, { col: '#FFE8A0' }); },
+    palm(x, c, e, o) { const col = o.col || '#FFE27A', f = eo(cl(e * 1.6)), s = (120 + 120 * f) * c.S; x.save(); x.globalAlpha = (1 - cl((e - .7) * 3)) * .75; x.translate(c.M.x, c.M.y); x.fillStyle = col; x.beginPath(); x.ellipse(0, 10 * c.S, s * .42, s * .45, 0, 0, TAU); x.fill(); [-.35, -.12, .12, .35].forEach((a, i) => { x.save(); x.rotate(a); x.beginPath(); x.ellipse(0, -s * .55, s * .1, s * .28, 0, 0, TAU); x.fill(); x.restore(); }); x.beginPath(); x.ellipse(-s * .44, 0, s * .1, s * .22, -.9, 0, TAU); x.fill(); x.restore(); if (f >= 1) { L.shieldBash(x, c, .6 + (e - .62) * .6, { col }); } },
+    godFist(x, c, e, o) { const col = o.col || '#FFD23F', f = ei(cl(e * 1.5)), y = -200 * c.S + (c.M.y + 200 * c.S) * f; glow(x, c.M.x, y, 180 * c.S, col, .6); fist(x, c.M.x, y, 240 * c.S, col, 1 - cl((e - .8) * 5), Math.PI / 2); if (f >= 1) { const q = cl((e - .66) * 3); for (let i = 0; i < 4; i++) ring(x, c.M.x, c.M.y + 50 * c.S, (80 + i * 80) * c.S * eo(q), i % 2 ? '#FFFFFF' : col, 8 * c.S, 1 - q, .3); if (q < .1) { shake(c, 20); flash(c, .6, '#FFF4C0'); } } },
+    // --- กวี ---
+    notes(x, c, e, o) { const col = o.col || '#FF7AC8', n = o.n || 10; parts(x, c, n, (i, r) => { const f = cl((e - r[0] * .5) * 2); if (f <= 0 || f >= 1) return; const px = c.P.x + (c.M.x - c.P.x) * eo(f), py = c.P.y - 60 * c.S + (c.M.y - c.P.y + 60 * c.S) * f + Math.sin(f * 9 + i) * 30 * c.S; text(x, i % 2 ? '♪' : '♫', px, py, (26 + r[1] * 16) * c.S, i % 3 ? col : '#FFFFFF', 1 - f * .3); }); if (e > .6) ring(x, c.M.x, c.M.y, 120 * c.S * (e - .6) * 2.5, col, 5 * c.S, 1 - (e - .6) * 2.5); },
+    warSong(x, c, e, o) { const col = o.col || '#FFB020'; for (let i = 0; i < 4; i++) { const f = (e * 2 + i / 4) % 1; ring(x, c.P.x, c.P.y - 40 * c.S, (30 + f * 150) * c.S, col, 6 * c.S * (1 - f), (1 - f) * bell(e)); } parts(x, c, 14, (i, r) => { const f = (e * 1.8 + r[0]) % 1; text(x, '♪', c.P.x + (r[1] - .5) * 160 * c.S, c.P.y - f * 180 * c.S, 22 * c.S, i % 2 ? col : '#FF5A3D', Math.sin(f * Math.PI)); }); },
+    lullaby(x, c, e, o) { const col = o.col || '#B8C8FF'; x.fillStyle = `rgba(20,20,70,${.35 * bell(e)})`; x.fillRect(0, 0, c.W, c.H); text(x, '🌙', c.M.x + 90 * c.S, c.M.y - 150 * c.S, 70 * c.S, '#FFF', bell(e)); parts(x, c, 12, (i, r) => { const f = (e * 1.4 + r[0]) % 1; text(x, i % 3 ? '♪' : 'Z', c.M.x + (r[1] - .5) * 140 * c.S + Math.sin(f * 6) * 20 * c.S, c.M.y - f * 160 * c.S, (18 + r[2] * 16) * c.S, col, Math.sin(f * Math.PI) * bell(e)); }); },
+    symphony(x, c, e, o) { const cols = ['#FF5A8A', '#FFD23F', '#3DDC84', '#3DA8FF', '#B58CFF']; cols.forEach((col, k) => { x.save(); x.globalAlpha = bell(e) * .8; x.strokeStyle = col; x.lineWidth = 3 * c.S; x.beginPath(); for (let i = 0; i <= 60; i++) { const px = i / 60 * c.W, py = c.M.y - 100 * c.S + k * 22 * c.S + Math.sin(i / 6 + c.t / 200 + k) * 40 * c.S; i ? x.lineTo(px, py) : x.moveTo(px, py); } x.stroke(); x.restore(); }); L.notes(x, c, e, { n: 24, col: '#FFE27A' }); if (e > .8) flash(c, .5 * (e - .8) * 5, '#FFF0FA'); },
+    // --- ผู้อัญเชิญ ---
+    beast(x, c, e, o) { const col = o.col || '#3DE0C4', ic = o.ic || '🦊'; L.rune(x, c, cl(e * 1.4), { col, sides: 5 }); const f = eo(cl((e - .25) * 1.6)), px = c.P.x + 60 * c.S + (c.M.x - c.P.x - 60 * c.S) * f, py = c.P.y - 40 * c.S + (c.M.y - c.P.y + 40 * c.S) * f - Math.sin(f * Math.PI) * 100 * c.S * (o.arc ?? 1), sz = (o.sz || 130) * c.S;
+      if (e > .25) { const im = rpgMonImg?.(ic, Math.floor(c.t / 80) % 8, 3) || null; for (let k = 4; k >= 0; k--) { x.save(); x.globalAlpha = (k ? .15 : 1) * (1 - cl((e - .85) * 6)); if (!k) { x.shadowColor = col; x.shadowBlur = 30; } if (im) { const w = sz * 1.3, h = w * im.height / im.width; x.drawImage(im, px - k * 40 * c.S * (1 - f) - w / 2, py - h * .75, w, h); } else text(x, ic, px - k * 40 * c.S, py, sz, '#FFF'); x.restore(); } }
+      if (f >= 1) { const q = cl((e - .85) * 6); ring(x, c.M.x, c.M.y, 170 * c.S * eo(q), col, 9 * c.S, 1 - q); if (q < .2) shake(c, 10); } },
+    hearts(x, c, e, o) { const col = o.col || '#FF7AA8'; parts(x, c, 16, (i, r) => { const a = r[0] * TAU + c.t / 400, d = (50 + r[1] * 50) * c.S; text(x, '♥', c.P.x + Math.cos(a) * d, c.P.y - 50 * c.S + Math.sin(a) * d * .5 - e * 30 * c.S, (16 + r[2] * 14) * c.S, i % 3 ? col : '#FFFFFF', bell(e)); }); glow(x, c.P.x, c.P.y - 40 * c.S, 120 * c.S, col, .35 * bell(e)); },
+    paws(x, c, e, o) { const col = o.col || '#3DE0C4'; parts(x, c, 14, (i, r) => { const f = cl((e - i / 14 * .6) * 3); text(x, '🐾', c.P.x + (r[0] - .5) * 260 * c.S, c.P.y + 20 * c.S - r[1] * 60 * c.S, 26 * c.S, '#FFF', bell(f) * bell(e)); }); L.warSong(x, c, e, { col }); },
+    // --- วิศวกร ---
+    hammerQuake(x, c, e, o) { const col = o.col || '#FFB020'; const f = eo(cl(e * 2.2)); x.save(); x.translate(c.M.x - 40 * c.S, c.M.y - 40 * c.S); x.rotate(-1.4 + f * 1.6); x.fillStyle = '#5A3A22'; x.fillRect(-6 * c.S, 0, 12 * c.S, 140 * c.S); x.fillStyle = '#9AA3AE'; x.fillRect(-40 * c.S, -20 * c.S, 80 * c.S, 44 * c.S); x.restore(); if (f >= 1) { const q = cl((e - .45) * 2); x.save(); x.strokeStyle = `rgba(255,180,60,${1 - q})`; x.lineWidth = 5 * c.S; parts(x, c, 8, (i, r) => { const a = (r[0] - .5) * Math.PI * .9; x.beginPath(); x.moveTo(c.M.x, c.M.y + 60 * c.S); let px = c.M.x, py = c.M.y + 60 * c.S; for (let k = 0; k < 5; k++) { px += Math.sin(a + (r[1] - .5)) * 40 * c.S * q; py += 6 * c.S * q * (r[2] - .3); x.lineTo(px, py); } x.stroke(); }); x.restore(); L.shieldBash(x, c, .55 + q * .45, { col: '#C8A070' }); } },
+    bombs(x, c, e, o) { const n = o.n || 3, big = o.big || 1; for (let i = 0; i < n; i++) { const t0 = i * .14, f = cl((e - t0) * 2.4); if (f <= 0) continue; const r = c.R[i], tx = c.M.x + (r[0] - .5) * 120 * c.S, ty = c.M.y + 20 * c.S; if (f < 1) { const px = c.P.x + (tx - c.P.x) * f, py = c.P.y - 60 * c.S + (ty - c.P.y + 60 * c.S) * f - Math.sin(f * Math.PI) * 160 * c.S; x.save(); x.translate(px, py); x.rotate(f * 8); x.fillStyle = '#2A2A33'; x.beginPath(); x.arc(0, 0, 16 * c.S * big, 0, TAU); x.fill(); x.fillStyle = '#FFB020'; x.fillRect(-3 * c.S, -24 * c.S * big, 6 * c.S, 10 * c.S); x.restore(); star(x, px, py - 24 * c.S * big, 8 * c.S, '#FFE27A', Math.random()); }
+      else { const q = cl((e - t0 - 1 / 2.4) * 4); glow(x, tx, ty, 150 * c.S * big * eo(q), '#FF8A1F', 1 - q); parts(x, c, 10, (k, rr) => { const a = rr[0] * TAU; x.fillStyle = `rgba(60,60,70,${(1 - q) * .8})`; x.beginPath(); x.arc(tx + Math.cos(a) * q * 110 * c.S * big, ty + Math.sin(a) * q * 70 * c.S * big - q * 40 * c.S, 18 * c.S * (1 - q * .5) * big, 0, TAU); x.fill(); }); if (q < .1) { shake(c, 12 * big); flash(c, .3, '#FFE0B0'); } } } },
+    turret(x, c, e, o) { const col = o.col || '#3DFFA8', tx = c.P.x + 110 * c.S, ty = c.P.y - 20 * c.S, f = eo(cl(e * 3)); x.save(); x.globalAlpha = 1 - cl((e - .9) * 10); x.translate(tx, ty + (1 - f) * 120 * c.S); x.fillStyle = '#4A5266'; x.fillRect(-30 * c.S, -10 * c.S, 60 * c.S, 40 * c.S); x.fillStyle = '#7A8398'; x.beginPath(); x.arc(0, -10 * c.S, 26 * c.S, Math.PI, TAU); x.fill(); x.fillStyle = '#2A3040'; x.fillRect(10 * c.S, -24 * c.S, 50 * c.S, 12 * c.S); x.restore();
+      for (let i = 0; i < 4; i++) { const q = cl((e - .3 - i * .13) * 6); if (q > 0 && q < 1) { beam(x, tx + 60 * c.S, ty - 18 * c.S, c.M.x, c.M.y + (i - 1.5) * 16 * c.S, 8 * c.S * bell(q), col, 1); star(x, c.M.x, c.M.y + (i - 1.5) * 16 * c.S, 40 * c.S * bell(q), '#FFFFFF'); } } },
+    shieldHex(x, c, e, o) { L.dome(x, c, e, { col: o.col || '#FFC23D' }); },
+    mecha(x, c, e, o) { const f = eo(cl(e * 1.6)), y = -300 * c.S + (c.M.y - 40 * c.S + 300 * c.S) * f; x.save(); x.globalAlpha = 1 - cl((e - .85) * 6); x.translate(c.M.x, y); x.fillStyle = '#4A5266'; x.fillRect(-110 * c.S, -220 * c.S, 220 * c.S, 200 * c.S); x.fillStyle = '#FFB020'; x.fillRect(-110 * c.S, -60 * c.S, 220 * c.S, 16 * c.S); x.fillStyle = '#3DFFA8'; x.fillRect(-60 * c.S, -170 * c.S, 40 * c.S, 16 * c.S); x.fillRect(20 * c.S, -170 * c.S, 40 * c.S, 16 * c.S); fist(x, -150 * c.S, 0, 120 * c.S, '#7A8398', 1, Math.PI / 2); fist(x, 150 * c.S, 0, 120 * c.S, '#7A8398', 1, Math.PI / 2); x.restore(); if (f >= 1) L.bombs(x, c, (e - .62) / .38 * .6 + .4, { n: 4, big: 1.6 }); },
+    // --- แฮกเกอร์ ---
+    code(x, c, e, o) { const col = o.col || '#3DFFA8'; x.font = `700 ${16 * c.S}px monospace`; parts(x, c, 30, (i, r) => { const f = cl((e - r[0] * .4) * 2); if (f <= 0 || f >= 1) return; const px = c.P.x + (c.M.x - c.P.x) * f, py = c.M.y + (r[1] - .5) * 120 * c.S; x.fillStyle = rgba(col, 1 - f * .4); x.fillText(r[2] > .5 ? '1010' : '0110', px, py); }); if (e > .6) { const q = (e - .6) / .4; for (let i = 0; i < 8; i++) { x.fillStyle = rgba(i % 2 ? col : '#FF3B5C', (1 - q) * .7); x.fillRect(c.M.x + (c.R[i][0] - .5) * 180 * c.S, c.M.y + (c.R[i][1] - .5) * 140 * c.S, (30 + c.R[i][2] * 90) * c.S, 8 * c.S); } } },
+    fireWallCode(x, c, e, o) { const col = o.col || '#3DFFA8', wx = c.P.x + 90 * c.S, h = 220 * c.S * eo(cl(e * 2)); x.save(); x.globalAlpha = bell(e); x.strokeStyle = col; x.lineWidth = 2; for (let j = 0; j < 8; j++) for (let i = 0; i < 3; i++) x.strokeRect(wx + i * 24 * c.S, c.P.y + 20 * c.S - j * 28 * c.S, 24 * c.S, 28 * c.S * (j * 28 * c.S < h ? 1 : 0)); x.restore(); parts(x, c, 8, (i, r) => flame(x, wx + 36 * c.S + (r[0] - .5) * 60 * c.S, c.P.y + 10 * c.S - r[1] * h, 14 * c.S, '#FF7A1F', bell(e) * .8)); text(x, 'FIREWALL', wx + 36 * c.S, c.P.y - h - 20 * c.S, 16 * c.S, col, bell(e), 'monospace'); },
+    ddos(x, c, e, o) { const col = o.col || '#FF3B5C'; parts(x, c, 60, (i, r) => { const f = cl((e - r[0] * .6) * 2.5); if (f <= 0 || f >= 1) return; const a = r[1] * TAU, sx = c.M.x + Math.cos(a) * c.W * .7, sy = c.M.y + Math.sin(a) * c.H * .7, px = sx + (c.M.x - sx) * f, py = sy + (c.M.y - sy) * f; x.fillStyle = i % 3 ? col : '#FFFFFF'; x.fillRect(px - 5 * c.S, py - 3 * c.S, 10 * c.S, 6 * c.S); }); if (e > .7) { text(x, '503 OVERLOAD', c.M.x, c.M.y - 120 * c.S, 22 * c.S, col, bell((e - .7) * 3.3), 'monospace'); shake(c, 6); } },
+    patch(x, c, e, o) { const col = o.col || '#3DFFA8', f = cl(e * 1.4); x.save(); x.globalAlpha = bell(e); x.fillStyle = 'rgba(0,20,10,.8)'; x.fillRect(c.P.x - 90 * c.S, c.P.y - 190 * c.S, 180 * c.S, 46 * c.S); x.strokeStyle = col; x.lineWidth = 2; x.strokeRect(c.P.x - 90 * c.S, c.P.y - 190 * c.S, 180 * c.S, 46 * c.S); x.fillStyle = col; x.fillRect(c.P.x - 80 * c.S, c.P.y - 168 * c.S, 160 * c.S * f, 14 * c.S); x.restore(); text(x, f >= 1 ? '✔ PATCHED' : `UPDATING ${Math.floor(f * 100)}%`, c.P.x, c.P.y - 178 * c.S, 12 * c.S, col, bell(e), 'monospace'); L.healBloom(x, c, e, { col }); },
+    zeroDay(x, c, e, o) { const col = o.col || '#FF3B5C'; for (let i = 0; i < 10; i++) { const r = c.R[i]; x.fillStyle = rgba(i % 2 ? '#00FFE0' : col, .25 * bell(e)); x.fillRect(0, (r[0] * c.H + c.t / 4) % c.H, c.W, (4 + r[1] * 20) * c.S); } text(x, '☠', c.M.x, c.M.y - 20 * c.S, 160 * c.S * eo(cl(e * 2)), col, bell(e)); text(x, 'ZERO-DAY', c.M.x, c.M.y - 150 * c.S, 30 * c.S, '#FFFFFF', bell(e), 'monospace'); if (e > .5) L.skyBolt(x, c, (e - .5) * 2, { col: col, n: 4 }); },
+    // --- บัพพื้นฐาน ---
+    roar(x, c, e, o) { const col = o.col || '#FF6A4D'; for (let i = 0; i < 4; i++) { const f = (e * 1.6 + i / 4) % 1; ring(x, c.P.x, c.P.y - 50 * c.S, f * 220 * c.S, col, 8 * c.S * (1 - f), (1 - f) * bell(e), .8); } L.aura(x, c, e, { col }); shake(c, 4 * bell(e)); },
+    books(x, c, e, o) { const col = o.col || '#FFE27A'; for (let i = 0; i < 6; i++) { const a = i / 6 * TAU + c.t / 600; text(x, '📘', c.P.x + Math.cos(a) * 90 * c.S, c.P.y - 50 * c.S + Math.sin(a) * 36 * c.S, 30 * c.S, '#FFF', bell(e)); } L.blessing(x, c, e, { col }); },
+    pages(x, c, e, o) { const col = o.col || '#BFE8FF'; parts(x, c, 14, (i, r) => { const f = cl((e - r[0] * .45) * 2); if (f <= 0 || f >= 1) return; const px = c.P.x + 30 * c.S + (c.M.x - c.P.x - 30 * c.S) * eo(f), py = c.P.y - 70 * c.S + (c.M.y - c.P.y + 70 * c.S) * f + Math.sin(f * 8 + i) * 34 * c.S; x.save(); x.globalAlpha = 1 - f * .3; x.translate(px, py); x.rotate(f * 9 + r[1] * 6); x.fillStyle = '#FFFFFF'; x.fillRect(-11 * c.S, -14 * c.S, 22 * c.S, 28 * c.S); x.fillStyle = col; for (let k = 0; k < 4; k++) x.fillRect(-7 * c.S, (-9 + k * 5) * c.S, 14 * c.S, 1.6 * c.S); x.restore(); }); text(x, '📖', c.P.x + 30 * c.S, c.P.y - 90 * c.S, 54 * c.S, '#FFF', bell(e)); if (e > .7) ring(x, c.M.x, c.M.y, 130 * c.S * (e - .7) / .3, col, 5 * c.S, 1 - (e - .7) / .3); },
+    leaves(x, c, e, o) { const col = o.col || '#7CFF8A'; sigil(x, c.P.x, c.P.y + 4 * c.S, 100 * c.S * eo(cl(e * 2)), col, -c.t / 800, bell(e) * .9, 4); parts(x, c, 22, (i, r) => { const f = (e * 1.5 + r[0]) % 1, a = r[1] * TAU + f * 5; x.save(); x.globalAlpha = Math.sin(f * Math.PI) * bell(e); x.translate(c.P.x + Math.cos(a) * (30 + r[2] * 60) * c.S, c.P.y - 150 * c.S + f * 150 * c.S); x.rotate(a * 2); x.fillStyle = i % 2 ? col : '#C8FF7A'; x.beginPath(); x.ellipse(0, 0, 9 * c.S, 4 * c.S, 0, 0, TAU); x.fill(); x.strokeStyle = 'rgba(255,255,255,.7)'; x.lineWidth = 1; x.beginPath(); x.moveTo(-8 * c.S, 0); x.lineTo(8 * c.S, 0); x.stroke(); x.restore(); }); glow(x, c.P.x, c.P.y - 50 * c.S, 110 * c.S, col, .35 * bell(e)); },
+    sparks3(x, c, e, o) { const col = o.col || '#FFB04A'; for (let i = 0; i < 3; i++) L.fireball(x, c, cl((e - i * .12) * 1.25), { col: i % 2 ? '#FF5A8A' : col, s: .5 }); },
+    spark(x, c, e, o) { L.skyBolt(x, c, e, { col: o.col || '#FFF08A', n: 3 }); },
+  };
+  return { L, glow, ring, star, text, bell, cl, eo, rgba, flash, shake };
+})();
+
+/* ---------- สูตรเฉพาะของทุกสกิล: [ท่า, เริ่ม, จบ, ตัวเลือก] · hit = ช่วงเวลาตีโดน ---------- */
+const RPG_SKFX = {
+  // นักดาบ
+  'sword:0': { c: '#FF7A4A', s: [['gather', 0, .3], ['dash', .2, .5], ['slash', .42, .85, { n: 2, r: 110 }]], hit: [.5, .75] },
+  'sword:1': { c: '#7FD0FF', s: [['aura', 0, .3, { col: '#7FD0FF' }], ['tornado', .25, .9]], hit: [.35, .85] },
+  'sword:2': { c: '#FFD23F', s: [['gather', 0, .35, { col: '#FFD23F' }], ['pierce', .3, .85]], hit: [.48, .55] },
+  'sword:3': { c: '#FF3B2F', s: [['rune', 0, .5, { col: '#FF3B2F', sides: 3 }], ['aura', .1, 1, { col: '#FF3B2F' }], ['roar', .35, 1, { col: '#FFB020' }]], hit: [.55, .55] },
+  'sword:4': { c: '#BFE4FF', s: [['rune', 0, .4, { col: '#BFE4FF' }], ['skyBolt', .25, .7, { n: 7 }], ['giantBlade', .55, 1, { col: '#BFE4FF' }]], hit: [.35, .9] },
+  // อัศวิน
+  'knight:0': { c: '#8FC0FF', s: [['gather', 0, .3, { col: '#8FC0FF' }], ['shieldBash', .25, 1]], hit: [.55, .6] },
+  'knight:1': { c: '#7FD0FF', s: [['rune', 0, .5, { col: '#7FD0FF' }], ['dome', .15, 1]], hit: [.5, .5] },
+  'knight:2': { c: '#FFE27A', s: [['pillar', 0, .4, { col: '#FFE27A' }], ['lightSword', .3, 1]], hit: [.62, .7] },
+  'knight:3': { c: '#FF8AB0', s: [['blessing', 0, .8, { col: '#FF8AB0' }], ['healBloom', .3, 1, { col: '#FF8AB0' }]], hit: [.6, .6] },
+  'knight:4': { c: '#FFF0A0', s: [['rune', 0, .4, { col: '#FFE27A', sides: 8 }], ['holyCross', .3, .8], ['giantBlade', .55, 1, { col: '#FFF0A0' }]], hit: [.45, .9] },
+  // นักธนู
+  'archer:0': { c: '#7DFFB0', s: [['hawkEye', 0, .45, { col: '#7DFFB0' }], ['arrow', .35, 1, { n: 1 }]], hit: [.68, .7] },
+  'archer:1': { c: '#3DDC84', s: [['gather', 0, .3, { col: '#3DDC84' }], ['arrow', .25, 1, { n: 2 }]], hit: [.55, .72] },
+  'archer:2': { c: '#9BE8FF', s: [['rune', 0, .35, { col: '#9BE8FF' }], ['arrowRain', .2, 1]], hit: [.35, .9] },
+  'archer:3': { c: '#FFD23F', s: [['hawkEye', 0, 1]], hit: [.5, .5] },
+  'archer:4': { c: '#B58CFF', s: [['gather', 0, .3, { col: '#FFFFFF' }], ['rainbow', .2, 1]], hit: [.72, .95] },
+  // จอมเวทไฟ
+  'fire:0': { c: '#FF7A1F', s: [['rune', 0, .35, { col: '#FF7A1F' }], ['fireball', .25, 1]], hit: [.62, .65] },
+  'fire:1': { c: '#FF5A1F', s: [['aura', 0, .35, { col: '#FF5A1F' }], ['fireWall', .25, 1]], hit: [.4, .8] },
+  'fire:2': { c: '#FF6A1F', s: [['rune', 0, .3, { col: '#FFB020', sides: 5 }], ['meteors', .15, 1, { n: 3 }]], hit: [.45, .9] },
+  'fire:3': { c: '#FF3B5C', s: [['aura', 0, .35, { col: '#FF3B5C' }], ['drain', .25, 1]], hit: [.45, .7] },
+  'fire:4': { c: '#FFB020', s: [['pillar', 0, .35, { col: '#FFB020' }], ['sun', .2, .95], ['meteors', .55, 1, { n: 4, big: 1.3 }]], hit: [.6, .95] },
+  // จอมเวทน้ำแข็ง
+  'ice:0': { c: '#9FE4FF', s: [['rune', 0, .35, { col: '#9FE4FF', sides: 6 }], ['iceLance', .25, 1]], hit: [.6, .62] },
+  'ice:1': { c: '#7FD8FF', s: [['gather', 0, .3, { col: '#7FD8FF' }], ['iceSeal', .2, 1]], hit: [.55, .6] },
+  'ice:2': { c: '#E6F8FF', s: [['rune', 0, .3, { col: '#BFEFFF' }], ['blizzard', .15, 1]], hit: [.3, .9] },
+  'ice:3': { c: '#9FE4FF', s: [['iceArmor', 0, 1]], hit: [.5, .5] },
+  'ice:4': { c: '#BDEBFF', s: [['blizzard', 0, .6], ['glacier', .3, 1]], hit: [.65, .7] },
+  // นักบวช
+  'priest:0': { c: '#FFF3A8', s: [['gather', 0, .3, { col: '#FFF3A8' }], ['lightOrb', .2, 1]], hit: [.6, .7] },
+  'priest:1': { c: '#5BFF9A', s: [['healBloom', 0, 1]], hit: [.55, .55] },
+  'priest:2': { c: '#FFD23F', s: [['blessing', 0, 1]], hit: [.5, .5] },
+  'priest:3': { c: '#7CFFB0', s: [['rune', 0, .5, { col: '#7CFFB0', sides: 8 }], ['healRain', .2, 1]], hit: [.6, .6] },
+  'priest:4': { c: '#FFF6C8', s: [['pillar', 0, .3, { col: '#FFFFFF' }], ['heavenBeam', .25, 1], ['holyCross', .55, 1]], hit: [.45, .95] },
+  // นินจา
+  'ninja:0': { c: '#C9C2FF', s: [['gather', 0, .25, { col: '#C9C2FF' }], ['shuriken', .2, 1, { n: 3 }]], hit: [.45, .75] },
+  'ninja:1': { c: '#7A3FD8', s: [['shadowStrike', .1, 1]], hit: [.4, .85] },
+  'ninja:2': { c: '#9A6BFF', s: [['clones', 0, 1]], hit: [.5, .5] },
+  'ninja:3': { c: '#4CE06A', s: [['gather', 0, .3, { col: '#4CE06A' }], ['cobra', .2, 1]], hit: [.55, .75] },
+  'ninja:4': { c: '#C98BFF', s: [['clones', 0, .4], ['thousandCuts', .25, 1, { col: '#C98BFF' }]], hit: [.35, .9] },
+  // นักสู้หมัด
+  'monk:0': { c: '#FF7A4A', s: [['aura', 0, .35, { col: '#FF7A4A' }], ['ironFist', .25, 1]], hit: [.6, .62] },
+  'monk:1': { c: '#FFB04A', s: [['gather', 0, .25, { col: '#FFB04A' }], ['barrage', .2, 1]], hit: [.3, .9] },
+  'monk:2': { c: '#FFD0F0', s: [['lotus', 0, 1]], hit: [.6, .6] },
+  'monk:3': { c: '#FFE27A', s: [['aura', 0, .35, { col: '#FFE27A' }], ['palm', .25, 1]], hit: [.58, .62] },
+  'monk:4': { c: '#FFD23F', s: [['lotus', 0, .4, { col: '#FFE27A' }], ['godFist', .3, 1]], hit: [.68, .72] },
+  // กวี
+  'bard:0': { c: '#FF7AC8', s: [['notes', .05, 1, { n: 10 }]], hit: [.5, .75] },
+  'bard:1': { c: '#FFB020', s: [['warSong', 0, 1]], hit: [.5, .5] },
+  'bard:2': { c: '#B8C8FF', s: [['notes', 0, .5, { col: '#B8C8FF', n: 8 }], ['lullaby', .25, 1]], hit: [.55, .6] },
+  'bard:3': { c: '#7CFFB0', s: [['warSong', 0, .6, { col: '#7CFFB0' }], ['healBloom', .25, 1, { col: '#7CFFB0' }]], hit: [.6, .6] },
+  'bard:4': { c: '#FFE27A', s: [['symphony', 0, 1]], hit: [.4, .95] },
+  // ผู้อัญเชิญ
+  'summon:0': { c: '#7FE8FF', s: [['beast', 0, 1, { ic: '🦊', col: '#7FE8FF', sz: 110 }]], hit: [.85, .87] },
+  'summon:1': { c: '#FF7AA8', s: [['hearts', 0, 1]], hit: [.55, .55] },
+  'summon:2': { c: '#C8E8FF', s: [['beast', 0, 1, { ic: '🦅', col: '#C8E8FF', sz: 150, arc: -.6 }], ['tornado', .7, 1, { col: '#E8F8FF' }]], hit: [.82, .95] },
+  'summon:3': { c: '#3DE0C4', s: [['paws', 0, 1]], hit: [.5, .5] },
+  'summon:4': { c: '#3DE0C4', s: [['rune', 0, .4, { col: '#3DE0C4', sides: 8 }], ['beast', .1, 1, { ic: '🐲', col: '#3DE0C4', sz: 230, arc: .5 }], ['fireWall', .78, 1, { col: '#3DE0C4' }]], hit: [.86, .96] },
+  // วิศวกร
+  'engineer:0': { c: '#FFB020', s: [['hammerQuake', .05, 1]], hit: [.5, .52] },
+  'engineer:1': { c: '#FF8A1F', s: [['bombs', .1, 1, { n: 3 }]], hit: [.5, .85] },
+  'engineer:2': { c: '#3DFFA8', s: [['turret', 0, 1]], hit: [.38, .82] },
+  'engineer:3': { c: '#FFC23D', s: [['shieldHex', 0, 1]], hit: [.5, .5] },
+  'engineer:4': { c: '#FFB020', s: [['mecha', 0, 1]], hit: [.68, .95] },
+  // แฮกเกอร์
+  'hacker:0': { c: '#3DFFA8', s: [['code', 0, 1]], hit: [.6, .7] },
+  'hacker:1': { c: '#3DFFA8', s: [['fireWallCode', 0, 1]], hit: [.5, .5] },
+  'hacker:2': { c: '#FF3B5C', s: [['ddos', 0, 1]], hit: [.4, .9] },
+  'hacker:3': { c: '#3DFFA8', s: [['patch', 0, 1]], hit: [.7, .7] },
+  'hacker:4': { c: '#FF3B5C', s: [['code', 0, .4, { col: '#FF3B5C' }], ['zeroDay', .25, 1]], hit: [.6, .9] },
+  // สายเริ่มต้น
+  'warrior:0': { c: '#FF8A5A', s: [['dash', 0, .45], ['slash', .35, .9, { n: 1, r: 120, ang: -.6 }]], hit: [.5, .52] },
+  'warrior:1': { c: '#FFB070', s: [['dash', 0, .4, { col: '#FFD08A' }], ['shieldBash', .3, 1, { col: '#FFB070' }]], hit: [.62, .66] },
+  'warrior:2': { c: '#FF6A4D', s: [['roar', 0, 1]], hit: [.5, .5] },
+  'scout:0': { c: '#9BFFB0', s: [['arrow', .1, 1, { n: 1, col: '#9BFFB0' }]], hit: [.55, .57] },
+  'scout:1': { c: '#3DDC84', s: [['windStep', 0, .45, { col: '#BFFFD8' }], ['arrow', .3, 1, { n: 2 }]], hit: [.6, .75] },
+  'scout:2': { c: '#BFF5FF', s: [['windStep', 0, 1]], hit: [.5, .5] },
+  'mage:0': { c: '#FF8A3D', s: [['rune', 0, .4, { col: '#B58CFF', sides: 5 }], ['sparks3', .25, 1]], hit: [.6, .75] },
+  'mage:1': { c: '#9FE4FF', s: [['gather', 0, .3, { col: '#9FE4FF' }], ['iceLance', .25, 1, { col: '#CFF4FF' }]], hit: [.6, .62] },
+  'mage:2': { c: '#FFF08A', s: [['rune', 0, .35, { col: '#FFF08A' }], ['spark', .3, .9]], hit: [.45, .75] },
+  'scholar:0': { c: '#9FD8FF', s: [['pages', 0, 1, { col: '#6AB8FF' }]], hit: [.6, .8] },
+  'scholar:1': { c: '#7CFF8A', s: [['leaves', 0, 1]], hit: [.55, .55] },
+  'scholar:2': { c: '#FFE27A', s: [['books', 0, 1]], hit: [.5, .5] },
+};
+// จับคู่ "อาร์เรย์สกิล" → คีย์สูตร
+const RPG_SKKEY = new Map();
+Object.entries(RPG_JOBS).forEach(([j, J]) => (J.sk || []).forEach((k, i) => { if (!RPG_SKKEY.has(k)) RPG_SKKEY.set(k, j + ':' + i); }));
+function rpgSkFxOf(k) { const key = RPG_SKKEY.get(k) || Object.keys(RPG_SKFX).find(q => { const [j, i] = q.split(':'); return RPG_JOBS[j]?.sk?.[+i]?.[0] === k[0]; }); return { key, R: RPG_SKFX[key] || { c: rpgJob().col, s: [['gather', 0, .35], ['slash', .3, 1, { n: 3 }]], hit: [.5, .8] } }; }
+
+const RPG_FXSFX = { dash: 'slash', slash: 'slash', xslash: 'slash', tornado: 'slash', pierce: 'crit', skyBolt: 'thunder', giantBlade: 'clash', shieldBash: 'clash', dome: 'buff', lightSword: 'light', holyCross: 'light', healBloom: 'heal', healRain: 'heal', arrow: 'bow', arrowRain: 'bow', hawkEye: 'buff', rainbow: 'bow', windStep: 'buff', fireball: 'fire', fireWall: 'fire', meteors: 'fire', drain: 'fire', sun: 'fire', iceLance: 'ice', iceSeal: 'ice', blizzard: 'ice', iceArmor: 'buff', glacier: 'ice', lightOrb: 'light', heavenBeam: 'light', blessing: 'buff', shuriken: 'slash', shadowStrike: 'slash', clones: 'buff', cobra: 'magic', thousandCuts: 'slash', ironFist: 'clash', barrage: 'hit', lotus: 'heal', palm: 'clash', godFist: 'boss', notes: 'magic', warSong: 'buff', lullaby: 'magic', symphony: 'ult', beast: 'boss', hearts: 'heal', paws: 'buff', hammerQuake: 'clash', bombs: 'fire', turret: 'thunder', shieldHex: 'buff', mecha: 'boss', code: 'magic', fireWallCode: 'buff', ddos: 'thunder', patch: 'heal', zeroDay: 'thunder', roar: 'boss', books: 'buff', spark: 'thunder', pages: 'magic', leaves: 'heal', sparks3: 'fire' };
+/* ---------- ตัวเล่นคัทซีน + ใส่ดาเมจตามจังหวะ ---------- */
+function rpgCine30(k, rk, dur, ok, onHit, onEnd, hitTimes) {
+  const sc = document.getElementById('rb-scene'), B = RS.battle; if (!sc || !B?.G) { onEnd?.(); return; }
+  const { R: REC } = rpgSkFxOf(k), col = REC.c, ult = rk >= 4, G = B.G, d = G.d;
+  const el = document.createElement('div'); el.className = 'rb-cine v30' + (ult ? ' ult' : ''); el.style.setProperty('--c', col); el.style.setProperty('--dur', dur + 'ms');
+  el.innerHTML = `<canvas></canvas><i class="cn-bar t"></i><i class="cn-bar b"></i><div class="cn-hero"><img src="${rpgLookImg(rpgLookMe(), 380)}" alt=""></div>
+    <div class="cn-name"><small>${ult ? 'ULTIMATE SKILL' : rk >= 2 ? 'ADVANCED SKILL' : 'SKILL'} · ${esc(rpgClassName())}</small><b>${k[1]} ${esc(k[0])}</b>${ok ? '<em>✅ ตอบถูก · พลังสูงสุด!</em>' : ''}</div><div class="cn-dmg"></div>`;
+  sc.appendChild(el); const cv = el.querySelector('canvas'); cv.width = Math.round(G.W * d); cv.height = Math.round(G.H * d);
+  const x = cv.getContext('2d'), S = Math.min(G.W / 1.6, G.H) / 470, t0 = performance.now(), heroIm = el.querySelector('.cn-hero img');
+  let sd = 1; [...(k[0] || 'x')].forEach(ch => { sd = (sd * 31 + ch.charCodeAt(0)) % 2147483647; }); const Rf = () => (sd = (sd * 16807) % 2147483647) / 2147483647;
+  const Rr = Array.from({ length: 64 }, () => [Rf(), Rf(), Rf()]);
+  const C = { P: { x: G.P.x, y: G.P.y - 10 * S }, M: { x: G.M.x, y: G.M.y - G.msz * .42 }, S, W: G.W, H: G.H, col, R: Rr, Rf, ult, hero: null };
+  const hits = hitTimes.slice(), done = new Set(); let ended = false;
+  rpgSfx(ult ? 'ult' : 'magic'); const started = new Set();
+  const frame = () => {
+    const now = performance.now(), u = Math.min(1, (now - t0) / dur);
+    if (!RS.battle || !el.isConnected) return;
+    hits.forEach((h, i) => { if (!done.has(i) && u >= h) { done.add(i); const dm = onHit?.(i); if (dm != null) { const n = document.createElement('b'); n.textContent = dm.toLocaleString() + (ok ? '!' : ''); n.style.left = (45 + (Math.random() - .5) * 18) + '%'; n.style.top = (30 + (Math.random() - .5) * 14) + '%'; el.querySelector('.cn-dmg').appendChild(n); setTimeout(() => n.remove(), 1100); } } });
+    if (u >= 1) { if (!ended) { ended = true; el.classList.add('end'); setTimeout(() => el.remove(), 280); onEnd?.(); } return; }
+    if (heroIm?.complete && !C.hero) C.hero = heroIm;
+    C.t = now; C.shake = 0; C.flash = 0;
+    x.setTransform(d, 0, 0, d, 0, 0); x.clearRect(0, 0, G.W, G.H);
+    const dk = Math.min(1, u / .1) * (u > .92 ? (1 - u) / .08 : 1); x.fillStyle = `rgba(6,4,20,${(ult ? .66 : .58) * dk})`; x.fillRect(0, 0, G.W, G.H); { const vg = x.createRadialGradient(G.W / 2, G.H / 2, G.H * .3, G.W / 2, G.H / 2, G.W * .7); vg.addColorStop(0, 'rgba(0,0,0,0)'); vg.addColorStop(1, `rgba(0,0,0,${.45 * dk})`); x.fillStyle = vg; x.fillRect(0, 0, G.W, G.H); }
+    x.globalCompositeOperation = 'lighter';
+    // ช่วงท่า: เริ่มหลังชื่อสกิลขึ้น (u .12)
+    const v = (u - .1) / .82;
+    REC.s.forEach(([name, a, b, o = {}], si) => { const e = (v - a) / (b - a); if (e < 0 || e > 1) return; if (!started.has(si)) { started.add(si); const sf = RPG_FXSFX[name]; if (sf && si) rpgSfx(sf); } try { x.save(); SKX.L[name]?.(x, C, e, { ...o, col: o.col || col }); x.restore(); } catch (er) { x.restore(); } });
+    x.globalCompositeOperation = 'source-over';
+    if (C.flash > 0) { x.fillStyle = SKX.rgba(C.flashCol || '#FFFFFF', Math.min(.8, C.flash)); x.fillRect(0, 0, G.W, G.H); }
+    if (C.shake > 0) rpgBShake(C.shake, 120);
+    requestAnimationFrame(frame);
+  };
+  requestAnimationFrame(frame);
+}
+// สกิลในการต่อสู้ทั้งหมดผ่านระบบใหม่ (ดาเมจตามจังหวะท่า · ไม่เล่นเอฟเฟกต์ซ้ำของเดิม)
+rpgBSkill = function (idx, ok) {
+  const B = RS.battle; if (!B) return; const s = R.save, st = rpgStats(), j = rpgJob(), k = j.sk[idx]; if (!k) return;
+  const [name, ic, , mult0, type, , ex = {}] = k, lv = s.sk[idx] || 1, rk = k._rank ?? idx, ult = rk >= 4, dur = ult ? 4800 : rk >= 2 ? 3900 : 3200;
+  B.busy = true; rpgBHud(); rpgQEvent('skill'); rpgBSay(`${ic} ${name}!`);
+  const { R: REC } = rpgSkFxOf(k), V = u => .1 + u * .82;
+  if (type === 'h' || type === 'b') {
+    const at = V(REC.hit[0]);
+    return rpgCine30(k, rk, dur, ok, () => {
+      if (type === 'h') { const h0 = s.hp; s.hp = Math.min(st.mhp, s.hp + Math.round(st.mhp * mult0 * (1 + .08 * (lv - 1)) * (1 + rpgPassive('heal')) * (ok ? 1.5 : .8))); rpgBNum(`+${s.hp - h0}`, 'me', 'heal'); rpgSfx('heal'); }
+      else { const bf = ex.buff, v = bf.v * (1 + .06 * (lv - 1)); B.buff[bf.k] = { v, n: bf.n + (ok ? 1 : 0) }; rpgBNum({ atk: 'ATK ▲', def: 'DEF ▲', eva: 'หลบ ▲', crit: 'คริ ▲' }[bf.k], 'me', 'txt'); rpgSfx('buff'); }
+      rpgBHud(); return null;
+    }, () => { rpgBSay(`${ic} ${name} Lv.${lv}${type === 'h' ? (ok ? ' ✅ ฟื้นพลังเต็มที่' : ' (ตอบผิด ฟื้นน้อยลง)') : ` · ${ex.buff.n + (ok ? 1 : 0)} เทิร์น${ok ? ' ✅' : ''}`}`); rpgBLater(350, rpgAfterMe); }, [at]);
+  }
+  const n = rpgSkHits(k, lv), pow = type === 'm' ? st.matk : st.atk, mult = mult0 * rpgSkPow(idx, lv), [h0, h1] = REC.hit;
+  const times = Array.from({ length: n }, (_, i) => V(n === 1 ? h0 : h0 + (h1 - h0) * i / (n - 1))); let total = 0;
+  rpgCine30(k, rk, dur, ok, i => { if (!RS.battle) return null; const dm = rpgBHit(pow, mult * (ok ? 1.8 : .6), false); total += dm; const B2 = RS.battle; B2.hp -= dm; rpgBA('mon', 'hurt', 300); rpgSfx(ok ? 'crit' : 'hit'); rpgBHud();
+      if (ex.drain && i === n - 1) { const h = Math.round(total * ex.drain), hp0 = s.hp; s.hp = Math.min(st.mhp, s.hp + h); rpgBNum(`+${s.hp - hp0}`, 'me', 'heal'); } return dm; },
+    () => { const B2 = RS.battle; if (!B2) return; if (ex.stun && B2.hp > 0 && Math.random() < ex.stun * (ok ? 1.3 : .5)) { B2.stun = 1; rpgBNum('มึนงง!', 'mon', 'txt'); }
+      rpgBSay(`${ic} ${name} Lv.${lv}${n > 1 ? ` ${n} ครั้ง` : ''} รวม ${total.toLocaleString()}${ok ? ' ✅ คริติคอล!' : ' ❌ ตอบผิด พลังลดลง'}`); if (n > 1) rpgBCombo?.(n, total, REC.c); rpgBLater(450, rpgAfterMe); }, times);
+};
+
+/* ---------- 5) เอฟเฟกต์บัพบนแผนที่ (ผู้ร่าย + เพื่อนที่ได้รับ + คนอื่นที่เห็น) ---------- */
+RS.mapFx = RS.mapFx || [];
+function rpgBuffFx(wx, wy, col, ic) { RS.mapFx.push({ x: wx, y: wy, col: col || '#FFD23F', ic, t0: performance.now(), dur: 2200 }); }
+function rpgMapFxDraw(x) {
+  const L = RS.mapFx; if (!L?.length) return; const now = performance.now(), cam = RS.cam; if (!cam) return;
+  x.save(); x.setTransform(cam.sc, 0, 0, cam.sc, -cam.cx * cam.sc, -cam.cy * cam.sc);
+  for (let i = L.length - 1; i >= 0; i--) { const f = L[i], e = (now - f.t0) / f.dur; if (e >= 1) { L.splice(i, 1); continue; }
+    const px = f.x * TS, py = f.y * TS, b = SKX.bell(e), S = .32, col = f.col;
+    x.globalCompositeOperation = 'lighter';
+    // วงเวทหมุนใต้เท้า
+    x.save(); x.globalAlpha = b; x.translate(px, py); x.scale(1, .36); x.rotate(now / 700); x.strokeStyle = col; x.lineWidth = 2.4; x.beginPath(); x.arc(0, 0, 34 * SKX.eo(SKX.cl(e * 2)), 0, 7); x.stroke(); x.lineWidth = 1.2; x.beginPath(); for (let k = 0; k <= 12; k++) { const q = k / 6 * Math.PI * 2; x.lineTo(Math.cos(q) * 28, Math.sin(q) * 28); } x.stroke(); x.restore();
+    // เสาแสง
+    const w = 34 * b, g = x.createLinearGradient(0, py - 120, 0, py); g.addColorStop(0, SKX.rgba(col, 0)); g.addColorStop(1, SKX.rgba(col, .7)); x.fillStyle = g; x.fillRect(px - w / 2, py - 120, w, 122);
+    // อนุภาค + วงแหวนขึ้นข้างบน
+    for (let k = 0; k < 14; k++) { const q = (e * 1.6 + k / 14) % 1; SKX.star(x, px + Math.cos(k * 2.4 + now / 300) * 18, py - q * 80, 2.6, k % 2 ? '#FFFFFF' : col, Math.sin(q * Math.PI) * b); }
+    for (let k = 0; k < 3; k++) { const q = SKX.cl((e - k * .15) * 1.6); SKX.ring(x, px, py - q * 60, 22 - k * 3, col, 1.6, SKX.bell(q), .35); }
+    x.globalCompositeOperation = 'source-over';
+    if (f.ic && e < .8) { x.globalAlpha = SKX.bell(e / .8); x.font = '16px sans-serif'; x.textAlign = 'center'; x.fillText(rpgPuaText?.(f.ic) || f.ic, px, py - 70 - e * 20); x.globalAlpha = 1; }
+  }
+  x.restore();
+}
+const rpgDraw30 = rpgDraw;
+rpgDraw = function (now) { const r = rpgDraw30(now); const cv = document.getElementById('rpg-c'); if (cv && !RS.battle) rpgMapFxDraw(cv.getContext('2d')); return r; };
+const rpgCastBuff30 = rpgCastBuff;
+rpgCastBuff = function () {
+  const s = R.save, before = (s.buffs || []).length + ':' + (s.buffs || []).map(b => b.until).join(); const r = rpgCastBuff30.apply(this, arguments);
+  const after = (s.buffs || []).length + ':' + (s.buffs || []).map(b => b.until).join();
+  if (before !== after) { const B = RPG_TBUFF[s.job]; rpgBuffFx(s.x, s.y, B?.col, B?.ic); if (B?.party && R.party) R.party.mem.forEach(m => { const o = RS.others?.[m.id]; if (o && o.m === RS.map.scene) rpgBuffFx(o.x, o.y, B.col); }); rpgSfx('heal'); }
+  return r;
+};
+const rpgNetMsg30 = rpgNetMsg;
+rpgNetMsg = function (p) { const r = rpgNetMsg30(p); if (p.k === 'buff' && p.to === rpgMe()?.student_id && p.b) rpgBuffFx(R.save.x, R.save.y, p.b.col, p.b.ic); return r; };
+
+/* =====================================================================
+   SX Realm v30 — หมวก/แฟชั่นแสดงทับหมวกเกราะ · สัตว์เลี้ยงวาดใหม่ตรงชนิด · หน้าต่างล็อกขนาด + แบ่งหน้า
+   ===================================================================== */
+
+/* ---------- 1) หมวกแฟชั่นต้องแสดงเสมอ (แม้สวมหมวกเกราะ) ---------- */
+const rpgArtOpts30 = rpgArtOpts;
+rpgArtOpts = function (L, h = {}) {
+  if (L && L.hat && RPG_ITEMS[L.hat] && L.hd) L = { ...L, hd: null };   // หมวกแฟชั่น > หมวกเกราะ (ค่าพลังยังได้จากเกราะตามเดิม)
+  return rpgArtOpts30(L, h);
+};
+
+/* ---------- 2) สัตว์เลี้ยงวาดเองทั้ง 14 ชนิด (หันขวา · เท้าที่ y=0 · สูง ~34) ---------- */
+const RPG_PETART = (() => {
+  const T = Math.PI * 2;
+  const E = (x, cx, cy, rx, ry, col, rot = 0) => { x.fillStyle = col; x.beginPath(); x.ellipse(cx, cy, Math.max(.1, rx), Math.max(.1, ry), rot, 0, T); x.fill(); };
+  const P = (x, pts, col) => { x.fillStyle = col; x.beginPath(); pts.forEach(([a, b], i) => i ? x.lineTo(a, b) : x.moveTo(a, b)); x.closePath(); x.fill(); };
+  const eyes = (x, hx, hy, s = 1, col = '#2A1A2E', far = true) => { [[hx + 6.2 * s, 2.1], far ? [hx + .6 * s, 1.8] : null].forEach(e => { if (!e) return; E(x, e[0], hy, 1.75 * s * (e[1] / 2.1), 2.35 * s * (e[1] / 2.1), col); E(x, e[0] + .55 * s, hy - .9 * s, .65 * s, .75 * s, '#FFFFFF'); E(x, e[0] - .4 * s, hy + .9 * s, .3 * s, .3 * s, 'rgba(255,255,255,.7)'); }); };
+  const blush = (x, hx, hy, s = 1) => { E(x, hx + 8 * s, hy + 3.2 * s, 1.6 * s, 1 * s, 'rgba(255,120,150,.55)'); E(x, hx - 1.6 * s, hy + 3 * s, 1.3 * s, .9 * s, 'rgba(255,120,150,.45)'); };
+  const mouthW = (x, cx, cy, s = 1) => { x.strokeStyle = '#5A2A3A'; x.lineWidth = .7 * s; x.lineCap = 'round'; x.beginPath(); x.moveTo(cx - 1.4 * s, cy); x.quadraticCurveTo(cx - .7 * s, cy + 1 * s, cx, cy); x.quadraticCurveTo(cx + .7 * s, cy + 1 * s, cx + 1.4 * s, cy); x.stroke(); };
+  const legs = (x, xs, y0, len, w, col, fr, paw) => xs.forEach((lx, i) => { const sw = Math.sin(fr / 8 * T + (i % 2 ? Math.PI : 0)) * 1.6; x.save(); x.translate(lx, y0); x.rotate(sw * .12); x.fillStyle = col; x.beginPath(); x.roundRect(-w / 2, 0, w, len, w / 2); x.fill(); if (paw) E(x, .3, len - .6, w * .62, w * .42, paw); x.restore(); });
+  const stripes = (x, pts, col, w = 1.3) => { x.strokeStyle = col; x.lineWidth = w; x.lineCap = 'round'; pts.forEach(([a, b, c, d]) => { x.beginPath(); x.moveTo(a, b); x.quadraticCurveTo((a + c) / 2 + .8, (b + d) / 2, c, d); x.stroke(); }); };
+
+  // ต้นแบบสัตว์สี่ขา (หัวโต · ตัวกลม)
+  function quad(x, fr, p) {
+    const bob = Math.abs(Math.sin(fr / 8 * T)) * 1.1, hx = 4.5, hy = -19 - bob, br = p.hr || 9.6;
+    // หาง (ด้านหลัง)
+    p.tail?.(x, -12, -10 - bob, fr);
+    legs(x, [-8.5, -2.5], -6 - bob * .5, 6 + bob * .5, 3.4, p.legB || p.body, fr + 4, p.paw);
+    E(x, -4, -9.5 - bob, 10.5, 7.2, p.body); if (p.belly) E(x, -2.5, -6.8 - bob, 7, 3.6, p.belly);
+    p.back?.(x, -4, -9.5 - bob, fr);
+    legs(x, [-6, 0], -6 - bob * .5, 6 + bob * .5, 3.6, p.body, fr, p.paw);
+    // หู (หลังหัว)
+    p.earsBack?.(x, hx, hy, br);
+    E(x, hx, hy, br * 1.05, br, p.head || p.body);
+    p.face?.(x, hx, hy, br);
+    if (p.muzzle) E(x, hx + 5.3, hy + 3.2, 4.2, 3, p.muzzle);
+    p.earsFront?.(x, hx, hy, br);
+    eyes(x, hx, hy, 1, p.eye); blush(x, hx, hy);
+    E(x, hx + 8.4, hy + 2.1, p.noseR || 1, (p.noseR || 1) * .75, p.nose || '#4A2A30');
+    mouthW(x, hx + 8.2, hy + 3.6);
+    p.top?.(x, hx, hy, br, fr);
+  }
+  const pointEars = (col, inner, tall = 1) => (x, hx, hy, r) => { [[-4.5, -1], [3.2, 1]].forEach(([dx, s], i) => { const bx = hx + dx; P(x, [[bx - 3.4, hy - r * .55], [bx + .2 * s, hy - r - 6.5 * tall], [bx + 3.6, hy - r * .6]], col); P(x, [[bx - 1.8, hy - r * .65], [bx + .2 * s, hy - r - 4 * tall], [bx + 2, hy - r * .68]], inner); }); };
+  const whisk = (x, hx, hy) => { x.strokeStyle = 'rgba(70,40,40,.55)'; x.lineWidth = .45; [[0, -.6], [.5, .5]].forEach(([dy, k]) => { x.beginPath(); x.moveTo(hx + 9, hy + 2.6 + dy); x.lineTo(hx + 14, hy + 1.6 + dy + k * 2.2); x.stroke(); }); };
+
+  const D = {
+    // แมว: หูแหลม ลายส้ม หางยาวงอขึ้น หนวด
+    '🐱': (x, fr) => quad(x, fr, { body: '#FFB357', belly: '#FFF1DC', muzzle: '#FFF1DC', nose: '#FF7A9A', noseR: .9,
+      tail: (x, tx, ty, fr) => { const w = Math.sin(fr / 8 * T) * 2; x.strokeStyle = '#FFB357'; x.lineWidth = 3.4; x.lineCap = 'round'; x.beginPath(); x.moveTo(tx + 3, ty + 2); x.bezierCurveTo(tx - 6, ty, tx - 6 + w, ty - 12, tx + 1 + w, ty - 15); x.stroke(); x.strokeStyle = '#E8862A'; x.lineWidth = 3.4; x.beginPath(); x.moveTo(tx - 4.6 + w * .6, ty - 8); x.lineTo(tx - 4.2 + w * .7, ty - 10); x.stroke(); },
+      back: (x, cx, cy) => stripes(x, [[cx - 6, cy - 6.6, cx - 5, cy - 2], [cx - 2, cy - 7.2, cx - 1, cy - 2.6], [cx + 2, cy - 7, cx + 3, cy - 3]], '#E8862A', 1.5),
+      earsBack: pointEars('#FFB357', '#FFC2D0'), face: (x, hx, hy, r) => { stripes(x, [[hx - 2, hy - r + .6, hx - 1.6, hy - r + 3.4], [hx + 1, hy - r + .3, hx + 1, hy - r + 3.2], [hx + 4, hy - r + .8, hx + 3.6, hy - r + 3.4]], '#E8862A', 1.2); },
+      top: (x, hx, hy) => whisk(x, hx, hy) }),
+    // หมา: หูตก น้ำตาล ลิ้นแลบ หางสั้นกระดิก
+    '🐶': (x, fr) => quad(x, fr, { body: '#C88A52', belly: '#F6E3C8', muzzle: '#F6E3C8', nose: '#2A1A1A', noseR: 1.4,
+      tail: (x, tx, ty, fr) => { const w = Math.sin(fr / 8 * T * 2) * 3; x.strokeStyle = '#C88A52'; x.lineWidth = 3.2; x.lineCap = 'round'; x.beginPath(); x.moveTo(tx + 3, ty); x.quadraticCurveTo(tx - 3, ty - 3, tx - 2 + w, ty - 9); x.stroke(); },
+      face: (x, hx, hy, r) => E(x, hx - 2.5, hy - 2.5, 3.6, 3.2, '#8A5A32'),
+      earsFront: (x, hx, hy, r) => { E(x, hx - 6.6, hy - 1, 3, 6, '#7A4A28', .35); E(x, hx + 1.6, hy - 6.4, 2.6, 4.6, '#7A4A28', -.9); },
+      top: (x, hx, hy) => { E(x, hx + 9.6, hy + 5.4, 1.3, 1.8, '#FF6A8A'); E(x, hx - 1.5, hy + 8.6, 4, 1.1, '#E23A3A'); E(x, hx + .2, hy + 9.4, .9, .9, '#FFD23F'); } }),
+    // กระต่าย: หูยาวตั้ง ขาว หางปุย
+    '🐰': (x, fr) => quad(x, fr, { body: '#FFFFFF', belly: '#FFF4F7', head: '#FFFFFF', muzzle: '#FFF4F7', nose: '#FF7AA0', noseR: .9, paw: '#FFE4EC',
+      tail: (x, tx, ty) => { E(x, tx + 1, ty + 1, 3.6, 3.4, '#FFFFFF'); E(x, tx + .4, ty, 2, 1.8, '#F0E8EE'); },
+      earsBack: (x, hx, hy, r) => { [[-2.6, -.18], [2.6, .14]].forEach(([dx, rot], i) => { x.save(); x.translate(hx + dx, hy - r + 1); x.rotate(rot + Math.sin(performance.now() / 600 + i) * .03); E(x, 0, -7, 2.6, 8, '#FFFFFF'); E(x, .2, -6.6, 1.3, 6, '#FFB3C8'); x.restore(); }); },
+      top: (x, hx, hy) => { x.fillStyle = '#FFFFFF'; x.fillRect(hx + 6.4, hy + 3.8, 1.6, 1.6); } }),
+    // จิ้งจอกไฟ: ส้มแดง อกขาว หางใหญ่ปลายขาว+เปลวไฟ
+    '🦊': (x, fr) => quad(x, fr, { body: '#FF7A2A', belly: '#FFF3E4', muzzle: '#FFF3E4', nose: '#2A1A1A', legB: '#5A2A1A', paw: '#3A1A14', hr: 9.2,
+      tail: (x, tx, ty, fr) => { const w = Math.sin(fr / 8 * T) * 1.6; x.save(); x.translate(tx + 2, ty); x.rotate(-.7 + w * .05); E(x, -7, -2, 9, 5.2, '#FF7A2A'); E(x, -13.5, -2, 3.6, 3.6, '#FFF3E4'); x.restore(); [0, 1, 2].forEach(k => { const f = (performance.now() / 500 + k / 3) % 1; E(x, tx - 6 - k * 2, ty - 9 - f * 6, 1.6 * (1 - f), 2.4 * (1 - f), k % 2 ? '#FFD23F' : '#FF4A1A'); }); },
+      earsBack: pointEars('#FF7A2A', '#3A1A14', 1.15), face: (x, hx, hy, r) => { E(x, hx + 3, hy + 4.2, 6.6, 3.8, '#FFF3E4'); } }),
+    // หมาป่าเงิน: เทาเงิน ปากยื่น หูแหลมสูง
+    '🐺': (x, fr) => quad(x, fr, { body: '#A9B6C8', belly: '#EEF2F8', muzzle: '#EEF2F8', nose: '#22222A', noseR: 1.3, legB: '#8A96A8', hr: 9.4, eye: '#2A4A8A',
+      tail: (x, tx, ty) => { x.save(); x.translate(tx + 2, ty + 1); x.rotate(-.35); E(x, -6, 0, 7.6, 3.8, '#A9B6C8'); E(x, -11, .6, 2.6, 2.4, '#EEF2F8'); x.restore(); },
+      back: (x, cx, cy) => E(x, cx - 1, cy - 5.5, 7, 2.2, '#7F8CA0'),
+      earsBack: pointEars('#8A96A8', '#4A5266', 1.25), face: (x, hx, hy, r) => { P(x, [[hx - 4, hy + 6], [hx - 1, hy + 2], [hx + 2, hy + 6.6]], '#EEF2F8'); },
+      top: (x, hx, hy) => { E(x, hx + 4, hy - 9.4, 1.5, 1.1, '#CFE4FF'); } }),
+    // เสือขาว: ขาว ลายดำ หูกลม
+    '🐯': (x, fr) => quad(x, fr, { body: '#F8F8FF', belly: '#FFFFFF', muzzle: '#FFFFFF', nose: '#FF7AA0', noseR: 1.1, eye: '#2A6ACF', hr: 10,
+      tail: (x, tx, ty, fr) => { const w = Math.sin(fr / 8 * T) * 2; x.strokeStyle = '#F8F8FF'; x.lineWidth = 3.4; x.lineCap = 'round'; x.beginPath(); x.moveTo(tx + 3, ty + 1); x.quadraticCurveTo(tx - 6, ty - 2, tx - 5 + w, ty - 11); x.stroke(); x.strokeStyle = '#2A2A33'; x.lineWidth = 3.4; [[-4.7, -6], [-5, -9.6]].forEach(([a, b]) => { x.beginPath(); x.moveTo(tx + a - 1 + w * .5, ty + b); x.lineTo(tx + a + 1 + w * .5, ty + b); x.stroke(); }); },
+      back: (x, cx, cy) => stripes(x, [[cx - 7, cy - 6, cx - 6, cy - 1], [cx - 3, cy - 7, cx - 2.4, cy - 1.6], [cx + 1, cy - 7, cx + 1.6, cy - 2], [cx + 5, cy - 6, cx + 5.4, cy - 2.4]], '#2A2A33', 1.4),
+      earsBack: (x, hx, hy, r) => { [[-5, 0], [3.4, 0]].forEach(([dx]) => { E(x, hx + dx, hy - r + 1, 3.4, 3.4, '#F8F8FF'); E(x, hx + dx, hy - r + 1.4, 1.8, 1.8, '#2A2A33'); }); },
+      face: (x, hx, hy, r) => stripes(x, [[hx - 1, hy - r + .4, hx - .4, hy - r + 3.6], [hx + 2, hy - r + .2, hx + 2.2, hy - r + 3.4], [hx - 8, hy - 1, hx - 5.4, hy + .2], [hx - 8.4, hy + 2.4, hx - 5.6, hy + 2.6]], '#2A2A33', 1.2),
+      top: (x, hx, hy) => whisk(x, hx, hy) }),
+    // ยูนิคอร์น: ขาว แผงคอสีรุ้ง เขาทอง
+    '🦄': (x, fr) => quad(x, fr, { body: '#FFFFFF', belly: '#FFF6FC', muzzle: '#FFE8F4', nose: '#E890B8', noseR: .8, paw: '#C8B8FF', eye: '#6A3AB0', hr: 9.4,
+      tail: (x, tx, ty, fr) => { ['#FF7AB8', '#FFD23F', '#7AD8FF', '#B58CFF'].forEach((c, i) => { const w = Math.sin(fr / 8 * T + i) * 1.4; x.strokeStyle = c; x.lineWidth = 2.2; x.lineCap = 'round'; x.beginPath(); x.moveTo(tx + 3, ty - 1 + i * .8); x.quadraticCurveTo(tx - 6, ty - 3 + i, tx - 7 + w, ty + 6 + i * 1.2); x.stroke(); }); },
+      earsBack: pointEars('#FFFFFF', '#FFC8E4', .8),
+      top: (x, hx, hy, r) => { ['#FF7AB8', '#FFD23F', '#7AD8FF', '#B58CFF'].forEach((c, i) => E(x, hx - 6 + i * 1.6, hy - r + 1.6 + i * 2.2, 3.4, 2.6, c, -.6)); const g = x.createLinearGradient(0, hy - r - 9, 0, hy - r); g.addColorStop(0, '#FFF6C0'); g.addColorStop(1, '#FFB020'); x.fillStyle = g; x.beginPath(); x.moveTo(hx + 1.6, hy - r + 1.4); x.lineTo(hx + 4.6, hy - r - 9.5); x.lineTo(hx + 4.6, hy - r + 1.8); x.closePath(); x.fill(); } }),
+    // มังกรน้อย: เขียวมรกต ปีกเล็ก เขา หนามหลัง
+    '🐲': (x, fr) => quad(x, fr, { body: '#3DC878', belly: '#FFE9A8', muzzle: '#7FE0A8', nose: '#1A5A3A', noseR: .7, paw: '#FFFFFF', eye: '#C83A1A', hr: 9.6,
+      tail: (x, tx, ty, fr) => { const w = Math.sin(fr / 8 * T) * 1.6; x.strokeStyle = '#3DC878'; x.lineWidth = 4; x.lineCap = 'round'; x.beginPath(); x.moveTo(tx + 4, ty + 2); x.quadraticCurveTo(tx - 6, ty + 4, tx - 9 + w, ty - 3); x.stroke(); P(x, [[tx - 9 + w, ty - 6.5], [tx - 12 + w, ty - 2], [tx - 7.5 + w, ty - 1.2]], '#FF7A3D'); },
+      back: (x, cx, cy, fr) => { const fl = Math.sin(fr / 8 * T * 2) * .25; [[-1, 1], [1, .75]].forEach(([s, k]) => { x.save(); x.translate(cx + 1, cy - 6); x.rotate(-.5 + fl * s); x.fillStyle = k < 1 ? '#2AA860' : '#5AE08A'; x.beginPath(); x.moveTo(0, 0); x.lineTo(-3 * k, -11 * k); x.lineTo(-7 * k, -7 * k); x.lineTo(-10 * k, -8 * k); x.lineTo(-7 * k, -1); x.closePath(); x.fill(); x.restore(); }); [-7, -3, 1].forEach(dx => P(x, [[cx + dx - 1.4, cy - 6.4], [cx + dx, cy - 9.4], [cx + dx + 1.4, cy - 6.6]], '#FF7A3D')); },
+      top: (x, hx, hy, r) => { [[-3.6, -.5], [1.4, -.2]].forEach(([dx, rot]) => { x.save(); x.translate(hx + dx, hy - r + 1.6); x.rotate(rot); P(x, [[-1.4, 0], [0, -6], [1.4, 0]], '#FFF0C0'); x.restore(); }); E(x, hx + 9, hy + 2, .6, .6, '#1A5A3A'); } }),
+    // เต่าหินผา: กระดองหกเหลี่ยม หัวยื่น
+    '🐢': (x, fr) => { const bob = Math.abs(Math.sin(fr / 8 * T)) * .6; legs(x, [-9, -1], -5, 5, 4, '#7FCB6A', fr, '#5FA84A'); E(x, -3, -6, 12, 4, '#6FB85A'); legs(x, [-6, 3], -5, 5, 4, '#8FD87A', fr + 4, '#6FB85A'); const hx = 9, hy = -11 - bob; E(x, hx - 2, hy + 3, 4, 3.4, '#8FD87A'); E(x, hx, hy, 7.6, 7, '#8FD87A'); eyes(x, hx - 3, hy - .4, .95); blush(x, hx - 3, hy - .6, .9); mouthW(x, hx + 3.6, hy + 3);
+      E(x, -4, -11 - bob, 12.5, 9, '#8A6A3A'); E(x, -4, -12 - bob, 11, 8, '#B08A4A'); x.strokeStyle = '#7A5A2A'; x.lineWidth = .9; [[-4, -15], [-9.4, -11.4], [1.4, -11.4], [-4, -8]].forEach(([a, b]) => { x.beginPath(); for (let k = 0; k <= 6; k++) { const q = k / 6 * T; x.lineTo(a + Math.cos(q) * 3, b - bob + Math.sin(q) * 2.6); } x.stroke(); }); E(x, -7, -16 - bob, 2.6, 1.2, 'rgba(255,255,255,.35)'); },
+    // เพนกวิน: ยืนสองขา ดำ-ขาว ปากส้ม
+    '🐧': (x, fr) => { const sw = Math.sin(fr / 8 * T) * .12, bob = Math.abs(Math.sin(fr / 8 * T)) * 1; x.save(); x.rotate(sw); E(x, -2, -1, 3.4, 1.6, '#FF9A2A'); E(x, 4, -1, 3.4, 1.6, '#FF9A2A'); E(x, 1, -13 - bob, 11, 13, '#2A3348'); E(x, 2.4, -11 - bob, 7.6, 10, '#FFFFFF'); [[-9, -1], [10, 1]].forEach(([dx, s]) => { x.save(); x.translate(1 + dx, -15 - bob); x.rotate(s * (.4 + Math.sin(fr / 8 * T) * .2)); E(x, 0, 5, 2.6, 6.6, '#2A3348'); x.restore(); });
+      const hx = 2, hy = -21 - bob; E(x, hx + 2.6, hy + .4, 6.4, 5.4, '#FFFFFF'); eyes(x, hx - 1.4, hy, .95); blush(x, hx - 1.2, hy, .9); P(x, [[hx + 3.2, hy + 2.4], [hx + 8.6, hy + 3.4], [hx + 3.2, hy + 4.6]], '#FF9A2A'); x.restore(); },
+    // ลูกเจี๊ยบสายฟ้า: กลมเหลือง หงอนสายฟ้า
+    '🐥': (x, fr) => { const bob = Math.abs(Math.sin(fr / 8 * T)) * 1.6; legs(x, [-2, 3], -3, 3, 1.2, '#FF9A2A', fr); E(x, 0, -11 - bob, 11, 9.6, '#FFD84A'); E(x, 1, -8 - bob, 7, 5, '#FFF0A0'); E(x, -7, -11 - bob, 3.6, 5, '#FFC83A', -.6 + Math.sin(fr / 8 * T * 2) * .3); const hx = 1, hy = -13 - bob; eyes(x, hx, hy, .95); blush(x, hx, hy, .9); P(x, [[hx + 8, hy + 1.6], [hx + 12.4, hy + 3], [hx + 8, hy + 4.4]], '#FF8A1A');
+      P(x, [[-1, -20 - bob], [2.6, -27 - bob], [1.4, -23.6 - bob], [5, -26 - bob], [2.6, -20 - bob]], '#FFE600'); x.strokeStyle = '#FF9A1A'; x.lineWidth = .7; x.stroke(); },
+    // แฮมสเตอร์: กลมป้อม แก้มตุ่ย
+    '🐹': (x, fr) => { const bob = Math.abs(Math.sin(fr / 8 * T)) * 1.2; legs(x, [-5, 3], -3.4, 3.4, 2.6, '#F0B886', fr, '#FFD8E0'); E(x, -1, -11 - bob, 12.5, 10.5, '#F0B070'); E(x, 1, -7.6 - bob, 8.6, 6, '#FFF4E4'); const hx = 2, hy = -14 - bob; [[-5.4, 1], [3.4, 1]].forEach(([dx]) => { E(x, hx + dx, hy - 9, 3, 2.8, '#F0B070'); E(x, hx + dx, hy - 8.6, 1.7, 1.5, '#FFB3C8'); });
+      E(x, hx + 8.6, hy + 3.6, 3.6, 3, '#FFF4E4'); E(x, hx - 2.2, hy + 3.4, 3, 2.6, '#FFF4E4'); eyes(x, hx, hy - 1, .9); blush(x, hx, hy - .6, .95); E(x, hx + 7.2, hy + 1.2, .8, .6, '#FF7AA0'); mouthW(x, hx + 7, hy + 2.4, .8); E(x, hx + 11, hy + 6, 1.8, 1.6, '#7AC84A'); E(x, -12, -6 - bob, 1.6, 1.2, '#F0B070'); },
+    // นกฮูก: ตากลมโต ขนหู ปีกพับ
+    '🦉': (x, fr) => { const bob = Math.abs(Math.sin(fr / 8 * T)) * 1; legs(x, [-2.6, 3], -3, 3, 1.4, '#FFB020', fr); E(x, 0, -14 - bob, 11, 13.6, '#8A5A3A'); E(x, 1.6, -10 - bob, 7, 8.6, '#E8D4B0'); for (let i = 0; i < 6; i++) E(x, -1 + (i % 3) * 3, -13 - bob + Math.floor(i / 3) * 3.4, 1.2, .7, '#B08A5A');
+      E(x, -7.4, -13 - bob, 4, 8, '#6A4228', .15 + Math.sin(fr / 8 * T * 2) * .08); const hy = -22 - bob; P(x, [[-7, hy - 5], [-8.4, hy - 12], [-3, hy - 7]], '#6A4228'); P(x, [[5, hy - 7], [9, hy - 12], [9.6, hy - 5]], '#6A4228'); E(x, -1, hy, 4.4, 4.4, '#F8EAD0'); E(x, 6.6, hy, 4.4, 4.4, '#F8EAD0'); [[-1, hy], [6.6, hy]].forEach(([a, b]) => { E(x, a + .4, b, 2.6, 2.8, '#FFB020'); E(x, a + .6, b, 1.5, 1.7, '#22161A'); E(x, a + 1.2, b - .9, .6, .6, '#FFFFFF'); }); P(x, [[2, hy + 2.6], [3.6, hy + 6], [5.2, hy + 2.6]], '#FFB020');
+      // หมวกนักปราชญ์ใบเล็ก
+      P(x, [[-4.4, hy - 6.4], [2.8, hy - 9.4], [10, hy - 6.4], [2.8, hy - 3.6]], '#2A2A44'); E(x, 2.8, hy - 5.4, 3.4, 1.6, '#2A2A44'); x.strokeStyle = '#FFD23F'; x.lineWidth = .7; x.beginPath(); x.moveTo(2.8, hy - 6.4); x.lineTo(8.6, hy - 3.6); x.stroke(); },
+    // นกฟีนิกซ์: แดงทอง หางเปลวไฟยาว ปีกกระพือ
+    '🐦': null,
+  };
+  D['🦅phx'] = (x, fr) => { const t = performance.now(), fl = Math.sin(fr / 8 * T * 2), bob = Math.abs(Math.sin(fr / 8 * T)) * 1.6;
+    for (let i = 0; i < 5; i++) { x.save(); x.translate(-7, -10 - bob); x.rotate(.35 + i * .16 + Math.sin(t / 300 + i) * .06); const g = x.createLinearGradient(0, 0, -18, 0); g.addColorStop(0, '#FF4A1A'); g.addColorStop(.6, '#FFB020'); g.addColorStop(1, 'rgba(255,240,140,0)'); x.fillStyle = g; x.beginPath(); x.moveTo(0, -1.4); x.quadraticCurveTo(-10, -4, -20, 0); x.quadraticCurveTo(-10, 3, 0, 1.4); x.fill(); x.restore(); }
+    legs(x, [-1, 3], -3.6, 3.6, 1.3, '#FFB020', fr); E(x, 0, -12 - bob, 9.6, 8.6, '#FF5A2A'); E(x, 2, -9.6 - bob, 6, 5, '#FFC23D');
+    [[-1, '#E8341A'], [1, '#FF8A1F']].forEach(([s, c], i) => { x.save(); x.translate(-2, -15 - bob); x.rotate(-.4 - fl * .5 * (i ? 1 : .8)); x.fillStyle = c; x.beginPath(); x.moveTo(0, 0); x.quadraticCurveTo(-6, -12, -14 + i * 2, -14); x.quadraticCurveTo(-9, -7, -12 + i, -4); x.quadraticCurveTo(-6, -3, 0, 2); x.fill(); x.restore(); });
+    const hx = 4, hy = -21 - bob; E(x, hx, hy, 7.4, 6.8, '#FF6A2A'); eyes(x, hx - 2.4, hy, .9, '#5A1A0A'); blush(x, hx - 2.2, hy, .85); P(x, [[hx + 5.6, hy], [hx + 10.4, hy + 1.6], [hx + 5.6, hy + 3.2]], '#FFD23F');
+    [0, 1, 2].forEach(k => { x.save(); x.translate(hx - 2 + k * 1.8, hy - 6); x.rotate(-.5 + k * .3 + Math.sin(t / 220 + k) * .1); E(x, 0, -3.4, 1.3, 3.6, k % 2 ? '#FFD23F' : '#FF4A1A'); x.restore(); }); };
+  return D;
+})();
+const RPG_PETIC = { '🐱': '🐱', '🐶': '🐶', '🐰': '🐰', '🐧': '🐧', '🐢': '🐢', '🐥': '🐥', '🐹': '🐹', '🦊': '🦊', '🦉': '🦉', '🐺': '🐺', '🐯': '🐯', '🐲': '🐲', '🦄': '🦄' };
+if (RPG_PETS.phx) RPG_PETIC[RPG_PETS.phx.ic] = '🦅phx';
+function rpgPetArt(ic, fr, res) {
+  const k = RPG_PETIC[ic]; if (!k || !RPG_PETART[k]) return null; res = res || RPG_ART_RES; fr = (fr | 0) % 8;
+  return rpgArtGet('PET' + k + fr + '@' + res, () => { const M0 = MON.draw; MON.draw = (x) => { x.save(); x.scale(1.06, 1.06); RPG_PETART[k](x, fr); x.restore(); }; try { return rpgArtRender({ ic, fr }, 'mon', res); } finally { MON.draw = M0; } });
+}
+// สัตว์เลี้ยงและ "อัญเชิญ" ใช้ภาพวาดใหม่ตรงชนิด; มอนสเตอร์ศัตรูยังใช้ภาพเดิม
+const rpgMonImg30 = rpgMonImg;
+rpgMonImg = function (ic, fr, res) { if (RPG_PETIC[ic] && (!RS.battle || RS.battle.mo?.ic !== ic)) { const im = rpgPetArt(ic, fr, res); if (im) return im; } return rpgMonImg30(ic, fr, res); };
+// ไอคอนสัตว์เลี้ยงในหน้าต่าง (รูปวาดเดียวกับในเกม)
+function rpgPetURL(ic, S = 96) { const k = 'PU' + ic + S; rpgPetURL.c = rpgPetURL.c || {}; if (rpgPetURL.c[k]) return rpgPetURL.c[k]; const im = rpgPetArt(ic, 0, 4); if (!im) return ''; const c = document.createElement('canvas'); c.width = c.height = S; const x = c.getContext('2d'), sc = S / im.width * 1.25; x.drawImage(im, (S - im.width * sc) / 2, S - im.height * sc + 4, im.width * sc, im.height * sc); return (rpgPetURL.c[k] = c.toDataURL()); }
+
+/* ---------- 3) หน้าต่างทุกบานล็อกขนาดพอดีจอ + แบ่งหน้า 1 2 3 4 ---------- */
+RS.pg = RS.pg || {};
+function rpgPaginate() {
+  const card = document.querySelector('.rpg .rpg-panel .rp-card'); if (!card || card.offsetParent === null) return;
+  card.querySelectorAll('.rp-pager').forEach(p => p.remove());
+  card.querySelectorAll('[data-pgh]').forEach(e => { e.style.display = e.dataset.pgh === '-' ? '' : e.dataset.pgh; delete e.dataset.pgh; });
+  // กล่องเลื่อนภายใน → ขยายเต็ม แล้วแบ่งหน้าแทนการเลื่อน
+  [...card.querySelectorAll('*')].forEach(e => { if (e.dataset.pgsc) return; const cs = getComputedStyle(e); if ((/(auto|scroll)/.test(cs.overflowY) && e.children.length >= 2 || cs.overflowY === 'hidden' && e.children.length >= 2 && e.scrollHeight > e.clientHeight + 40) && e.scrollHeight > e.clientHeight + 4) e.dataset.pgsc = 1; });
+  [...card.children].forEach(e => { if (e.dataset.pgz) { e.style.zoom = ''; delete e.dataset.pgz; } });
+  const kids = [...card.children].filter(e => !e.matches('.rp-x,h3,.rp-pager') && e.getBoundingClientRect().height > 0); if (!kids.length) return;
+  const cr = card.getBoundingClientRect(), padB = parseFloat(getComputedStyle(card).paddingBottom) || 0, limit = cr.bottom - padB - 2, top0 = kids[0].getBoundingClientRect().top;
+  const lastB = Math.max(...kids.map(e => { const r = e.getBoundingClientRect(); return r.top + Math.max(r.height, e.scrollHeight); })); if (lastB <= limit) return;
+  // ล้นเล็กน้อย (≤ 20%) → ย่อให้พอดีทั้งหน้า แทนการแยกหน้า
+  { const z = (limit - top0) / (lastB - top0); if (z >= .8) { kids.forEach(e => { e.dataset.pgz = 1; e.style.zoom = z.toFixed(3); }); return; } }
+  const avail = limit - top0 - 58; if (avail < 80) return;
+  const units = [], parents = new Map();
+  const collect = (els, depth, par) => els.forEach(el => { const r0 = el.getBoundingClientRect(); if (!r0.height) return; const r = { top: r0.top, height: Math.max(r0.height, el.scrollHeight), bottom: r0.top + Math.max(r0.height, el.scrollHeight) }; const sub = [...el.children].filter(c => c.getBoundingClientRect().height > 0);
+    if (r.height > avail * .8 && sub.length >= 1 && depth < 7) { parents.set(el, []); collect(sub, depth + 1, el); } else { const u = { el, t: r.top - top0, b: r.bottom - top0 }; units.push(u); let p = par; while (p) { parents.get(p)?.push(u); p = p.parentElement === card ? null : (parents.has(p.parentElement) ? p.parentElement : null); } } });
+  collect(kids, 0, null);
+  units.sort((a, b) => a.t - b.t || a.b - b.b);
+  const pages = []; let cur = null;
+  units.forEach(u => { if (!cur || u.b - cur.t0 > avail) { cur = { t0: u.t, u: [] }; pages.push(cur); } cur.u.push(u); });
+  if (pages.length <= 1) return;
+  const key = (RS.panel || 'x') + ':' + ([...card.querySelectorAll('.on,[aria-selected=true]')].map(e => e.textContent.trim().slice(0, 12)).join('|')), pg = Math.min(pages.length - 1, RS.pg[key] || 0);
+  const hide = e => { if (e.dataset.pgh) return; e.dataset.pgh = e.style.display || '-'; e.style.display = 'none'; };
+  pages.forEach((P, i) => { if (i !== pg) P.u.forEach(u => hide(u.el)); });
+  parents.forEach((us, el) => { if (us.length && us.every(u => u.el.dataset.pgh)) hide(el); });
+  const nav = document.createElement('nav'); nav.className = 'rp-pager'; nav.setAttribute('aria-label', 'เลือกหน้า'); const N = pages.length;
+  const btn = (lab, p, on, dis, aria) => `<button type="button" data-pg="${p}" ${on ? 'class="on" aria-current="page"' : ''} ${dis ? 'disabled' : ''} aria-label="${aria || 'หน้า ' + (p + 1)}">${lab}</button>`;
+  const MX = cr.width < 440 ? 5 : 7, nums = []; for (let p = 0; p < N; p++) { if (N > MX && p > 0 && p < N - 1 && Math.abs(p - pg) > 1) { if (nums[nums.length - 1] !== '…') nums.push('…'); continue; } nums.push(p); }
+  nav.innerHTML = btn('‹', pg - 1, false, pg === 0, 'หน้าก่อน') + nums.map(p => p === '…' ? '<span>…</span>' : btn(p + 1, p, p === pg)).join('') + btn('›', pg + 1, false, pg >= N - 1, 'หน้าถัดไป');
+  nav.addEventListener('click', e => { const b = e.target.closest('button[data-pg]'); if (!b || b.disabled) return; e.stopPropagation(); RS.pg[key] = +b.dataset.pg; rpgSfx('click'); rpgPaginate(); });
+  card.appendChild(nav);
+}
+const rpgPanel30 = rpgPanel;
+rpgPanel = function (k) {
+  const prevKey = RS.panel; const r = rpgPanel30.apply(this, arguments);
+  const card = document.querySelector('.rpg .rpg-panel .rp-card'); if (card) { card.classList.add('fixed', 'v30fit'); requestAnimationFrame(() => { rpgPaginate(); rpgPetIcons(); }); }
+  return r;
+};
+window.addEventListener('resize', () => { clearTimeout(rpgPaginate._t); rpgPaginate._t = setTimeout(rpgPaginate, 150); });
+// ใส่รูปสัตว์เลี้ยงที่วาดใหม่ในหน้าต่างสัตว์เลี้ยง (แทนอีโมจิ)
+function rpgPetIcons() { if (RS.panel !== 'pets') return; document.querySelectorAll('.rpg .rpg-panel .rp-list .rp-it').forEach(row => { const id = row.querySelector('[data-p]')?.dataset.p, p = (R.save.pets || []).find(q => q.id === id), ic = row.querySelector('.rp-ic'); if (!p || !ic || ic.querySelector('img.pet30')) return; const u = rpgPetURL(p.ic); if (u) ic.innerHTML = `<img class="pet30" src="${u}" alt="${esc(p.n)}">`; }); }
 
 /* =====================================================================
    rpg-net.js — หน้าเกมของครู: จัดการตัวละคร (เลือกชั้น → ห้อง) · คำถามในเกม · ตรวจแชท · กิลด์ · โหมดครู
