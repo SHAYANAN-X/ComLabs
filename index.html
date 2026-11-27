@@ -5074,11 +5074,11 @@ img.ii.jic{border-radius:22%}
 /* ===== v43 กาชาเทพแสง (กรอบทอง) ===== */
 .gc-tier[style*="#FFD86A"]{background:linear-gradient(120deg,rgba(255,236,160,.75),rgba(255,255,255,.6) 50%,rgba(255,214,110,.7));box-shadow:inset 0 0 0 2px #E8B830,0 0 16px rgba(255,200,60,.45)}
 .gc-tier[style*="#FFD86A"]>b{background:linear-gradient(90deg,#B8860B,#FFD86A,#B8860B);-webkit-background-clip:text;background-clip:text;color:transparent!important;font-weight:900}
-.gc-cap.divine{background:radial-gradient(circle at 50% 30%,#FFFBE0,#FFD86A 70%,#C8941E)!important;box-shadow:0 0 0 3px #FFF2B0,0 0 24px 4px rgba(255,210,80,.85)!important;animation:gcdv 1.6s ease-in-out infinite alternate}
+.gc-cap.divine{background:radial-gradient(circle at 50% 30%,#FFFBE0,#FFD86A 70%,#C8941E)!important;box-shadow:0 0 0 3px #FFF2B0,0 0 24px 4px rgba(255,210,80,.85)!important;animation:gc-in .45s var(--d) cubic-bezier(.2,1.5,.4,1) forwards,gcdv 1.6s ease-in-out .5s infinite alternate}
 @keyframes gcdv{to{box-shadow:0 0 0 3px #FFFFFF,0 0 34px 8px rgba(255,230,120,.95)}}
 :is(.rp-ic,.eq41-ic)[style*="#FFD86A"],[style*="--g:#FFD86A"] .eq41-ic,[style*="--gc:#FFD86A"] .rp-ic{background:radial-gradient(circle at 35% 28%,#FFFDF0,#FFE9A0 60%,#F2C14E)!important;box-shadow:inset 0 0 0 2px #C8941E,0 0 0 2px #FFE27A,0 0 14px rgba(255,200,60,.8)!important}
 .rp-grade[style*="#FFD86A"]{background:linear-gradient(90deg,#C8941E,#FFE27A,#C8941E)!important;color:#4A3000!important}
-@media (prefers-reduced-motion:reduce){.gc-cap.divine{animation:none}}
+@media (prefers-reduced-motion:reduce){.gc-cap.divine{animation:gc-in .01s forwards}}
 @media (max-width:760px){.rpg-wb{top:218px;bottom:auto;left:auto;right:8px;transform:none;padding:4px 10px 4px 6px;gap:6px;border-radius:14px}.rpg-wb>span{font-size:18px}.rpg-wb b{font-size:11.5px}.rpg-wb small{display:none}.rpg-wb i{width:84px;height:4px}}
 /* ===== v44 แท็บสกิล ===== */
 .sk44-tabs{display:flex;gap:6px;overflow-x:auto;margin:0 0 10px;padding:2px 2px 6px;scrollbar-width:thin}
@@ -5110,6 +5110,7 @@ img.ii.jic{border-radius:22%}
 .rpg .rpg-panel .rp-card .wd-grid button{position:relative}
 .rpg .rpg-panel .rp-card .wd-grid button.on{background:linear-gradient(160deg,#EFE9FF,#FFFFFF)!important;box-shadow:inset 0 0 0 2.5px #7A5CFF,0 4px 14px rgba(122,92,255,.35)!important}
 .wd45-on{position:absolute;top:-7px;right:-4px;padding:1px 7px;border-radius:999px;font:800 10px/16px var(--f-body);font-style:normal;color:#fff;background:#3DDC84;box-shadow:0 2px 6px rgba(20,120,70,.35);white-space:nowrap}
+.gc-cap.divine small,.gc-cap.divine em{color:#5A3A00!important;opacity:1!important}.gc-cap.divine b{color:#3A2400!important}
 
 </style>
 </head>
@@ -5654,7 +5655,7 @@ if (typeof module !== 'undefined') module.exports = ExamParser;
 </script>
 <script>
 /* โลโก้: ภาพครูปลื้ม (ไฟล์ต้นฉบับ src/logo.svg ฝังตอน build) */
-const APP_VER = '45.0 · 27 พ.ย. 2569';
+const APP_VER = '45.2 · 27 พ.ย. 2569';
 let LOGO_N = 0;
 function logoSVG() { const k = 'L' + (++LOGO_N); return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><defs><linearGradient id="lgb" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3B9BFF"/><stop offset=".5" stop-color="#0A5BE0"/><stop offset="1" stop-color="#062C78"/></linearGradient><linearGradient id="lgs" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset=".6" stop-color="#FFF4D6"/><stop offset="1" stop-color="#FFD978"/></linearGradient><radialGradient id="lgc" cx=".3" cy=".08" r=".75"><stop offset="0" stop-color="#fff" stop-opacity=".55"/><stop offset=".5" stop-color="#fff" stop-opacity=".08"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient></defs><rect width="48" height="48" rx="13" fill="url(#lgb)"/><rect width="48" height="48" rx="13" fill="url(#lgc)"/><rect x=".75" y=".75" width="46.5" height="46.5" rx="12.3" fill="none" stroke="#fff" stroke-opacity=".45" stroke-width="1.2"/><g fill="none" stroke="#04235F" stroke-opacity=".35" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" transform="translate(0 1.2)"><path d="M21.2 17 C19.8 14.6 17.4 13.6 14.8 13.6 C11 13.6 8.6 15.6 8.6 18.5 C8.6 21.8 11.6 22.9 14.9 23.9 C18.6 25 21.6 26.4 21.6 29.8 C21.6 33 18.8 34.6 15.1 34.6 C12 34.6 9.5 33.4 8 31.1"/><path d="M26.6 14 L39.6 34.2 M39.6 14 L26.6 34.2"/></g><g fill="none" stroke="url(#lgs)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M21.2 17 C19.8 14.6 17.4 13.6 14.8 13.6 C11 13.6 8.6 15.6 8.6 18.5 C8.6 21.8 11.6 22.9 14.9 23.9 C18.6 25 21.6 26.4 21.6 29.8 C21.6 33 18.8 34.6 15.1 34.6 C12 34.6 9.5 33.4 8 31.1"/><path d="M26.6 14 L39.6 34.2 M39.6 14 L26.6 34.2"/></g></svg>`.replace('<svg ', '<svg class="logo" aria-hidden="true" ').replace(/\b(lg[bsc])\b/g, '$1' + k); }
 /* =====================================================================
@@ -20532,7 +20533,7 @@ rpgArtOpts = function (L, h = {}) {
 const C2draw35 = C2.draw;
 C2.draw = function (x, o) {
   const B = o?.backBow; if (!B) return C2draw35.apply(this, arguments);
-  const draw = () => { WP.noStr = 1; x.save(); x.translate(B.side ? -6 : (B.back ? -1 : 1), -26); x.rotate(B.side ? -.18 : (B.back ? -.3 : .3)); x.scale(.84, .84);
+  const draw = () => { WP.noStr = 1; x.save(); x.translate(B.side ? -6 : (B.back ? -1 : 1), -26); x.rotate(B.side ? -.22 : (B.back ? -.48 : .48)); x.scale(1.02, 1.02);
     if (B.enh >= 4) { x.save(); x.shadowColor = B.enh >= 10 ? '#8A3AFF' : B.enh >= 7 ? '#FF7A2A' : '#6FD8FF'; x.shadowBlur = 6; WP.D.bow(x, B.tier); x.restore(); } else WP.D.bow(x, B.tier);
     x.restore(); WP.noStr = 0; };
   if (!o.back) draw();
@@ -22605,7 +22606,8 @@ function rpgCosFx45(x, h, ph) {
 }
 rpgDrawHero = (f => function (x, h) {
   const p = RPG_WH44; RPG_WH44 = h;
-  try { x.save(); rpgCosFx45(x, h, 0); x.restore(); const r = f.apply(this, arguments); x.save(); rpgCosFx45(x, h, 1); x.restore(); x.save(); rpgWskFx45(x, h); x.restore(); return r; }
+  try { let bh = false; try { const L = h.look; if (L?.wsk) bh = !!rpgWAxis(L, h.dir === 'l' ? 'r' : h.dir || 'd')?.behind; } catch (e) {}
+    x.save(); rpgCosFx45(x, h, 0); x.restore(); if (bh) { x.save(); rpgWskFx45(x, h); x.restore(); } const r = f.apply(this, arguments); x.save(); rpgCosFx45(x, h, 1); x.restore(); if (!bh) { x.save(); rpgWskFx45(x, h); x.restore(); } return r; }
   finally { RPG_WH44 = p; }
 })(rpgDrawHero);
 
@@ -22645,6 +22647,12 @@ rpgDrawHero = (f => function (x, h) {
   RPG_IWPN.fist = (x, P) => { const t = Math.max(0, Math.min(7, P.t ?? 4)); x.save(); x.translate(50, 62); x.rotate(.35); x.scale(2.1, 2.1); WP.D.fist(x, t); x.restore(); };
   RPG_ICANV.clear(); RPG_IURL.clear();
 })();
+
+/* ---------- 5) ธนูสะพายหลังเห็นชัดขึ้น + เอฟเฟกต์แฟชั่น/ตีบวกเกาะธนูที่สะพายด้วย ---------- */
+rpgWAxis = (f => function (look, dir) { const r = f.apply(this, arguments); if (r) return r;
+  try { const h = RPG_WH44 || {}; const o = rpgArtOpts(look, { dir, pose: 'idle' }), B = o.backBow; if (!B) return null;
+    const rot = B.side ? -.22 : (B.back ? -.48 : .48), cx = B.side ? -6 : (B.back ? -1 : 1), cy = -26, c = Math.cos(rot), s = Math.sin(rot), L = 24;
+    return { a: [cx - s * L, cy + c * L], b: [cx + s * L, cy - c * L], type: 'bow', behind: !B.back }; } catch (e) { return null; } })(rpgWAxis);
 
 /* =====================================================================
    rpg-net.js — หน้าเกมของครู: จัดการตัวละคร (เลือกชั้น → ห้อง) · คำถามในเกม · ตรวจแชท · กิลด์ · โหมดครู
