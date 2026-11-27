@@ -5080,6 +5080,32 @@ img.ii.jic{border-radius:22%}
 .rp-grade[style*="#FFD86A"]{background:linear-gradient(90deg,#C8941E,#FFE27A,#C8941E)!important;color:#4A3000!important}
 @media (prefers-reduced-motion:reduce){.gc-cap.divine{animation:none}}
 @media (max-width:760px){.rpg-wb{top:218px;bottom:auto;left:auto;right:8px;transform:none;padding:4px 10px 4px 6px;gap:6px;border-radius:14px}.rpg-wb>span{font-size:18px}.rpg-wb b{font-size:11.5px}.rpg-wb small{display:none}.rpg-wb i{width:84px;height:4px}}
+/* ===== v44 แท็บสกิล ===== */
+.sk44-tabs{display:flex;gap:6px;overflow-x:auto;margin:0 0 10px;padding:2px 2px 6px;scrollbar-width:thin}
+.sk44-tabs button{flex:none;display:flex;align-items:center;gap:6px;padding:7px 14px;border:0;border-radius:14px;cursor:pointer;font:800 13px var(--f-body);color:#3A2E5A;background:rgba(255,255,255,.6);box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.85)}
+.sk44-tabs button img.ii{width:22px;height:22px}.sk44-tabs button small{font-size:10.5px;font-weight:700;color:#8A82B0}
+.sk44-tabs button.on{color:#fff;background:var(--c);box-shadow:0 3px 10px color-mix(in srgb,var(--c) 45%,transparent)}.sk44-tabs button.on small{color:rgba(255,255,255,.85)}
+.sk44-tabs button:focus-visible{outline:3px solid var(--c);outline-offset:2px}
+.sk44-hint{margin:0 0 8px;font-size:12.5px;color:#6B6690}.sk44-hint b{color:#5A48D8}
+/* ===== v44 สัตว์เลี้ยง ===== */
+.pt44{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:14px}
+.pt44-stage{position:relative;min-height:230px;border-radius:22px;overflow:hidden;background:radial-gradient(120% 80% at 50% 0%,color-mix(in srgb,var(--pc) 26%,#fff),rgba(255,255,255,.4) 60%,rgba(220,214,250,.5));box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.75)}
+.pt44-stage canvas{position:absolute;inset:0;width:100%;height:100%}
+.pt44-tier{position:absolute;left:10px;top:10px;padding:3px 10px;border-radius:999px;font:800 11.5px var(--f-body);color:#fff;background:var(--pc)}
+.pt44-out{position:absolute;right:10px;top:10px;padding:3px 10px;border-radius:999px;font:800 11.5px var(--f-body);color:#0A3A20;background:#7FF0B0}
+.pt44-info{display:grid;gap:8px;align-content:start}.pt44-n{font:800 18px var(--f-head);color:#2A2350}.pt44-n i{font-style:normal;font-size:14px;color:#C8941E}
+.pt44-st{display:flex;flex-wrap:wrap;gap:6px}.pt44-st span{display:grid;padding:6px 10px;border-radius:12px;background:rgba(255,255,255,.65)}.pt44-st small{font-size:10.5px;color:#7A72A8}.pt44-st b{font-size:13.5px;color:#2A2350}
+.pt44-bar{display:grid;grid-template-columns:62px 1fr 40px;align-items:center;gap:8px}.pt44-bar small{font-size:12px;font-weight:700;color:#5A5280}.pt44-bar i{height:8px;border-radius:5px;background:rgba(60,50,120,.12);overflow:hidden}.pt44-bar u{display:block;height:100%;border-radius:5px}.pt44-bar b{font-size:12px;color:#3A3460;text-align:right}
+.pt44-act{display:flex;flex-wrap:wrap;gap:6px}
+.pt44-egg{display:flex;gap:10px;align-items:center;margin:12px 0 4px;padding:10px 14px;border-radius:16px;background:rgba(255,246,210,.8);box-shadow:inset 0 0 0 1.5px #F2D27A}.pt44-egg.off{background:rgba(255,255,255,.55);box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.8)}
+.pt44-egg>span{font-size:26px}.pt44-egg b{display:block;font-size:13.5px;color:#3A2E5A}.pt44-egg small{font-size:12px;color:#6B6690}
+.pt44-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(96px,1fr));gap:8px}
+.pt44-c{position:relative;display:grid;justify-items:center;gap:2px;padding:8px 6px;border:0;border-radius:16px;cursor:pointer;font-family:var(--f-body);background:rgba(255,255,255,.62);box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.85)}
+.pt44-c img{width:64px;height:64px}.pt44-c>span{font-size:40px;line-height:64px}.pt44-c b{font-size:12px;color:#2A2350;max-width:100%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.pt44-c small{font-size:11px;color:#7A72A8}
+.pt44-c::before{content:'';position:absolute;left:50%;top:12px;width:52px;height:52px;border-radius:50%;transform:translateX(-50%);background:radial-gradient(circle,color-mix(in srgb,var(--pc) 35%,transparent),transparent 70%);z-index:0}.pt44-c>*{position:relative}
+.pt44-c.on{box-shadow:inset 0 0 0 2.5px var(--pc),0 4px 12px color-mix(in srgb,var(--pc) 35%,transparent)}.pt44-c.out small{color:#1E9E5A;font-weight:800}
+.pt44-c:focus-visible{outline:3px solid var(--pc);outline-offset:2px}
+@media (max-width:760px){.pt44{grid-template-columns:1fr}.pt44-stage{min-height:180px}}
 
 </style>
 </head>
@@ -5624,7 +5650,7 @@ if (typeof module !== 'undefined') module.exports = ExamParser;
 </script>
 <script>
 /* โลโก้: ภาพครูปลื้ม (ไฟล์ต้นฉบับ src/logo.svg ฝังตอน build) */
-const APP_VER = '43.0 · 27 พ.ย. 2569';
+const APP_VER = '44.0 · 27 พ.ย. 2569';
 let LOGO_N = 0;
 function logoSVG() { const k = 'L' + (++LOGO_N); return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><defs><linearGradient id="lgb" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3B9BFF"/><stop offset=".5" stop-color="#0A5BE0"/><stop offset="1" stop-color="#062C78"/></linearGradient><linearGradient id="lgs" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset=".6" stop-color="#FFF4D6"/><stop offset="1" stop-color="#FFD978"/></linearGradient><radialGradient id="lgc" cx=".3" cy=".08" r=".75"><stop offset="0" stop-color="#fff" stop-opacity=".55"/><stop offset=".5" stop-color="#fff" stop-opacity=".08"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient></defs><rect width="48" height="48" rx="13" fill="url(#lgb)"/><rect width="48" height="48" rx="13" fill="url(#lgc)"/><rect x=".75" y=".75" width="46.5" height="46.5" rx="12.3" fill="none" stroke="#fff" stroke-opacity=".45" stroke-width="1.2"/><g fill="none" stroke="#04235F" stroke-opacity=".35" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" transform="translate(0 1.2)"><path d="M21.2 17 C19.8 14.6 17.4 13.6 14.8 13.6 C11 13.6 8.6 15.6 8.6 18.5 C8.6 21.8 11.6 22.9 14.9 23.9 C18.6 25 21.6 26.4 21.6 29.8 C21.6 33 18.8 34.6 15.1 34.6 C12 34.6 9.5 33.4 8 31.1"/><path d="M26.6 14 L39.6 34.2 M39.6 14 L26.6 34.2"/></g><g fill="none" stroke="url(#lgs)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M21.2 17 C19.8 14.6 17.4 13.6 14.8 13.6 C11 13.6 8.6 15.6 8.6 18.5 C8.6 21.8 11.6 22.9 14.9 23.9 C18.6 25 21.6 26.4 21.6 29.8 C21.6 33 18.8 34.6 15.1 34.6 C12 34.6 9.5 33.4 8 31.1"/><path d="M26.6 14 L39.6 34.2 M39.6 14 L26.6 34.2"/></g></svg>`.replace('<svg ', '<svg class="logo" aria-hidden="true" ').replace(/\b(lg[bsc])\b/g, '$1' + k); }
 /* =====================================================================
@@ -20502,7 +20528,7 @@ rpgArtOpts = function (L, h = {}) {
 const C2draw35 = C2.draw;
 C2.draw = function (x, o) {
   const B = o?.backBow; if (!B) return C2draw35.apply(this, arguments);
-  const draw = () => { WP.noStr = 1; x.save(); x.translate(B.side ? -5 : 0, -27); x.rotate(B.side ? -.35 : (B.back ? -.62 : .62)); x.scale(1.1, 1.1);
+  const draw = () => { WP.noStr = 1; x.save(); x.translate(B.side ? -6 : (B.back ? -1 : 1), -26); x.rotate(B.side ? -.18 : (B.back ? -.3 : .3)); x.scale(.84, .84);
     if (B.enh >= 4) { x.save(); x.shadowColor = B.enh >= 10 ? '#8A3AFF' : B.enh >= 7 ? '#FF7A2A' : '#6FD8FF'; x.shadowBlur = 6; WP.D.bow(x, B.tier); x.restore(); } else WP.D.bow(x, B.tier);
     x.restore(); WP.noStr = 0; };
   if (!o.back) draw();
@@ -22329,6 +22355,175 @@ function rpgXmasTree43(x, fx, fy, t) {
 rpgLifeEnts = (f => function (x, t, ents) { const mp = RS.map; if (mp?.xtree) ents.push({ y: mp.xtree[1] / TS + .4, d: () => rpgXmasTree43(x, mp.xtree[0], mp.xtree[1], t) }); return f.apply(this, arguments); })(rpgLifeEnts);
 // ไฟประดับตามตึกกะพริบ
 rpgScenery37 = (f => function (x, mp, t, vis) { const g0 = RPG_GRASSC37.town; if (mp?.xmas) RPG_GRASSC37.town = RPG_GRASSC37.ice; let r; try { r = f.apply(this, arguments); } finally { RPG_GRASSC37.town = g0; } if (mp?.xlights?.length && !RS.lowFx) { x.save(); mp.xlights.forEach(([a, b, k]) => { const col = RPG_XLIGHT[k % 5], on = Math.sin(t / 300 + k * 1.3 + a * .01) > 0; x.globalAlpha = on ? 1 : .3; x.fillStyle = col; if (on) { x.shadowColor = col; x.shadowBlur = 6; } x.beginPath(); x.arc(a, b, 1.6, 0, 7); x.fill(); x.shadowBlur = 0; }); x.restore(); } return r; })(rpgScenery37);
+
+/* =====================================================================
+   SX Realm v44 — เอฟเฟกต์ตีบวกเกาะตามอาวุธจริง · เพลงคริสต์มาสในเมืองหลวง · ท่าถืออาวุธเป็นธรรมชาติ
+   หน้าสกิลแบ่งแท็บตามคลาส · สัตว์เลี้ยงใหม่ (หน้าต่างใหม่ + สัตว์ของคนอื่นเดินตามจริง)
+   ===================================================================== */
+
+/* ---------- 1) ท่าถืออาวุธ ---------- */
+(() => {
+  const J = RPG_JOBART, set = (j, k, v) => { if (J[j]?.[k]) J[j][k] = { ...J[j][k], ...v }; };
+  ['fire', 'ice', 'mage'].forEach(j => set(j, 'w', { sc: .8 }));
+  set('ninja', 'w', { sc: .74 }); set('ninja', 'w2', { sc: .74 });
+  set('monk', 'w', { sc: .38 }); set('monk', 'w2', { sc: .38 });
+  set('summon', 'w', { sc: .68 }); set('engineer', 'w', { sc: .7 });
+  if (J.summon) J.summon.R = [12, -15];
+  ['knight', 'priest', 'scholar'].forEach(j => delete RPG_WALK36[j]);
+  if (RPG_WALK36.summon) RPG_WALK36.summon.R = [11, -14];
+  if (RPG_WALK36.engineer) RPG_WALK36.engineer.rot = .42;
+  GRIP41.orb = [[0, 9]];
+})();
+// นักดาบเดิน: ลากดาบ (มุมหน้า/หลัง ใบดาบหดตามมุมมอง ปลายครูดพื้นพอดี)
+const rpgArtOpts44 = rpgArtOpts;
+rpgArtOpts = function (L, h = {}) {
+  const o = rpgArtOpts44(L, h), w = o.wpn;
+  if (w && w.type === 'gsword' && h.walk != null && (h.pose || 'idle') === 'idle' && !o.turn) {
+    const sw = Math.sin(h.walk); delete w.pre; w.fs = .4; w.two = 0; w.hand = 'R'; w.rot = 2.8 + sw * .03; o.pose.R = [9, -15 + sw]; o.pose.L = [-9, -18 - sw * 1.6];
+    if (o.back) { w.post44 = 1; w.top = false; w.behind = false; } else { w.pre44 = 1; w.top = false; w.behind = true; }
+  }
+  return o;
+};
+(() => {
+  const C2d = C2.draw;
+  const dw = (x, o, w) => { const g = GRIP41.gsword[0], c = Math.cos(w.rot), s = Math.sin(w.rot), a = o.pose.R, gx = g[0] * w.sc, gy = g[1] * w.sc * (w.fs || 1);
+    x.save(); x.translate(a[0] - (gx * c - gy * s), a[1] - (gx * s + gy * c)); x.rotate(w.rot); x.scale(w.sc, w.sc * (w.fs || 1)); WP.D.gsword(x, w.tier); x.restore(); };
+  C2.draw = function (x, o) {
+    const w = o?.wpn; if (!w || !(w.pre44 || w.post44)) return C2d.apply(this, arguments);
+    if (w.pre44) dw(x, o, w);
+    const t0 = w.type; w.type = 'none'; let r; try { r = C2d.apply(this, arguments); } finally { w.type = t0; }
+    if (w.post44) dw(x, o, w); return r;
+  };
+})();
+
+/* ---------- 2) เอฟเฟกต์ตีบวก: คำนวณแกนจากท่าปัจจุบันจริง (เดิน/โจมตี/หันข้าง) ---------- */
+const RPG_WLEN44 = { gsword: 64, sword: 44, shield: 16, bow: 26, staff: 38, fstaff: 40, istaff: 40, wand: 22, dagger: 20, dagger1: 22, fist: 12, pawhammer: 30, mace: 30, orb: 10, lute: 34, hammer: 22, tablet: 14 };
+let RPG_WH44 = null; const RPG_WAX44 = new Map();
+rpgWAxis = function (look, dir) {
+  const h = RPG_WH44 || {}, pose = h.pose === 'hurt' || h.pose === 'down' ? 'idle' : h.pose || 'idle';
+  const walkF = h.moving ? Math.floor((((h.anim || 0) % (Math.PI * 2)) + Math.PI * 2) % (Math.PI * 2) / (Math.PI * 2) * 12) : -1, pkF = pose === 'atk' ? Math.round((h.pk || 0) * 6) / 6 : 0;
+  const k = JSON.stringify([look.job, look.wt, look.wtier, look.os || 0, dir, pose, walkF, pkF]); if (RPG_WAX44.has(k)) return RPG_WAX44.get(k);
+  let r = null;
+  try { const o = rpgArtOpts(look, { dir, pose, pk: pkF, walk: walkF >= 0 ? walkF / 12 * Math.PI * 2 : null }), w = o.wpn;
+    if (w) { const type = w.type === 'none' ? 'gsword' : w.type, hand = o.pose?.[w.hand || 'R'] || [10, -21], g = (GRIP41[type] || [[0, 0]])[0], sc = w.sc || 1, fs = w.fs || 1, c = Math.cos(w.rot), sn = Math.sin(w.rot);
+      const ox = hand[0] - (g[0] * sc * c - g[1] * sc * fs * sn), oy = hand[1] - (g[0] * sc * sn + g[1] * sc * fs * c), len = (RPG_WLEN44[type] || 30) * sc * fs;
+      const at = d => [ox + sn * d, oy - c * d]; r = { a: at(len * .08), b: at(len), type, behind: !!(w.behind || w.pre44) && !w.top }; } } catch (e) {}
+  if (RPG_WAX44.size > 600) RPG_WAX44.clear(); RPG_WAX44.set(k, r); return r;
+};
+rpgDrawHero = (f => function (x, h) { const p = RPG_WH44; RPG_WH44 = h; try { return f.apply(this, arguments); } finally { RPG_WH44 = p; } })(rpgDrawHero);
+
+/* ---------- 3) เพลงคริสต์มาสในเมืองหลวง (Jingle Bells · เพลงพื้นบ้าน 1857 ลิขสิทธิ์หมดแล้ว) ---------- */
+const RPG_XMAS_SONG = (() => {
+  const N = { G4: 67, A4: 69, B4: 71, C5: 72, D5: 74, E5: 76, F5: 77, G5: 79, A5: 81 };
+  const bar = s => s.trim().split(/\s+/).map(t => { const [n, d] = t.split(':'); return [n === 'r' ? null : N[n], +(d || 1)]; });
+  const verse = ['G4:2 E5:2 D5:2 C5:2', 'G4:6 G4 G4', 'G4:2 E5:2 D5:2 C5:2', 'A4:8', 'A4:2 F5:2 E5:2 D5:2', 'B4:8', 'G5:2 G5:2 F5:2 D5:2', 'E5:8', 'G4:2 E5:2 D5:2 C5:2', 'G4:8', 'G4:2 E5:2 D5:2 C5:2', 'A4:6 A4:2', 'A4:2 F5:2 E5:2 D5:2', 'G5:2 G5:2 G5:2 G5:2', 'A5:2 G5:2 F5:2 D5:2', 'C5:8'];
+  const chorus = ['E5:2 E5:2 E5:4', 'E5:2 E5:2 E5:4', 'E5:2 G5:2 C5:3 D5:1', 'E5:8', 'F5:2 F5:2 F5:3 F5:1', 'F5:2 E5:2 E5:2 E5:1 E5:1', 'E5:2 D5:2 D5:2 E5:2', 'D5:4 G5:4', 'E5:2 E5:2 E5:4', 'E5:2 E5:2 E5:4', 'E5:2 G5:2 C5:3 D5:1', 'E5:8', 'F5:2 F5:2 F5:2 F5:2', 'F5:2 E5:2 E5:2 E5:1 E5:1', 'G5:2 G5:2 F5:2 D5:2', 'C5:8'];
+  const vC = ['C', 'C', 'C', 'F', 'F', 'G', 'G', 'C', 'C', 'C', 'C', 'F', 'F', 'D', 'G', 'C'], cC = ['C', 'C', 'C', 'C', 'F', 'C', 'D', 'G', 'C', 'C', 'C', 'C', 'F', 'C', 'G', 'C'];
+  const CH = { C: [48, 52, 55], F: [53, 57, 60], G: [43, 47, 50], D: [50, 54, 57] };
+  const bars = [...verse.map((b, i) => [bar(b), CH[vC[i]]]), ...chorus.map((b, i) => [bar(b), CH[cC[i]]])];
+  return { bpm: 150, bars };
+})();
+function rpgXmasBgm44() {
+  if (!rpgAC()) return false; const c = SND.ctx, bus = c.createGain(); bus.gain.value = 0; bus.gain.setTargetAtTime(.17, c.currentTime, .8); bus.connect(SND.musIn || SND.mus || SND.master);
+  const hz = n => 440 * Math.pow(2, (n - 69) / 12), q = 60 / RPG_XMAS_SONG.bpm, B = RPG_XMAS_SONG.bars;
+  const T = (f, dur, type, vol, at) => rpgTone(f, dur, type, vol, 0, Math.max(0, at - c.currentTime), bus);
+  // กระดิ่งเลื่อนหิมะ: noise สั้น ๆ ผ่าน highpass
+  const nb = c.createBuffer(1, c.sampleRate * .08, c.sampleRate), d = nb.getChannelData(0); for (let i = 0; i < d.length; i++) d[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / d.length, 3);
+  const bell = (at, v) => { const s = c.createBufferSource(), f = c.createBiquadFilter(), g = c.createGain(); s.buffer = nb; f.type = 'highpass'; f.frequency.value = 6500; g.gain.value = v; s.connect(f); f.connect(g); g.connect(bus); s.start(at); };
+  let bi = 0, next = c.currentTime + .2;
+  SND.bgm = { bus, city: 'town', xmas: 1, tm: setInterval(() => {
+    while (next < c.currentTime + .8) {
+      const [mel, ch] = B[bi % B.length], t0 = next;
+      // แพดคอร์ด + เบสจังหวะ 1/3 + กระดิ่งทุกจังหวะ (เน้น 2/4)
+      ch.forEach((n, k) => T(hz(n + 12), q * 3.8, 'sine', .05, t0 + k * .012));
+      [0, 1, 2, 3].forEach(b => { T(hz(ch[0] - 12 + (b % 2 ? 7 : 0)), q * .8, 'triangle', .3, t0 + b * q); bell(t0 + b * q, b % 2 ? .22 : .12); bell(t0 + b * q + q / 2, .07); });
+      let at = t0; mel.forEach(([n, du]) => { const dd = du * q / 2; if (n) { T(hz(n), dd * .95, 'triangle', .12, at); T(hz(n + 12), dd * 1.4, 'sine', .04, at); T(hz(n + 24), dd * .6, 'sine', .015, at); } at += dd; });
+      next += q * 4; bi++;
+    }
+  }, 150) };
+  return true;
+}
+rpgBgm = (f => function (mode) {
+  const city = !RS.battle && !mode && RS.map?.city ? RS.map.city : null;
+  if (city === 'town') { if (!SND.on || !rpgAC()) return rpgBgmStop(); if (SND.bgm?.xmas) return; rpgBgmStop(); rpgSndPreload?.(); rpgAmbient(null); SND.mode = 'city:town'; rpgXmasBgm44(); return; }
+  return f.apply(this, arguments);
+})(rpgBgm);
+rpgAmbient = (f => function (k) { if (RS.map?.city === 'town' && k === 'm_town') return f.call(this, null); return f.apply(this, arguments); })(rpgAmbient);
+if (RPG_CITY_SONG?.town) RPG_CITY_SONG.town.n = 'Aurelia · Jingle Bells';
+
+/* ---------- 4) หน้าสกิล: แท็บ "ช่องสกิล" + หนึ่งแท็บต่อหนึ่งคลาส + สกิลติดตัว ---------- */
+RS.skTab = RS.skTab || 0;
+rpgSkillHTML = (f => function () {
+  const html = f.apply(this, arguments), T = document.createElement('template'); T.innerHTML = html; const F = T.content, s = R.save, j = rpgJob();
+  const h3 = F.querySelector('h3'), tch = F.querySelector('.sk2-t'), top = F.querySelector('.skt-top'), slots = F.querySelector('.sk2-slots'), buff = F.querySelector('.sk2-buff');
+  const tiers = [...F.querySelectorAll('.sk2-tier')].filter(t => t.querySelector('.sk2-c')), locked = [...F.querySelectorAll('.sk2-tier')].filter(t => !t.querySelector('.sk2-c'));
+  const pasH = [...F.querySelectorAll('h4')].find(h => h.textContent.includes('ติดตัว')), pas = F.querySelector('.skt-ps');
+  const tabs = [{ n: '🎯 ช่องสกิล', b: [top, slots, buff] }, ...tiers.map((t, i) => { const h5 = t.querySelector('h5'); return { n: (h5?.textContent || `คลาส ${i + 1}`).replace(/^คลาส \d+ · /, ''), ic: h5?.querySelector('img')?.outerHTML || '', sub: `คลาส ${i + 1}`, b: [t] }; }), { n: '🧬 สกิลติดตัว', b: [pasH, pas] }];
+  if (locked.length) tabs.push({ n: '🔒 คลาสถัดไป', b: locked });
+  const cur = Math.min(RS.skTab || 0, tabs.length - 1);
+  const ser = n => n ? n.outerHTML : '';
+  const body = tabs[cur].b.map(ser).join('');
+  const hint = cur === 0 ? `<p class="sk44-hint">แตะช่องเพื่อเลือกสกิล · ดูและอัปสกิลแต่ละคลาสได้ที่แท็บด้านบน</p>` : cur <= tiers.length ? `<p class="sk44-hint">แต้มสกิลเหลือ <b>${s.skp || 0}</b> · กด ▲ เพื่ออัป · กด “ใส่ช่อง” แล้วแตะช่องในแท็บแรก</p>` : '';
+  return `${ser(h3)}${ser(tch)}<div class="sk44-tabs pg-keep" role="tablist" style="--c:${j.col}">${tabs.map((t, i) => `<button type="button" role="tab" aria-selected="${i === cur}" class="${i === cur ? 'on' : ''}" data-r="sk-tab" data-i="${i}">${t.ic || ''}<span>${esc(t.n)}</span>${t.sub ? `<small>${t.sub}</small>` : ''}</button>`).join('')}</div>${hint}${body}`;
+})(rpgSkillHTML);
+document.addEventListener('click', e => { const b = e.target.closest?.('[data-r=sk-tab]'); if (!b) return; e.stopPropagation(); RS.skTab = +b.dataset.i; RS.pg && (RS.pg.skill = 0); rpgSfx('click'); rpgPanel('skill'); }, true);
+// กด "ใส่ช่อง" ในแท็บคลาส → กลับไปแท็บช่องสกิลเพื่อเลือกช่อง
+document.addEventListener('click', e => { const b = e.target.closest?.('[data-r=sk2-pick]'); if (b) setTimeout(() => { if (RS.skPick) { RS.skTab = 0; rpgPanel('skill'); } }, 0); });
+
+/* ---------- 5) สัตว์เลี้ยง ---------- */
+// สัตว์ของผู้เล่นคนอื่น: ใช้ภาพเดียวกับของเรา เดินตามบนพื้น (แทนอีโมจิลอย)
+RS.opets = RS.opets || {};
+rpgCharAt = (f => function (x, c) { if (c && c.pet && !c.me) c = { ...c, pet: null }; return f.call(this, x, c); })(rpgCharAt);
+rpgLifeEnts = (f => function (x, t, ents) {
+  const mp = RS.map; if (mp) Object.entries(RS.others || {}).forEach(([id, o]) => { if (!o.p || o.m !== mp.scene || t - o.seen > 180000) return;
+    const P = RS.opets[id] = RS.opets[id] || { x: o.x - .8, y: o.y + .2, fx: 1 }; const tx = o.x - .75 * (o.face || 1), ty = o.y + .15, dx = tx - P.x, dy = ty - P.y, dd = Math.hypot(dx, dy);
+    if (dd > 6) { P.x = tx; P.y = ty; } else if (dd > .25) { P.x += dx * .08; P.y += dy * .08; if (Math.abs(dx) > .02) P.fx = dx > 0 ? 1 : -1; } P.mv = dd > .3;
+    ents.push({ y: P.y - .01, d: () => { const hop = P.mv ? Math.abs(Math.sin(t / 140)) * 3 : 0; x.fillStyle = 'rgba(20,30,40,.22)'; x.beginPath(); x.ellipse(P.x * TS, P.y * TS + 1, 8, 2.8, 0, 0, 7); x.fill(); x.save(); x.translate(P.x * TS, P.y * TS - hop); const im = rpgMonImg(o.p, P.mv ? Math.floor(t / 90) % 8 : 0); if (im) { x.scale(P.fx < 0 ? -.5 : .5, .5); rpgArtBlit(x, im, false); } else x.drawImage(rpgEmo(o.p, 64), -12, -22, 24, 24); x.restore(); } }); });
+  return f.apply(this, arguments);
+})(rpgLifeEnts);
+// รูปสัตว์เลี้ยง (ภาพเดียวกับในเกม)
+function rpgPetPic44(ic, sz = 96) { const im = rpgMonImg(ic, 0, 3); if (!im) return null; const c = document.createElement('canvas'); c.width = c.height = sz; const x = c.getContext('2d'), k = sz / 46; x.translate(sz / 2, sz * .86); x.scale(k, k); rpgArtBlit(x, im, false); return c.toDataURL(); }
+const RPG_PETPIC44 = new Map(); const rpgPetSrc44 = ic => { if (!RPG_PETPIC44.has(ic)) RPG_PETPIC44.set(ic, rpgPetPic44(ic)); return RPG_PETPIC44.get(ic); };
+const RPG_PTIER44 = [['ธรรมดา', '#8FA3B8'], ['หายาก', '#4F8FE8'], ['ตำนาน', '#B36BFF'], ['เทพ', '#F2C14E']];
+const rpgPetsHTML44 = function () {
+  const s = R.save, L = s.pets || [], sel = L.find(p => p.id === RS.petSel) || L.find(p => p.id === s.petOut) || L[0];
+  const HL = typeof rpgHatch === 'function' ? rpgHatch() : [], now = Date.now();
+  const egg = HL.length ? `<div class="pt44-egg"><span>🥚</span><div><b>ฟักไข่กับลุงฟาร์ม</b><small>${HL.map(h => `${esc(RPG_ITEMS[h.id]?.n || 'ไข่')} ${now >= h.t1 ? '✅ พร้อมรับที่ฟาร์ม' : 'เหลือ ' + rpgFmtDur(h.t1 - now)}`).join(' · ')}</small></div></div>`
+    : `<div class="pt44-egg off"><span>🥚</span><div><b>ยังไม่ได้ฝากไข่</b><small>ชนะมอนสเตอร์ได้ไข่ → ฝากลุงฟาร์มในเมืองฟัก · หรือโยน 🎣 ตาข่ายจับมอนสเตอร์ที่หมดแรง</small></div></div>`;
+  if (!L.length) return `<h3>🐾 สัตว์เลี้ยง 0/12</h3>${egg}<p class="rp-p">ยังไม่มีสัตว์เลี้ยง · เริ่มจากรับไข่ที่ฟาร์ม หรือจับมอนสเตอร์ในสนาม</p>`;
+  const T = RPG_PTIER44[Math.min(3, sel.tier || 0)], out = s.petOut === sel.id, hun = Math.round(sel.hunger ?? 80), love = Math.round(sel.happy ?? 60);
+  const bar = (n, v, c) => `<div class="pt44-bar"><small>${n}</small><i><u style="width:${Math.max(0, Math.min(100, v))}%;background:${c}"></u></i><b>${v}%</b></div>`;
+  return `<h3>🐾 สัตว์เลี้ยง <small>${L.length}/12</small></h3>
+    <div class="pt44" style="--pc:${T[1]}">
+      <div class="pt44-stage"><canvas id="pt44-cv" aria-label="${esc(sel.n)}"></canvas><span class="pt44-tier">${T[0]}</span>${out ? '<span class="pt44-out">กำลังเดินตามคุณ</span>' : ''}</div>
+      <div class="pt44-info"><b class="pt44-n">${sel.ic} ${esc(sel.n)} <i>Lv.${sel.lv || 1}</i></b>
+        <div class="pt44-st"><span><small>พลังโจมตี</small><b>⚔️ ${rpgPetAtk(sel)}</b></span><span><small>ท่าพิเศษ</small><b>${esc(sel.el || '-')}</b></span>${sel.heal ? `<span><small>ฟื้น HP</small><b>💚 ${sel.heal}</b></span>` : ''}${sel.guard ? `<span><small>กันดาเมจ</small><b>🛡️ ${Math.round(sel.guard * 100)}%</b></span>` : ''}</div>
+        ${bar('อิ่ม', hun, '#3DDC84')}${bar('ความรัก', love, '#FF6FA8')}
+        <div class="pt44-act"><button class="rp-btn ${out ? 'ghost' : 'primary'}" data-r="petout" data-p="${sel.id}">${out ? 'ให้พัก' : 'พาไปด้วย'}</button>
+          <button class="rp-btn" data-r="feed" data-p="${sel.id}" data-i="food" ${s.inv.food ? '' : 'disabled'}>🍖 ให้อาหาร (${s.inv.food || 0})</button>
+          <button class="rp-btn" data-r="feed" data-p="${sel.id}" data-i="cake" ${s.inv.cake ? '' : 'disabled'}>🍰 ขนม (${s.inv.cake || 0})</button>${!out && L.length > 1 ? `<button class="rp-btn ghost" data-r="petfree" data-p="${sel.id}">🕊️ ปล่อย</button>` : ''}</div></div></div>
+    ${egg}
+    <h4 class="qx-h">สัตว์เลี้ยงของฉัน <small>แตะเพื่อดูรายละเอียด</small></h4>
+    <div class="pt44-grid">${L.map(p => { const t = RPG_PTIER44[Math.min(3, p.tier || 0)], src = rpgPetSrc44(p.ic); return `<button type="button" class="pt44-c ${p.id === sel.id ? 'on' : ''} ${s.petOut === p.id ? 'out' : ''}" style="--pc:${t[1]}" data-r="pet-sel" data-p="${p.id}">${src ? `<img src="${src}" alt="">` : `<span>${p.ic}</span>`}<b>${esc(p.n)}</b><small>Lv.${p.lv || 1}${s.petOut === p.id ? ' · 🐾' : ''}</small></button>`; }).join('')}</div>`;
+};
+rpgPanel = (f => function (k) {
+  const r = f.apply(this, arguments);
+  if (k === 'pets' && R.save) { const card = document.querySelector('#rpg-panel .rp-card'); if (card) { const keep = [...card.children].filter(e => e.matches('.rp-x')); card.innerHTML = ''; keep.forEach(e => card.appendChild(e)); card.insertAdjacentHTML('beforeend', rpgPetsHTML44()); card.classList.add('pk-pets'); rpgPetStage44(); requestAnimationFrame(() => rpgPaginate?.()); } }
+  return r;
+})(rpgPanel);
+document.addEventListener('click', e => { const b = e.target.closest?.('[data-r=pet-sel]'); if (!b) return; e.stopPropagation(); RS.petSel = b.dataset.p; rpgSfx('click'); rpgPanel('pets'); }, true);
+function rpgPetStage44() {
+  const loop = t => { const cv = document.getElementById('pt44-cv'); if (!cv || RS.panel !== 'pets') return; const s = R.save, p = (s.pets || []).find(q => q.id === RS.petSel) || (s.pets || []).find(q => q.id === s.petOut) || s.pets?.[0]; if (!p) return;
+    const r = cv.getBoundingClientRect(), d = Math.min(2, devicePixelRatio || 1); if (!r.width) return requestAnimationFrame(loop);
+    if (cv.width !== Math.round(r.width * d)) { cv.width = Math.round(r.width * d); cv.height = Math.round(r.height * d); }
+    const x = cv.getContext('2d'), W = cv.width, H = cv.height, col = RPG_PTIER44[Math.min(3, p.tier || 0)][1]; x.setTransform(1, 0, 0, 1, 0, 0); x.clearRect(0, 0, W, H);
+    const fy = H * .82, g = x.createRadialGradient(W / 2, fy, 0, W / 2, fy, W * .45); g.addColorStop(0, col + '55'); g.addColorStop(1, col + '00'); x.fillStyle = g; x.fillRect(0, 0, W, H);
+    x.save(); x.translate(W / 2, fy); x.scale(1, .3); x.fillStyle = 'rgba(255,255,255,.75)'; x.beginPath(); x.arc(0, 0, W * .24, 0, 7); x.fill(); x.restore();
+    if ((p.tier || 0) >= 2) for (let k = 0; k < 8; k++) { const q = (t / 2400 + k / 8) % 1; x.globalAlpha = Math.sin(q * Math.PI); x.fillStyle = k % 2 ? '#fff' : col; x.beginPath(); x.arc(W / 2 + Math.cos(k * 2.4) * W * .2, fy - q * H * .6, 2 * d, 0, 7); x.fill(); } x.globalAlpha = 1;
+    const im = rpgMonImg(p.ic, Math.floor(t / 110) % 8, 4); x.translate(W / 2, fy - Math.abs(Math.sin(t / 260)) * 4 * d); const sc = Math.min(W / 70, H / 60); x.scale(sc, sc); if (im) rpgArtBlit(x, im, false); else { x.font = '30px sans-serif'; x.textAlign = 'center'; x.fillText(p.ic, 0, -6); }
+    requestAnimationFrame(loop); };
+  requestAnimationFrame(loop);
+}
 
 /* =====================================================================
    rpg-net.js — หน้าเกมของครู: จัดการตัวละคร (เลือกชั้น → ห้อง) · คำถามในเกม · ตรวจแชท · กิลด์ · โหมดครู
