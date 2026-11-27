@@ -4848,6 +4848,12 @@ img.ii.jic{border-radius:22%}
 @keyframes fin33{0%{opacity:0;transform:scale(2.4) rotate(-8deg)}100%{opacity:1;transform:scale(1) rotate(-6deg)}}
 .rb-fin33 small{position:absolute;right:14px;bottom:12px;padding:4px 10px;border-radius:9px;font-size:12px;color:#fff;background:rgba(0,0,0,.4)}
 @media (prefers-reduced-motion:reduce){.cn-cut33,.cn-cut33 img{animation-duration:.01s}.rb-fin33 .fin-v{opacity:1;transform:none;animation:none}}
+/* v34: ไอคอนสกิลวาดเอง */
+.rpg img.ii.ski{border-radius:24%}
+.sk2-slot span img.ii.ski{width:44px;height:44px}.sk2-ic img.ii.ski,.skc33-it span img.ii.ski{width:38px;height:38px}
+.rb-cmd img.ii.ski,.rb-sk img.ii.ski,[data-r^="b-sk"] img.ii.ski,[data-r="bsk"] img.ii.ski{width:1.9em;height:1.9em}
+.cn-name b img.ii.ski{width:1.1em;height:1.1em;vertical-align:-.15em}
+.cw-sm span img.ii.ski,.cw-gem span img.ii.ski{width:38px;height:38px}
 
 </style>
 </head>
@@ -5392,7 +5398,7 @@ if (typeof module !== 'undefined') module.exports = ExamParser;
 </script>
 <script>
 /* โลโก้: ภาพครูปลื้ม (ไฟล์ต้นฉบับ src/logo.svg ฝังตอน build) */
-const APP_VER = '33.0 · 27 พ.ย. 2569';
+const APP_VER = '34.0 · 27 พ.ย. 2569';
 let LOGO_N = 0;
 function logoSVG() { const k = 'L' + (++LOGO_N); return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><defs><linearGradient id="lgb" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3B9BFF"/><stop offset=".5" stop-color="#0A5BE0"/><stop offset="1" stop-color="#062C78"/></linearGradient><linearGradient id="lgs" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset=".6" stop-color="#FFF4D6"/><stop offset="1" stop-color="#FFD978"/></linearGradient><radialGradient id="lgc" cx=".3" cy=".08" r=".75"><stop offset="0" stop-color="#fff" stop-opacity=".55"/><stop offset=".5" stop-color="#fff" stop-opacity=".08"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient></defs><rect width="48" height="48" rx="13" fill="url(#lgb)"/><rect width="48" height="48" rx="13" fill="url(#lgc)"/><rect x=".75" y=".75" width="46.5" height="46.5" rx="12.3" fill="none" stroke="#fff" stroke-opacity=".45" stroke-width="1.2"/><g fill="none" stroke="#04235F" stroke-opacity=".35" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" transform="translate(0 1.2)"><path d="M21.2 17 C19.8 14.6 17.4 13.6 14.8 13.6 C11 13.6 8.6 15.6 8.6 18.5 C8.6 21.8 11.6 22.9 14.9 23.9 C18.6 25 21.6 26.4 21.6 29.8 C21.6 33 18.8 34.6 15.1 34.6 C12 34.6 9.5 33.4 8 31.1"/><path d="M26.6 14 L39.6 34.2 M39.6 14 L26.6 34.2"/></g><g fill="none" stroke="url(#lgs)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M21.2 17 C19.8 14.6 17.4 13.6 14.8 13.6 C11 13.6 8.6 15.6 8.6 18.5 C8.6 21.8 11.6 22.9 14.9 23.9 C18.6 25 21.6 26.4 21.6 29.8 C21.6 33 18.8 34.6 15.1 34.6 C12 34.6 9.5 33.4 8 31.1"/><path d="M26.6 14 L39.6 34.2 M39.6 14 L26.6 34.2"/></g></svg>`.replace('<svg ', '<svg class="logo" aria-hidden="true" ').replace(/\b(lg[bsc])\b/g, '$1' + k); }
 /* =====================================================================
@@ -13579,8 +13585,10 @@ function draw(x, o) {
   // face
   if (o.back) { x.save(); x.translate(0, 0); if (H.backView) H.backView(x, r, hair); else { H.back(x, r, hair); x.fillStyle = HG(x, r, hair); x.beginPath(); x.ellipse(0, -.22 * r, 1.12 * r, 1.04 * r, 0, 0, 7); x.fill(); x.strokeStyle = mix(hair, '#2A1240', .45); x.globalAlpha = .4; x.lineWidth = r * .04; [-.5, -.15, .2, .55].forEach(p => { x.beginPath(); x.moveTo(p * .3 * r, -1.1 * r); x.quadraticCurveTo(p * 1.1 * r, -.4 * r, p * 1.2 * r, .7 * r); x.stroke(); }); } x.restore(); if (O.head && !o.noHead) O.head(x, L); if (o.headFn) o.headFn(x, L); x.restore(); if (o._defer) { o._defer(); o._defer = null; } x.restore(); return; }
   if (o.turn) { x.save(); x.translate(o.turn * .34 * r, 0); x.scale(.8, 1); }
-  const ey = .22 * r, es = r * (P2 ? .2 : P0 ? .225 : .24), eh = es * (P0 ? (f ? 1.3 : 1.15) : f ? 1.38 : 1.18);
-  [-1, 1].forEach(s => { const ex = s * .4 * r;
+  const FC = (o.face || 0) % 6, ey = .22 * r, es = r * (P2 ? .2 : P0 ? .225 : .24) * [1, 1.1, 1.04, 1, 1.02, .96][FC], eh = es * (P0 ? (f ? 1.3 : 1.15) : f ? 1.38 : 1.18) * [1, 1.1, .7, 1, .86, .9][FC];
+  if (FC === 3) [-1, 1].forEach(s => { const ex = s * .4 * r; x.strokeStyle = '#2A1424'; x.lineCap = 'round'; x.lineWidth = r * .09; x.beginPath(); x.moveTo(ex - es * 1.0, ey + eh * .25); x.quadraticCurveTo(ex, ey - eh * .95, ex + es * 1.0, ey + eh * .25); x.stroke();
+    if (f) { x.lineWidth = r * .04; x.beginPath(); x.moveTo(ex + s * es * .95, ey); x.lineTo(ex + s * es * 1.4, ey - eh * .35); x.stroke(); } });
+  else [-1, 1].forEach(s => { const ex = s * .4 * r;
     x.save(); x.beginPath(); x.ellipse(ex, ey, es, eh, 0, 0, 7); x.fillStyle = '#FFFFFF'; x.fill(); x.clip();
     const ix = ex + s * .03 * r, iy = ey + eh * .1, iw = es * .84, ih = eh * .92;
     const ig = x.createLinearGradient(0, iy - ih, 0, iy + ih); ig.addColorStop(0, dk(eye, .62)); ig.addColorStop(.45, eye); ig.addColorStop(1, lt(eye, .6)); x.fillStyle = ig; x.beginPath(); x.ellipse(ix, iy, iw, ih, 0, 0, 7); x.fill();
@@ -13588,7 +13596,9 @@ function draw(x, o) {
     x.fillStyle = lt(eye, .75); x.globalAlpha = .75; x.beginPath(); x.ellipse(ix, iy + ih * .55, iw * .62, ih * .3, 0, 0, 7); x.fill(); x.globalAlpha = 1;
     x.fillStyle = '#120A1E'; x.beginPath(); x.ellipse(ix, iy + ih * .05, iw * .42, ih * .44, 0, 0, 7); x.fill();
     x.fillStyle = 'rgba(40,10,60,.38)'; x.beginPath(); x.ellipse(ex, ey - eh * .95, es * 1.3, eh * .55, 0, 0, 7); x.fill();
+    if (FC === 4) { x.fillStyle = skin; x.fillRect(ex - es * 1.2, ey - eh * 1.2, es * 2.4, eh * .78); x.fillStyle = dk(skin, .12); x.fillRect(ex - es * 1.2, ey - eh * .46, es * 2.4, eh * .1); }
     x.restore();
+    if (FC === 1) { x.fillStyle = '#FFFFFF'; [[-.35, -.1, .2], [.35, .45, .12]].forEach(([dx, dy, k]) => { const cx = ex + dx * es, cy = ey + dy * eh, R2 = es * k * 1.6; x.beginPath(); for (let i = 0; i < 8; i++) { const q = i * Math.PI / 4, rr = i % 2 ? R2 * .35 : R2; x.lineTo(cx + Math.cos(q) * rr, cy + Math.sin(q) * rr); } x.fill(); }); }
     x.fillStyle = '#FFFFFF'; x.beginPath(); x.ellipse(ex - s * es * .05 - es * .28, ey - eh * .28, es * .3, eh * .25, -.3, 0, 7); x.fill(); x.globalAlpha = .85; x.beginPath(); x.arc(ex + es * .32, ey + eh * .38, es * .13, 0, 7); x.fill(); x.globalAlpha = 1;
     x.fillStyle = '#2A1424'; x.beginPath(); x.moveTo(ex - s * es * 1.08, ey - eh * .3); x.quadraticCurveTo(ex - s * es * .1, ey - eh * 1.42, ex + s * es * 1.18, ey - eh * .58); x.lineTo(ex + s * es * 1.32, ey - eh * .36); x.quadraticCurveTo(ex + s * es * .15, ey - eh * 1.12, ex - s * es * 1.0, ey - eh * .18); x.closePath(); x.fill();
     if (f) { x.beginPath(); x.moveTo(ex + s * es * 1.05, ey - eh * .62); x.lineTo(ex + s * es * 1.55, ey - eh * .95); x.lineTo(ex + s * es * 1.2, ey - eh * .45); x.moveTo(ex + s * es * 1.2, ey - eh * .42); x.lineTo(ex + s * es * 1.6, ey - eh * .55); x.lineTo(ex + s * es * 1.28, ey - eh * .3); x.fill(); }
@@ -13597,7 +13607,12 @@ function draw(x, o) {
   const bl = x.createRadialGradient(0, 0, 0, 0, 0, r * .22); bl.addColorStop(0, 'rgba(255,110,130,.38)'); bl.addColorStop(1, 'rgba(255,110,130,0)'); [-1, 1].forEach(s => { x.save(); x.translate(s * .62 * r, .55 * r); x.fillStyle = bl; x.beginPath(); x.arc(0, 0, r * .22, 0, 7); x.fill(); x.restore(); });
   x.strokeStyle = 'rgba(230,90,110,.45)'; x.lineWidth = r * .02; [-1, 1].forEach(s => { for (let k = 0; k < 3; k++) { x.beginPath(); x.moveTo(s * .55 * r + k * .07 * r - .05 * r, .6 * r); x.lineTo(s * .55 * r + k * .07 * r, .5 * r); x.stroke(); } });
   x.fillStyle = dk(skin, .2); x.beginPath(); x.ellipse(.02 * r, .5 * r, .035 * r, .025 * r, 0, 0, 7); x.fill();
-  x.strokeStyle = f ? '#C24860' : '#7A3A34'; x.lineWidth = r * .06; x.beginPath(); x.moveTo(-.1 * r, .72 * r); x.quadraticCurveTo(0, .78 * r, .1 * r, .72 * r); x.stroke();
+  { const mc = f ? '#C24860' : '#7A3A34'; x.strokeStyle = mc; x.lineWidth = r * .06; x.lineCap = 'round';
+    if (FC === 1 || FC === 3) { x.fillStyle = '#B8364E'; x.beginPath(); x.moveTo(-.13 * r, .68 * r); x.quadraticCurveTo(0, .7 * r, .13 * r, .68 * r); x.quadraticCurveTo(.1 * r, .86 * r, 0, .87 * r); x.quadraticCurveTo(-.1 * r, .86 * r, -.13 * r, .68 * r); x.fill(); x.fillStyle = '#FF8FA6'; x.beginPath(); x.ellipse(0, .82 * r, .06 * r, .03 * r, 0, 0, 7); x.fill(); }
+    else if (FC === 2) { x.beginPath(); x.moveTo(-.09 * r, .74 * r); x.lineTo(.09 * r, .72 * r); x.stroke(); }
+    else if (FC === 4) { x.fillStyle = mc; x.beginPath(); x.ellipse(.01 * r, .74 * r, .045 * r, .05 * r, 0, 0, 7); x.fill(); }
+    else if (FC === 5) { x.beginPath(); x.moveTo(-.12 * r, .71 * r); x.quadraticCurveTo(-.06 * r, .78 * r, 0, .72 * r); x.quadraticCurveTo(.06 * r, .78 * r, .12 * r, .71 * r); x.stroke(); }
+    else { x.beginPath(); x.moveTo(-.1 * r, .72 * r); x.quadraticCurveTo(0, .78 * r, .1 * r, .72 * r); x.stroke(); } }
   if (o.turn) x.restore();
   // hair front with sheen
   const hg = x.createLinearGradient(0, -r * 1.15, 0, r * .9); hg.addColorStop(0, lt(hair, .32)); hg.addColorStop(.3, hair); hg.addColorStop(.75, mix(hair, '#3A1E5A', .28)); hg.addColorStop(1, mix(hair, '#FFB0D0', .25)); x.fillStyle = hg; if (H.own && H.tufts) tufts(x, r, hair, H.tufts); H.front(x, r, hair); if (H.own && H.ring !== false) ringHL(x, r, H.ring || -.66, .62, hair); if (H.ahoge) ahoge(x, r, hair);
@@ -13899,7 +13914,7 @@ function rpgArtOpts(L, h = {}) {
   const f = L.g === 'f', J = RPG_JOBART[L.job] || null, os = L.os || 0, dir = h.dir || 'd', pose = h.pose || 'idle';
   const outfit = os > 0 ? RPG_FASHION[(os - 1) % RPG_FASHION.length] : (J ? J.out : 'academy');
   const o = { g: L.g || 'm', P: 'S3', skin: RPG_SKIN[L.skin || 0], hair: RPG_HAIR[L.hc || 0], hs: (f ? RPG_HS_F : RPG_HS_M)[(L.hs || 0) % 8], eye: RPG_EYE[(L.ec ?? L.hc ?? 0) % RPG_EYE.length],
-    outfit, job: 'none', elf: !!L.elf, tint: L.oc ? RPG_SHIRT[L.oc] : null, back: dir === 'u', turn: dir === 'l' || dir === 'r' ? 1 : 0 };
+    outfit, job: 'none', elf: !!L.elf, face: L.fc || 0, tint: L.oc ? RPG_SHIRT[L.oc] : null, back: dir === 'u', turn: dir === 'l' || dir === 'r' ? 1 : 0 };
   if (L.atier >= 2) o.bracer = rpgTierCol(L.atier, 0);
   if (L.cape?.col) o.cape = L.cape.col;
   if (L.btier >= 2) o.bigBoots = 1;
@@ -19952,6 +19967,257 @@ rpgEndDraw = function () {
   if (B && B.end === 'win' && !B.fin33) { B.fin33 = 1; const args = arguments, self = this; return rpgFinisher33(() => { if (RS.battle === B) rpgEndDraw33.apply(self, args); }); }
   return rpgEndDraw33.apply(this, arguments);
 };
+
+/* =========================================================
+   SX Realm v34 — ท่าถืออาวุธเป็นธรรมชาติ · อาวุธใหญ่ขึ้น
+   ========================================================= */
+(() => {
+  const J = {
+    sword: { out: 'wanderer', R: [11, -17], L: [-9, -18], w: { type: 'sword', rot: .4, sc: 1.05 }, bracer: '#9A3428', glove: '#5A3A22' },
+    knight: { out: 'paladin', R: [11, -17], L: [-10, -19], w: { type: 'sword', rot: .38, sc: .95 }, w2: { type: 'shield', hand: 'L', rot: -.05, sc: .8 }, glove: '#9AA6C0' },
+    archer: { out: 'ranger', R: [8, -18], L: [-11, -21], w: { type: 'bow', hand: 'L', rot: -.08, sc: .72 }, bracer: '#5A5070', glove: '#2A2236', arm: '#3A3A5A' },
+    fire: { out: 'orbmage', R: [10, -19], L: [-8, -18], w: { type: 'staff', rot: .12, sc: .95 }, bracer: '#D8344A', glove: '#F4EAD8', arm: '#F4EAD8' },
+    ice: { out: 'frostmage', R: [11, -18], L: [-8, -18], w: { type: 'staff', rot: .06, sc: .95 }, bracer: '#5AB8E8', glove: '#E8F2FA', arm: '#E8F2FA' },
+    priest: { out: 'cleric', R: [10, -19], L: [-8, -18], w: { type: 'wand', rot: .35, sc: 1.15 }, glove: '#FFFFFF', arm: '#FFFFFF' },
+    ninja: { out: 'shinobi', R: [10, -17], L: [-10, -17], w: { type: 'dagger1', rot: 2.9, sc: .95 }, w2: { type: 'dagger1', hand: 'L', rot: -2.9, sc: .95 }, bracer: '#C0303A', glove: '#2A2236', arm: '#3A2E4A' },
+    monk: { out: 'brawler', R: [9, -20], L: [-9, -19], w: { type: 'fist', rot: .1, sc: .58, noGlove: 1 }, w2: { type: 'fist', hand: 'L', rot: -.1, sc: .58, noGlove: 1 }, arm: '#F0D2B8' },
+    bard: { out: 'minstrel', R: [4, -16], L: [-10, -25], w: { type: 'lute', hand: 'L', rot: -.85, sc: .78, two: 1 }, glove: '#F4EAD8', arm: '#2E8A57' },
+    summon: { out: 'mystic', R: [12, -21], L: [-8, -18], w: { type: 'orb', rot: 0, sc: .85 }, glove: '#3A2A6A', arm: '#5B3FA8' },
+    engineer: { out: 'tinker', R: [11, -17], L: [-8, -18], w: { type: 'hammer', rot: .22, sc: .8 }, bracer: '#8A6040', glove: '#6A4028', arm: '#3A5A7A' },
+    hacker: { out: 'cyber', R: [6, -20], L: [-6, -20], w: { type: 'tablet', rot: 0, sc: .62 }, glove: '#2A3A4A', arm: '#2A3A4A' },
+  };
+  Object.assign(RPG_JOBART, J, { warrior: J.sword, scout: J.archer, mage: J.fire, scholar: J.priest });
+})();
+
+/* =========================================================
+   SX Realm v34b — ไม่มีผ้าคลุม · แต่งตัวไม่มีส่วนหน้าตา · เลือกใบหน้า
+   ปีกนางฟ้าขนนกสำหรับสายดาบ/อัศวิน · ปีกหันตามทิศ · ไอคอนคลาสทุกขั้น
+   ========================================================= */
+
+/* ---------- ลบผ้าคลุมทุกอาชีพ ---------- */
+const rpgArtOpts34 = rpgArtOpts;
+rpgArtOpts = function (L, h = {}) { const o = rpgArtOpts34(L, h); o.cape = null; return o; };
+
+/* ---------- ใบหน้า / ดวงตา ---------- */
+const RPG_FACEN = ['ยิ้มสดใส', 'ตาประกาย', 'ตาคม', 'ตายิ้ม', 'ตาง่วง', 'ตากลมใส'];
+const rpgLookEditor34 = rpgLookEditor;
+rpgLookEditor = function (L, target, hats) {
+  const h = rpgLookEditor34(L, target, hats);
+  const row = `<div class="cr-row col"><b>ใบหน้า</b><div class="cr-thumbs face">${RPG_FACEN.map((n, i) => `<button class="${(L.fc || 0) === i ? 'on' : ''}" data-r="look" data-t="${target}" data-k="fc" data-v="${i}"><img src="${rpgLookImg({ ...L, fc: i, job: R.save?.job || RS.cl?.job, wtier: -1, atier: -1, hat: '' }, 64, 'head')}" alt=""><small>${n}</small></button>`).join('')}</div></div>`;
+  return h.replace(/(<div class="cr-row"><b>สีตา<\/b>)/, row + '$1');
+};
+
+/* ---------- เมนูแต่งตัว: ไม่มีส่วนเปลี่ยนหน้าตา/ทรงผม ---------- */
+const rpgWardrobeHTML34 = rpgWardrobeHTML;
+rpgWardrobeHTML = function () { return rpgWardrobeHTML34().replace(/<h4 class="qx-h">หน้าตา<\/h4>[\s\S]*?(<\/div><\/div>)$/, '$1'); };
+
+/* ---------- ปีก: สายดาบ/อัศวินได้ปีกนางฟ้าขนนก · หันตามทิศ ---------- */
+const rpgWf34 = L => { if (L && (L.wf === 'iron' || ['sword', 'knight', 'warrior'].includes(L.job))) L.wf = 'seraph'; return L; };
+rpgLookMe = (f => function () { return rpgWf34(f()); })(rpgLookMe);
+rpgLookPub = (f => function () { return rpgWf34(f()); })(rpgLookPub);
+RPG_WFX33.seraph = ['#FFF4C8', 'feather'];
+let RPG_WDIR34 = 'd';
+const rpgDrawHero34 = rpgDrawHero;
+rpgDrawHero = function (x, h) { const p = RPG_WDIR34; RPG_WDIR34 = h?.dir || 'd'; if (h?.look?.wf === 'iron') h = { ...h, look: { ...h.look, wf: 'seraph' } }; try { return rpgDrawHero34(x, h); } finally { RPG_WDIR34 = p; } };
+const rpgWingDraw34 = rpgWingDraw;
+rpgWingDraw = function (x, n, t, moving, form = 'angel') {
+  if (form === 'iron') form = 'seraph';
+  const dir = RPG_WDIR34, side = dir === 'l' || dir === 'r';
+  if (form === 'seraph') { x.save(); rpgSeraph34(x, n, t, moving, side ? (dir === 'r' ? -1 : 1) : 0); x.restore(); return; }
+  if (!side) return rpgWingDraw34(x, n, t, moving, form);
+  // มุมข้าง: ปีกใกล้+ปีกไกล หดแนวนอน ชี้ไปด้านหลัง
+  const back = dir === 'r' ? -1 : 1;
+  x.save(); x.translate(back * 3, 0); x.beginPath(); x.rect(back < 0 ? -300 : -1, -300, 301, 600); x.clip();
+  x.save(); x.translate(back * 3, -3); x.scale(.5, .96); x.globalAlpha = .72; rpgWingDraw34(x, n, t + 90, moving, form); x.restore();
+  x.save(); x.scale(.72, 1); rpgWingDraw34(x, n, t, moving, form); x.restore();
+  x.restore();
+};
+// ปีกนางฟ้าขนนกอลังการ + ขนนกลอยคลุ้ง (มุมหน้า/หลัง/ข้าง)
+function rpgSeraph34(x, n, t, moving, side) {
+  const W = RPG_WINGS[n]; if (!W) return; const lv = n, big = .98 + n * .05, pulse = .82 + .18 * Math.sin(t / 480);
+  const c0 = '#FFFFFF', c1 = lv >= 9 ? W.c[1] : lv >= 5 ? '#F2D27A' : '#BFD6F4', glow = lv >= 5 ? '#FFE9A0' : '#DDEBFF';
+  x.translate(0, -26);
+  x.save(); x.globalCompositeOperation = 'lighter'; const R0 = (44 + lv * 3) * big * pulse, g0 = x.createRadialGradient(0, -6, 2, 0, -6, R0); g0.addColorStop(0, SKX.rgba(glow, .22 + lv * .025)); g0.addColorStop(1, SKX.rgba(glow, 0)); x.fillStyle = g0; x.beginPath(); x.arc(0, -6, R0, 0, 7); x.fill();
+  x.globalAlpha = .12 + .05 * Math.sin(t / 380); for (let i = 0; i < 12; i++) { const a = t / 2800 + i * Math.PI / 6; x.fillStyle = SKX.rgba(glow, .6); x.beginPath(); x.moveTo(0, -6); x.lineTo(Math.cos(a - .05) * R0 * 1.3, -6 + Math.sin(a - .05) * R0 * 1.3); x.lineTo(Math.cos(a + .05) * R0 * 1.3, -6 + Math.sin(a + .05) * R0 * 1.3); x.fill(); }
+  x.restore();
+  const fl = Math.sin(t / (moving ? 120 : 430)) * (moving ? .26 : .09);
+  const one = (sd, sx, a = 1) => { x.save(); x.globalAlpha = a; x.translate(sd * 3, 0); x.scale(sd * big * .82 * sx, big * .86); x.rotate(-fl - .08); rpgFWing33(x, c0, c1, lv + 1, t, 'angel');
+    // ชั้นขนบนสุดสีทอง (ขั้นสูง)
+    if (lv >= 4) { x.save(); x.globalCompositeOperation = 'lighter'; x.strokeStyle = SKX.rgba(glow, .7); x.lineWidth = 1.2; x.beginPath(); x.moveTo(1, -3); x.bezierCurveTo(12, -26, 30, -38, 50, -31); x.stroke(); x.restore(); }
+    x.restore(); };
+  if (side) { one(side, .5, .75); x.save(); x.translate(side * 2, -2); one(side, .38, .6); x.restore(); }
+  else [-1, 1].forEach(sd => one(sd, 1));
+  // ขนนกลอยคลุ้ง
+  x.save(); x.globalCompositeOperation = 'lighter'; const N = 10 + lv * 2, sp = 52 * big;
+  for (let i = 0; i < N; i++) { const r1 = ((i * 73) % 97) / 97, r2 = ((i * 151) % 89) / 89, ph = (t / (2200 + r2 * 1600) + r1) % 1, sd = side || (i % 2 ? 1 : -1), px = sd * (6 + r1 * sp) * (side ? .7 : 1), a = Math.sin(ph * Math.PI);
+    const py = -40 + ph * 80; x.save(); x.translate(px + Math.sin(ph * 8 + i) * 7, py); x.rotate(Math.sin(ph * 5 + i) * 1.1 + i); x.globalAlpha = a * .9;
+    const fg = x.createLinearGradient(0, -5, 0, 5); fg.addColorStop(0, '#FFFFFF'); fg.addColorStop(1, SKX.rgba(c1, .8)); x.fillStyle = fg; x.beginPath(); x.moveTo(0, -5); x.quadraticCurveTo(2.4, -1, .3, 5); x.quadraticCurveTo(-2.2, 0, 0, -5); x.fill();
+    x.strokeStyle = 'rgba(255,255,255,.8)'; x.lineWidth = .4; x.beginPath(); x.moveTo(0, -4.5); x.lineTo(.2, 4.6); x.stroke(); x.restore();
+    if (i % 3 === 0) SKX.star(x, px * .9, -44 + r2 * 50, 1.4 + a * 2, glow, a); }
+  x.restore();
+}
+
+/* ---------- ไอคอนคลาสทุกขั้น (คลาส 1–4) ---------- */
+function rpgClsIcCanvas(k, tier, S = 96) {
+  const ck = '@cls:' + k + ':' + tier + '@' + S; if (RPG_ICANV.has(ck)) return RPG_ICANV.get(ck);
+  const c = document.createElement('canvas'); c.width = c.height = S; const x = c.getContext('2d'), u = S / 96;
+  const base = rpgJobIcCanvas(k, Math.round(S * (tier >= 3 ? .8 : .86)));
+  x.save(); x.scale(u, u);
+  const gold = ['#C9D3E0', '#E8EEF8', '#FFD86A', '#FF9DE8'][tier - 1], dark = ['#6A7486', '#8A97B0', '#B07A10', '#7A3AC8'][tier - 1];
+  // ปีกข้าง (คลาส 2+)
+  if (tier >= 2) [-1, 1].forEach(s => { x.save(); x.translate(48 + s * 26, 50); x.scale(s, 1); for (let i = 0; i < (tier >= 3 ? 4 : 3); i++) { x.save(); x.rotate(-.5 + i * .32); const g = x.createLinearGradient(0, 0, 24, 0); g.addColorStop(0, gold); g.addColorStop(1, dark); x.fillStyle = g; x.strokeStyle = dark; x.lineWidth = 1.2; x.beginPath(); x.moveTo(0, -3); x.quadraticCurveTo(14, -6, 22 - i * 2, 0); x.quadraticCurveTo(14, 5, 0, 3); x.closePath(); x.fill(); x.stroke(); x.restore(); } x.restore(); });
+  // มงกุฎ (คลาส 3+)
+  if (tier >= 3) { x.save(); x.translate(48, 13); const g = x.createLinearGradient(0, -8, 0, 8); g.addColorStop(0, '#FFF6C0'); g.addColorStop(1, tier === 4 ? '#D88AFF' : '#F0A81E'); x.fillStyle = g; x.strokeStyle = dark; x.lineWidth = 1.3; x.beginPath(); x.moveTo(-14, 6); x.lineTo(-16, -6); x.lineTo(-7, 0); x.lineTo(0, -10); x.lineTo(7, 0); x.lineTo(16, -6); x.lineTo(14, 6); x.closePath(); x.fill(); x.stroke(); x.fillStyle = '#FF4A6E'; x.beginPath(); x.arc(0, 1, 2.6, 0, 7); x.fill(); x.restore(); }
+  // ออร่า (คลาส 4)
+  if (tier === 4) { x.save(); x.globalCompositeOperation = 'destination-over'; const g = x.createRadialGradient(48, 52, 10, 48, 52, 48); g.addColorStop(0, 'rgba(255,200,255,.75)'); g.addColorStop(1, 'rgba(160,90,255,0)'); x.fillStyle = g; x.fillRect(0, 0, 96, 96); x.restore(); }
+  x.restore();
+  const bw = base.width; x.drawImage(base, (S - bw) / 2, (S - bw) / 2 + (tier >= 3 ? 4 * u : 2 * u));
+  // ดาวบอกขั้น
+  x.save(); x.scale(u, u); for (let i = 0; i < tier; i++) { const cx = 48 + (i - (tier - 1) / 2) * 11; x.fillStyle = gold; x.strokeStyle = dark; x.lineWidth = 1.1; x.beginPath(); for (let q = 0; q < 10; q++) { const a = -Math.PI / 2 + q * Math.PI / 5, rr = q % 2 ? 2.2 : 5; x.lineTo(cx + Math.cos(a) * rr, 89 + Math.sin(a) * rr); } x.closePath(); x.fill(); x.stroke(); } x.restore();
+  RPG_ICANV.set(ck, c); return c;
+}
+const RPG_CLSPUA = {};
+Object.keys(RPG_JOBS).forEach(k => [1, 2, 3, 4].forEach(t => { const ch = String.fromCodePoint(RPG_PUAN++); RPG_CLSPUA[k + ':' + t] = ch; RPG_PUA[ch] = '@cls:' + k + ':' + t; }));
+function rpgClsIc(job = R.save?.job, t = rpgCls()) { return RPG_CLSPUA[job + ':' + t] || RPG_JOBS[job]?.ic || ''; }
+const rpgItemCanvas34 = rpgItemCanvas;
+rpgItemCanvas = function (key, S = 96) { if (typeof key === 'string' && key.startsWith('@cls:')) { const [, k, t] = key.split(':'); return rpgClsIcCanvas(k, +t, S); } return rpgItemCanvas34(key, S); };
+const rpgPuaText34 = rpgPuaText;
+rpgPuaText = function (str) { return rpgPuaText34(String(str ?? '').replace(RPG_PUARE_G, ch => { const k = RPG_PUA[ch]; return k && k.startsWith('@cls:') ? (RPG_JOBS[k.split(':')[1]]?.emo || '') : ch; })); };
+// ใช้ไอคอนคลาสตามขั้นในที่สำคัญ: HUD · หน้าสถานะ · หน้าสกิล
+const rpgHud34 = rpgHud;
+rpgHud = function () { const r = rpgHud34.apply(this, arguments); const sp = document.querySelector('#rpg-hud .hd2-name span'); if (sp && R.save?.job) { const v = `${rpgClsIc()} ${rpgClassName()}`; if (sp.dataset.v !== v) { sp.dataset.v = v; sp.textContent = v; } } return r; };
+const rpgPanel34 = rpgPanel;
+rpgPanel = function (k) {
+  const r = rpgPanel34.apply(this, arguments), card = document.querySelector('#rpg-panel .rp-card'); if (!card || !R.save?.job) return r;
+  if (k === 'stat') { const sp = card.querySelector('.st33-id span'); if (sp) sp.textContent = `${rpgClsIc()} ${rpgClassName()} · Lv.${R.save.lvl}`; }
+  if (k === 'skill') { card.querySelectorAll('.sk2-tier h5').forEach((h, i) => { const t = i + 1, job = t === 1 ? rpgBaseOf(R.save) : R.save.job; if (RPG_CLSPUA[job + ':' + t] && !h.dataset.ic) { h.dataset.ic = 1; h.textContent = rpgClsIc(job, t) + ' ' + h.textContent; } }); }
+  return r;
+};
+// นักแสดงในฉากสกิล/ฉากชนะ หันขวา → ปีกมุมข้าง
+rpgActorDraw33 = (f => function () { const p = RPG_WDIR34; RPG_WDIR34 = 'r'; try { return f.apply(this, arguments); } finally { RPG_WDIR34 = p; } })(rpgActorDraw33);
+
+/* =========================================================
+   SX Realm v34c — ไอคอนสกิลวาดเองทั้งหมด (ทุกอาชีพ + สกิลติดตัว)
+   พื้นสีตามธาตุ · กรอบสีตามขั้นสกิล (ทองแดง → เงิน → ทอง → ม่วง → รุ้ง ULT)
+   ========================================================= */
+const SKI34 = (() => {
+  const T = Math.PI * 2;
+  const P = (x, pts, close = true) => { x.beginPath(); pts.forEach(([a, b], i) => i ? x.lineTo(a, b) : x.moveTo(a, b)); if (close) x.closePath(); x.fill(); x.stroke(); };
+  const C = (x, cx, cy, r) => { x.beginPath(); x.arc(cx, cy, r, 0, T); x.fill(); x.stroke(); };
+  const E = (x, cx, cy, rx, ry, rot = 0) => { x.beginPath(); x.ellipse(cx, cy, rx, ry, rot, 0, T); x.fill(); x.stroke(); };
+  const L = (x, pts, w) => { x.save(); x.lineWidth = w + 4; x.beginPath(); pts.forEach(([a, b], i) => i ? x.lineTo(a, b) : x.moveTo(a, b)); x.stroke(); x.strokeStyle = '#fff'; x.lineWidth = w; x.stroke(); x.restore(); };
+  const star = (x, cx, cy, R, r, n = 5, rot = -Math.PI / 2) => { x.beginPath(); for (let i = 0; i < n * 2; i++) { const a = rot + i * Math.PI / n, q = i % 2 ? r : R; x.lineTo(cx + Math.cos(a) * q, cy + Math.sin(a) * q); } x.closePath(); x.fill(); x.stroke(); };
+  const blade = (x, cx, cy, len, w, rot) => { x.save(); x.translate(cx, cy); x.rotate(rot); P(x, [[-w, 0], [-w, -len * .82], [0, -len], [w, -len * .82], [w, 0]]); x.beginPath(); x.roundRect(-w * 2.6, 0, w * 5.2, 3.6, 1.8); x.fill(); x.stroke(); x.beginPath(); x.roundRect(-w * .55, 3.6, w * 1.1, len * .28, 1.5); x.fill(); x.stroke(); x.restore(); };
+  const arrow = (x, x0, y0, x1, y1, h = 7) => { const a = Math.atan2(y1 - y0, x1 - x0); L(x, [[x0, y0], [x1 - Math.cos(a) * h * .6, y1 - Math.sin(a) * h * .6]], 2.6); x.save(); x.translate(x1, y1); x.rotate(a); P(x, [[0, 0], [-h * 1.4, -h * .75], [-h * 1.1, 0], [-h * 1.4, h * .75]]); x.restore();
+    x.save(); x.translate(x0, y0); x.rotate(a); P(x, [[0, 0], [-5, -5], [2, 0], [-5, 5]]); x.restore(); };
+  const heart = (x, cx, cy, s) => { x.beginPath(); x.moveTo(cx, cy + s * .9); x.bezierCurveTo(cx - s * 1.5, cy - s * .1, cx - s * .9, cy - s * 1.3, cx, cy - s * .45); x.bezierCurveTo(cx + s * .9, cy - s * 1.3, cx + s * 1.5, cy - s * .1, cx, cy + s * .9); x.fill(); x.stroke(); };
+  const flame = (x, cx, cy, s) => { x.beginPath(); x.moveTo(cx, cy - s); x.bezierCurveTo(cx + s * .45, cy - s * .45, cx + s * .85, cy - s * .1, cx + s * .7, cy + s * .4); x.bezierCurveTo(cx + s * .55, cy + s * .9, cx - s * .55, cy + s * .9, cx - s * .7, cy + s * .4); x.bezierCurveTo(cx - s * .8, cy - s * .05, cx - s * .25, cy - s * .2, cx - s * .3, cy - s * .55); x.bezierCurveTo(cx - .05 * s, cy - s * .35, cx, cy - s * .6, cx, cy - s); x.fill(); x.stroke(); };
+  const flake = (x, R) => { x.save(); x.lineCap = 'round'; const arm = () => { x.beginPath(); for (let i = 0; i < 6; i++) { const a = i * Math.PI / 3, c = Math.cos(a), s = Math.sin(a), Q = (r, o) => [c * r - s * o, s * r + c * o]; x.moveTo(0, 0); x.lineTo(...Q(R, 0)); x.moveTo(...Q(R * .55, 0)); x.lineTo(...Q(R * .82, -R * .26)); x.moveTo(...Q(R * .55, 0)); x.lineTo(...Q(R * .82, R * .26)); } x.stroke(); };
+    const w = x.lineWidth; x.lineWidth = w * 3.2; arm(); x.strokeStyle = '#fff'; x.lineWidth = w * 1.6; arm(); x.restore(); };
+  const swirl = (x, R, n = 3) => { x.save(); x.lineCap = 'round'; for (let i = 0; i < n; i++) { x.save(); x.rotate(i * T / n); const pts = []; for (let k = 0; k <= 20; k++) { const q = k / 20, a = q * 2.6, r = R * (.25 + q * .75); pts.push([Math.cos(a) * r, Math.sin(a) * r]); } L(x, pts, 3.4); x.restore(); } x.restore(); };
+  const note = (x, cx, cy, s) => { E(x, cx - s * .2, cy + s * .7, s * .42, s * .32, -.4); P(x, [[cx + s * .12, cy + s * .7], [cx + s * .12, cy - s * .9], [cx + s * .3, cy - s * .9], [cx + s * .3, cy + s * .6]]); x.beginPath(); x.moveTo(cx + s * .3, cy - s * .9); x.quadraticCurveTo(cx + s * .9, cy - s * .6, cx + s * .75, cy - s * .05); x.quadraticCurveTo(cx + s * .7, cy - s * .45, cx + s * .3, cy - s * .5); x.fill(); x.stroke(); };
+  const G = {
+    sword: x => blade(x, 2, 16, 40, 4, .7),
+    tornado: x => { [[-18, -16, 36], [-14, -6, 28], [-9, 4, 20], [-5, 13, 12], [-2, 21, 6]].forEach(([a, b, w]) => { x.beginPath(); x.ellipse(a + w / 2 + 6, b, w / 2 + 4, 4.2, 0, 0, T); x.fill(); x.stroke(); }); blade(x, 14, 24, 22, 2.6, .9); },
+    vortex: x => { swirl(x, 24, 4); blade(x, 0, 6, 20, 2.6, 0); },
+    burst: x => { star(x, 0, 0, 27, 11, 8, 0); x.save(); x.fillStyle = x.strokeStyle; x.globalAlpha = .35; star(x, 0, 0, 14, 6, 8, .4); x.restore(); },
+    flame: x => { flame(x, 0, 2, 25); x.save(); x.fillStyle = x.strokeStyle; x.globalAlpha = .35; flame(x, 2, 10, 11); x.restore(); },
+    tower: x => { P(x, [[-18, 24], [-18, -8], [-22, -8], [-22, -20], [-14, -20], [-14, -14], [-6, -14], [-6, -20], [6, -20], [6, -14], [14, -14], [14, -20], [22, -20], [22, -8], [18, -8], [18, 24]]); x.save(); x.fillStyle = x.strokeStyle; x.beginPath(); x.moveTo(-6, 24); x.lineTo(-6, 10); x.arc(0, 10, 6, Math.PI, 0); x.lineTo(6, 24); x.fill(); x.restore(); },
+    eye: x => { x.beginPath(); x.moveTo(-26, 0); x.quadraticCurveTo(0, -24, 26, 0); x.quadraticCurveTo(0, 24, -26, 0); x.fill(); x.stroke(); x.save(); x.fillStyle = x.strokeStyle; C(x, 0, 0, 10); x.fillStyle = '#fff'; x.beginPath(); x.arc(-3, -3, 3, 0, T); x.fill(); x.restore(); [[-18, -14, -24, -22], [0, -18, 0, -27], [18, -14, 24, -22]].forEach(([a, b, c2, d]) => L(x, [[a, b], [c2, d]], 2.4)); },
+    crystal: x => { P(x, [[0, -26], [18, -8], [12, 22], [-12, 22], [-18, -8]]); x.save(); x.lineWidth = 1.6; x.beginPath(); x.moveTo(0, -26); x.lineTo(-6, -8); x.lineTo(0, 22); x.lineTo(6, -8); x.closePath(); x.moveTo(-18, -8); x.lineTo(18, -8); x.stroke(); x.restore(); },
+    halo: x => { x.save(); x.fillStyle = 'rgba(0,0,0,0)'; x.lineWidth = 3; E(x, 0, -18, 14, 5); x.restore(); x.beginPath(); x.moveTo(0, -8); x.quadraticCurveTo(18, -8, 20, -2); x.quadraticCurveTo(20, 18, 0, 27); x.quadraticCurveTo(-20, 18, -20, -2); x.quadraticCurveTo(-18, -8, 0, -8); x.fill(); x.stroke(); x.save(); x.fillStyle = x.strokeStyle; x.fillRect(-2.5, -2, 5, 20); x.fillRect(-9, 4, 18, 5); x.restore(); },
+    clones: x => { [[-10, .5], [10, .5], [0, 1]].forEach(([cx, a]) => { x.save(); x.globalAlpha = a; C(x, cx, -12, 8); x.beginPath(); x.moveTo(cx - 13, 24); x.quadraticCurveTo(cx - 13, 0, cx, 0); x.quadraticCurveTo(cx + 13, 0, cx + 13, 24); x.closePath(); x.fill(); x.stroke(); x.restore(); }); },
+    horn: x => { x.beginPath(); x.moveTo(-24, -4); x.lineTo(-10, -4); x.quadraticCurveTo(10, -6, 22, -20); x.lineTo(22, 20); x.quadraticCurveTo(10, 6, -10, 4); x.lineTo(-24, 4); x.closePath(); x.fill(); x.stroke(); [[-14, -4], [-6, -4]].forEach(([a, b]) => { x.beginPath(); x.roundRect(a - 2, b - 7, 4, 7, 1); x.fill(); x.stroke(); }); },
+    paw: x => { E(x, 0, 10, 14, 12); [[-17, -6, 6], [-7, -18, 6], [7, -18, 6], [17, -6, 6]].forEach(([a, b, r]) => E(x, a, b, r * .85, r)); },
+    battery: x => { x.beginPath(); x.roundRect(-14, -20, 28, 44, 5); x.fill(); x.stroke(); x.beginPath(); x.roundRect(-6, -26, 12, 6, 2); x.fill(); x.stroke(); x.save(); x.fillStyle = x.strokeStyle; P(x, [[2, -14], [-7, 4], [0, 4], [-3, 18], [7, -2], [0, -2]]); x.restore(); },
+    wall: x => { for (let r = 0; r < 4; r++) for (let c = 0; c < 3; c++) { const off = r % 2 ? 7 : 0; x.beginPath(); x.roundRect(-24 + c * 16 + off - (r % 2 ? 7 : 0), -22 + r * 11.5, 15, 10, 2); x.fill(); x.stroke(); } },
+    roar: x => { x.beginPath(); x.moveTo(-22, -8); x.lineTo(-10, -8); x.lineTo(6, -20); x.lineTo(6, 20); x.lineTo(-10, 8); x.lineTo(-22, 8); x.closePath(); x.fill(); x.stroke(); [10, 17, 24].forEach(r => { x.save(); x.lineWidth = 3; x.strokeStyle = '#fff'; x.beginPath(); x.arc(4, 0, r, -.6, .6); x.stroke(); x.restore(); }); },
+    wind: x => { [[-24, -12, 20, -12, 'r'], [-24, 0, 14, 0, ''], [-24, 12, 22, 12, 'r']].forEach(([a, b, c2, d, cur], i) => { L(x, [[a, b], [c2, d]], 4); if (cur) { x.save(); x.lineWidth = 7; x.lineCap = 'round'; x.beginPath(); x.arc(c2, d - (i ? -6 : 6), 6, i ? -Math.PI / 2 : Math.PI / 2, i ? Math.PI : -Math.PI, !i); x.stroke(); x.strokeStyle = '#fff'; x.lineWidth = 3.6; x.stroke(); x.restore(); } }); },
+    book: x => { [-1, 1].forEach(s => { x.beginPath(); x.moveTo(0, -14); x.quadraticCurveTo(s * 12, -20, s * 25, -16); x.lineTo(s * 25, 18); x.quadraticCurveTo(s * 12, 14, 0, 20); x.closePath(); x.fill(); x.stroke(); }); x.save(); x.lineWidth = 1.6; [-1, 1].forEach(s => [-6, 0, 6].forEach(y => { x.beginPath(); x.moveTo(s * 5, y - 2); x.quadraticCurveTo(s * 12, y - 5, s * 20, y - 3); x.stroke(); })); x.restore(); },
+    bolt: x => P(x, [[6, -28], [-16, 4], [-2, 4], [-8, 28], [16, -6], [2, -6]]),
+    shield: x => { x.beginPath(); x.moveTo(0, -24); x.quadraticCurveTo(14, -18, 21, -19); x.quadraticCurveTo(22, 6, 0, 25); x.quadraticCurveTo(-22, 6, -21, -19); x.quadraticCurveTo(-14, -18, 0, -24); x.closePath(); x.fill(); x.stroke(); x.save(); x.fillStyle = x.strokeStyle; star(x, 0, 0, 10, 4, 4); x.restore(); },
+    palm: x => { x.beginPath(); x.roundRect(-14, -4, 26, 26, 8); x.fill(); x.stroke(); [-12, -4, 4].forEach((a, i) => { x.beginPath(); x.roundRect(a, -24 + (i === 1 ? -2 : 0), 7.5, 24, 3.7); x.fill(); x.stroke(); }); x.beginPath(); x.roundRect(12, -18, 7, 20, 3.5); x.fill(); x.stroke(); x.save(); x.translate(15, 8); x.rotate(-.7); x.beginPath(); x.roundRect(-3.5, -2, 7, 16, 3.5); x.fill(); x.stroke(); x.restore(); [[-24, -10], [-26, 4], [24, 12]].forEach(([a, b]) => L(x, [[a, b], [a + (a < 0 ? -4 : 4), b]], 2)); },
+    hammer: x => { x.save(); x.rotate(-.6); x.beginPath(); x.roundRect(-3, -6, 6, 32, 3); x.fill(); x.stroke(); x.beginPath(); x.roundRect(-16, -22, 32, 16, 4); x.fill(); x.stroke(); x.restore(); },
+    star: x => { star(x, 0, 0, 26, 11); x.save(); x.fillStyle = '#fff'; x.globalAlpha = .9; x.restore(); },
+    crown: x => { P(x, [[-22, 16], [-24, -12], [-11, 0], [0, -20], [11, 0], [24, -12], [22, 16]]); x.save(); x.fillStyle = x.strokeStyle; [-24, 0, 24].forEach((a, i) => C(x, a, [-12, -20, -12][i], 3)); x.fillRect(-22, 10, 44, 3); x.restore(); },
+    beam: x => { x.save(); x.fillStyle = 'rgba(0,0,0,0)'; x.lineWidth = 3; E(x, 0, -21, 13, 4.5); x.restore(); P(x, [[-8, -12], [8, -12], [18, 26], [-18, 26]]); x.save(); x.strokeStyle = '#fff'; x.lineWidth = 2; [-6, 0, 6].forEach(a => { x.beginPath(); x.moveTo(a * .6, -8); x.lineTo(a * 1.6, 22); x.stroke(); }); x.restore(); },
+    sparkle: x => { star(x, -4, 2, 22, 6, 4, 0); x.save(); x.fillStyle = '#fff'; star(x, 15, -15, 9, 3, 4, 0); star(x, 16, 16, 6, 2, 4, 0); x.restore(); },
+    heart: x => heart(x, 0, 2, 22),
+    healheart: x => { heart(x, 0, 2, 22); x.save(); x.fillStyle = x.strokeStyle; x.fillRect(-3, -9, 6, 18); x.fillRect(-9, -3, 18, 6); x.restore(); },
+    lotus: x => { [-2, -1, 0, 1, 2].forEach(i => { x.save(); x.translate(0, 14); x.rotate(i * .45); E(x, 0, -14, 7, 15); x.restore(); }); x.beginPath(); x.ellipse(0, 18, 22, 6, 0, 0, T); x.fill(); x.stroke(); },
+    music: x => { note(x, -8, 2, 20); note(x, 12, -4, 14); },
+    hearts: x => { heart(x, -7, 6, 14); heart(x, 9, -6, 12); },
+    bandage: x => { x.save(); x.rotate(-.7); x.beginPath(); x.roundRect(-26, -10, 52, 20, 10); x.fill(); x.stroke(); x.fillStyle = x.strokeStyle; x.globalAlpha = .3; x.fillRect(-10, -10, 20, 20); x.globalAlpha = 1; [[-4, -4], [4, -4], [-4, 4], [4, 4]].forEach(([a, b]) => { x.beginPath(); x.arc(a, b, 1.6, 0, T); x.fill(); }); x.restore(); },
+    target: x => { [24, 16, 8].forEach((r, i) => { x.save(); if (i === 1) x.fillStyle = x.strokeStyle; C(x, 0, 0, r); x.restore(); }); arrow(x, 26, -26, 2, -2, 6); },
+    arrows: x => { arrow(x, -22, 18, 20, -18, 7); arrow(x, -22, 4, 14, -24, 6); },
+    rain: x => { x.beginPath(); x.moveTo(-20, -6); x.bezierCurveTo(-26, -16, -12, -26, -4, -18); x.bezierCurveTo(2, -28, 20, -26, 18, -14); x.bezierCurveTo(28, -12, 26, 0, 16, 0); x.lineTo(-16, 0); x.bezierCurveTo(-24, 0, -26, -4, -20, -6); x.fill(); x.stroke(); [-14, -2, 10].forEach(a => arrow(x, a + 4, 4, a, 26, 4.5)); },
+    rainbow: x => { ['#FF5A5A', '#FFB03A', '#FFE24A', '#5AD86A', '#4AA8FF', '#A56CFF'].forEach((c, i) => { x.save(); x.strokeStyle = c; x.lineWidth = 3.6; x.beginPath(); x.arc(0, 18, 28 - i * 3.6, Math.PI, 0); x.stroke(); x.restore(); }); arrow(x, -22, 14, 22, -14, 7); },
+    heartflame: x => { flame(x, 0, -2, 26); x.save(); x.fillStyle = x.strokeStyle; heart(x, 0, 8, 10); x.restore(); },
+    meteor: x => { x.save(); x.fillStyle = 'rgba(255,255,255,.7)'; P(x, [[-26, -26], [4, -6], [-4, 4]]); x.restore(); C(x, 6, 6, 15); x.save(); x.fillStyle = x.strokeStyle; x.globalAlpha = .35; C(x, 2, 2, 4); C(x, 11, 10, 3); x.restore(); },
+    sun: x => { for (let i = 0; i < 12; i++) { x.save(); x.rotate(i * T / 12); P(x, [[-4, -18], [0, -28], [4, -18]]); x.restore(); } C(x, 0, 0, 15); },
+    spear: x => { x.save(); x.rotate(.75); P(x, [[0, -30], [8, -10], [3, -8], [3, 28], [-3, 28], [-3, -8], [-8, -10]]); x.restore(); flake(x, 0); },
+    snow: x => flake(x, 25),
+    blizzard: x => { x.beginPath(); x.moveTo(-20, -2); x.bezierCurveTo(-26, -12, -12, -22, -4, -14); x.bezierCurveTo(2, -24, 20, -22, 18, -10); x.bezierCurveTo(28, -8, 26, 4, 16, 4); x.lineTo(-16, 4); x.bezierCurveTo(-24, 4, -26, 0, -20, -2); x.fill(); x.stroke(); x.save(); x.translate(-10, 18); flake(x, 8); x.restore(); x.save(); x.translate(10, 20); flake(x, 7); x.restore(); },
+    mountain: x => { P(x, [[-28, 22], [-8, -14], [0, -2], [10, -22], [28, 22]]); x.save(); x.fillStyle = x.strokeStyle; x.globalAlpha = .3; P(x, [[-8, -14], [-14, -2], [-4, -6], [0, -2]]); x.restore(); },
+    shuriken: x => { x.save(); for (let i = 0; i < 4; i++) { x.rotate(Math.PI / 2); P(x, [[0, -5], [6, -12], [0, -28], [-5, -8]]); } x.restore(); x.save(); x.fillStyle = x.strokeStyle; C(x, 0, 0, 5); x.restore(); },
+    crescent: x => { x.beginPath(); x.arc(0, 0, 24, .6, T - .6); x.arc(10, 0, 18, T - .9, .9, true); x.closePath(); x.fill(); x.stroke(); blade(x, 4, 14, 22, 2.4, .5); },
+    fang: x => { x.beginPath(); x.moveTo(-22, -12); x.quadraticCurveTo(0, -24, 22, -12); x.quadraticCurveTo(14, -4, 10, -6); x.lineTo(6, 22); x.lineTo(2, -6); x.lineTo(-2, -6); x.lineTo(-6, 22); x.lineTo(-10, -6); x.quadraticCurveTo(-14, -4, -22, -12); x.fill(); x.stroke(); x.save(); x.fillStyle = '#7CFF8A'; C(x, 6, 24, 3); x.restore(); },
+    fist: x => { x.beginPath(); x.roundRect(-16, -6, 30, 26, 8); x.fill(); x.stroke(); [-14, -5, 4].forEach(a => { x.beginPath(); x.roundRect(a, -20, 9.5, 18, 4.5); x.fill(); x.stroke(); }); x.beginPath(); x.roundRect(13, -16, 9, 14, 4.5); x.fill(); x.stroke(); [[-26, -18, -20, -12], [-28, 0, -21, 0], [-26, 16, -20, 10]].forEach(([a, b, c2, d]) => L(x, [[a, b], [c2, d]], 2.4)); },
+    fists: x => { x.save(); x.scale(.62, .62); x.translate(-16, -10); G.fist(x); x.translate(32, 26); G.fist(x); x.restore(); x.save(); x.fillStyle = '#fff'; star(x, 14, -14, 9, 3.5, 4, 0); star(x, -16, 16, 7, 3, 4, 0); x.restore(); },
+    dragon: x => { x.beginPath(); x.moveTo(-24, 10); x.quadraticCurveTo(-20, -14, 2, -18); x.lineTo(10, -28); x.lineTo(12, -16); x.quadraticCurveTo(26, -12, 26, 2); x.lineTo(14, 4); x.quadraticCurveTo(10, 12, 18, 18); x.quadraticCurveTo(0, 22, -6, 12); x.quadraticCurveTo(-14, 16, -24, 10); x.fill(); x.stroke(); x.save(); x.fillStyle = x.strokeStyle; C(x, 8, -8, 3); x.restore(); [[-6, -18, -12, -28], [-14, -12, -22, -20]].forEach(([a, b, c2, d]) => { P(x, [[a, b], [c2, d], [a + 6, b + 2]]); }); },
+    notes: x => { note(x, -12, 4, 14); note(x, 4, -6, 14); note(x, 16, 8, 10); },
+    moon: x => { x.beginPath(); x.arc(-2, 0, 22, .9, T - .9 + .01 + Math.PI * 0); x.arc(10, -8, 18, T - 1.2 + 0, 1.6, true); x.closePath(); x.fill(); x.stroke(); x.save(); x.fillStyle = '#fff'; star(x, 16, -16, 6, 2.4, 4, 0); star(x, 20, 10, 4, 1.6, 4, 0); x.restore(); },
+    symph: x => { x.save(); x.lineWidth = 1.6; [-10, -4, 2, 8, 14].forEach(y => { x.beginPath(); x.moveTo(-26, y); x.lineTo(26, y); x.stroke(); }); x.restore(); note(x, -12, -2, 13); note(x, 8, -10, 13); },
+    fox: x => { x.beginPath(); x.moveTo(-22, -22); x.lineTo(-10, -8); x.lineTo(10, -8); x.lineTo(22, -22); x.lineTo(20, 2); x.quadraticCurveTo(12, 18, 0, 24); x.quadraticCurveTo(-12, 18, -20, 2); x.closePath(); x.fill(); x.stroke(); x.save(); x.fillStyle = x.strokeStyle; E(x, -8, 2, 2.6, 3.6); E(x, 8, 2, 2.6, 3.6); C(x, 0, 16, 3); x.restore(); },
+    wing: x => { x.beginPath(); x.moveTo(-24, 20); x.quadraticCurveTo(-20, -18, 24, -24); x.quadraticCurveTo(16, -14, 22, -10); x.quadraticCurveTo(10, -6, 16, 0); x.quadraticCurveTo(4, 2, 8, 8); x.quadraticCurveTo(-6, 10, -24, 20); x.fill(); x.stroke(); },
+    bomb: x => { C(x, -2, 6, 19); x.beginPath(); x.roundRect(4, -18, 10, 8, 2); x.fill(); x.stroke(); x.save(); x.lineWidth = 2.4; x.beginPath(); x.moveTo(10, -18); x.quadraticCurveTo(14, -28, 22, -24); x.stroke(); x.fillStyle = '#FFE24A'; star(x, 22, -24, 7, 3, 6, 0); x.restore(); x.save(); x.fillStyle = '#fff'; x.globalAlpha = .7; x.beginPath(); x.ellipse(-9, -2, 4, 7, .5, 0, T); x.fill(); x.restore(); },
+    robot: x => { x.beginPath(); x.roundRect(-20, -14, 40, 32, 7); x.fill(); x.stroke(); L(x, [[0, -14], [0, -24]], 2.4); C(x, 0, -26, 4); x.save(); x.fillStyle = x.strokeStyle; x.beginPath(); x.roundRect(-14, -6, 28, 12, 6); x.fill(); x.fillStyle = '#7CF0FF'; C(x, -7, 0, 3.4); C(x, 7, 0, 3.4); x.restore(); },
+    laser: x => { x.beginPath(); x.roundRect(-26, 4, 22, 18, 4); x.fill(); x.stroke(); x.save(); x.rotate(-.35); x.beginPath(); x.roundRect(-18, -6, 26, 10, 3); x.fill(); x.stroke(); x.restore(); x.save(); x.strokeStyle = '#FF4A6E'; x.lineWidth = 5; x.lineCap = 'round'; x.beginPath(); x.moveTo(8, -6); x.lineTo(28, -14); x.stroke(); x.strokeStyle = '#fff'; x.lineWidth = 2; x.stroke(); x.restore(); },
+    floppy: x => { x.beginPath(); x.roundRect(-22, -22, 44, 44, 5); x.fill(); x.stroke(); x.save(); x.fillStyle = x.strokeStyle; x.fillRect(-12, -22, 22, 14); x.fillStyle = '#fff'; x.fillRect(2, -19, 5, 8); x.restore(); x.beginPath(); x.roundRect(-14, 2, 28, 16, 2); x.fill(); x.stroke(); },
+    antenna: x => { P(x, [[-4, -4], [4, -4], [14, 26], [-14, 26]]); C(x, 0, -8, 5); [10, 18].forEach(r => { x.save(); x.lineWidth = 3; x.strokeStyle = '#fff'; x.beginPath(); x.arc(0, -8, r, -2.4, -.75); x.stroke(); x.restore(); }); },
+    rad: x => { C(x, 0, 0, 26); x.save(); x.fillStyle = x.strokeStyle; for (let i = 0; i < 3; i++) { x.beginPath(); x.moveTo(0, 0); x.arc(0, 0, 22, i * T / 3 - Math.PI / 2 - .5, i * T / 3 - Math.PI / 2 + .5); x.closePath(); x.fill(); } x.fillStyle = '#fff'; C(x, 0, 0, 5); x.restore(); },
+  };
+  const MAP = { '🗡️': 'sword', '🌪️': 'tornado', '🌀': 'vortex', '💥': 'burst', '🔥': 'flame', '🏰': 'tower', '🦅': 'eye', '💎': 'crystal', '🙏': 'halo', '👥': 'clones', '🎺': 'horn', '🐾': 'paw', '🔋': 'battery', '🧱': 'wall', '📣': 'roar', '💨': 'wind', '📘': 'book', '⚡': 'bolt', '🛡️': 'shield', '🖐️': 'palm', '🔨': 'hammer', '🌟': 'star', '👑': 'crown', '😇': 'beam', '✨': 'sparkle', '💖': 'heart', '💚': 'healheart', '🧘': 'lotus', '🎻': 'music', '💞': 'hearts', '🩹': 'bandage', '🎯': 'target', '🏹': 'arrows', '🌧️': 'rain', '🌈': 'rainbow', '❤️‍🔥': 'heartflame', '☄️': 'meteor', '☀️': 'sun', '🧊': 'spear', '❄️': 'snow', '🌨️': 'blizzard', '🏔️': 'mountain', '✴️': 'shuriken', '🌑': 'crescent', '🐍': 'fang', '👊': 'fist', '💫': 'fists', '🐉': 'dragon', '🐲': 'dragon', '🎶': 'notes', '🌙': 'moon', '🎼': 'symph', '🦊': 'fox', '💣': 'bomb', '🤖': 'robot', '🔫': 'laser', '💾': 'floppy', '📡': 'antenna', '☢️': 'rad' };
+  const RANK = [['#E8B07A', '#8A4E1E'], ['#EEF3FA', '#7A879E'], ['#FFE48A', '#B07A10'], ['#D8B8FF', '#6A34C0'], null];
+  function draw(key, emo, col, rank, S, kind) {
+    const c = document.createElement('canvas'); c.width = c.height = S; const x = c.getContext('2d'); x.scale(S / 96, S / 96);
+    const n = parseInt((col || '#8E7CFF').slice(1), 16), r = n >> 16, g = n >> 8 & 255, b = n & 255, mix = (f, t) => `rgb(${Math.round(r + (t - r) * f)},${Math.round(g + (t - g) * f)},${Math.round(b + (t - b) * f)})`;
+    // พื้น + กรอบ
+    x.save(); x.shadowColor = 'rgba(20,10,50,.35)'; x.shadowBlur = 4; x.shadowOffsetY = 2;
+    const fr = RANK[Math.min(4, rank)];
+    if (fr) { const gg = x.createLinearGradient(0, 4, 0, 92); gg.addColorStop(0, fr[0]); gg.addColorStop(1, fr[1]); x.fillStyle = gg; } else { const gg = x.createLinearGradient(4, 4, 92, 92); ['#FF6A6A', '#FFC84A', '#7CE07C', '#5AB8FF', '#B07CFF'].forEach((cc, i) => gg.addColorStop(i / 4, cc)); x.fillStyle = gg; }
+    x.beginPath(); x.roundRect(4, 4, 88, 88, 20); x.fill(); x.restore();
+    const bg = x.createRadialGradient(40, 34, 6, 48, 52, 52); bg.addColorStop(0, mix(.45, 255)); bg.addColorStop(.55, col); bg.addColorStop(1, mix(.5, 0)); x.fillStyle = bg; x.beginPath(); x.roundRect(10, 10, 76, 76, 15); x.fill();
+    // เส้นพื้นตามชนิด (โจมตี = เส้นเฉียง · ฟื้นฟู = วงกลม · บัพ = ลูกศรขึ้น)
+    x.save(); x.beginPath(); x.roundRect(10, 10, 76, 76, 15); x.clip(); x.globalAlpha = .14; x.strokeStyle = '#fff'; x.lineWidth = 6;
+    if (kind === 'h') [18, 30, 42].forEach(R => { x.beginPath(); x.arc(48, 48, R, 0, T); x.stroke(); });
+    else if (kind === 'b') for (let i = 0; i < 4; i++) { x.beginPath(); x.moveTo(14 + i * 22, 90); x.lineTo(24 + i * 22, 74); x.lineTo(34 + i * 22, 90); x.stroke(); }
+    else for (let i = -2; i < 6; i++) { x.beginPath(); x.moveTo(i * 18, 96); x.lineTo(i * 18 + 60, 0); x.stroke(); }
+    x.globalAlpha = 1; const sh = x.createLinearGradient(0, 10, 0, 50); sh.addColorStop(0, 'rgba(255,255,255,.42)'); sh.addColorStop(1, 'rgba(255,255,255,0)'); x.fillStyle = sh; x.beginPath(); x.ellipse(48, 22, 40, 18, 0, 0, T); x.fill(); x.restore();
+    // สัญลักษณ์
+    x.save(); x.translate(48, 50); x.fillStyle = '#FFFFFF'; x.strokeStyle = mix(.55, 0); x.lineWidth = 2.6; x.lineJoin = 'round'; x.lineCap = 'round'; x.shadowColor = 'rgba(0,0,0,.3)'; x.shadowOffsetY = 1.5; x.shadowBlur = 2;
+    try { (G[MAP[emo]] || G.star)(x); } catch (e) {} x.restore();
+    if (rank >= 4) { x.save(); x.fillStyle = '#E0304A'; x.strokeStyle = '#fff'; x.lineWidth = 2; x.beginPath(); x.roundRect(28, 78, 40, 14, 7); x.fill(); x.stroke(); x.fillStyle = '#fff'; x.font = '900 10px sans-serif'; x.textAlign = 'center'; x.textBaseline = 'middle'; x.fillText('ULT', 48, 85.5); x.restore(); }
+    return c;
+  }
+  return { draw, MAP };
+})();
+const RPG_SKPUA = {};
+function rpgSkPuaAll() {
+  const add = (k, info) => { if (k.emo34 != null) return; k.emo34 = k[1]; const ch = String.fromCodePoint(RPG_PUAN++); RPG_SKPUA[ch] = info; RPG_PUA[ch] = '@sk:' + ch; k[1] = ch; };
+  Object.entries(RPG_JOBS).forEach(([j, J]) => (J.sk || []).forEach((k, i) => { let col = J.col; try { col = rpgSkFxOf(k)?.R?.c || J.col; } catch (e) {} add(k, { emo: k[1], col, rank: k._rank ?? i, kind: k[4] }); }));
+  if (typeof RPG_PASSIVE !== 'undefined') Object.entries(RPG_PASSIVE).forEach(([j, L]) => (L || []).forEach(p => add(p, { emo: p[1], col: RPG_JOBS[j]?.col || '#8E7CFF', rank: 1, kind: 'b' })));
+}
+rpgSkPuaAll();
+const rpgItemCanvas34c = rpgItemCanvas;
+rpgItemCanvas = function (key, S = 96) {
+  if (typeof key === 'string' && key.startsWith('@sk:')) { const ck = key + '@' + S; if (RPG_ICANV.has(ck)) return RPG_ICANV.get(ck); const I = RPG_SKPUA[key.slice(4)]; const c = SKI34.draw(key, I?.emo, I?.col, I?.rank || 0, S, I?.kind); RPG_ICANV.set(ck, c); return c; }
+  return rpgItemCanvas34c(key, S);
+};
+const rpgPuaText34c = rpgPuaText;
+rpgPuaText = function (str) { return rpgPuaText34c(String(str ?? '').replace(RPG_PUARE_G, ch => { const I = RPG_SKPUA[ch]; return I ? I.emo : ch; })); };
+// ไอคอนสกิล/คลาสไม่ใช่ไอเทม → ไม่เปิดหน้าข้อมูลไอเทม
+rpgPuaSwap = (f => function (root) { if (!root || !root.nodeType) return; const r = f(root); root.querySelectorAll?.('img.ii[data-ii^="@sk:"],img.ii[data-ii^="@cls:"]').forEach(im => { im.classList.add(im.dataset.ii.startsWith('@sk:') ? 'ski' : 'jic'); delete im.dataset.ii; }); return r; })(rpgPuaSwap);
 
 /* =====================================================================
    rpg-net.js — หน้าเกมของครู: จัดการตัวละคร (เลือกชั้น → ห้อง) · คำถามในเกม · ตรวจแชท · กิลด์ · โหมดครู
