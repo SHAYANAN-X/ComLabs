@@ -5159,6 +5159,7 @@ img.ii.jic{border-radius:22%}
 .rpg-act.ac49 .s0{right:4px;bottom:240px}.rpg-act.ac49 .s1{right:4px;bottom:296px}.rpg-act.ac49 .s4{right:4px;bottom:352px}.rpg-act.ac49 .s2{right:4px;bottom:408px}.rpg-act.ac49 .s3{right:4px;bottom:464px}
 @media (max-width:700px){.skx-cut{height:64px}.skx-cut div{margin-left:6%}.skx-cut b{font-size:22px}.skx-cut.r4 b{font-size:28px}.skx-cut span{font-size:30px}}
 .rpg-act.ac49{width:330px;height:330px}.rpg-act.ac49 .ac-ring{width:330px;height:330px;right:-59px;bottom:-59px;background:radial-gradient(circle,transparent 52%,rgba(10,8,30,.28) 53%,rgba(10,8,30,.28) 70%,transparent 71%)}
+.ac-sk49 button em:empty{display:none}.ac-sk49 button.cd small{visibility:hidden}.ac-sk49 button.down{transform:scale(.9)}
 
 </style>
 </head>
@@ -5703,7 +5704,7 @@ if (typeof module !== 'undefined') module.exports = ExamParser;
 </script>
 <script>
 /* โลโก้: ภาพครูปลื้ม (ไฟล์ต้นฉบับ src/logo.svg ฝังตอน build) */
-const APP_VER = '49.1 · 27 พ.ย. 2569';
+const APP_VER = '50.0 · 27 พ.ย. 2569';
 let LOGO_N = 0;
 function logoSVG() { const k = 'L' + (++LOGO_N); return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><defs><linearGradient id="lgb" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3B9BFF"/><stop offset=".5" stop-color="#0A5BE0"/><stop offset="1" stop-color="#062C78"/></linearGradient><linearGradient id="lgs" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset=".6" stop-color="#FFF4D6"/><stop offset="1" stop-color="#FFD978"/></linearGradient><radialGradient id="lgc" cx=".3" cy=".08" r=".75"><stop offset="0" stop-color="#fff" stop-opacity=".55"/><stop offset=".5" stop-color="#fff" stop-opacity=".08"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient></defs><rect width="48" height="48" rx="13" fill="url(#lgb)"/><rect width="48" height="48" rx="13" fill="url(#lgc)"/><rect x=".75" y=".75" width="46.5" height="46.5" rx="12.3" fill="none" stroke="#fff" stroke-opacity=".45" stroke-width="1.2"/><g fill="none" stroke="#04235F" stroke-opacity=".35" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" transform="translate(0 1.2)"><path d="M21.2 17 C19.8 14.6 17.4 13.6 14.8 13.6 C11 13.6 8.6 15.6 8.6 18.5 C8.6 21.8 11.6 22.9 14.9 23.9 C18.6 25 21.6 26.4 21.6 29.8 C21.6 33 18.8 34.6 15.1 34.6 C12 34.6 9.5 33.4 8 31.1"/><path d="M26.6 14 L39.6 34.2 M39.6 14 L26.6 34.2"/></g><g fill="none" stroke="url(#lgs)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M21.2 17 C19.8 14.6 17.4 13.6 14.8 13.6 C11 13.6 8.6 15.6 8.6 18.5 C8.6 21.8 11.6 22.9 14.9 23.9 C18.6 25 21.6 26.4 21.6 29.8 C21.6 33 18.8 34.6 15.1 34.6 C12 34.6 9.5 33.4 8 31.1"/><path d="M26.6 14 L39.6 34.2 M39.6 14 L26.6 34.2"/></g></svg>`.replace('<svg ', '<svg class="logo" aria-hidden="true" ').replace(/\b(lg[bsc])\b/g, '$1' + k); }
 /* =====================================================================
@@ -13927,7 +13928,7 @@ function draw(x, o) {
   x.fillStyle = dk(skin, .1); x.beginPath(); if (o._T) { const ng = x.createLinearGradient(0, neck - 6, 0, neck + 1); ng.addColorStop(0, dk(skin, .22)); ng.addColorStop(.5, dk(skin, .08)); ng.addColorStop(1, skin); x.fillStyle = ng; x.roundRect(-1.9, neck - 6, 3.8, 7, 1.4); } else x.roundRect(-2.1, neck - 3, 4.2, 4, 1.5); x.fill();
   // head
   x.save(); x.translate(0, neck - (o._T ? 2.4 : 0)); x.scale(o.headK || 1, o.headK || 1); x.translate(0, HY - neck);
-  const V7 = !!H.v7, YW = V7 ? (o.yaw || 0) : 0, YF = YW * .62;
+  const V7 = !!H.v7, YW = V7 ? (o.yaw || 0) : 0, YF = YW * .9;
   if (V7) { o._pj = (x0) => { const a = Math.asin(Math.max(-1, Math.min(1, x0 / (.95 * r)))), v = a + YF, z = Math.cos(v); if (z < .14) return null; return { x: .95 * r * Math.sin(v), k: Math.pow(z, .7) }; }; o._feat = Math.cos(YF) > -.25; x.save(); x.translate(.3 * r * Math.sin(YW), 0); x.scale(1 - .24 * Math.sin(YW), 1); }
   const fg = x.createRadialGradient(-r * .3, -r * .2, r * .1, 0, 0, r * 1.15); fg.addColorStop(0, lt(skin, .35)); fg.addColorStop(.75, skin); fg.addColorStop(1, dk(skin, .08)); x.fillStyle = fg;
   const jaw = f ? .98 : 1.04; if (V7) { animeJaw(x, r, f); x.fill(); x.save(); x.clip(); const sg = x.createLinearGradient(0, .3 * r, 0, 1.1 * r); sg.addColorStop(0, 'rgba(255,255,255,0)'); sg.addColorStop(1, 'rgba(200,110,110,.12)'); x.fillStyle = sg; x.fillRect(-r, .3 * r, 2 * r, r); x.restore(); } else { x.beginPath(); x.moveTo(-r, -.15 * r); x.bezierCurveTo(-r, -1.12 * r, r, -1.12 * r, r, -.15 * r); x.bezierCurveTo(r * .98, .55 * r, .45 * r, jaw * r, 0, jaw * r); x.bezierCurveTo(-.45 * r, jaw * r, -r * .98, .55 * r, -r, -.15 * r); x.fill(); }
@@ -17041,7 +17042,7 @@ const rpgLookImg27 = rpgLookImg;
 rpgLookImg = function (look, size = 120, mode = 'full') {
   if (!look?.wing) return rpgLookImg27(look, size, mode);
   const k = 'W' + JSON.stringify(look) + size + mode; if (RPG_LOOKC[k]) return RPG_LOOKC[k];
-  const box = { full: [-62, -84, 124, 88], head: [-20, -68, 40, 40], body: [-26, -70, 52, 70], bust: [-24, -70, 48, 48] }[mode];
+  const box = { full: [-62, -96, 124, 100], head: [-13, -75, 26, 26], body: [-24, -80, 48, 80], bust: [-18, -78, 36, 36] }[mode];
   const c = document.createElement('canvas'), sc = size / box[2]; c.width = size; c.height = Math.round(box[3] * sc); const x = c.getContext('2d'); x.scale(sc, sc); x.translate(-box[0], -box[1]);
   rpgWingDraw(x, look.wing, 0, false, look.wf); const L2 = { ...look }; delete L2.wing; delete L2.px; const rr2 = sc > 3 ? 6 : sc > 1.6 ? 4 : RPG_ART_RES; rpgArtBlit(x, rpgArtGet(JSON.stringify([L2, 'd', 'idle', -1, 0, rr2]), () => rpgArtRender(rpgArtOpts(L2, { dir: 'd' }), null, rr2)), false);
   try { return (RPG_LOOKC[k] = c.toDataURL()); } catch (e) { return ''; }
@@ -20440,7 +20441,7 @@ rpgWingDraw = function (x, n, t, moving, form = 'angel') {
 rpgLookImg = (f => function (look, size = 120, mode = 'full') {
   if (!look?.wing || mode !== 'full' || look.px) return f(look, size, mode);
   const k = 'W33' + JSON.stringify(look) + size + mode; if (RPG_LOOKC[k]) return RPG_LOOKC[k];
-  const box = [-80, -104, 160, 108], c = document.createElement('canvas'), sc = size / box[2]; c.width = size; c.height = Math.round(box[3] * sc); const x = c.getContext('2d'); x.scale(sc, sc); x.translate(-box[0], -box[1]);
+  const box = [-64, -104, 128, 108], c = document.createElement('canvas'), sc = size / box[2]; c.width = size; c.height = Math.round(box[3] * sc); const x = c.getContext('2d'); x.scale(sc, sc); x.translate(-box[0], -box[1]);
   rpgWingDraw(x, look.wing, 0, false, look.wf); const L2 = { ...look }; delete L2.wing; const rr2 = sc > 3 ? 6 : sc > 1.6 ? 4 : RPG_ART_RES; rpgArtBlit(x, rpgArtGet(JSON.stringify([L2, 'd', 'idle', -1, 0, rr2]), () => rpgArtRender(rpgArtOpts(L2, { dir: 'd' }), null, rr2)), false);
   try { return (RPG_LOOKC[k] = c.toDataURL()); } catch (e) { return ''; }
 })(rpgLookImg);
@@ -21796,7 +21797,7 @@ rpgEquipPreview = function () {
     for (let k = 0; k < 10; k++) { const q = (t / 2600 + k / 10) % 1, a = k * 2.3; x.globalAlpha = Math.sin(q * Math.PI) * .8; x.fillStyle = k % 2 ? '#fff' : col; x.beginPath(); x.arc(cx + Math.cos(a) * W * .22, fy - q * H * .6, 2 * d, 0, 7); x.fill(); }
     x.globalAlpha = 1;
     const auto = Math.floor((t - t0) / 900) % 8, dir = RS.eqDirMan ? RS.eqDir : auto;
-    x.translate(cx, fy); const sc = Math.min(W / 96, H / 80); x.scale(sc, sc);
+    x.translate(cx, fy); const sc = Math.min(W / 100, H / 102); x.scale(sc, sc);
     rpgDrawHero(x, { look: rpgLookMe(), d8: (dir % 8 + 8) % 8, t }); requestAnimationFrame(loop); };
   requestAnimationFrame(loop);
 };
@@ -23737,6 +23738,46 @@ const rpgPanelHTML49 = typeof rpgPanelHTML === 'function' ? rpgPanelHTML : null;
 /* ---------- ปีกให้ตรงแผ่นหลังของสัดส่วนตัวละครใหม่ ---------- */
 if (typeof rpgWingDraw === 'function') rpgWingDraw = (f => function (x) { const A = RPG_ANI; x.save(); x.transform(A.S, 0, 0, A.S, 0, A.ty); try { return f.apply(this, arguments); } finally { x.restore(); } })(rpgWingDraw);
 if (typeof rpgAccFx === 'function') rpgAccFx = (f => function (x, acc) { if (acc?.fx !== 'wings') return f.apply(this, arguments); const A = RPG_ANI; x.save(); x.transform(A.S, 0, 0, A.S, 0, A.ty); try { return f.apply(this, arguments); } finally { x.restore(); } })(rpgAccFx);
+
+/* rpg-v50.js — ตรวจบั๊ก + ปรับสมดุลการต่อสู้บนแผนที่ */
+// 1) สมดุล: มอนสเตอร์บนแผนที่ (ไม่ใช่บอส) เลือดและแรงตีลดลง เหมาะกับสู้แบบเรียลไทม์
+const RPG_FIELD50 = { hp: .5, atk: .55, gap: [1700, 2300], maxAtk: 2, regenDelay: 5000, regen: .025 };
+rpgFcMs = function (mo) { if (!mo.ms) { const b = rpgMonStats(mo); mo.ms = mo.boss ? b : { ...b, mhp: Math.max(1, Math.round(b.mhp * RPG_FIELD50.hp)), atk: Math.max(1, Math.round(b.atk * RPG_FIELD50.atk)) }; mo.hp = mo.ms.mhp; } return mo.ms; };
+// 2) ตีพร้อมกันได้ไม่เกิน 2 ตัว ตัวอื่นรอวนรอบ ๆ + เว้นจังหวะตีให้นานขึ้น · ฟื้น HP เองเมื่อไม่โดนตี 5 วินาที
+rpgUpdate = (f => function (dt, now) {
+  const s = R.save; let held = [];
+  if (s && RS.map && !RS.battle && RS.mon) { const t = performance.now(), near = RS.mon.filter(m => !m.boss && !m.dead && Math.hypot(m.x - s.x, m.y - s.y) < 1.05).sort((a, b) => (b.aggro ? 1 : 0) - (a.aggro ? 1 : 0) || Math.hypot(a.x - s.x, a.y - s.y) - Math.hypot(b.x - s.x, b.y - s.y));
+    near.slice(RPG_FIELD50.maxAtk).forEach(m => { held.push([m, m.atkCd]); m.atkCd = t + 99999; m.lunge = 0; });
+    near.slice(0, RPG_FIELD50.maxAtk).forEach(m => { if (m.atkCd > t + 5000) m.atkCd = t + 600 + Math.random() * 600; }); }
+  const hp0 = s?.hp; const r = f.apply(this, arguments);
+  held.forEach(([m]) => { m.atkCd = performance.now() + 400 + Math.random() * 800; });
+  if (s && RS.map && !RS.battle) { const t = performance.now();
+    (RS.mon || []).forEach(m => { if (m.atkCd && m.atkCd - t > 1250 && m.atkCd - t < 1800 && !m._gap50) { m._gap50 = 1; m.atkCd += RPG_FIELD50.gap[0] - 1300 + Math.random() * (RPG_FIELD50.gap[1] - RPG_FIELD50.gap[0]); } if (m.atkCd && m.atkCd < t) m._gap50 = 0; });
+    if (hp0 != null && s.hp < hp0) RS.lastHurt50 = t;
+    const st = rpgStats(); if (s.hp > 0 && s.hp < st.mhp && t - (RS.lastHurt50 || 0) > RPG_FIELD50.regenDelay && !(FC.tgt && !FC.tgt.dead)) { RS.regAcc50 = (RS.regAcc50 || 0) + st.mhp * RPG_FIELD50.regen * Math.min(.1, dt || 0); if (RS.regAcc50 >= 1) { const n = Math.floor(RS.regAcc50); RS.regAcc50 -= n; s.hp = Math.min(st.mhp, s.hp + n); if (!rpgUpdate._h50 || t - rpgUpdate._h50 > 600) { rpgUpdate._h50 = t; rpgHud(); } } } }
+  return r;
+})(rpgUpdate);
+
+// 3) ปุ่มสกิล: สร้างปุ่มครั้งเดียวแล้วอัปเดตค่า (เดิมสร้างใหม่ทุก 0.12 วิ ทำให้แตะบนมือถือไม่ติด)
+rpgFcBar = function () {
+  const host = document.getElementById('rpg-act'); if (!host || !R.save) return; document.getElementById('fc-bar')?.remove(); host.classList.add('ac49');
+  let box = host.querySelector('.ac-sk49'); if (!box) { box = document.createElement('div'); box.className = 'ac-sk49'; host.appendChild(box);
+    const fire = b => { if (b.dataset.cap) return rpgFcCapture(); if (b.dataset.set) return rpgPanel('skill'); rpgFcSkill(+b.dataset.i); };
+    box.addEventListener('pointerdown', e => { const b = e.target.closest('button'); if (!b) return; e.preventDefault(); e.stopPropagation(); b.classList.add('down'); fire(b); });
+    ['pointerup', 'pointercancel', 'pointerleave'].forEach(ev => box.addEventListener(ev, e => e.target.closest?.('button')?.classList.remove('down')));
+    box.addEventListener('click', e => { e.preventDefault(); e.stopPropagation(); }); }
+  const s = R.save, j = rpgJob(), now = performance.now(), cap = !!(FC.tgt && !FC.tgt.dead && FC.tgt.ms && FC.tgt.hp <= FC.tgt.ms.mhp * .3 && rpgFcNets().length);
+  const sig = j.sk.slice(0, 5).map(k => (k._key || k[0]) + '/' + k[1]).join('|') + (cap ? '#cap' : '');
+  if (box._sig !== sig) { box._sig = sig; let h = '';
+    j.sk.slice(0, 5).forEach((k, i) => { const [r, b] = RPG_ACPOS49[i], rank = rpgSkRank49(k, i); h += `<button data-i="${i}" class="r${rank}" style="right:${r}px;bottom:${b}px;--c:${rpgSkCol49(k[5], j)}" aria-label="${esc(k[0])}"><span>${k[1] || '✨'}</span><small></small><em></em><kbd>${i + 1}</kbd></button>`; });
+    for (let i = j.sk.length; i < 5; i++) { const [r, b] = RPG_ACPOS49[i]; h += `<button data-set="1" class="empty" style="right:${r}px;bottom:${b}px" aria-label="ตั้งค่าสกิล"><span>＋</span><small>ตั้งสกิล</small></button>`; }
+    if (cap) h += `<button data-cap="1" class="cap" style="right:236px;bottom:14px" aria-label="จับมอนสเตอร์"><span>🎣</span><small>จับ</small></button>`;
+    box.innerHTML = h; }
+  box.querySelectorAll('button[data-i]').forEach(b => { const i = +b.dataset.i, k = j.sk[i]; if (!k) return; const lv = s.sk[i] || 1, mp = rpgSkMp(k, lv), rank = rpgSkRank49(k, i), cd = Math.max(0, (FC.skCd?.[i] || 0) - now), tot = k[4] === 'b' ? 4000 : RPG_SKCD49[rank];
+    b.classList.toggle('cd', cd > 0); b.classList.toggle('nomp', k[4] !== 'b' && s.mp < mp); b.style.setProperty('--cd', (cd / tot * 360).toFixed(0) + 'deg');
+    const em = b.querySelector('em'), sm = b.querySelector('small'), et = cd > 0 ? (cd / 1000).toFixed(cd < 1000 ? 1 : 0) : '', st = k[4] === 'b' ? 'บัฟ' : String(mp);
+    if (em.textContent !== et) em.textContent = et; if (sm.textContent !== st) sm.textContent = cd > 0 ? '' : st; });
+};
 
 /* =====================================================================
    rpg-net.js — หน้าเกมของครู: จัดการตัวละคร (เลือกชั้น → ห้อง) · คำถามในเกม · ตรวจแชท · กิลด์ · โหมดครู
