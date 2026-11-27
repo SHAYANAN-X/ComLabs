@@ -4884,6 +4884,60 @@ img.ii.jic{border-radius:22%}
 @media (max-width:760px){.rpg .hd2.v35{gap:9px;padding:6px 10px 6px 6px;border-radius:20px}.rpg .hd2.v35 .hd2-por{width:54px;height:54px}.rpg .hd2.v35 .hd2-main{min-width:0;width:176px}.rpg .hd2.v35 .hd2-name b{font-size:14px}.rpg .hd2.v35 .hd2-bar{height:11px}.rpg .hd2.v35 .hd2-bar span{font-size:9px;line-height:11px}.rpg .hd2.v35 .hd2-chips span{font-size:10.5px;padding:1px 8px}}
 @media (max-width:760px){.rpg .hd2.v35 .hd2-main{width:158px}.rpg .hd2.v35 .hd2-name span{max-width:100px;overflow:hidden;text-overflow:ellipsis}}
 
+/* ===================== v36: ทุกเมนูเป็นแก้วใส ===================== */
+.rpg{--gl-bg:linear-gradient(135deg,rgba(255,255,255,.24),rgba(255,255,255,.07) 55%,rgba(255,255,255,.13));--gl-bd:rgba(255,255,255,.4);--gl-sh:0 10px 28px rgba(10,8,40,.32),inset 0 1px 0 rgba(255,255,255,.55),inset 0 -1px 0 rgba(255,255,255,.12);--gl-blur:blur(16px) saturate(170%)}
+/* ปุ่มเมนูด้านบน */
+.rpg .rpg-menu button{border-radius:20px!important;background:var(--gl-bg)!important;border:1px solid var(--gl-bd)!important;box-shadow:var(--gl-sh)!important;-webkit-backdrop-filter:var(--gl-blur);backdrop-filter:var(--gl-blur);color:#fff}
+.rpg .rpg-menu button::before,.rpg .rpg-menu button::after{display:none!important}
+.rpg .rpg-menu button small{position:static!important;margin-top:1px;color:#fff;text-shadow:0 1px 3px rgba(0,0,0,.6)}
+.rpg .rpg-menu button:hover{background:linear-gradient(135deg,rgba(255,255,255,.34),rgba(255,255,255,.12))!important;transform:translateY(-2px)}
+/* เมนูทั้งหมด */
+.rpg .rpg-more{background:rgba(8,10,30,.22);-webkit-backdrop-filter:blur(2px);backdrop-filter:blur(2px)}
+.rpg .rm-card{background:linear-gradient(160deg,rgba(255,255,255,.26),rgba(255,255,255,.08))!important;border:1px solid var(--gl-bd)!important;border-radius:28px!important;box-shadow:0 24px 60px rgba(10,8,40,.45),inset 0 1px 0 rgba(255,255,255,.6)!important;-webkit-backdrop-filter:blur(22px) saturate(170%);backdrop-filter:blur(22px) saturate(170%)}
+.rpg .rm-card > b{color:#fff;text-shadow:0 1px 4px rgba(0,0,0,.5)}
+.rpg .rm-card button{background:rgba(255,255,255,.12)!important;border:1px solid rgba(255,255,255,.3)!important;border-radius:20px!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.4)!important;color:#fff}
+.rpg .rm-card button small{color:#fff!important;text-shadow:0 1px 3px rgba(0,0,0,.55)}
+.rpg .rm-card button:hover{background:rgba(255,255,255,.26)!important}
+/* ภารกิจ */
+.rpg .rpg-qt.qt2{border-radius:20px!important;overflow:hidden;background:var(--gl-bg)!important;border:1px solid var(--gl-bd);box-shadow:var(--gl-sh)!important;-webkit-backdrop-filter:var(--gl-blur);backdrop-filter:var(--gl-blur)}
+.rpg .rpg-qt.qt2 :is(.qt-head2,.qt-head,.qt-guide,.qt-q,.qt-tut,.qt-dsum,.qt-cfg){background:transparent!important;border:0!important;border-top:1px solid rgba(255,255,255,.16)!important;color:#fff!important;box-shadow:none!important}
+.rpg .rpg-qt.qt2 .qt-head2{border-top:0!important;background:rgba(255,255,255,.1)!important}
+.rpg .rpg-qt.qt2 :is(b,span,em,p,label,small){color:#fff!important;text-shadow:0 1px 3px rgba(0,0,0,.45)}
+.rpg .rpg-qt.qt2 .qt-q small,.rpg .rpg-qt.qt2 .qt-dsum small{color:#FFE27A!important}
+.rpg .rpg-qt.qt2 .qt-q em,.rpg .rpg-qt.qt2 .qt-dsum span em{color:#9FF7C8!important}
+.rpg .rpg-qt.qt2 .qt-bar{background:rgba(255,255,255,.18)}
+.rpg .rpg-qt.qt2 button:not(.qt-q):not(.qt-dsum):not(.qt-head2){background:rgba(255,255,255,.2)!important;border:1px solid rgba(255,255,255,.35)!important;color:#fff!important}
+.rpg .rpg-qt.qt2 .qt-dsum u{background:rgba(255,255,255,.3)}.rpg .rpg-qt.qt2 .qt-dsum u.ok{background:#3DDC84}
+/* แผนที่ย่อ · ปุ่มวาร์ป */
+.rpg .rpg-mtools .mt-name{background:var(--gl-bg);border:1px solid var(--gl-bd);border-radius:12px;box-shadow:var(--gl-sh);-webkit-backdrop-filter:var(--gl-blur);backdrop-filter:var(--gl-blur);color:#fff}
+.rpg .rpg-mtools .mt-row button{border-radius:14px!important;border:1px solid rgba(255,255,255,.45)!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.5),0 6px 16px rgba(0,0,0,.25)!important;-webkit-backdrop-filter:var(--gl-blur);backdrop-filter:var(--gl-blur)}
+/* แชท */
+.rpg .rpg-chat.dock{background:var(--gl-bg)!important;border:1px solid var(--gl-bd)!important;border-radius:20px!important;box-shadow:var(--gl-sh)!important;-webkit-backdrop-filter:var(--gl-blur)!important;backdrop-filter:var(--gl-blur)!important}
+.rpg .rpg-chat.dock .ch-head button{border-radius:999px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);color:#fff}
+.rpg .rpg-chat.dock .ch-head button.on{background:rgba(255,255,255,.88);color:#3A2F6B}
+.rpg .rpg-chat.dock .ch-in input{background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.3);color:#fff}.rpg .rpg-chat.dock .ch-in input::placeholder{color:rgba(255,255,255,.75)}
+/* ปุ่มต่อสู้/ไอเทม */
+.rpg .cw-sm,.rpg .cw-gem{background:radial-gradient(circle at 35% 25%,rgba(255,255,255,.45),rgba(255,255,255,.08) 60%),var(--cwc,rgba(60,70,160,.35))!important;border:1px solid rgba(255,255,255,.5)!important;box-shadow:0 8px 20px rgba(0,0,0,.3),inset 0 1px 0 rgba(255,255,255,.6)!important;-webkit-backdrop-filter:blur(10px) saturate(160%);backdrop-filter:blur(10px) saturate(160%)}
+.rpg .cw-core{border:1px solid rgba(255,255,255,.55)!important;box-shadow:0 12px 30px rgba(0,0,0,.35),inset 0 2px 0 rgba(255,255,255,.55),inset 0 -10px 24px rgba(0,0,0,.15)!important}
+/* แถบล่าง */
+.rpg .rpg-bot{background:linear-gradient(180deg,rgba(255,255,255,.16),rgba(255,255,255,.05));border-top:1px solid rgba(255,255,255,.3);-webkit-backdrop-filter:var(--gl-blur);backdrop-filter:var(--gl-blur)}
+/* หน้าต่าง (ทุกเมนู): แก้วฝ้าสว่าง */
+.rpg .rpg-panel{background:rgba(20,16,50,.28)!important;-webkit-backdrop-filter:blur(6px)!important;backdrop-filter:blur(6px)!important}
+.rpg .rpg-panel .rp-card{background:linear-gradient(160deg,rgba(255,255,255,.8),rgba(244,240,255,.66) 60%,rgba(255,255,255,.74))!important;border:1px solid rgba(255,255,255,.85)!important;
+  box-shadow:0 30px 70px rgba(20,10,60,.45),inset 0 1px 0 #fff,inset 0 0 0 1px rgba(255,255,255,.35)!important;-webkit-backdrop-filter:blur(26px) saturate(180%);backdrop-filter:blur(26px) saturate(180%)}
+.rpg .rpg-panel .rp-card h3{background:linear-gradient(180deg,rgba(255,255,255,.7),rgba(255,255,255,.35))!important;box-shadow:inset 0 -1px 0 rgba(140,120,220,.25)!important;-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+.rpg .rpg-panel .rp-card :is(.rp-it,.sk-c,.gd-m,.gd-new,.gd-head,.wm-n,.tp-c,.rp-npc,.rp-zone,.rp-egg,.rp-row,.rp-tier,.st-row,.qe,.rq-box,.rp-house,.qx,.fg-row,.fr-row,.skt-n,.skt-p,.skt-top,.st33-row,.st33-der span,.sk2-slot,.sk2-c,.sk2-tier,.wd-grid button,.wd-prev,.snd33-row,.snd33-city,.skc33-it,.fr-res,.sp-cell,.eq-slot,.ht-slot,.inf-eq){background:rgba(255,255,255,.55)!important;border-color:rgba(255,255,255,.85)!important;box-shadow:0 4px 14px rgba(60,40,140,.08),inset 0 1px 0 #fff!important}
+.rpg .rpg-panel .rp-card .rp-pager{border-top-color:rgba(140,120,220,.25)!important}
+.rpg .rpg-panel .rp-card .rp-pager button{background:rgba(255,255,255,.6);border:1px solid rgba(255,255,255,.9)}
+.rpg .rpg-panel .rp-x{background:rgba(255,255,255,.55)!important;border:1px solid rgba(255,255,255,.9)!important;color:#3A2F6B!important;-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);box-shadow:0 4px 12px rgba(0,0,0,.15)!important}
+/* กล่องสนทนา NPC */
+.rpg .dlg-main{background:linear-gradient(160deg,rgba(255,255,255,.82),rgba(244,240,255,.68))!important;border:1px solid rgba(255,255,255,.9)!important;box-shadow:0 18px 40px rgba(20,10,60,.35),inset 0 1px 0 #fff!important;-webkit-backdrop-filter:blur(20px) saturate(170%);backdrop-filter:blur(20px) saturate(170%)}
+.rpg .st33-id span img.ii{width:20px;height:20px;vertical-align:-4px}
+.rpg{--gl-bg:linear-gradient(135deg,rgba(255,255,255,.22),rgba(255,255,255,.05) 55%,rgba(255,255,255,.11)),rgba(16,14,44,.38)}
+.rpg .hd2.v35{background:linear-gradient(135deg,rgba(255,255,255,.22),rgba(255,255,255,.05) 55%,rgba(255,255,255,.11)),rgba(16,14,44,.38)}
+.rpg .rm-card{background:linear-gradient(160deg,rgba(255,255,255,.24),rgba(255,255,255,.06)),rgba(16,14,44,.45)!important}
+.rpg .rpg-mtools .mt-name{color:#fff!important}
+
 </style>
 </head>
 <body>
@@ -5427,7 +5481,7 @@ if (typeof module !== 'undefined') module.exports = ExamParser;
 </script>
 <script>
 /* โลโก้: ภาพครูปลื้ม (ไฟล์ต้นฉบับ src/logo.svg ฝังตอน build) */
-const APP_VER = '35.0 · 27 พ.ย. 2569';
+const APP_VER = '36.0 · 27 พ.ย. 2569';
 let LOGO_N = 0;
 function logoSVG() { const k = 'L' + (++LOGO_N); return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><defs><linearGradient id="lgb" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3B9BFF"/><stop offset=".5" stop-color="#0A5BE0"/><stop offset="1" stop-color="#062C78"/></linearGradient><linearGradient id="lgs" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset=".6" stop-color="#FFF4D6"/><stop offset="1" stop-color="#FFD978"/></linearGradient><radialGradient id="lgc" cx=".3" cy=".08" r=".75"><stop offset="0" stop-color="#fff" stop-opacity=".55"/><stop offset=".5" stop-color="#fff" stop-opacity=".08"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient></defs><rect width="48" height="48" rx="13" fill="url(#lgb)"/><rect width="48" height="48" rx="13" fill="url(#lgc)"/><rect x=".75" y=".75" width="46.5" height="46.5" rx="12.3" fill="none" stroke="#fff" stroke-opacity=".45" stroke-width="1.2"/><g fill="none" stroke="#04235F" stroke-opacity=".35" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" transform="translate(0 1.2)"><path d="M21.2 17 C19.8 14.6 17.4 13.6 14.8 13.6 C11 13.6 8.6 15.6 8.6 18.5 C8.6 21.8 11.6 22.9 14.9 23.9 C18.6 25 21.6 26.4 21.6 29.8 C21.6 33 18.8 34.6 15.1 34.6 C12 34.6 9.5 33.4 8 31.1"/><path d="M26.6 14 L39.6 34.2 M39.6 14 L26.6 34.2"/></g><g fill="none" stroke="url(#lgs)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M21.2 17 C19.8 14.6 17.4 13.6 14.8 13.6 C11 13.6 8.6 15.6 8.6 18.5 C8.6 21.8 11.6 22.9 14.9 23.9 C18.6 25 21.6 26.4 21.6 29.8 C21.6 33 18.8 34.6 15.1 34.6 C12 34.6 9.5 33.4 8 31.1"/><path d="M26.6 14 L39.6 34.2 M39.6 14 L26.6 34.2"/></g></svg>`.replace('<svg ', '<svg class="logo" aria-hidden="true" ').replace(/\b(lg[bsc])\b/g, '$1' + k); }
 /* =====================================================================
@@ -20371,6 +20425,43 @@ function rpgElem35(x, E, layer) {
   }
   x.restore();
 }
+
+/* =========================================================
+   SX Realm v36 — ท่าถืออาวุธตอนเดินต่างจากตอนยืน
+   ========================================================= */
+// [มือขวา, มือซ้าย, มุมอาวุธ, มุมอาวุธมือซ้าย]  (มุมหน้า/หลัง)
+const RPG_WALK36 = {
+  sword: { R: [8, -26], L: [-9, -18], rot: .3, behind: 1 },   // พาดบ่า (ใบดาบอยู่หลังไหล่)
+  knight: { R: [10, -17], L: [-10, -20], rot: 2.1, rot2: -.05 }, // ดาบชี้ลงข้างตัว โล่ยกกันหน้า
+  fire: { R: [11, -18], L: [-8, -18], rot: .32 },           // ไม้เท้าค้ำเดิน เอนไปข้างหน้า
+  ice: { R: [11, -18], L: [-8, -18], rot: .32 },
+  priest: { R: [10, -16], L: [-8, -18], rot: 2.45 },         // คทาถือห้อยลง
+  ninja: { R: [10, -18], L: [-10, -18], rot: 2.7, rot2: -2.7 }, // มีดจับตรง ชี้ลงเฉียงออก
+  monk: { R: [10, -17], L: [-10, -17], rot: 0, rot2: 0 },     // ลดการ์ด ปล่อยแขนแกว่ง
+  bard: { R: [10, -18], L: [-10, -18], back: { rot: -.75, sc: .78 } },  // สะพายพิณไว้หลัง
+  summon: { R: [10, -16], L: [-8, -18], rot: 0 },            // ลูกแก้วลอยต่ำ
+  engineer: { R: [8, -26], L: [-9, -18], rot: .35, behind: 1 },          // ค้อนพาดบ่า
+  hacker: { R: [10, -17], L: [-9, -18], rot: .35, one: 1 },    // แท็บเล็ตถือมือเดียว
+};
+RPG_WALK36.warrior = RPG_WALK36.sword; RPG_WALK36.mage = RPG_WALK36.fire; RPG_WALK36.scholar = RPG_WALK36.priest;
+const rpgArtOpts36 = rpgArtOpts;
+rpgArtOpts = function (L, h = {}) {
+  const o = rpgArtOpts36(L, h), W = RPG_WALK36[L?.job];
+  if (!W || h.walk == null || (h.pose && h.pose !== 'idle') || !o.wpn || !o.pose) return o;
+  const sw = Math.sin(h.walk), side = !!o.turn;
+  if (W.back) { o.backW = { type: o.wpn.type, tier: o.wpn.tier || 0, rot: W.back.rot, sc: W.back.sc, side: side, back: !!o.back }; o.wpn = null; o.wpn2 = null; }
+  else { o.wpn.rot = W.rot + sw * .06; if (W.behind && !o.back) { o.wpn.behind = true; o.wpn.top = false; } } if (o.wpn && o.wpn2 && W.rot2 != null) o.wpn2.rot = W.rot2 - sw * .06;
+  if (W.one && o.wpn) { o.wpn.two = 0; o.wpn.hand = 'R'; }
+  if (!side) { o.pose.R = [W.R[0], W.R[1] + (W.R[1] < -22 ? 0 : sw * 1.6)]; o.pose.L = [W.L[0], W.L[1] - sw * 1.6]; }
+  else { o.pose.R = [W.R[0] - 4 + (W.R[1] < -22 ? 0 : sw * 3.2), W.R[1]]; o.pose.L = [W.L[0] + 7 - sw * 3, W.L[1]]; }
+  return o;
+};
+const C2draw36 = C2.draw;
+C2.draw = function (x, o) {
+  const B = o?.backW; if (!B || !WP.D[B.type]) return C2draw36.apply(this, arguments);
+  const draw = () => { x.save(); x.translate(B.side ? -5 : 0, -26); x.rotate(B.side ? -.4 : B.back ? -B.rot : B.rot); x.scale(B.sc, B.sc); WP.D[B.type](x, B.tier); x.restore(); };
+  if (!o.back) draw(); const r = C2draw36.apply(this, arguments); if (o.back) draw(); return r;
+};
 
 /* =====================================================================
    rpg-net.js — หน้าเกมของครู: จัดการตัวละคร (เลือกชั้น → ห้อง) · คำถามในเกม · ตรวจแชท · กิลด์ · โหมดครู
