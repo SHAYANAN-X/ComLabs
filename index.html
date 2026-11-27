@@ -4937,6 +4937,26 @@ img.ii.jic{border-radius:22%}
 .rpg .hd2.v35{background:linear-gradient(135deg,rgba(255,255,255,.22),rgba(255,255,255,.05) 55%,rgba(255,255,255,.11)),rgba(16,14,44,.38)}
 .rpg .rm-card{background:linear-gradient(160deg,rgba(255,255,255,.24),rgba(255,255,255,.06)),rgba(16,14,44,.45)!important}
 .rpg .rpg-mtools .mt-name{color:#fff!important}
+.rpg-bot .wx37 small{opacity:.85;font-weight:700}
+/* v38: ฉากเปิดตัวบอส · ท่าไม้ตายบอส */
+.boss38{position:absolute;inset:0;z-index:30;cursor:pointer;overflow:hidden;animation:rp-fade .2s}.boss38.out{opacity:0;transition:opacity .3s}
+.boss38 canvas{position:absolute;inset:0;width:100%;height:100%}
+.boss38 .bs-warn{position:absolute;left:0;right:0;height:34px;overflow:hidden;background:repeating-linear-gradient(-45deg,#FFD23F 0 18px,#1A0A10 18px 36px);box-shadow:0 0 20px rgba(255,40,80,.6)}
+.boss38 .bs-warn.t{top:9%;transform:skewY(-3deg)}.boss38 .bs-warn.b{bottom:9%;transform:skewY(-3deg)}
+.boss38 .bs-warn span{display:block;white-space:nowrap;margin:3px 0;padding:2px 0;font:900 17px/24px var(--f-head);letter-spacing:.12em;color:#FFE8E8;background:#C8102E;animation:bs38m 6s linear infinite}
+.boss38 .bs-warn.b span{animation-direction:reverse}
+@keyframes bs38m{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.boss38 .bs-name{position:absolute;left:50%;bottom:17%;transform:translateX(-50%) scale(1.6);opacity:0;text-align:center;color:#fff;white-space:nowrap}
+.boss38.v .bs-name{animation:bs38n .5s cubic-bezier(.2,1.5,.4,1) forwards}
+@keyframes bs38n{to{opacity:1;transform:translateX(-50%) scale(1)}}
+.boss38 .bs-name small{display:block;font:900 13px var(--f-body);letter-spacing:.25em;color:#FFE27A}
+.boss38 .bs-name b{display:block;font:900 clamp(34px,7vw,72px)/1.1 var(--f-head);background:linear-gradient(180deg,#FFFFFF,#FFB0C0 50%,var(--c));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;filter:drop-shadow(0 4px 0 #3A0010) drop-shadow(0 0 22px var(--c))}
+.boss38 .bs-name em{display:inline-block;margin-top:4px;padding:2px 14px;border-radius:999px;font:900 15px var(--f-head);font-style:normal;color:#fff;background:#C8102E;box-shadow:0 0 0 2px #FFD23F}
+.boss38 .bs-skip{position:absolute;right:14px;bottom:12px;padding:4px 10px;border-radius:9px;font-size:12px;color:#fff;background:rgba(0,0,0,.45)}
+.bsk38-ban{position:absolute;left:50%;top:18%;z-index:8;transform:translateX(-50%);padding:8px 30px;text-align:center;color:#fff;background:linear-gradient(90deg,transparent,rgba(120,0,30,.9) 20%,rgba(200,16,46,.95) 50%,rgba(120,0,30,.9) 80%,transparent);animation:bsk38 1.5s ease-out forwards;pointer-events:none}
+.bsk38-ban small{display:block;font:900 11px var(--f-body);letter-spacing:.3em;color:#FFE27A}.bsk38-ban b{font:900 clamp(22px,4vw,36px) var(--f-head);text-shadow:0 0 18px var(--c)}
+@keyframes bsk38{0%{opacity:0;transform:translateX(-50%) scaleX(.3)}12%{opacity:1;transform:translateX(-50%) scaleX(1)}80%{opacity:1}100%{opacity:0}}
+@media (prefers-reduced-motion:reduce){.boss38 .bs-warn span{animation:none}}
 
 </style>
 </head>
@@ -5481,7 +5501,7 @@ if (typeof module !== 'undefined') module.exports = ExamParser;
 </script>
 <script>
 /* โลโก้: ภาพครูปลื้ม (ไฟล์ต้นฉบับ src/logo.svg ฝังตอน build) */
-const APP_VER = '36.0 · 27 พ.ย. 2569';
+const APP_VER = '38.0 · 27 พ.ย. 2569';
 let LOGO_N = 0;
 function logoSVG() { const k = 'L' + (++LOGO_N); return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><defs><linearGradient id="lgb" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3B9BFF"/><stop offset=".5" stop-color="#0A5BE0"/><stop offset="1" stop-color="#062C78"/></linearGradient><linearGradient id="lgs" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset=".6" stop-color="#FFF4D6"/><stop offset="1" stop-color="#FFD978"/></linearGradient><radialGradient id="lgc" cx=".3" cy=".08" r=".75"><stop offset="0" stop-color="#fff" stop-opacity=".55"/><stop offset=".5" stop-color="#fff" stop-opacity=".08"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient></defs><rect width="48" height="48" rx="13" fill="url(#lgb)"/><rect width="48" height="48" rx="13" fill="url(#lgc)"/><rect x=".75" y=".75" width="46.5" height="46.5" rx="12.3" fill="none" stroke="#fff" stroke-opacity=".45" stroke-width="1.2"/><g fill="none" stroke="#04235F" stroke-opacity=".35" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" transform="translate(0 1.2)"><path d="M21.2 17 C19.8 14.6 17.4 13.6 14.8 13.6 C11 13.6 8.6 15.6 8.6 18.5 C8.6 21.8 11.6 22.9 14.9 23.9 C18.6 25 21.6 26.4 21.6 29.8 C21.6 33 18.8 34.6 15.1 34.6 C12 34.6 9.5 33.4 8 31.1"/><path d="M26.6 14 L39.6 34.2 M39.6 14 L26.6 34.2"/></g><g fill="none" stroke="url(#lgs)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M21.2 17 C19.8 14.6 17.4 13.6 14.8 13.6 C11 13.6 8.6 15.6 8.6 18.5 C8.6 21.8 11.6 22.9 14.9 23.9 C18.6 25 21.6 26.4 21.6 29.8 C21.6 33 18.8 34.6 15.1 34.6 C12 34.6 9.5 33.4 8 31.1"/><path d="M26.6 14 L39.6 34.2 M39.6 14 L26.6 34.2"/></g></svg>`.replace('<svg ', '<svg class="logo" aria-hidden="true" ').replace(/\b(lg[bsc])\b/g, '$1' + k); }
 /* =====================================================================
@@ -12688,6 +12708,7 @@ function rpgDraw(now) {
   mp.water.forEach(([i, j]) => { if (!vis(i, j, 1)) return; const a = .35 + .35 * Math.sin(t / 600 + i * 1.7 + j * 2.3); x.strokeStyle = `rgba(255,255,255,${a})`; x.lineWidth = 1.4; const o = Math.sin(t / 900 + i + j) * 4; x.beginPath(); x.moveTo(i * TS + 7 + o, j * TS + 12); x.lineTo(i * TS + 15 + o, j * TS + 12); x.moveTo(i * TS + 16 - o, j * TS + 23); x.lineTo(i * TS + 24 - o, j * TS + 23); x.stroke(); });
   mp.lava.forEach(([i, j]) => { if (!vis(i, j, 1)) return; const a = .14 + .16 * Math.sin(t / 500 + i * 1.3 + j * .7), cx2 = i * TS + 16, cy2 = j * TS + 16, gl = x.createRadialGradient(cx2, cy2, 1, cx2, cy2, 20); gl.addColorStop(0, `rgba(255,230,140,${a * 2})`); gl.addColorStop(1, 'rgba(255,200,100,0)'); x.fillStyle = gl; x.beginPath(); x.arc(cx2, cy2, 20, 0, 7); x.fill(); });
   if (mp.fountain) { const [fx, fy] = mp.fountain; x.fillStyle = `rgba(255,255,255,${.25 + .15 * Math.sin(t / 300)})`; x.beginPath(); x.ellipse(fx, fy - 2, 30 + Math.sin(t / 400) * 4, 14, 0, 0, 7); x.fill(); }
+  try { rpgScenery37?.(x, mp, t, vis); } catch (e) {}
   // พอร์ทัลทางออก
   mp.portals.forEach(p => { if (p) rpgPortalFx(x, p, t); });
   // เฟอร์นิเจอร์
@@ -12696,7 +12717,7 @@ function rpgDraw(now) {
   if (RS.walkTo) { x.strokeStyle = 'rgba(255,255,255,.9)'; x.lineWidth = 2; const r = 5 + (t / 90 % 8); x.globalAlpha = 1 - (t / 90 % 8) / 8; x.beginPath(); x.ellipse(RS.walkTo.x * TS, RS.walkTo.y * TS, r * 1.4, r * .7, 0, 0, 7); x.stroke(); x.globalAlpha = 1; }
   // เอนทิตี้ เรียงตามแกน y
   const ents = [];
-  mp.trees.forEach(tr => { if (vis(tr.x, tr.y, 3)) ents.push({ y: tr.y + .92, d: () => { const T2 = rpgTree2(tr.k, tr.v), k = T2.w > 100 ? (tr.dense ? .62 : .8) : 1; x.drawImage(T2.img, tr.x * TS + 16 - (T2.ox + 16) * k, tr.y * TS + TS - 4 - T2.oy * k, T2.w * k, T2.h * k); } }); });
+  mp.trees.forEach(tr => { if (vis(tr.x, tr.y, 3)) ents.push({ y: tr.y + .92, d: () => { const T2 = rpgTree2(tr.k, tr.v), k = T2.w > 100 ? (tr.dense ? .62 : .8) : 1; const bx = tr.x * TS + 16, by = tr.y * TS + TS - 4, sw = (window.RPG_WIND37 || 0) * Math.sin(t / 1300 + tr.x * .7 + tr.y * .45) + (window.RPG_WIND37 || 0) * .4; x.save(); if (sw) { x.translate(bx, by); x.transform(1, 0, -sw, 1, 0, 0); x.translate(-bx, -by); } x.drawImage(T2.img, bx - (T2.ox + 16) * k, by - T2.oy * k, T2.w * k, T2.h * k); x.restore(); } }); });
   RS.mon.forEach(mo => { if (vis(mo.x, mo.y, 4)) ents.push({ y: mo.y, d: () => rpgDrawMon(x, mo, t) }); });
   Object.entries(RS.others || {}).forEach(([id, o]) => { if (t - o.seen < 180000 && o.m === mp.scene) ents.push({ y: o.y, d: () => rpgCharAt(x, { x: o.x, y: o.y, look: o.o, dir: o.dir || 'd', anim: t / 90, moving: o.mv ?? Math.hypot((o.tx ?? o.x) - o.x, (o.ty ?? o.y) - o.y) > .02, name: (o.teacher ? '👑 ' : '') + o.n, col: RPG_JOBS[o.k]?.col, guild: o.g, party: R.party?.mem.some(m => m.id === id), pn: o.pn, hp: o.hp, sp: o.sp, bf: o.bf, teacher: o.teacher, emote: o.em && t - o.emAt < 3500 ? o.em : null, emAge: t - o.emAt, say: o.say && t - o.sayAt < 4000 ? o.say : null, pet: o.p, t, seed: id.length * 97 }) }); });
   rpgLifeEnts(x, t, ents);
@@ -14026,17 +14047,17 @@ function rpgArtRender(o, kind, res) {
   for (let i = 0; i < 10; i++) { const a = i / 10 * Math.PI * 2; y.drawImage(c, Math.cos(a) * d, Math.sin(a) * d); } y.globalCompositeOperation = 'source-in'; y.fillStyle = 'rgba(46,26,54,.6)'; y.fillRect(0, 0, W, Hh); y.globalCompositeOperation = 'source-over'; y.drawImage(c, 0, 0);
   oc._res = RES; return oc;
 }
-function rpgArtGet(key, make) { let v = RPG_ART.get(key); if (v) { RPG_ART.delete(key); RPG_ART.set(key, v); return v; } v = make(); RPG_ART.set(key, v); if (RPG_ART.size > 220) RPG_ART.delete(RPG_ART.keys().next().value); return v; }
+function rpgArtGet(key, make) { let v = RPG_ART.get(key); if (v) { RPG_ART.delete(key); RPG_ART.set(key, v); return v; } v = make(); RPG_ART.set(key, v); if (RPG_ART.size > 420) RPG_ART.delete(RPG_ART.keys().next().value); return v; }
 function rpgArtBlit(x, img, flip) { const RES = img._res || RPG_ART_RES; x.save(); if (flip) x.scale(-1, 1); x.drawImage(img, -img.width / 2 / RES, -(img.height - 14 * RES) / RES, img.width / RES, img.height / RES); x.restore(); }
 // ---------- hero (replaces the old renderer) ----------
 const rpgArtRes = (x) => { const m = x.getTransform(), s = Math.hypot(m.a, m.b) / (window.devicePixelRatio > 1 ? 1 : 1); return s > 3.2 ? 6 : s > 1.6 ? 4 : RPG_ART_RES; };
 function rpgDrawHero(x, h) {
   const res = rpgArtRes(x);
   const L = h.look || {}, dir = h.dir || 'd', t = h.t || 0, pose = h.pose || 'idle', wtier = L.wtier ?? -1, atier = L.atier ?? -1, T = Math.max(wtier, atier);
-  const walkF = h.moving ? Math.floor((((h.anim || 0) % (Math.PI * 2)) + Math.PI * 2) % (Math.PI * 2) / (Math.PI * 2) * 8) : -1;
+  const walkF = h.moving ? Math.floor((((h.anim || 0) % (Math.PI * 2)) + Math.PI * 2) % (Math.PI * 2) / (Math.PI * 2) * 12) : -1;
   const pkF = pose === 'atk' ? Math.round((h.pk || 0) * 6) / 6 : 0;
   const key = JSON.stringify([L, dir === 'l' ? 'r' : dir, pose === 'hurt' || pose === 'down' ? 'idle' : pose, walkF, pkF, res]);
-  const img = rpgArtGet(key, () => rpgArtRender(rpgArtOpts(L, { dir, pose: pose === 'hurt' || pose === 'down' ? 'idle' : pose, pk: pkF, walk: walkF >= 0 ? walkF / 8 * Math.PI * 2 : null }), null, res));
+  const img = rpgArtGet(key, () => rpgArtRender(rpgArtOpts(L, { dir, pose: pose === 'hurt' || pose === 'down' ? 'idle' : pose, pk: pkF, walk: walkF >= 0 ? walkF / 12 * Math.PI * 2 : null }), null, res));
   x.save(); if (pose === 'down') { x.rotate(-1.4); x.translate(-10, 6); }
   rpgAuraBack(x, T, t); if (L.acc?.fx === 'wings') rpgAccFx(x, L.acc, t, true);
   x.fillStyle = 'rgba(20,30,40,.28)'; x.beginPath(); x.ellipse(0, 1, 13, 4, 0, 0, 7); x.fill();
@@ -14468,6 +14489,7 @@ function rpgBFrame(now, dt) {
   // วงเวทใต้เท้า
   const ring = (cx, cy, r, col, rot) => { x.save(); x.translate(cx, cy); x.scale(1, .32); x.strokeStyle = col; x.globalAlpha = .55; x.lineWidth = 3; x.beginPath(); x.arc(0, 0, r, 0, 7); x.stroke(); x.setLineDash([8, 10]); x.lineDashOffset = rot; x.lineWidth = 2; x.beginPath(); x.arc(0, 0, r * .78, 0, 7); x.stroke(); x.setLineDash([]); x.globalAlpha = .18; x.fillStyle = col; x.beginPath(); x.arc(0, 0, r, 0, 7); x.fill(); x.restore(); };
   ring(G.P.x, G.P.y + 4, G.hs * 22, j.col, -now / 30); ring(G.M.x, G.M.y + 4, G.msz * .42, B.mo.boss ? '#FF3B8E' : '#FF6B6B', now / 30);
+  try { rpgBossAura38?.(x, B, G, mo, now); } catch (e) {}
   // มอนสเตอร์
   if (B.mstate !== 'gone') {
     const sz = G.msz * mo.sc, br = 1 + .035 * Math.sin(now / 260), face = 1;
@@ -20462,6 +20484,252 @@ C2.draw = function (x, o) {
   const draw = () => { x.save(); x.translate(B.side ? -5 : 0, -26); x.rotate(B.side ? -.4 : B.back ? -B.rot : B.rot); x.scale(B.sc, B.sc); WP.D[B.type](x, B.tier); x.restore(); };
   if (!o.back) draw(); const r = C2draw36.apply(this, arguments); if (o.back) draw(); return r;
 };
+
+/* =========================================================
+   SX Realm v37 — แสงเงาตามเวลา · สภาพอากาศ · ฉากมีชีวิต
+   ========================================================= */
+const RPG_OUT37 = ['town', 'forest', 'ice', 'desert', 'volcano'];
+let RPG_WIND37 = 0; window.RPG_WIND37 = 0;
+let RPG_SUN37 = null;
+
+/* ---------- สภาพอากาศ: เปลี่ยนทุก 4 นาที เหมือนกันทุกเครื่อง ---------- */
+const RPG_WX37 = {
+  town: [['clear', 45], ['petal', 25], ['rain', 18], ['storm', 6], ['fog', 6]],
+  forest: [['clear', 35], ['leaf', 30], ['rain', 18], ['fog', 12], ['storm', 5]],
+  ice: [['snow', 55], ['blizzard', 20], ['clear', 25]],
+  desert: [['clear', 45], ['sand', 35], ['heat', 20]],
+  volcano: [['ash', 100]],
+  cave: [['dust', 100]], dungeon: [['dust', 100]], castle: [['fog', 60], ['clear', 40]],
+};
+const RPG_WXN37 = { clear: ['☀️', 'ท้องฟ้าแจ่มใส'], petal: ['🌸', 'กลีบดอกไม้ปลิว'], leaf: ['🍃', 'ใบไม้ร่วง'], rain: ['🌧️', 'ฝนตก'], storm: ['⛈️', 'พายุฝนฟ้าคะนอง'], fog: ['🌫️', 'หมอกลง'], snow: ['❄️', 'หิมะตก'], blizzard: ['🌨️', 'พายุหิมะ'], sand: ['🌪️', 'พายุทราย'], heat: ['🔥', 'แดดร้อนจัด'], ash: ['🌋', 'เถ้าภูเขาไฟ'], dust: ['✨', 'ฝุ่นละออง'] };
+function rpgWeather37() {
+  const mp = RS.map; if (!mp) return 'clear'; if (mp.biome === 'house') return 'none'; if (RS.wxForce) return RS.wxForce; if (RS.lowFx) return 'clear';
+  const L = RPG_WX37[mp.biome] || RPG_WX37.town, slot = Math.floor(Date.now() / 240000);
+  let h = 0; const key = (mp.region || mp.biome) + slot; for (const c of key) h = (h * 31 + c.charCodeAt(0)) >>> 0; h = (h * 2654435761 >>> 0) % 100;
+  let acc = 0; for (const [k, w] of L) { acc += w; if (h < acc) return k; } return L[0][0];
+}
+
+/* ---------- เงาตัวละคร/มอนสเตอร์ตามแสงอาทิตย์ ---------- */
+function rpgSunShadow37(x, ox, oy, w) {
+  const S = RPG_SUN37; if (!S || S.a <= .02) return;
+  x.save(); x.translate(ox, oy); x.rotate(S.ang); const L = w * S.len;
+  const g = x.createLinearGradient(0, 0, L, 0); g.addColorStop(0, `rgba(20,24,40,${S.a})`); g.addColorStop(1, 'rgba(20,24,40,0)');
+  x.fillStyle = g; x.beginPath(); x.ellipse(L * .45, 0, L * .55, w * .34, 0, 0, 7); x.fill(); x.restore();
+}
+const rpgDrawHero37 = rpgDrawHero;
+rpgDrawHero = function (x, h) { if (RPG_SUN37 && h?.pose !== 'down') rpgSunShadow37(x, 0, 1, 18); return rpgDrawHero37.apply(this, arguments); };
+const rpgDrawMon37 = rpgDrawMon;
+rpgDrawMon = function (x, mo, now) { if (RPG_SUN37) rpgSunShadow37(x, mo.x * TS, mo.y * TS + 2, mo.boss ? 60 : 22); return rpgDrawMon37.apply(this, arguments); };
+
+/* ---------- ฉาก: หญ้าไหว · ดอกไม้ (วาดทับแผนที่ ก่อนตัวละคร) ---------- */
+const RPG_GRASSC37 = { town: ['#4FA03A', '#7CCB4E'], forest: ['#2F7F2E', '#5DB548'], ice: ['#BFD8EA', '#F2FAFF'], desert: ['#B89A4E', '#D8BE6E'] };
+function rpgScenery37(x, mp, t, vis) {
+  if (RS.lowFx) return;
+  if (mp.water?.length && RS.cam) { const c = RS.cam; x.save(); x.globalCompositeOperation = 'lighter'; mp.water.forEach(([i, j]) => { if (i < c.cx / TS - 1 || i > (c.cx + c.vw) / TS + 1 || j < c.cy / TS - 1 || j > (c.cy + c.vh) / TS + 1) return; const hsh = ((i * 92821) ^ (j * 68917)) >>> 0; if (hsh % 3) return; const a = Math.max(0, Math.sin(t / 500 + hsh % 97)); if (a < .55) return; SKX.star(x, i * TS + 6 + hsh % 20, j * TS + 6 + (hsh >> 4) % 20, 2.6 * (a - .4) * 2, '#FFFFFF', (a - .55) * 2, 0); }); x.restore(); }
+  const C = RPG_GRASSC37[mp.biome]; if (!C || !mp.m) return;
+  const wind = RPG_WIND37, cam = RS.cam; if (!cam) return; const i0 = Math.max(0, Math.floor(cam.cx / TS) - 1), j0 = Math.max(0, Math.floor(cam.cy / TS) - 1), i1 = Math.min(mp.W - 1, Math.ceil((cam.cx + cam.vw) / TS) + 1), j1 = Math.min(mp.H - 1, Math.ceil((cam.cy + cam.vh) / TS) + 1);
+  x.save(); x.lineCap = 'round';
+  for (let j = j0; j <= j1; j++) { const row = mp.m[j]; if (!row) continue; for (let i = i0; i <= i1; i++) { if (row[i] !== 0) continue; const hsh = ((i * 73856093) ^ (j * 19349663)) >>> 0; if (hsh % 5 > 1) continue;
+      const bx = i * TS + 6 + (hsh % 20), by = j * TS + 10 + ((hsh >> 5) % 18), n = 3 + (hsh >> 9) % 3, sw = Math.sin(t / 700 + i * .8 + j * .5) * (1.4 + wind * 9);
+      for (let k = 0; k < n; k++) { const ox = (k - n / 2) * 2.2, hgt = 5 + ((hsh >> (k + 3)) % 5); x.strokeStyle = k % 2 ? C[1] : C[0]; x.lineWidth = 1.3; x.beginPath(); x.moveTo(bx + ox, by); x.quadraticCurveTo(bx + ox + sw * .4, by - hgt * .6, bx + ox + sw + (k - 1) * .8, by - hgt); x.stroke(); }
+      if (hsh % 17 === 0 && mp.biome !== 'desert') { const fc = ['#FF8FB8', '#FFE27A', '#FFFFFF', '#B8A0FF'][hsh % 4], fx = bx + 4 + sw * .6, fy = by - 8; x.fillStyle = fc; for (let p = 0; p < 5; p++) { const a = p / 5 * 6.28 + t / 3000; x.beginPath(); x.arc(fx + Math.cos(a) * 1.6, fy + Math.sin(a) * 1.6, 1.3, 0, 7); x.fill(); } x.fillStyle = '#FFC83A'; x.beginPath(); x.arc(fx, fy, 1, 0, 7); x.fill(); } } }
+  x.restore();
+}
+
+/* ---------- แสง + บรรยากาศ + สภาพอากาศ (ทับทั้งจอ) ---------- */
+const rpgNightDraw37 = rpgNightDraw;
+let RPG_WXFX37 = { lt: 0, flash: 0 };
+rpgNightDraw = function (cv) {
+  const mp = RS.map, cam = RS.cam; if (!mp) return; if (RS.lowFx) return rpgNightDraw37(cv);
+  const out = RPG_OUT37.includes(mp.biome), D = rpgDayPhase(), x = cv.getContext('2d'), W = cv.width, H = cv.height, t = performance.now(), wx = rpgWeather37();
+  const wet = wx === 'rain' || wx === 'storm', dim = (wet ? .16 : wx === 'fog' || wx === 'blizzard' || wx === 'sand' ? .08 : 0) * (out ? 1 : 0);
+  x.save(); x.setTransform(1, 0, 0, 1, 0, 0);
+  // โทนสีตามเวลา (กลางแจ้ง)
+  if (out && D.dark < .45) { const h = D.h; let col = null, a = 0;
+    if (h >= 5.5 && h < 9) { col = '255,170,120'; a = .1 * (1 - (h - 5.5) / 3.5); }
+    else if (h >= 14.5 && h < 17.6) { col = '255,160,60'; a = .14 * ((h - 14.5) / 3.1); }
+    else if (h >= 9 && h < 14.5) { col = '255,250,230'; a = .04; }
+    if (col && a > .005) { x.globalCompositeOperation = 'soft-light'; x.fillStyle = `rgba(${col},${a * 3})`; x.fillRect(0, 0, W, H); x.globalCompositeOperation = 'source-over'; }
+    // ลำแสงอาทิตย์ (ป่า/เมือง กลางวัน ฟ้าแจ่ม)
+    if ((mp.biome === 'forest' || mp.biome === 'town') && (wx === 'clear' || wx === 'leaf' || wx === 'petal') && h >= 7 && h < 17.5) {
+      x.globalCompositeOperation = 'lighter'; const warm = h > 14.5 ? '255,200,120' : '255,250,210';
+      for (let i = 0; i < 5; i++) { const ph = t / 9000 + i * 1.7, X = W * ((i * .23 + .05 + Math.sin(ph) * .04) % 1.1), w = W * (.05 + (i % 3) * .03), al = .05 + .03 * Math.sin(ph * 2);
+        const g = x.createLinearGradient(X, 0, X - H * .45, H); g.addColorStop(0, `rgba(${warm},${al})`); g.addColorStop(.7, `rgba(${warm},${al * .4})`); g.addColorStop(1, `rgba(${warm},0)`); x.fillStyle = g;
+        x.beginPath(); x.moveTo(X, 0); x.lineTo(X + w, 0); x.lineTo(X + w - H * .45, H); x.lineTo(X - H * .45 - w * .6, H); x.fill(); }
+      x.globalCompositeOperation = 'source-over'; } }
+  if (dim) { x.fillStyle = wx === 'sand' ? `rgba(160,110,50,${dim * 1.4})` : `rgba(30,40,60,${dim})`; x.fillRect(0, 0, W, H); }
+  x.restore();
+  // กลางคืน: ความมืด + แสงไฟ (ของเดิม)
+  rpgNightDraw37(cv);
+  // สภาพอากาศ
+  x.save(); x.setTransform(1, 0, 0, 1, 0, 0);
+  const sc = Math.max(1, Math.min(W, H) / 400), P = (n) => Math.round(n * Math.min(1.4, W * H / (1280 * 760)));
+  if (wet) { const N = P(wx === 'storm' ? 220 : 140), ang = .25 + RPG_WIND37 * 1.2; x.strokeStyle = 'rgba(200,220,255,.45)'; x.lineWidth = 1.1 * sc; x.beginPath();
+    for (let i = 0; i < N; i++) { const sp = 900 + (i % 7) * 120, ph = ((t / sp) + i * .137) % 1, X = ((i * 97.13) % (W + 200)) - 100 + ph * H * ang, Y = ph * (H + 60) - 30, L = (14 + (i % 5) * 4) * sc; x.moveTo(X, Y); x.lineTo(X - L * ang, Y - L); } x.stroke();
+    x.strokeStyle = 'rgba(220,235,255,.5)'; x.lineWidth = 1; for (let i = 0; i < P(26); i++) { const ph = ((t / 600) + i * .31) % 1, X = (i * 211.7) % W, Y = H * (.35 + ((i * 53.3) % 100) / 160); x.globalAlpha = 1 - ph; x.beginPath(); x.ellipse(X, Y, (3 + ph * 9) * sc, (1 + ph * 3) * sc, 0, 0, 7); x.stroke(); } x.globalAlpha = 1;
+    if (wx === 'storm') { if (t > RPG_WXFX37.lt) { RPG_WXFX37.lt = t + 5000 + Math.random() * 9000; RPG_WXFX37.flash = t; if (SND.on) setTimeout(() => rpgSfx('thunder'), 300 + Math.random() * 900); } const e = (t - RPG_WXFX37.flash) / 450; if (e < 1) { x.fillStyle = `rgba(230,240,255,${(e < .15 ? 1 : (1 - e)) * .45})`; x.fillRect(0, 0, W, H); } } }
+  else if (wx === 'snow' || wx === 'blizzard') { const N = P(wx === 'blizzard' ? 200 : 90), dr = wx === 'blizzard' ? 2.2 : .5; x.fillStyle = '#FFFFFF';
+    for (let i = 0; i < N; i++) { const sp = 6000 + (i % 9) * 900, ph = ((t / sp) + i * .173) % 1, r = (1 + (i % 4) * .7) * sc, X = (((i * 131.7) % W) + ph * W * dr * .3 + Math.sin(t / 1400 + i) * 18 * sc) % W, Y = ph * (H + 20) - 10; x.globalAlpha = .55 + (i % 3) * .15; x.beginPath(); x.arc(X, Y, r, 0, 7); x.fill(); }
+    x.globalAlpha = 1; if (wx === 'blizzard') { x.fillStyle = 'rgba(235,245,255,.14)'; x.fillRect(0, 0, W, H); } }
+  else if (wx === 'leaf' || wx === 'petal') { const N = P(26), cols = wx === 'leaf' ? ['#7CB342', '#C0CA33', '#F9A825', '#E65100'] : ['#FFB7D5', '#FFD1E3', '#FFFFFF', '#F8A5C2'];
+    for (let i = 0; i < N; i++) { const sp = 9000 + (i % 7) * 1500, ph = ((t / sp) + i * .211) % 1, X = ((i * 173.3) % (W + 100)) - 50 + ph * W * .4 + Math.sin(t / 900 + i) * 30 * sc, Y = ph * (H + 40) - 20;
+      x.save(); x.translate(X % (W + 60), Y); x.rotate(t / 600 + i); x.scale(1, Math.sin(t / 300 + i) * .8 + .2 || .1); x.fillStyle = cols[i % 4]; x.beginPath(); x.ellipse(0, 0, 5 * sc, 2.6 * sc, 0, 0, 7); x.fill(); x.restore(); } }
+  else if (wx === 'fog') { for (let i = 0; i < 5; i++) { const X = ((t / 60 * (1 + i * .3) + i * 400) % (W + 800)) - 400, Y = H * (.2 + i * .17), R2 = 260 * sc; const g = x.createRadialGradient(X, Y, 10, X, Y, R2); g.addColorStop(0, 'rgba(235,240,250,.22)'); g.addColorStop(1, 'rgba(235,240,250,0)'); x.fillStyle = g; x.fillRect(X - R2, Y - R2, R2 * 2, R2 * 2); } }
+  else if (wx === 'sand') { x.strokeStyle = 'rgba(230,190,120,.4)'; x.lineWidth = 1.2 * sc; x.beginPath(); for (let i = 0; i < P(70); i++) { const ph = ((t / (700 + (i % 5) * 150)) + i * .19) % 1, X = ph * (W + 200) - 100, Y = (i * 97.7) % H, L = (20 + (i % 4) * 14) * sc; x.moveTo(X, Y); x.lineTo(X - L, Y + Math.sin(i) * 3); } x.stroke(); }
+  else if (wx === 'heat') { x.globalCompositeOperation = 'soft-light'; x.fillStyle = 'rgba(255,140,40,.25)'; x.fillRect(0, 0, W, H); x.globalCompositeOperation = 'source-over'; }
+  else if (wx === 'ash') { for (let i = 0; i < P(60); i++) { const ph = ((t / (5000 + (i % 7) * 900)) + i * .17) % 1, X = ((i * 151.3) % W) + Math.sin(t / 1100 + i) * 20 * sc, Y = H - ph * (H + 20); const ember = i % 4 === 0; x.fillStyle = ember ? `rgba(255,${140 + (i % 5) * 20},60,${1 - ph})` : `rgba(90,80,80,${.6 * (1 - ph)})`; x.beginPath(); x.arc(X, Y, (ember ? 1.6 : 1.2 + (i % 3) * .6) * sc, 0, 7); x.fill(); } }
+  else if (wx === 'dust') { x.globalCompositeOperation = 'lighter'; for (let i = 0; i < P(40); i++) { const ph = ((t / (8000 + (i % 7) * 1300)) + i * .23) % 1, X = ((i * 137.3) % W) + Math.sin(t / 2000 + i) * 30 * sc, Y = ((i * 71.7) % H) + Math.cos(t / 2600 + i) * 20 * sc; x.fillStyle = `rgba(255,240,200,${.35 * Math.sin(ph * Math.PI)})`; x.beginPath(); x.arc(X, Y, 1.4 * sc, 0, 7); x.fill(); } x.globalCompositeOperation = 'source-over'; }
+  // ขอบจอนุ่ม (vignette)
+  const vg = x.createRadialGradient(W / 2, H / 2, Math.min(W, H) * .45, W / 2, H / 2, Math.max(W, H) * .75); vg.addColorStop(0, 'rgba(0,0,0,0)'); vg.addColorStop(1, `rgba(10,8,30,${out ? .22 : .32})`); x.fillStyle = vg; x.fillRect(0, 0, W, H);
+  x.restore();
+};
+// ตั้งค่าลม/แสงอาทิตย์ทุกเฟรม (ใช้ตอนวาดต้นไม้/เงา)
+const rpgDraw37 = rpgDraw;
+rpgDraw = function (now) {
+  const mp = RS.map;
+  if (mp) { const wx = rpgWeather37(), base = { storm: .09, blizzard: .08, sand: .07, rain: .045, leaf: .035, petal: .03 }[wx] ?? .015; RPG_WIND37 = window.RPG_WIND37 = base * (.75 + .25 * Math.sin(now / 2300));
+    const D = rpgDayPhase(), out = RPG_OUT37.includes(mp.biome);
+    if (out && D.dark < .5 && !['rain', 'storm', 'fog', 'blizzard'].includes(wx)) { const h = Math.max(6, Math.min(18, D.h)), q = (h - 12) / 6; RPG_SUN37 = { ang: q > 0 ? Math.PI * .15 + q * .25 : Math.PI * .85 + q * .25 - Math.PI, len: 1 + Math.abs(q) * 1.6, a: .22 * (1 - D.dark * 2) }; if (q <= 0) RPG_SUN37.ang = Math.PI - .4 + q * .3; else RPG_SUN37.ang = .4 + q * .3; }
+    else RPG_SUN37 = { ang: Math.PI / 2, len: .5, a: 0 }; }
+  try { return rpgDraw37.apply(this, arguments); } finally { RPG_SUN37 = null; }
+};
+// แสดงสภาพอากาศข้างนาฬิกา
+const rpgClockTick37 = rpgClockTick;
+rpgClockTick = function () { const r = rpgClockTick37.apply(this, arguments), el = document.getElementById('bb-day'); if (el && RS.map) { const w = rpgWeather37(), N = RPG_WXN37[w]; if (N && !el.querySelector('.wx37')) el.insertAdjacentHTML('beforeend', ` <span class="wx37" title="${N[1]}">${N[0]} <small>${N[1]}</small></span>`); } return r; };
+// โหมดประหยัดเครื่อง (ตั้งในหน้าเสียง/กราฟิก)
+try { RS.lowFx = localStorage.getItem('rpg-lowfx') === '1'; } catch (e) {}
+const rpgSoundHTML37 = rpgSoundHTML33;
+rpgSoundHTML33 = function () { return rpgSoundHTML37().replace('<div class="snd33-city">', `<button type="button" class="snd33-on ${RS.lowFx ? '' : 'on'}" data-r="fx-toggle" aria-pressed="${!RS.lowFx}"><span>${RS.lowFx ? '🔋' : '✨'}</span><b>กราฟิก: ${RS.lowFx ? 'โหมดประหยัดเครื่อง' : 'สวยเต็มที่'}</b><small>แตะเพื่อ${RS.lowFx ? 'เปิดแสงเงา สภาพอากาศ หญ้าไหว' : 'ปิดเอฟเฟกต์ฉาก ช่วยให้มือถือรุ่นเก่าลื่นขึ้น'}</small></button><div class="snd33-city">`); };
+const rpgClick37 = rpgClick;
+rpgClick = function (e) { const b = e.target.closest?.('[data-r]'); if (b?.dataset.r === 'fx-toggle') { RS.lowFx = !RS.lowFx; try { localStorage.setItem('rpg-lowfx', RS.lowFx ? '1' : '0'); } catch (er) {} return rpgPanel('sound'); } return rpgClick37(e); };
+
+/* =========================================================
+   SX Realm v38 — ตัวละครเคลื่อนไหวลื่นขึ้น · บอสอลังการ
+   ========================================================= */
+
+/* ---------- 1) ตัวละคร: เดิน 12 เฟรม · ตัวเด้งตามก้าว · เอนตัว · หายใจ · ฝุ่นที่เท้า ---------- */
+const rpgDrawHero38 = rpgDrawHero;
+rpgDrawHero = function (x, h) {
+  if (!h || h.pose === 'down' || RS.lowFx) return rpgDrawHero38.apply(this, arguments);
+  const t = h.t || performance.now(), dir = h.dir || 'd';
+  x.save();
+  if (h.moving) {
+    const a = h.anim || 0, step = Math.abs(Math.sin(a)), bob = step * 1.4;
+    // ฝุ่นตอนเท้ากระทบพื้น
+    const ph = ((a % Math.PI) + Math.PI) % Math.PI / Math.PI; if (ph < .45) { const al = (1 - ph / .45) * .35, back = dir === 'r' ? -1 : dir === 'l' ? 1 : 0, by = dir === 'u' ? -1 : dir === 'd' ? 1 : 0;
+      x.fillStyle = `rgba(210,200,180,${al})`; [[-5, 0], [5, 1]].forEach(([ox, oy], k) => { const r = 2.2 + ph * 5; x.beginPath(); x.ellipse(back * (7 + ph * 6) + (back ? 0 : ox), 2 + oy - by * ph * 3, r, r * .55, 0, 0, 7); x.fill(); }); }
+    x.translate(0, -bob);
+    const lean = dir === 'r' ? .05 : dir === 'l' ? -.05 : 0; if (lean) { x.translate(0, -18); x.rotate(lean); x.translate(0, 18); }
+  } else if (h.pose !== 'atk' && h.pose !== 'cast') {
+    const br = Math.sin(t / 650 + (h.seed || 0)); x.scale(1 - br * .006, 1 + br * .013);
+  }
+  try { return rpgDrawHero38.apply(this, arguments); } finally { x.restore(); }
+};
+
+/* ---------- 2) บอสบนแผนที่: อนุภาคพลัง + ป้ายชื่อมงกุฎ ---------- */
+const rpgDrawMon38 = rpgDrawMon;
+rpgDrawMon = function (x, mo, now) {
+  const r = rpgDrawMon38.apply(this, arguments);
+  if (mo?.boss && !RS.lowFx) { const px = mo.x * TS, py = mo.y * TS; x.save(); x.globalCompositeOperation = 'lighter';
+    for (let i = 0; i < 14; i++) { const ph = (now / 1600 + i / 14) % 1, a = i / 14 * 6.28 + now / 3000, rr = 40 + (i % 3) * 10; x.fillStyle = `rgba(255,${80 + (i % 4) * 30},160,${(1 - ph) * .8})`; x.beginPath(); x.arc(px + Math.cos(a) * rr, py - ph * 90 + Math.sin(a) * 10, 2.2 * (1 - ph) + .6, 0, 7); x.fill(); }
+    x.restore(); }
+  return r;
+};
+
+/* ---------- 3) ธาตุของบอสตามแผนที่ ---------- */
+const RPG_BOSSEL38 = { forest: ['thorn', '#5FD86A', 'กรงหนามพงไพร'], cave: ['quake', '#C89A5A', 'ธรณีถล่ม'], ice: ['frost', '#7FE0FF', 'พายุยะเยือก'], desert: ['sand', '#F2C14E', 'พายุทรายมรณะ'], volcano: ['meteor', '#FF6A2A', 'อุกกาบาตนรก'], castle: ['dark', '#A86BFF', 'คมเงาราตรี'], dungeon: ['dark', '#A86BFF', 'คมเงาราตรี'], town: ['dark', '#FF4A8A', 'คลื่นพลังมืด'] };
+function rpgBossEl38() { return RPG_BOSSEL38[RS.map?.biome] || RPG_BOSSEL38.castle; }
+
+/* ---------- 4) ออร่าบอสในฉากต่อสู้ (อยู่หลังตัวบอส) ---------- */
+function rpgBossAura38(x, B, G, mo, now) {
+  if (!B.mo.boss || B.mstate === 'gone' || RS.lowFx) return; const [, col] = rpgBossEl38(), cx = mo.x, cy = G.M.y - G.msz * .45, R0 = G.msz * .75, pulse = .85 + .15 * Math.sin(now / 300), rage = B.hp < B.ms.mhp * .35;
+  x.save(); x.globalCompositeOperation = 'lighter';
+  const g = x.createRadialGradient(cx, cy, 4, cx, cy, R0 * pulse * (rage ? 1.25 : 1)); g.addColorStop(0, SKX.rgba(rage ? '#FF2A4A' : col, .38)); g.addColorStop(1, SKX.rgba(col, 0)); x.fillStyle = g; x.beginPath(); x.arc(cx, cy, R0 * 1.3, 0, 7); x.fill();
+  // เปลวพลังพวยพุ่ง
+  for (let i = 0; i < 18; i++) { const ph = (now / (900 + (i % 5) * 140) + i / 18) % 1, ox = (((i * 37) % 21) / 21 - .5) * G.msz * .9, py = G.M.y - ph * G.msz * 1.1, w = (1 - ph) * G.msz * .05 + 1;
+    x.fillStyle = SKX.rgba(i % 3 ? col : '#FFFFFF', (1 - ph) * .6); x.beginPath(); x.ellipse(cx + ox + Math.sin(now / 200 + i) * 4, py, w, w * 2.6, 0, 0, 7); x.fill(); }
+  // วงอักขระหมุนบนพื้น
+  x.translate(cx, G.M.y + 4); x.scale(1, .3); x.rotate(now / 1500); x.strokeStyle = SKX.rgba(col, .75); x.lineWidth = 3; x.beginPath(); x.arc(0, 0, G.msz * .62, 0, 7); x.stroke(); x.lineWidth = 1.5; x.beginPath(); x.arc(0, 0, G.msz * .5, 0, 7); x.stroke();
+  x.beginPath(); for (let i = 0; i <= 5; i++) { const a = i * Math.PI * 4 / 5 - Math.PI / 2; x.lineTo(Math.cos(a) * G.msz * .5, Math.sin(a) * G.msz * .5); } x.stroke();
+  x.restore();
+}
+
+/* ---------- 5) ฉากเปิดตัวบอส ---------- */
+function rpgBossIntro38(mo, done) {
+  const root = document.getElementById('rpg'); if (!root) return done();
+  const [, col] = rpgBossEl38(), Z = RPG_ZONES[RS.map?.scene] || {};
+  const el = document.createElement('div'); el.className = 'boss38'; el.style.setProperty('--c', col); el.setAttribute('role', 'button'); el.setAttribute('aria-label', 'ข้ามฉากเปิดตัวบอส');
+  el.innerHTML = `<canvas></canvas><div class="bs-warn t"><span>WARNING · BOSS APPROACHING · WARNING · BOSS APPROACHING · WARNING · BOSS APPROACHING ·</span></div><div class="bs-warn b"><span>⚠ บอสปรากฏตัว ⚠ บอสปรากฏตัว ⚠ บอสปรากฏตัว ⚠ บอสปรากฏตัว ⚠ บอสปรากฏตัว ⚠</span></div>
+    <div class="bs-name"><small>👑 BOSS · ${esc(Z.n || '')}</small><b>${esc(mo.n)}</b><em>Lv.${mo.lv}</em></div><small class="bs-skip">แตะเพื่อข้าม</small>`;
+  root.appendChild(el); const cv = el.querySelector('canvas'), d = Math.min(2, devicePixelRatio || 1); const W = el.clientWidth, H = el.clientHeight; cv.width = W * d; cv.height = H * d; const x = cv.getContext('2d'); x.scale(d, d);
+  const im = typeof rpgMonImg === 'function' ? rpgMonImg(mo.ic, 0, 6) : null, t0 = performance.now(), DUR = 2600; let fin = false;
+  const end = () => { if (fin) return; fin = true; el.classList.add('out'); setTimeout(() => el.remove(), 300); done(); };
+  el.addEventListener('click', end); rpgSfx('boss'); setTimeout(() => !fin && rpgSfx('thunder'), 900);
+  const frame = () => { if (fin) return; const now = performance.now(), u = Math.min(1, (now - t0) / DUR);
+    x.clearRect(0, 0, W, H); x.fillStyle = `rgba(8,2,16,${Math.min(.92, u * 4)})`; x.fillRect(0, 0, W, H);
+    // เส้นรัศมี
+    x.save(); x.globalCompositeOperation = 'lighter'; x.translate(W / 2, H * .48); x.rotate(now / 3000); for (let i = 0; i < 40; i++) { const a = i / 40 * 6.28, L = Math.max(W, H); x.fillStyle = SKX.rgba(i % 2 ? col : '#FF2A4A', .06 * Math.min(1, u * 3)); x.beginPath(); x.moveTo(0, 0); x.lineTo(Math.cos(a - .025) * L, Math.sin(a - .025) * L); x.lineTo(Math.cos(a + .025) * L, Math.sin(a + .025) * L); x.fill(); } x.restore();
+    // บอส: เงาดำ → เผยตัว
+    if (im) { const rev = SKX.cl((u - .32) / .12), zoom = 1.25 - .25 * SKX.eo(Math.min(1, u / .4)), h2 = Math.min(H * .95, W * 1.0) * zoom, w2 = h2 * im.width / im.height, bx = W / 2 - w2 / 2, by = H * .58 - h2 * .78 + Math.sin(now / 300) * 4;
+      if (!el._sil) { const c2 = document.createElement('canvas'); c2.width = im.width; c2.height = im.height; const y2 = c2.getContext('2d'); y2.drawImage(im, 0, 0); y2.globalCompositeOperation = 'source-in'; y2.fillStyle = '#05010A'; y2.fillRect(0, 0, c2.width, c2.height); el._sil = c2; }
+      x.save(); x.shadowColor = col; x.shadowBlur = 40 * rev; x.globalAlpha = rev; x.drawImage(im, bx, by, w2, h2); x.restore();
+      if (rev < 1) { x.save(); x.globalAlpha = 1 - rev; x.shadowColor = col; x.shadowBlur = 24; x.drawImage(el._sil, bx, by, w2, h2); x.restore(); }
+      if (u > .32 && u < .46) { x.fillStyle = `rgba(255,255,255,${(1 - (u - .32) / .14) * .8})`; x.fillRect(0, 0, W, H); } }
+    // สะเก็ดพลัง
+    x.save(); x.globalCompositeOperation = 'lighter'; for (let i = 0; i < 30; i++) { const ph = (now / 1400 + i / 30) % 1; SKX.glow(x, W * (((i * 53) % 97) / 97), H * (1 - ph), 6 + (i % 3) * 3, i % 2 ? col : '#FF4A6A', (1 - ph) * Math.min(1, u * 3)); } x.restore();
+    if (u > .4 && !el.classList.contains('v')) { el.classList.add('v'); try { el.animate([{ transform: 'translate(8px,-6px)' }, { transform: 'translate(-8px,6px)' }, { transform: 'none' }], { duration: 260 }); } catch (e) {} }
+    if (u >= 1) return end(); requestAnimationFrame(frame); };
+  requestAnimationFrame(frame);
+}
+const rpgBattle38 = rpgBattle;
+rpgBattle = function (mo) {
+  const r = rpgBattle38.apply(this, arguments); if (!mo?.boss || RS.lowFx) return r;
+  const B = RS.battle; B.intro = true; setTimeout(() => { if (RS.battle !== B) return; B.busy = true; rpgBossIntro38(mo, () => { if (RS.battle !== B) return; B.intro = false; B.busy = false; rpgBCmd(); rpgBHud(); }); }, 950);
+  return r;
+};
+
+/* ---------- 6) ท่าไม้ตายบอส: มีสัญญาณเตือน + เอฟเฟกต์ตามธาตุ ---------- */
+function rpgBossSkillFx38(kind, col, dur, onHit) {
+  const sc = document.getElementById('rb-scene'), B = RS.battle; if (!sc || !B?.G) { onHit(); return; }
+  const G = B.G, d = G.d, el = document.createElement('div'); el.className = 'rb-cine bsk38'; el.innerHTML = '<canvas></canvas>'; sc.appendChild(el);
+  const cv = el.querySelector('canvas'); cv.width = G.W * d; cv.height = G.H * d; const x = cv.getContext('2d'), t0 = performance.now(), P = { x: G.P.x, y: G.P.y }, S = Math.min(G.W / 1.6, G.H) / 470; let hit = false;
+  const frame = () => { const now = performance.now(), u = Math.min(1, (now - t0) / dur); if (!RS.battle || !el.isConnected) return;
+    x.setTransform(d, 0, 0, d, 0, 0); x.clearRect(0, 0, G.W, G.H); const warn = u < .45;
+    x.fillStyle = `rgba(20,0,10,${.45 * Math.sin(Math.min(1, u * 1.2) * Math.PI)})`; x.fillRect(0, 0, G.W, G.H);
+    // วงเตือนสีแดงใต้ผู้เล่น
+    if (warn) { const a = .5 + .5 * Math.sin(now / 60); x.save(); x.translate(P.x, P.y + 4); x.scale(1, .32); x.strokeStyle = `rgba(255,40,60,${a})`; x.lineWidth = 4; x.beginPath(); x.arc(0, 0, 70 * S * 2 * (1.4 - u), 0, 7); x.stroke(); x.fillStyle = `rgba(255,30,60,${a * .25})`; x.fill(); x.restore(); }
+    x.save(); x.globalCompositeOperation = 'lighter'; const e = SKX.cl((u - .45) / .55), R2 = (n) => ((n * 9301 + 49297) % 233280) / 233280;
+    if (!warn) {
+      if (kind === 'meteor') for (let i = 0; i < 9; i++) { const q = SKX.cl((e - i * .05) / .5), sx = P.x + (R2(i) - .3) * 260 * S * 2, sy = -40, tx = P.x + (R2(i + 9) - .5) * 120 * S * 2, ty = P.y; if (q <= 0) continue; const mx = sx + (tx - sx) * Math.min(1, q), my = sy + (ty - sy) * Math.min(1, q); const tx2 = mx - (tx - sx) * .25, ty2 = my - (ty - sy) * .25, gg = x.createLinearGradient(tx2, ty2, mx, my); gg.addColorStop(0, SKX.rgba(col, 0)); gg.addColorStop(1, SKX.rgba('#FFE0A0', .9)); x.strokeStyle = gg; x.lineCap = 'round'; x.lineWidth = 9 * S * 2; x.beginPath(); x.moveTo(tx2, ty2); x.lineTo(mx, my); x.stroke(); SKX.glow(x, mx, my, 26 * S * 2, q >= 1 ? '#FFFFFF' : col, q >= 1 ? 1 - SKX.cl((q - 1) * 3) : .9); }
+      else if (kind === 'frost') for (let i = 0; i < 9; i++) { const ox = (i - 4) * 22 * S * 2, hgt = (60 + R2(i) * 70) * S * 2 * SKX.eo(Math.min(1, e * 2.4)); x.fillStyle = SKX.rgba('#E8FBFF', .8 * (1 - e * .6)); x.beginPath(); x.moveTo(P.x + ox - 10 * S * 2, P.y + 6); x.lineTo(P.x + ox, P.y - hgt); x.lineTo(P.x + ox + 10 * S * 2, P.y + 6); x.fill(); }
+      else if (kind === 'thorn') for (let i = 0; i < 7; i++) { const a0 = -Math.PI / 2 + (i - 3) * .35, L = 140 * S * 2 * SKX.eo(Math.min(1, e * 2)); x.strokeStyle = SKX.rgba(i % 2 ? col : '#2E7A30', .9); x.lineWidth = 7 * S * 2 * (1 - e * .5); x.beginPath(); x.moveTo(P.x, P.y + 4); x.quadraticCurveTo(P.x + Math.cos(a0 + .6) * L * .5, P.y + Math.sin(a0 + .6) * L * .5, P.x + Math.cos(a0) * L, P.y + Math.sin(a0) * L); x.stroke(); }
+      else if (kind === 'quake') { for (let i = 0; i < 10; i++) { const a = i / 10 * 6.28; x.strokeStyle = SKX.rgba(col, .9 * (1 - e)); x.lineWidth = 3; x.beginPath(); x.moveTo(P.x, P.y + 4); let px2 = P.x, py2 = P.y + 4; for (let k = 1; k < 5; k++) { px2 += Math.cos(a + (R2(i * 5 + k) - .5)) * 30 * S * 2 * e; py2 += Math.sin(a) * 9 * S * 2 * e; x.lineTo(px2, py2); } x.stroke(); }
+        for (let i = 0; i < 12; i++) { const q = e, rx = P.x + (R2(i) - .5) * 200 * S * 2, ry = P.y - Math.sin(q * Math.PI) * (60 + R2(i + 3) * 80) * S * 2; x.fillStyle = SKX.rgba('#C89A5A', 1 - q); x.fillRect(rx - 5, ry - 5, 10 * S * 2, 8 * S * 2); } }
+      else if (kind === 'sand') for (let i = 0; i < 4; i++) { x.save(); x.translate(P.x, P.y - 40 * S * 2); x.scale(1, .5); x.rotate(e * 8 + i * 1.6); x.strokeStyle = SKX.rgba(i % 2 ? col : '#FFF0C0', .8 * (1 - e * .5)); x.lineWidth = 8 * S * 2; x.beginPath(); x.arc(0, 0, (50 + i * 22) * S * 2, 0, 4.2); x.stroke(); x.restore(); }
+      else for (let i = 0; i < 5; i++) { const q = SKX.cl((e - i * .08) / .4); if (q <= 0 || q >= 1) continue; x.save(); x.translate(P.x, P.y - 40 * S * 2); x.rotate(-.9 + i * .45); x.strokeStyle = SKX.rgba(i % 2 ? col : '#FFFFFF', 1 - q); x.lineWidth = 12 * S * 2 * (1 - q); x.beginPath(); x.arc(0, 0, 90 * S * 2, -1 + q * 2, -.2 + q * 2); x.stroke(); x.restore(); }
+      if (!hit && e > .35) { hit = true; onHit(); }
+      SKX.glow(x, P.x, P.y - 30 * S * 2, 120 * S * 2 * Math.sin(Math.min(1, e * 1.5) * Math.PI), col, .55); }
+    x.restore();
+    if (u >= 1) { if (!hit) onHit(); el.classList.add('end'); setTimeout(() => el.remove(), 250); return; }
+    requestAnimationFrame(frame); };
+  requestAnimationFrame(frame);
+}
+rpgEnemyTurn = (f => function () {
+  const B = RS.battle; if (!B || !B.mo.boss || B.stun || RS.lowFx) return f.apply(this, arguments);
+  B.bturn = (B.bturn || 0) + 1; const rage = B.hp < B.ms.mhp * .35, special = B.bturn % 3 === 0 || (rage && Math.random() < .45);
+  if (!special) return f.apply(this, arguments);
+  const s = R.save, st = rpgStats(), pet = rpgPet(), [kind, col, nm] = rpgBossEl38();
+  const endTurn = () => { Object.values(B.buff).forEach(v => { if (v.n > 0) v.n--; }); B.turn = 'me'; B.busy = false; rpgBCmd(); rpgBHud(); };
+  rpgBSay(`⚠️ ${B.mo.n} กำลังรวบรวมพลัง… ${nm}!`); rpgBA('mon', 'cast', 900); rpgSfx('boss');
+  const ban = document.createElement('div'); ban.className = 'bsk38-ban'; ban.style.setProperty('--c', col); ban.innerHTML = `<small>BOSS SKILL</small><b>${esc(nm)}</b>`; document.getElementById('rb-scene')?.appendChild(ban); setTimeout(() => ban.remove(), 1500);
+  rpgBossSkillFx38(kind, col, 1900, () => {
+    const def = st.def * (1 + (B.buff.def?.n > 0 ? B.buff.def.v : 0)); let dmg = Math.max(1, Math.round(B.ms.atk * (rage ? 2.1 : 1.8) * 60 / (60 + def) * (.9 + Math.random() * .2)));
+    if (pet?.guard) dmg = Math.round(dmg * (1 - pet.guard));
+    s.hp = Math.max(0, s.hp - dmg); rpgBNum(dmg, 'me', 'me'); rpgBA('me', 'hurt', 520); rpgSfx(kind === 'meteor' ? 'fire' : kind === 'frost' ? 'ice' : 'thunder'); rpgBShake(18, 600);
+    rpgBSay(`💢 ${B.mo.n} ใช้ “${nm}” ${dmg.toLocaleString()}!`); rpgBHud(); rpgHud();
+  });
+  rpgBLater(2150, () => { if (s.hp <= 0) { rpgSfx('lose'); B.end = 'lose'; rpgBA('me', 'down', 99999, { keep: 1 }); rpgBHud(); return rpgEndDraw(); } endTurn(); });
+})(rpgEnemyTurn);
 
 /* =====================================================================
    rpg-net.js — หน้าเกมของครู: จัดการตัวละคร (เลือกชั้น → ห้อง) · คำถามในเกม · ตรวจแชท · กิลด์ · โหมดครู
