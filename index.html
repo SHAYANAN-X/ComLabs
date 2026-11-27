@@ -5106,6 +5106,10 @@ img.ii.jic{border-radius:22%}
 .pt44-c.on{box-shadow:inset 0 0 0 2.5px var(--pc),0 4px 12px color-mix(in srgb,var(--pc) 35%,transparent)}.pt44-c.out small{color:#1E9E5A;font-weight:800}
 .pt44-c:focus-visible{outline:3px solid var(--pc);outline-offset:2px}
 @media (max-width:760px){.pt44{grid-template-columns:1fr}.pt44-stage{min-height:180px}}
+/* ===== v45 แต่งตัว: ป้ายสวมอยู่ ===== */
+.rpg .rpg-panel .rp-card .wd-grid button{position:relative}
+.rpg .rpg-panel .rp-card .wd-grid button.on{background:linear-gradient(160deg,#EFE9FF,#FFFFFF)!important;box-shadow:inset 0 0 0 2.5px #7A5CFF,0 4px 14px rgba(122,92,255,.35)!important}
+.wd45-on{position:absolute;top:-7px;right:-4px;padding:1px 7px;border-radius:999px;font:800 10px/16px var(--f-body);font-style:normal;color:#fff;background:#3DDC84;box-shadow:0 2px 6px rgba(20,120,70,.35);white-space:nowrap}
 
 </style>
 </head>
@@ -5650,7 +5654,7 @@ if (typeof module !== 'undefined') module.exports = ExamParser;
 </script>
 <script>
 /* โลโก้: ภาพครูปลื้ม (ไฟล์ต้นฉบับ src/logo.svg ฝังตอน build) */
-const APP_VER = '44.0 · 27 พ.ย. 2569';
+const APP_VER = '45.0 · 27 พ.ย. 2569';
 let LOGO_N = 0;
 function logoSVG() { const k = 'L' + (++LOGO_N); return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><defs><linearGradient id="lgb" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3B9BFF"/><stop offset=".5" stop-color="#0A5BE0"/><stop offset="1" stop-color="#062C78"/></linearGradient><linearGradient id="lgs" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset=".6" stop-color="#FFF4D6"/><stop offset="1" stop-color="#FFD978"/></linearGradient><radialGradient id="lgc" cx=".3" cy=".08" r=".75"><stop offset="0" stop-color="#fff" stop-opacity=".55"/><stop offset=".5" stop-color="#fff" stop-opacity=".08"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient></defs><rect width="48" height="48" rx="13" fill="url(#lgb)"/><rect width="48" height="48" rx="13" fill="url(#lgc)"/><rect x=".75" y=".75" width="46.5" height="46.5" rx="12.3" fill="none" stroke="#fff" stroke-opacity=".45" stroke-width="1.2"/><g fill="none" stroke="#04235F" stroke-opacity=".35" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" transform="translate(0 1.2)"><path d="M21.2 17 C19.8 14.6 17.4 13.6 14.8 13.6 C11 13.6 8.6 15.6 8.6 18.5 C8.6 21.8 11.6 22.9 14.9 23.9 C18.6 25 21.6 26.4 21.6 29.8 C21.6 33 18.8 34.6 15.1 34.6 C12 34.6 9.5 33.4 8 31.1"/><path d="M26.6 14 L39.6 34.2 M39.6 14 L26.6 34.2"/></g><g fill="none" stroke="url(#lgs)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M21.2 17 C19.8 14.6 17.4 13.6 14.8 13.6 C11 13.6 8.6 15.6 8.6 18.5 C8.6 21.8 11.6 22.9 14.9 23.9 C18.6 25 21.6 26.4 21.6 29.8 C21.6 33 18.8 34.6 15.1 34.6 C12 34.6 9.5 33.4 8 31.1"/><path d="M26.6 14 L39.6 34.2 M39.6 14 L26.6 34.2"/></g></svg>`.replace('<svg ', '<svg class="logo" aria-hidden="true" ').replace(/\b(lg[bsc])\b/g, '$1' + k); }
 /* =====================================================================
@@ -22524,6 +22528,123 @@ function rpgPetStage44() {
     requestAnimationFrame(loop); };
   requestAnimationFrame(loop);
 }
+
+/* =====================================================================
+   SX Realm v45 — กาชาโอกาสสูงขึ้น · แฟชั่นอาวุธแสดงผลทุกท่า · ป้าย "สวมอยู่" ทันที
+   เอฟเฟกต์เคลื่อนไหวของชุดแฟชั่นและแฟชั่นอาวุธ
+   ===================================================================== */
+
+/* ---------- 1) กาชา: ของรางวัลทุกระดับ +10% (ลดของธรรมดาลงแทน) ---------- */
+rpgGachaPool = (f => function () {
+  const P = f.apply(this, arguments).map(p => ({ ...p }));
+  const W = { divine: 11, legend: 13, epic: 22, rare: 40, common: 14 };
+  P.forEach(p => { if (W[p.r] != null) p.w = W[p.r]; });
+  return P;
+})(rpgGachaPool);
+
+/* ---------- 2) แฟชั่นอาวุธต้องแสดงทุกท่า (ลากดาบ สะพายธนู/พิณไว้หลัง ฯลฯ) ---------- */
+// ห่อชั้นนอกสุด: ตั้งสกินอาวุธตลอดการวาดตัวละคร ไม่ใช่แค่ตอนวาดอาวุธในมือ
+(() => { const C2d = C2.draw; C2.draw = function (x, o) { const keep = RPG_WSK_NOW; RPG_WSK_NOW = o && o.wskin != null ? o.wskin : null; try { return C2d.apply(this, arguments); } finally { RPG_WSK_NOW = keep; } }; })();
+// ห่ออาวุธทุกชนิดที่ยังไม่รองรับสกิน
+Object.keys(WP.D).forEach(k => { const f = WP.D[k]; if (!f || f._wsk42 || f._wsk45 || k === 'none') return; const g = function (x, t) { const sk = RPG_WSK_NOW; if (sk == null || x._wsk) return f(x, t); RPG_WSK_NOW = null; try { return rpgWskDraw(x, f, t, sk); } finally { RPG_WSK_NOW = sk; } }; g._wsk45 = 1; WP.D[k] = g; });
+// สกินผูกกับประเภทอาวุธของอาชีพ (อาวุธตำนานแบบ "any" ก็ใช้สกินได้)
+rpgArtOpts = (f => function (L, h = {}) { const o = f.apply(this, arguments), it = L?.wsk && RPG_ITEMS[L.wsk];
+  if (it?.t === 'wsk' && o.wskin == null) { const wt = RPG_JOBS[L.job]?.wt; if (wt === it.wt) o.wskin = it.wsk; } return o; })(rpgArtOpts);
+// เปลี่ยนแฟชั่นแล้วอัปเดตทันที: ล้างแคชภาพตัวละคร + แจ้งว่ากำลังสวมอะไร
+document.addEventListener('click', e => {
+  const b = e.target.closest?.('.rp-card [data-r=wsk],.rp-card [data-r=look],.rp-card [data-r=wd-os],.rp-card [data-r=wd-hat]'); if (!b) return;
+  setTimeout(() => {
+    const s = R.save, id = b.dataset.i; if (b.dataset.r === 'wsk') rpgSay(id && s.outfit.wsk === id ? `✨ สวมแฟชั่นอาวุธ “${RPG_ITEMS[id]?.n || ''}” แล้ว` : '⚔️ กลับมาใช้หน้าตาอาวุธจริง', 1800);
+    rpgWdMark45(); }, 30);
+}, true);
+function rpgWdMark45() {
+  const card = document.querySelector('.rpg .rpg-panel .rp-card'); if (!card) return;
+  card.querySelectorAll('.wd-grid button').forEach(btn => { btn.querySelector('.wd45-on')?.remove(); if (btn.classList.contains('on')) btn.insertAdjacentHTML('beforeend', '<i class="wd45-on">✓ สวมอยู่</i>'); btn.setAttribute('aria-pressed', btn.classList.contains('on')); });
+}
+rpgPanel = (f => function (k) { const r = f.apply(this, arguments); if (k === 'wardrobe' || k === 'wardrobe2' || RS.panel === 'wardrobe') requestAnimationFrame(rpgWdMark45); return r; })(rpgPanel);
+
+/* ---------- 3) เอฟเฟกต์เคลื่อนไหว ---------- */
+const RPG_WFX45 = {
+  flame: (x, p, i, q, n) => { const s = 2.2 * (1 - q) + .6; x.fillStyle = q < .3 ? '#FFF2A0' : q < .6 ? '#FF9A2A' : '#E8341A'; x.beginPath(); x.moveTo(p[0], p[1] - s * 2); x.quadraticCurveTo(p[0] + s, p[1], p[0], p[1] + s); x.quadraticCurveTo(p[0] - s, p[1], p[0], p[1] - s * 2); x.fill(); },
+  frost: (x, p, i, q) => { x.strokeStyle = '#E8FAFF'; x.lineWidth = .5; const s = 1.8; for (let k = 0; k < 3; k++) { const a = k * Math.PI / 3 + q * 2; x.beginPath(); x.moveTo(p[0] - Math.cos(a) * s, p[1] - Math.sin(a) * s); x.lineTo(p[0] + Math.cos(a) * s, p[1] + Math.sin(a) * s); x.stroke(); } },
+  petal: (x, p, i, q) => { x.save(); x.translate(p[0], p[1]); x.rotate(q * 6 + i); x.fillStyle = i % 2 ? '#FFC8E0' : '#FF8AC0'; x.beginPath(); x.ellipse(0, 0, 2, 1.1, 0, 0, 7); x.fill(); x.restore(); },
+  neon: (x, p, i, q) => { x.strokeStyle = i % 2 ? '#00FFE0' : '#B36BFF'; x.lineWidth = .7; x.beginPath(); x.moveTo(p[0] - 2, p[1]); x.lineTo(p[0], p[1] - 1.5); x.lineTo(p[0] + .5, p[1] + 1); x.lineTo(p[0] + 2.4, p[1] - .6); x.stroke(); },
+  spark: (x, p, i, q) => V42.sparkle(x, p[0], p[1], 1.6 * Math.sin(q * Math.PI) + .3, i % 2 ? '#FFFFFF' : '#FFE27A'),
+  smoke: (x, p, i, q) => { const r = 2 + q * 3; const g = x.createRadialGradient(p[0], p[1], 0, p[0], p[1], r); g.addColorStop(0, 'rgba(150,90,255,.6)'); g.addColorStop(1, 'rgba(30,0,60,0)'); x.fillStyle = g; x.beginPath(); x.arc(p[0], p[1], r, 0, 7); x.fill(); },
+  holy: (x, p, i, q) => V42.sparkle(x, p[0], p[1], 1.8 * Math.sin(q * Math.PI) + .3, i % 2 ? '#FFFFFF' : '#FFE680'),
+  feather: (x, p, i, q) => { x.save(); x.translate(p[0], p[1]); x.rotate(Math.sin(q * 8 + i) * .8); x.fillStyle = '#FFE4F6'; x.beginPath(); x.moveTo(0, 2); x.quadraticCurveTo(1.3, -.5, 0, -3); x.quadraticCurveTo(-1.3, -.5, 0, 2); x.fill(); x.restore(); },
+};
+function rpgWskFx45(x, h) {
+  const L = h.look, it = L?.wsk && RPG_ITEMS[L.wsk]; if (!it || it.t !== 'wsk' || h.pose === 'down' || RS.lowFx) return;
+  const S = RPG_WSK[it.wsk], fn = S && RPG_WFX45[S.fx]; if (!fn || RPG_JOBS[L.job]?.wt !== it.wt) return;
+  const dir = h.dir === 'l' ? 'r' : h.dir || 'd', ax = rpgWAxis(L, dir); if (!ax) return;
+  const sd = h.dir === 'l' ? -1 : 1, t = h.t || performance.now(), P = k => [(ax.a[0] + (ax.b[0] - ax.a[0]) * k) * sd, ax.a[1] + (ax.b[1] - ax.a[1]) * k];
+  x.save(); if (['flame', 'neon', 'spark', 'holy'].includes(S.fx)) x.globalCompositeOperation = 'lighter';
+  // แสงเรืองตามแนวอาวุธ
+  const A = P(.05), B = P(1); x.globalAlpha = .28 + Math.sin(t / 400) * .1; x.strokeStyle = S.hi; x.lineCap = 'round'; x.lineWidth = 5; x.beginPath(); x.moveTo(A[0], A[1]); x.lineTo(B[0], B[1]); x.stroke();
+  const rise = S.fx === 'petal' || S.fx === 'feather' || S.fx === 'frost' ? -1 : 1;
+  for (let i = 0; i < 9; i++) { const q = (t / (S.fx === 'flame' ? 700 : 1500) + i / 9) % 1, p = P(.15 + (i * .37 % 1) * .85), dx = Math.sin(i * 2.3 + t / 380) * 4; x.globalAlpha = Math.sin(q * Math.PI) * .95; fn(x, [p[0] + dx, p[1] - q * 10 * rise], i, q); }
+  x.restore();
+}
+// ชุดแฟชั่น: ออร่าตามธีมสีของชุด (ระดับยิ่งสูง เอฟเฟกต์ยิ่งเยอะ)
+function rpgCosFx45(x, h, ph) {
+  const L = h.look; if (!L || !(L.os > 0) || h.pose === 'down' || RS.lowFx) return;
+  const key = RPG_FASHION[(L.os - 1) % RPG_FASHION.length], O = C2.OUTFIT[key]; if (!O) return;
+  const it = Object.values(RPG_ITEMS).find(i => i.t === 'cos' && i.os === L.os), g = it?.g ?? 2, col = O.c2 || '#FFD86A', col2 = O.c1 || '#FFFFFF', t = h.t || performance.now();
+  const n = g >= 6 ? 12 : g >= 4 ? 8 : 5;
+  x.save();
+  if (ph === 0) { x.scale(1, .32); x.globalAlpha = .35 + .15 * Math.sin(t / 500); x.strokeStyle = col; x.lineWidth = 1.6; x.setLineDash([4, 5]); x.lineDashOffset = -t / 70; x.beginPath(); x.arc(0, 3, 18, 0, 7); x.stroke(); x.setLineDash([]); x.restore(); return; }
+  x.globalCompositeOperation = 'lighter';
+  for (let i = 0; i < n; i++) { const q = (t / 2600 + i / n) % 1, a = i * 2.4 + t / 1500, r = 12 + (i % 3) * 3, px = Math.cos(a) * r, py = -6 - q * 44, al = Math.sin(q * Math.PI);
+    x.globalAlpha = al * .9;
+    if (g >= 6 && i % 3 === 0) { x.globalCompositeOperation = 'source-over'; x.save(); x.translate(px, py); x.rotate(Math.sin(q * 6 + i)); x.fillStyle = '#FFFFFF'; x.beginPath(); x.moveTo(0, 2.4); x.quadraticCurveTo(1.4, -.5, 0, -3.2); x.quadraticCurveTo(-1.4, -.5, 0, 2.4); x.fill(); x.restore(); x.globalCompositeOperation = 'lighter'; }
+    else if (g >= 4 && i % 2) V42.sparkle(x, px, py, 1.5, i % 4 === 1 ? '#FFFFFF' : col);
+    else { x.fillStyle = i % 2 ? col : col2; x.beginPath(); x.arc(px, py, 1.1, 0, 7); x.fill(); } }
+  if (g >= 6) { x.globalAlpha = .5 + .2 * Math.sin(t / 300); const gr = x.createRadialGradient(0, -24, 2, 0, -24, 26); gr.addColorStop(0, 'rgba(255,240,190,.28)'); gr.addColorStop(1, 'rgba(255,240,190,0)'); x.fillStyle = gr; x.beginPath(); x.arc(0, -24, 26, 0, 7); x.fill(); }
+  x.restore();
+}
+rpgDrawHero = (f => function (x, h) {
+  const p = RPG_WH44; RPG_WH44 = h;
+  try { x.save(); rpgCosFx45(x, h, 0); x.restore(); const r = f.apply(this, arguments); x.save(); rpgCosFx45(x, h, 1); x.restore(); x.save(); rpgWskFx45(x, h); x.restore(); return r; }
+  finally { RPG_WH44 = p; }
+})(rpgDrawHero);
+
+/* ---------- 4) อาวุธหมัด = กันเล็ทยักษ์ (หมัดเกราะ + เกราะแขนยาวถึงศอก) ---------- */
+(() => {
+  const { mix, lt, dk, MAT, GEM, GLOW, gold } = V42;
+  const f = function (x, t = 0) { t = Math.max(0, Math.min(7, t | 0));
+    const c = t === 0 ? '#A8B0BE' : t === 7 ? '#F4EEFF' : MAT[t], rim = gold(t), core = GEM[t], dark = dk(c, .45);
+    const plate = (y0, y1) => { const g = x.createLinearGradient(-9, 0, 9, 0); g.addColorStop(0, lt(c, .55)); g.addColorStop(.45, c); g.addColorStop(1, dk(c, .4)); return g; };
+    if (t >= 5) { x.save(); x.shadowColor = GLOW[t]; x.shadowBlur = 10; x.fillStyle = GLOW[t]; x.globalAlpha = .5; x.beginPath(); x.ellipse(0, -6, 11, 17, 0, 0, 7); x.fill(); x.restore(); }
+    // เกราะแขน (ไปทางศอก = ด้านบน)
+    x.fillStyle = plate(); x.beginPath(); x.moveTo(-7.2, -4); x.lineTo(-6, -22); x.quadraticCurveTo(0, -25.5, 6, -22); x.lineTo(7.2, -4); x.closePath(); x.fill(); x.strokeStyle = dark; x.lineWidth = .5; x.stroke();
+    [-17, -11].forEach(y => { x.strokeStyle = dk(c, .3); x.lineWidth = .7; x.beginPath(); x.moveTo(-6.6, y); x.quadraticCurveTo(0, y - 1.6, 6.6, y); x.stroke(); });
+    x.fillStyle = (() => { const g = x.createLinearGradient(-7, 0, 7, 0); g.addColorStop(0, lt(rim, .4)); g.addColorStop(1, dk(rim, .35)); return g; })();
+    x.beginPath(); x.roundRect(-6.8, -24.5, 13.6, 3, 1.4); x.fill(); x.beginPath(); x.roundRect(-7.6, -6, 15.2, 3.2, 1.5); x.fill();
+    // หนามบนเกราะแขน
+    if (t >= 2) { x.fillStyle = lt(c, .3); [[-7, -19], [-7.3, -13], [7, -19], [7.3, -13]].forEach(([a, b]) => { const s = a < 0 ? -1 : 1; x.beginPath(); x.moveTo(a, b - 2); x.lineTo(a + s * (2.6 + t * .3), b - .4); x.lineTo(a, b + 1.6); x.fill(); }); }
+    // อัญมณีพลังกลางเกราะ
+    V42.gem(x, 0, -14.5, 2.6 + t * .15, core, t >= 3 ? 4 + t : 0);
+    // หมัดเกราะใหญ่
+    x.fillStyle = (() => { const g = x.createRadialGradient(-2.5, 0, 1, 0, 3, 11); g.addColorStop(0, lt(c, .6)); g.addColorStop(.6, c); g.addColorStop(1, dk(c, .4)); return g; })();
+    x.beginPath(); x.moveTo(-8.4, -3); x.bezierCurveTo(-10.4, 3, -9.2, 10.5, -5, 11.6); x.lineTo(5.6, 11.6); x.bezierCurveTo(9.8, 10.5, 10.6, 3, 8.4, -3); x.closePath(); x.fill(); x.strokeStyle = dark; x.lineWidth = .5; x.stroke();
+    // แผ่นข้อนิ้ว 4 ข้อ
+    [-5.1, -1.7, 1.7, 5.1].forEach(px => { const g = x.createLinearGradient(0, 6, 0, 13); g.addColorStop(0, lt(c, .45)); g.addColorStop(1, dk(c, .3)); x.fillStyle = g; x.beginPath(); x.roundRect(px - 1.65, 6.6, 3.3, 6.2, 1.3); x.fill(); x.strokeStyle = dark; x.lineWidth = .35; x.stroke(); });
+    x.fillStyle = (() => { const g = x.createLinearGradient(-9, 0, 9, 0); g.addColorStop(0, lt(rim, .4)); g.addColorStop(1, dk(rim, .3)); return g; })(); x.beginPath(); x.roundRect(-7.8, 4.6, 15.6, 2.4, 1.2); x.fill();
+    // หนามข้อนิ้ว
+    if (t >= 1) { x.fillStyle = t >= 4 ? '#FFF0B0' : '#EEF2F8'; [-5.1, -1.7, 1.7, 5.1].forEach(px => { x.beginPath(); x.moveTo(px - 1.1, 12.6); x.lineTo(px, 15.4 + t * .45); x.lineTo(px + 1.1, 12.6); x.fill(); }); }
+    // นิ้วโป้ง
+    x.fillStyle = (() => { const g = x.createRadialGradient(-8, 2, .5, -8, 3, 5); g.addColorStop(0, lt(c, .5)); g.addColorStop(1, dk(c, .3)); return g; })(); x.beginPath(); x.ellipse(-8.2, 3.4, 2.8, 4.2, .35, 0, 7); x.fill();
+    if (t === 7) { x.save(); x.globalCompositeOperation = 'source-atop'; const g = x.createLinearGradient(0, -24, 0, 14); ['#FF6FA8', '#FFD23F', '#6FF0A0', '#6FC8FF', '#B98BFF'].forEach((cc, i) => g.addColorStop(i / 4, cc)); x.globalAlpha = .45; x.fillStyle = g; x.fillRect(-12, -26, 24, 44); x.restore(); }
+    if (t >= 5) [[-10, -20], [10, -8], [-9, 13]].forEach(([a, b]) => V42.sparkle(x, a, b, 1.4, GLOW[t]));
+  };
+  WP.D.fist = function (x, t) { const sk = RPG_WSK_NOW; if (sk == null || x._wsk) return f(x, t); RPG_WSK_NOW = null; try { return rpgWskDraw(x, f, t, sk); } finally { RPG_WSK_NOW = sk; } };
+  WP.D.fist._wsk45 = 1; GRIP41.fist = [[0, 2]];
+  ['monk'].forEach(j => { const A = RPG_JOBART[j]; if (A?.w) A.w = { ...A.w, sc: .62 }; if (A?.w2) A.w2 = { ...A.w2, sc: .62 }; });
+  RPG_WLEN44.fist = 26;
+  RPG_IWPN.fist = (x, P) => { const t = Math.max(0, Math.min(7, P.t ?? 4)); x.save(); x.translate(50, 62); x.rotate(.35); x.scale(2.1, 2.1); WP.D.fist(x, t); x.restore(); };
+  RPG_ICANV.clear(); RPG_IURL.clear();
+})();
 
 /* =====================================================================
    rpg-net.js — หน้าเกมของครู: จัดการตัวละคร (เลือกชั้น → ห้อง) · คำถามในเกม · ตรวจแชท · กิลด์ · โหมดครู
