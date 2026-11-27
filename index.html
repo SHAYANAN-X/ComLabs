@@ -5704,7 +5704,7 @@ if (typeof module !== 'undefined') module.exports = ExamParser;
 </script>
 <script>
 /* โลโก้: ภาพครูปลื้ม (ไฟล์ต้นฉบับ src/logo.svg ฝังตอน build) */
-const APP_VER = '50.0 · 27 พ.ย. 2569';
+const APP_VER = '51.0 · 27 พ.ย. 2569';
 let LOGO_N = 0;
 function logoSVG() { const k = 'L' + (++LOGO_N); return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><defs><linearGradient id="lgb" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3B9BFF"/><stop offset=".5" stop-color="#0A5BE0"/><stop offset="1" stop-color="#062C78"/></linearGradient><linearGradient id="lgs" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset=".6" stop-color="#FFF4D6"/><stop offset="1" stop-color="#FFD978"/></linearGradient><radialGradient id="lgc" cx=".3" cy=".08" r=".75"><stop offset="0" stop-color="#fff" stop-opacity=".55"/><stop offset=".5" stop-color="#fff" stop-opacity=".08"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient></defs><rect width="48" height="48" rx="13" fill="url(#lgb)"/><rect width="48" height="48" rx="13" fill="url(#lgc)"/><rect x=".75" y=".75" width="46.5" height="46.5" rx="12.3" fill="none" stroke="#fff" stroke-opacity=".45" stroke-width="1.2"/><g fill="none" stroke="#04235F" stroke-opacity=".35" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" transform="translate(0 1.2)"><path d="M21.2 17 C19.8 14.6 17.4 13.6 14.8 13.6 C11 13.6 8.6 15.6 8.6 18.5 C8.6 21.8 11.6 22.9 14.9 23.9 C18.6 25 21.6 26.4 21.6 29.8 C21.6 33 18.8 34.6 15.1 34.6 C12 34.6 9.5 33.4 8 31.1"/><path d="M26.6 14 L39.6 34.2 M39.6 14 L26.6 34.2"/></g><g fill="none" stroke="url(#lgs)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M21.2 17 C19.8 14.6 17.4 13.6 14.8 13.6 C11 13.6 8.6 15.6 8.6 18.5 C8.6 21.8 11.6 22.9 14.9 23.9 C18.6 25 21.6 26.4 21.6 29.8 C21.6 33 18.8 34.6 15.1 34.6 C12 34.6 9.5 33.4 8 31.1"/><path d="M26.6 14 L39.6 34.2 M39.6 14 L26.6 34.2"/></g></svg>`.replace('<svg ', '<svg class="logo" aria-hidden="true" ').replace(/\b(lg[bsc])\b/g, '$1' + k); }
 /* =====================================================================
@@ -23266,19 +23266,7 @@ rpgDrawHero = (f => function (x, h) {
 })(rpgDrawHero);
 
 /* ---------- แคชเฟรม: ครอปเฉพาะส่วนที่มีภาพ + จำกัดตามจำนวนพิกเซล ---------- */
-rpgArtRender = (f => function (o, kind, res) {
-  const c = f.apply(this, arguments); if (kind || !c) return c;
-  try {
-    const W = c.width, H = c.height, RES = c._res || res || RPG_ART_RES, d = c.getContext('2d', { willReadFrequently: true }).getImageData(0, 0, W, H).data;
-    let x0 = W, y0 = H, x1 = -1, y1 = -1;
-    for (let y = 0; y < H; y += 1) { const row = y * W * 4; for (let xx = 0; xx < W; xx += 2) if (d[row + xx * 4 + 3] > 6) { if (xx < x0) x0 = xx; if (xx > x1) x1 = xx; if (y < y0) y0 = y; y1 = y; } }
-    if (x1 < 0) return c;
-    x0 = Math.max(0, x0 - 3); y0 = Math.max(0, y0 - 2); x1 = Math.min(W - 1, x1 + 3); y1 = Math.min(H - 1, y1 + 2);
-    const w = x1 - x0 + 1, hh = y1 - y0 + 1, out = document.createElement('canvas'); out.width = w; out.height = hh; out.getContext('2d').drawImage(c, x0, y0, w, hh, 0, 0, w, hh);
-    out._res = RES; out._ax = (x0 - W / 2) / RES; out._ay = (y0 - (H - 14 * RES)) / RES; out._aw = W / RES;
-    return out;
-  } catch (e) { return c; }
-})(rpgArtRender);
+/* (v51) เลิกครอปภาพด้วย getImageData — ทำให้ GPU ต้องหยุดรอ เกิดการกระตุก */
 rpgArtBlit = function (x, img, flip) {
   const RES = img._res || RPG_ART_RES; x.save(); if (flip) x.scale(-1, 1);
   if (img._ax != null) x.drawImage(img, img._ax, img._ay, img.width / RES, img.height / RES);
@@ -23778,6 +23766,46 @@ rpgFcBar = function () {
     const em = b.querySelector('em'), sm = b.querySelector('small'), et = cd > 0 ? (cd / 1000).toFixed(cd < 1000 ? 1 : 0) : '', st = k[4] === 'b' ? 'บัฟ' : String(mp);
     if (em.textContent !== et) em.textContent = et; if (sm.textContent !== st) sm.textContent = cd > 0 ? '' : st; });
 };
+
+/* rpg-v51.js — แก้แลค/สะดุด
+   1) เลิกอ่านพิกเซลกลับ (getImageData) ตอนสร้างเฟรมตัวละคร → สาเหตุหลักของการกระตุกบนมือถือ (GPU ต้องหยุดรอ)
+   2) เฟรมเดิน: ตัวเอง 16 เฟรม · ผู้เล่นอื่น 10 เฟรม (เดิม 24 ทุกคน)
+   3) จำกัดเวลาสร้างเฟรมใหม่ไม่เกิน ~4ms ต่อภาพ ที่เหลือใช้เฟรมใกล้เคียงไปก่อน
+   4) วาดเฟรมของตัวเองล่วงหน้าตอนเครื่องว่าง
+   5) โหมดประหยัดอัตโนมัติเมื่อเครื่องช้า */
+const RPG_PERF51 = { budget: 4, spent: 0, frame: 0, meN: 16, otherN: 10 };
+// (2) จำนวนเฟรมเดินตามว่าเป็นตัวเราหรือคนอื่น
+rpgCharAt = (f => function (x, c) { const n = c && c.me ? RPG_PERF51.meN : RPG_PERF51.otherN; const old = RPG_WALKN; RPG_WALKN = n; try { return f.apply(this, arguments); } finally { RPG_WALKN = old; } })(rpgCharAt);
+RPG_WALKN = RPG_PERF51.meN;
+// (3) งบเวลาสร้างเฟรมใหม่ต่อภาพ
+rpgArtGetLazy = function (key, make, keyOf, f, N) {
+  if (RPG_ART.has(key)) return rpgArtGet(key, make);
+  const fr = RS._frameNo || 0; if (fr !== RPG_PERF51.frame) { RPG_PERF51.frame = fr; RPG_PERF51.spent = 0; }
+  if (keyOf && RPG_PERF51.spent > RPG_PERF51.budget) { for (let d = 1; d <= N / 2; d++) for (const s of [-1, 1]) { const im = RPG_ART.get(keyOf(((f + s * d) % N + N) % N)); if (im) return im; } const im0 = RPG_ART.get(keyOf(-1)); if (im0) return im0; }
+  const t0 = performance.now(), v = rpgArtGet(key, make); RPG_PERF51.spent += performance.now() - t0; return v;
+};
+rpgDraw = (f => function () { RS._frameNo = (RS._frameNo || 0) + 1; return f.apply(this, arguments); })(rpgDraw);
+// (4) วาดเฟรมเดินของตัวเองล่วงหน้าตอนว่าง
+function rpgPrewarm51() {
+  if (!R.save || !RS.map) return; const look = rpgLookMe(), jobs = []; [0, 1, 2, 3, 4].forEach(d8 => { jobs.push([d8, false, 0]); for (let i = 0; i < RPG_PERF51.meN; i++) jobs.push([d8, true, i]); });
+  const cv = document.createElement('canvas'); cv.width = cv.height = 4; const x = cv.getContext('2d'); let i = 0, sig = JSON.stringify(look);
+  const step = dl => { if (!RS.map || JSON.stringify(rpgLookMe()) !== sig) return; const until = performance.now() + Math.min(8, dl?.timeRemaining?.() ?? 6);
+    while (i < jobs.length && performance.now() < until) { const [d8, mv, k] = jobs[i++]; const old = RPG_WALKN; RPG_WALKN = RPG_PERF51.meN; RPG_PERF51.spent = -999; try { rpgDrawHero(x, { look, d8, t: 0, moving: mv, anim: k / RPG_PERF51.meN * Math.PI * 2 }); } catch (e) {} RPG_WALKN = old; }
+    if (i < jobs.length) (window.requestIdleCallback || (fn => setTimeout(() => fn(), 30)))(step); };
+  (window.requestIdleCallback || (fn => setTimeout(() => fn(), 30)))(step);
+}
+rpgScene = (f => function () { const r = f.apply(this, arguments); setTimeout(rpgPrewarm51, 600); return r; })(rpgScene);
+// (5) โหมดประหยัดอัตโนมัติ: ถ้า 4 วินาทีเฉลี่ยช้ากว่า 22 fps → ลดเอฟเฟกต์ + ลดความละเอียดจอ
+(() => { let last = 0, acc = 0, n = 0, slowRuns = 0, done = false;
+  const tick = t => { if (last && RS.map && !RS.battle && !document.hidden) { const dt = t - last; if (dt < 500) { acc += dt; n++; } if (acc > 4000) { const avg = acc / n; acc = 0; n = 0; slowRuns = avg > 45 ? slowRuns + 1 : 0;
+      if (slowRuns >= 2 && !done) { done = true; RS.autoLow = true; if (!RS.lowFx) { RS.lowFx = true; rpgSay('⚡ เครื่องค่อนข้างช้า เปิดโหมดประหยัดให้อัตโนมัติ (ปิดได้ที่เมนู ⚙️)', 3500); }
+        const cv = document.getElementById('rpg-c'); if (cv && RS.fit) { RS.dprCap = 1; RS.fit(); } } } }
+    last = t; requestAnimationFrame(tick); }; requestAnimationFrame(tick); })();
+// เคารพเพดานความละเอียดเมื่อโหมดประหยัด
+(() => { const id = setInterval(() => { if (!RS.fit || RS.fit._v51) return; const f0 = RS.fit; const cv = document.getElementById('rpg-c'); if (!cv) return;
+  RS.fit = function () { if (RS.dprCap || RS.lowFx) { const d = Math.min(RS.dprCap || 1, devicePixelRatio || 1); cv.width = Math.round(innerWidth * d); cv.height = Math.round(innerHeight * d); if (RS.battle) rpgBFit(); } else f0(); }; RS.fit._v51 = 1; removeEventListener('resize', f0); addEventListener('resize', RS.fit); if (RS.lowFx) RS.fit(); }, 500); })();
+// โหมดประหยัด: อนุภาคสกิลน้อยลง
+X49.pt = (f => function (o) { if (RS.lowFx && Math.random() < .6) return; return f.call(this, o); })(X49.pt);
 
 /* =====================================================================
    rpg-net.js — หน้าเกมของครู: จัดการตัวละคร (เลือกชั้น → ห้อง) · คำถามในเกม · ตรวจแชท · กิลด์ · โหมดครู
