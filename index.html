@@ -5058,6 +5058,28 @@ img.ii.jic{border-radius:22%}
 .rpg-party .pt-m{border-radius:22px;padding-right:14px}
 .rpg-party .pb41-me{align-self:stretch;padding:6px 10px;border-radius:14px;background:rgba(20,16,50,.72);box-shadow:inset 0 0 0 1px rgba(255,255,255,.15)}.rpg-party .pb41-me>small{display:block;font-size:10.5px;font-weight:800;color:#FFE27A}
 .eq41-stage #eq-cv{left:0;top:0;right:0;bottom:0;width:100%;height:100%}
+/* ===== v43 บอสโลก ===== */
+.rd-boss.wb{background:linear-gradient(120deg,rgba(40,10,70,.9),rgba(120,20,60,.82) 60%,rgba(255,140,40,.55))}
+.wb-st{display:inline-block;margin:4px 0 2px;padding:2px 10px;border-radius:999px;font:800 11.5px var(--f-body);background:rgba(255,255,255,.18)}.wb-st.on{background:#3DDC84;color:#0A2A18}.wb-st.dead{background:#FFD23F;color:#3A2A00}.wb-st.soon{background:#5AB8FF;color:#082040}
+.wb-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.wb-grid .rd-row b small{font-weight:600;color:#7A72A8;margin-left:4px}
+.wb-cfg{display:grid;gap:8px;margin:10px 0;padding:12px 14px;border-radius:16px;background:rgba(255,246,210,.75);box-shadow:inset 0 0 0 1.5px #F2C14E}.wb-cfg h4{margin:0;font-size:14px}
+.wb-row{display:flex;flex-wrap:wrap;gap:10px}.wb-row label,.wb-cfg>label{font-size:13px;font-weight:700;color:#3A2E5A}.wb-row select{margin-left:4px;padding:4px 6px;border-radius:8px;border:1px solid #D8D0F0;font:600 13px var(--f-body)}
+.wb-days{display:flex;flex-wrap:wrap;gap:8px}.wb-days label{display:flex;gap:4px;align-items:center;padding:3px 10px;border-radius:999px;background:#fff;font:700 12.5px var(--f-body)}.wb-cfg small{font-size:11.5px;color:#6B6690}
+.rpg-wb{position:absolute;left:50%;top:64px;z-index:5;display:flex;align-items:center;gap:10px;padding:6px 16px 6px 8px;border:0;border-radius:18px;cursor:pointer;transform:translateX(-50%);color:#fff;text-align:left;font-family:var(--f-body);background:linear-gradient(120deg,rgba(90,10,60,.88),rgba(200,60,30,.82));box-shadow:0 0 0 1.5px rgba(255,210,120,.7),0 6px 18px rgba(200,40,40,.45);animation:wbp 2.4s ease-in-out infinite}
+.rpg-wb>span{font-size:26px}.rpg-wb b{display:block;font:800 13px var(--f-head);color:#FFE27A}.rpg-wb small{font-size:11px;opacity:.9}.rpg-wb i{display:block;width:150px;height:5px;margin-top:3px;border-radius:3px;background:rgba(0,0,0,.35);overflow:hidden}.rpg-wb u{display:block;height:100%;background:linear-gradient(90deg,#FF5A5F,#FFD23F)}
+@keyframes wbp{50%{box-shadow:0 0 0 2px #FFD86A,0 6px 26px rgba(255,120,40,.7)}}
+@media (prefers-reduced-motion:reduce){.rpg-wb{animation:none}}
+@media (max-width:760px){.wb-grid{grid-template-columns:1fr}.rpg-wb{top:auto;bottom:210px}}
+.rpg:has(#rpg-battle:not([hidden])) .rpg-wb{display:none}
+/* ===== v43 กาชาเทพแสง (กรอบทอง) ===== */
+.gc-tier[style*="#FFD86A"]{background:linear-gradient(120deg,rgba(255,236,160,.75),rgba(255,255,255,.6) 50%,rgba(255,214,110,.7));box-shadow:inset 0 0 0 2px #E8B830,0 0 16px rgba(255,200,60,.45)}
+.gc-tier[style*="#FFD86A"]>b{background:linear-gradient(90deg,#B8860B,#FFD86A,#B8860B);-webkit-background-clip:text;background-clip:text;color:transparent!important;font-weight:900}
+.gc-cap.divine{background:radial-gradient(circle at 50% 30%,#FFFBE0,#FFD86A 70%,#C8941E)!important;box-shadow:0 0 0 3px #FFF2B0,0 0 24px 4px rgba(255,210,80,.85)!important;animation:gcdv 1.6s ease-in-out infinite alternate}
+@keyframes gcdv{to{box-shadow:0 0 0 3px #FFFFFF,0 0 34px 8px rgba(255,230,120,.95)}}
+:is(.rp-ic,.eq41-ic)[style*="#FFD86A"],[style*="--g:#FFD86A"] .eq41-ic,[style*="--gc:#FFD86A"] .rp-ic{background:radial-gradient(circle at 35% 28%,#FFFDF0,#FFE9A0 60%,#F2C14E)!important;box-shadow:inset 0 0 0 2px #C8941E,0 0 0 2px #FFE27A,0 0 14px rgba(255,200,60,.8)!important}
+.rp-grade[style*="#FFD86A"]{background:linear-gradient(90deg,#C8941E,#FFE27A,#C8941E)!important;color:#4A3000!important}
+@media (prefers-reduced-motion:reduce){.gc-cap.divine{animation:none}}
+@media (max-width:760px){.rpg-wb{top:218px;bottom:auto;left:auto;right:8px;transform:none;padding:4px 10px 4px 6px;gap:6px;border-radius:14px}.rpg-wb>span{font-size:18px}.rpg-wb b{font-size:11.5px}.rpg-wb small{display:none}.rpg-wb i{width:84px;height:4px}}
 
 </style>
 </head>
@@ -5602,7 +5624,7 @@ if (typeof module !== 'undefined') module.exports = ExamParser;
 </script>
 <script>
 /* โลโก้: ภาพครูปลื้ม (ไฟล์ต้นฉบับ src/logo.svg ฝังตอน build) */
-const APP_VER = '42.0 · 27 พ.ย. 2569';
+const APP_VER = '43.0 · 27 พ.ย. 2569';
 let LOGO_N = 0;
 function logoSVG() { const k = 'L' + (++LOGO_N); return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><defs><linearGradient id="lgb" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3B9BFF"/><stop offset=".5" stop-color="#0A5BE0"/><stop offset="1" stop-color="#062C78"/></linearGradient><linearGradient id="lgs" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset=".6" stop-color="#FFF4D6"/><stop offset="1" stop-color="#FFD978"/></linearGradient><radialGradient id="lgc" cx=".3" cy=".08" r=".75"><stop offset="0" stop-color="#fff" stop-opacity=".55"/><stop offset=".5" stop-color="#fff" stop-opacity=".08"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient></defs><rect width="48" height="48" rx="13" fill="url(#lgb)"/><rect width="48" height="48" rx="13" fill="url(#lgc)"/><rect x=".75" y=".75" width="46.5" height="46.5" rx="12.3" fill="none" stroke="#fff" stroke-opacity=".45" stroke-width="1.2"/><g fill="none" stroke="#04235F" stroke-opacity=".35" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" transform="translate(0 1.2)"><path d="M21.2 17 C19.8 14.6 17.4 13.6 14.8 13.6 C11 13.6 8.6 15.6 8.6 18.5 C8.6 21.8 11.6 22.9 14.9 23.9 C18.6 25 21.6 26.4 21.6 29.8 C21.6 33 18.8 34.6 15.1 34.6 C12 34.6 9.5 33.4 8 31.1"/><path d="M26.6 14 L39.6 34.2 M39.6 14 L26.6 34.2"/></g><g fill="none" stroke="url(#lgs)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M21.2 17 C19.8 14.6 17.4 13.6 14.8 13.6 C11 13.6 8.6 15.6 8.6 18.5 C8.6 21.8 11.6 22.9 14.9 23.9 C18.6 25 21.6 26.4 21.6 29.8 C21.6 33 18.8 34.6 15.1 34.6 C12 34.6 9.5 33.4 8 31.1"/><path d="M26.6 14 L39.6 34.2 M39.6 14 L26.6 34.2"/></g></svg>`.replace('<svg ', '<svg class="logo" aria-hidden="true" ').replace(/\b(lg[bsc])\b/g, '$1' + k); }
 /* =====================================================================
@@ -21036,11 +21058,11 @@ function rpgRaidGo() {
 }
 async function rpgRaidEnd(B) {
   if (!B || B.raidDone) return; B.raidDone = true; B.busy = true; const dmg = Math.max(0, Math.round(B.raid.hp0 - B.hp)), s = R.save;
-  const ov = document.getElementById('rb-ov'); if (ov) ov.innerHTML = `<div class="rq"><div class="rq-c end"><div class="re-medal">🐲</div><h3>จบรอบโจมตี!</h3><p><span class="spin"></span> กำลังบันทึกดาเมจของห้อง…</p></div></div>`;
+  const ov = document.getElementById('rb-ov'); if (ov) ov.innerHTML = `<div class="rq"><div class="rq-c end"><div class="re-medal">🐲</div><h3>จบรอบโจมตี!</h3><p><span class="spin"></span> กำลังบันทึกดาเมจบอสโลก…</p></div></div>`;
   const r = await rpgRaidRpc('hit', { dmg, correct: B.correct || 0 }); s.stats.raid = (s.stats.raid || 0) + (r?.ok ? 1 : 0); s.hp = Math.max(s.hp, 1);
-  const S = RPG_RAID.st, msg = r?.ok ? `ดาเมจที่นับให้ห้อง <b>${Number(r.dealt).toLocaleString()}</b>${r.dealt < dmg ? ' (เกินเพดานต่อรอบ)' : ''}` : ({ LIMIT: 'วันนี้ลงสนามครบ 3 ครั้งแล้ว', RATE: 'รออีกสักครู่ก่อนลงสนามใหม่', DEAD: 'บอสถูกปราบไปแล้ว!' }[RPG_RAID.err] || 'บันทึกไม่สำเร็จ');
+  const S = RPG_RAID.st, msg = r?.ok ? `ดาเมจที่นับให้โรงเรียน <b>${Number(r.dealt).toLocaleString()}</b>${r.dealt < dmg ? ' (เกินเพดานต่อรอบ)' : ''}` : ({ LIMIT: 'วันนี้ลงสนามครบแล้ว', CLOSED: 'บอสโลกปิดแล้ว', RATE: 'รออีกสักครู่ก่อนลงสนามใหม่', DEAD: 'บอสถูกปราบไปแล้ว!' }[RPG_RAID.err] || 'บันทึกไม่สำเร็จ');
   if (ov) ov.innerHTML = `<div class="rq"><div class="rq-c end"><div class="re-medal">🐲</div><h3>จบรอบโจมตี!</h3><p>ดาเมจรอบนี้ ${dmg.toLocaleString()} · ${msg}</p>
-    ${S ? `<div class="rd-hp sm"><i style="width:${((1 - Math.min(1, S.dmg / S.max)) * 100).toFixed(1)}%"></i><span>${S.dead ? '💀 ห้องเราปราบบอสสำเร็จ!' : `HP บอสเหลือ ${Math.max(0, S.max - S.dmg).toLocaleString()}`}</span></div>` : ''}
+    ${S ? `<div class="rd-hp sm"><i style="width:${((1 - Math.min(1, S.dmg / S.max)) * 100).toFixed(1)}%"></i><span>${S.dead ? '💀 ทั้งโรงเรียนปราบบอสสำเร็จ!' : `HP บอสเหลือ ${Math.max(0, S.max - S.dmg).toLocaleString()}`}</span></div>` : ''}
     <button class="rp-btn primary" data-r="raid-done">ไปต่อ</button></div></div>`;
   rpgSave(); rpgAchCheck();
 }
@@ -21066,7 +21088,7 @@ rpgBHud = (f => function () { const r = f.apply(this, arguments), B = RS.battle;
   const S = RPG_RAID.st, dmg = Math.max(0, Math.round(B.raid.hp0 - B.hp)), el = document.querySelector('#rpg-battle .rb-mplate'); if (!el) return r;
   const left = S ? Math.max(0, S.max - S.dmg - dmg) : 0, p = S ? left / Math.max(1, S.max) : 1;
   el.querySelectorAll('.mp-bar i, .mp-bar u').forEach(e => { e.style.width = (p * 100).toFixed(2) + '%'; });
-  const sm = el.querySelector('small'); if (sm) sm.textContent = `เลือดบอสของห้อง ${left.toLocaleString()} · ดาเมจรอบนี้ ${dmg.toLocaleString()} · เทิร์น ${Math.min(B.raid.turns + 1, B.raid.max)}/${B.raid.max}`;
+  const sm = el.querySelector('small'); if (sm) sm.textContent = `เลือดบอสโลก ${left.toLocaleString()} · ดาเมจรอบนี้ ${dmg.toLocaleString()} · เทิร์น ${Math.min(B.raid.turns + 1, B.raid.max)}/${B.raid.max}`;
   return r; })(rpgBHud);
 
 /* =========================================================
@@ -22016,6 +22038,297 @@ Object.entries(C2.OUTFIT).forEach(([k, O]) => { if (!k.startsWith('v42') || !O.b
 ['priest', 'scholar'].forEach(j => { const A = RPG_JOBART[j]; if (A?.w) A.w = { ...A.w, sc: .92 }; });
 ['monk'].forEach(j => { const A = RPG_JOBART[j]; if (A?.w) A.w = { ...A.w, sc: .52 }; if (A?.w2) A.w2 = { ...A.w2, sc: .52 }; });
 if (RPG_WALK36.priest) RPG_WALK36.priest.rot = 2.75;
+// แฟชั่นอาวุธ (สกิน) ใช้กับอาวุธที่วาดใหม่ได้ด้วย
+['gsword', ...Object.keys(V42.D)].forEach(k => { const f = WP.D[k]; if (!f || f._wsk42) return; const g = function (x, t) { const sk = RPG_WSK_NOW; if (sk == null || x._wsk) return f(x, t); RPG_WSK_NOW = null; try { return rpgWskDraw(x, f, t, sk); } finally { RPG_WSK_NOW = sk; } }; g._wsk42 = 1; WP.D[k] = g; });
+
+function rpgH43(i, j, s = 1) { let h = (Math.imul(i | 0, 374761393) + Math.imul(j | 0, 668265263) + Math.imul(s | 0, 1440662683)) | 0; h = Math.imul(h ^ (h >>> 13), 1274126177); h ^= h >>> 16; return (h >>> 0) / 4294967296; }
+/* =====================================================================
+   SX Realm v43 — บอสโลก (ทั้งโรงเรียน) · แฟชั่นกาชาเทพแสง · เมืองหลวงคริสต์มาส · แผนที่มีน้ำ/ภูเขาจริง
+   ===================================================================== */
+
+/* ---------- 1) บอสโลก (แทนบอสประจำห้อง) ---------- */
+const RPG_WBOSS = [['จักรพรรดิมังกรไวรัส', '🐲'], ['อสูรบั๊กพันเนตร', '👹'], ['เจ้าปีศาจแรนซัมแวร์', '👿'], ['ป้อมจักรกลสแปมยักษ์', '🤖'], ['ราชินีแมงมุมใยเน็ต', '🕷️'], ['ไททันข้อมูลรั่ว', '🗿']];
+const RPG_WDAYS = ['จ.', 'อ.', 'พ.', 'พฤ.', 'ศ.', 'ส.', 'อา.'];
+rpgRaidBoss = function (day) { let h = 0; for (const c of String(day || '')) h = (h * 31 + c.charCodeAt(0)) >>> 0; const B = RPG_WBOSS[h % RPG_WBOSS.length]; return { n: B[0], ic: (typeof MON !== 'undefined' && MON.has?.(B[1])) ? B[1] : '🐲' }; };
+rpgRaidRpc = async function (action, extra = {}) {
+  if (R.teacher) { try { const r = await q(sb.rpc('teacher_rpg_wb', { p_action: action === 'cfg' ? 'cfg' : 'info', ...(extra.cfg || {}) })); if (r?.state) { RPG_RAID.st = r.state; RPG_RAID.tlist = []; } RPG_RAID.err = r?.ok ? null : r?.error; return r; } catch (e) { RPG_RAID.err = 'NET'; return null; } }
+  const v = rpgMe();
+  try { const r = await q(sb.rpc('student_rpg_wb', { p_student_id: v.student_id, p_code: v.code, p_action: action, p_dmg: extra.dmg || 0, p_correct: extra.correct || 0 })); if (r?.state) RPG_RAID.st = r.state; RPG_RAID.err = r?.ok ? null : r?.error; return r; }
+  catch (e) { RPG_RAID.err = 'NET'; return null; }
+};
+function rpgWbWhen(S) {
+  const days = (S.days || []).length === 7 ? 'ทุกวัน' : (S.days || []).map(d => RPG_WDAYS[d - 1]).join(' ');
+  return `${days} ${String(S.open_hour).padStart(2, '0')}:00–${String(S.close_hour).padStart(2, '0')}:00 น.`;
+}
+function rpgWbStatus(S) {
+  if (!S.enabled) return ['off', 'ปิดใช้งานชั่วคราว'];
+  if (S.dead) return ['dead', '💀 ทั้งโรงเรียนปราบสำเร็จแล้ว!'];
+  if (S.open) return ['on', '🔥 เปิดสู้อยู่ตอนนี้'];
+  if (!S.today_on) return ['off', 'วันนี้บอสไม่ออก'];
+  return S.closed ? ['off', 'ปิดแล้ววันนี้ · พรุ่งนี้มาใหม่'] : ['soon', `จะเปิด ${String(S.open_hour).padStart(2, '0')}:00 น.`];
+}
+rpgRaidHTML = function () {
+  const S = RPG_RAID.st;
+  if (!S) { rpgRaidRpc('info').then(() => RS.panel === 'raid' && rpgPanel('raid')); return `<h3>🌍 บอสโลก</h3><p class="rp-p">${RPG_RAID.err ? 'โหลดไม่สำเร็จ · ตรวจว่ารัน phase28.sql แล้ว' : '<span class="spin"></span> กำลังโหลด…'}</p>`; }
+  const B = rpgRaidBoss(S.day), left = Math.max(0, S.max - S.dmg), p = Math.min(1, S.dmg / Math.max(1, S.max)), [sk, stx] = rpgWbStatus(S), tries = Math.max(0, (S.tries || 5) - (S.today || 0));
+  const img = typeof rpgMonImg === 'function' ? rpgMonImg(B.ic, 0, 4) : null, src = img ? img.toDataURL() : '';
+  const act = R.teacher ? '' : S.claimed ? `<p class="rp-p">✅ รับรางวัล${S.claimed === 'win' ? 'ชัยชนะ' : 'ร่วมสู้'}แล้ว · พรุ่งนี้บอสตัวใหม่มาเยือน</p>`
+    : (S.dead || S.closed) && S.mine > 0 ? `<button class="rp-btn primary big" data-r="raid-claim">🎁 รับรางวัล${S.dead ? 'ชัยชนะ' : 'ร่วมสู้'}</button>`
+    : S.open ? `<button class="rp-btn primary big" data-r="raid-go" ${tries ? '' : 'disabled'}>⚔️ ลงสนาม (เหลือ ${tries}/${S.tries} ครั้งวันนี้)</button><small>สู้ได้ 6 เทิร์นต่อรอบ · ตอบถูกยิ่งตีแรง · ปราบได้ทันเวลา = รางวัลใหญ่</small>`
+    : `<p class="rp-p">${S.dead ? 'บอสถูกปราบแล้ว · พรุ่งนี้ลงสนามด้วยนะ!' : 'ยังไม่ถึงเวลาเปิด · ดูเวลาด้านบน'}</p>`;
+  const cfg = !R.teacher ? '' : `<div class="wb-cfg"><h4>⚙️ ตั้งค่าบอสโลก (ครู)</h4>
+      <label><input type="checkbox" id="wb-en" ${S.enabled ? 'checked' : ''}> เปิดใช้บอสโลก</label>
+      <div class="wb-row"><label>เปิด <select id="wb-o">${Array.from({ length: 24 }, (_, h) => `<option value="${h}" ${h === S.open_hour ? 'selected' : ''}>${String(h).padStart(2, '0')}:00</option>`).join('')}</select></label>
+        <label>ปิด <select id="wb-c">${Array.from({ length: 24 }, (_, h) => h + 1).map(h => `<option value="${h}" ${h === S.close_hour ? 'selected' : ''}>${String(h).padStart(2, '0')}:00</option>`).join('')}</select></label>
+        <label>ลงสนาม/วัน <select id="wb-t">${[3, 5, 8, 10].map(n => `<option ${n === S.tries ? 'selected' : ''}>${n}</option>`).join('')}</select></label>
+        <label>เลือดต่อคน <select id="wb-h">${[20000, 40000, 80000, 150000].map(n => `<option value="${n}" ${n === S.hp_per ? 'selected' : ''}>${n.toLocaleString()}</option>`).join('')}</select></label></div>
+      <div class="wb-days">${RPG_WDAYS.map((d, i) => `<label><input type="checkbox" class="wb-d" value="${i + 1}" ${(S.days || []).includes(i + 1) ? 'checked' : ''}>${d}</label>`).join('')}</div>
+      <button class="rp-btn primary" data-r="wb-save">บันทึกเวลา</button><small>ครูไม่ร่วมตีและไม่นับในอันดับ · เลือดบอส = เลือดต่อคน × จำนวนนักเรียนที่มีตัวละคร (อย่างน้อย 30 คน)</small></div>`;
+  return `<h3>🌍 บอสโลก <small>${esc(S.day)}</small></h3>
+    <div class="rd-boss wb ${S.dead ? 'dead' : ''}">${src ? `<img src="${src}" alt="">` : `<span>${B.ic}</span>`}<div><small>ทั้งโรงเรียนช่วยกันปราบ · ${rpgWbWhen(S)}</small><b>${esc(B.n)}</b>
+      <span class="wb-st ${sk}">${stx}</span>
+      <div class="rd-hp"><i style="width:${((1 - p) * 100).toFixed(2)}%"></i><span>${S.dead ? '💀 ถูกปราบแล้ว!' : `HP ${left.toLocaleString()} / ${S.max.toLocaleString()}`}</span></div>
+      <em>${R.teacher ? '' : `ดาเมจของฉัน ${Number(S.mine).toLocaleString()} · `}ผู้กล้าร่วมตี ${S.members} คน</em></div></div>
+    <div class="rd-act">${act}</div>${cfg}
+    <div class="wb-grid"><div><h4 class="qx-h">🏆 ผู้กล้าวันนี้</h4><div class="rd-top">${(S.top || []).map((t, i) => `<div class="rd-row"><span>${['🥇', '🥈', '🥉'][i] || i + 1}</span><b>${esc(t.name)} <small>${esc(t.room || '')}</small></b><small>${Number(t.dmg).toLocaleString()}</small></div>`).join('') || '<p class="rp-p">ยังไม่มีใครลงสนาม</p>'}</div></div>
+      <div><h4 class="qx-h">🏫 ห้องที่ตีแรงที่สุด</h4><div class="rd-top">${(S.rooms || []).map((t, i) => `<div class="rd-row"><span>${i + 1}</span><b>${esc(t.room)}</b><small>${Number(t.dmg).toLocaleString()} · ${t.n} คน</small></div>`).join('') || '<p class="rp-p">ยังไม่มีข้อมูล</p>'}</div></div></div>`;
+};
+rpgRaidGo = function () {
+  const S = RPG_RAID.st, s = R.save; if (!S || !S.open || (S.today || 0) >= (S.tries || 5)) return;
+  const B = rpgRaidBoss(S.day), mo = { n: B.n, ic: B.ic, lv: Math.min(RPG_MAXLV, s.lvl + 8), boss: true, raid: true, x: s.x + 1, y: s.y, hx: s.x, hy: s.y, t: 0, vx: 0, vy: 0 };
+  rpgPanel(null); RS.safeT = 0; rpgBattle(mo);
+  const Bt = RS.battle; if (!Bt) return; Bt.raid = { turns: 0, max: 6, hp0: 0 }; Bt.ms.mhp = Bt.hp = 99999999; Bt.raid.hp0 = Bt.hp; Bt.log = `🌍 บอสโลก ${B.n}! สู้ได้ 6 เทิร์น`;
+};
+// ข้อความผลลัพธ์ + รางวัล
+document.addEventListener('click', e => {
+  const b = e.target.closest?.('[data-r=raid-claim],[data-r=wb-save]'); if (!b || !document.querySelector('.pk-raid')) return; e.stopPropagation(); e.preventDefault();
+  if (b.dataset.r === 'wb-save') {
+    const cfg = { p_enabled: document.getElementById('wb-en').checked, p_open: +document.getElementById('wb-o').value, p_close: +document.getElementById('wb-c').value, p_tries: +document.getElementById('wb-t').value, p_hp_per: +document.getElementById('wb-h').value, p_days: [...document.querySelectorAll('.wb-d:checked')].map(i => +i.value) };
+    if (cfg.p_close <= cfg.p_open) return rpgSay('เวลาปิดต้องหลังเวลาเปิด'); if (!cfg.p_days.length) return rpgSay('เลือกอย่างน้อย 1 วัน');
+    b.disabled = true; return rpgRaidRpc('cfg', { cfg }).then(r => { rpgSay(r?.ok ? '✅ บันทึกเวลาบอสโลกแล้ว' : 'บันทึกไม่สำเร็จ'); rpgPanel('raid'); });
+  }
+  const s = R.save; b.disabled = true;
+  rpgRaidRpc('claim').then(r => { if (r?.ok) { const win = r.state?.claimed === 'win', g = (win ? 8000 : 3000) + s.lvl * (win ? 300 : 120); R.gold += g; rpgGive('bcore', win ? 4 : 1); rpgGive('sshard', win ? 3 : 1); rpgSfx('win'); rpgConfetti?.(); rpgSay(`🎁 รางวัลบอสโลก${win ? 'ชัยชนะ' : 'ร่วมสู้'}: 💰 ${g.toLocaleString()} · 🔮 ×${win ? 4 : 1} · ⭐ ×${win ? 3 : 1}`, 4200); rpgHud(); rpgSave(); }
+    else rpgSay({ CLAIMED: 'รับรางวัลไปแล้ว', ALIVE: 'บอสยังไม่ถูกปราบ และยังไม่ถึงเวลาปิด', NO_PART: 'ต้องลงสนามอย่างน้อย 1 ครั้ง' }[RPG_RAID.err] || 'รับรางวัลไม่สำเร็จ'); rpgPanel('raid'); });
+}, true);
+// ปุ่มเมนู + แบนเนอร์บนแผนที่ตอนบอสเปิด
+rpgOverlay = (f => function () { const r = f.apply(this, arguments), bt = document.querySelector('#rpg-more [data-r=m-raid]'); if (bt) bt.innerHTML = '<span>🌍</span><small>บอสโลก</small>'; return r; })(rpgOverlay);
+function rpgWbBanner() {
+  const host = document.getElementById('rpg'); if (!host || !R.save?.job) return; let el = document.getElementById('rpg-wb');
+  const S = RPG_RAID.st; if (!S || !S.open) { el?.remove(); return; }
+  if (!el) { el = document.createElement('button'); el.id = 'rpg-wb'; el.className = 'rpg-wb'; el.type = 'button'; el.dataset.r = 'm-raid'; host.appendChild(el); }
+  const p = Math.max(0, 1 - S.dmg / Math.max(1, S.max)), B = rpgRaidBoss(S.day);
+  el.innerHTML = `<span>🌍</span><div><b>บอสโลกเปิดแล้ว!</b><small>${esc(B.n)} · HP ${(p * 100).toFixed(1)}%</small><i><u style="width:${(p * 100).toFixed(1)}%"></u></i></div>`;
+}
+let rpgWbT = 0;
+setInterval(() => { if (!document.getElementById('rpg') || !R.save?.job || RS.battle) return; if (Date.now() - rpgWbT > 60000) { rpgWbT = Date.now(); rpgRaidRpc('info').then(rpgWbBanner); } }, 5000);
+
+/* ---------- 2) กาชาระดับ "เทพแสง" (กรอบทอง) · ชุดเทวดา/นางฟ้า 4 ชุด · แฟชั่นอาวุธเรืองแสง 2 แบบ ---------- */
+RPG_GRADE[6] = { n: 'เทพแสง', c: '#FFD86A' };
+(() => {
+  const { lt, dk } = V42;
+  const V = (x, y0, y1, c, a = .3, b = .25) => { const g = x.createLinearGradient(0, y0, 0, y1); g.addColorStop(0, lt(c, a)); g.addColorStop(.5, c); g.addColorStop(1, dk(c, b)); return g; };
+  const halo = (x, r, col = '#FFE680', big = 1) => { x.save(); x.strokeStyle = col; x.shadowColor = col; x.shadowBlur = r * .6; x.lineWidth = r * .14; x.beginPath(); x.ellipse(0, -1.5 * r, .72 * r * big, .22 * r * big, 0, 0, 7); x.stroke(); x.strokeStyle = 'rgba(255,255,255,.9)'; x.lineWidth = r * .05; x.stroke(); x.restore(); };
+  const feather = (x, px, py, a, len, c) => { x.save(); x.translate(px, py); x.rotate(a); const g = x.createLinearGradient(0, 0, 0, -len); g.addColorStop(0, c); g.addColorStop(1, '#FFFFFF'); x.fillStyle = g; x.beginPath(); x.moveTo(0, 0); x.quadraticCurveTo(len * .35, -len * .5, 0, -len); x.quadraticCurveTo(-len * .35, -len * .5, 0, 0); x.fill(); x.strokeStyle = 'rgba(200,170,90,.5)'; x.lineWidth = .25; x.beginPath(); x.moveTo(0, 0); x.lineTo(0, -len * .9); x.stroke(); x.restore(); };
+  const star = (x, cx, cy, R, c) => { x.fillStyle = c; x.beginPath(); for (let i = 0; i < 10; i++) { const a = -Math.PI / 2 + i * Math.PI / 5, r = i % 2 ? R * .45 : R; x.lineTo(cx + Math.cos(a) * r, cy + Math.sin(a) * r); } x.closePath(); x.fill(); };
+  const OF = {
+    v43seraph: { name: 'เทวดาเกราะทองแสง', g: 'm', c1: '#FFFFFF', c2: '#F2C14E', pants: '#F4EEE2', boot: '#F2C14E', bigBoots: 1, cuff: '#FFF0B0',
+      over(x, L) {
+        x.fillStyle = V(x, L.neck + 2, L.hip, '#F2C14E', .45, .3); x.beginPath(); x.moveTo(-L.waist, L.neck + 3); x.quadraticCurveTo(0, L.neck + 1.5, L.waist, L.neck + 3); x.lineTo(L.waist + .3, L.hip - 3.5); x.quadraticCurveTo(0, L.hip - 1.6, -L.waist - .3, L.hip - 3.5); x.closePath(); x.fill();
+        x.save(); x.translate(0, L.neck + 7.5); x.fillStyle = '#FFFFFF'; x.shadowColor = '#FFF6C0'; x.shadowBlur = 4; for (let i = 0; i < 8; i++) { x.rotate(Math.PI / 4); x.beginPath(); x.moveTo(-.5, -1.4); x.lineTo(0, -3.4); x.lineTo(.5, -1.4); x.fill(); } x.beginPath(); x.arc(0, 0, 1.4, 0, 7); x.fill(); x.restore();
+        x.fillStyle = V(x, L.hip - 3, L.hip + 7, '#FFFFFF', .1, .12); x.beginPath(); x.moveTo(-2.6, L.hip - 3); x.lineTo(2.6, L.hip - 3); x.lineTo(3.2, L.hip + 6.5); x.lineTo(0, L.hip + 8); x.lineTo(-3.2, L.hip + 6.5); x.closePath(); x.fill(); x.strokeStyle = '#F2C14E'; x.lineWidth = .6; x.stroke();
+        x.fillStyle = '#5A2A60'; x.fillRect(-L.waist - .5, L.hip - 4.4, 2 * L.waist + 1, 1.6); V42.gem(x, 0, L.hip - 3.6, 1.3, '#FF6FA8', 4);
+        [-1, 1].forEach(s => { for (let i = 0; i < 4; i++) feather(x, s * (L.sh - 1 + i * .4), L.neck + 3.6, s * (1.2 + i * .25), 4.6 - i * .4, '#FFF0C0'); });
+        x.fillStyle = V(x, L.neck - 1, L.neck + 2, '#F2C14E', .4, .3); x.beginPath(); x.moveTo(-3.8, L.neck + 1.4); x.quadraticCurveTo(0, L.neck - 1.6, 3.8, L.neck + 1.4); x.quadraticCurveTo(0, L.neck + 3, -3.8, L.neck + 1.4); x.fill(); },
+      head(x, L) { halo(x, L.r); } },
+    v43fairy: { name: 'นางฟ้าดอกไม้แสง', g: 'f', c1: '#FFE4F2', c2: '#FF9AC8', pants: '#FFF0F8', boot: '#FF9AC8', bigBoots: 1, cuff: '#FFFFFF', shape: 'dress', flare: 5.2, bot: 5.2,
+      back(x, L) { x.save(); x.globalAlpha = .55; [-1, 1].forEach(s => { [[-.9, 9, 6], [-.2, 7, 4.5]].forEach(([a, w, h]) => { x.save(); x.translate(s * 2, L.neck + 6); x.rotate(s * a); x.scale(s, 1); const g = x.createRadialGradient(4, -3, 1, 4, -3, w); g.addColorStop(0, '#FFFFFF'); g.addColorStop(1, 'rgba(255,170,220,.4)'); x.fillStyle = g; x.beginPath(); x.ellipse(w * .6, -h * .5, w * .7, h * .5, -.4, 0, 7); x.fill(); x.strokeStyle = 'rgba(255,140,200,.9)'; x.lineWidth = .4; x.stroke(); x.restore(); }); }); x.restore(); },
+      over(x, L) {
+        const pet = (px, py, a, s, c) => { x.save(); x.translate(px, py); x.rotate(a); x.fillStyle = V(x, -s, s, c, .45, .2); x.beginPath(); x.moveTo(0, -s * .2); x.quadraticCurveTo(s * .9, s * .4, 0, s * 1.4); x.quadraticCurveTo(-s * .9, s * .4, 0, -s * .2); x.fill(); x.restore(); };
+        for (let i = 0; i < 9; i++) { const q = i / 8, px = -L.skirtW + .4 + q * (2 * L.skirtW - .8); pet(px, L.bot - 3, (q - .5) * .6, 2.6, i % 2 ? '#FF9AC8' : '#FFFFFF'); }
+        for (let i = 0; i < 6; i++) { const q = i / 5, px = -L.skirtW * .7 + q * L.skirtW * 1.4; pet(px, L.hip, (q - .5) * .5, 2.2, i % 2 ? '#FFFFFF' : '#FFC8E4'); }
+        x.fillStyle = V(x, L.neck + 3, L.hip - 2, '#FF9AC8', .3, .2); x.beginPath(); x.moveTo(-L.waist, L.neck + 4.4); x.quadraticCurveTo(0, L.neck + 2.4, L.waist, L.neck + 4.4); x.lineTo(L.waist, L.hip - 3); x.quadraticCurveTo(0, L.hip - 1.6, -L.waist, L.hip - 3); x.closePath(); x.fill();
+        x.save(); x.translate(0, L.neck + 4.6); for (let i = 0; i < 5; i++) { x.rotate(Math.PI * 2 / 5); x.fillStyle = '#FFFFFF'; x.beginPath(); x.ellipse(0, -1.2, .8, 1.3, 0, 0, 7); x.fill(); } x.fillStyle = '#FFD23F'; x.beginPath(); x.arc(0, 0, .7, 0, 7); x.fill(); x.restore();
+        x.save(); x.fillStyle = '#FFF6C0'; x.shadowColor = '#FFE27A'; x.shadowBlur = 4; [[-L.skirtW + 1, L.bot - 6], [L.skirtW - 1.4, L.hip + 1], [2.2, L.bot - 1]].forEach(([a, b]) => V42.sparkle(x, a, b, 1, '#FFF6C0')); x.restore(); },
+      head(x, L) { const r = L.r; [-.7, -.35, 0, .35, .7].forEach((p, i) => { const px = p * r, py = (-.9 - Math.cos(p) * .08) * r; x.fillStyle = i % 2 ? '#FF9AC8' : '#FFFFFF'; for (let k = 0; k < 5; k++) { const a = k / 5 * Math.PI * 2; x.beginPath(); x.ellipse(px + Math.cos(a) * .08 * r, py + Math.sin(a) * .08 * r, .07 * r, .07 * r, 0, 0, 7); x.fill(); } x.fillStyle = '#FFD23F'; x.beginPath(); x.arc(px, py, .045 * r, 0, 7); x.fill(); }); } },
+    v43halo: { name: 'ทูตสวรรค์ผ้าไหมขาว', g: 'f', c1: '#FFFFFF', c2: '#9FD8FF', pants: '#FFFFFF', boot: '#F4EEE2', bigBoots: 1, cuff: '#DFF2FF', shape: 'dress', flare: 5.4, bot: 7,
+      over(x, L) {
+        x.save(); x.beginPath(); x.moveTo(-L.skirtW - 1, L.bot + 3); x.lineTo(L.skirtW + 1, L.bot + 3); x.lineTo(L.waist + 2, L.hip); x.lineTo(-L.waist - 2, L.hip); x.closePath(); x.clip(); const g = x.createLinearGradient(0, L.hip, 0, L.bot + 2); g.addColorStop(0, 'rgba(159,216,255,0)'); g.addColorStop(1, 'rgba(120,190,255,.75)'); x.fillStyle = g; x.fillRect(-L.skirtW - 2, L.hip, 2 * L.skirtW + 4, L.bot - L.hip + 3); x.restore();
+        x.strokeStyle = 'rgba(150,180,220,.45)'; x.lineWidth = .4; for (let i = -3; i <= 3; i++) { x.beginPath(); x.moveTo(i * 1.2, L.hip - 2); x.quadraticCurveTo(i * 2.4, L.bot - 4, i * L.skirtW * .3, L.bot); x.stroke(); }
+        x.strokeStyle = '#F2C14E'; x.lineWidth = .9; x.beginPath(); x.moveTo(-L.sh + 1, L.neck + 2); x.quadraticCurveTo(0, L.neck + 8, L.waist, L.hip - 3); x.stroke(); x.beginPath(); x.moveTo(-L.waist - .4, L.hip - 3.4); x.quadraticCurveTo(0, L.hip - 2.2, L.waist + .4, L.hip - 3.4); x.stroke();
+        x.fillStyle = '#F2C14E'; x.beginPath(); x.moveTo(L.waist - 1, L.hip - 3); x.lineTo(L.waist, L.hip + 3); x.lineTo(L.waist - 1.6, L.hip + 3.3); x.fill();
+        for (let i = 0; i < 9; i++) { const q = i / 8; feather(x, -L.sh + q * 2 * L.sh, L.neck + 2.6 + Math.sin(q * Math.PI) * 1.4, (q - .5) * 2.4 + Math.PI, 3.2, '#DFF2FF'); }
+        V42.gem(x, 0, L.neck + 2.8, 1.2, '#9FD8FF', 4); },
+      head(x, L) { halo(x, L.r, '#FFF0A8', 1.12); } },
+    v43star: { name: 'นางฟ้าดวงดาวราตรี', g: 'f', c1: '#3A3A8A', c2: '#FFE27A', pants: '#2A2A6A', boot: '#2A2A6A', bigBoots: 1, cuff: '#C8B8FF', shape: 'dress', flare: 5, bot: 6.2,
+      over(x, L) {
+        x.save(); x.beginPath(); x.moveTo(-L.skirtW - 1, L.bot + 3); x.lineTo(L.skirtW + 1, L.bot + 3); x.lineTo(L.waist + 2, L.hip - 4); x.lineTo(-L.waist - 2, L.hip - 4); x.closePath(); x.clip();
+        const g = x.createLinearGradient(0, L.hip - 4, 0, L.bot + 2); g.addColorStop(0, '#3A3A8A'); g.addColorStop(1, '#8A6AE0'); x.fillStyle = g; x.fillRect(-L.skirtW - 2, L.hip - 4, 2 * L.skirtW + 4, L.bot - L.hip + 7);
+        [[.2, .2], [.7, .1], [.45, .55], [.85, .6], [.1, .8], [.6, .85], [.3, .4]].forEach(([a, b], i) => star(x, -L.skirtW + a * 2 * L.skirtW, L.hip - 2 + b * (L.bot - L.hip + 2), i % 3 ? .6 : 1, i % 2 ? '#FFFFFF' : '#FFE27A')); x.restore();
+        x.save(); x.globalAlpha = .4; x.fillStyle = '#E8E0FF'; x.beginPath(); x.moveTo(-L.waist, L.hip - 2); x.quadraticCurveTo(-L.skirtW - 1, L.bot - 1, -L.skirtW * .4, L.bot + 1.5); x.quadraticCurveTo(0, L.bot - 1, L.skirtW * .4, L.bot + 1.5); x.quadraticCurveTo(L.skirtW + 1, L.bot - 1, L.waist, L.hip - 2); x.fill(); x.restore();
+        x.strokeStyle = '#FFE27A'; x.lineWidth = .6; x.beginPath(); x.moveTo(-L.skirtW, L.bot); x.quadraticCurveTo(0, L.bot + 1.8, L.skirtW, L.bot); x.stroke();
+        x.save(); x.fillStyle = '#FFE27A'; x.shadowColor = '#FFE27A'; x.shadowBlur = 4; x.beginPath(); x.arc(0, L.neck + 5, 2, 0, 7); x.fill(); x.fillStyle = '#3A3A8A'; x.beginPath(); x.arc(.9, L.neck + 4.4, 1.7, 0, 7); x.fill(); x.restore();
+        x.fillStyle = '#C8B8FF'; x.fillRect(-L.waist, L.hip - 4.4, 2 * L.waist, 1.2); },
+      head(x, L) { const r = L.r; x.save(); x.shadowColor = '#FFE27A'; x.shadowBlur = r * .4; star(x, 0, -1.05 * r, .26 * r, '#FFE27A'); star(x, -.42 * r, -.92 * r, .13 * r, '#FFFFFF'); star(x, .42 * r, -.92 * r, .13 * r, '#FFFFFF'); x.restore(); } },
+  };
+  Object.assign(C2.OUTFIT, OF);
+  const base = RPG_FASHION.length; Object.keys(OF).forEach((k, i) => { RPG_FASHION.push(k); RPG_OS.push(OF[k].name); RPG_ITEMS['cs' + (base + i + 1)] = { t: 'cos', n: 'ชุด' + OF[k].name, ic: ['😇', '🧚', '🕊️', '🌟'][i], os: base + i + 1, g: 6, d: 'ชุดแฟชั่นระดับเทพแสงจากกาชา · ใส่ได้ทุกอาชีพ' }; });
+  // แฟชั่นอาวุธเรืองแสง
+  const W0 = RPG_WSK.length;
+  RPG_WSK.push({ k: 'holy', n: 'แสงเทพสวรรค์', c: ['#FFFFFF', '#FFF0B0', '#E8B830'], hi: '#FFF2A8', fx: 'holy', g: 6 }, { k: 'angel', n: 'ขนนกนางฟ้า', c: ['#FFFFFF', '#FFD8F0', '#B98BFF'], hi: '#FFC8F0', fx: 'feather', g: 6 });
+  Object.entries(RPG_WT).forEach(([wt, W]) => [W0, W0 + 1].forEach(i => { const S = RPG_WSK[i]; RPG_ITEMS[`wk_${wt}_${i}`] = { t: 'wsk', wt, wsk: i, n: `${(W.n[4] || '').replace(/ทอง.*$/, '').trim() || 'อาวุธ'} ${S.n}`, ic: '⚔️', g: 6, gacha: 1, d: `แฟชั่นอาวุธเรืองแสง${S.n} · เปลี่ยนหน้าตาอาวุธ ไม่เปลี่ยนค่าพลัง` }; }));
+  const wd = rpgWskDraw;
+  rpgWskDraw = function (x, f, t, sk) { const r = wd.apply(this, arguments), S = RPG_WSK[sk]; if (!S || (S.fx !== 'holy' && S.fx !== 'feather')) return r;
+    const now = performance.now(); x.save(); x.globalCompositeOperation = 'lighter';
+    if (S.fx === 'holy') { for (let i = 0; i < 6; i++) { const q = ((now / 1600) + i / 6) % 1, py = -4 - q * 40, px = Math.sin(i * 2.3 + now / 500) * 4; x.globalAlpha = Math.sin(q * Math.PI); V42.sparkle(x, px, py, 1.6, i % 2 ? '#FFFFFF' : '#FFE680'); }
+      }
+    else { x.globalCompositeOperation = 'source-over'; for (let i = 0; i < 5; i++) { const q = ((now / 2200) + i / 5) % 1; x.globalAlpha = Math.sin(q * Math.PI) * .95; x.save(); x.translate(Math.sin(i * 1.9 + q * 6) * 7, -6 - q * 38); x.rotate(Math.sin(q * 8 + i) * .8); const g = x.createLinearGradient(0, 2, 0, -3); g.addColorStop(0, '#FFC8F0'); g.addColorStop(1, '#FFFFFF'); x.fillStyle = g; x.beginPath(); x.moveTo(0, 2); x.quadraticCurveTo(1.4, -.5, 0, -3); x.quadraticCurveTo(-1.4, -.5, 0, 2); x.fill(); x.restore(); } }
+    x.restore(); return r; };
+  rpgPuaAll(); RPG_ICANV.clear(); RPG_IURL.clear();
+})();
+rpgGachaPool = (f => function () {
+  const P = f.apply(this, arguments), wt = rpgJob().wt, W0 = RPG_WSK.length - 2;
+  const items = [...Object.keys(RPG_ITEMS).filter(k => RPG_ITEMS[k].t === 'cos' && RPG_ITEMS[k].g >= 6), `wk_${wt}_${W0}`, `wk_${wt}_${W0 + 1}`].filter(k => RPG_ITEMS[k]);
+  P.forEach(p => { p.items = p.items.filter(k => !items.includes(k)); });
+  return [{ r: 'divine', n: 'เทพแสง', w: 1, c: '#FFD86A', items }, ...P];
+})(rpgGachaPool);
+rpgGachaPick = function (u) { const P = rpgGachaPool(), tot = P.reduce((m, p) => m + p.w, 0); let a = u * tot; for (const p of P) { if (a < p.w) { const id = p.items[Math.floor((a / p.w) * p.items.length) % p.items.length]; return { ...p, id }; } a -= p.w; } const L = P[P.length - 1]; return { ...L, id: L.items[0] }; };
+rpgGacha = (f => async function () { const r = await f.apply(this, arguments); setTimeout(() => { if (document.querySelector('#gc-res .divine, .gc-cap.divine')) { rpgConfetti?.(); setTimeout(() => rpgConfetti?.(), 500); rpgSfx('lvl'); } }, 900); return r; })(rpgGacha);
+
+/* ---------- 3) แผนที่: ภูเขาจริง · ทะเลสาบใหญ่ขึ้น · น้ำมีความลึก/ฟองคลื่น · ของตกแต่งบนพื้น ---------- */
+const RPG_MTN43 = { forest: 1, ice: 1, desert: 1, town: 1, volcano: 1 };
+function rpgTerrain43(mp, spawn) {
+  const m = mp.m, W = mp.W, H = mp.H, solid = v => v === 2 || v === 4, hsh = rpgH43;
+  if (!RPG_MTN43[mp.biome] || mp.biome === 'volcano') return;
+  // ป่าทึบลึก ๆ → ภูเขา
+  const out = m.map(r => r.slice());
+  for (let j = 2; j < H - 2; j++) for (let i = 2; i < W - 2; i++) { if (m[j][i] !== 2) continue; let ok = true; for (let b = -1; b <= 1 && ok; b++) for (let a = -1; a <= 1; a++) if (!solid(m[j + b][i + a])) { ok = false; break; } if (ok && hsh(i >> 3, j >> 3, 5) > (mp.biome === 'forest' ? .45 : mp.city ? .55 : .25)) out[j][i] = 4; }
+  for (let j = 0; j < H; j++) for (let i = 0; i < W; i++) { if (out[j][i] !== 2 || (i > 1 && j > 1 && i < W - 2 && j < H - 2)) continue; const nb = [[1, 0], [-1, 0], [0, 1], [0, -1]].filter(([a, b]) => out[j + b]?.[i + a] === 4).length; if (nb >= 2) out[j][i] = 4; }
+  for (let j = 0; j < H; j++) m[j] = out[j];
+  // ทะเลสาบกว้างขึ้น (ไม่ทับทางเดิน)
+  if (!mp.city) { const add = []; for (let j = 1; j < H - 1; j++) for (let i = 1; i < W - 1; i++) if (m[j][i] === 0 && [[1, 0], [-1, 0], [0, 1], [0, -1]].some(([a, b]) => m[j + b][i + a] === 3) && hsh(i, j, 7) < .72) add.push([i, j]);
+    add.forEach(([i, j]) => { m[j][i] = 3; });
+    if (spawn) rpgSealUnreachable(m, [Math.floor(spawn.x), Math.floor(spawn.y)], mp.biome === 'cave' ? 4 : 2); }
+}
+rpgGenField = (f => function (scene, Z) { const mp = f.apply(this, arguments); try { rpgTerrain43(mp, mp.spawn); } catch (e) {} return mp; })(rpgGenField);
+rpgGenCity = (f => function (scene, Z) { const mp = f.apply(this, arguments); try { rpgTerrain43(mp, mp.spawn); } catch (e) {} return mp; })(rpgGenCity);
+
+function rpgPaintTerrain43(x, mp) {
+  const sc = mp.biome, M = mp.m, at = (i, j) => (M[j] || [])[i], H0 = mp.H, W0 = mp.W, TSs = TS;
+  const hsh = rpgH43;
+  const pal = { forest: ['#8C93A3', '#BCC2CF', '#5C6274', '#6FAE5A'], town: ['#9AA0AE', '#C8CDD8', '#646A7C', '#7FC96B'], ice: ['#9EB2C8', '#E8F2FA', '#6A80A0', '#FFFFFF'], desert: ['#C98A4E', '#EDB87C', '#8A5428', '#E8C27F'], volcano: ['#46362F', '#6A5248', '#231815', '#3A2A24'] }[mp.xmas ? 'ice' : sc];
+  // ---- ภูเขา (ก้อนเดียวโค้งมน + ยอดเขาใหญ่ไม่กี่ยอด) ----
+  if (pal && RPG_MTN43[sc]) {
+    const isM = (i, j) => at(i, j) === 4, vol = sc === 'volcano', mesa = sc === 'desert' && !mp.xmas, snowy = sc === 'ice' || mp.xmas;
+    const tiles = []; for (let j = 0; j < H0; j++) for (let i = 0; i < W0; i++) if (isM(i, j)) tiles.push([i, j]);
+    if (tiles.length) {
+      x.fillStyle = pal[2]; tiles.forEach(([i, j]) => { rr(x, i * TSs - 3, j * TSs - 3, TSs + 6, TSs + 6, 12); x.fill(); });
+      x.fillStyle = pal[0]; tiles.forEach(([i, j]) => { const l = isM(i - 1, j), r = isM(i + 1, j), u = isM(i, j - 1), d = isM(i, j + 1); x.fillRect(i * TSs - (l ? 2 : -1), j * TSs - (u ? 2 : -1), TSs + (l ? 2 : -1) + (r ? 2 : -1), TSs + (u ? 2 : -1) + (d ? 2 : -6)); });
+      tiles.forEach(([i, j]) => { const px = i * TSs, py = j * TSs; for (let k = 0; k < 3; k++) { x.fillStyle = k % 2 ? 'rgba(255,255,255,.07)' : 'rgba(0,0,0,.07)'; x.beginPath(); x.ellipse(px + hsh(i, j, k + 40) * TSs, py + hsh(i, j, k + 50) * TSs, 4 + hsh(i, j, k) * 5, 2 + hsh(i, j, k + 3) * 3, 0, 0, 7); x.fill(); } });
+      // หน้าผาด้านใต้ + เงา
+      tiles.forEach(([i, j]) => { if (isM(i, j + 1)) return; const px = i * TSs, py = j * TSs;
+        x.fillStyle = 'rgba(0,0,0,.2)'; x.beginPath(); x.ellipse(px + TSs / 2, py + TSs + 3, TSs * .66, 5, 0, 0, 7); x.fill();
+        const g = x.createLinearGradient(0, py + TSs * .5, 0, py + TSs + 2); g.addColorStop(0, pal[2]); g.addColorStop(1, mesa ? '#5A3418' : 'rgba(20,12,24,.9)'); x.fillStyle = g; rr(x, px - 1, py + TSs * .5, TSs + 2, TSs * .5 + 2, 4); x.fill();
+        x.strokeStyle = mesa ? 'rgba(255,220,170,.35)' : 'rgba(0,0,0,.3)'; x.lineWidth = .9; if (mesa) [.66, .82].forEach(q => { x.beginPath(); x.moveTo(px, py + TSs * q); x.lineTo(px + TSs, py + TSs * q); x.stroke(); }); else for (let k = 0; k < 3; k++) { const xx = px + 5 + k * 10 + hsh(i, j, k + 20) * 4; x.beginPath(); x.moveTo(xx, py + TSs * .58); x.lineTo(xx + 1.5, py + TSs - 1); x.stroke(); } });
+      if (mesa) { x.fillStyle = pal[1]; tiles.forEach(([i, j]) => { if (!isM(i, j + 1)) return; const l = isM(i - 1, j) && isM(i - 1, j + 1), r = isM(i + 1, j) && isM(i + 1, j + 1), u = isM(i, j - 1); x.fillRect(i * TSs + (l ? -1 : 3), j * TSs + (u ? -1 : 3), TSs - (l ? -1 : 3) - (r ? -1 : 3), TSs + (u ? 1 : -3)); }); }
+      else {
+        const peaks = tiles.filter(([i, j]) => isM(i, j + 1) && (isM(i - 1, j) || isM(i + 1, j) || isM(i, j - 1)) && rpgH43(i, j, 30) < .42);
+        peaks.sort((a, b) => a[1] - b[1]).forEach(([i, j]) => { let k = 0; while (k < 3 && isM(i, j - k - 1)) k++;
+          const cx = i * TSs + TSs / 2 + (hsh(i, j, 3) - .5) * 10, base = j * TSs + TSs * 1.05, h = Math.min((k + .9) * TSs, TSs * (1.3 + hsh(i, j, 5) * 1.2)), wid = TSs * ((isM(i - 1, j) && isM(i + 1, j) ? 1 : .62) + hsh(i, j, 4) * .6), top = base - h, apx = cx + (hsh(i, j, 6) - .5) * wid * .3;
+          x.fillStyle = pal[1]; x.beginPath(); x.moveTo(cx - wid, base); x.quadraticCurveTo(cx - wid * .45, top + h * .45, apx, top); x.lineTo(apx + wid * .08, top + h * .55); x.lineTo(cx + wid * .05, base); x.closePath(); x.fill();
+          x.fillStyle = pal[2]; x.beginPath(); x.moveTo(apx, top); x.quadraticCurveTo(cx + wid * .5, top + h * .4, cx + wid, base); x.lineTo(cx + wid * .05, base); x.lineTo(apx + wid * .08, top + h * .55); x.closePath(); x.fill();
+          x.strokeStyle = 'rgba(0,0,0,.18)'; x.lineWidth = .8; x.beginPath(); x.moveTo(apx - wid * .3, top + h * .5); x.lineTo(apx - wid * .1, top + h * .75); x.moveTo(apx + wid * .3, top + h * .45); x.lineTo(apx + wid * .45, top + h * .7); x.stroke();
+          if (!vol && (snowy || h > TSs * 1.7)) { const sn = h * (snowy ? .4 : .28), sl = (wid / h); x.fillStyle = '#FFFFFF'; x.beginPath(); x.moveTo(apx, top); x.quadraticCurveTo(apx - sn * sl * .5, top + sn * .5, apx - sn * sl * .9, top + sn); x.lineTo(apx - sn * sl * .35, top + sn * .8); x.lineTo(apx - sn * sl * .05, top + sn * 1.05); x.lineTo(apx + sn * sl * .35, top + sn * .78); x.lineTo(apx + sn * sl * .8, top + sn * .95); x.quadraticCurveTo(apx + sn * sl * .4, top + sn * .4, apx, top); x.fill(); x.fillStyle = 'rgba(160,190,220,.6)'; x.beginPath(); x.moveTo(apx, top); x.lineTo(apx + sn * sl * .8, top + sn * .95); x.lineTo(apx + sn * sl * .35, top + sn * .78); x.lineTo(apx + wid * .03, top + sn * .5); x.closePath(); x.fill(); }
+          if (vol) { x.save(); x.strokeStyle = '#FF6A1F'; x.shadowColor = '#FF6A1F'; x.shadowBlur = 6; x.lineWidth = 1.4; x.beginPath(); x.moveTo(apx, top + 3); x.lineTo(apx + 3, top + h * .4); x.lineTo(apx - 1, top + h * .7); x.stroke(); x.restore(); }
+          if ((sc === 'forest' || sc === 'town') && !mp.xmas) { x.fillStyle = 'rgba(70,140,60,.9)'; [[-.7, .95], [.6, .97]].forEach(([a, b]) => { x.beginPath(); x.ellipse(cx + wid * a, top + h * b, 7, 4, 0, 0, 7); x.fill(); }); } });
+      }
+    }
+  }
+  // ---- น้ำ: ความลึก ฟองคลื่น บัว หิน กก ----
+  if ((mp.water || []).length && sc !== 'ice' && !mp.xmas) {
+    const WT = new Map(); mp.water.forEach(([i, j]) => WT.set(i + ',' + j, 9)); const Q = []; WT.forEach((v, k) => { const [i, j] = k.split(',').map(Number); if ([[1, 0], [-1, 0], [0, 1], [0, -1]].some(([a, b]) => at(i + a, j + b) !== 3)) { WT.set(k, 1); Q.push([i, j]); } });
+    for (let h = 0; h < Q.length; h++) { const [i, j] = Q[h], d = WT.get(i + ',' + j); [[1, 0], [-1, 0], [0, 1], [0, -1]].forEach(([a, b]) => { const k = (i + a) + ',' + (j + b); if (WT.get(k) === 9) { WT.set(k, d + 1); Q.push([i + a, j + b]); } }); }
+    WT.forEach((d, k) => { if (d < 2) return; const [i, j] = k.split(',').map(Number), cx = i * TSs + TSs / 2, cy = j * TSs + TSs / 2, g = x.createRadialGradient(cx, cy, 2, cx, cy, TSs * .95); g.addColorStop(0, d >= 3 ? 'rgba(14,70,140,.55)' : 'rgba(22,95,170,.4)'); g.addColorStop(1, 'rgba(22,95,170,0)'); x.fillStyle = g; x.fillRect(cx - TSs, cy - TSs, TSs * 2, TSs * 2); });
+    x.strokeStyle = 'rgba(255,255,255,.55)'; x.lineWidth = 1.3; x.lineCap = 'round';
+    WT.forEach((d, k) => { if (d !== 1) return; const [i, j] = k.split(',').map(Number), px = i * TSs, py = j * TSs;
+      [[0, -1, px + 4, py + 4, px + TSs - 4, py + 4], [0, 1, px + 4, py + TSs - 4, px + TSs - 4, py + TSs - 4], [-1, 0, px + 4, py + 4, px + 4, py + TSs - 4], [1, 0, px + TSs - 4, py + 4, px + TSs - 4, py + TSs - 4]].forEach(([a, b, x0, y0, x1, y1]) => { if (at(i + a, j + b) === 3) return; x.beginPath(); x.moveTo(x0, y0); x.quadraticCurveTo((x0 + x1) / 2 + b * 0 + a * 2, (y0 + y1) / 2 + b * 2, x1, y1); x.stroke(); });
+      if ((sc === 'forest' || sc === 'town') && hsh(i, j, 11) < .16) { const lx = px + 10 + hsh(i, j, 12) * 12, ly = py + 10 + hsh(i, j, 13) * 12; x.fillStyle = '#4E9E46'; x.beginPath(); x.arc(lx, ly, 4.5, .5, Math.PI * 2); x.lineTo(lx, ly); x.fill(); if (hsh(i, j, 14) < .4) { x.fillStyle = '#FF9AC8'; x.beginPath(); x.arc(lx + 1, ly - 1, 1.8, 0, 7); x.fill(); } } });
+    WT.forEach((d, k) => { if (d < 2 || hsh(...k.split(',').map(Number), 15) > .06) return; const [i, j] = k.split(',').map(Number), cx = i * TSs + 16, cy = j * TSs + 18; x.fillStyle = 'rgba(255,255,255,.45)'; x.beginPath(); x.ellipse(cx, cy + 3, 8, 2.6, 0, 0, 7); x.fill(); x.fillStyle = '#7A8090'; x.beginPath(); x.ellipse(cx, cy, 6, 4.5, 0, Math.PI, 0); x.fill(); x.fillStyle = '#A4AAB8'; x.beginPath(); x.ellipse(cx - 1.5, cy - 1.5, 3, 1.6, 0, 0, 7); x.fill(); });
+    if (sc === 'forest' || sc === 'town') for (let j = 1; j < H0 - 1; j++) for (let i = 1; i < W0 - 1; i++) { if (at(i, j) !== 0 || hsh(i, j, 16) > .35 || ![[1, 0], [-1, 0], [0, 1], [0, -1]].some(([a, b]) => at(i + a, j + b) === 3)) continue; const px = i * TSs + 6 + hsh(i, j, 17) * 18, py = j * TSs + 26; x.strokeStyle = '#4A7E38'; x.lineWidth = 1.2; for (let k = 0; k < 4; k++) { x.beginPath(); x.moveTo(px + k * 2, py); x.quadraticCurveTo(px + k * 2 + 1, py - 8, px + k * 2 + (k - 1.5) * 1.6, py - 12 - k); x.stroke(); } x.fillStyle = '#7A4A2A'; x.beginPath(); x.ellipse(px + 3, py - 13, 1.2, 3, 0, 0, 7); x.fill(); }
+  }
+  // ---- ของตกแต่งบนพื้น ----
+  if (RPG_MTN43[sc] && !mp.city) for (let j = 2; j < H0 - 2; j++) for (let i = 2; i < W0 - 2; i++) { if (at(i, j) !== 0 || hsh(i, j, 21) > .028) continue; const px = i * TSs + 16, py = j * TSs + 22, k = Math.floor(hsh(i, j, 22) * 4);
+    x.fillStyle = 'rgba(0,0,0,.2)'; x.beginPath(); x.ellipse(px, py + 3, 11, 3.5, 0, 0, 7); x.fill();
+    if (sc === 'forest') { if (k === 0) { x.fillStyle = '#7A4A2A'; rr(x, px - 12, py - 5, 24, 8, 4); x.fill(); x.fillStyle = '#C8955A'; x.beginPath(); x.ellipse(px + 12, py - 1, 2.6, 4, 0, 0, 7); x.fill(); x.strokeStyle = '#8A5A34'; x.lineWidth = .6; x.beginPath(); x.arc(px + 12, py - 1, 1.4, 0, 7); x.stroke(); }
+      else if (k === 1) { x.fillStyle = '#6A4428'; rr(x, px - 6, py - 8, 12, 10, 3); x.fill(); x.fillStyle = '#C8955A'; x.beginPath(); x.ellipse(px, py - 8, 6, 2.4, 0, 0, 7); x.fill(); }
+      else if (k === 2) { [[-4, '#E8553D'], [3, '#F2C14E'], [0, '#E8553D']].forEach(([o, c], n) => { x.fillStyle = '#F4EEE2'; x.fillRect(px + o - .8, py - 6 + n, 1.6, 5); x.fillStyle = c; x.beginPath(); x.ellipse(px + o, py - 6 + n, 3, 2, 0, Math.PI, 0); x.fill(); x.fillStyle = '#fff'; x.beginPath(); x.arc(px + o - 1, py - 7 + n, .6, 0, 7); x.fill(); }); }
+      else { x.fillStyle = '#4E9E46'; [[-5, -3, 6], [4, -4, 6], [0, -8, 7]].forEach(([a, b, r]) => { x.beginPath(); x.arc(px + a, py + b, r, 0, 7); x.fill(); }); x.fillStyle = '#6FC060'; x.beginPath(); x.arc(px - 1, py - 10, 3, 0, 7); x.fill(); } }
+    else if (sc === 'ice') { x.fillStyle = k % 2 ? '#FFFFFF' : '#DDEAF6'; x.beginPath(); x.ellipse(px, py - 3, 10, 6, 0, Math.PI, 0); x.fill(); if (k === 3) { x.fillStyle = '#9FE4FF'; x.beginPath(); x.moveTo(px - 3, py - 3); x.lineTo(px, py - 14); x.lineTo(px + 3, py - 3); x.fill(); } }
+    else if (sc === 'desert') { if (k < 2) { x.fillStyle = '#A86E3A'; x.beginPath(); x.ellipse(px, py - 3, 9, 6, 0, Math.PI, 0); x.fill(); x.fillStyle = '#C98A4E'; x.beginPath(); x.ellipse(px - 2, py - 5, 4, 2, 0, 0, 7); x.fill(); } else { x.strokeStyle = '#F4EEE2'; x.lineWidth = 1.6; x.beginPath(); x.moveTo(px - 8, py - 2); x.lineTo(px + 8, py - 3); x.moveTo(px - 6, py - 5); x.lineTo(px - 6, py + 1); x.moveTo(px + 6, py - 6); x.lineTo(px + 6, py); x.stroke(); } }
+  }
+}
+rpgPaint = (f => function (mp) {
+  if (mp.shop || mp.biome === 'house') return f.apply(this, arguments);
+  const xm = mp.scene === 'town'; if (xm) { mp.xmas = 1; mp.palK = 'ice'; }
+  const c = f.apply(this, arguments);
+  try { const x = c.getContext('2d'), P = mp.P || RPG_P; x.save(); x.setTransform(P, 0, 0, P, 0, 0); rpgPaintTerrain43(x, mp); if (xm) rpgPaintXmas43(x, mp); x.restore(); } catch (e) { console.warn('terrain43', e); }
+  if (xm) { mp.trees.forEach(t => { t.k = 'snow'; }); mp.fountain = null; }
+  return c;
+})(rpgPaint);
+// กันติดในภูเขา/น้ำ (เซฟเก่าที่ยืนอยู่ตรงจุดที่กลายเป็นภูเขา)
+rpgScene = (f => function () { const r = f.apply(this, arguments); try { const s = R.save, mp = RS.map; if (s && mp && rpgSolid(s.x, s.y)) { const i0 = Math.floor(s.x), j0 = Math.floor(s.y); let best = null; for (let d = 1; d < 20 && !best; d++) for (let b = -d; b <= d && !best; b++) for (let a = -d; a <= d; a++) { if (Math.max(Math.abs(a), Math.abs(b)) !== d) continue; if (rpgFreeTile(i0 + a, j0 + b)) { best = [i0 + a + .5, j0 + b + .5]; break; } } if (best) { s.x = best[0]; s.y = best[1]; } } } catch (e) {} return r; })(rpgScene);
+
+/* ---------- 4) เมืองหลวงธีมคริสต์มาส (Aurelia) ---------- */
+RPG_CITIES.town.th = 'เมืองหลวงคริสต์มาส'; if (RPG_CITY_SONG?.town) RPG_CITY_SONG.town.n = 'Aurelia · ระฆังคริสต์มาส';
+RPG_WX37.xmas = [['snow', 75], ['clear', 25]];
+rpgWeather37 = (f => function () { const mp = RS.map; if (mp?.xmas && !RS.wxForce && !RS.lowFx) { const slot = Math.floor(Date.now() / 240000); return slot % 4 === 3 ? 'clear' : 'snow'; } return f.apply(this, arguments); })(rpgWeather37);
+const RPG_XLIGHT = ['#FF4D4D', '#FFD23F', '#3DDC84', '#3DA8FF', '#FF7AC8'];
+function rpgPaintXmas43(x, mp) {
+  const hsh = rpgH43;
+  // หิมะบนหลังคา + ไฟประดับ
+  mp.xlights = [];
+  mp.doors.forEach(d => { const X = d.bx * TS, Y = d.by * TS, W = (d.bw || 4) * TS, H = (d.bh || 4) * TS, wallY = Y + H * .44;
+    x.fillStyle = '#FFFFFF'; for (let k = 0; k <= 8; k++) { const px = X - 4 + k * (W + 8) / 8; x.beginPath(); x.ellipse(px, Y + 2 + Math.sin(k * 1.7) * 3, (W + 8) / 13, 7, 0, 0, 7); x.fill(); }
+    x.fillStyle = 'rgba(220,235,250,.9)'; x.beginPath(); x.moveTo(X - 6, wallY + 4); for (let k = 0; k <= 10; k++) { const px = X - 6 + k * (W + 12) / 10; x.lineTo(px, wallY + 4 + (k % 2 ? 5 : 0)); } x.lineTo(X + W + 6, wallY); x.lineTo(X - 6, wallY); x.closePath(); x.fill();
+    x.strokeStyle = '#2A3A2A'; x.lineWidth = .8; x.beginPath(); for (let k = 0; k <= 12; k++) { const px = X + k * W / 12, py = wallY + 8 + Math.sin(k / 12 * Math.PI) * 4; k ? x.lineTo(px, py) : x.moveTo(px, py); mp.xlights.push([px, py + 1.5, k]); } x.stroke();
+    // พวงหรีดบนประตู
+    const cx = d.x * TS + TS, cy = Y + H - 44; x.strokeStyle = '#2E7A3A'; x.lineWidth = 3.4; x.beginPath(); x.arc(cx, cy, 5.5, 0, 7); x.stroke(); x.fillStyle = '#E8323A'; x.beginPath(); x.moveTo(cx - 3, cy + 5); x.lineTo(cx, cy + 3); x.lineTo(cx + 3, cy + 5); x.lineTo(cx, cy + 7); x.fill(); });
+  // เสาไฟลายลูกกวาด
+  (mp.lamps || []).forEach(([a, b]) => { x.save(); x.beginPath(); x.rect(a - 1.6, b - 26, 3.2, 27); x.clip(); x.fillStyle = '#FFFFFF'; x.fillRect(a - 2, b - 27, 4, 29); x.strokeStyle = '#E8323A'; x.lineWidth = 1.6; for (let k = -30; k < 6; k += 4) { x.beginPath(); x.moveTo(a - 3, b + k); x.lineTo(a + 3, b + k - 4); x.stroke(); } x.restore(); x.fillStyle = '#2E7A3A'; x.beginPath(); x.ellipse(a, b - 25, 6, 2.6, 0, 0, 7); x.fill(); x.fillStyle = '#E8323A'; x.beginPath(); x.arc(a + 3, b - 25, 1.4, 0, 7); x.fill(); });
+  // ลานต้นคริสต์มาส: ปิดน้ำพุด้วยหิมะ + กล่องของขวัญรอบ ๆ
+  if (mp.fountainT) { const fx = mp.fountainT[0] * TS, fy = mp.fountainT[1] * TS; mp.xtree = [fx, fy];
+    x.fillStyle = '#C8D8E8'; x.beginPath(); x.ellipse(fx, fy + 2, 70, 48, 0, 0, 7); x.fill(); x.fillStyle = '#F4F9FD'; x.beginPath(); x.ellipse(fx, fy - 1, 66, 44, 0, 0, 7); x.fill();
+    x.strokeStyle = '#E8323A'; x.lineWidth = 3; x.setLineDash([8, 6]); x.beginPath(); x.ellipse(fx, fy, 60, 39, 0, 0, 7); x.stroke(); x.setLineDash([]);
+    [[-46, 14, '#E8323A', '#F2C14E'], [44, 16, '#3DA8FF', '#FFFFFF'], [-30, 28, '#3DDC84', '#E8323A'], [32, 30, '#B36BFF', '#F2C14E'], [-52, -4, '#F2C14E', '#E8323A'], [52, -2, '#FF7AC8', '#FFFFFF']].forEach(([a, b, c, r]) => { const w = 12 + Math.abs(a) % 5; x.fillStyle = 'rgba(0,0,0,.2)'; x.fillRect(fx + a - w / 2 + 2, fy + b + 2, w, w * .8); x.fillStyle = c; x.fillRect(fx + a - w / 2, fy + b - w * .8, w, w * .8 + 2); x.fillStyle = r; x.fillRect(fx + a - 1.2, fy + b - w * .8, 2.4, w * .8 + 2); x.fillRect(fx + a - w / 2, fy + b - w * .45, w, 2.2); x.beginPath(); x.ellipse(fx + a - 3, fy + b - w * .8 - 1.5, 3, 1.8, -.4, 0, 7); x.ellipse(fx + a + 3, fy + b - w * .8 - 1.5, 3, 1.8, .4, 0, 7); x.fill(); }); }
+  // ตุ๊กตาหิมะ
+  (mp.slots || []).slice(5).concat([{ x: mp.W * .2, y: mp.H * .3 }, { x: mp.W * .78, y: mp.H * .7 }]).forEach((sl, n) => { const i = Math.floor(sl.x + (n % 2 ? 2 : -2)), j = Math.floor(sl.y + 1); if (mp.m[j]?.[i] !== 0 && mp.m[j]?.[i] !== 1) return; const a = i * TS + 16, b = j * TS + 26;
+    x.fillStyle = 'rgba(0,0,0,.18)'; x.beginPath(); x.ellipse(a, b + 2, 11, 3.5, 0, 0, 7); x.fill(); x.fillStyle = '#FFFFFF'; x.beginPath(); x.arc(a, b - 7, 9, 0, 7); x.fill(); x.beginPath(); x.arc(a, b - 20, 6.5, 0, 7); x.fill();
+    x.fillStyle = '#2A2A3A'; x.fillRect(a - 5, b - 30, 10, 2); x.fillRect(a - 3.4, b - 37, 6.8, 7); x.beginPath(); x.arc(a - 2.2, b - 21.5, .9, 0, 7); x.arc(a + 2.2, b - 21.5, .9, 0, 7); x.fill(); x.fillStyle = '#FF8A2A'; x.beginPath(); x.moveTo(a, b - 19.5); x.lineTo(a + 5, b - 18.6); x.lineTo(a, b - 18); x.fill();
+    x.fillStyle = '#E8323A'; x.fillRect(a - 6, b - 15, 12, 2.4); x.fillRect(a + 2, b - 15, 2.4, 6); x.strokeStyle = '#6A4428'; x.lineWidth = 1.2; x.beginPath(); x.moveTo(a - 8, b - 9); x.lineTo(a - 15, b - 15); x.moveTo(a + 8, b - 9); x.lineTo(a + 15, b - 15); x.stroke(); });
+  // ป้าย Merry Christmas เหนือลาน
+  if (mp.fountainT) { const fx = mp.fountainT[0] * TS, fy = mp.fountainT[1] * TS + 62; x.fillStyle = '#7A1E2A'; rr(x, fx - 54, fy - 9, 108, 18, 6); x.fill(); x.strokeStyle = '#F2C14E'; x.lineWidth = 1.5; x.stroke(); x.font = '800 11px Sarabun, sans-serif'; x.textAlign = 'center'; x.fillStyle = '#FFF2B0'; x.fillText('🎄 Merry Christmas! 🎄', fx, fy + 4); x.textAlign = 'left'; }
+}
+// ต้นคริสต์มาสยักษ์กลางเมือง (วาดสด เรียงลึกกับตัวละคร)
+function rpgXmasTree43(x, fx, fy, t) {
+  x.save(); x.translate(fx, fy + 6);
+  x.fillStyle = 'rgba(0,0,0,.22)'; x.beginPath(); x.ellipse(0, 4, 34, 9, 0, 0, 7); x.fill();
+  x.fillStyle = '#6A4428'; x.fillRect(-6, -14, 12, 18);
+  const tiers = [[0, 46, 40], [-30, 38, 34], [-56, 30, 28], [-78, 22, 22], [-96, 14, 18]];
+  tiers.forEach(([y, w, h], k) => { const g = x.createLinearGradient(-w, 0, w, 0); g.addColorStop(0, '#3DA04A'); g.addColorStop(.5, '#2E7A3A'); g.addColorStop(1, '#1C5428'); x.fillStyle = g; x.beginPath(); x.moveTo(0, y - h - 14); x.quadraticCurveTo(-w * .4, y - h * .4 - 10, -w, y - 6); for (let s = 0; s <= 6; s++) { const px = -w + s * w / 3; x.lineTo(px, y - 6 + (s % 2 ? 5 : 0)); } x.quadraticCurveTo(w * .4, y - h * .4 - 10, 0, y - h - 14); x.fill();
+    x.fillStyle = 'rgba(255,255,255,.9)'; x.beginPath(); x.moveTo(-w * .7, y - 8); x.quadraticCurveTo(0, y - 13, w * .7, y - 8); x.quadraticCurveTo(0, y - 9, -w * .7, y - 8); x.fill(); });
+  // สายรุ้งทอง
+  x.strokeStyle = 'rgba(242,193,78,.9)'; x.lineWidth = 1.6; [[-40, 30], [-28, 24], [-16, 18], [-6, 12]].forEach(([y, w], k) => { x.beginPath(); x.moveTo(-w, y + 4); x.quadraticCurveTo(0, y + 14, w, y - 2); x.stroke(); });
+  // ลูกบอล + ไฟกะพริบ
+  for (let k = 0; k < 26; k++) { const q = k / 26, y = -8 - q * 104, w = 44 * (1 - q * .82), px = Math.sin(k * 2.39) * w * .82, col = RPG_XLIGHT[k % 5], on = Math.sin(t / 260 + k * 1.7) > -.2;
+    if (k % 3 === 0) { const g = x.createRadialGradient(px - 1, y - 1, .3, px, y, 3.4); g.addColorStop(0, '#FFFFFF'); g.addColorStop(.4, col); g.addColorStop(1, V42.dk(col, .35)); x.fillStyle = g; x.beginPath(); x.arc(px, y, 3.4, 0, 7); x.fill(); }
+    else { x.save(); x.globalAlpha = on ? 1 : .35; x.fillStyle = col; if (on) { x.shadowColor = col; x.shadowBlur = 8; } x.beginPath(); x.arc(px, y, 1.7, 0, 7); x.fill(); x.restore(); } }
+  // ดาวบนยอด
+  x.save(); x.translate(0, -122); x.rotate(Math.sin(t / 900) * .08); const p = 1 + Math.sin(t / 300) * .08; x.scale(p, p); x.shadowColor = '#FFE27A'; x.shadowBlur = 18; x.fillStyle = '#FFE27A'; x.beginPath(); for (let i = 0; i < 10; i++) { const a = -Math.PI / 2 + i * Math.PI / 5, r = i % 2 ? 4.4 : 10; x.lineTo(Math.cos(a) * r, Math.sin(a) * r); } x.closePath(); x.fill(); x.fillStyle = '#FFFFFF'; x.beginPath(); x.arc(0, 0, 2.4, 0, 7); x.fill(); x.restore();
+  x.restore();
+}
+rpgLifeEnts = (f => function (x, t, ents) { const mp = RS.map; if (mp?.xtree) ents.push({ y: mp.xtree[1] / TS + .4, d: () => rpgXmasTree43(x, mp.xtree[0], mp.xtree[1], t) }); return f.apply(this, arguments); })(rpgLifeEnts);
+// ไฟประดับตามตึกกะพริบ
+rpgScenery37 = (f => function (x, mp, t, vis) { const g0 = RPG_GRASSC37.town; if (mp?.xmas) RPG_GRASSC37.town = RPG_GRASSC37.ice; let r; try { r = f.apply(this, arguments); } finally { RPG_GRASSC37.town = g0; } if (mp?.xlights?.length && !RS.lowFx) { x.save(); mp.xlights.forEach(([a, b, k]) => { const col = RPG_XLIGHT[k % 5], on = Math.sin(t / 300 + k * 1.3 + a * .01) > 0; x.globalAlpha = on ? 1 : .3; x.fillStyle = col; if (on) { x.shadowColor = col; x.shadowBlur = 6; } x.beginPath(); x.arc(a, b, 1.6, 0, 7); x.fill(); x.shadowBlur = 0; }); x.restore(); } return r; })(rpgScenery37);
 
 /* =====================================================================
    rpg-net.js — หน้าเกมของครู: จัดการตัวละคร (เลือกชั้น → ห้อง) · คำถามในเกม · ตรวจแชท · กิลด์ · โหมดครู
