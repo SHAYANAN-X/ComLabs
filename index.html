@@ -5921,7 +5921,7 @@ if (typeof module !== 'undefined') module.exports = ExamParser;
 </script>
 <script>
 /* โลโก้: ภาพครูปลื้ม (ไฟล์ต้นฉบับ src/logo.svg ฝังตอน build) */
-const APP_VER = '56.5 · 28 พ.ย. 2569';
+const APP_VER = '56.6 · 28 พ.ย. 2569';
 let LOGO_N = 0;
 function logoSVG() { const k = 'L' + (++LOGO_N); return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><defs><linearGradient id="lgb" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3B9BFF"/><stop offset=".5" stop-color="#0A5BE0"/><stop offset="1" stop-color="#062C78"/></linearGradient><linearGradient id="lgs" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset=".6" stop-color="#FFF4D6"/><stop offset="1" stop-color="#FFD978"/></linearGradient><radialGradient id="lgc" cx=".3" cy=".08" r=".75"><stop offset="0" stop-color="#fff" stop-opacity=".55"/><stop offset=".5" stop-color="#fff" stop-opacity=".08"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient></defs><rect width="48" height="48" rx="13" fill="url(#lgb)"/><rect width="48" height="48" rx="13" fill="url(#lgc)"/><rect x=".75" y=".75" width="46.5" height="46.5" rx="12.3" fill="none" stroke="#fff" stroke-opacity=".45" stroke-width="1.2"/><g fill="none" stroke="#04235F" stroke-opacity=".35" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" transform="translate(0 1.2)"><path d="M21.2 17 C19.8 14.6 17.4 13.6 14.8 13.6 C11 13.6 8.6 15.6 8.6 18.5 C8.6 21.8 11.6 22.9 14.9 23.9 C18.6 25 21.6 26.4 21.6 29.8 C21.6 33 18.8 34.6 15.1 34.6 C12 34.6 9.5 33.4 8 31.1"/><path d="M26.6 14 L39.6 34.2 M39.6 14 L26.6 34.2"/></g><g fill="none" stroke="url(#lgs)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M21.2 17 C19.8 14.6 17.4 13.6 14.8 13.6 C11 13.6 8.6 15.6 8.6 18.5 C8.6 21.8 11.6 22.9 14.9 23.9 C18.6 25 21.6 26.4 21.6 29.8 C21.6 33 18.8 34.6 15.1 34.6 C12 34.6 9.5 33.4 8 31.1"/><path d="M26.6 14 L39.6 34.2 M39.6 14 L26.6 34.2"/></g></svg>`.replace('<svg ', '<svg class="logo" aria-hidden="true" ').replace(/\b(lg[bsc])\b/g, '$1' + k); }
 /* =====================================================================
@@ -12147,7 +12147,7 @@ const RPG_ARMOR = [['ชุดผ้าฝึกหัด', '👕'], ['เกร
    ชนิด: p=กายภาพ m=เวท h=ฟื้นพลัง b=บัฟ · เสริม: hits จำนวนครั้ง, stun โอกาสมึน, drain ดูดเลือด, buff {k,v,n} */
 const RPG_SKLV = [1, 8, 20, 40, 70];
 const RPG_JOBS = {
-  sword: { n: 'Lunar Knight', ic: '⚔️', col: '#6FA8FF', wt: 'sword', st: { str: 9, int: 2, vit: 6, agi: 5 }, d: 'สายบู๊แนวหน้า ฟันแรง ทนทาน เล่นง่ายที่สุด',
+  sword: { n: 'อัศวินดวงจันทร์', ic: '⚔️', col: '#6FA8FF', wt: 'sword', st: { str: 9, int: 2, vit: 6, agi: 5 }, d: 'สายบู๊แนวหน้า ฟันแรง ทนทาน เล่นง่ายที่สุด',
     sk: [['ฟันดาบ', '🗡️', 5, 1.7, 'p', 'slash'], ['ฟันพายุ', '🌪️', 12, .9, 'p', 'slash', { hits: 3 }], ['ฟันทะลวงเกราะ', '💥', 20, 2.9, 'p', 'pierce'], ['ใจนักรบ', '🔥', 18, 0, 'b', 'buff', { buff: { k: 'atk', v: .4, n: 3 } }], ['ดาบพิฆาตฟ้า', '⚡', 45, 4.6, 'p', 'thunder']] },
   knight: { n: 'อัศวิน', ic: '🛡️', col: '#3B82F6', wt: 'shield', st: { str: 7, int: 2, vit: 10, agi: 3 }, d: 'ป้อมปราการเคลื่อนที่ HP สูง ป้องกันแน่น',
     sk: [['โล่กระแทก', '🛡️', 6, 1.5, 'p', 'quake', { stun: .3 }], ['ป้อมปราการ', '🏰', 12, 0, 'b', 'buff', { buff: { k: 'def', v: .6, n: 3 } }], ['ดาบแสง', '🌟', 20, 2.6, 'p', 'light'], ['พรศรัทธา', '💖', 22, .35, 'h', 'heal'], ['อัศวินศักดิ์สิทธิ์', '👑', 45, 4.2, 'p', 'light']] },
@@ -12711,7 +12711,7 @@ function rpgUpdate(dt, now) {
     const homeOk = (a, b) => Math.hypot(a - mo.hx, b - mo.hy) < 6; let moved = false;
     if (rpgMonFree(nx, mo.y) && homeOk(nx, mo.y)) { mo.x = nx; moved = true; } if (rpgMonFree(mo.x, ny) && homeOk(mo.x, ny)) { mo.y = ny; moved = true; }
     if (!moved && !mo.boss) { mo.t = Math.min(mo.t, .15); } }
-    if (mo.boss && !s.peace && now > (RS.safeT || 0) && Math.hypot(s.x - mo.x, s.y - mo.y) < 1.3) { RS.keys = {}; RS.joy = null; RS.walkTo = null; rpgBattle(mo); break; }
+    if (mo.boss && mo.raid && !s.peace && now > (RS.safeT || 0) && Math.hypot(s.x - mo.x, s.y - mo.y) < 1.3) { RS.keys = {}; RS.joy = null; RS.walkTo = null; rpgBattle(mo); break; }
   }
   if ((RS.moved && now - RS.sentAt > 280 || now - RS.sentAt > 5000)) { RS.sentAt = now; RS.moved = false; rpgPresenceSend(); }
   RS.pet = RS.pet || { x: s.x - .8, y: s.y };
@@ -17140,7 +17140,7 @@ const RPG_CLV = [0, 1, 25, 50, 75];            // เลเวลที่เป
 const RPG_CCAP = [0, 25, 50, 75, 99];          // เลเวลสูงสุดของคลาส n
 const RPG_CBONUS = [0, 0, .1, .22, .36];       // ค่าสถานะเพิ่มตามคลาส
 const RPG_CLASS = {
-  sword: [['Lunar Knight', 'Lunar Knight'], ['Crescent Knight', 'Crescent Knight'], ['Moon Sovereign', 'Moon Sovereign'], ['Eclipse Lord', 'Eclipse Lord']],
+  sword: [['อัศวินดวงจันทร์', 'Lunar Knight'], ['อัศวินจันทร์เสี้ยว', 'Crescent Knight'], ['จ้าวแห่งจันทรา', 'Moon Sovereign'], ['จ้าวสุริยคราส', 'Eclipse Lord']],
   knight: [['อัศวิน', 'Knight'], ['พาลาดิน', 'Paladin'], ['ผู้พิทักษ์ศักดิ์สิทธิ์', 'Holy Guardian'], ['จอมอัศวินอีจิส', 'Aegis Lord']],
   archer: [['นักธนู', 'Archer'], ['เรนเจอร์', 'Ranger'], ['สไนเปอร์', 'Sniper'], ['จอมธนูวายุ', 'Storm Archer']],
   fire: [['จอมเวทไฟ', 'Fire Mage'], ['ผู้ควบคุมเพลิง', 'Pyromancer'], ['ปราชญ์นรกเพลิง', 'Inferno Sage'], ['อาร์คเมจฟีนิกซ์', 'Phoenix Archmage']],
@@ -23555,7 +23555,7 @@ function rpgFcAttack(target) {
   if (RS.nearNpc && !target) return rpgTalk(RS.nearNpc);
   const mo = target || (FC.tgt && !FC.tgt.dead && RS.mon.includes(FC.tgt) ? FC.tgt : rpgFcNearest(9));
   if (!mo) { rpgInteract?.(); if (!RS.nearNpc) rpgSay('ไม่มีศัตรูอยู่ใกล้ ๆ', 1200); return; }
-  if (mo.boss) { const d = Math.hypot(mo.x - s.x, mo.y - s.y); if (d < 2.6) return rpgBattle(mo); RS.walkTo = { x: mo.x, y: mo.y }; return; }
+  if (mo.boss && mo.raid) { const d = Math.hypot(mo.x - s.x, mo.y - s.y); if (d < 2.6) return rpgBattle(mo); RS.walkTo = { x: mo.x, y: mo.y }; return; }
   FC.tgt = mo; FC.auto = true; rpgFcMs(mo);
 }
 function rpgFcSwing(mo, now) {
@@ -23709,7 +23709,7 @@ rpgUpdate = function (dt, now) {
 
 /* ---------- ชนมอนสเตอร์ทั่วไปไม่ตัดเข้าฉากต่อสู้ (เฉพาะบอส) ---------- */
 const rpgBattle48 = rpgBattle;
-rpgBattle = function (mo) { if (mo && !mo.boss && !mo.raid && !mo.wb && !RS.fcForceBattle) { if (!FC.tgt) { FC.tgt = mo; rpgFcMs(mo); } return; } return rpgBattle48.apply(this, arguments); };
+rpgBattle = function (mo) { if (mo && !mo.raid && !mo.wb && !RS.fcForceBattle) { if (!FC.tgt) { FC.tgt = mo; rpgFcMs(mo); } return; } return rpgBattle48.apply(this, arguments); };
 rpgActAttack = function () { rpgFcAttack(); };
 document.addEventListener('keydown', e => { if (!RS.map || RS.battle || e.repeat) return; const t = e.target; if (t && (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.isContentEditable)) return;
   if (e.key === 'f' || e.key === 'F' || e.key === 'j' || e.key === 'J') { rpgFcAttack(); }
@@ -23958,11 +23958,11 @@ if (typeof rpgAccFx === 'function') rpgAccFx = (f => function (x, acc) { if (acc
 /* rpg-v50.js — ตรวจบั๊ก + ปรับสมดุลการต่อสู้บนแผนที่ */
 // 1) สมดุล: มอนสเตอร์บนแผนที่ (ไม่ใช่บอส) เลือดและแรงตีลดลง เหมาะกับสู้แบบเรียลไทม์
 const RPG_FIELD50 = { hp: .5, atk: .55, gap: [1700, 2300], maxAtk: 2, regenDelay: 5000, regen: .025 };
-rpgFcMs = function (mo) { if (!mo.ms) { const b = rpgMonStats(mo); mo.ms = mo.boss ? b : { ...b, mhp: Math.max(1, Math.round(b.mhp * RPG_FIELD50.hp)), atk: Math.max(1, Math.round(b.atk * RPG_FIELD50.atk)) }; mo.hp = mo.ms.mhp; } return mo.ms; };
+rpgFcMs = function (mo) { if (!mo.ms) { const b = rpgMonStats(mo); mo.ms = mo.boss ? (mo.raid ? b : { ...b, mhp: Math.max(1, Math.round(b.mhp * RPG_FIELD50.hp * 3)), atk: Math.max(1, Math.round(b.atk * .4)) }) : { ...b, mhp: Math.max(1, Math.round(b.mhp * RPG_FIELD50.hp)), atk: Math.max(1, Math.round(b.atk * RPG_FIELD50.atk)) }; mo.hp = mo.ms.mhp; } return mo.ms; };
 // 2) ตีพร้อมกันได้ไม่เกิน 2 ตัว ตัวอื่นรอวนรอบ ๆ + เว้นจังหวะตีให้นานขึ้น · ฟื้น HP เองเมื่อไม่โดนตี 5 วินาที
 rpgUpdate = (f => function (dt, now) {
   const s = R.save; let held = [];
-  if (s && RS.map && !RS.battle && RS.mon) { const t = performance.now(), near = RS.mon.filter(m => !m.boss && !m.dead && Math.hypot(m.x - s.x, m.y - s.y) < 1.05).sort((a, b) => (b.aggro ? 1 : 0) - (a.aggro ? 1 : 0) || Math.hypot(a.x - s.x, a.y - s.y) - Math.hypot(b.x - s.x, b.y - s.y));
+  if (s && RS.map && !RS.battle && RS.mon) { const t = performance.now(), near = RS.mon.filter(m => !m.raid && !m.dead && Math.hypot(m.x - s.x, m.y - s.y) < (m.boss ? 1.6 : 1.05)).sort((a, b) => (b.aggro ? 1 : 0) - (a.aggro ? 1 : 0) || Math.hypot(a.x - s.x, a.y - s.y) - Math.hypot(b.x - s.x, b.y - s.y));
     near.slice(RPG_FIELD50.maxAtk).forEach(m => { held.push([m, m.atkCd]); m.atkCd = t + 99999; m.lunge = 0; });
     near.slice(0, RPG_FIELD50.maxAtk).forEach(m => { if (m.atkCd > t + 5000) m.atkCd = t + 600 + Math.random() * 600; }); }
   const hp0 = s?.hp; const r = f.apply(this, arguments);
@@ -24108,7 +24108,7 @@ function rpgFcReward52(mo, share = 1, loot = true) {
   rpgFcNum(mo.x, mo.y - 1.6, `+${expG.toLocaleString()} EXP`, '#9FF0FF', 0); if (gold) setTimeout(() => rpgFcNum(mo.x, mo.y - 1.6, `+${gold.toLocaleString()} 💰`, '#FFE27A', 0), 220);
   drops.forEach((id, i) => setTimeout(() => rpgFcNum(mo.x, mo.y - 1.6, `${RPG_ITEMS[id].ic} ${RPG_ITEMS[id].n}`, '#C8FFB8', 0), 440 + i * 220));
   if (lvUp) { setTimeout(() => rpgSfx('lvl'), 600); rpgConfetti?.(); rpgSay(`⬆️ เลเวลอัป! Lv.${s.lvl}`, 3000); }
-  rpgQEvent('kill', { zone: RPG_ZONES[RS.map.scene]?.region, n: mo.n, boss: false, map: RS.map.scene }); rpgSave(); rpgHud();
+  rpgQEvent('kill', { zone: RPG_ZONES[RS.map.scene]?.region, n: mo.n, boss: !!mo.boss, map: RS.map.scene }); rpgSave(); rpgHud();
 }
 function rpgFcDeathFx52(mo) { if (mo.dead) return false; mo.dead = true; mo.deadT = performance.now(); if (FC.tgt === mo) { FC.tgt = null; FC.auto = false; FC.pend52 = null; } rpgSfx('win'); rpgFcFx({ k: 'boom', x: mo.x, y: mo.y - .5, col: '#FFE27A', dur: 520 }); setTimeout(() => { RS.mon = RS.mon.filter(m => m !== mo); }, 520); return true; }
 rpgFcKill = async function (mo) { if (!rpgFcDeathFx52(mo)) return; setTimeout(() => rpgSfx('coin'), 250); rpgFcReward52(mo, 1, true); if (!RS.net52?.slave) setTimeout(() => { if (RS.map?.pool && !RS.net52?.slave) rpgSpawn(); }, 6000); };
@@ -24606,7 +24606,8 @@ rpgFcNets = () => []; rpgFcCapture = () => {};
 function rpgBossEgg55(lv) { const r0 = Math.random(); return lv >= 40 ? (r0 < .45 ? 'egg3' : r0 < .8 ? 'egg2' : 'egg1') : lv >= 15 ? (r0 < .2 ? 'egg3' : r0 < .7 ? 'egg2' : 'egg1') : (r0 < .08 ? 'egg3' : r0 < .45 ? 'egg2' : 'egg1'); }
 rpgFcReward52 = (f => function (mo, share = 1, loot = true) {
   const r = f.apply(this, arguments);
-  try { if (mo?.boss && loot) { const eg = rpgBossEgg55(mo.lv || 1); rpgGive(eg); rpgLootFx52?.(mo.x, mo.y, '🥚'); setTimeout(() => { rpgFcNum(mo.x, mo.y - 2.2, `🥚 ${RPG_ITEMS[eg].n}`, eg === 'egg3' ? '#FFD36B' : '#C8FFB8', 0); rpgSay(`🥚 บอสดรอป ${RPG_ITEMS[eg].n}! นำไปฝากลุงฟาร์มฟัก`, 3400); }, 900); rpgSave(); } } catch (e) {}
+  try { if (mo?.boss && loot && !mo.raid) { const nb = mo.lv >= 60 ? 2 : 1; rpgGive('bcore', nb); setTimeout(() => rpgSay(`🔮 ได้แกนพลังบอส ×${nb}`, 2400), 2600); }
+    if (mo?.boss && loot) { const eg = rpgBossEgg55(mo.lv || 1); rpgGive(eg); rpgLootFx52?.(mo.x, mo.y, '🥚'); setTimeout(() => { rpgFcNum(mo.x, mo.y - 2.2, `🥚 ${RPG_ITEMS[eg].n}`, eg === 'egg3' ? '#FFD36B' : '#C8FFB8', 0); rpgSay(`🥚 บอสดรอป ${RPG_ITEMS[eg].n}! นำไปฝากลุงฟาร์มฟัก`, 3400); }, 900); rpgSave(); } } catch (e) {}
   return r; })(rpgFcReward52);
 
 /* ================= v55 · ไอคอนสกิลวาดเอง (ไม่ใช้อิโมจิ) + เอฟเฟกต์ประจำสกิลตามชื่อ/รูปสกิล ================= */
@@ -24868,7 +24869,7 @@ FX49.summon = function (P, T, col, rank, n, aoe) { X49.big({ k: 'circle', x: T.x
 // คัทอินชื่อสกิล: แปลงไอคอนเป็นรูปวาด
 rpgCutin49 = (f => function () { const r = f.apply(this, arguments); try { const d = document.querySelector('#rpg .skx-cut:last-of-type'); if (d) rpgPuaSwap(d); } catch (e) {} return r; })(rpgCutin49);
 // ตาข่ายเก่าในกระเป๋า → คืนเป็นทองครึ่งราคา (ระบบจับสัตว์ยกเลิก)
-(() => { const fix = () => { const s = R.save; if (!s?.inv) return; let g = 0; ['net1', 'net2', 'net3', 'net4'].forEach(id => { const n = s.inv[id] || 0; if (n > 0) { g += n * (({ net1: 20, net2: 110, net3: 450, net4: 1000 })[id]); delete s.inv[id]; } }); if (g) { R.gold += g; rpgSave?.(); setTimeout(() => rpgSay?.(`🎣 ระบบตาข่ายยกเลิกแล้ว · คืนเป็น 💰 ${g.toLocaleString()} ทอง`, 4200), 1500); } };
+(() => { const fix = () => { const s = R.save; if (!s?.inv) return; let g = 0; ['net1', 'net2', 'net3', 'net4'].forEach(id => { const n = s.inv[id] || 0; if (n > 0) { g += n * (({ net1: 20, net2: 110, net3: 450, net4: 1000 })[id]); delete s.inv[id]; } }); if (g && !s.netfix55) { s.netfix55 = 1; R.gold += g; } if (g) rpgSave?.(); };
   rpgScene = (f => function () { try { fix(); } catch (e) {} return f.apply(this, arguments); })(rpgScene); })();
 
 /* ---------- เอฟเฟกต์ฐานชุดใหม่ (ให้แต่ละสกิลในสายอาชีพเดียวกันไม่ซ้ำกัน) ---------- */
@@ -25666,6 +25667,28 @@ rpgDrawHero = (f => function (x, h) { const j0 = RPG_WJOB56; RPG_WJOB56 = h?.loo
   const fix = A => { if (A) { A.out = 'pakkhao'; A.arm = '#F4F5F7'; A.bracer = '#FFFFFF'; A.glove = '#F4F5F7'; } };
   fix(RPG_JOBART.engineer); try { RPG_ARTC?.clear?.(); } catch (e) {}
 })();
+
+/* ---------- ไม้เรียวในตู้กาชา/แฟชั่นอาวุธ: ธีมไฟ/น้ำแข็ง/ซากุระ/นีออน/ทอง/อเวจี/ศักดิ์สิทธิ์/นางฟ้า ---------- */
+(() => { const TH = RPG_SKW46.TH, d0 = RPG_SKW46.draw;
+  function cane(x, k, T) { const P = TH[k], L = 54 + T * 1.6, bend = 3.4;
+    x.fillStyle = P.m || '#3A2A1A'; x.beginPath(); x.roundRect(-2.4, -2, 4.8, 11, 1.6); x.fill(); x.strokeStyle = P.b; x.lineWidth = .6; for (let i = 0; i < 5; i++) { x.beginPath(); x.moveTo(-2.4, -1 + i * 2); x.lineTo(2.4, i * 2 + .4); x.stroke(); }
+    x.save(); x.shadowColor = P.g; x.shadowBlur = 8;
+    const g = x.createLinearGradient(-2.6, 0, 2.6, 0); g.addColorStop(0, P.c); g.addColorStop(.45, P.a); g.addColorStop(.7, P.b); g.addColorStop(1, P.c);
+    x.fillStyle = g; x.beginPath(); x.moveTo(-2.2, -2); x.quadraticCurveTo(-2.2 + bend, -L * .55, -.7 + bend * .6, -L); x.lineTo(.7 + bend * .6, -L); x.quadraticCurveTo(2.2 + bend, -L * .55, 2.2, -2); x.closePath(); x.fill(); x.restore();
+    for (let y = -10; y > -L + 4; y -= 9) { const q = -y / L, ox = bend * (2 * q - q * q) * .9, w = 2.1 - 1.3 * q; x.strokeStyle = P.c; x.lineWidth = 1.1; x.beginPath(); x.moveTo(ox - w - .2, y); x.lineTo(ox + w + .2, y - .6); x.stroke(); x.strokeStyle = P.b; x.lineWidth = .45; x.beginPath(); x.moveTo(ox - w, y - .9); x.lineTo(ox + w, y - 1.4); x.stroke(); }
+    // แกนเรืองแสงตามก้าน + ปลายประดับ
+    x.save(); x.globalCompositeOperation = 'lighter'; x.shadowColor = P.g; x.shadowBlur = 10; x.strokeStyle = P.g; x.lineWidth = .9; x.beginPath(); x.moveTo(0, -3); x.quadraticCurveTo(bend, -L * .55, bend * .6, -L); x.stroke();
+    x.fillStyle = P.b; x.beginPath(); const tx = bend * .6, ty = -L - 2; for (let i = 0; i < 8; i++) { const a = i * Math.PI / 4 - Math.PI / 2, r = i % 2 ? 1.3 : 3.4; x.lineTo(tx + Math.cos(a) * r, ty + Math.sin(a) * r); } x.closePath(); x.fill(); x.restore(); }
+  RPG_SKW46.draw = function (x, type, t, sk) { if (type !== 'cane') return d0.apply(this, arguments); const S = RPG_WSK[sk], k = S?.k; if (!k || !TH[k]) return false; x.save(); try { cane(x, k, Math.max(4, t | 0)); } catch (e) { x.restore(); return false; } x.restore(); return true; };
+  // ไอคอนแฟชั่นอาวุธของครู (wt hammer) = ไม้เรียวตามธีม
+  const ic0 = rpgItemCanvas;
+  rpgItemCanvas = function (key, S = 96) { const it = RPG_ITEMS[key]; if (it?.t !== 'wsk' || it.wt !== 'hammer') return ic0.apply(this, arguments);
+    const ck = key + '@56@' + S; if (RPG_ICANV.has(ck)) return RPG_ICANV.get(ck);
+    const c = document.createElement('canvas'); c.width = c.height = S; const x = c.getContext('2d'), Sk = RPG_WSK[it.wsk], kS = S / 96;
+    const g = x.createRadialGradient(S / 2, S / 2, 3, S / 2, S / 2, S / 2); g.addColorStop(0, rpgHexA(Sk.hi, .55)); g.addColorStop(1, 'rgba(0,0,0,0)'); x.fillStyle = g; x.fillRect(0, 0, S, S);
+    x.translate(S * .3, S * .9); x.rotate(.72); x.scale(1.2 * kS, 1.2 * kS); RPG_SKW46.draw(x, 'cane', 6, it.wsk);
+    RPG_ICANV.set(ck, c); return c; };
+  RPG_ICANV.clear(); RPG_IURL.clear(); if (typeof RPG_WAX53 !== 'undefined') RPG_WAX53.clear(); })();
 
 /* =====================================================================
    rpg-net.js — หน้าเกมของครู: จัดการตัวละคร (เลือกชั้น → ห้อง) · คำถามในเกม · ตรวจแชท · กิลด์ · โหมดครู
