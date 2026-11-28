@@ -5921,7 +5921,7 @@ if (typeof module !== 'undefined') module.exports = ExamParser;
 </script>
 <script>
 /* โลโก้: ภาพครูปลื้ม (ไฟล์ต้นฉบับ src/logo.svg ฝังตอน build) */
-const APP_VER = '56.0 · 28 พ.ย. 2569';
+const APP_VER = '56.1 · 28 พ.ย. 2569';
 let LOGO_N = 0;
 function logoSVG() { const k = 'L' + (++LOGO_N); return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><defs><linearGradient id="lgb" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3B9BFF"/><stop offset=".5" stop-color="#0A5BE0"/><stop offset="1" stop-color="#062C78"/></linearGradient><linearGradient id="lgs" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset=".6" stop-color="#FFF4D6"/><stop offset="1" stop-color="#FFD978"/></linearGradient><radialGradient id="lgc" cx=".3" cy=".08" r=".75"><stop offset="0" stop-color="#fff" stop-opacity=".55"/><stop offset=".5" stop-color="#fff" stop-opacity=".08"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient></defs><rect width="48" height="48" rx="13" fill="url(#lgb)"/><rect width="48" height="48" rx="13" fill="url(#lgc)"/><rect x=".75" y=".75" width="46.5" height="46.5" rx="12.3" fill="none" stroke="#fff" stroke-opacity=".45" stroke-width="1.2"/><g fill="none" stroke="#04235F" stroke-opacity=".35" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" transform="translate(0 1.2)"><path d="M21.2 17 C19.8 14.6 17.4 13.6 14.8 13.6 C11 13.6 8.6 15.6 8.6 18.5 C8.6 21.8 11.6 22.9 14.9 23.9 C18.6 25 21.6 26.4 21.6 29.8 C21.6 33 18.8 34.6 15.1 34.6 C12 34.6 9.5 33.4 8 31.1"/><path d="M26.6 14 L39.6 34.2 M39.6 14 L26.6 34.2"/></g><g fill="none" stroke="url(#lgs)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M21.2 17 C19.8 14.6 17.4 13.6 14.8 13.6 C11 13.6 8.6 15.6 8.6 18.5 C8.6 21.8 11.6 22.9 14.9 23.9 C18.6 25 21.6 26.4 21.6 29.8 C21.6 33 18.8 34.6 15.1 34.6 C12 34.6 9.5 33.4 8 31.1"/><path d="M26.6 14 L39.6 34.2 M39.6 14 L26.6 34.2"/></g></svg>`.replace('<svg ', '<svg class="logo" aria-hidden="true" ').replace(/\b(lg[bsc])\b/g, '$1' + k); }
 /* =====================================================================
@@ -12147,7 +12147,7 @@ const RPG_ARMOR = [['ชุดผ้าฝึกหัด', '👕'], ['เกร
    ชนิด: p=กายภาพ m=เวท h=ฟื้นพลัง b=บัฟ · เสริม: hits จำนวนครั้ง, stun โอกาสมึน, drain ดูดเลือด, buff {k,v,n} */
 const RPG_SKLV = [1, 8, 20, 40, 70];
 const RPG_JOBS = {
-  sword: { n: 'นักดาบ', ic: '⚔️', col: '#E8553D', wt: 'sword', st: { str: 9, int: 2, vit: 6, agi: 5 }, d: 'สายบู๊แนวหน้า ฟันแรง ทนทาน เล่นง่ายที่สุด',
+  sword: { n: 'Lunar Knight', ic: '⚔️', col: '#6FA8FF', wt: 'sword', st: { str: 9, int: 2, vit: 6, agi: 5 }, d: 'สายบู๊แนวหน้า ฟันแรง ทนทาน เล่นง่ายที่สุด',
     sk: [['ฟันดาบ', '🗡️', 5, 1.7, 'p', 'slash'], ['ฟันพายุ', '🌪️', 12, .9, 'p', 'slash', { hits: 3 }], ['ฟันทะลวงเกราะ', '💥', 20, 2.9, 'p', 'pierce'], ['ใจนักรบ', '🔥', 18, 0, 'b', 'buff', { buff: { k: 'atk', v: .4, n: 3 } }], ['ดาบพิฆาตฟ้า', '⚡', 45, 4.6, 'p', 'thunder']] },
   knight: { n: 'อัศวิน', ic: '🛡️', col: '#3B82F6', wt: 'shield', st: { str: 7, int: 2, vit: 10, agi: 3 }, d: 'ป้อมปราการเคลื่อนที่ HP สูง ป้องกันแน่น',
     sk: [['โล่กระแทก', '🛡️', 6, 1.5, 'p', 'quake', { stun: .3 }], ['ป้อมปราการ', '🏰', 12, 0, 'b', 'buff', { buff: { k: 'def', v: .6, n: 3 } }], ['ดาบแสง', '🌟', 20, 2.6, 'p', 'light'], ['พรศรัทธา', '💖', 22, .35, 'h', 'heal'], ['อัศวินศักดิ์สิทธิ์', '👑', 45, 4.2, 'p', 'light']] },
@@ -17140,7 +17140,7 @@ const RPG_CLV = [0, 1, 25, 50, 75];            // เลเวลที่เป
 const RPG_CCAP = [0, 25, 50, 75, 99];          // เลเวลสูงสุดของคลาส n
 const RPG_CBONUS = [0, 0, .1, .22, .36];       // ค่าสถานะเพิ่มตามคลาส
 const RPG_CLASS = {
-  sword: [['นักดาบ', 'Swordsman'], ['ปรมาจารย์ดาบ', 'Blademaster'], ['นักบุญดาบ', 'Sword Saint'], ['จักรพรรดิดาบ', 'Sword Emperor']],
+  sword: [['Lunar Knight', 'Lunar Knight'], ['Crescent Knight', 'Crescent Knight'], ['Moon Sovereign', 'Moon Sovereign'], ['Eclipse Lord', 'Eclipse Lord']],
   knight: [['อัศวิน', 'Knight'], ['พาลาดิน', 'Paladin'], ['ผู้พิทักษ์ศักดิ์สิทธิ์', 'Holy Guardian'], ['จอมอัศวินอีจิส', 'Aegis Lord']],
   archer: [['นักธนู', 'Archer'], ['เรนเจอร์', 'Ranger'], ['สไนเปอร์', 'Sniper'], ['จอมธนูวายุ', 'Storm Archer']],
   fire: [['จอมเวทไฟ', 'Fire Mage'], ['ผู้ควบคุมเพลิง', 'Pyromancer'], ['ปราชญ์นรกเพลิง', 'Inferno Sage'], ['อาร์คเมจฟีนิกซ์', 'Phoenix Archmage']],
@@ -17644,7 +17644,7 @@ rpgMasterNodes = function (id, N) {
 const RPG_TBUFF = {
   warrior: { n: 'เสียงคำรามนักรบ', ic: '📣', k: { atk: .08 }, min: 5, col: '#FF6A4D' }, scout: { n: 'ฝีเท้าสายลม', ic: '💨', k: { eva: 6 }, min: 5, col: '#5BE38A' },
   mage: { n: 'สมาธิเวท', ic: '🔮', k: { matk: .08 }, min: 5, col: '#B58CFF' }, scholar: { n: 'พรแห่งปัญญา', ic: '📘', k: { def: .06, mhp: .05 }, min: 5, col: '#FFD23F', party: 1 },
-  sword: { n: 'จิตวิญญาณดาบ', ic: '🔥', k: { atk: .15, crit: 5 }, min: 6, col: '#FF5A3D' }, knight: { n: 'ปราการศักดิ์สิทธิ์', ic: '🛡️', k: { def: .18, mhp: .1 }, min: 8, col: '#6FB2FF', party: 1 },
+  sword: { n: 'พลังแห่งจันทรา', ic: '🌙', k: { atk: .15, crit: 5 }, min: 6, col: '#6FA8FF' }, knight: { n: 'ปราการศักดิ์สิทธิ์', ic: '🛡️', k: { def: .18, mhp: .1 }, min: 8, col: '#6FB2FF', party: 1 },
   monk: { n: 'ลมปราณเหล็ก', ic: '🧘', k: { mhp: .15, atk: .08 }, min: 6, col: '#FF8A3D' }, archer: { n: 'ตาเหยี่ยว', ic: '🦅', k: { crit: 8, atk: .08 }, min: 6, col: '#7DF5A8' },
   ninja: { n: 'เงาพราง', ic: '🌑', k: { eva: 10, atk: .05 }, min: 6, col: '#9A6BFF' }, bard: { n: 'บทเพลงแห่งชัยชนะ', ic: '🎶', k: { atk: .12, matk: .12 }, min: 8, col: '#FF7AC8', party: 1 },
   fire: { n: 'เปลวไฟในใจ', ic: '🔥', k: { matk: .18 }, min: 6, col: '#FF7A1F' }, ice: { n: 'เกราะน้ำแข็ง', ic: '💎', k: { def: .12, matk: .08 }, min: 6, col: '#9FE4FF' },
@@ -24702,8 +24702,8 @@ const RPG_SIG55 = {
   'scout:ยิงเร็ว': ['target', 'mark', '#FFE27A'], 'scout:ศรคู่': ['arrows', 'fan', '#FFF1B0'], 'scout:ฝีเท้าลม': ['wind', 'aura', '#7CFFB0'],
   'mage:ลูกไฟเล็ก': ['flame', 'fly', '#FF8A3A'], 'mage:เกล็ดน้ำแข็ง': ['snow', 'flyspin', '#9FE8FF'], 'mage:สายฟ้าฟาด': ['bolt', 'drop', '#FFE94A'],
   'scholar:แสงศักดิ์สิทธิ์': ['sparkle', 'mark', '#FFF1A0'], 'scholar:รักษา': ['medcross', 'aura', '#7CFFB0'], 'scholar:โล่ปัญญา': ['book', 'aura', '#FFD25A'],
-  'sword:ฟันดาบ': ['xslash', 'slashx', '#BFEFFF'], 'sword:ฟันพายุ': ['tornado', 'spin', '#9AF0FF'], 'sword:ฟันทะลวงเกราะ': ['burst', 'stamp', '#FFB070'], 'sword:ใจนักรบ': ['flame', 'aura', '#FF6A3A'], 'sword:ดาบพิฆาตฟ้า': ['skysword', 'drop', '#FFE94A'],
-  'sword:ดาบหมุนพายุคลั่ง': ['vortex', 'spin', '#7FD8FF'], 'sword:ฟันจันทร์เสี้ยว': ['moon', 'slashx', '#D8E4FF'], 'sword:ดาบเทพสังหารมังกร': ['dragon', 'drop', '#FF5A5A'],
+  'sword:ฟันดาบ': ['xslash', 'slashx', '#5A9BFF', null, 'lunar'], 'sword:ฟันพายุ': ['moon', 'spin', '#6A8CFF', null, 'lunar'], 'sword:ฟันทะลวงเกราะ': ['crescent', 'stamp', '#9A7CFF', null, 'lunar'], 'sword:ใจนักรบ': ['moon', 'aura', '#6FA8FF', null, 'lunar'], 'sword:ดาบพิฆาตฟ้า': ['skysword', 'drop', '#7AA8FF', null, 'lunar'],
+  'sword:ดาบหมุนพายุคลั่ง': ['vortex', 'spin', '#8A7CFF', null, 'lunar'], 'sword:ฟันจันทร์เสี้ยว': ['crescent', 'slashx', '#6FA0FF', null, 'lunar'], 'sword:ดาบเทพสังหารมังกร': ['moon', 'moonfall', '#7FB0FF', 'callsky', 'lunar'],
   'knight:โล่กระแทก': ['shield', 'stamp', '#9FC8FF'], 'knight:ป้อมปราการ': ['tower', 'aura', '#C8B48A'], 'knight:ดาบแสง': ['lightsword', 'drop', '#FFE98A'], 'knight:พรศรัทธา': ['heart', 'aura', '#FF8FB8'], 'knight:อัศวินศักดิ์สิทธิ์': ['crown', 'stamp', '#FFD23F'],
   'knight:ค้อนสวรรค์': ['hammer', 'drop', '#FFE27A'], 'knight:หอกแสงทะลวง': ['lance', 'fly', '#FFF4C0'], 'knight:คำพิพากษาแห่งสวรรค์': ['scales', 'drop', '#FFD86A'],
   'archer:ยิงแม่นยำ': ['scope', 'mark', '#FF6A6A'], 'archer:ศรคู่': ['arrows', 'fan', '#FFF1B0'], 'archer:ฝนศร': ['arrowrain', 'rain', '#B8E0FF'], 'archer:ตาเหยี่ยว': ['eye', 'aura', '#FFD25A'], 'archer:ศรพายุสายรุ้ง': ['rainbow', 'hover', '#FFFFFF'],
@@ -24731,14 +24731,14 @@ function rpgSig55(k) {
   if (!k) return null; if (k.sig55) return k.sig55; if (k.sig55 === false) return null;
   // สกิลในช่องสกิลเป็นสำเนา (มี _key = 'อาชีพ:ลำดับ') → หาตามอาชีพ+ชื่อ
   const jobs = [String(k._key || '').split(':')[0], R.save?.job, typeof RPG_BASEOF !== 'undefined' ? RPG_BASEOF[R.save?.job] : null].filter(Boolean);
-  for (const j of jobs) { const sg = RPG_SIG55[j + ':' + k[0]]; if (sg) { const o = { g: sg[0], m: sg[1], c: sg[2], act: sg[3] || undefined, dark: sg[4] === 'dark' }; const fx = typeof RPG_BASEFX55 !== 'undefined' ? RPG_BASEFX55[j]?.[k[0]] : null; if (fx) o.fx = fx; try { k.sig55 = o; } catch (e) {} return o; } }
+  for (const j of jobs) { const sg = RPG_SIG55[j + ':' + k[0]]; if (sg) { const o = { g: sg[0], m: sg[1], c: sg[2], act: sg[3] || undefined, dark: sg[4] === 'dark', lunar: sg[4] === 'lunar' }; const fx = typeof RPG_BASEFX55 !== 'undefined' ? RPG_BASEFX55[j]?.[k[0]] : null; if (fx) o.fx = fx; try { k.sig55 = o; } catch (e) {} return o; } }
   try { k.sig55 = false; } catch (e) {} return null; }
 // ผูกตาราง + ลงทะเบียนสกิลใหม่ (v53) ให้ใช้ไอคอนวาด แทนอิโมจิ
 (() => {
   const S53 = typeof RPG_SKX53 !== 'undefined' ? RPG_SKX53 : {};
   Object.entries(RPG_JOBS).forEach(([j, J]) => {
     [...(J.sk || []), ...(S53[j] || [])].forEach((k, i) => {
-      const sg = RPG_SIG55[j + ':' + k[0]]; if (sg) k.sig55 = { g: sg[0], m: sg[1], c: sg[2], act: sg[3] || undefined, dark: sg[4] === 'dark' };
+      const sg = RPG_SIG55[j + ':' + k[0]]; if (sg) k.sig55 = { g: sg[0], m: sg[1], c: sg[2], act: sg[3] || undefined, dark: sg[4] === 'dark', lunar: sg[4] === 'lunar' };
       let ch = [...String(k[1])].find(c => RPG_SKPUA[c]);
       if (!ch) { k.emo34 = k[1]; ch = String.fromCodePoint(RPG_PUAN++); RPG_SKPUA[ch] = { emo: k[1], col: J.col, rank: k._rank ?? (S53[j]?.includes(k) ? 3 : i), kind: k[4] }; RPG_PUA[ch] = '@sk:' + ch; k[1] = ch; }
       if (sg) { RPG_SKPUA[ch].g = sg[0]; RPG_SKPUA[ch].col = sg[2] && sg[1] !== 'aura' ? rpgMix55(sg[2], J.col) : RPG_SKPUA[ch].col; }
@@ -25058,6 +25058,48 @@ rpgSigFx55 = (f => function (k, P, T, rank = 1) { const r = f.apply(this, argume
   if (sg.m !== 'crows') X49.later(300, () => rpgCrowSwarm55(T, 4 + R, R)); } } catch (e) {} return r; })(rpgSigFx55);
 // ตีธรรมดาของนินจา: ใบมีดเขียวเล็ก ๆ ตอนโดน
 rpgFcSwing = (f => function (mo) { const r = f.apply(this, arguments); try { if (R.save?.job === 'ninja' && mo && FC.atk && performance.now() - FC.atk.t0 < 40) X49.later(330, () => { if (!mo.dead) rpgRavenSlash55({ x: mo.x * TS, y: mo.y * TS }, '#7CFF3A', 1, 1, .8); }); } catch (e) {} return r; })(rpgFcSwing);
+
+/* ---------- Lunar Knight: คลื่นดาบจันทร์เสี้ยว · ใบดาบจันทร์หมุน · ดวงจันทร์ยักษ์ ---------- */
+function rpgCrescentWave55(P, T, col = '#9FC8FF', n = 1, R = 2, big = 1) {
+  const ang = Math.atan2(T.y - P.y, T.x - P.x), dist = Math.hypot(T.x - P.x, T.y - P.y), far = Math.max(dist + 60, 160);
+  for (let i = 0; i < n; i++) { const off = (i - (n - 1) / 2) * 18, d0 = i * 90, sz = (34 + R * 5) * big * (i % 2 ? .85 : 1);
+    SKX55.push({ t0: performance.now(), d: d0, dur: 520, g: 'moon', col, f: () => ({ a: 1, s: 1, x: 0, y: 0 }), draw: (x, e) => {
+      const q = 1 - Math.pow(1 - e, 2), cx = P.x + Math.cos(ang) * far * q - Math.sin(ang) * off, cy = P.y - 24 + Math.sin(ang) * far * q * .9 + Math.cos(ang) * off * .5, al = e < .75 ? 1 : (1 - e) / .25, s = sz * (1 + e * .5);
+      x.save(); x.globalCompositeOperation = 'lighter'; x.translate(cx, cy); x.rotate(ang); x.scale(1, 1.25);
+      for (let t = 3; t >= 0; t--) { x.save(); x.translate(-t * 10, 0); x.globalAlpha = al * (t ? .22 / t : 1); x.beginPath(); x.arc(0, 0, s, -1.25, 1.25); x.arc(-s * .45, 0, s * .82, 1.1, -1.1, true); x.closePath();
+        const g = x.createLinearGradient(-s, 0, s, 0); g.addColorStop(0, 'rgba(255,255,255,0)'); g.addColorStop(.55, col); g.addColorStop(1, '#FFFFFF'); x.fillStyle = g; if (!t) { x.shadowColor = col; x.shadowBlur = 18; } x.fill(); x.restore(); }
+      x.restore(); if (Math.random() < .5) X49.pt({ x: cx, y: cy, vx: (Math.random() - .5) * 30, vy: (Math.random() - .5) * 30, g: 0, col: Math.random() < .5 ? col : '#FFFFFF', r: 2, life: 380, k: 'star' }); } }); }
+}
+function rpgMoonfall55(T, col = '#9FC8FF', R = 3) {
+  const RAD = 96 + R * 12, dur = 1700, craters = Array.from({ length: 9 }, () => ({ a: Math.random() * 6.28, d: Math.random() * .7, r: .08 + Math.random() * .14 }));
+  SKX55.push({ t0: performance.now(), d: 0, dur, g: 'moon', col, f: () => ({ a: 1, s: 1, x: 0, y: 0 }), draw: (x, e) => {
+    const t = e * dur, appear = Math.min(1, t / 380), fall = t < 380 ? 0 : Math.min(1, (t - 380) / 420), cy = T.y - 170 + fall * fall * 120, rr = RAD * (.4 + .6 * (1 - Math.pow(1 - appear, 3))) * (1 + (t > 800 && t < 900 ? .06 * Math.sin((t - 800) / 100 * Math.PI) : 0)), al = t < 1350 ? 1 : 1 - (t - 1350) / 350;
+    x.save(); x.globalAlpha = Math.max(0, al) * .95;
+    // แสงฟุ้งรอบดวงจันทร์
+    x.globalCompositeOperation = 'lighter'; const halo = x.createRadialGradient(T.x, cy, rr * .8, T.x, cy, rr * 1.7); halo.addColorStop(0, 'rgba(150,200,255,.55)'); halo.addColorStop(1, 'rgba(150,200,255,0)'); x.fillStyle = halo; x.beginPath(); x.arc(T.x, cy, rr * 1.7, 0, 7); x.fill();
+    // ตัวดวงจันทร์ (โปร่งแสงนิด ๆ)
+    x.globalCompositeOperation = 'source-over'; const body = x.createRadialGradient(T.x - rr * .3, cy - rr * .35, rr * .1, T.x, cy, rr); body.addColorStop(0, 'rgba(250,252,255,.92)'); body.addColorStop(.55, 'rgba(200,222,255,.85)'); body.addColorStop(1, 'rgba(110,150,230,.78)');
+    x.fillStyle = body; x.beginPath(); x.arc(T.x, cy, rr, 0, 7); x.fill();
+    x.save(); x.beginPath(); x.arc(T.x, cy, rr, 0, 7); x.clip(); craters.forEach(c => { const cx = T.x + Math.cos(c.a) * c.d * rr, cyy = cy + Math.sin(c.a) * c.d * rr, r = c.r * rr; const g = x.createRadialGradient(cx + r * .2, cyy + r * .2, 0, cx, cyy, r); g.addColorStop(0, 'rgba(90,120,190,.45)'); g.addColorStop(1, 'rgba(90,120,190,0)'); x.fillStyle = g; x.beginPath(); x.arc(cx, cyy, r, 0, 7); x.fill(); });
+    // หมอกพาดผ่านแนวนอน
+    x.globalCompositeOperation = 'lighter'; for (let i = 0; i < 3; i++) { const yy = cy - rr * .4 + i * rr * .4, sh = ((t / 900 + i * .3) % 1) * rr * 2 - rr; const g = x.createLinearGradient(T.x - rr, 0, T.x + rr, 0); g.addColorStop(0, 'rgba(255,255,255,0)'); g.addColorStop(.5, 'rgba(220,240,255,.25)'); g.addColorStop(1, 'rgba(255,255,255,0)'); x.fillStyle = g; x.fillRect(T.x - rr + sh * .3, yy - 6, rr * 2, 12); } x.restore();
+    x.globalCompositeOperation = 'lighter'; x.strokeStyle = 'rgba(200,230,255,.8)'; x.lineWidth = 3; x.shadowColor = col; x.shadowBlur = 22; x.beginPath(); x.arc(T.x, cy, rr, 0, 7); x.stroke();
+    x.restore(); } });
+  X49.big({ k: 'circle', x: T.x, y: T.y, r: RAD * .9, col, dur: 1500 });
+  for (let i = 0; i < 14; i++) X49.later(i * 25, () => X49.pt({ x: T.x + (Math.random() - .5) * RAD * 2, y: T.y - 170 + (Math.random() - .5) * RAD * 1.6, vx: 0, vy: 0, g: 0, col: '#FFFFFF', r: 2.4, life: 700, k: 'star' }));
+  X49.later(800, () => { X49.big({ k: 'ring', x: T.x, y: T.y, r: RAD * 1.4, col, dur: 600, w: 10 }); X49.big({ k: 'boom', x: T.x, y: T.y - 20, r: RAD, col: '#CFE4FF', dur: 600 }); rpgShake49(16, 500); rpgFlash49('radial-gradient(circle,#CFE4FF66,transparent 70%)', 420); rpgRavenSlash55(T, '#6FA0FF', 4, R, 1.4); });
+  X49.later(1350, () => { for (let i = 0; i < 26; i++) { const a = Math.random() * 6.28; X49.pt({ x: T.x + Math.cos(a) * RAD * .6, y: T.y - 50 + Math.sin(a) * RAD * .6, vx: Math.cos(a) * 140, vy: Math.sin(a) * 100 - 40, g: 60, col: i % 2 ? '#FFFFFF' : col, r: 2.6, life: 700, k: 'star' }); } });
+}
+rpgSigFx55 = (f => function (k, P, T, rank = 1) {
+  const sg = rpgSig55(k); if (!sg?.lunar) return f.apply(this, arguments);
+  const R = Math.min(4, rank), col = sg.c;
+  if (sg.m === 'moonfall') { rpgMoonfall55(T, col, R); return; }
+  const r = f.apply(this, arguments);
+  try { if (sg.m === 'aura') { X49.big({ k: 'ring', x: P.x, y: P.y, r: 70, col, dur: 700, w: 6 }); return r; }
+    rpgCrescentWave55(P, T, col, sg.m === 'slashx' ? 3 : 2, R, sg.g === 'crescent' && sg.m === 'slashx' ? 1.6 : 1);
+    X49.later(240, () => rpgRavenSlash55(T, col, 2 + Math.min(2, R), R)); X49.later(500, () => rpgRavenSlash55(T, '#A8C4FF', 2, R, 1.2));
+    for (let i = 0; i < 10; i++) X49.later(250 + i * 40, () => X49.pt({ x: T.x + (Math.random() - .5) * 90, y: T.y - 30 + (Math.random() - .5) * 50, vx: 0, vy: -20, g: 0, col: '#FFFFFF', r: 2.2, life: 520, k: 'star' }));
+  } catch (e) {} return r; })(rpgSigFx55);
 
 /* rpg-v55snd.js — เสียงชุดใหม่ (สังเคราะห์ในเบราว์เซอร์ทั้งหมด ไม่มีไฟล์ลิขสิทธิ์)
    · เพลงประจำแผนที่: เรียบเรียงจากเพลงคลาสสิกที่หมดลิขสิทธิ์แล้ว (ประพันธ์ก่อน ค.ศ. 1929 / ผู้ประพันธ์เสียชีวิตเกิน 70 ปี) + ทำนองแต่งเอง
@@ -25379,6 +25421,7 @@ rpgCharAt = (f => function (x, c) {
   if (P.charge > 0) { const hx = px + P.ox + A.face * 14, hy = py + P.oy - 30, r = 4 + P.charge * (8 + A.rank * 2); x.save(); x.globalCompositeOperation = 'lighter'; const g = x.createRadialGradient(hx, hy, 0, hx, hy, r * 2.2); g.addColorStop(0, '#FFFFFF'); g.addColorStop(.3, A.col); g.addColorStop(1, 'rgba(0,0,0,0)'); x.fillStyle = g; x.beginPath(); x.arc(hx, hy, r * 2.2, 0, 7); x.fill(); x.restore(); }
   if (A.type === 'hack') { const e2 = Math.min(1, e / .15) * (e > .85 ? (1 - e) / .15 : 1); x.save(); x.globalCompositeOperation = 'lighter'; for (let i = 0; i < 3; i++) { const a = now / 700 + i * 2.094, hx = px + P.ox + Math.cos(a) * 30, hy = py + P.oy - 30 + Math.sin(a) * 9, front = Math.sin(a) > 0;
       if (front) continue; x.globalAlpha = .75 * e2; x.fillStyle = 'rgba(40,255,200,.18)'; x.strokeStyle = A.col; x.lineWidth = 1.4; x.beginPath(); x.roundRect(hx - 11, hy - 8, 22, 15, 2); x.fill(); x.stroke(); x.fillStyle = A.col; for (let q = 0; q < 3; q++) x.fillRect(hx - 8, hy - 5 + q * 4, 6 + ((i * 7 + q * 5 + Math.floor(now / 90)) % 10), 1.4); } x.restore(); }
+  if (A.sg?.lunar && P.alpha > .2) { x.save(); x.globalCompositeOperation = 'lighter'; const bx = px + P.ox, by = py + P.oy - 20; for (let i = 0; i < 6; i++) { const ph = now / 140 + i * 1.7, ax = bx + Math.sin(ph) * 7, ay = by + 10 - i * 7 - (now / 30 + i * 13) % 18, r = 22 - i * 2; const g = x.createRadialGradient(ax, ay, 0, ax, ay, r); g.addColorStop(0, 'rgba(110,160,255,.28)'); g.addColorStop(1, 'rgba(60,90,255,0)'); x.fillStyle = g; x.beginPath(); x.arc(ax, ay, r, 0, 7); x.fill(); } x.restore(); }
   draw(P.ox, P.oy, P.alpha, false);
   if (A.type === 'hack') { const e2 = Math.min(1, e / .15) * (e > .85 ? (1 - e) / .15 : 1); x.save(); x.globalCompositeOperation = 'lighter'; for (let i = 0; i < 3; i++) { const a = now / 700 + i * 2.094, hx = px + P.ox + Math.cos(a) * 30, hy = py + P.oy - 30 + Math.sin(a) * 9; if (Math.sin(a) <= 0) continue;
       x.globalAlpha = .85 * e2; x.fillStyle = 'rgba(40,255,200,.22)'; x.strokeStyle = A.col; x.lineWidth = 1.4; x.beginPath(); x.roundRect(hx - 11, hy - 8, 22, 15, 2); x.fill(); x.stroke(); x.fillStyle = A.col; for (let q = 0; q < 3; q++) x.fillRect(hx - 8, hy - 5 + q * 4, 6 + ((i * 7 + q * 5 + Math.floor(now / 90)) % 10), 1.4); } x.restore(); }
