@@ -5824,7 +5824,7 @@ if (typeof module !== 'undefined') module.exports = ExamParser;
 </script>
 <script>
 /* โลโก้: ภาพครูปลื้ม (ไฟล์ต้นฉบับ src/logo.svg ฝังตอน build) */
-const APP_VER = '54.2 · 28 พ.ย. 2569';
+const APP_VER = '55.0 · 28 พ.ย. 2569';
 let LOGO_N = 0;
 function logoSVG() { const k = 'L' + (++LOGO_N); return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><defs><linearGradient id="lgb" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3B9BFF"/><stop offset=".5" stop-color="#0A5BE0"/><stop offset="1" stop-color="#062C78"/></linearGradient><linearGradient id="lgs" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset=".6" stop-color="#FFF4D6"/><stop offset="1" stop-color="#FFD978"/></linearGradient><radialGradient id="lgc" cx=".3" cy=".08" r=".75"><stop offset="0" stop-color="#fff" stop-opacity=".55"/><stop offset=".5" stop-color="#fff" stop-opacity=".08"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient></defs><rect width="48" height="48" rx="13" fill="url(#lgb)"/><rect width="48" height="48" rx="13" fill="url(#lgc)"/><rect x=".75" y=".75" width="46.5" height="46.5" rx="12.3" fill="none" stroke="#fff" stroke-opacity=".45" stroke-width="1.2"/><g fill="none" stroke="#04235F" stroke-opacity=".35" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" transform="translate(0 1.2)"><path d="M21.2 17 C19.8 14.6 17.4 13.6 14.8 13.6 C11 13.6 8.6 15.6 8.6 18.5 C8.6 21.8 11.6 22.9 14.9 23.9 C18.6 25 21.6 26.4 21.6 29.8 C21.6 33 18.8 34.6 15.1 34.6 C12 34.6 9.5 33.4 8 31.1"/><path d="M26.6 14 L39.6 34.2 M39.6 14 L26.6 34.2"/></g><g fill="none" stroke="url(#lgs)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M21.2 17 C19.8 14.6 17.4 13.6 14.8 13.6 C11 13.6 8.6 15.6 8.6 18.5 C8.6 21.8 11.6 22.9 14.9 23.9 C18.6 25 21.6 26.4 21.6 29.8 C21.6 33 18.8 34.6 15.1 34.6 C12 34.6 9.5 33.4 8 31.1"/><path d="M26.6 14 L39.6 34.2 M39.6 14 L26.6 34.2"/></g></svg>`.replace('<svg ', '<svg class="logo" aria-hidden="true" ').replace(/\b(lg[bsc])\b/g, '$1' + k); }
 /* =====================================================================
@@ -12132,14 +12132,14 @@ const RPG_NPCS = {
     hi: ['สวัสดีจ้ะ วันนี้ทบทวนบทเรียนหรือยัง?', 'ตอบคำถามถูก สกิลจะแรงขึ้นมากเลยนะ', 'มีภารกิจประจำวันมาให้ทำอีกแล้ว ไปลุยกันเลย!'],
     tips: ['รหัสผ่านที่ดีควรยาว 8 ตัวขึ้นไป มีทั้งตัวพิมพ์เล็ก ใหญ่ ตัวเลข และสัญลักษณ์', 'ลิงก์แปลก ๆ ที่บอกว่าได้รางวัล มักเป็นฟิชชิง อย่าคลิกนะ', 'ก่อนแชร์ข่าว ตรวจสอบแหล่งที่มาก่อนทุกครั้ง', 'อย่าบอกรหัสผ่านใคร แม้แต่เพื่อนสนิท', 'อัปเดตโปรแกรมสม่ำเสมอ ช่วยปิดช่องโหว่ให้มัลแวร์', 'คิดก่อนโพสต์ ข้อมูลบนเน็ตลบยากมาก'] },
   mina: { n: 'มีน่า นักวิจัยสัตว์', x: 23.6, y: 18.5, job: 'summon', look: { g: 'f', skin: 1, hs: 3, hc: 2, os: 1, oc: 1 }, gear: 3,
-    hi: ['มอนสเตอร์ที่หมดแรงแล้ว ใช้ตาข่ายจับมาเป็นสัตว์เลี้ยงได้นะ!', 'ตาข่ายยิ่งดี โอกาสจับยิ่งสูง ส่วนบอสต้องใช้ตาข่ายเทพเท่านั้น', 'ให้อาหารสัตว์เลี้ยงบ่อย ๆ เขาจะสู้เก่งขึ้นเพราะรักเรา~'] },
+    hi: ['สัตว์เลี้ยงได้จากการฟักไข่นะ! ไข่ธรรมดากับไข่หายากซื้อได้ที่ฟาร์มสัตว์', 'ส่วนไข่ตำนานต้องไปล้มบอสประจำแผนที่เท่านั้น', 'ให้อาหารสัตว์เลี้ยงบ่อย ๆ เขาจะสู้เก่งขึ้นเพราะรักเรา~'] },
 };
 /* ---------- ภารกิจหลัก (เรื่องราว) ---------- */
 // k: kill (z โซน · m ชื่อมอนสเตอร์ · boss) · cap จับสัตว์ · lv ถึงเลเวล · quiz ตอบถูก
 const RPG_MAINQ = [
   { t: 'ก้าวแรกของผู้กล้า', k: 'kill', z: 'forest', n: 3, say: ['ทุ่งหญ้าทางตะวันออกเต็มไปด้วยบั๊ก ลองไปปราบมาสัก 3 ตัวสิ', 'ถ้าเจ็บก็กลับมาที่น้ำพุนะ กด Space ใกล้น้ำพุเพื่อฟื้นพลัง'], r: { exp: 40, gold: 60, it: { hp1: 3 } } },
   { t: 'บั๊กกวนเมือง', k: 'kill', m: 'หนอนบั๊ก', n: 5, say: ['หนอนบั๊กกัดกินโค้ดของเมืองจนพังหมดแล้ว!', 'ไปจัดการหนอนบั๊ก 5 ตัว แล้วกลับมารายงานข้า'], r: { exp: 90, gold: 90, it: { net1: 2 } } },
-  { t: 'เพื่อนคู่ใจ', k: 'cap', n: 1, say: ['ผู้กล้าที่ดีต้องมีเพื่อนร่วมทาง', 'ชนะมอนสเตอร์แล้วโยนตาข่ายจับมาสักตัว มีน่าที่ลานน้ำพุจะช่วยสอนเอง'], r: { exp: 140, gold: 120, it: { food: 3, net1: 3 } } },
+  { t: 'เพื่อนคู่ใจ', k: 'cap', n: 1, say: ['ผู้กล้าที่ดีต้องมีเพื่อนร่วมทาง', 'ไปซื้อไข่ที่ฟาร์มสัตว์มหัศจรรย์ แล้วฝากลุงฟาร์มฟักสักฟอง ได้เพื่อนคู่ใจแน่นอน'], r: { exp: 140, gold: 120, it: { food: 3, net1: 3 } } },
   { t: 'ราชาบั๊กยักษ์', k: 'kill', boss: 'forest', n: 1, lv: 16, say: ['ลึกสุดของป่า (ป่าลึกราชาบั๊ก) มีราชาบั๊กยักษ์ซ่อนอยู่', 'มันแข็งแกร่งมาก ชวนเพื่อนตั้งทีมไปด้วยก็ดีนะ'], r: { exp: 900, gold: 600, it: { hp2: 3, w: 1 } } },
   { t: 'ถ้ำมืดมัลแวร์', k: 'kill', z: 'cave', n: 8, lv: 15, say: ['มีรายงานว่ามัลแวร์ซ่อนตัวอยู่ในถ้ำทางเหนือของเมือง', 'ลงไปสำรวจและปราบพวกมัน 8 ตัว'], r: { exp: 2000, gold: 900, it: { net2: 2 } } },
   { t: 'หน้ากากฟิชชิง', k: 'kill', m: 'ผีฟิชชิง', n: 5, say: ['ผีฟิชชิงหลอกชาวเมืองให้กดลิงก์ปลอม!', 'จำไว้นะ ลิงก์แปลก ๆ อย่ากด ไปปราบมันซะ 5 ตัว'], r: { exp: 3200, gold: 1300, it: { mp2: 3 } } },
@@ -12155,7 +12155,7 @@ const RPG_MAINQ = [
 ];
 const RPG_DAILYT = [
   { k: 'kill', t: 'ล่ามอนสเตอร์', n: [8, 12] }, { k: 'quiz', t: 'ตอบคำถามบทเรียนถูกในการต่อสู้', n: [3, 6] },
-  { k: 'skill', t: 'ใช้สกิลในการต่อสู้', n: [5, 10] }, { k: 'cap', t: 'จับสัตว์เลี้ยง', n: [1, 1] },
+  { k: 'skill', t: 'ใช้สกิลในการต่อสู้', n: [5, 10] }, { k: 'cap', t: 'ฟักไข่ได้สัตว์เลี้ยง', n: [1, 1] },
 ];
 
 /* =====================================================================
@@ -12397,6 +12397,7 @@ Object.assign(ACT, { 'rpg-enter': () => rpgEnter() });
 /* =====================================================================
    แผนที่ · 0 หญ้า 1 ทาง 2 ต้นไม้ 3 น้ำ 4 หิน/ผนัง 5 ประตู 6 ดอกไม้ 7 ทางออก 8 พื้นบ้าน 9 พื้นหิน 10 ลาวา 11 พุ่ม 12 ผนังบ้าน
    ===================================================================== */
+var RPG_NOCAP55 = true;   // v55: เลิกระบบจับสัตว์ (ได้สัตว์จากไข่เท่านั้น)
 const RPG_SOLID = new Set([2, 3, 4, 10, 12, 14]);
 function rpgRng(seed) { let a = 0; for (const ch of String(seed)) a = (a * 31 + ch.charCodeAt(0)) >>> 0; return () => { a |= 0; a = a + 0x6D2B79F5 | 0; let t = Math.imul(a ^ a >>> 15, 1 | a); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }; }
 const RPG_MAPS = {};
@@ -12555,12 +12556,13 @@ function rpgSpawn() {
   const mp = RS.map, list = mp.pool; if (!list) return;
   for (let k = 0; k < 40; k++) {
     const x = 2 + Math.random() * (mp.W - 4), y = 2 + Math.random() * (mp.H - 4);
-    if (rpgSolid(x, y) || Math.hypot(x - R.save.x, y - R.save.y) < 6) continue;
+    if (!rpgMonFree(x, y) || Math.hypot(x - R.save.x, y - R.save.y) < 6) continue;
     const [n, ic, lv0] = list[Math.floor(Math.random() * list.length)];
     RS.mon.push({ n, ic, lv: Math.max(1, Math.min(RPG_MAXLV, lv0 + Math.floor(Math.random() * 3) - 1)), x, y, hx: x, hy: y, t: Math.random() * 3, vx: 0, vy: 0 }); return;
   }
 }
 function rpgTile(x, y) { const mp = RS.map; return (mp.m[Math.floor(y)] || [])[Math.floor(x)] ?? 2; }
+function rpgMonFree(x, y) { const r = .3; return !rpgSolid(x, y) && !rpgSolid(x - r, y) && !rpgSolid(x + r, y) && !rpgSolid(x, y - .18) && !rpgSolid(x, y + .2) && !rpgSolid(x - r, y + .2) && !rpgSolid(x + r, y + .2); }
 function rpgSolid(x, y) {
   if (RPG_SOLID.has(rpgTile(x, y))) return true;
   if (RS.map.scene === 'house') return (R.save.house || []).some(f => f.i !== 'f2' && Math.floor(x) === f.x && Math.floor(y) === f.y);
@@ -12609,7 +12611,9 @@ function rpgUpdate(dt, now) {
     if (!mo.net) { mo.t -= dt;
     if (mo.t <= 0) { mo.t = 1 + Math.random() * 2.5; const a = Math.random() * 7, T = typeof rpgMonTgt52 === 'function' ? rpgMonTgt52(mo) : (!s.peace && !mo.boss && Math.hypot(s.x - mo.x, s.y - mo.y) < 4.5 ? { x: s.x, y: s.y } : null), chase = mo.chase = !!T; mo.tgtId = T?.id; mo.vx = chase ? (T.x - mo.x) * .25 : Math.cos(a) * .7; mo.vy = chase ? (T.y - mo.y) * .25 : Math.sin(a) * .7; if (mo.boss) mo.vx = mo.vy = 0; }
     const nx = mo.x + mo.vx * dt, ny = mo.y + mo.vy * dt;
-    if (!rpgSolid(nx, ny) && Math.hypot(nx - mo.hx, ny - mo.hy) < 6) { mo.x = nx; mo.y = ny; } }
+    const homeOk = (a, b) => Math.hypot(a - mo.hx, b - mo.hy) < 6; let moved = false;
+    if (rpgMonFree(nx, mo.y) && homeOk(nx, mo.y)) { mo.x = nx; moved = true; } if (rpgMonFree(mo.x, ny) && homeOk(mo.x, ny)) { mo.y = ny; moved = true; }
+    if (!moved && !mo.boss) { mo.t = Math.min(mo.t, .15); } }
     if (mo.boss && !s.peace && now > (RS.safeT || 0) && Math.hypot(s.x - mo.x, s.y - mo.y) < 1.3) { RS.keys = {}; RS.joy = null; RS.walkTo = null; rpgBattle(mo); break; }
   }
   if ((RS.moved && now - RS.sentAt > 280 || now - RS.sentAt > 5000)) { RS.sentAt = now; RS.moved = false; rpgPresenceSend(); }
@@ -14828,7 +14832,7 @@ function rpgCreatorDraw() {
       <div class="cr-st">${Object.entries(x.st).map(([s, v]) => `<i title="${RPG_STATN[s][0]}" style="--v:${v * 9}%">${RPG_STATN[s][1]}</i>`).join('')}</div></button>`).join('')}</div>
     ${j ? `<div class="cr-skills" style="--c:${j.col}"><b>สกิลของ${j.n}</b>${j.sk.map((k, i) => `<span><em>${k[1]}</em>${k[0]}<small>Lv.${[1, 6, 14][i] ?? 1}</small></span>`).join('')}<small class="cr-br">ถึง Lv.25 เลือกอาชีพต่อ: ${(RPG_BASE[C.job] || []).map(b => RPG_JOBS[b].ic + ' ' + RPG_CLASS[b][0][0]).join(' · ')}</small></div>` : '<p class="cr-hint">แตะเลือกอาชีพ 1 อย่าง · เปลี่ยนภายหลังไม่ได้ เลือกให้ตรงสไตล์นะ</p>'}`;
   if (C.step === 2) body = `<p class="cr-hint">เลือกสัตว์เลี้ยงตัวแรก เขาจะเดินตามและช่วยสู้ในทุกการต่อสู้</p><div class="cr-pets">${RPG_STARTER.map(k => { const P = RPG_PETS[k]; return `<button class="cr-pet ${C.pet === k ? 'on' : ''}" data-r="cr-pet" data-p="${k}"><span>${P.ic}</span><b>${P.n}</b><small>${P.heal ? '💚 ฟื้นพลังให้เรา' : P.guard ? '🛡️ ช่วยกันดาเมจ' : '⚔️ โจมตีเร็ว'}</small></button>`; }).join('')}</div>
-    <div class="cr-start"><b>ของติดตัวเริ่มต้น</b><span>${RPG_WT[j?.wt || 'sword'].ic} ${RPG_WT[j?.wt || 'sword'].n[0]}</span><span>👕 ชุดประจำอาชีพ</span><span>🧪 ยาแดง ×5</span><span>💧 ยาฟ้า ×3</span><span>🎣 ตาข่าย ×3</span><span>🍖 เนื้อย่าง ×3</span></div>`;
+    <div class="cr-start"><b>ของติดตัวเริ่มต้น</b><span>${RPG_WT[j?.wt || 'sword'].ic} ${RPG_WT[j?.wt || 'sword'].n[0]}</span><span>👕 ชุดประจำอาชีพ</span><span>🧪 ยาแดง ×5</span><span>💧 ยาฟ้า ×3</span><span>🍖 เนื้อย่าง ×3</span></div>`;
   el.innerHTML = `<div class="cr-stage"><canvas id="cr-cv"></canvas><div class="cr-name"><b>${esc(rpgName())}</b>${j ? `<span style="--c:${j.col}">${j.ic} ${j.n}</span>` : '<span>ยังไม่เลือกอาชีพ</span>'}</div>
       ${j ? `<button class="cr-aura ${C.aura ? 'on' : ''}" data-r="cr-aura">${C.aura ? '✦ ระดับตำนาน' : '✧ ดูออร่าระดับตำนาน'}</button>` : ''}</div>
     <div class="cr-side"><h2>สร้างฮีโร่ของคุณ</h2><div class="cr-steps">${steps.map((s, i) => `<span class="${i === C.step ? 'on' : i < C.step ? 'done' : ''}"><i>${i < C.step ? '✓' : i + 1}</i>${s}</span>`).join('')}</div>
@@ -14853,7 +14857,7 @@ function rpgCreatorDone() {
   s.job = C.job; s.outfit = { ...C.look, hat: s.outfit?.hat || '' };
   s.st = { str: 0, int: 0, vit: 0, agi: 0 }; s.pts = Math.max(s.pts || 0, (s.lvl - 1) * RPG_PTS);
   const w = `w_${j.wt}_0`; rpgGive(w); rpgGive('a_0'); s.equip = { w, a: 'a_0' };
-  rpgGive('hp1', 5); rpgGive('mp1', 3); rpgGive('net1', 3); rpgGive('food', 3);
+  rpgGive('hp1', 5); rpgGive('mp1', 3); rpgGive('food', 3);
   if (s.pets.length < 12) { const p = rpgPetFrom(C.pet); s.pets.unshift(p); s.petOut = p.id; }
   const st = rpgStats(); s.hp = st.mhp; s.mp = st.mmp; s.scene = 'town'; s.x = 20.5; s.y = 17.5;
   RS.creating = false; document.getElementById('rpg-cr')?.remove();
@@ -14965,8 +14969,8 @@ function rpgTalk(id) {
       { l: '📜 ดูภารกิจประจำวัน', f: () => { rpgDlgClose(); rpgPanel('quest'); } }, { l: '💡 ขอเกร็ดความรู้อีก', f: () => rpgDlg(id, [{ t: `💡 ${tip()}`, ch: [close] }]) }, close] }];
   }
   if (id === 'mina') {
-    nodes = [{ t: hi }, { t: 'ชนะแล้วกดปุ่มตาข่ายในหน้าสรุปผลได้เลย ยิ่งมอนสเตอร์เลเวลสูง ยิ่งจับยากนะ', ch: [
-      ...(s.minaDay !== rpgToday() ? [{ l: '🎣 ขอตาข่ายฟรีวันนี้', f: () => { s.minaDay = rpgToday(); rpgGive('net1', 2); rpgSave(); rpgDlg(id, [{ t: 'เอาไปเลย 🎣 ตาข่ายเชือก 2 ผืน! พรุ่งนี้มาเอาใหม่ได้นะ', ch: [close] }]); } }] : []),
+    nodes = [{ t: hi }, { t: 'ไข่ธรรมดากับไข่หายากซื้อได้ที่ร้านนี้เลย ส่วนไข่ตำนานต้องไปล้มบอสประจำแผนที่ แล้วเอามาฝากลุงฟักนะ', ch: [
+      ...(false ? [{ l: '🎣 ขอตาข่ายฟรีวันนี้', f: () => { s.minaDay = rpgToday(); rpgGive('net1', 2); rpgSave(); rpgDlg(id, [{ t: 'เอาไปเลย 🎣 ตาข่ายเชือก 2 ผืน! พรุ่งนี้มาเอาใหม่ได้นะ', ch: [close] }]); } }] : []),
       { l: '🥚 สัตว์ในไข่มีอะไรบ้าง?', f: () => rpgDlg(id, [{ t: 'ไข่ธรรมดามี 🐧🐢🐥🐹 · ไข่หายากมี 🦊🦉🐺🐯 · ไข่ตำนานมี 🐲🦄🦚 ยิ่งหายากยิ่งเก่งจ้า', ch: [close] }]) }, close] }];
   }
   rpgDlg(id, nodes);
@@ -15418,8 +15422,8 @@ async function rpgWin() {
   if (mo.boss) { s.stats.boss++; RS.boss[RS.map.scene] = performance.now() + 5 * 60000; }
   const drops = [], roll = (p, id) => { if (Math.random() < p) { rpgGive(id); drops.push(id); } };
   const pot = mo.lv >= 55 ? 'hp4' : mo.lv >= 30 ? 'hp3' : mo.lv >= 10 ? 'hp2' : 'hp1';
-  roll(.2, pot); roll(.1, mo.lv >= 20 ? 'mp2' : 'mp1'); roll(.25, mo.lv >= 25 ? 'chip' : 'gem'); roll(.1, 'food'); roll(.06, mo.lv >= 15 ? 'net2' : 'net1');
-  if (mo.boss) { roll(1, mo.lv >= 60 ? 'net4' : 'egg2'); roll(.5, 'elx'); } else roll(.015 + mo.lv * .0006, mo.lv >= 40 ? 'egg3' : mo.lv >= 15 ? 'egg2' : 'egg1');
+  roll(.2, pot); roll(.1, mo.lv >= 20 ? 'mp2' : 'mp1'); roll(.25, mo.lv >= 25 ? 'chip' : 'gem'); roll(.1, 'food');
+  if (mo.boss) { roll(.5, 'elx'); }
   const Z = RPG_ZONES[RS.map.scene], pool = [...(RPG_REGIONS[Z?.region]?.drops || []), ...(Z?.dungeon ? RPG_DUNGEONS[Z.dungeon].drops : [])].filter(id => (RPG_ITEMS[id].lv || 1) <= s.lvl + 15);
   const rare = []; for (let r = 0; r < (mo.boss ? 2 : 1); r++) if (pool.length && Math.random() < (mo.boss ? .6 : .03 + (Z?.zi || 1) * .005 + (Z?.dungeon ? .04 : 0))) { const id = pool[Math.floor(Math.random() * pool.length)]; rpgGive(id); rare.push(id); }
   const pet = rpgPet(); if (pet) { pet.exp += Math.round(ms.exp * .6); pet.hunger = Math.max(0, pet.hunger - 5); while (pet.exp >= rpgNeed(pet.lv) * .6 && pet.lv < RPG_MAXLV) { pet.exp -= Math.round(rpgNeed(pet.lv) * .6); pet.lv++; } }
@@ -15440,7 +15444,7 @@ function rpgEndDraw() {
   const rw = B.reward, s = R.save, nets = ['net1', 'net2', 'net3', 'net4'].filter(i => s.inv[i] && rpgCapChance(i) > 0);
   const chips = [`✨ +${rw.exp.toLocaleString()} EXP${rw.pb ? ` (ทีม +${Math.round(rw.pb * 100)}%)` : ''}`, `💰 +${rw.gold.toLocaleString()}`, ...rw.drops.map(d => `${RPG_ITEMS[d].ic} ${RPG_ITEMS[d].n}`)];
   const rareH = (rw.rare || []).map(id => { const it = RPG_ITEMS[id], g = RPG_GRADE[it.g || 0]; return `<div class="re-rare" style="--gc:${g.c}"><span>${it.wt === 'any' ? RPG_WT[rpgJob().wt].ic : it.ic}</span><div><small>ของดรอปหายาก · ไม่มีขายในร้าน</small><b>${esc(it.n)}</b><em>${g.n} · Lv.${it.lv}</em></div></div>`; }).join('');
-  const cap = B.cap ? `<div class="re-cap ${B.cap}">${B.cap === 'ok' ? `🎉 จับ ${B.mo.ic} ${esc(B.mo.n)} สำเร็จ! เพิ่มเป็นสัตว์เลี้ยงแล้ว` : `💨 ตาข่ายขาด! ${esc(B.mo.n)} หนีไปแล้ว`}</div>`
+  const cap = RPG_NOCAP55 ? '' : B.cap ? `<div class="re-cap ${B.cap}">${B.cap === 'ok' ? `🎉 จับ ${B.mo.ic} ${esc(B.mo.n)} สำเร็จ! เพิ่มเป็นสัตว์เลี้ยงแล้ว` : `💨 ตาข่ายขาด! ${esc(B.mo.n)} หนีไปแล้ว`}</div>`
     : B.capping ? '<div class="re-cap ing">กำลังจับ…</div>'
     : s.pets.length >= 12 ? '<div class="re-cap no">สัตว์เลี้ยงเต็ม 12 ตัวแล้ว</div>'
     : nets.length ? `<div class="re-capbox"><b>${B.mo.ic} ${esc(B.mo.n)} หมดแรงแล้ว · จับเป็นสัตว์เลี้ยงไหม?</b><div>${nets.map(i => `<button class="cap-gem" data-r="cap" data-i="${i}"><span>${RPG_ITEMS[i].ic}</span><em>${Math.round(rpgCapChance(i) * 100)}%</em><small>×${s.inv[i]}</small></button>`).join('')}</div></div>`
@@ -17258,7 +17262,7 @@ function rpgGuideTarget() {
   if (!s.q.acc) { if (Q.lv && s.lvl < Q.lv) return { scene: rpgBestMap(rpgBestZone()), hunt: 1, txt: `ฝึกเลเวลให้ถึง Lv.${Q.lv}` }; return npc(Q.g, `รับภารกิจจาก ${RPG_NPCS[Q.g].n}`); }
   if (s.q.prog >= Q.n) return npc(Q.g, `กลับไปรายงาน ${RPG_NPCS[Q.g].n}`);
   if (Q.k === 'kill') { const sc = Q.boss ? Q.boss + '4' : Q.m ? rpgZoneOfMon(Q.m) : Q.z ? rpgBestMap(Q.z) : null; if (sc) return { scene: sc, hunt: 1, boss: !!Q.boss, txt: Q.boss ? `ปราบบอสที่ ${RPG_ZONES[sc].n}` : `ล่ามอนสเตอร์ที่ ${RPG_ZONES[sc].n}` }; }
-  if (Q.k === 'cap') return { scene: RPG_ZONES[RS.map?.scene]?.region ? RS.map.scene : 'forest1', hunt: 1, txt: 'ชนะมอนสเตอร์แล้วโยนตาข่ายจับ' };
+  if (Q.k === 'cap') return { scene: 'town', txt: 'ซื้อไข่ที่ฟาร์มสัตว์มหัศจรรย์ แล้วฝากลุงฟาร์มฟัก' };
   return null;
 }
 function rpgRoute(from, to) {
@@ -19212,7 +19216,7 @@ function rpgHatch(s = R.save) {
 const rpgWin31 = rpgWin;
 rpgWin = function () {
   const B = RS.battle, mo = B?.mo, s = R.save; const r = rpgWin31.apply(this, arguments);
-  try { if (mo && s) { const p = mo.boss ? .5 : .02 + mo.lv * .0006; if (Math.random() < p) { const id = mo.boss ? (mo.lv >= 40 ? 'egg3' : 'egg2') : mo.lv >= 40 ? (Math.random() < .25 ? 'egg3' : 'egg2') : mo.lv >= 15 ? 'egg2' : 'egg1'; rpgGive(id); setTimeout(() => rpgSay(`🥚 ได้ ${RPG_ITEMS[id].n}! นำไปฝากลุงฟาร์มที่ฟาร์มสัตว์มหัศจรรย์เพื่อฟัก`, 3600), 1600); } } } catch (e) {}
+  try { if (mo && s) { const p = mo.boss ? 1 : 0; if (Math.random() < p) { const r0 = Math.random(), id = mo.lv >= 40 ? (r0 < .45 ? 'egg3' : r0 < .8 ? 'egg2' : 'egg1') : mo.lv >= 15 ? (r0 < .2 ? 'egg3' : r0 < .7 ? 'egg2' : 'egg1') : (r0 < .08 ? 'egg3' : r0 < .45 ? 'egg2' : 'egg1'); rpgGive(id); setTimeout(() => rpgSay(`🥚 ได้ ${RPG_ITEMS[id].n}! นำไปฝากลุงฟาร์มที่ฟาร์มสัตว์มหัศจรรย์เพื่อฟัก`, 3600), 1600); } } } catch (e) {}
   return r;
 };
 function rpgHatchHTML() {
@@ -19231,7 +19235,7 @@ function rpgHatchTake(i) {
   const s = R.save, L = rpgHatch(), h = L[i]; if (!h || Date.now() < h.t1) return;
   if ((s.pets || []).length >= 12) return rpgSay('สัตว์เลี้ยงเต็ม 12 ตัวแล้ว ปล่อยบางตัวก่อนนะ');
   const it = RPG_ITEMS[h.id], sp = it.pool[Math.floor(Math.random() * it.pool.length)], pet = rpgPetFrom(sp);
-  s.pets.push(pet); if (!s.petOut) s.petOut = pet.id; L.splice(i, 1); rpgQEvent('hatch');
+  s.pets.push(pet); if (!s.petOut) s.petOut = pet.id; L.splice(i, 1); rpgQEvent('hatch'); rpgQEvent('cap');
   rpgSay(`🎉 ไข่ฟักแล้ว! ได้ ${pet.ic} ${pet.n}`, 3500); rpgConfetti(); rpgSfx('lvl'); rpgHud(); rpgSave(); rpgPanelKeep();
 }
 setInterval(() => {
@@ -19430,7 +19434,7 @@ rpgPanel = function (k, arg) {
   if (k === 'pets') { const L = rpgHatch(), h3 = p.querySelector('.rp-card h3'); p.querySelector('.rp-egg')?.remove();
     const now = Date.now(), txt = L.length ? L.map(h => `${RPG_ITEMS[h.id].n} ${now >= h.t1 ? '✅ พร้อมรับ' : 'เหลือ ' + rpgFmtDur(h.t1 - now)}`).join(' · ') : 'ยังไม่ได้ฝากไข่';
     h3?.insertAdjacentHTML('afterend', `<div class="rp-egg2"><b>🥚 ฟักไข่กับลุงฟาร์ม</b><span>${esc(txt)}</span><small>ได้ไข่จากการชนะมอนสเตอร์ → ไปฟาร์มสัตว์มหัศจรรย์ในเมือง → คุยกับลุงฟาร์ม → ฝากฟักไข่</small></div>`);
-    p.querySelectorAll('.rp-p').forEach(el => { if (/ซื้อไข่ที่ฟาร์ม/.test(el.textContent)) el.textContent = 'ชนะมอนสเตอร์แล้วโยน 🎣 ตาข่ายเพื่อจับเป็นสัตว์เลี้ยง · หรือฝากไข่ที่ได้จากมอนสเตอร์ให้ลุงฟาร์มฟัก'; }); }
+    p.querySelectorAll('.rp-p').forEach(el => { if (/ซื้อไข่ที่ฟาร์ม/.test(el.textContent)) el.textContent = 'ซื้อไข่ธรรมดา/หายากที่ฟาร์มสัตว์ หรือล้มบอสประจำแผนที่เพื่อลุ้นไข่ทุกระดับ (ไข่ตำนานได้จากบอสเท่านั้น) แล้วฝากลุงฟาร์มฟัก'; }); }
   if (RPG_NPCS[k]?.secret || (k || '').startsWith('sec_')) { R.save.secret = R.save.secret || {}; if (!R.save.secret[k]) { R.save.secret[k] = 1; rpgSay('🗝️ พบร้านลับ! ของระดับสูงขายที่นี่ · แผนที่ใหญ่จะจำตำแหน่งไว้ให้', 3600); rpgSave(); } }
   return r;
 };
@@ -19439,7 +19443,7 @@ const rpgTalk31 = rpgTalk;
 rpgTalk = function (id) {
   const close = { l: 'ไว้มาใหม่นะ', f: () => rpgDlgClose() };
   if (id === 'm_egg') { rpgSfx('click'); const L = rpgHatch(), ready = L.filter(h => Date.now() >= h.t1).length;
-    return rpgDlg(id, [{ t: ready ? `ไข่ของเจ้าฟักออกมาแล้ว ${ready} ตัว! มารับไปเลย` : 'ไข่ที่ได้จากมอนสเตอร์ ฝากข้าฟักได้นะ ข้าจะดูแลจนกว่าจะออกมาเป็นตัว', ch: [{ l: ready ? '🐣 รับสัตว์ที่ฟักแล้ว' : '🥚 ฝากฟักไข่', f: () => { rpgDlgClose(); rpgPanel('hatch'); } }, { l: '🛒 ร้านอาหาร & ตาข่าย', f: () => { rpgDlgClose(); rpgPanel('egg'); } }, close] }]); }
+    return rpgDlg(id, [{ t: ready ? `ไข่ของเจ้าฟักออกมาแล้ว ${ready} ตัว! มารับไปเลย` : 'ไข่ที่ซื้อจากร้านหรือได้จากบอส ฝากข้าฟักได้นะ ข้าจะดูแลจนกว่าจะออกมาเป็นตัว', ch: [{ l: ready ? '🐣 รับสัตว์ที่ฟักแล้ว' : '🥚 ฝากฟักไข่', f: () => { rpgDlgClose(); rpgPanel('hatch'); } }, { l: '🛒 ร้านอาหาร & ตาข่าย', f: () => { rpgDlgClose(); rpgPanel('egg'); } }, close] }]); }
   if (id === 'm_gacha') { rpgSfx('click'); return rpgDlg(id, [{ t: RPG_SHOPIN.gacha.hi[0], ch: [{ l: '🎰 เปิดตู้กาชา', f: () => { rpgDlgClose(); rpgPanel('gacha'); } }, close] }]); }
   return rpgTalk31(id);
 };
@@ -20964,7 +20968,7 @@ const SKI34 = (() => {
     if (rank >= 4) { x.save(); x.fillStyle = '#E0304A'; x.strokeStyle = '#fff'; x.lineWidth = 2; x.beginPath(); x.roundRect(28, 78, 40, 14, 7); x.fill(); x.stroke(); x.fillStyle = '#fff'; x.font = '900 10px sans-serif'; x.textAlign = 'center'; x.textBaseline = 'middle'; x.fillText('ULT', 48, 85.5); x.restore(); }
     return c;
   }
-  return { draw, MAP };
+  return { draw, MAP, G };
 })();
 const RPG_SKPUA = {};
 function rpgSkPuaAll() {
@@ -22998,7 +23002,7 @@ const rpgPetsHTML44 = function () {
   const s = R.save, L = s.pets || [], sel = L.find(p => p.id === RS.petSel) || L.find(p => p.id === s.petOut) || L[0];
   const HL = typeof rpgHatch === 'function' ? rpgHatch() : [], now = Date.now();
   const egg = HL.length ? `<div class="pt44-egg"><span>🥚</span><div><b>ฟักไข่กับลุงฟาร์ม</b><small>${HL.map(h => `${esc(RPG_ITEMS[h.id]?.n || 'ไข่')} ${now >= h.t1 ? '✅ พร้อมรับที่ฟาร์ม' : 'เหลือ ' + rpgFmtDur(h.t1 - now)}`).join(' · ')}</small></div></div>`
-    : `<div class="pt44-egg off"><span>🥚</span><div><b>ยังไม่ได้ฝากไข่</b><small>ชนะมอนสเตอร์ได้ไข่ → ฝากลุงฟาร์มในเมืองฟัก · หรือโยน 🎣 ตาข่ายจับมอนสเตอร์ที่หมดแรง</small></div></div>`;
+    : `<div class="pt44-egg off"><span>🥚</span><div><b>ยังไม่ได้ฝากไข่</b><small>ซื้อไข่ที่ฟาร์มสัตว์ หรือล้มบอสประจำแผนที่ → ฝากลุงฟาร์มในเมืองฟัก</small></div></div>`;
   if (!L.length) return `<h3>🐾 สัตว์เลี้ยง 0/12</h3>${egg}<p class="rp-p">ยังไม่มีสัตว์เลี้ยง · เริ่มจากรับไข่ที่ฟาร์ม หรือจับมอนสเตอร์ในสนาม</p>`;
   const T = RPG_PTIER44[Math.min(3, sel.tier || 0)], out = s.petOut === sel.id, hun = Math.round(sel.hunger ?? 80), love = Math.round(sel.happy ?? 60);
   const bar = (n, v, c) => `<div class="pt44-bar"><small>${n}</small><i><u style="width:${Math.max(0, Math.min(100, v))}%;background:${c}"></u></i><b>${v}%</b></div>`;
@@ -23473,7 +23477,7 @@ function rpgFcSwing(mo, now) {
 function rpgFcHit(mo, d, kind, col) {
   const now = rpgFcNow(), s = R.save; rpgFcMs(mo);
   mo.hp = Math.max(0, mo.hp - d); mo.hitT = now; mo.aggro = true;
-  const dx = mo.x - s.x, dy = mo.y - s.y, L = Math.hypot(dx, dy) || 1; if (!mo.boss) { const nx = mo.x + dx / L * .18, ny = mo.y + dy / L * .18; if (!rpgSolid(nx, ny)) { mo.x = nx; mo.y = ny; } }
+  const dx = mo.x - s.x, dy = mo.y - s.y, L = Math.hypot(dx, dy) || 1; if (!mo.boss) { const nx = mo.x + dx / L * .18, ny = mo.y + dy / L * .18; if (rpgMonFree(nx, ny)) { mo.x = nx; mo.y = ny; } }
   rpgFcNum(mo.x, mo.y - 1.1, d.toLocaleString(), kind === 'crit' ? '#FFD23F' : '#FFFFFF', kind === 'crit');
   rpgFcFx({ k: 'spark', x: mo.x, y: mo.y - .55, col: col || '#FFF', dur: 300 });
   if (kind === 'crit') rpgSfx('clash');
@@ -23489,8 +23493,8 @@ async function rpgFcKill(mo) {
   const pb = typeof rpgPartyBonus === 'function' ? rpgPartyBonus() : 0, gold = Math.round(ms.gold * (.85 + Math.random() * .3)); R.gold += gold; s.stats.kills++;
   const drops = [], roll = (p, id) => { if (Math.random() < p) { rpgGive(id); drops.push(id); } };
   const pot = mo.lv >= 55 ? 'hp4' : mo.lv >= 30 ? 'hp3' : mo.lv >= 10 ? 'hp2' : 'hp1';
-  roll(.2, pot); roll(.1, mo.lv >= 20 ? 'mp2' : 'mp1'); roll(.25, mo.lv >= 25 ? 'chip' : 'gem'); roll(.1, 'food'); roll(.06, mo.lv >= 15 ? 'net2' : 'net1');
-  roll(.015 + mo.lv * .0006, mo.lv >= 40 ? 'egg3' : mo.lv >= 15 ? 'egg2' : 'egg1');
+  roll(.2, pot); roll(.1, mo.lv >= 20 ? 'mp2' : 'mp1'); roll(.25, mo.lv >= 25 ? 'chip' : 'gem'); roll(.1, 'food');
+  if (mo.boss) { const r0 = Math.random(), eg = mo.lv >= 40 ? (r0 < .45 ? 'egg3' : r0 < .8 ? 'egg2' : 'egg1') : mo.lv >= 15 ? (r0 < .2 ? 'egg3' : r0 < .7 ? 'egg2' : 'egg1') : (r0 < .08 ? 'egg3' : r0 < .45 ? 'egg2' : 'egg1'); roll(1, eg); setTimeout(() => rpgSay(`🥚 บอสดรอป ${RPG_ITEMS[eg].n}! นำไปฝากลุงฟาร์มฟัก`, 3200), 900); }
   const Z = RPG_ZONES[RS.map.scene], pool = [...(RPG_REGIONS[Z?.region]?.drops || []), ...(Z?.dungeon ? RPG_DUNGEONS[Z.dungeon].drops : [])].filter(id => (RPG_ITEMS[id]?.lv || 1) <= s.lvl + 15);
   if (pool.length && Math.random() < .03 + (Z?.zi || 1) * .005 + (Z?.dungeon ? .04 : 0)) { const id = pool[Math.floor(Math.random() * pool.length)]; rpgGive(id); drops.push(id); rpgSay(`✨ ดรอปหายาก! ${RPG_ITEMS[id].n}`, 3200); }
   const pet = rpgPet(); if (pet) { pet.exp += Math.round(ms.exp * .6); pet.hunger = Math.max(0, pet.hunger - 5); while (pet.exp >= rpgNeed(pet.lv) * .6 && pet.lv < RPG_MAXLV) { pet.exp -= Math.round(rpgNeed(pet.lv) * .6); pet.lv++; } }
@@ -23586,7 +23590,7 @@ rpgUpdate = function (dt, now) {
   for (const mo of RS.mon || []) {
     if (mo.boss || mo.dead) continue;
     const d = Math.hypot(mo.x - s.x, mo.y - s.y);
-    if (d < .62 && d > 0) { const k = .62 / d; const nx = s.x + (mo.x - s.x) * k, ny = s.y + (mo.y - s.y) * k; if (!rpgSolid(nx, ny)) { mo.x = nx; mo.y = ny; } }
+    if (d < .62 && d > 0) { const k = .62 / d; const nx = s.x + (mo.x - s.x) * k, ny = s.y + (mo.y - s.y) * k; if (rpgMonFree(nx, ny)) { mo.x = nx; mo.y = ny; } }
     if (s.peace && !mo.aggro) continue;
     if (RS.net52?.on && mo.tgtId && mo.tgtId !== RS.net52.me) continue;
     if (mo.stunT && now < mo.stunT) { mo.vx = mo.vy = 0; continue; }
@@ -23787,7 +23791,7 @@ function rpgSkxDraw49(x) {
       case 'tornado': { x.translate(f.x, f.y); x.globalAlpha = a; for (let q = 0; q < 22; q++) { const h = q / 22, R = f.r * (.3 + h * 1.1), ang = now / 120 + q * .8; x.strokeStyle = f.rainbow ? `hsl(${(q * 18 + now / 5) % 360},100%,70%)` : col; x.lineWidth = 2.2; x.beginPath(); x.ellipse(0, -h * 120, R, R * .3, 0, ang, ang + 2.2); x.stroke(); } break; }
       case 'vortex': { x.translate(f.x, f.y); x.globalAlpha = a; x.globalCompositeOperation = 'source-over'; const g = x.createRadialGradient(0, 0, 0, 0, 0, f.r); g.addColorStop(0, 'rgba(10,0,20,.85)'); g.addColorStop(.6, 'rgba(60,10,100,.5)'); g.addColorStop(1, 'rgba(0,0,0,0)'); x.fillStyle = g; x.beginPath(); x.ellipse(0, 0, f.r, f.r * .55, 0, 0, 7); x.fill(); x.globalCompositeOperation = 'lighter'; x.strokeStyle = col; x.lineWidth = 2; for (let q = 0; q < 6; q++) { const ang = -now / 200 + q * 1.047; x.beginPath(); x.ellipse(0, 0, f.r * .9, f.r * .5, 0, ang, ang + 1.2); x.stroke(); } break; }
       case 'impact': { x.translate(f.x, f.y); x.globalAlpha = out; x.fillStyle = col; x.shadowColor = col; x.shadowBlur = 14; const R = f.r * (.6 + e * .7); x.beginPath(); for (let q = 0; q < 16; q++) { const rr = q % 2 ? R * .45 : R; x.lineTo(Math.cos(q / 16 * 6.283) * rr, Math.sin(q / 16 * 6.283) * rr); } x.closePath(); x.fill(); x.fillStyle = '#FFFFFF'; x.beginPath(); x.arc(0, 0, R * .3, 0, 7); x.fill(); break; }
-      case 'fist': { x.translate(f.x, f.y); x.globalAlpha = out; x.font = `${Math.round(f.r * (1 + e))}px sans-serif`; x.textAlign = 'center'; x.textBaseline = 'middle'; x.shadowColor = col; x.shadowBlur = 24; x.fillText('👊', 0, 0); break; }
+      case 'fist': { x.translate(f.x, f.y); x.globalAlpha = out; x.shadowColor = col; x.shadowBlur = 24; const q = f.r * (1 + e) / 44; x.scale(q, q); x.fillStyle = '#FFF4E0'; x.strokeStyle = col; x.lineWidth = 2.6; x.lineJoin = 'round'; SKI34.G.fist(x); break; }
       case 'glitch': { x.translate(f.x, f.y); x.globalAlpha = a; for (let q = 0; q < 14; q++) { x.fillStyle = q % 3 === 0 ? '#FF3B8E' : q % 3 === 1 ? col : '#5AA8FF'; const w = 6 + Math.random() * f.r * .6, h = 2 + Math.random() * 6; x.fillRect((Math.random() - .5) * f.r * 1.6, (Math.random() - .5) * f.r, w, h); } x.strokeStyle = col; x.lineWidth = 1; x.strokeRect(-f.r * .6, -f.r * .45, f.r * 1.2, f.r * .9); break; }
       case 'turret': { x.translate(f.x, f.y); x.globalCompositeOperation = 'source-over'; x.globalAlpha = Math.min(1, a * 2); x.fillStyle = '#4A5068'; x.beginPath(); x.roundRect(-8, -14, 16, 14, 3); x.fill(); x.fillStyle = '#2A2E44'; x.fillRect(0, -11, 14, 4); x.fillStyle = col; x.beginPath(); x.arc(0, -7, 3, 0, 7); x.fill(); break; }
       case 'proj': { const ee = f.kind === 'meteor' ? e * e : e, px = f.x + (f.x2 - f.x) * ee, py = f.y + (f.y2 - f.y) * ee - (f.arc ? Math.sin(e * Math.PI) * f.arc : 0), ang = Math.atan2(f.y2 - f.y, f.x2 - f.x);
@@ -24486,6 +24490,232 @@ rpgFcSkill = (f => function (i) {
   const k = rpgJob().sk[i]; if (k && k[4] !== 'h' && k[4] !== 'b' && RS.map && !RS.battle) { const mo = rpgFcNearest(9); if (mo) { FC.tgt = mo; FC.pend52 = null; } }
   return f.apply(this, arguments);
 })(rpgFcSkill);
+
+/* rpg-v55.js — เลิกตาข่าย/จับสัตว์ · ไข่: ร้านฟาร์มขายไข่ธรรมดา+หายาก · ไข่ตำนานได้จากบอสเท่านั้น */
+// ร้านฟาร์มสัตว์: ขายเฉพาะไข่ธรรมดา/หายาก + อาหาร
+(() => { const S = RPG_SHOPS?.egg; if (S) S.items = ['egg1', 'egg2', 'food', 'cake'];
+  const set = (id, o) => { if (RPG_ITEMS[id]) Object.assign(RPG_ITEMS[id], o); };
+  set('egg1', { p: 300, d: 'ซื้อได้ที่ฟาร์มสัตว์ · ฝากลุงฟาร์มฟักนาน 1 ชม.' });
+  set('egg2', { p: 2400, lv: 15, d: 'ซื้อได้ที่ฟาร์มสัตว์ หรือดรอปจากบอสประจำแผนที่ · ฟักนาน 6 ชม.' });
+  set('egg3', { p: 0, d: 'ดรอปจากบอสประจำแผนที่/บอสโลกเท่านั้น · ฝากลุงฟาร์มฟักนาน 24 ชม.' });
+  ['net1', 'net2', 'net3', 'net4'].forEach(id => set(id, { d: 'เลิกใช้แล้ว (ระบบจับสัตว์ถูกยกเลิก) · ได้สัตว์เลี้ยงจากการฟักไข่แทน' }));
+  if (typeof RPG_ICANV !== 'undefined') { RPG_ICANV.clear(); RPG_IURL?.clear?.(); } })();
+// ปิดการจับบนแผนที่
+rpgFcNets = () => []; rpgFcCapture = () => {};
+// ไข่จากบอสเท่านั้น (บอสประจำแผนที่/บอสโลก) — ระดับสูงยิ่งลุ้นไข่ตำนาน
+function rpgBossEgg55(lv) { const r0 = Math.random(); return lv >= 40 ? (r0 < .45 ? 'egg3' : r0 < .8 ? 'egg2' : 'egg1') : lv >= 15 ? (r0 < .2 ? 'egg3' : r0 < .7 ? 'egg2' : 'egg1') : (r0 < .08 ? 'egg3' : r0 < .45 ? 'egg2' : 'egg1'); }
+rpgFcReward52 = (f => function (mo, share = 1, loot = true) {
+  const r = f.apply(this, arguments);
+  try { if (mo?.boss && loot) { const eg = rpgBossEgg55(mo.lv || 1); rpgGive(eg); rpgLootFx52?.(mo.x, mo.y, '🥚'); setTimeout(() => { rpgFcNum(mo.x, mo.y - 2.2, `🥚 ${RPG_ITEMS[eg].n}`, eg === 'egg3' ? '#FFD36B' : '#C8FFB8', 0); rpgSay(`🥚 บอสดรอป ${RPG_ITEMS[eg].n}! นำไปฝากลุงฟาร์มฟัก`, 3400); }, 900); rpgSave(); } } catch (e) {}
+  return r; })(rpgFcReward52);
+
+/* ================= v55 · ไอคอนสกิลวาดเอง (ไม่ใช้อิโมจิ) + เอฟเฟกต์ประจำสกิลตามชื่อ/รูปสกิล ================= */
+(() => {
+  const G = SKI34.G, T = Math.PI * 2;
+  const P = (x, pts, close = true) => { x.beginPath(); pts.forEach(([a, b], i) => i ? x.lineTo(a, b) : x.moveTo(a, b)); if (close) x.closePath(); x.fill(); x.stroke(); };
+  const C = (x, cx, cy, r) => { x.beginPath(); x.arc(cx, cy, r, 0, T); x.fill(); x.stroke(); };
+  const E = (x, cx, cy, rx, ry, rot = 0) => { x.beginPath(); x.ellipse(cx, cy, rx, ry, rot, 0, T); x.fill(); x.stroke(); };
+  const RR = (x, a, b, w, h, r) => { x.beginPath(); x.roundRect(a, b, w, h, r); x.fill(); x.stroke(); };
+  const LN = (x, pts, w, col) => { x.save(); x.lineWidth = w + 3; x.beginPath(); pts.forEach(([a, b], i) => i ? x.lineTo(a, b) : x.moveTo(a, b)); x.stroke(); x.strokeStyle = col || '#fff'; x.lineWidth = w; x.stroke(); x.restore(); };
+  const tint = (x, c, f) => { x.save(); x.fillStyle = c; f(); x.restore(); };
+  const ink = (x, f, a = 1) => { x.save(); x.fillStyle = x.strokeStyle; x.globalAlpha = a; f(); x.restore(); };
+  const at = (x, cx, cy, rot, sc, f) => { x.save(); x.translate(cx, cy); x.rotate(rot || 0); if (sc) x.scale(sc, sc); f(); x.restore(); };
+  const blade = (x, len, w) => { P(x, [[-w, 0], [-w, -len * .8], [0, -len], [w, -len * .8], [w, 0]]); RR(x, -w * 2.8, -1, w * 5.6, 4, 2); RR(x, -w * .7, 3, w * 1.4, len * .26, 1.5); C(x, 0, 6 + len * .26, w * .95); ink(x, () => { x.fillRect(-.8, -len * .78, 1.6, len * .72); }, .35); };
+  const bolt = (x, s) => P(x, [[6 * s, -28 * s], [-16 * s, 4 * s], [-2 * s, 4 * s], [-8 * s, 28 * s], [16 * s, -6 * s], [2 * s, -6 * s]]);
+  const flame = (x, cx, cy, s) => { x.beginPath(); x.moveTo(cx, cy - s); x.bezierCurveTo(cx + s * .45, cy - s * .45, cx + s * .85, cy - s * .1, cx + s * .7, cy + s * .4); x.bezierCurveTo(cx + s * .55, cy + s * .9, cx - s * .55, cy + s * .9, cx - s * .7, cy + s * .4); x.bezierCurveTo(cx - s * .85, cy - s * .05, cx - s * .25, cy - s * .3, cx, cy - s); x.closePath(); x.fill(); x.stroke(); };
+  const star = (x, cx, cy, R, r, n = 5, rot = -Math.PI / 2) => { x.beginPath(); for (let i = 0; i < n * 2; i++) { const a = rot + i * Math.PI / n, q = i % 2 ? r : R; x.lineTo(cx + Math.cos(a) * q, cy + Math.sin(a) * q); } x.closePath(); x.fill(); x.stroke(); };
+  const arrow = (x, x0, y0, x1, y1, h = 7) => { const a = Math.atan2(y1 - y0, x1 - x0); LN(x, [[x0, y0], [x1 - Math.cos(a) * h, y1 - Math.sin(a) * h]], 2.6); at(x, x1, y1, a, 0, () => P(x, [[0, 0], [-h * 1.5, -h * .8], [-h * 1.1, 0], [-h * 1.5, h * .8]])); at(x, x0, y0, a, 0, () => P(x, [[3, 0], [-5, -5], [-2, 0], [-5, 5]])); };
+  const note = (x, cx, cy, s) => { E(x, cx - s * .2, cy + s * .7, s * .42, s * .32, -.4); P(x, [[cx + s * .12, cy + s * .7], [cx + s * .12, cy - s * .9], [cx + s * .3, cy - s * .9], [cx + s * .3, cy + s * .6]]); x.beginPath(); x.moveTo(cx + s * .3, cy - s * .9); x.quadraticCurveTo(cx + s * .95, cy - s * .55, cx + s * .7, cy - s * .05); x.stroke(); };
+  const wing = (x, s) => { x.beginPath(); x.moveTo(0, 0); x.bezierCurveTo(s * 10, -s * 22, s * 26, -s * 24, s * 30, -s * 16); x.bezierCurveTo(s * 26, -s * 12, s * 28, -s * 8, s * 24, -s * 4); x.bezierCurveTo(s * 22, -s * 1, s * 22, s * 3, s * 17, s * 4); x.bezierCurveTo(s * 15, s * 8, s * 10, s * 9, 0, s * 6); x.closePath(); x.fill(); x.stroke();
+    x.save(); x.lineWidth = 1.4; [[.45, -.5], [.65, -.32], [.75, -.12]].forEach(([a, b]) => { x.beginPath(); x.moveTo(s * 4, 0); x.quadraticCurveTo(s * 30 * a, s * 30 * b * .6, s * 30 * a + s * 2, s * 30 * b); x.stroke(); }); x.restore(); };
+  const fistS = (x, cx, cy, s, rot = 0) => at(x, cx, cy, rot, s, () => G.fist(x));
+  const add = {
+    skysword: x => { at(x, 0, 6, .55, 0, () => blade(x, 40, 4)); at(x, -14, -10, 0, .55, () => bolt(x, 1)); },
+    lightsword: x => { ink(x, () => { for (let i = 0; i < 10; i++) { const a = i / 10 * T; x.beginPath(); x.moveTo(Math.cos(a) * 12, Math.sin(a) * 12 - 4); x.lineTo(Math.cos(a + .1) * 28, Math.sin(a + .1) * 28 - 4); x.lineTo(Math.cos(a - .1) * 28, Math.sin(a - .1) * 28 - 4); x.fill(); } }, .3); at(x, 0, 14, 0, 0, () => blade(x, 38, 4.4)); },
+    xslash: x => { at(x, -2, 12, .75, 0, () => blade(x, 36, 3.6)); at(x, 2, 12, -.75, 0, () => blade(x, 36, 3.6)); },
+    lance: x => { at(x, 0, 0, .78, 0, () => { RR(x, -2.4, -6, 4.8, 36, 2); P(x, [[0, -32], [7, -10], [3, -7], [-3, -7], [-7, -10]]); P(x, [[-2, -6], [-12, -2], [-16, 6], [-2, 2]]); }); },
+    scales: x => { RR(x, -2.5, -22, 5, 42, 2); RR(x, -14, 20, 28, 6, 3); RR(x, -24, -20, 48, 4.5, 2); C(x, 0, -24, 4); [-1, 1].forEach(s => { x.save(); x.lineWidth = 1.6; x.beginPath(); x.moveTo(s * 21, -17); x.lineTo(s * 12, 4); x.moveTo(s * 21, -17); x.lineTo(s * 30, 4); x.stroke(); x.restore(); x.beginPath(); x.moveTo(s * 10, 4); x.quadraticCurveTo(s * 21, 16, s * 32, 4); x.closePath(); x.fill(); x.stroke(); }); },
+    scope: x => { x.save(); x.fillStyle = 'rgba(0,0,0,0)'; x.lineWidth = 4; C(x, 0, 0, 20); x.lineWidth = 2; C(x, 0, 0, 10); x.restore(); [[0, -28, 0, -12], [0, 12, 0, 28], [-28, 0, -12, 0], [12, 0, 28, 0]].forEach(([a, b, c, d]) => LN(x, [[a, b], [c, d]], 2.4)); ink(x, () => C(x, 0, 0, 3)); },
+    poisonarrow: x => { arrow(x, -22, 20, 20, -20, 7); tint(x, '#B8FF6A', () => { [[10, 4, 5], [-2, 14, 4], [18, 12, 3.5]].forEach(([a, b, r]) => { x.beginPath(); x.moveTo(a, b - r * 1.8); x.quadraticCurveTo(a + r, b, a, b + r); x.quadraticCurveTo(a - r, b, a, b - r * 1.8); x.fill(); x.stroke(); }); }); },
+    piercearrow: x => { RR(x, -6, -24, 12, 48, 3); ink(x, () => { x.beginPath(); x.moveTo(-6, -4); x.lineTo(2, 0); x.lineTo(-3, 6); x.lineTo(6, 10); x.lineWidth = 2; x.stroke(); }, .9); arrow(x, -28, 6, 28, -6, 7); },
+    fireball: x => { tint(x, '#FFD37A', () => { x.beginPath(); x.moveTo(-28, -18); x.quadraticCurveTo(-6, -14, 4, -8); x.lineTo(-2, 8); x.quadraticCurveTo(-14, 2, -28, -18); x.fill(); x.stroke(); }); C(x, 8, 6, 15); ink(x, () => C(x, 5, 3, 7), .3); },
+    firewall: x => { for (let r = 0; r < 2; r++) for (let c = 0; c < 3; c++) RR(x, -24 + c * 16 + (r ? 8 : 0) - (r ? 8 : 0) * (c === 2 ? 1 : 0), 8 + r * 10, r && c === 2 ? 8 : 15, 9, 2); [-14, 0, 14].forEach((a, i) => flame(x, a, -6 - (i === 1 ? 6 : 0), i === 1 ? 15 : 11)); },
+    firepillar: x => { E(x, 0, 22, 20, 6); x.beginPath(); x.moveTo(-10, 22); x.bezierCurveTo(-14, 4, -4, -6, -8, -20); x.bezierCurveTo(-2, -16, 2, -30, 0, -32); x.bezierCurveTo(8, -24, 4, -14, 10, -18); x.bezierCurveTo(14, -4, 8, 8, 10, 22); x.closePath(); x.fill(); x.stroke(); ink(x, () => flame(x, 0, 8, 9), .35); },
+    phoenix: x => { [-1, 1].forEach(s => at(x, s * 3, -2, 0, 0, () => { x.scale(s, 1); wing(x, .9); })); E(x, 0, 2, 6, 11); C(x, 0, -12, 5.5); P(x, [[0, -10], [4, -8], [0, -6]]); [-8, 0, 8].forEach((a, i) => flame(x, a * .8, 20 + (i === 1 ? 4 : 0), 8)); ink(x, () => C(x, 1.5, -13, 1.4)); },
+    volcano: x => { P(x, [[-28, 24], [-10, -6], [10, -6], [28, 24]]); tint(x, '#FFB347', () => { P(x, [[-10, -6], [-4, 4], [0, -2], [4, 6], [10, -6]]); }); ink(x, () => { [[-6, -18, 5], [6, -24, 4], [0, -14, 3.5], [12, -14, 3]].forEach(([a, b, r]) => { x.beginPath(); x.arc(a, b, r, 0, T); x.fill(); }); }, .85); },
+    icecube: x => { P(x, [[0, -24], [22, -12], [22, 12], [0, 24], [-22, 12], [-22, -12]]); x.save(); x.lineWidth = 1.6; x.beginPath(); x.moveTo(-22, -12); x.lineTo(0, 0); x.lineTo(22, -12); x.moveTo(0, 0); x.lineTo(0, 24); x.stroke(); x.restore(); ink(x, () => { x.fillRect(-14, -12, 4, 8); x.fillRect(-10, -8, 3, 3); }, .4); },
+    icespikes: x => { [[-14, 22, 12, 30, -.25], [14, 22, 12, 30, .25], [0, 22, 14, 46, 0]].forEach(([a, b, w, h, r]) => at(x, a, b, r, 0, () => { P(x, [[-w / 2, 0], [0, -h], [w / 2, 0]]); x.save(); x.lineWidth = 1.2; x.beginPath(); x.moveTo(0, -h); x.lineTo(0, 0); x.stroke(); x.restore(); })); },
+    frostbreath: x => { x.save(); x.lineCap = 'round'; [[-26, -12, 10, -12], [-26, 0, 18, 0], [-26, 12, 6, 12]].forEach(([a, b, c, d]) => LN(x, [[a, b], [c, d]], 4)); x.restore(); at(x, 16, -10, 0, .45, () => G.snow(x)); at(x, 14, 14, 0, .3, () => G.snow(x)); },
+    icequeen: x => { at(x, 0, 6, 0, .78, () => G.snow(x)); at(x, 0, -18, 0, .5, () => G.crown(x)); },
+    holylight: x => { ink(x, () => { for (let i = 0; i < 8; i++) { const a = i / 8 * T + .2; x.beginPath(); x.moveTo(Math.cos(a) * 10, Math.sin(a) * 10); x.lineTo(Math.cos(a + .14) * 28, Math.sin(a + .14) * 28); x.lineTo(Math.cos(a - .14) * 28, Math.sin(a - .14) * 28); x.fill(); } }, .35); P(x, [[-4, -24], [4, -24], [4, -8], [16, -8], [16, 0], [4, 0], [4, 24], [-4, 24], [-4, 0], [-16, 0], [-16, -8], [-4, -8]]); },
+    medcross: x => { RR(x, -24, -24, 48, 48, 12); tint(x, '#7CE8A0', () => { x.save(); x.strokeStyle = '#fff'; P(x, [[-5, -16], [5, -16], [5, -5], [16, -5], [16, 5], [5, 5], [5, 16], [-5, 16], [-5, 5], [-16, 5], [-16, -5], [-5, -5]]); x.restore(); }); },
+    holybolt: x => { x.save(); x.fillStyle = 'rgba(0,0,0,0)'; x.lineWidth = 3; E(x, 0, -22, 15, 5); x.restore(); at(x, 0, 6, 0, .82, () => bolt(x, 1)); },
+    rings: x => { x.save(); x.fillStyle = 'rgba(0,0,0,0)'; [[0, 0, 26, 9, -.35, 4], [0, 0, 18, 6, .35, 3.4], [0, 0, 10, 3.6, 0, 2.8]].forEach(([a, b, rx, ry, r, w]) => { x.lineWidth = w + 3; E(x, a, b, rx, ry, r); x.save(); x.strokeStyle = '#fff'; x.lineWidth = w; x.beginPath(); x.ellipse(a, b, rx, ry, r, 0, T); x.stroke(); x.restore(); }); x.restore(); star(x, 0, 0, 7, 2.6, 4, 0); },
+    angel: x => { [-1, 1].forEach(s => at(x, s * 2, 4, 0, 0, () => { x.scale(s, 1); wing(x, .95); })); x.save(); x.fillStyle = 'rgba(0,0,0,0)'; x.lineWidth = 3; E(x, 0, -20, 11, 4); x.restore(); star(x, 0, 2, 7, 3, 4, 0); },
+    kunaibomb: x => { C(x, 6, 8, 15); ink(x, () => C(x, 2, 4, 5), .3); x.save(); x.lineWidth = 2; x.beginPath(); x.moveTo(14, -4); x.quadraticCurveTo(20, -14, 16, -20); x.stroke(); x.restore(); tint(x, '#FFE27A', () => star(x, 16, -22, 5, 2, 6, 0)); at(x, -10, -2, -.8, 0, () => { P(x, [[0, -26], [6, -12], [2, -10], [-2, -10], [-6, -12]]); RR(x, -2, -10, 4, 16, 1.5); x.save(); x.fillStyle = 'rgba(0,0,0,0)'; C(x, 0, 10, 3.6); x.restore(); }); },
+    shuristorm: x => { x.save(); x.fillStyle = 'rgba(0,0,0,0)'; x.lineWidth = 2; x.beginPath(); for (let k = 0; k <= 30; k++) { const q = k / 30, a = q * 5, r = 4 + q * 22; x.lineTo(Math.cos(a) * r, Math.sin(a) * r); } x.stroke(); x.restore(); [[0, 0, .55], [16, -14, .38], [-16, 14, .32]].forEach(([a, b, s]) => at(x, a, b, a * .1, s, () => G.shuriken(x))); },
+    shadow: x => { ink(x, () => { x.beginPath(); x.arc(0, 0, 27, 0, T); x.fill(); }, .25); x.beginPath(); x.moveTo(0, -24); x.bezierCurveTo(18, -24, 20, -2, 18, 8); x.quadraticCurveTo(24, 24, 22, 26); x.lineTo(-22, 26); x.quadraticCurveTo(-24, 24, -18, 8); x.bezierCurveTo(-20, -2, -18, -24, 0, -24); x.closePath(); x.fill(); x.stroke(); ink(x, () => { x.beginPath(); x.roundRect(-12, -10, 24, 9, 4); x.fill(); }); tint(x, '#FF4A6A', () => { x.save(); x.strokeStyle = '#FF4A6A'; [[-6, -5.5], [6, -5.5]].forEach(([a, b]) => { x.beginPath(); x.ellipse(a, b, 3, 1.6, 0, 0, T); x.fill(); }); x.restore(); }); },
+    foot: x => { x.save(); x.lineCap = 'round'; [[-28, -10, -14, -10], [-28, 0, -10, 0], [-28, 10, -16, 10]].forEach(([a, b, c, d]) => LN(x, [[a, b], [c, d]], 2.6)); x.restore(); x.beginPath(); x.moveTo(-6, -22); x.lineTo(8, -22); x.lineTo(10, 2); x.quadraticCurveTo(28, 2, 28, 12); x.quadraticCurveTo(28, 20, 18, 20); x.lineTo(-4, 20); x.quadraticCurveTo(-8, 20, -8, 14); x.closePath(); x.fill(); x.stroke(); ink(x, () => x.fillRect(-6, 14, 34, 3), .35); },
+    shock: x => { x.save(); x.fillStyle = 'rgba(0,0,0,0)'; [14, 21, 28].forEach((r, i) => { x.lineWidth = 3.4 - i * .6; x.beginPath(); x.arc(-6, 0, r, -1, 1); x.stroke(); }); x.restore(); fistS(x, -10, 0, .62, 0); },
+    fistrain: x => { fistS(x, 10, 10, .5, .5); fistS(x, -12, 6, .46, -.2); fistS(x, 0, -10, .56, .2); },
+    songstorm: x => { x.save(); x.fillStyle = 'rgba(0,0,0,0)'; [[0, -18, 26], [2, -6, 20], [4, 6, 13], [6, 16, 6]].forEach(([a, b, w]) => { x.lineWidth = 4; E(x, a, b, w, 4); x.save(); x.strokeStyle = '#fff'; x.lineWidth = 2; x.beginPath(); x.ellipse(a, b, w, 4, 0, 0, T); x.stroke(); x.restore(); }); x.restore(); note(x, -16, 10, 11); note(x, 20, -2, 9); },
+    guitar: x => { at(x, 0, 0, -.7, 0, () => { RR(x, -3, -30, 6, 26, 2); RR(x, -5, -34, 10, 7, 2); C(x, 0, 6, 10); C(x, 0, 18, 12); ink(x, () => C(x, 0, 8, 3.6)); x.save(); x.lineWidth = .9; x.beginPath(); x.moveTo(-1, -30); x.lineTo(-1, 20); x.moveTo(1, -30); x.lineTo(1, 20); x.stroke(); x.restore(); }); tint(x, '#FFE94A', () => at(x, 16, -14, 0, .42, () => bolt(x, 1))); },
+    starsong: x => { note(x, -6, 4, 22); tint(x, '#FFE27A', () => { star(x, 16, -16, 10, 4); star(x, -20, -18, 5, 2); }); },
+    griffon: x => { at(x, 4, 2, 0, 0, () => { x.scale(-1, 1); wing(x, .9); }); x.beginPath(); x.moveTo(-18, 20); x.quadraticCurveTo(-20, -4, -6, -16); x.quadraticCurveTo(4, -24, 14, -18); x.lineTo(26, -10); x.lineTo(14, -6); x.quadraticCurveTo(6, 6, 6, 20); x.closePath(); x.fill(); x.stroke(); tint(x, '#FFD25A', () => P(x, [[14, -18], [28, -10], [14, -4]])); ink(x, () => C(x, 4, -14, 2.2)); x.save(); x.lineWidth = 1.4; [[-10, -14, -18, -22], [-6, -17, -10, -26]].forEach(([a, b, c, d]) => { x.beginPath(); x.moveTo(a, b); x.lineTo(c, d); x.stroke(); }); x.restore(); },
+    bear: x => { C(x, -16, -16, 8); C(x, 16, -16, 8); ink(x, () => { C(x, -16, -16, 3.6); C(x, 16, -16, 3.6); }, .35); C(x, 0, 2, 22); tint(x, '#F2E2C6', () => E(x, 0, 10, 10, 8)); ink(x, () => { E(x, 0, 6, 4.4, 3.2); C(x, -8, -4, 2.6); C(x, 8, -4, 2.6); x.fillRect(-.8, 8, 1.6, 5); }); },
+    bat: x => { x.beginPath(); x.moveTo(0, -6); x.quadraticCurveTo(-10, -18, -28, -14); x.quadraticCurveTo(-22, -8, -24, 0); x.quadraticCurveTo(-18, -2, -16, 6); x.quadraticCurveTo(-10, 2, -6, 10); x.lineTo(0, 6); x.lineTo(6, 10); x.quadraticCurveTo(10, 2, 16, 6); x.quadraticCurveTo(18, -2, 24, 0); x.quadraticCurveTo(22, -8, 28, -14); x.quadraticCurveTo(10, -18, 0, -6); x.closePath(); x.fill(); x.stroke(); E(x, 0, -2, 6, 9); P(x, [[-5, -9], [-6, -17], [-1, -10]]); P(x, [[5, -9], [6, -17], [1, -10]]); tint(x, '#FF4A6A', () => { x.save(); x.strokeStyle = 'rgba(0,0,0,0)'; C(x, -2.4, -3, 1.4); C(x, 2.4, -3, 1.4); x.restore(); }); },
+    rocket: x => { at(x, 0, 0, .78, 0, () => { tint(x, '#FFB347', () => flame(x, 0, 26, 9)); x.beginPath(); x.moveTo(0, -30); x.quadraticCurveTo(11, -18, 9, 16); x.lineTo(-9, 16); x.quadraticCurveTo(-11, -18, 0, -30); x.closePath(); x.fill(); x.stroke(); P(x, [[-9, 4], [-17, 18], [-9, 16]]); P(x, [[9, 4], [17, 18], [9, 16]]); ink(x, () => C(x, 0, -10, 4), .8); }); },
+    tesla: x => { RR(x, -10, 8, 20, 18, 3); x.save(); x.lineWidth = 1.6; [12, 16, 20].forEach(b => { x.beginPath(); x.moveTo(-10, b); x.lineTo(10, b); x.stroke(); }); x.restore(); RR(x, -3, -6, 6, 16, 2); C(x, 0, -12, 9); tint(x, '#FFE94A', () => { [[-20, -16, -.8], [20, -16, .8], [0, -28, 0]].forEach(([a, b, r]) => at(x, a, b, r, .3, () => bolt(x, 1))); }); },
+    satellite: x => { at(x, 0, 0, -.5, 0, () => { RR(x, -7, -10, 14, 20, 3); [-1, 1].forEach(s => { RR(x, s > 0 ? 10 : -28, -7, 18, 14, 2); x.save(); x.lineWidth = 1.2; x.beginPath(); x.moveTo(s * 7, 0); x.lineTo(s * 10, 0); for (let i = 1; i < 3; i++) { x.moveTo(s * (10 + i * 6), -7); x.lineTo(s * (10 + i * 6), 7); } x.stroke(); x.restore(); }); }); tint(x, '#FF6A8A', () => { x.save(); x.globalAlpha = .9; P(x, [[2, 8], [-6, 30], [12, 30]]); x.restore(); }); },
+    virus: x => { for (let i = 0; i < 8; i++) { const a = i / 8 * T; at(x, Math.cos(a) * 18, Math.sin(a) * 18, a + Math.PI / 2, 0, () => { RR(x, -1.6, -2, 3.2, 8, 1.5); C(x, 0, -4, 3.6); }); } C(x, 0, 0, 15); ink(x, () => { C(x, -5, -4, 3); C(x, 5, 3, 2.4); C(x, -2, 7, 1.8); }, .4); },
+    serverbolt: x => { [-14, 0, 14].forEach(b => { RR(x, -20, b - 6, 34, 11, 3); ink(x, () => { x.beginPath(); x.arc(-13, b - .5, 2, 0, T); x.fill(); x.fillRect(-6, b - 1.5, 14, 2.4); }, .6); }); tint(x, '#FFE94A', () => at(x, 18, -6, 0, .55, () => bolt(x, 1))); },
+    recycle: x => { for (let i = 0; i < 3; i++) at(x, 0, 0, i * T / 3, 0, () => { x.save(); x.fillStyle = 'rgba(0,0,0,0)'; x.lineWidth = 9; x.beginPath(); x.arc(0, 0, 18, -2.3, -1.1); x.stroke(); x.strokeStyle = '#fff'; x.lineWidth = 5; x.stroke(); x.restore(); at(x, Math.cos(-1.1) * 18, Math.sin(-1.1) * 18, -1.1 + Math.PI / 2, 0, () => P(x, [[-7, -4], [7, -4], [0, 8]].map(([a, b]) => [b, a]))); }); },
+    shieldbash: x => { ink(x, () => { for (let i = 0; i < 7; i++) { const a = -1.1 + i * .37; x.beginPath(); x.moveTo(12 + Math.cos(a) * 12, Math.sin(a) * 12); x.lineTo(12 + Math.cos(a) * 28, Math.sin(a) * 28); x.lineWidth = 3; x.stroke(); } }, .7); at(x, -6, 0, -.25, .85, () => G.shield(x)); },
+    hammerquake: x => { ink(x, () => { x.lineWidth = 2.4; [[-4, 20, -22, 26], [4, 20, 10, 28], [0, 20, 24, 22], [-2, 20, -14, 14]].forEach(([a, b, c, d]) => { x.beginPath(); x.moveTo(a, b); x.lineTo(c, d); x.stroke(); }); }, .9); E(x, 0, 21, 18, 4); at(x, 4, -2, -.5, .85, () => G.hammer(x)); },
+    windarrow: x => { x.save(); x.fillStyle = 'rgba(0,0,0,0)'; x.lineWidth = 3; [[0, 0, 22, 8], [0, 0, 14, 5]].forEach(([a, b, rx, ry]) => { x.beginPath(); x.ellipse(a, b, rx, ry, -.78, .4, 5.2); x.stroke(); }); x.restore(); arrow(x, -24, 24, 24, -24, 7); },
+    wolf: x => { P(x, [[-22, -24], [-10, -8], [10, -8], [22, -24], [20, 2], [10, 18], [0, 26], [-10, 18], [-20, 2]]); tint(x, '#F2F6FF', () => P(x, [[-8, 10], [0, 24], [8, 10], [0, 6]])); ink(x, () => { P(x, [[-12, -2], [-4, 0], [-10, 3]]); P(x, [[12, -2], [4, 0], [10, 3]]); C(x, 0, 12, 3); }); },
+    soundwave: x => { RR(x, -24, -10, 12, 20, 3); P(x, [[-12, -10], [2, -22], [2, 22], [-12, 10]]); x.save(); x.fillStyle = 'rgba(0,0,0,0)'; [10, 18, 26].forEach((r, i) => { x.lineWidth = 5 - i; x.beginPath(); x.arc(0, 0, r, -.8, .8); x.stroke(); x.save(); x.strokeStyle = '#fff'; x.lineWidth = 2.4 - i * .5; x.stroke(); x.restore(); }); x.restore(); },
+    lightorb: x => { ink(x, () => { for (let i = 0; i < 12; i++) { const a = i / 12 * T; x.beginPath(); x.moveTo(Math.cos(a) * 18, Math.sin(a) * 18); x.lineTo(Math.cos(a) * (i % 2 ? 24 : 29), Math.sin(a) * (i % 2 ? 24 : 29)); x.lineWidth = 2.4; x.stroke(); } }, .7); C(x, 0, 0, 16); tint(x, '#FFF6C0', () => { x.save(); x.strokeStyle = 'rgba(0,0,0,0)'; C(x, -5, -5, 6); x.restore(); }); },
+    brainbolt: x => { at(x, -4, 6, 0, .78, () => G.book(x)); tint(x, '#FFE94A', () => at(x, 12, -14, 0, .55, () => bolt(x, 1))); },
+    pages: x => { [[-12, 8, -.5], [0, 0, -.1], [12, -8, .35]].forEach(([a, b, r]) => at(x, a, b, r, 0, () => { RR(x, -9, -12, 18, 24, 2); x.save(); x.lineWidth = 1.2; [-6, -1, 4].forEach(q => { x.beginPath(); x.moveTo(-5, q); x.lineTo(5, q); x.stroke(); }); x.restore(); })); },
+    lightrain: x => { at(x, 0, -8, 0, .85, () => { x.beginPath(); x.moveTo(-20, -2); x.bezierCurveTo(-26, -12, -12, -22, -4, -14); x.bezierCurveTo(2, -24, 20, -22, 18, -10); x.bezierCurveTo(28, -8, 26, 4, 16, 4); x.lineTo(-16, 4); x.bezierCurveTo(-24, 4, -26, 0, -20, -2); x.fill(); x.stroke(); }); tint(x, '#FFE98A', () => [[-12, 14], [0, 20], [12, 14]].forEach(([a, b]) => star(x, a, b, 6, 2.2, 4, 0))); },
+    windblade: x => { x.save(); x.lineCap = 'round'; [[-28, -6, -8, -6], [-26, 6, -4, 6], [-22, 18, -6, 18]].forEach(([a, b, c, d]) => LN(x, [[a, b], [c, d]], 2.6)); x.restore(); at(x, 6, 14, .7, 0, () => blade(x, 36, 3.8)); },
+    soulflame: x => { flame(x, 0, 2, 25); x.save(); x.fillStyle = 'rgba(0,0,0,0)'; x.lineWidth = 2.4; x.beginPath(); for (let k = 0; k <= 24; k++) { const q = k / 24, a = q * 9, r = 2 + q * 10; x.lineTo(Math.cos(a) * r, 8 + Math.sin(a) * r * .9); } x.stroke(); x.restore(); },
+    holyshield: x => { at(x, 0, 6, 0, .82, () => G.shield(x)); x.save(); x.fillStyle = 'rgba(0,0,0,0)'; x.lineWidth = 3; E(x, 0, -24, 13, 4.5); x.restore(); },
+    lamp: x => { RR(x, -10, -22, 20, 5, 2); P(x, [[-12, -17], [12, -17], [16, 14], [-16, 14]]); RR(x, -14, 14, 28, 6, 2); tint(x, '#FFD25A', () => flame(x, 0, 2, 9)); x.save(); x.fillStyle = 'rgba(0,0,0,0)'; x.lineWidth = 2; x.beginPath(); x.arc(0, -26, 6, Math.PI, 0); x.stroke(); x.restore(); },
+    chi: x => { C(x, 0, 0, 24); ink(x, () => { x.beginPath(); x.arc(0, 0, 24, -Math.PI / 2, Math.PI / 2); x.arc(0, 12, 12, Math.PI / 2, -Math.PI / 2, true); x.arc(0, -12, 12, Math.PI / 2, -Math.PI / 2); x.fill(); }); x.save(); x.strokeStyle = 'rgba(0,0,0,0)'; C(x, 0, -12, 4); x.restore(); ink(x, () => C(x, 0, 12, 4)); },
+    soullink: x => { x.save(); x.fillStyle = 'rgba(0,0,0,0)'; x.lineWidth = 5; [[-9, 0], [9, 0]].forEach(([a, b]) => { E(x, a, b, 14, 18); x.save(); x.strokeStyle = '#fff'; x.lineWidth = 2.4; x.beginPath(); x.ellipse(a, b, 14, 18, 0, 0, T); x.stroke(); x.restore(); }); x.restore(); tint(x, '#FF8AB8', () => { x.beginPath(); const s = 8; x.moveTo(0, s * .9); x.bezierCurveTo(-s * 1.5, -s * .1, -s * .9, -s * 1.3, 0, -s * .45); x.bezierCurveTo(s * .9, -s * 1.3, s * 1.5, -s * .1, 0, s * .9); x.fill(); x.stroke(); }); },
+    orb: x => { P(x, [[-16, 26], [-10, 14], [10, 14], [16, 26]]); C(x, 0, -4, 20); tint(x, '#E8D8FF', () => { x.save(); x.strokeStyle = 'rgba(0,0,0,0)'; C(x, -7, -11, 6); x.restore(); }); ink(x, () => star(x, 4, 0, 6, 2.4, 4, 0), .55); },
+    meteors: x => { [[-12, -10, 8], [10, -4, 10], [-4, 14, 7]].forEach(([a, b, r]) => { x.save(); x.fillStyle = 'rgba(255,255,255,.75)'; P(x, [[a - r * 2.2, b - r * 2.2], [a + r * .3, b - r * .7], [a - r * .7, b + r * .3]]); x.restore(); C(x, a, b, r); }); },
+    arrowrain: x => { [[-14, -26, -14, 18], [0, -20, 0, 26], [14, -26, 14, 18]].forEach(([a, b, c, d]) => arrow(x, a, b, c, d, 6)); },
+    surge: x => { RR(x, -16, -6, 22, 22, 4); [-10, 0].forEach(a => RR(x, a - 2, -18, 4, 12, 1.5)); x.save(); x.fillStyle = 'rgba(0,0,0,0)'; x.lineWidth = 3; x.beginPath(); x.moveTo(-5, 16); x.quadraticCurveTo(-5, 28, 8, 26); x.stroke(); x.restore(); tint(x, '#FFE94A', () => at(x, 16, -8, 0, .6, () => bolt(x, 1))); },
+  };
+  Object.assign(G, add);
+  Object.keys(G).forEach(g => { SKI34.MAP['§' + g] = g; });
+})();
+
+// [รูปสกิล, ท่าเอฟเฟกต์, สีหลัก] — รูปเดียวกันใช้ทั้งไอคอนและเอฟเฟกต์ในโลก
+const RPG_SIG55 = {
+  'knight:ฟันสายฟ้าศักดิ์สิทธิ์': ['skysword', 'drop', '#FFF07A'], 'fire:หัวใจเพลิง': ['heartflame', 'aura', '#FF5A6A'], 'priest:กางเขนแสง': ['holylight', 'stamp', '#FFF6B0'], 'priest:ฝนแสงศักดิ์สิทธิ์': ['lightrain', 'rain', '#FFEFA0'],
+  'priest:พรแห่งแสง': ['halo', 'aura', '#FFE8A0'], 'monk:ลมปราณเหล็ก': ['chi', 'aura', '#FFD07A'], 'bard:คลื่นเสียงสะท้าน': ['soundwave', 'mark', '#C8A0FF'], 'summon:วิญญาณหมาป่า': ['wolf', 'beast', '#B8C8FF'], 'summon:สายสัมพันธ์วิญญาณ': ['soullink', 'aura', '#FF9AC8'],
+  'hacker:ไฟกระชากระบบ': ['surge', 'stamp', '#FFE94A'], 'warrior:ฟันพายุ': ['windblade', 'spin', '#A8F0FF'], 'warrior:ทุบแผ่นดิน': ['hammerquake', 'drop', '#E0A060'], 'scout:ศรลมกรด': ['windarrow', 'fly', '#8CFFC8'], 'scout:ฝนศรเล็ก': ['rain', 'rain', '#B8E0FF'],
+  'mage:อุกกาบาตจิ๋ว': ['meteors', 'rain', '#FF8A4A'], 'mage:สมาธิเวท': ['orb', 'aura', '#B898FF'], 'scholar:ลูกบอลแสง': ['lightorb', 'fly', '#FFF1A0'], 'scholar:สายฟ้าปัญญา': ['brainbolt', 'drop', '#FFE94A'], 'scholar:หน้ากระดาษคม': ['pages', 'fan', '#FFF4D0'], 'scholar:พรแห่งปัญญา': ['lamp', 'aura', '#FFD25A'],
+  'warrior:ฟันเฉียง': ['sword', 'slashx', '#CFE8FF'], 'warrior:กระแทกโล่': ['shieldbash', 'stamp', '#FFC27A'], 'warrior:เสียงคำราม': ['roar', 'aura', '#FF7A5A'],
+  'scout:ยิงเร็ว': ['target', 'mark', '#FFE27A'], 'scout:ศรคู่': ['arrows', 'fan', '#FFF1B0'], 'scout:ฝีเท้าลม': ['wind', 'aura', '#7CFFB0'],
+  'mage:ลูกไฟเล็ก': ['flame', 'fly', '#FF8A3A'], 'mage:เกล็ดน้ำแข็ง': ['snow', 'flyspin', '#9FE8FF'], 'mage:สายฟ้าฟาด': ['bolt', 'drop', '#FFE94A'],
+  'scholar:แสงศักดิ์สิทธิ์': ['sparkle', 'mark', '#FFF1A0'], 'scholar:รักษา': ['medcross', 'aura', '#7CFFB0'], 'scholar:โล่ปัญญา': ['book', 'aura', '#FFD25A'],
+  'sword:ฟันดาบ': ['xslash', 'slashx', '#BFEFFF'], 'sword:ฟันพายุ': ['tornado', 'spin', '#9AF0FF'], 'sword:ฟันทะลวงเกราะ': ['burst', 'stamp', '#FFB070'], 'sword:ใจนักรบ': ['flame', 'aura', '#FF6A3A'], 'sword:ดาบพิฆาตฟ้า': ['skysword', 'drop', '#FFE94A'],
+  'sword:ดาบหมุนพายุคลั่ง': ['vortex', 'spin', '#7FD8FF'], 'sword:ฟันจันทร์เสี้ยว': ['moon', 'slashx', '#D8E4FF'], 'sword:ดาบเทพสังหารมังกร': ['dragon', 'drop', '#FF5A5A'],
+  'knight:โล่กระแทก': ['shield', 'stamp', '#9FC8FF'], 'knight:ป้อมปราการ': ['tower', 'aura', '#C8B48A'], 'knight:ดาบแสง': ['lightsword', 'drop', '#FFE98A'], 'knight:พรศรัทธา': ['heart', 'aura', '#FF8FB8'], 'knight:อัศวินศักดิ์สิทธิ์': ['crown', 'stamp', '#FFD23F'],
+  'knight:ค้อนสวรรค์': ['hammer', 'drop', '#FFE27A'], 'knight:หอกแสงทะลวง': ['lance', 'fly', '#FFF4C0'], 'knight:คำพิพากษาแห่งสวรรค์': ['scales', 'drop', '#FFD86A'],
+  'archer:ยิงแม่นยำ': ['scope', 'mark', '#FF6A6A'], 'archer:ศรคู่': ['arrows', 'fan', '#FFF1B0'], 'archer:ฝนศร': ['arrowrain', 'rain', '#B8E0FF'], 'archer:ตาเหยี่ยว': ['eye', 'aura', '#FFD25A'], 'archer:ศรพายุสายรุ้ง': ['rainbow', 'hover', '#FFFFFF'],
+  'archer:ศรพิษงู': ['poisonarrow', 'fly', '#9CFF5A'], 'archer:ศรทะลวงเกราะ': ['piercearrow', 'fly', '#FFC080'], 'archer:ฝนดาวตก': ['meteor', 'rain', '#FFB0E8'],
+  'fire:ลูกไฟ': ['fireball', 'fly', '#FF7A1F'], 'fire:กำแพงเพลิง': ['firewall', 'rise', '#FF5A1F'], 'fire:อุกกาบาต': ['meteor', 'drop', '#FF7A3A'], 'fire:เปลวไฟดูดชีวิต': ['soulflame', 'orbit', '#FF4A7A'], 'fire:พายุสุริยะ': ['sun', 'hover', '#FFC83A'],
+  'fire:เสาเพลิงนรก': ['firepillar', 'rise', '#FF3A1F'], 'fire:ระเบิดฟีนิกซ์': ['phoenix', 'fly', '#FF9A2A'], 'fire:หายนะภูเขาไฟ': ['volcano', 'rise', '#FF6A2A'],
+  'ice:หอกน้ำแข็ง': ['spear', 'fly', '#9FE8FF'], 'ice:ผนึกน้ำแข็ง': ['icecube', 'stamp', '#BFF0FF'], 'ice:พายุหิมะ': ['blizzard', 'hover', '#DFF6FF'], 'ice:เกราะน้ำแข็ง': ['crystal', 'aura', '#8FE0FF'], 'ice:ยุคน้ำแข็ง': ['mountain', 'rise', '#BFE8FF'],
+  'ice:หนามน้ำแข็งพันเล่ม': ['icespikes', 'rise', '#7FD8FF'], 'ice:ลมหายใจเหมันต์': ['frostbreath', 'fly', '#CFF4FF'], 'ice:ราชินีหิมะนิรันดร์': ['icequeen', 'hover', '#E6F8FF'],
+  'priest:แสงศักดิ์สิทธิ์': ['star', 'rise', '#FFF1A0'], 'priest:รักษา': ['healheart', 'aura', '#7CFFB0'], 'priest:พรคุ้มกัน': ['holyshield', 'aura', '#FFE6A0'], 'priest:ฟื้นฟูมหาศาล': ['hearts', 'shower', '#FF9AC8'], 'priest:ลำแสงสวรรค์': ['beam', 'hover', '#FFF6C8'],
+  'priest:สายฟ้าพิพากษา': ['holybolt', 'drop', '#FFF07A'], 'priest:วงแหวนชำระบาป': ['rings', 'orbit', '#FFE7A8'], 'priest:ปีกเทพบุตร': ['angel', 'hover', '#FFFFFF'],
+  'ninja:ดาวกระจาย': ['shuriken', 'fan', '#C8D8FF'], 'ninja:เงาสังหาร': ['crescent', 'slashx', '#B36BFF'], 'ninja:ร่างแยก': ['clones', 'aura', '#9A8CFF'], 'ninja:พิษงูเห่า': ['fang', 'stamp', '#8CFF5A'], 'ninja:ฟันเงาพันเล่ม': ['vortex', 'spin', '#8A6BFF'],
+  'ninja:คุไนระเบิด': ['kunaibomb', 'fly', '#FF9A3A'], 'ninja:พายุชูริเคน': ['shuristorm', 'orbit', '#BFD0FF'], 'ninja:ศิลปะลับ: เงามรณะ': ['shadow', 'rise', '#7A3AFF'],
+  'monk:หมัดเหล็ก': ['fist', 'stamp', '#FFB35A'], 'monk:หมัดพันทิศ': ['fists', 'orbit', '#FFC870'], 'monk:สมาธิ': ['lotus', 'aura', '#FFB8E0'], 'monk:ฝ่ามือพิฆาต': ['palm', 'drop', '#FFA040'], 'monk:หมัดเทพสวรรค์': ['dragon', 'fly', '#FFD23F'],
+  'monk:เตะพายุหมุน': ['foot', 'spin', '#8CFFC8'], 'monk:หมัดคลื่นกระแทก': ['shock', 'stamp', '#FF8A5A'], 'monk:หมัดอสูรร้อยพัน': ['fistrain', 'rain', '#FF6A3A'],
+  'bard:โน้ตคม': ['notes', 'fly', '#FF8FD8'], 'bard:เพลงปลุกใจ': ['horn', 'aura', '#FFD25A'], 'bard:เพลงกล่อมนิทรา': ['moon', 'hover', '#B8A8FF'], 'bard:เพลงเยียวยา': ['music', 'aura', '#7CFFB0'], 'bard:ซิมโฟนีสวรรค์': ['symph', 'hover', '#FFE8A0'],
+  'bard:บทเพลงพายุ': ['songstorm', 'spin', '#9AF0FF'], 'bard:คอร์ดสายฟ้า': ['guitar', 'stamp', '#FFE94A'], 'bard:บทเพลงแห่งดวงดาว': ['starsong', 'rain', '#FFE27A'],
+  'summon:วิญญาณจิ้งจอก': ['fox', 'beast', '#FFA35A'], 'summon:สายสัมพันธ์': ['hearts', 'aura', '#FF9AC8'], 'summon:อัญเชิญกริฟฟอน': ['griffon', 'beastfly', '#FFD25A'], 'summon:พลังฝูงสัตว์': ['paw', 'aura', '#FFC07A'], 'summon:มังกรวิญญาณ': ['dragon', 'beastbreath', '#7AE8FF'],
+  'summon:อัญเชิญหมีศิลา': ['bear', 'beast', '#C89A6A'], 'summon:ฝูงค้างคาวราตรี': ['bat', 'swarm', '#B06BFF'], 'summon:อัญเชิญฟีนิกซ์': ['phoenix', 'beastfly', '#FF8A2A'],
+  'engineer:ค้อนเหล็ก': ['hammer', 'stamp', '#C8D0E0'], 'engineer:ระเบิดกระป๋อง': ['bomb', 'lob', '#FF8A3A'], 'engineer:ป้อมปืนเลเซอร์': ['laser', 'rise', '#FF5A8A'], 'engineer:โล่พลังงาน': ['battery', 'aura', '#7CFFE0'], 'engineer:หุ่นยักษ์ถล่ม': ['robot', 'drop', '#9AB0FF'],
+  'engineer:จรวดนำวิถี': ['rocket', 'fly', '#FF7A5A'], 'engineer:สนามไฟฟ้าสถิต': ['tesla', 'rise', '#FFE94A'], 'engineer:ปืนใหญ่เลเซอร์โคจร': ['satellite', 'hover', '#FF6A9A'],
+  'hacker:โค้ดโจมตี': ['floppy', 'fly', '#5AFFB0'], 'hacker:ไฟร์วอลล์': ['wall', 'aura', '#FF8A5A'], 'hacker:DDoS ย้อนกลับ': ['antenna', 'hover', '#5AC8FF'], 'hacker:แพตช์ระบบ': ['bandage', 'aura', '#7CFFB0'], 'hacker:Zero-Day': ['rad', 'stamp', '#C8FF3A'],
+  'hacker:ไวรัสโทรจัน': ['virus', 'orbit', '#7AFF5A'], 'hacker:สายฟ้าเซิร์ฟเวอร์': ['serverbolt', 'hover', '#7AC8FF'], 'hacker:รีบูตโลก': ['recycle', 'spin', '#5AFFC8'],
+};
+function rpgSig55(k) { return k?.sig55 || null; }
+// ผูกตาราง + ลงทะเบียนสกิลใหม่ (v53) ให้ใช้ไอคอนวาด แทนอิโมจิ
+(() => {
+  const S53 = typeof RPG_SKX53 !== 'undefined' ? RPG_SKX53 : {};
+  Object.entries(RPG_JOBS).forEach(([j, J]) => {
+    [...(J.sk || []), ...(S53[j] || [])].forEach((k, i) => {
+      const sg = RPG_SIG55[j + ':' + k[0]]; if (sg) k.sig55 = { g: sg[0], m: sg[1], c: sg[2] };
+      let ch = [...String(k[1])].find(c => RPG_SKPUA[c]);
+      if (!ch) { k.emo34 = k[1]; ch = String.fromCodePoint(RPG_PUAN++); RPG_SKPUA[ch] = { emo: k[1], col: J.col, rank: k._rank ?? (S53[j]?.includes(k) ? 3 : i), kind: k[4] }; RPG_PUA[ch] = '@sk:' + ch; k[1] = ch; }
+      if (sg) { RPG_SKPUA[ch].g = sg[0]; RPG_SKPUA[ch].col = sg[2] && sg[1] !== 'aura' ? rpgMix55(sg[2], J.col) : RPG_SKPUA[ch].col; }
+    });
+  });
+})();
+function rpgMix55(a, b) { const p = h => [1, 3, 5].map(i => parseInt(h.slice(i, i + 2), 16)), A = p(a), B = p(b); return '#' + A.map((v, i) => Math.round(v * .35 + B[i] * .65).toString(16).padStart(2, '0')).join(''); }
+rpgItemCanvas = (f => function (key, S = 96) {
+  if (typeof key === 'string' && key.startsWith('@sk:')) { const I = RPG_SKPUA[key.slice(4)]; if (I?.g) { const ck = key + '@55@' + S; if (RPG_ICANV.has(ck)) return RPG_ICANV.get(ck); const c = SKI34.draw(key, '§' + I.g, I.col, I.rank || 0, S, I.kind); RPG_ICANV.set(ck, c); return c; } }
+  return f(key, S); })(rpgItemCanvas);
+
+/* ---------- เอฟเฟกต์ประจำสกิล: วาด "รูปสกิล" ขนาดใหญ่ในโลก แล้วเคลื่อนไหวตามท่า ---------- */
+const SKX55 = [];
+const RPG_DIAG55 = new Set(['lance', 'poisonarrow', 'rocket', 'spear', 'kunaibomb', 'arrows', 'skysword', 'sword']);
+const ez = { out: e => 1 - Math.pow(1 - e, 3), in: e => e * e, back: e => { const c = 1.7; return 1 + (c + 1) * Math.pow(e - 1, 3) + c * Math.pow(e - 1, 2); } };
+function rpgDark55(h, f = .45) { const n = parseInt(h.slice(1), 16); return `rgb(${(n >> 16) * f | 0},${(n >> 8 & 255) * f | 0},${(n & 255) * f | 0})`; }
+function rpgLite55(h, f = .45) { const n = parseInt(h.slice(1), 16), m = v => Math.round(v + (255 - v) * f); return `rgb(${m(n >> 16)},${m(n >> 8 & 255)},${m(n & 255)})`; }
+function rpgGly55(o) { if (SKX55.length > 80) SKX55.splice(0, 10); SKX55.push({ t0: performance.now(), d: 0, dur: 900, ghost: 0, ...o }); }
+function rpgSigFx55(k, P, T, rank = 1, aoe = 60, n = 1) {
+  const sg = rpgSig55(k); if (!sg || RS.lowFx === 2) return; const g = sg.g, col = sg.c || '#FFFFFF', R = Math.min(4, rank), big = 1 + R * .12;
+  const ang = Math.atan2(T.y - P.y, T.x - P.x), dist = Math.hypot(T.x - P.x, T.y - P.y), face = T.x < P.x ? -1 : 1;
+  const hit = (ms, sh = 6) => X49.later(ms, () => { X49.big({ k: 'ring', x: T.x, y: T.y, r: 60 + R * 14, col, dur: 480, w: 6 }); X49.burst(T.x, T.y - 18, 18 + R * 4, col, 220); rpgShake49(sh + R * 2, 260); });
+  const G = (o) => rpgGly55({ g, col, ...o });
+  switch (sg.m) {
+    case 'slashx': G({ dur: 460, ghost: 3, f: e => ({ x: T.x, y: T.y - 24, s: (66 + R * 8), r: -1.7 + ez.out(e) * 3.4, a: e < .75 ? 1 : (1 - e) / .25 }) }); hit(180, 4); break;
+    case 'spin': G({ dur: 1000, ghost: 2, f: e => ({ x: T.x, y: T.y - 22, s: (40 + 56 * Math.min(1, e * 3)) * big, r: e * 16, a: e < .8 ? 1 : (1 - e) / .2 }) }); hit(300, 3); hit(650, 3); break;
+    case 'stamp': G({ dur: 760, f: e => { const q = Math.min(1, e * 2.6); return { x: T.x, y: T.y - 26, s: (150 - 86 * ez.back(q)) * big, r: (1 - q) * .5, a: e < .7 ? Math.min(1, e * 8) : (1 - e) / .3 }; } }); hit(260, 8); break;
+    case 'drop': G({ dur: 980, ghost: 2, f: e => { const q = Math.min(1, e / .42), y = T.y - 320 + 290 * ez.in(q), sq = e > .42 && e < .55 ? 1 - Math.sin((e - .42) / .13 * Math.PI) * .18 : 1; return { x: T.x + (1 - q) * -40 * face, y, s: (92 + R * 10), sx: 2 - sq, sy: sq, r: g === 'skysword' || g === 'sword' ? Math.PI * .75 - .55 : 0, a: e < .8 ? 1 : (1 - e) / .2 }; } }); X49.later(410, () => { X49.big({ k: 'boom', x: T.x, y: T.y - 8, r: aoe * .9, col, dur: 600 }); X49.big({ k: 'crack', x: T.x, y: T.y, r: aoe, col, dur: 900 }); }); hit(410, 12); break;
+    case 'rise': G({ dur: 1100, f: e => { const q = ez.out(Math.min(1, e / .4)); return { x: T.x, y: T.y + 14 - 50 * q, s: (24 + 74 * q) * big, r: 0, a: e < .78 ? Math.min(1, e * 6) : (1 - e) / .22, clipY: T.y + 16 }; } }); X49.big({ k: 'sigil', x: T.x, y: T.y, r: aoe * .8, col, dur: 1000 }); hit(380, 6); break;
+    case 'fly': case 'flyspin': case 'lob': { const rot0 = RPG_DIAG55.has(g) ? ang + Math.PI / 4 : g === 'piercearrow' ? ang : 0;
+      G({ dur: 760, ghost: 3, f: e => { const q = Math.min(1, e / .55), x = P.x + (T.x - P.x) * q, y = P.y - 26 + (T.y - 4 - P.y) * q - (sg.m === 'lob' ? Math.sin(q * Math.PI) * (60 + dist * .25) : 0), pop = e > .55 ? 1 + (e - .55) * 1.6 : 1;
+        return { x, y, s: (44 + R * 6) * pop * (g === 'phoenix' || g === 'dragon' ? 1.6 : 1), r: sg.m === 'flyspin' || sg.m === 'lob' ? e * 14 : rot0 + (rot0 ? 0 : Math.sin(e * 20) * .15), flip: !rot0 && face < 0, a: e < .55 ? 1 : Math.max(0, 1 - (e - .55) / .45) }; } }); hit(420, 5); break; }
+    case 'fan': [-.28, 0, .28].forEach((da, i) => { const a2 = ang + da, L = dist; G({ dur: 700, d: i * 60, ghost: 2, f: e => { const q = Math.min(1, e / .55); return { x: P.x + Math.cos(a2) * L * q, y: P.y - 26 + Math.sin(a2) * L * q + 20 * q, s: 34 + R * 4, r: g === 'shuriken' ? e * 24 : a2 + Math.PI / 4, a: e < .6 ? 1 : (1 - e) / .4 }; } }); }); hit(420, 3); break;
+    case 'mark': G({ dur: 1000, f: e => { const q = ez.out(Math.min(1, e / .35)); return { x: T.x, y: T.y - 22, s: (120 - 70 * q) * big * (1 + Math.sin(e * 30) * .04 * (e > .35)), r: (1 - q) * 1.6, a: e < .8 ? Math.min(1, e * 6) : (1 - e) / .2 }; } }); X49.later(360, () => { X49.big({ k: 'ring', x: T.x, y: T.y - 22, r: 40, col, dur: 300, flat: 1, w: 4 }); }); hit(380, 4); break;
+    case 'hover': G({ dur: 1400, f: e => { const q = ez.back(Math.min(1, e / .3)); return { x: T.x, y: T.y - 96 + Math.sin(e * 9) * 5, s: (30 + 76 * q) * big, r: 0, a: e < .82 ? Math.min(1, e * 5) : (1 - e) / .18 }; } });
+      X49.later(380, () => X49.big({ k: 'ring', x: T.x, y: T.y, r: 70 + R * 10, col, dur: 600, w: 5 })); hit(420, 6); break;
+    case 'orbit': { const m = 4 + Math.min(2, R); for (let i = 0; i < m; i++) G({ dur: 1100, ghost: 1, f: e => { const a = i / m * Math.PI * 2 + e * 9, r = 70 * (1 - ez.in(Math.min(1, e / .75))); return { x: T.x + Math.cos(a) * r, y: T.y - 22 + Math.sin(a) * r * .5, s: 30 + R * 4, r: e * 8, a: e < .75 ? 1 : (1 - e) / .25 }; } });
+      hit(820, 8); break; }
+    case 'rain': for (let i = 0; i < 7 + R * 2; i++) { const ox = (Math.random() - .5) * aoe * 1.8, oy = (Math.random() - .5) * aoe * .8; G({ dur: 520, d: 80 + i * 70, f: e => ({ x: T.x + ox - 70 * (1 - e), y: T.y + oy - 260 * (1 - ez.in(e)) - 14, s: 34 + R * 3, r: g === 'meteor' ? 0 : -.3, a: e < .85 ? 1 : (1 - e) / .15 }) }); X49.later(80 + i * 70 + 520, () => X49.burst(T.x + ox, T.y + oy - 10, 8, col, 140)); } hit(600, 5); break;
+    case 'aura': case 'shower': G({ dur: 1400, f: e => { const q = ez.back(Math.min(1, e / .3)); return { x: P.x, y: P.y - 70 - e * 26, s: (24 + 60 * q), r: 0, a: e < .7 ? Math.min(1, e * 5) : (1 - e) / .3 }; } });
+      for (let i = 0; i < 3; i++) G({ dur: 1300, d: 120, f: e => { const a = i / 3 * Math.PI * 2 + e * 6; return { x: P.x + Math.cos(a) * 40, y: P.y - 20 + Math.sin(a) * 16 - e * 30, s: 22, r: 0, a: Math.sin(e * Math.PI) }; } });
+      if (sg.m === 'shower') for (let i = 0; i < 12; i++) { const ox = (Math.random() - .5) * 120; G({ dur: 700, d: 150 + i * 60, f: e => ({ x: P.x + ox, y: P.y - 140 + e * 140, s: 20, r: Math.sin(e * 8) * .3, a: e < .8 ? 1 : (1 - e) / .2 }) }); }
+      X49.big({ k: 'ring', x: P.x, y: P.y, r: 80, col, dur: 700, w: 5 }); break;
+    case 'beast': case 'beastfly': case 'beastbreath': { const fly = sg.m !== 'beast', S0 = (g === 'bat' ? 44 : 70) + R * 7, br = sg.m === 'beastbreath';
+      X49.big({ k: 'circle', x: P.x, y: P.y, r: 46 + R * 8, col, dur: 1300 });
+      G({ dur: br ? 1700 : 1400, ghost: br ? 0 : 2, f: e => {
+        let x, y, s = S0, sy = 1, a = 1;
+        if (e < .22) { const q = ez.out(e / .22); x = P.x - face * 20; y = P.y - 10 - q * (fly ? 50 : 26); s = S0 * q; }
+        else if (br) { x = P.x - face * 20; y = P.y - (fly ? 44 : 30) + Math.sin(e * 14) * 6; }
+        else if (e < .52) { const q = (e - .22) / .3; x = P.x - face * 20 + (T.x - face * 26 - P.x + face * 20) * ez.out(q); y = P.y - (fly ? 60 : 36) + (T.y - 30 - P.y + (fly ? 60 : 36)) * q - Math.sin(q * Math.PI) * (fly ? 120 : 70); }
+        else { const q = (e - .52) / .48; x = T.x - face * 26 + Math.sin(q * 30) * 4 * (1 - q); y = T.y - 30 - (fly ? q * 30 : 0); s = S0 * (1 + Math.sin(Math.min(1, q * 3) * Math.PI) * .18); }
+        if (fly) sy = 1 + Math.sin(e * 40) * .12; if (e > .85) a = (1 - e) / .15;
+        return { x, y, s, sy, r: 0, flip: face < 0, a }; } });
+      if (br) { X49.later(560, () => { X49.big({ k: 'beam', x: P.x - face * 4, y: P.y - 60, x2: T.x, y2: T.y - 18, w: 18 + R * 4, col, dur: 700 }); X49.burst(T.x, T.y - 18, 40, col, 260, { k: 'ember', up: 60 }); rpgShake49(10, 500); }); hit(700, 6); }
+      else { [0, 140, 280].forEach((t, i) => X49.later(760 + t, () => { X49.big({ k: 'slash', x: T.x, y: T.y - 20, r: 40 + R * 6, rot: (i - 1) * .6 + (face < 0 ? Math.PI : 0), col, dur: 300, w: 8 }); X49.burst(T.x, T.y - 18, 10, col, 180); })); hit(760, g === 'bear' ? 14 : 6); }
+      break; }
+    case 'swarm': for (let i = 0; i < 6 + R; i++) { const ph = Math.random() * 6.28, w = 30 + Math.random() * 30; G({ dur: 1300, d: i * 60, f: e => { const q = Math.min(1, e / .5); let x = P.x + (T.x - P.x) * q, y = P.y - 40 + (T.y - 20 - P.y + 40) * q + Math.sin(q * 9 + ph) * w * (1 - q);
+        if (e > .5) { const a = ph + e * 14; x = T.x + Math.cos(a) * 34; y = T.y - 26 + Math.sin(a) * 16; } return { x, y, s: 34, sy: 1 + Math.sin(e * 50) * .25, r: 0, flip: face < 0, a: e < .85 ? 1 : (1 - e) / .15 }; } }); }
+      hit(700, 4); hit(1000, 4); break;
+  }
+}
+function rpgSkxDraw55(x) {
+  const now = performance.now(); for (let i = SKX55.length - 1; i >= 0; i--) if (now - SKX55[i].t0 > SKX55[i].dur + SKX55[i].d) SKX55.splice(i, 1);
+  const G = SKI34.G;
+  SKX55.forEach(o => { const e = (now - o.t0 - o.d) / o.dur; if (e < 0) return;
+    for (let gh = o.ghost; gh >= 0; gh--) { const ee = e - gh * .035; if (ee < 0) continue; const q = o.f(Math.min(1, ee)); if (!q || q.a <= 0 || !(q.s > 0)) continue;
+      x.save(); if (q.clipY != null) { x.beginPath(); x.rect(q.x - 400, q.clipY - 900, 800, 900); x.clip(); }
+      x.globalAlpha = Math.max(0, Math.min(1, q.a)) * (gh ? .28 / gh : 1); x.translate(q.x, q.y); x.rotate(q.r || 0); const k = q.s / 60; x.scale(k * (q.flip ? -1 : 1) * (q.sx || 1), k * (q.sy || 1));
+      x.shadowColor = o.col; x.shadowBlur = gh ? 0 : 16; x.fillStyle = o.fill || (o.fill = rpgLite55(o.col)); x.strokeStyle = rpgDark55(o.col, .42); x.lineWidth = 2.8; x.lineJoin = 'round'; x.lineCap = 'round';
+      try { (G[o.g] || G.star)(x); } catch (err) {} x.restore(); } });
+}
+rpgMapFxDraw = (f => function (x) { f.apply(this, arguments); const cam = RS.cam; if (!cam || !SKX55.length) return; x.save(); x.setTransform(cam.sc, 0, 0, cam.sc, -cam.cx * cam.sc, -cam.cy * cam.sc); try { rpgSkxDraw55(x); } finally { x.restore(); } })(rpgMapFxDraw);
+// ผูกเข้ากับการร่ายสกิล (ของเรา + ผู้เล่นอื่นออนไลน์ + บัพ/ฮีล)
+rpgFcCast49 = (f => function (i, k, lv, mo, rank) { const r = f.apply(this, arguments); try { const s = R.save, P = { x: s.x * TS, y: s.y * TS }, T = mo ? { x: mo.x * TS, y: mo.y * TS } : P; rpgSigFx55(k, P, T, rank, 1.5 * TS, 1); } catch (e) {} return r; })(rpgFcCast49);
+rpgBuffFx49 = (f => function (k, j) { const r = f.apply(this, arguments); try { const s = R.save, P = { x: s.x * TS, y: s.y * TS }; rpgSigFx55(k, P, P, 3); } catch (e) {} return r; })(rpgBuffFx49);
+rpgNetOtherAtk52 = (f => function (p) { const r = f.apply(this, arguments); try { if (p.s >= 0) { const o = RS.others?.[p.f], J = RPG_JOBS[p.j], k = J?.sk[p.s], mo = RS.mon.find(m => m.uid === p.u), ox = o?.x ?? p.x, oy = o?.y ?? p.y; if (k && ox != null) { const P = { x: ox * TS, y: oy * TS }; rpgSigFx55(k, P, mo ? { x: mo.x * TS, y: mo.y * TS } : P, Math.min(3, rpgSkRank49(k, p.s)), 1.4 * TS, 1); } } } catch (e) {} return r; })(rpgNetOtherAtk52);
+// ผู้อัญเชิญ: ไม่ยิงอิโมจิแล้ว ดาเมจเข้าตอนสัตว์อัญเชิญกระโจนถึงตัว
+FX49.summon = function (P, T, col, rank, n, aoe) { X49.big({ k: 'circle', x: P.x, y: P.y, r: 40 + rank * 8, col, dur: 1200 }); const H = []; for (let i = 0; i < Math.max(1, n); i++) { const t = 760 + i * 140; H.push(t); X49.later(t, () => X49.big({ k: 'boom', x: T.x, y: T.y - 14, r: aoe * .6, col, dur: 420 })); } return H; };
+// คัทอินชื่อสกิล: แปลงไอคอนเป็นรูปวาด
+rpgCutin49 = (f => function () { const r = f.apply(this, arguments); try { const d = document.querySelector('#rpg .skx-cut:last-of-type'); if (d) rpgPuaSwap(d); } catch (e) {} return r; })(rpgCutin49);
 
 /* =====================================================================
    rpg-net.js — หน้าเกมของครู: จัดการตัวละคร (เลือกชั้น → ห้อง) · คำถามในเกม · ตรวจแชท · กิลด์ · โหมดครู
