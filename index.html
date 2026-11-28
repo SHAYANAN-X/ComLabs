@@ -3803,7 +3803,7 @@ html.g3-on,html.g3-on body{overflow:hidden}
 .rpg-minirim{pointer-events:auto;cursor:zoom-in;transition:transform .15s}.rpg-minirim:hover{transform:scale(1.05)}
 .rpg-menu button{width:50px;height:50px;font-size:19px}
 .rpg-tmode{position:absolute;left:50%;top:10px;transform:translateX(-50%);padding:6px 16px;border-radius:999px;font:800 12.5px var(--f-body);color:#4A2A00;background:linear-gradient(90deg,#FFE680,#F6C343);box-shadow:0 0 0 2px var(--g-ink);pointer-events:none}
-/* ปาร์ตี้ */
+/* ทีม */
 .rpg-party{position:absolute;left:12px;top:122px;display:flex;flex-direction:column;gap:6px;max-width:230px}
 .rpg-party:empty{display:none}.rpg-party>b{font:800 12.5px var(--f-head);padding:4px 12px;border-radius:999px;background:rgba(20,90,50,.85);box-shadow:inset 0 0 0 1.5px #3DDC84;align-self:flex-start}
 .pt-m{display:flex;align-items:center;gap:8px;padding:4px 12px 4px 4px;border-radius:999px;background:rgba(27,22,64,.8);box-shadow:inset 0 0 0 1.5px rgba(61,220,132,.5)}
@@ -4664,7 +4664,7 @@ img.ii{display:inline-block;width:1.25em;height:1.25em;vertical-align:-.25em;obj
 .bm-legend31 span{display:inline-flex;align-items:center;gap:6px}.bm-legend31 i{width:12px;height:12px;border-radius:50%;display:inline-block}
 .bm-legend31 i.w{background:#50DCFF;box-shadow:0 0 0 2px #fff}.bm-legend31 i.c{background:#B58CFF;border-radius:2px;transform:rotate(45deg)}.bm-legend31 i.n{background:#F6C343;border-radius:2px}.bm-legend31 i.m{background:#FF5A5F}
 
-/* ===== v31: ปาร์ตี้ (ย้ายไม่ทับภารกิจ) + ไอคอนบัพ ===== */
+/* ===== v31: ทีม (ย้ายไม่ทับภารกิจ) + ไอคอนบัพ ===== */
 .rpg-party{overflow:hidden}
 .rpg-party .pt-bf{display:inline-flex;gap:2px;margin-left:6px;font-style:normal;vertical-align:middle}
 .rpg-party .pt-bf i{display:grid;place-items:center;width:18px;height:18px;border-radius:6px;font-style:normal;font-size:12px;background:rgba(255,255,255,.18);box-shadow:inset 0 0 0 1px rgba(255,255,255,.35)}
@@ -4957,7 +4957,7 @@ img.ii.jic{border-radius:22%}
 .bsk38-ban small{display:block;font:900 11px var(--f-body);letter-spacing:.3em;color:#FFE27A}.bsk38-ban b{font:900 clamp(22px,4vw,36px) var(--f-head);text-shadow:0 0 18px var(--c)}
 @keyframes bsk38{0%{opacity:0;transform:translateX(-50%) scaleX(.3)}12%{opacity:1;transform:translateX(-50%) scaleX(1)}80%{opacity:1}100%{opacity:0}}
 @media (prefers-reduced-motion:reduce){.boss38 .bs-warn span{animation:none}}
-/* ===== v39: คราฟต์ · ความสำเร็จ · บอสห้อง · ดันเจี้ยนปาร์ตี้ ===== */
+/* ===== v39: คราฟต์ · ความสำเร็จ · บอสห้อง · ดันเจี้ยนทีม ===== */
 .cf-go{margin:-6px 0 10px}
 .cf-mats{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:8px}.cf-mats span{display:grid;grid-template-columns:30px auto;grid-template-rows:auto auto;align-items:center;gap:0 6px;padding:6px 12px 6px 6px;border-radius:14px;background:rgba(255,255,255,.6);box-shadow:inset 0 0 0 1px rgba(255,255,255,.9)}
 .cf-mats .rp-ic{grid-row:1/3;width:30px;height:30px;font-size:20px;display:grid;place-items:center}.cf-mats b{font-size:14px}.cf-mats small{font-size:10.5px}
@@ -5048,7 +5048,7 @@ img.ii.jic{border-radius:22%}
   .eq41-pow{left:8px;top:8px;padding:4px 10px}.eq41-pow b{font-size:15px}.eq41-job{right:8px;top:8px;font-size:11px}
   .eq41-rot{bottom:6px}.eq41-rot button{width:32px;height:32px}
 }
-/* ===== v41 สถานะบัพปาร์ตี้ ===== */
+/* ===== v41 สถานะบัพทีม ===== */
 .rpg-party{min-width:200px}
 .rpg-party .pb41-row{display:flex;flex-wrap:wrap;gap:5px;margin:4px 0 2px;height:auto;background:none;overflow:visible}
 .rpg-party .pb41{position:relative;display:inline-grid;place-items:center;width:24px;height:24px;margin:0;border-radius:8px;background:radial-gradient(circle at 35% 30%,rgba(255,255,255,.3),rgba(10,10,30,.75));box-shadow:inset 0 0 0 1.5px var(--c),0 0 8px color-mix(in srgb,var(--c) 60%,transparent)}
@@ -5233,12 +5233,44 @@ img.ii.jic{border-radius:22%}
 #rpg .rp-btn.danger{background:linear-gradient(180deg,#FF8A7A,#D8402A)!important;border-color:#7A1E10!important;color:#fff!important;box-shadow:inset 0 2px 0 rgba(255,220,200,.5),0 4px 0 #7A1E10!important}
 #rpg .rp-btn:disabled{filter:grayscale(.7);opacity:.6}
 #rpg .rp-p{color:#7A5430}
-/* v52: กล่องปาร์ตี้ย้ายไปคอลัมน์ซ้ายใต้ภารกิจ ไม่ทับปุ่มสกิล */
+/* v52: กล่องทีมย้ายไปคอลัมน์ซ้ายใต้ภารกิจ ไม่ทับปุ่มสกิล */
 #rpg .rpg-party:not(:empty){position:absolute!important;left:10px!important;right:auto!important;top:auto!important;bottom:178px!important;width:232px!important;max-height:min(210px,calc(100vh - 560px))!important;min-height:0;overflow:auto!important;z-index:3;padding:8px 10px!important}
 @media (max-height:760px){#rpg .rpg-party:not(:empty){max-height:150px!important}}
 @media (max-width:700px){#rpg .rpg-party:not(:empty){bottom:auto!important;top:calc(env(safe-area-inset-top) + 300px)!important;width:190px!important;max-height:160px!important;font-size:12px}}
 #rpg .ach39{width:max-content!important;max-width:88vw}
 @media (max-width:700px){#rpg .ach39 b{font-size:15px}#rpg .ach39>span{font-size:28px}.rpg .rpg-act.ac52{transform:scale(.72)!important;bottom:12px!important;right:2px!important}}
+/* v53: ปุ่มสกิลเว้นช่องแบบ TOSM */
+.rpg .rpg-act.ac52{width:380px;height:380px}
+.rpg .rpg-act.ac52 .ac-ring{width:500px;height:500px;right:-178px;bottom:-178px;background:radial-gradient(circle,transparent 30%,rgba(20,12,4,.16) 31%,rgba(20,12,4,.16) 55%,transparent 56%)}
+.rpg .rpg-act.ac52 .ac-s.s0{right:316px;bottom:168px}.rpg .rpg-act.ac52 .ac-s.s1{right:168px;bottom:316px}
+#rpg .ac-sk49 button{width:64px;height:64px}
+@media (max-width:700px){.rpg .rpg-act.ac52{transform:scale(.64)!important}}
+@media (max-width:700px){#rpg .rpg-chat{max-width:42vw!important;width:42vw!important}#rpg .rpg-tmode{max-width:42vw!important;overflow:hidden}}
+/* v53 team frames */
+#rpg .rpg-party.tm53-box{padding:6px!important;width:196px!important;bottom:auto!important;top:calc(env(safe-area-inset-top) + 142px)!important;left:10px!important;max-height:none!important;overflow:visible!important;display:flex;flex-direction:column;gap:4px;font-family:var(--f-cartoon)}
+#rpg .tm53-h{display:flex;align-items:center;justify-content:space-between;padding:0 2px 2px 6px;color:#FFE9B8;font-size:13px;font-weight:600;cursor:pointer;text-shadow:0 1px 0 #2A1406}
+#rpg .tm53-h button{border:2px solid var(--gold);background:radial-gradient(circle at 40% 30%,#8A5A30,#4A2A12);border-radius:10px;width:28px;height:26px;font-size:13px;cursor:pointer;padding:0}
+#rpg .tm53{display:grid;grid-template-columns:38px 1fr;gap:6px;align-items:center;padding:3px 5px;border-radius:12px;background:rgba(255,240,210,.08);border:1.5px solid rgba(226,182,90,.35)}
+#rpg .tm53.me{background:rgba(255,226,140,.16);border-color:rgba(255,226,140,.7)}
+#rpg .tm53.off{opacity:.5;filter:grayscale(.6)}
+#rpg .tm53-av{position:relative;width:38px;height:38px;border-radius:50%;border:2px solid var(--c);background:radial-gradient(circle,#FFF6E0,#E8CB90);display:grid;place-items:center;font-style:normal;overflow:visible}
+#rpg .tm53-av img{width:100%;height:100%;border-radius:50%;object-fit:cover}#rpg .tm53-av em{position:absolute;top:-9px;left:-5px;font-style:normal;font-size:13px}
+#rpg .tm53 b{display:flex;justify-content:space-between;gap:4px;font-size:12.5px;font-weight:600;color:#FFF1D2;line-height:1.15;white-space:nowrap;overflow:hidden}
+#rpg .tm53 b small{font-size:10.5px;color:#E8CB90;font-weight:500}
+#rpg .tm53 u{display:block;height:6px;border-radius:4px;background:rgba(0,0,0,.45);overflow:hidden;margin-top:3px;box-shadow:inset 0 0 0 1px rgba(0,0,0,.6)}
+#rpg .tm53 u s{display:block;height:100%;background:linear-gradient(90deg,#FF5A5A,#FF9A6B);text-decoration:none}
+#rpg .tm53 span{display:block;font-size:10px;line-height:1.2;margin-top:2px;letter-spacing:1px}
+@media (max-width:700px){#rpg .rpg-party.tm53-box{top:auto!important;bottom:auto!important;top:calc(env(safe-area-inset-top) + 232px)!important;width:160px!important;transform:none}#rpg .tm53{grid-template-columns:30px 1fr}#rpg .tm53-av{width:30px;height:30px}}
+#rpg .rpg-party.tm53-box{top:auto!important;bottom:190px!important}
+@media (max-width:700px){#rpg .rpg-party.tm53-box{bottom:auto!important;top:calc(env(safe-area-inset-top) + 300px)!important}}
+#rpg .rpg-party.tm53-box{text-align:left!important;align-items:stretch!important}#rpg .rpg-party.tm53-box>*{width:100%!important;box-sizing:border-box;margin:0!important;max-width:none!important}
+#rpg .tm53-h span{flex:1}
+#rpg .qt-pd53{margin:4px 0 6px;padding:8px 10px;border-radius:12px;background:linear-gradient(135deg,rgba(120,40,140,.55),rgba(60,20,70,.55));border:1.5px solid rgba(226,182,90,.6)}
+#rpg .qt-pd53>small{display:block;font-size:11px;color:#FFD9A0}#rpg .qt-pd53>b{display:block;font-size:14px;color:#FFF1D2}
+#rpg .qt-pd53 p{margin:2px 0;font-size:12.5px;color:#F3E2C0}#rpg .qt-pd53 p em{font-style:normal;color:#FFE27A;font-weight:700}
+#rpg .qt-pd53 .qt-tbar{height:6px;border-radius:4px;background:rgba(0,0,0,.4);overflow:hidden;margin:4px 0}#rpg .qt-pd53 .qt-tbar i{display:block;height:100%;background:linear-gradient(90deg,#B36BFF,#FF8FD8)}
+#rpg .qt-pd53-m{font-size:11px;color:#E8CB90}
+#rpg .pd39-hud{display:none!important}
 
 </style>
 </head>
@@ -5783,7 +5815,7 @@ if (typeof module !== 'undefined') module.exports = ExamParser;
 </script>
 <script>
 /* โลโก้: ภาพครูปลื้ม (ไฟล์ต้นฉบับ src/logo.svg ฝังตอน build) */
-const APP_VER = '52.0 · 28 พ.ย. 2569';
+const APP_VER = '53.0 · 28 พ.ย. 2569';
 let LOGO_N = 0;
 function logoSVG() { const k = 'L' + (++LOGO_N); return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><defs><linearGradient id="lgb" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3B9BFF"/><stop offset=".5" stop-color="#0A5BE0"/><stop offset="1" stop-color="#062C78"/></linearGradient><linearGradient id="lgs" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset=".6" stop-color="#FFF4D6"/><stop offset="1" stop-color="#FFD978"/></linearGradient><radialGradient id="lgc" cx=".3" cy=".08" r=".75"><stop offset="0" stop-color="#fff" stop-opacity=".55"/><stop offset=".5" stop-color="#fff" stop-opacity=".08"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient></defs><rect width="48" height="48" rx="13" fill="url(#lgb)"/><rect width="48" height="48" rx="13" fill="url(#lgc)"/><rect x=".75" y=".75" width="46.5" height="46.5" rx="12.3" fill="none" stroke="#fff" stroke-opacity=".45" stroke-width="1.2"/><g fill="none" stroke="#04235F" stroke-opacity=".35" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" transform="translate(0 1.2)"><path d="M21.2 17 C19.8 14.6 17.4 13.6 14.8 13.6 C11 13.6 8.6 15.6 8.6 18.5 C8.6 21.8 11.6 22.9 14.9 23.9 C18.6 25 21.6 26.4 21.6 29.8 C21.6 33 18.8 34.6 15.1 34.6 C12 34.6 9.5 33.4 8 31.1"/><path d="M26.6 14 L39.6 34.2 M39.6 14 L26.6 34.2"/></g><g fill="none" stroke="url(#lgs)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M21.2 17 C19.8 14.6 17.4 13.6 14.8 13.6 C11 13.6 8.6 15.6 8.6 18.5 C8.6 21.8 11.6 22.9 14.9 23.9 C18.6 25 21.6 26.4 21.6 29.8 C21.6 33 18.8 34.6 15.1 34.6 C12 34.6 9.5 33.4 8 31.1"/><path d="M26.6 14 L39.6 34.2 M39.6 14 L26.6 34.2"/></g></svg>`.replace('<svg ', '<svg class="logo" aria-hidden="true" ').replace(/\b(lg[bsc])\b/g, '$1' + k); }
 /* =====================================================================
@@ -12099,7 +12131,7 @@ const RPG_MAINQ = [
   { t: 'ก้าวแรกของผู้กล้า', k: 'kill', z: 'forest', n: 3, say: ['ทุ่งหญ้าทางตะวันออกเต็มไปด้วยบั๊ก ลองไปปราบมาสัก 3 ตัวสิ', 'ถ้าเจ็บก็กลับมาที่น้ำพุนะ กด Space ใกล้น้ำพุเพื่อฟื้นพลัง'], r: { exp: 40, gold: 60, it: { hp1: 3 } } },
   { t: 'บั๊กกวนเมือง', k: 'kill', m: 'หนอนบั๊ก', n: 5, say: ['หนอนบั๊กกัดกินโค้ดของเมืองจนพังหมดแล้ว!', 'ไปจัดการหนอนบั๊ก 5 ตัว แล้วกลับมารายงานข้า'], r: { exp: 90, gold: 90, it: { net1: 2 } } },
   { t: 'เพื่อนคู่ใจ', k: 'cap', n: 1, say: ['ผู้กล้าที่ดีต้องมีเพื่อนร่วมทาง', 'ชนะมอนสเตอร์แล้วโยนตาข่ายจับมาสักตัว มีน่าที่ลานน้ำพุจะช่วยสอนเอง'], r: { exp: 140, gold: 120, it: { food: 3, net1: 3 } } },
-  { t: 'ราชาบั๊กยักษ์', k: 'kill', boss: 'forest', n: 1, lv: 16, say: ['ลึกสุดของป่า (ป่าลึกราชาบั๊ก) มีราชาบั๊กยักษ์ซ่อนอยู่', 'มันแข็งแกร่งมาก ชวนเพื่อนตั้งปาร์ตี้ไปด้วยก็ดีนะ'], r: { exp: 900, gold: 600, it: { hp2: 3, w: 1 } } },
+  { t: 'ราชาบั๊กยักษ์', k: 'kill', boss: 'forest', n: 1, lv: 16, say: ['ลึกสุดของป่า (ป่าลึกราชาบั๊ก) มีราชาบั๊กยักษ์ซ่อนอยู่', 'มันแข็งแกร่งมาก ชวนเพื่อนตั้งทีมไปด้วยก็ดีนะ'], r: { exp: 900, gold: 600, it: { hp2: 3, w: 1 } } },
   { t: 'ถ้ำมืดมัลแวร์', k: 'kill', z: 'cave', n: 8, lv: 15, say: ['มีรายงานว่ามัลแวร์ซ่อนตัวอยู่ในถ้ำทางเหนือของเมือง', 'ลงไปสำรวจและปราบพวกมัน 8 ตัว'], r: { exp: 2000, gold: 900, it: { net2: 2 } } },
   { t: 'หน้ากากฟิชชิง', k: 'kill', m: 'ผีฟิชชิง', n: 5, say: ['ผีฟิชชิงหลอกชาวเมืองให้กดลิงก์ปลอม!', 'จำไว้นะ ลิงก์แปลก ๆ อย่ากด ไปปราบมันซะ 5 ตัว'], r: { exp: 3200, gold: 1300, it: { mp2: 3 } } },
   { t: 'ปีศาจโทรจัน', k: 'kill', boss: 'cave', n: 1, lv: 30, say: ['ปีศาจโทรจันปลอมตัวเป็นของขวัญ แล้วแอบเข้ามาในระบบ', 'มันอยู่ในรังโทรจัน แผนที่สุดท้ายของถ้ำ'], r: { exp: 6000, gold: 2500, it: { net2: 3, a: 1 } } },
@@ -12223,7 +12255,7 @@ const RPG_VILLAGERS = [
   { n: 'ทหารยาม', job: 'knight', look: { g: 'm', skin: 2, hs: 0, hc: 0, os: 2, oc: 6 }, gear: 2, path: [[14.5, 15.5], [5.5, 15.5]], say: ['ยามนี้ปลอดภัยดี!', 'ระวังมอนสเตอร์ทางตะวันออกนะ'] },
   { n: 'แม่ค้าผลไม้', job: 'bard', look: { g: 'f', skin: 1, hs: 3, hc: 1, os: 0, oc: 2 }, gear: -1, path: [[25.5, 15.5], [34.5, 15.5]], say: ['มะม่วงหวานจ้า~', 'วันนี้ขายดีจัง'] },
   { n: 'เด็กนักเรียน', job: 'archer', look: { g: 'm', skin: 0, hs: 1, hc: 3, os: 3, oc: 0 }, gear: -1, path: [[19.5, 8.5], [19.5, 12.5], [21.5, 12.5]], say: ['การบ้านเยอะจัง', 'วันนี้ได้ Lv.5 แล้ว!'] },
-  { n: 'นักผจญภัย', job: 'ninja', look: { g: 'f', skin: 3, hs: 2, hc: 5, os: 2, oc: 4 }, gear: 3, path: [[20.5, 26.5], [8.5, 26.5], [32.5, 26.5]], say: ['ฉันกำลังจะไปทะเลทราย', 'มีใครอยากตั้งปาร์ตี้ไหม?'] },
+  { n: 'นักผจญภัย', job: 'ninja', look: { g: 'f', skin: 3, hs: 2, hc: 5, os: 2, oc: 4 }, gear: 3, path: [[20.5, 26.5], [8.5, 26.5], [32.5, 26.5]], say: ['ฉันกำลังจะไปทะเลทราย', 'มีใครอยากตั้งทีมไหม?'] },
 ];
 const RPG_CRITTERS = { town: ['🐦', '🐈', '🐕'], forest: ['🦋', '🐿️', '🦌', '🐇'], ice: ['🐧', '🦊'], desert: ['🦎', '🐫'], cave: ['🦇'], volcano: ['🦎'], castle: ['🐀', '🦇'], dungeon: ['🐀'] };
 
@@ -12651,7 +12683,7 @@ function rpgPanel(k, arg) {
     const pr = arg, j = RPG_JOBS[pr.cls?.j] || null;
     body = `<h3>${esc(pr.name)} <small>${esc(pr.classroom || '')}</small></h3><div class="rp-ward"><div class="rp-prev"><img src="${rpgLookImg({ ...(pr.outfit || {}), job: pr.cls?.j, wt: j?.wt, wtier: pr.cls?.w ?? -1, atier: pr.cls?.a ?? -1 }, 150)}" alt=""></div><div class="stack"><b>${j ? `${j.ic} ${j.n}` : 'นักผจญภัย'} · Lv.${pr.lvl}</b>
       ${pr.cls?.p ? `<span>สัตว์เลี้ยง ${pr.cls.p}</span>` : ''}${pr.guild ? `<span>🏰 ${esc(pr.guild)}</span>` : ''}
-      ${R.party?.mem.some(m => m.id === pr.id) ? '<span class="pill">⚔️ อยู่ในปาร์ตี้เดียวกัน</span>' : `<button class="rp-btn primary" data-r="pt-inv" data-id="${pr.id}" data-n="${esc(pr.name)}" ${R.party && R.party.id !== rpgMe().student_id ? 'disabled' : ''}>⚔️ ชวนเข้าปาร์ตี้ (${R.party?.mem.length || 1}/4)</button>`}<div class="rp-emo">${RPG_EMOTES.slice(0, 5).map(e => `<button data-r="emo" data-e="${e}">${e}</button>`).join('')}</div></div></div>
+      ${R.party?.mem.some(m => m.id === pr.id) ? '<span class="pill">⚔️ อยู่ในทีมเดียวกัน</span>' : `<button class="rp-btn primary" data-r="pt-inv" data-id="${pr.id}" data-n="${esc(pr.name)}" ${R.party && R.party.id !== rpgMe().student_id ? 'disabled' : ''}>⚔️ ชวนเข้าทีม (${R.party?.mem.length || 1}/4)</button>`}<div class="rp-emo">${RPG_EMOTES.slice(0, 5).map(e => `<button data-r="emo" data-e="${e}">${e}</button>`).join('')}</div></div></div>
       <div class="rp-house">${rpgHouseMini(pr.house)}</div><small class="muted">บ้านของ ${esc(pr.name)}</small>`;
   } else if (k === 'stat') body = rpgStatHTML();
   else if (k === 'quest') body = rpgQuestHTML();
@@ -13955,7 +13987,7 @@ function animeEye(x, s, ex, ey, es, eh, eye, f, FC, hair, skin, r) {
   else { x.moveTo(ex - s * es * 1.2, ey - eh * 1.5); x.quadraticCurveTo(ex, ey - eh * 2.0, ex + s * es * 1.3, ey - eh * 2.15); x.lineTo(ex + s * es * 1.25, ey - eh * 1.9); x.quadraticCurveTo(ex, ey - eh * 1.72, ex - s * es * 1.2, ey - eh * 1.2); }
   x.closePath(); x.fill();
 }
-function animeJaw(x, r, f) { const cw = f ? .88 : .9, jx = f ? .46 : .5, jy = f ? .9 : .95, ch = f ? 1.22 : 1.28;
+function animeJaw(x, r, f) { const cw = f ? .83 : .85, jx = f ? .42 : .46, jy = f ? .94 : .99, ch = f ? 1.26 : 1.32;
   x.beginPath(); x.moveTo(-cw * r, -.2 * r); x.bezierCurveTo(-cw * r, -1.12 * r, cw * r, -1.12 * r, cw * r, -.2 * r);
   x.bezierCurveTo(cw * r, .28 * r, (jx + .3) * r, (jy - .12) * r, jx * r, jy * r); x.quadraticCurveTo(.2 * r, (ch - .02) * r, 0, ch * r); x.quadraticCurveTo(-.2 * r, (ch - .02) * r, -jx * r, jy * r);
   x.bezierCurveTo(-(jx + .3) * r, (jy - .12) * r, -cw * r, .28 * r, -cw * r, -.2 * r); x.closePath(); }
@@ -13968,13 +14000,13 @@ function draw(x, o) {
   const H = (typeof HAIR7 !== 'undefined' && HAIR7[g] && HAIR7[g][hs]) || HAIR6[g][hs] || HAIR5[g][hs] || HAIR3[g][hs] || HAIR2[g][hs] || HAIR[g][hs] || Object.values(HAIR3[g])[0];
   x.save(); x.lineCap = 'round'; x.lineJoin = 'round';
   // hair back
-  x.save(); x.translate(0, neck - (o._T ? 2.4 : 0)); x.scale(o.headK || 1, o.headK || 1); x.translate(0, HY - neck); { const g = x.createLinearGradient(0, -r, 0, r * 2.6); g.addColorStop(0, mix(hair, '#2A1240', .3)); g.addColorStop(.7, mix(hair, '#2A1240', .15)); g.addColorStop(1, mix(hair, '#FFB0D0', .3)); x.fillStyle = g; } H.back(x, r, hair, o); x.restore();
+  x.save(); x.translate(0, neck - (o._T ? 2.4 : 0)); x.scale((o.headK || 1) * (o._T?.SX ? o._T.SY / o._T.SX : 1), o.headK || 1); x.translate(0, HY - neck); { const g = x.createLinearGradient(0, -r, 0, r * 2.6); g.addColorStop(0, mix(hair, '#2A1240', .3)); g.addColorStop(.7, mix(hair, '#2A1240', .15)); g.addColorStop(1, mix(hair, '#FFB0D0', .3)); x.fillStyle = g; } H.back(x, r, hair, o); x.restore();
   const L = { r, neck, hip, sh, HY, f, c1, c2, t, P0 }; if (O.back) O.back(x, L);
   const capeFn = () => { x.fillStyle = lg(x, 0, neck, 0, -2, cape); x.beginPath(); x.moveTo(-sh + 1, neck + 1); x.bezierCurveTo(-sh - 5, hip, -sh - 6, -6, -sh - 5, -3); x.quadraticCurveTo(0, 0, sh + 5, -3); x.bezierCurveTo(sh + 6, -6, sh + 5, hip, sh - 1, neck + 1); x.fill(); }
   if (cape && !o.back) capeFn();
   // legs: single tapered shapes, boots blend
   const robe = O.shape ? O.shape === 'dress' : job === 'mage' || job === 'priest';
-  const AT = o._T, hipL = AT ? AT.hipL : hip; if (AT) { x.save(); x.transform(1 / AT.S, 0, 0, 1 / AT.S, 0, -AT.ty / AT.S); }
+  const AT = o._T, hipL = AT ? AT.hipL : hip; if (AT) { x.save(); x.transform(1 / (AT.SX || AT.S), 0, 0, 1 / (AT.SY || AT.S), 0, -AT.ty / (AT.SY || AT.S)); }
   const wk = o.walk != null, side = !!o.turn && !o.back, dg = !!o.diag; [-1, 1].forEach(s0 => { const s = side || dg ? 1 : s0, lx = side ? s0 * 1.4 : dg ? s0 * (f ? 2.8 : 3.2) + (o.back ? -.4 : .4) : s0 * (f ? 3.3 : 3.8), ph = (o.walk || 0) + (s0 > 0 ? 0 : Math.PI); x.save(); if (wk) { if (AT && (side || dg)) { const k = side ? .36 : .2; x.translate(lx, hipL); x.rotate(-Math.sin(ph) * k); x.translate(-lx, -hipL); x.translate(0, -Math.max(0, Math.cos(ph)) * 2.6); } else if (side) x.translate(Math.sin(ph) * 5.6, -Math.max(0, Math.cos(ph)) * 2.4); else if (dg) x.translate(Math.sin(ph) * 3.4, Math.sin(ph) * (o.back ? -.9 : .9) - Math.max(0, Math.cos(ph)) * 2.4); else x.translate(Math.sin(ph) * 1.4, -Math.max(0, Math.sin(ph)) * 2.6); } x.fillStyle = lg(x, lx - 3, 0, lx + 3, 0, pants, .15, .3);
     x.beginPath(); if (AT) { const kn = hipL * .47; x.moveTo(lx - 3.6, hipL - 1.5); x.bezierCurveTo(lx - 3.9, hipL * .78, lx - 2.9, kn - 3, lx - 2.5, kn); x.bezierCurveTo(lx - 2.9, kn + 3.5, lx - 2.5, -9, lx - 2.1, -5); x.lineTo(lx + 2.1, -5); x.bezierCurveTo(lx + 2.5, -9, lx + 2.9, kn + 3.5, lx + 2.5, kn); x.bezierCurveTo(lx + 2.9, kn - 3, lx + 3.9, hipL * .78, lx + 3.6, hipL - 1.5); x.fill(); x.fillStyle = 'rgba(30,10,50,.18)'; x.beginPath(); x.ellipse(lx + s * 1.2, kn + 1, 1, 2.4, 0, 0, 7); x.fill(); } else { x.moveTo(lx - 3.4, hip - 1); x.bezierCurveTo(lx - 3.6, hip + 5, lx - 2.6, -8, lx - 2.4, -5); x.lineTo(lx + 2.4, -5); x.bezierCurveTo(lx + 2.6, -8, lx + 3.6, hip + 5, lx + 3.4, hip - 1); x.fill(); }
     if (o.bigBoots || O.bigBoots) { const bc = boot, cuffC = O.cuff || lt(boot, .25); x.fillStyle = lg(x, lx - 4, 0, lx + 4, 0, bc, .25, .32); x.beginPath(); x.moveTo(lx - 3.4, -10.5); x.bezierCurveTo(lx - 3.8, -6, lx - 4.6, -3, lx - 4.4, -1); x.bezierCurveTo(lx - 4.4, .8, lx + s * 2 + 4.6, 1, lx + s * 2 + 5, -.8); x.bezierCurveTo(lx + s * 2 + 5.2, -3, lx + 3.8, -4, lx + 3.4, -10.5); x.closePath(); x.fill();
@@ -14007,7 +14039,7 @@ function draw(x, o) {
   // neck
   x.fillStyle = dk(skin, .1); x.beginPath(); if (o._T) { const ng = x.createLinearGradient(0, neck - 6, 0, neck + 1); ng.addColorStop(0, dk(skin, .22)); ng.addColorStop(.5, dk(skin, .08)); ng.addColorStop(1, skin); x.fillStyle = ng; x.roundRect(-1.9, neck - 6, 3.8, 7, 1.4); } else x.roundRect(-2.1, neck - 3, 4.2, 4, 1.5); x.fill();
   // head
-  x.save(); x.translate(0, neck - (o._T ? 2.4 : 0)); x.scale(o.headK || 1, o.headK || 1); x.translate(0, HY - neck);
+  x.save(); x.translate(0, neck - (o._T ? 2.4 : 0)); x.scale((o.headK || 1) * (o._T?.SX ? o._T.SY / o._T.SX : 1), o.headK || 1); x.translate(0, HY - neck);
   const V7 = !!H.v7, YW = V7 ? (o.yaw || 0) : 0, YF = YW * .9;
   if (V7) { o._pj = (x0) => { const a = Math.asin(Math.max(-1, Math.min(1, x0 / (.95 * r)))), v = a + YF, z = Math.cos(v); if (z < .14) return null; return { x: .95 * r * Math.sin(v), k: Math.pow(z, .7) }; }; o._feat = Math.cos(YF) > -.25; x.save(); x.translate(.3 * r * Math.sin(YW), 0); x.scale(1 - .24 * Math.sin(YW), 1); }
   const fg = x.createRadialGradient(-r * .3, -r * .2, r * .1, 0, 0, r * 1.15); fg.addColorStop(0, lt(skin, .35)); fg.addColorStop(.75, skin); fg.addColorStop(1, dk(skin, .08)); x.fillStyle = fg;
@@ -14409,7 +14441,7 @@ function rpgDrawHero(x, h) {
 }
 function rpgLookImg(look, size = 120, mode = 'full') {
   const k = JSON.stringify(look) + size + mode; if (RPG_LOOKC[k]) return RPG_LOOKC[k];
-  const box = { full: [-46, -76, 92, 80], head: [-20, -68, 40, 40], body: [-26, -70, 52, 70], bust: [-24, -70, 48, 48] }[mode];
+  const box = { full: [-46, -82, 92, 86], head: [-16, -75, 32, 32], body: [-24, -78, 48, 78], bust: [-20, -75, 40, 40] }[mode];
   const c = document.createElement('canvas'), sc = size / box[2]; c.width = size; c.height = Math.round(box[3] * sc);
   const x = c.getContext('2d'); x.scale(sc, sc); x.translate(-box[0], -box[1]);
   const rr = sc > 3 ? 6 : sc > 1.6 ? 4 : RPG_ART_RES; rpgArtBlit(x, rpgArtGet(JSON.stringify([look, 'd', 'idle', -1, 0, rr]), () => rpgArtRender(rpgArtOpts(look, { dir: 'd' }), null, rr)), false);
@@ -14425,7 +14457,7 @@ const HAIR7 = (() => {
   const hx = h => { const n = parseInt(h.slice(1), 16); return [n >> 16, n >> 8 & 255, n & 255]; };
   const mix = (h, t, f) => { if (h[0] !== '#') return h; const a = hx(h), b = hx(t); return `rgb(${a.map((v, i) => Math.round(v + (b[i] - v) * f)).join(',')})`; };
   const lt = (h, f) => mix(h, '#FFFFFF', f), dk = (h, f) => mix(h, '#1A0E24', f), sh = (h, f) => mix(h, '#3A1E5A', f);
-  const CY = -.3, RX = 1.13, RY = 1.17, PI = Math.PI;
+  const CY = -.3, RX = 1.06, RY = 1.15, PI = Math.PI;
   const cl = (v, a, b) => Math.max(a, Math.min(b, v));
 
   // จุดบนกะโหลก (ก่อนหมุน) → [x, y, z] หน่วย r
@@ -15397,7 +15429,7 @@ function rpgEndDraw() {
   const B = RS.battle, ov = document.getElementById('rb-ov'); if (!B || !ov) return;
   if (B.end === 'lose') { ov.innerHTML = `<div class="rq"><div class="rq-c end lose"><div class="re-medal lose">💫</div><h3>พ่ายแพ้…</h3><p>ฟื้นตัวที่น้ำพุในเมือง · เสียทอง 10%</p><button class="rp-btn primary wide" data-r="bdone">กลับเมือง</button></div></div>`; return; }
   const rw = B.reward, s = R.save, nets = ['net1', 'net2', 'net3', 'net4'].filter(i => s.inv[i] && rpgCapChance(i) > 0);
-  const chips = [`✨ +${rw.exp.toLocaleString()} EXP${rw.pb ? ` (ปาร์ตี้ +${Math.round(rw.pb * 100)}%)` : ''}`, `💰 +${rw.gold.toLocaleString()}`, ...rw.drops.map(d => `${RPG_ITEMS[d].ic} ${RPG_ITEMS[d].n}`)];
+  const chips = [`✨ +${rw.exp.toLocaleString()} EXP${rw.pb ? ` (ทีม +${Math.round(rw.pb * 100)}%)` : ''}`, `💰 +${rw.gold.toLocaleString()}`, ...rw.drops.map(d => `${RPG_ITEMS[d].ic} ${RPG_ITEMS[d].n}`)];
   const rareH = (rw.rare || []).map(id => { const it = RPG_ITEMS[id], g = RPG_GRADE[it.g || 0]; return `<div class="re-rare" style="--gc:${g.c}"><span>${it.wt === 'any' ? RPG_WT[rpgJob().wt].ic : it.ic}</span><div><small>ของดรอปหายาก · ไม่มีขายในร้าน</small><b>${esc(it.n)}</b><em>${g.n} · Lv.${it.lv}</em></div></div>`; }).join('');
   const cap = B.cap ? `<div class="re-cap ${B.cap}">${B.cap === 'ok' ? `🎉 จับ ${B.mo.ic} ${esc(B.mo.n)} สำเร็จ! เพิ่มเป็นสัตว์เลี้ยงแล้ว` : `💨 ตาข่ายขาด! ${esc(B.mo.n)} หนีไปแล้ว`}</div>`
     : B.capping ? '<div class="re-cap ing">กำลังจับ…</div>'
@@ -15431,7 +15463,7 @@ function rpgBattleClose() {
 }
 
 /* =====================================================================
-   rpg-social.js — เสียง · ชีวิตในเมือง · ออนไลน์ (ปาร์ตี้/แชท/กิลด์) · ป้าย Top 3
+   rpg-social.js — เสียง · ชีวิตในเมือง · ออนไลน์ (ทีม/แชท/กิลด์) · ป้าย Top 3
    แผนที่ใหญ่ · หน้าต่างสวมใส่ · ต้นไม้สกิล · โหมดครู
    ===================================================================== */
 /* =================== 🔊 เสียง (สังเคราะห์ด้วย WebAudio ไม่ต้องโหลดไฟล์) =================== */
@@ -15589,7 +15621,7 @@ function rpgTopBoard(x, t) {
   x.restore();
 }
 
-/* =================== 🧑‍🤝‍🧑 ออนไลน์: ตำแหน่ง · ปาร์ตี้ · แชท =================== */
+/* =================== 🧑‍🤝‍🧑 ออนไลน์: ตำแหน่ง · ทีม · แชท =================== */
 const RPG_BAD = ['เหี้ย', 'สัส', 'ควย', 'เย็ด', 'สัตว์นรก', 'ไอ้สัตว์', 'อีดอก', 'แม่ง', 'fuck', 'shit', 'bitch', 'dick'];
 function rpgClean(t) { let s = String(t || '').slice(0, 140); RPG_BAD.forEach(w => { s = s.split(w).join('*'.repeat(w.length)); s = s.replace(new RegExp(w, 'gi'), '***'); }); return s; }
 function rpgPresenceStart() {
@@ -15628,18 +15660,18 @@ function rpgNetMsg(p) {
   if (p.to && p.to !== me) return;
   if (p.a === 'inv') {
     if (R.party) return rpgSend({ k: 'party', a: 'dec', to: p.id, why: 'busy' });
-    return rpgAsk(`⚔️ ${esc(p.n)} ชวนคุณเข้าปาร์ตี้`, 'เข้าร่วม', () => rpgSend({ k: 'party', a: 'acc', to: p.id, n: rpgName().split(' ')[0], j: R.save.job, l: R.save.lvl }), () => rpgSend({ k: 'party', a: 'dec', to: p.id }));
+    return rpgAsk(`⚔️ ${esc(p.n)} ชวนคุณเข้าทีม`, 'เข้าร่วม', () => rpgSend({ k: 'party', a: 'acc', to: p.id, n: rpgName().split(' ')[0], j: R.save.job, l: R.save.lvl }), () => rpgSend({ k: 'party', a: 'dec', to: p.id }));
   }
-  if (p.a === 'dec') return rpgSay(p.why === 'busy' ? 'เพื่อนอยู่ในปาร์ตี้อื่นแล้ว' : 'เพื่อนปฏิเสธคำชวน');
-  if (p.a === 'acc' && R.party?.id === me) { if (R.party.mem.length >= 4) return rpgSay('ปาร์ตี้เต็ม 4 คนแล้ว'); if (!R.party.mem.some(m => m.id === p.id)) R.party.mem.push({ id: p.id, n: p.n, j: p.j, l: p.l }); rpgSay(`🎉 ${p.n} เข้าปาร์ตี้แล้ว`); rpgPartySync(); }
-  if (p.a === 'sync') { if (!p.mem?.some(m => m.id === me)) { R.party = null; rpgSay('ปาร์ตี้ถูกยุบแล้ว'); } else R.party = { id: p.id, mem: p.mem }; rpgPartyHud(); rpgPresenceSend(); }
-  if (p.a === 'leave' && R.party?.id === me) { R.party.mem = R.party.mem.filter(m => m.id !== p.id); rpgSay(`${p.n || 'เพื่อน'} ออกจากปาร์ตี้`); rpgPartySync(); }
+  if (p.a === 'dec') return rpgSay(p.why === 'busy' ? 'เพื่อนอยู่ในทีมอื่นแล้ว' : 'เพื่อนปฏิเสธคำชวน');
+  if (p.a === 'acc' && R.party?.id === me) { if (R.party.mem.length >= 4) return rpgSay('ทีมเต็ม 4 คนแล้ว'); if (!R.party.mem.some(m => m.id === p.id)) R.party.mem.push({ id: p.id, n: p.n, j: p.j, l: p.l }); rpgSay(`🎉 ${p.n} เข้าทีมแล้ว`); rpgPartySync(); }
+  if (p.a === 'sync') { if (!p.mem?.some(m => m.id === me)) { R.party = null; rpgSay('ทีมถูกยุบแล้ว'); } else R.party = { id: p.id, mem: p.mem }; rpgPartyHud(); rpgPresenceSend(); }
+  if (p.a === 'leave' && R.party?.id === me) { R.party.mem = R.party.mem.filter(m => m.id !== p.id); rpgSay(`${p.n || 'เพื่อน'} ออกจากทีม`); rpgPartySync(); }
 }
 function rpgPartyInvite(id, n) {
   const me = rpgMe().student_id;
   if (!R.party) R.party = { id: me, mem: [{ id: me, n: rpgName().split(' ')[0], j: R.save.job, l: R.save.lvl }] };
-  if (R.party.id !== me) return rpgSay('เฉพาะหัวหน้าปาร์ตี้ที่ชวนเพิ่มได้');
-  if (R.party.mem.length >= 4) return rpgSay('ปาร์ตี้เต็ม 4 คนแล้ว');
+  if (R.party.id !== me) return rpgSay('เฉพาะหัวหน้าทีมที่ชวนเพิ่มได้');
+  if (R.party.mem.length >= 4) return rpgSay('ทีมเต็ม 4 คนแล้ว');
   rpgSend({ k: 'party', a: 'inv', to: id, n: rpgName().split(' ')[0] }); rpgSay(`ส่งคำชวนให้ ${n} แล้ว`); rpgPartyHud();
 }
 function rpgPartySync() { if (!R.party) return; R.party.mem.forEach(m => { if (m.id !== R.party.id) rpgSend({ k: 'party', a: 'sync', to: m.id, mem: R.party.mem }); }); if (R.party.mem.length <= 1) R.party = null; rpgPartyHud(); rpgPresenceSend(); }
@@ -15647,16 +15679,16 @@ function rpgPartyLeave(quiet) {
   if (!R.party) return; const me = rpgMe().student_id;
   if (R.party.id === me) { const mem = R.party.mem; R.party = null; mem.forEach(m => { if (m.id !== me) rpgSend({ k: 'party', a: 'sync', to: m.id, mem: [] }); }); }
   else { rpgSend({ k: 'party', a: 'leave', to: R.party.id, n: rpgName().split(' ')[0] }); R.party = null; }
-  if (!quiet) { rpgSay('ออกจากปาร์ตี้แล้ว'); rpgPartyHud(); }
+  if (!quiet) { rpgSay('ออกจากทีมแล้ว'); rpgPartyHud(); }
 }
 function rpgPartyBonus() { if (!R.party) return 0; const now = performance.now(); return R.party.mem.filter(m => { const o = RS.others[m.id]; return o && o.m === RS.map.scene && now - o.seen < 45000; }).length * .15; }
 function rpgPartyHud() {
   const el = document.getElementById('rpg-party'); if (!el) return;
   if (!R.party) { el.innerHTML = ''; return; }
   const me = rpgMe().student_id;
-  el.innerHTML = `<b>⚔️ ปาร์ตี้ ${R.party.mem.length}/4</b>${R.party.mem.filter(m => m.id !== me).map(m => { const o = RS.others[m.id], on = o && performance.now() - o.seen < 15000;
+  el.innerHTML = `<b>⚔️ ทีม ${R.party.mem.length}/4</b>${R.party.mem.filter(m => m.id !== me).map(m => { const o = RS.others[m.id], on = o && performance.now() - o.seen < 15000;
     return `<div class="pt-m ${on ? '' : 'off'}"><img src="${o?.o ? rpgLookImg(o.o, 48, 'bust') : ''}" alt=""><div><span>${esc(m.n)}${m.id === R.party.id ? ' 👑' : ''}</span><small>Lv.${o?.l || m.l} · ${on ? esc(RPG_ZONES[o.m]?.n || '') : 'ออฟไลน์'}</small><i><u style="width:${o?.hp ?? 100}%"></u></i></div></div>`; }).join('')}
-    <button data-r="pt-leave">ออกจากปาร์ตี้</button>`;
+    <button data-r="pt-leave">ออกจากทีม</button>`;
 }
 function rpgAsk(txt, ok, onOk, onNo) {
   const el = document.createElement('div'); el.className = 'rpg-ask'; el.innerHTML = `<p>${txt}</p><div><button class="rp-btn primary">${ok}</button><button class="rp-btn ghost">ไม่ใช่ตอนนี้</button></div>`;
@@ -15681,7 +15713,7 @@ async function rpgChatLoad() {
 function rpgChatUI() {
   const el = document.getElementById('rpg-chat'); if (!el) return;
   el.className = 'rpg-chat dock' + (RPG_CHAT.min ? ' min' : '');
-  el.innerHTML = `<div class="ch-head">${[['world', '🌏 โลก'], ['party', '⚔️ ปาร์ตี้'], ['guild', '🏰 กิลด์']].map(([k, l]) => `<button class="${RPG_CHAT.ch === k ? 'on' : ''}" data-r="ch-tab" data-k="${k}">${l}</button>`).join('')}<button class="ch-min" data-r="ch-min" aria-label="${RPG_CHAT.min ? 'ขยายแชท' : 'ย่อแชท'}">${RPG_CHAT.min ? '▴' : '▾'}</button></div>
+  el.innerHTML = `<div class="ch-head">${[['world', '🌏 โลก'], ['party', '⚔️ ทีม'], ['guild', '🏰 กิลด์']].map(([k, l]) => `<button class="${RPG_CHAT.ch === k ? 'on' : ''}" data-r="ch-tab" data-k="${k}">${l}</button>`).join('')}<button class="ch-min" data-r="ch-min" aria-label="${RPG_CHAT.min ? 'ขยายแชท' : 'ย่อแชท'}">${RPG_CHAT.min ? '▴' : '▾'}</button></div>
     <div class="ch-list" id="ch-list"></div>
     <form class="ch-in" id="ch-form"><button type="button" class="ch-emo" data-r="emote" aria-label="อีโมจิ">😀</button><input id="ch-txt" maxlength="140" autocomplete="off" placeholder="${R.teacher ? 'โหมดครู: ดูอย่างเดียว' : 'กด Enter เพื่อพิมพ์ข้อความ…'}" ${R.teacher ? 'disabled' : ''}><button class="ch-send" ${R.teacher ? 'disabled' : ''}>ส่ง</button></form>`;
   const f = document.getElementById('ch-form'), inp = document.getElementById('ch-txt');
@@ -15692,7 +15724,7 @@ function rpgChatUI() {
 }
 function rpgChatDraw() {
   const el = document.getElementById('ch-list'); if (!el) return; const ch = rpgChatCh();
-  el.innerHTML = !ch ? `<p class="ch-empty">${RPG_CHAT.ch === 'party' ? 'ยังไม่มีปาร์ตี้ · คลิกตัวละครเพื่อนเพื่อชวน' : 'ยังไม่มีกิลด์ · เปิดเมนูกิลด์เพื่อตั้งหรือเข้าร่วม'}</p>`
+  el.innerHTML = !ch ? `<p class="ch-empty">${RPG_CHAT.ch === 'party' ? 'ยังไม่มีทีม · คลิกตัวละครเพื่อนเพื่อชวน' : 'ยังไม่มีกิลด์ · เปิดเมนูกิลด์เพื่อตั้งหรือเข้าร่วม'}</p>`
     : (RPG_CHAT.msgs[ch] || []).slice(-40).map(m => `<div class="ch-m ${m.me ? 'me' : ''}"><b>${esc(m.name)}:</b> <span>${esc(m.body)}</span></div>`).join('') || '<p class="ch-empty">ยังไม่มีข้อความ ทักทายเพื่อน ๆ ได้เลย</p>';
   el.scrollTop = el.scrollHeight;
 }
@@ -15739,7 +15771,7 @@ function rpgBigMap(tab = 'here') {
     <div class="wm-chain dg">${Object.entries(RPG_DUNGEONS).map(([d, D]) => `<div class="wm-n dun ${s.lvl < D.min ? 'lock' : ''}"><span>${D.ic}</span><b>${D.n}</b><small>Lv.${D.min}+ · 3 ชั้น · ทางเข้าที่ ${RPG_ZONES[D.from].n}</small></div>`).join('')}</div>
     <p class="wm-note">แตะแผนที่ที่เคยไปแล้วเพื่อวาร์ป · แผนที่ใหม่ต้องเดินไปเองก่อน หรือให้พี่ดาต้าส่งไปจุดเริ่มต้นของภูมิภาค</p></div>`;
   el.innerHTML = `<div class="bm-card"><div class="bm-head"><div class="bm-tabs"><button class="${tab === 'here' ? 'on' : ''}" data-r="bm-tab" data-t="here">📍 ${esc(z.n)}</button><button class="${tab === 'world' ? 'on' : ''}" data-r="bm-tab" data-t="world">🌏 แผนที่โลก (${Object.keys(RPG_ZONES).length - 2} แผนที่)</button></div><button class="rp-x" data-r="bm-close" aria-label="ปิด">✕</button></div>
-    ${tab === 'here' ? `<div class="bm-wrap"><canvas id="bm-cv"></canvas></div><div class="bm-leg"><span><i style="background:#FFD23F"></i>คุณ</span><span><i style="background:#FF5A5F"></i>มอนสเตอร์</span><span><i style="background:#FF3B8E"></i>บอส</span><span><i style="background:#5AC8FA"></i>เพื่อน</span><span><i style="background:#3DDC84"></i>ปาร์ตี้</span><span><i style="background:#F6C343;border-radius:3px"></i>NPC</span><span><i style="background:#BFEFFF"></i>ทางออก</span></div>` : world()}</div>`;
+    ${tab === 'here' ? `<div class="bm-wrap"><canvas id="bm-cv"></canvas></div><div class="bm-leg"><span><i style="background:#FFD23F"></i>คุณ</span><span><i style="background:#FF5A5F"></i>มอนสเตอร์</span><span><i style="background:#FF3B8E"></i>บอส</span><span><i style="background:#5AC8FA"></i>เพื่อน</span><span><i style="background:#3DDC84"></i>ทีม</span><span><i style="background:#F6C343;border-radius:3px"></i>NPC</span><span><i style="background:#BFEFFF"></i>ทางออก</span></div>` : world()}</div>`;
   if (tab === 'here') { const loop = () => { if (RS.bigmap !== 'here' || el.hidden) return; rpgBigMapDraw(); requestAnimationFrame(loop); }; requestAnimationFrame(loop); }
 }
 function rpgBigMapDraw() {
@@ -16146,7 +16178,7 @@ rpgChatUI = function () {
   const el = document.getElementById('rpg-chat'); if (!el) return; const open = el.classList.contains('open');
   el.className = 'rpg-chat dock v26' + (open ? ' open' : '');
   const fr = (RPG_FR.list || []).filter(f => f.status === 'ok'), dmN = fr.find(f => f.id === RPG_CHAT.dm);
-  el.innerHTML = `<div class="ch-head">${[['world', '🌏 โลก'], ['party', '⚔️ ปาร์ตี้'], ['guild', '🏰 กิลด์'], ['dm', '💌 เพื่อน']].map(([k, l]) => `<button class="${RPG_CHAT.ch === k ? 'on' : ''}" data-r="ch-tab" data-k="${k}">${l}</button>`).join('')}<button class="ch-min" data-r="ch-close" aria-label="ปิดกล่องแชท">✕</button></div>
+  el.innerHTML = `<div class="ch-head">${[['world', '🌏 โลก'], ['party', '⚔️ ทีม'], ['guild', '🏰 กิลด์'], ['dm', '💌 เพื่อน']].map(([k, l]) => `<button class="${RPG_CHAT.ch === k ? 'on' : ''}" data-r="ch-tab" data-k="${k}">${l}</button>`).join('')}<button class="ch-min" data-r="ch-close" aria-label="ปิดกล่องแชท">✕</button></div>
     ${RPG_CHAT.ch === 'dm' ? `<div class="ch-dm">${fr.length ? fr.map(f => `<button class="${f.id === RPG_CHAT.dm ? 'on' : ''}" data-r="ch-dm" data-id="${f.id}">${esc(f.name)}</button>`).join('') : '<span>ยังไม่มีเพื่อน · คลิกตัวละครเพื่อนแล้วกด “เพิ่มเพื่อน”</span>'}</div>` : ''}
     <div class="ch-list" id="ch-list" data-r="ch-open"></div>
     <form class="ch-in" id="ch-form"><button type="button" class="ch-emo" data-r="emote" aria-label="อีโมจิ">😀</button><input id="ch-txt" maxlength="140" autocomplete="off" placeholder="${R.teacher ? 'โหมดครู: ดูอย่างเดียว' : RPG_CHAT.ch === 'dm' ? (dmN ? 'พิมพ์ถึง ' + esc(dmN.name) + '…' : 'เลือกเพื่อนก่อน') : 'พิมพ์ข้อความ แล้วกด Enter'}" ${R.teacher ? 'disabled' : ''}><button class="ch-send" ${R.teacher ? 'disabled' : ''}>ส่ง</button></form>
@@ -16160,7 +16192,7 @@ rpgChatUI = function () {
 rpgChatDraw = function () {
   const el = document.getElementById('ch-list'); if (!el) return; const ch = rpgChatCh(), open = RPG_CHAT.open;
   const L = ch ? (RPG_CHAT.msgs[ch] || []) : [];
-  el.innerHTML = !ch ? `<p class="ch-empty">${RPG_CHAT.ch === 'party' ? 'ยังไม่มีปาร์ตี้ · คลิกตัวละครเพื่อนเพื่อชวน' : RPG_CHAT.ch === 'dm' ? 'เลือกเพื่อนด้านบนเพื่อคุยส่วนตัว' : 'ยังไม่มีกิลด์ · เปิดเมนูกิลด์เพื่อตั้งหรือเข้าร่วม'}</p>`
+  el.innerHTML = !ch ? `<p class="ch-empty">${RPG_CHAT.ch === 'party' ? 'ยังไม่มีทีม · คลิกตัวละครเพื่อนเพื่อชวน' : RPG_CHAT.ch === 'dm' ? 'เลือกเพื่อนด้านบนเพื่อคุยส่วนตัว' : 'ยังไม่มีกิลด์ · เปิดเมนูกิลด์เพื่อตั้งหรือเข้าร่วม'}</p>`
     : L.slice(open ? -40 : -6).map(m => `<div class="ch-m ${m.me ? 'me' : ''}"><b>${esc(m.name)}:</b> <span>${esc(m.body)}</span></div>`).join('') || (open ? '<p class="ch-empty">ยังไม่มีข้อความ ทักทายเพื่อน ๆ ได้เลย</p>' : '');
   el.scrollTop = el.scrollHeight;
 };
@@ -16223,7 +16255,7 @@ function rpgFriendBtn(pr) {
   return f.incoming ? `<button class="rp-btn fr" data-r="fr-ok" data-id="${pr.id}">✅ ตอบรับเป็นเพื่อน</button>` : '<span class="pill">⏳ ส่งคำขอแล้ว</span>';
 }
 function rpgFriendsHTML() {
-  if (R.teacher) return '<h3>👥 เพื่อน</h3><p class="rp-p">โหมดครูไม่มีรายชื่อเพื่อน · ครูดูแชทได้จากแท็บโลก/ปาร์ตี้/กิลด์</p>';
+  if (R.teacher) return '<h3>👥 เพื่อน</h3><p class="rp-p">โหมดครูไม่มีรายชื่อเพื่อน · ครูดูแชทได้จากแท็บโลก/ทีม/กิลด์</p>';
   if (!RPG_FR.list) { rpgFriend('list').then(() => document.querySelector('.fr-wrap') && rpgPanel('friends')); return '<h3>👥 เพื่อน</h3><p class="rp-p"><span class="spin"></span> กำลังโหลด…</p>'; }
   const L = RPG_FR.list, inc = L.filter(f => f.incoming), ok = L.filter(f => f.status === 'ok'), out = L.filter(f => f.status !== 'ok' && !f.incoming);
   const on = id => RS.others?.[id] && performance.now() - RS.others[id].seen < 45000;
@@ -16308,8 +16340,8 @@ rpgV23Click = function (a, b) {
   return rpgV23Click0(a, b);
 };
 
-/* ---------- ชื่อปาร์ตี้ ---------- */
-function rpgPartyName() { if (!R.party) return null; const L = R.party.mem.find(m => m.id === R.party.id); return 'ปาร์ตี้ของ ' + (L?.n || '?'); }
+/* ---------- ชื่อทีม ---------- */
+function rpgPartyName() { if (!R.party) return null; const L = R.party.mem.find(m => m.id === R.party.id); return 'ทีมของ ' + (L?.n || '?'); }
 
 /* =====================================================================
    SX Realm v26 (ภาพ) — ป้ายชื่อใต้ตัว + หลอด HP/SP · ออร่าครู · ประตูวาปแสง
@@ -16334,7 +16366,7 @@ function rpgTeacherAura(x, px, py, t, front) {
   x.restore();
 }
 
-/* ---------- 10) ตัวละคร + ป้ายชื่อใต้เท้า (หลอด HP/SP · โลโก้กิลด์หน้าชื่อ · ปาร์ตี้/กิลด์) ---------- */
+/* ---------- 10) ตัวละคร + ป้ายชื่อใต้เท้า (หลอด HP/SP · โลโก้กิลด์หน้าชื่อ · ทีม/กิลด์) ---------- */
 function rpgPlateText(x, txt, cx, cy, font, fill, stroke) { x.font = font; x.textAlign = 'center'; x.textBaseline = 'middle'; x.lineJoin = 'round'; x.lineWidth = 3; x.strokeStyle = stroke || 'rgba(10,8,24,.85)'; x.strokeText(txt, cx, cy); x.fillStyle = fill; x.fillText(txt, cx, cy); }
 rpgCharAt = function (x, c) {
   const px = c.x * TS, py = c.y * TS, t = c.t || performance.now(), K = .69, isT = !!(c.teacher || (c.me && R.teacher));
@@ -17122,7 +17154,7 @@ const rpgLookImg27 = rpgLookImg;
 rpgLookImg = function (look, size = 120, mode = 'full') {
   if (!look?.wing) return rpgLookImg27(look, size, mode);
   const k = 'W' + JSON.stringify(look) + size + mode; if (RPG_LOOKC[k]) return RPG_LOOKC[k];
-  const box = { full: [-62, -84, 124, 88], head: [-20, -68, 40, 40], body: [-26, -70, 52, 70], bust: [-24, -70, 48, 48] }[mode];
+  const box = { full: [-62, -92, 124, 96], head: [-16, -75, 32, 32], body: [-24, -78, 48, 78], bust: [-20, -75, 40, 40] }[mode];
   const c = document.createElement('canvas'), sc = size / box[2]; c.width = size; c.height = Math.round(box[3] * sc); const x = c.getContext('2d'); x.scale(sc, sc); x.translate(-box[0], -box[1]);
   rpgWingDraw(x, look.wing, 0, false, look.wf); const L2 = { ...look }; delete L2.wing; delete L2.px; const rr2 = sc > 3 ? 6 : sc > 1.6 ? 4 : RPG_ART_RES; rpgArtBlit(x, rpgArtGet(JSON.stringify([L2, 'd', 'idle', -1, 0, rr2]), () => rpgArtRender(rpgArtOpts(L2, { dir: 'd' }), null, rr2)), false);
   try { return (RPG_LOOKC[k] = c.toDataURL()); } catch (e) { return ''; }
@@ -17306,7 +17338,7 @@ rpgChatUI = function () {
   const el = document.getElementById('rpg-chat'); if (!el) return; const open = el.classList.contains('open'), mini = !!RPG_CHAT.mini;
   el.className = 'rpg-chat dock v26 v27' + (open && !mini ? ' open' : '') + (mini ? ' mini' : '');
   const fr = (RPG_FR.list || []).filter(f => f.status === 'ok'), dmN = fr.find(f => f.id === RPG_CHAT.dm);
-  const tabs = [['world', '🌏 โลก'], ['party', '⚔️ ปาร์ตี้'], ['guild', '🏰 กิลด์'], ['dm', '💌 เพื่อน']];
+  const tabs = [['world', '🌏 โลก'], ['party', '⚔️ ทีม'], ['guild', '🏰 กิลด์'], ['dm', '💌 เพื่อน']];
   el.innerHTML = `<button class="ch-mini" data-r="ch-unmini" aria-label="แสดงแชท">💬<i class="dot"></i></button>
     <div class="ch-top"><span class="ch-cur">${tabs.find(t => t[0] === RPG_CHAT.ch)[1]}</span><span class="ch-hint" data-r="ch-open">Enter เพื่อพิมพ์</span><button class="ch-btn" data-r="ch-mini" aria-label="ซ่อนแชท" title="ซ่อนแชท">−</button></div>
     <div class="ch-head">${tabs.map(([k, l]) => `<button class="${RPG_CHAT.ch === k ? 'on' : ''}" data-r="ch-tab" data-k="${k}">${l}</button>`).join('')}<button class="ch-min" data-r="ch-mini" aria-label="ซ่อนแชท" title="ซ่อนแชท">−</button><button class="ch-min" data-r="ch-close" aria-label="ย่อแชท" title="ย่อ">✕</button></div>
@@ -17518,7 +17550,7 @@ function rpgCastBuff() {
   s.mp -= mp; s.buffCd = now + 60000; const b = { id: s.job, n: B.n, ic: B.ic, k: B.k, col: B.col, until: now + B.min * 60000, from: rpgName().split(' ')[0] };
   rpgBuffAdd(b); rpgSfx('buff'); RS.buffFx = performance.now();
   let n = 0; if (B.party && R.party) R.party.mem.forEach(m => { if (m.id !== rpgMe().student_id) { rpgSend({ k: 'buff', to: m.id, b }); n++; } });
-  rpgSay(`${B.ic} ${B.n} · ${B.min} นาที${B.party ? (n ? ` · ส่งให้เพื่อนร่วมทีม ${n} คน` : ' · (ตั้งปาร์ตี้เพื่อบัพให้เพื่อนได้)') : ''}`, 3000); rpgSave();
+  rpgSay(`${B.ic} ${B.n} · ${B.min} นาที${B.party ? (n ? ` · ส่งให้เพื่อนร่วมทีม ${n} คน` : ' · (ตั้งทีมเพื่อบัพให้เพื่อนได้)') : ''}`, 3000); rpgSave();
 }
 function rpgBuffCols(s = R.save) { return rpgBuffs(s).slice(-3).map(b => b.col); }
 function rpgBuffUI() {
@@ -17600,7 +17632,7 @@ const rpgScene28 = rpgScene;
 rpgScene = function (scene, x, y, first) { if (x === '@from') { RS.warpSndT = performance.now(); rpgSfx('warp'); } const r = rpgScene28(scene, x, y, first); setTimeout(() => { rpgMapTools(); }, 700); return r; };
 
 /* ---------- 18) กาชา (ใช้เหรียญ 🟡 จากการทำข้อสอบ/ส่งงาน) ---------- */
-const RPG_COSN = ['นักรบหมาป่าราตรี', 'ผู้บัญชาการ', 'นินจาไซเบอร์', 'สตีมพังก์', 'ชุดนักเรียนสถาบัน', 'ฮาโอริซามูไร', 'กระต่ายจันทรา', 'แม่มดหวานใจ', 'เอลฟ์ดอกไม้', 'กะลาสี', 'ปาร์ตี้น้ำชา', 'ไอดอล', 'นักบวชเทวดา', 'หนูน้อยหมวกแดง', 'ชุดกันฝน', 'ลูกเสือ'];
+const RPG_COSN = ['นักรบหมาป่าราตรี', 'ผู้บัญชาการ', 'นินจาไซเบอร์', 'สตีมพังก์', 'ชุดนักเรียนสถาบัน', 'ฮาโอริซามูไร', 'กระต่ายจันทรา', 'แม่มดหวานใจ', 'เอลฟ์ดอกไม้', 'กะลาสี', 'ทีมน้ำชา', 'ไอดอล', 'นักบวชเทวดา', 'หนูน้อยหมวกแดง', 'ชุดกันฝน', 'ลูกเสือ'];
 const RPG_COSIC = ['🐺', '🎖️', '🤖', '⚙️', '🎓', '👘', '🐰', '🍭', '🌸', '⚓', '☕', '🎤', '👼', '🍎', '☔', '⛺'];
 RPG_COSN.forEach((n, i) => { RPG_ITEMS['cs' + (i + 1)] = { t: 'cos', n: 'ชุด' + n, ic: RPG_COSIC[i], os: i + 1, g: [0, 12, 6].includes(i) ? 4 : 3, d: 'ชุดแฟชั่นจากกาชา · ใส่ได้ทุกอาชีพ' }; });
 const RPG_GACHA_COST = 3;
@@ -17641,7 +17673,7 @@ async function rpgGacha(n) {
 /* ---------- 16) ลบบ้านและเฟอร์นิเจอร์ · ตู้เสื้อผ้าใหม่ ---------- */
 delete RPG_SHOPS.furn; delete RPG_SHOPIN.furn; delete RPG_ZONES.shop_furn;
 RPG_BLD.gacha = { n: 'ร้านกาชา', ic: '🎰' };
-RPG_TIPS.splice(0, RPG_TIPS.length, 'กด Enter เพื่อพิมพ์แชท · คลิกพื้นเพื่อเดินอัตโนมัติ', 'ลูกศรสีทองชี้ทางไปทำภารกิจเสมอ', 'ถึง Lv.25 · 50 · 75 อย่าลืมไปเปลี่ยนคลาสกับผู้ฝึกสอน', 'เครื่องวาร์ปในเมืองหลวงช่วยลดค่าวาร์ปครึ่งหนึ่ง', 'ตู้กาชาในเมืองใช้เหรียญ 🟡 จากการทำข้อสอบ', 'โหมดสันติ: มอนสเตอร์จะไม่เข้ามาท้าสู้', 'บัพอาชีพสายสนับสนุนส่งให้เพื่อนในปาร์ตี้ได้');
+RPG_TIPS.splice(0, RPG_TIPS.length, 'กด Enter เพื่อพิมพ์แชท · คลิกพื้นเพื่อเดินอัตโนมัติ', 'ลูกศรสีทองชี้ทางไปทำภารกิจเสมอ', 'ถึง Lv.25 · 50 · 75 อย่าลืมไปเปลี่ยนคลาสกับผู้ฝึกสอน', 'เครื่องวาร์ปในเมืองหลวงช่วยลดค่าวาร์ปครึ่งหนึ่ง', 'ตู้กาชาในเมืองใช้เหรียญ 🟡 จากการทำข้อสอบ', 'โหมดสันติ: มอนสเตอร์จะไม่เข้ามาท้าสู้', 'บัพอาชีพสายสนับสนุนส่งให้เพื่อนในทีมได้');
 function rpgWardrobeHTML() {
   const s = R.save, o = s.outfit, cos = Object.keys(RPG_ITEMS).filter(k => RPG_ITEMS[k].t === 'cos' && s.inv[k]), hats = Object.keys(RPG_ITEMS).filter(k => RPG_ITEMS[k].t === 'hat' && s.inv[k]);
   return `<h3>👗 แต่งตัว</h3><div class="wd"><div class="wd-prev"><img src="${rpgLookImg(rpgLookMe(), 260)}" alt=""></div><div class="wd-side">
@@ -17730,7 +17762,7 @@ rpgSkillHTML = function () {
     ${R.teacher ? `<div class="sk2-t"><b>👑 ครู: ลองสายอาชีพ</b>${Object.values(RPG_BASE).flat().map(k => `<button class="${s.job === k ? 'on' : ''}" data-r="t-branch" data-j="${k}">${RPG_JOBS[k].ic} ${RPG_CLASS[k][0][0]}</button>`).join('')}</div>` : ''}
     <div class="skt-top ${s.skp ? 'on' : ''}"><div><b>${s.skp || 0}</b><span>แต้มสกิล</span></div><p>ช่องสกิลที่ใช้ในการต่อสู้ ${RPG_SLOTN} ช่อง · <b>ลากสกิลมาวาง</b> หรือกด “ใส่ช่อง” แล้วแตะช่องที่ต้องการ<br><small>สกิลจากทุกคลาสเลือกใช้ได้ · แตะสกิลในช่องเพื่อถอดออก</small></p></div>
     <div class="sk2-slots">${Array.from({ length: RPG_SLOTN }, (_, i) => slot(i)).join('')}</div>
-    ${TB ? `<div class="sk2-buff" style="--c:${TB.col}"><span>${TB.ic}</span><div><b>บัพอาชีพ: ${esc(TB.n)}</b><small>${Object.entries(TB.k).map(([k, v]) => `${RPG_PNAME[k === 'mhp' ? 'hp' : k] || k} +${v < 1 ? Math.round(v * 100) + '%' : v}`).join(' · ')} · ${TB.min} นาที${TB.party ? ' · ให้ทั้งปาร์ตี้' : ' · ให้ตัวเอง'}</small></div><button class="rp-btn primary" data-r="act-buff">ร่ายบัพ</button></div>` : ''}
+    ${TB ? `<div class="sk2-buff" style="--c:${TB.col}"><span>${TB.ic}</span><div><b>บัพอาชีพ: ${esc(TB.n)}</b><small>${Object.entries(TB.k).map(([k, v]) => `${RPG_PNAME[k === 'mhp' ? 'hp' : k] || k} +${v < 1 ? Math.round(v * 100) + '%' : v}`).join(' · ')} · ${TB.min} นาที${TB.party ? ' · ให้ทั้งทีม' : ' · ให้ตัวเอง'}</small></div><button class="rp-btn primary" data-r="act-buff">ร่ายบัพ</button></div>` : ''}
     ${tiers}<h4 class="qx-h">สกิลติดตัว</h4><div class="skt-ps">${pas}</div>`;
 };
 // ลากสกิลมาวางในช่อง
@@ -18942,7 +18974,7 @@ function rpgPetIcons() { if (RS.panel !== 'pets') return; document.querySelector
 
 /* =====================================================================
    SX Realm v31 — เศรษฐกิจ/ร้านค้า · ร้านลับ · ไข่ฟักกับ NPC · กาชาแฟชั่นอาวุธ · ผ้าคลุม
-   จุดวาร์ปบนแผนที่ · ปาร์ตี้ · ออนไลน์/ออฟไลน์ · ครูมีเพื่อน+แชท · คำอธิบายไอเทม
+   จุดวาร์ปบนแผนที่ · ทีม · ออนไลน์/ออฟไลน์ · ครูมีเพื่อน+แชท · คำอธิบายไอเทม
    ===================================================================== */
 
 /* ---------- 0) ตัวช่วย ---------- */
@@ -19249,24 +19281,24 @@ rpgBigMapDraw = function () {
   const leg = document.querySelector('#rpg-bigmap .bm-leg'); if (leg && !leg.querySelector('.l31')) leg.insertAdjacentHTML('beforeend', '<span class="l31"><i style="background:#50DCFF;box-shadow:0 0 0 2px #fff"></i>ทางวาร์ปไปแผนที่อื่น</span><span class="l31"><i style="background:#B58CFF;border-radius:2px;transform:rotate(45deg)"></i>เครื่องวาร์ป</span>');
 };
 
-/* ---------- 11) ปาร์ตี้: ไม่ทับภารกิจ · ไอคอนบัพหลังชื่อ ---------- */
+/* ---------- 11) ทีม: ไม่ทับภารกิจ · ไอคอนบัพหลังชื่อ ---------- */
 rpgPartyHud = function () {
   const el = document.getElementById('rpg-party'); if (!el) return;
   if (!R.party) { el.innerHTML = ''; el.removeAttribute('style'); return; }
   const me = rpgMe().student_id, now = performance.now();
-  el.innerHTML = `<b>⚔️ ปาร์ตี้ ${R.party.mem.length}/4</b>${R.party.mem.filter(m => m.id !== me).map(m => { const o = RS.others[m.id], on = o && now - o.seen < 45000, bi = (o?.bi || []).slice(0, 4);
+  el.innerHTML = `<b>⚔️ ทีม ${R.party.mem.length}/4</b>${R.party.mem.filter(m => m.id !== me).map(m => { const o = RS.others[m.id], on = o && now - o.seen < 45000, bi = (o?.bi || []).slice(0, 4);
     return `<div class="pt-m ${on ? '' : 'off'}"><img src="${o?.o ? rpgLookImg(o.o, 48, 'bust') : ''}" alt=""><div><span>${esc(m.n)}${m.id === R.party.id ? ' 👑' : ''}${bi.length ? `<em class="pt-bf" title="บัพที่ทำงานอยู่">${bi.map(ic => `<i>${ic}</i>`).join('')}</em>` : ''}</span><small>Lv.${o?.l || m.l} · ${on ? esc(RPG_ZONES[o.m]?.n || '') : 'ออฟไลน์'}</small><i><u style="width:${o?.hp ?? 100}%"></u></i></div></div>`; }).join('')}
-    <button data-r="pt-leave">ออกจากปาร์ตี้</button>`;
+    <button data-r="pt-leave">ออกจากทีม</button>`;
   rpgPartyPlace();
 };
 function rpgPartyPlace() {
   const el = document.getElementById('rpg-party'); if (!el || !R.party) return; const root = document.getElementById('rpg'); if (!root) return;
   const rr = root.getBoundingClientRect(), qt = document.getElementById('rpg-qt')?.getBoundingClientRect(), tools = document.querySelector('#rpg-mtools .mt-row, #rpg-mtools')?.getBoundingClientRect(), act = document.getElementById('rpg-act')?.getBoundingClientRect();
   const qtLeft = qt && qt.width && qt.left - rr.left < rr.width / 2;
-  if (tools && tools.width && qtLeft) {   // ภารกิจอยู่ซ้าย → ปาร์ตี้ไปขวา ใต้ปุ่มวาร์ป
+  if (tools && tools.width && qtLeft) {   // ภารกิจอยู่ซ้าย → ทีมไปขวา ใต้ปุ่มวาร์ป
     const top = tools.bottom - rr.top + 10, bot = act && act.height ? act.top - rr.top - 10 : rr.height - 120;
     Object.assign(el.style, { left: 'auto', right: Math.max(8, rr.right - tools.right) + 'px', top: top + 'px', maxHeight: Math.max(120, bot - top) + 'px', alignItems: 'flex-end' });
-  } else if (qt && qt.width) {           // ภารกิจอยู่ขวา → ปาร์ตี้ซ้าย
+  } else if (qt && qt.width) {           // ภารกิจอยู่ขวา → ทีมซ้าย
     Object.assign(el.style, { right: 'auto', left: '8px', top: '96px', maxHeight: '', alignItems: '' });
   }
   el.classList.toggle('tight', el.scrollHeight > el.clientHeight + 2);
@@ -19416,7 +19448,7 @@ const RPG_TUT = [
   { k: 'bag', t: 'เปิดกระเป๋า', d: 'ปุ่ม 🎒 กระเป๋า เก็บไอเทมทั้งหมด · แตะรูปไอเทมเพื่ออ่านว่าใช้ทำอะไร ใช้ที่ไหน', sel: '[data-r=bag]' },
   { k: 'equip', t: 'สวมใส่อุปกรณ์', d: 'ปุ่ม 🛡️ สวมใส่ เปลี่ยนอาวุธ ชุดเกราะ หมวก รองเท้า เครื่องประดับ', sel: '[data-r=equip]' },
   { k: 'skill', t: 'จัดสกิล', d: 'ปุ่ม ✨ สกิล อัปเลเวลสกิล และลากสกิลใส่ 5 ช่องที่ใช้ตอนต่อสู้', sel: '[data-r=skill]' },
-  { k: 'buff', t: 'ร่ายบัพ', d: 'ปุ่ม บัพ (ขวาล่าง) เพิ่มพลังให้ตัวเองนานหลายนาที · บางอาชีพบัพให้เพื่อนในปาร์ตี้ได้ด้วย', sel: '[data-r=act-buff]' },
+  { k: 'buff', t: 'ร่ายบัพ', d: 'ปุ่ม บัพ (ขวาล่าง) เพิ่มพลังให้ตัวเองนานหลายนาที · บางอาชีพบัพให้เพื่อนในทีมได้ด้วย', sel: '[data-r=act-buff]' },
   { k: 'peace', t: 'โหมดสันติ / พร้อมสู้', d: 'ปุ่มนี้ใต้แผนที่เล็ก กดสลับได้ · 🕊️ สันติ = มอนสเตอร์ไม่เข้ามาท้าสู้ เดินผ่านได้สบาย · ⚔️ พร้อมสู้ = มอนสเตอร์เข้ามาสู้', sel: '[data-r=peace]' },
   { k: 'map', t: 'ดูแผนที่ใหญ่', d: 'แตะแผนที่เล็กมุมขวาบน · วงกลมสีฟ้าคือทางวาร์ปไปแผนที่อื่น เพชรสีม่วงคือเครื่องวาร์ป', sel: '[data-r=minimap]' },
   { k: 'chat', t: 'ทักทายในแชท', d: 'แตะช่องแชท (หรือกด Enter) แล้วพิมพ์ทักทายเพื่อน ๆ · แท็บ 💌 ใช้คุยส่วนตัวกับเพื่อน', sel: '#rpg-chat [data-r=ch-open]' },
@@ -20521,7 +20553,7 @@ rpgWingDraw = function (x, n, t, moving, form = 'angel') {
 rpgLookImg = (f => function (look, size = 120, mode = 'full') {
   if (!look?.wing || mode !== 'full' || look.px) return f(look, size, mode);
   const k = 'W33' + JSON.stringify(look) + size + mode; if (RPG_LOOKC[k]) return RPG_LOOKC[k];
-  const box = [-72, -96, 144, 100], c = document.createElement('canvas'), sc = size / box[2]; c.width = size; c.height = Math.round(box[3] * sc); const x = c.getContext('2d'); x.scale(sc, sc); x.translate(-box[0], -box[1]);
+  const box = [-68, -100, 136, 104], c = document.createElement('canvas'), sc = size / box[2]; c.width = size; c.height = Math.round(box[3] * sc); const x = c.getContext('2d'); x.scale(sc, sc); x.translate(-box[0], -box[1]);
   rpgWingDraw(x, look.wing, 0, false, look.wf); const L2 = { ...look }; delete L2.wing; const rr2 = sc > 3 ? 6 : sc > 1.6 ? 4 : RPG_ART_RES; rpgArtBlit(x, rpgArtGet(JSON.stringify([L2, 'd', 'idle', -1, 0, rr2]), () => rpgArtRender(rpgArtOpts(L2, { dir: 'd' }), null, rr2)), false);
   try { return (RPG_LOOKC[k] = c.toDataURL()); } catch (e) { return ''; }
 })(rpgLookImg);
@@ -21353,8 +21385,8 @@ rpgEnemyTurn = (f => function () {
 
 /* ================= 1) วัสดุใหม่ + ชุดเซ็ต ================= */
 Object.assign(RPG_ITEMS, {
-  bcore: { t: 'mat', n: 'แกนพลังบอส', ic: '🔮', d: 'วัสดุคราฟต์ชุดเซ็ต · ได้จากบอส บอสประจำสัปดาห์ และดันเจี้ยนปาร์ตี้', sell: 300 },
-  sshard: { t: 'mat', n: 'เศษดาวผู้กล้า', ic: '⭐', d: 'วัสดุคราฟต์ชุดเซ็ตขั้นสูง · ได้จากบอสประจำสัปดาห์และดันเจี้ยนปาร์ตี้', sell: 500 },
+  bcore: { t: 'mat', n: 'แกนพลังบอส', ic: '🔮', d: 'วัสดุคราฟต์ชุดเซ็ต · ได้จากบอส บอสประจำสัปดาห์ และดันเจี้ยนทีม', sell: 300 },
+  sshard: { t: 'mat', n: 'เศษดาวผู้กล้า', ic: '⭐', d: 'วัสดุคราฟต์ชุดเซ็ตขั้นสูง · ได้จากบอสประจำสัปดาห์และดันเจี้ยนทีม', sell: 500 },
 });
 // [key, ชื่อ, สี, Lv, ระดับเกรด, ต้นทุนต่อชิ้น {gem, chip, bcore, sshard, gold}, โบนัส 2 ชิ้น, โบนัส 4 ชิ้น, คำอธิบาย]
 const RPG_SETS = {
@@ -21452,8 +21484,8 @@ const RPG_ACH = [
   ['s2', 'แฟชั่นนิสต้าสายเซ็ต', 'สวมชุดเซ็ตครบ 4 ชิ้น', s => Math.max(0, ...Object.values(rpgSetCount(s))), 4, 6000, 'สายเซ็ตตัวจริง'],
   ['r1', 'พลังของห้องเรา', 'ลงสนามบอสประจำสัปดาห์ 1 ครั้ง', s => s.stats.raid || 0, 1, 800],
   ['r2', 'วีรชนประจำห้อง', 'ลงสนามบอสประจำสัปดาห์ 15 ครั้ง', s => s.stats.raid || 0, 15, 8000, 'วีรชนประจำห้อง'],
-  ['d1', 'ทีมเวิร์ก', 'พิชิตดันเจี้ยนปาร์ตี้ 1 ครั้ง', s => s.stats.pdun || 0, 1, 1500],
-  ['d2', 'กิลด์ในตำนาน', 'พิชิตดันเจี้ยนปาร์ตี้ 10 ครั้ง', s => s.stats.pdun || 0, 10, 12000, 'ผู้พิชิตดันเจี้ยน'],
+  ['d1', 'ทีมเวิร์ก', 'พิชิตดันเจี้ยนทีม 1 ครั้ง', s => s.stats.pdun || 0, 1, 1500],
+  ['d2', 'กิลด์ในตำนาน', 'พิชิตดันเจี้ยนทีม 10 ครั้ง', s => s.stats.pdun || 0, 10, 12000, 'ผู้พิชิตดันเจี้ยน'],
 ];
 const RPG_TITLECOL = { 'ตำนานสนามรบ': ['#FF6A3D', '#FFD23F'], 'ปราชญ์แห่งห้องเรียน': ['#8E7CFF', '#5FE0FF'], 'ผู้กล้าสูงสุด': ['#FF5A8A', '#FFD86A'], 'เทพบนฟากฟ้า': ['#FFFFFF', '#9FD8FF'], 'ปรมาจารย์': ['#FFD86A', '#FF9A3D'], 'วีรชนประจำห้อง': ['#3DDC84', '#9FF0C0'], 'ผู้พิชิตดันเจี้ยน': ['#B07CFF', '#FF8FD8'], 'เทพช่างตีเหล็ก': ['#FF7A2A', '#FFE27A'] };
 function rpgAchCheck(quiet) {
@@ -21584,8 +21616,8 @@ rpgBHud = (f => function () { const r = f.apply(this, arguments), B = RS.battle;
   return r; })(rpgBHud);
 
 /* =========================================================
-   SX Realm v39c — ดันเจี้ยนปาร์ตี้ 3 ชั้น
-   ลงพร้อมเพื่อนในปาร์ตี้ (2–4 คน) · ด่านกับดัก · นับยอดปราบร่วมกัน · บอสเลือดร่วม
+   SX Realm v39c — ดันเจี้ยนทีม 3 ชั้น
+   ลงพร้อมเพื่อนในทีม (2–4 คน) · ด่านกับดัก · นับยอดปราบร่วมกัน · บอสเลือดร่วม
    ========================================================= */
 const RPG_PDT = [
   { n: 'ถ้ำทดสอบร่วมใจ', ic: '🕯️', lv: [8, 22], pool: 'cave', boss: ['ราชาค้างคาวยักษ์', '🦇'], tint: '#1E2A3A' },
@@ -21600,18 +21632,18 @@ RPG_PDT.forEach((T, i) => {
   [1, 2, 3].forEach(f => { RPG_ZONES[d + 'f' + f] = { n: `${T.n} ชั้น ${f}`, ic: T.ic, region: T.pool, biome: 'dungeon', dungeon: d, floor: f, min: 1, rec: `${T.lv[0]}–${T.lv[1]}`, zi: RPG_REGIONS[T.pool]?.zi || 1,
     lvr: [T.lv[0] + (f - 1) * 3, Math.min(99, T.lv[1] + (f - 1) * 2)], boss: f === 3 ? [T.boss[0], T.boss[1], T.lv[1] + 4] : null, tint: T.tint, links: [], pd: 1 }; });
 });
-const RPG_PDNEED = 6;   // ยอดปราบรวมของปาร์ตี้ต่อชั้น ก่อนประตูชั้นถัดไปจะเปิด
+const RPG_PDNEED = 6;   // ยอดปราบรวมของทีมต่อชั้น ก่อนประตูชั้นถัดไปจะเปิด
 RS.pd = null;
 const rpgPdZ = (sc = RS.map?.scene) => RPG_ZONES[sc]?.pd ? RPG_ZONES[sc] : null;
 function rpgPdMates() { const me = rpgMe()?.student_id; return (R.party?.mem || []).filter(m => m.id !== me); }
 function rpgPdTier() { const L = [R.save.lvl, ...rpgPdMates().map(m => RS.others[m.id]?.l || m.l || R.save.lvl)], avg = L.reduce((a, b) => a + b, 0) / L.length; return Math.max(0, Math.min(4, RPG_PDT.findIndex(T => avg <= T.lv[1]) < 0 ? 4 : RPG_PDT.findIndex(T => avg <= T.lv[1]))); }
 function rpgPdSend(a, extra = {}) { rpgPdMates().forEach(m => rpgSend({ k: 'party', a, to: m.id, pid: R.party?.id, run: RS.pd?.run, ...extra })); }
 function rpgPdStart() {
-  if (R.party && R.party.id !== rpgMe().student_id) return rpgSay('หัวหน้าปาร์ตี้เป็นคนเริ่มดันเจี้ยน');
+  if (R.party && R.party.id !== rpgMe().student_id) return rpgSay('หัวหน้าทีมเป็นคนเริ่มดันเจี้ยน');
   const tier = rpgPdTier(), run = Date.now().toString(36);
   RS.pd = { run, tier, floor: 1, kills: 0, solo: !rpgPdMates().length, done: false };
   rpgPdSend('pdgo', { tier }); rpgPanel(null); rpgSfx('door');
-  rpgScene('pd' + tier + 'f1'); rpgSay(`⚔️ เข้าสู่ ${RPG_PDT[tier].n}! ปาร์ตี้ต้องปราบ ${RPG_PDNEED} ตัวต่อชั้นเพื่อเปิดประตู`, 4200);
+  rpgScene('pd' + tier + 'f1'); rpgSay(`⚔️ เข้าสู่ ${RPG_PDT[tier].n}! ทีมต้องปราบ ${RPG_PDNEED} ตัวต่อชั้นเพื่อเปิดประตู`, 4200);
 }
 // ข้อความเครือข่ายของดันเจี้ยน
 const rpgNetMsg39c = rpgNetMsg;
@@ -21619,7 +21651,7 @@ rpgNetMsg = function (p) {
   const me = rpgMe()?.student_id;
   if (p.k === 'party' && typeof p.a === 'string' && p.a.startsWith('pd') && (!p.to || p.to === me)) {
     if (!R.party || p.pid !== R.party.id) return;
-    if (p.a === 'pdgo') return rpgAsk(`⚔️ หัวหน้าปาร์ตี้เปิด <b>${esc(RPG_PDT[p.tier]?.n || 'ดันเจี้ยนปาร์ตี้')}</b> แล้ว เข้าร่วมเลยไหม?`, 'ลุยเลย!', () => { RS.pd = { run: p.run, tier: p.tier, floor: 1, kills: 0, done: false }; rpgBattleClose?.(); rpgPanel(null); rpgScene('pd' + p.tier + 'f1'); });
+    if (p.a === 'pdgo') return rpgAsk(`⚔️ หัวหน้าทีมเปิด <b>${esc(RPG_PDT[p.tier]?.n || 'ดันเจี้ยนทีม')}</b> แล้ว เข้าร่วมเลยไหม?`, 'ลุยเลย!', () => { RS.pd = { run: p.run, tier: p.tier, floor: 1, kills: 0, done: false }; rpgBattleClose?.(); rpgPanel(null); rpgScene('pd' + p.tier + 'f1'); });
     if (!RS.pd || p.run !== RS.pd.run) return;
     if (p.a === 'pdk' && p.floor === RS.pd.floor) { RS.pd.kills = Math.max(RS.pd.kills, p.kills || RS.pd.kills + 1); if (RS.pd.kills === RPG_PDNEED) rpgSay('🚪 ประตูชั้นถัดไปเปิดแล้ว!', 2600); return; }
     if (p.a === 'pdhp') { RS.pd.bossHp = Math.min(RS.pd.bossHp ?? Infinity, p.hp); const B = RS.battle; if (B?.mo?.pdboss && p.hp < B.hp) { B.hp = Math.max(1, p.hp); rpgBHud?.(); rpgBNum?.('ทีม -' + (B.lastHp - p.hp > 0 ? (B.lastHp - p.hp).toLocaleString() : ''), 'mon', 'txt'); B.lastHp = B.hp; } return; }
@@ -21648,14 +21680,14 @@ function rpgPdVictory(by) {
   const pd = RS.pd; if (!pd || pd.done) return; pd.done = true; const s = R.save, T = RPG_PDT[pd.tier], g = Math.round((3000 + pd.tier * 4000) * (pd.solo ? .5 : 1));
   R.gold += g; rpgGive('bcore', pd.solo ? 1 : 2 + pd.tier); if (!pd.solo) rpgGive('sshard', 1 + (pd.tier >= 3 ? 1 : 0)); s.stats.pdun = (s.stats.pdun || 0) + 1;
   rpgSfx('win'); rpgConfetti?.(); rpgHud(); rpgSave(); rpgAchCheck();
-  const el = document.createElement('div'); el.className = 'pd39-win'; el.innerHTML = `<div><small>DUNGEON CLEAR</small><b>${T.ic} ${esc(T.n)}</b><p>${by ? esc(by) + ' ปิดฉากบอสแล้ว! ' : ''}ปาร์ตี้พิชิตดันเจี้ยนสำเร็จ</p><em>💰 ${g.toLocaleString()} · 🔮 ×${pd.solo ? 1 : 2 + pd.tier}${pd.solo ? '' : ` · ⭐ ×${1 + (pd.tier >= 3 ? 1 : 0)}`}${pd.solo ? ' (ลุยเดี่ยว รางวัลครึ่ง)' : ''}</em><button class="rp-btn primary" data-r="pd-out">กลับเมือง</button></div>`;
+  const el = document.createElement('div'); el.className = 'pd39-win'; el.innerHTML = `<div><small>DUNGEON CLEAR</small><b>${T.ic} ${esc(T.n)}</b><p>${by ? esc(by) + ' ปิดฉากบอสแล้ว! ' : ''}ทีมพิชิตดันเจี้ยนสำเร็จ</p><em>💰 ${g.toLocaleString()} · 🔮 ×${pd.solo ? 1 : 2 + pd.tier}${pd.solo ? '' : ` · ⭐ ×${1 + (pd.tier >= 3 ? 1 : 0)}`}${pd.solo ? ' (ลุยเดี่ยว รางวัลครึ่ง)' : ''}</em><button class="rp-btn primary" data-r="pd-out">กลับเมือง</button></div>`;
   document.getElementById('rpg')?.appendChild(el);
 }
-// ประตูชั้นถัดไปล็อกจนกว่าปาร์ตี้จะปราบครบ
+// ประตูชั้นถัดไปล็อกจนกว่าทีมจะปราบครบ
 const rpgScene39c = rpgScene;
 rpgScene = function (scene, x, y, first) {
   const z = RPG_ZONES[scene], cur = rpgPdZ();
-  if (cur && z?.pd && RS.pd && z.floor === cur.floor + 1 && RS.pd.kills < RPG_PDNEED) { const now = performance.now(); if (now - (RS.pdMsgT || 0) > 1500) { RS.pdMsgT = now; rpgSay(`🔒 ปาร์ตี้ต้องปราบอีก ${RPG_PDNEED - RS.pd.kills} ตัวก่อน ประตูถึงจะเปิด`, 2200); } R.save.x -= .8; R.save.y -= .8; RS.walkTo = null; return false; }
+  if (cur && z?.pd && RS.pd && z.floor === cur.floor + 1 && RS.pd.kills < RPG_PDNEED) { const now = performance.now(); if (now - (RS.pdMsgT || 0) > 1500) { RS.pdMsgT = now; rpgSay(`🔒 ทีมต้องปราบอีก ${RPG_PDNEED - RS.pd.kills} ตัวก่อน ประตูถึงจะเปิด`, 2200); } R.save.x -= .8; R.save.y -= .8; RS.walkTo = null; return false; }
   if (z?.pd && !RS.pd) { RS.pd = { run: 'solo' + Date.now(), tier: +String(z.dungeon).slice(2), floor: z.floor, kills: 0, solo: true }; }
   const r = rpgScene39c.apply(this, arguments);
   if (z?.pd && RS.pd) { if (RS.pd.floor !== z.floor) { RS.pd.floor = z.floor; RS.pd.kills = 0; rpgSay(`${RPG_PDT[RS.pd.tier].ic} ชั้น ${z.floor}${z.floor === 3 ? ' · บอสรออยู่ปลายทาง!' : ` · ปราบให้ครบ ${RPG_PDNEED} ตัว`}`, 2800); } }
@@ -21679,22 +21711,22 @@ rpgScenery37 = (f => function (x, mp, t, vis) {
     if (up && rise > .6 && !RS.battle && Math.floor(s.x) === i && Math.floor(s.y) === j && now > (RS.trapT || 0)) { RS.trapT = now + 1200; const st = rpgStats(), d = Math.max(1, Math.round(st.mhp * .08)); s.hp = Math.max(1, s.hp - d); rpgSfx('hit'); rpgSay(`💥 โดนกับดักหนาม -${d.toLocaleString()} HP`, 1500); rpgHud(); } });
   return r;
 })(rpgScenery37);
-// ป้ายบอกความคืบหน้าของปาร์ตี้
+// ป้ายบอกความคืบหน้าของทีม
 setInterval(() => {
   const z = rpgPdZ(), root = document.getElementById('rpg'); let el = document.getElementById('pd39-hud');
   if (!z || !RS.pd || !root) { el?.remove(); return; }
   if (!el) { el = document.createElement('div'); el.id = 'pd39-hud'; el.className = 'pd39-hud'; root.appendChild(el); }
   const T = RPG_PDT[RS.pd.tier], k = Math.min(RS.pd.kills, RPG_PDNEED);
-  el.innerHTML = `<b>${T.ic} ${esc(T.n)}</b><small>ชั้น ${z.floor}/3 · ${RS.pd.solo ? 'ลุยเดี่ยว' : `ปาร์ตี้ ${(R.party?.mem || []).length} คน`}</small>${z.floor < 3 ? `<i><u style="width:${k / RPG_PDNEED * 100}%"></u></i><em>${k >= RPG_PDNEED ? '🚪 ประตูเปิดแล้ว · ไปที่มุมขวาล่าง' : `ปราบร่วมกัน ${k}/${RPG_PDNEED}`}</em>` : `<em>${RS.pd.done ? '✅ พิชิตแล้ว!' : '👑 ปราบบอสที่มุมขวาล่าง'}</em>`}`;
+  el.innerHTML = `<b>${T.ic} ${esc(T.n)}</b><small>ชั้น ${z.floor}/3 · ${RS.pd.solo ? 'ลุยเดี่ยว' : `ทีม ${(R.party?.mem || []).length} คน`}</small>${z.floor < 3 ? `<i><u style="width:${k / RPG_PDNEED * 100}%"></u></i><em>${k >= RPG_PDNEED ? '🚪 ประตูเปิดแล้ว · ไปที่มุมขวาล่าง' : `ปราบร่วมกัน ${k}/${RPG_PDNEED}`}</em>` : `<em>${RS.pd.done ? '✅ พิชิตแล้ว!' : '👑 ปราบบอสที่มุมขวาล่าง'}</em>`}`;
 }, 700);
 // หน้าข้อมูล + ปุ่มเริ่ม
 function rpgPdHTML() {
   const lead = !R.party || R.party.id === rpgMe().student_id, mates = rpgPdMates(), T = RPG_PDT[rpgPdTier()];
-  return `<h3>⚔️ ดันเจี้ยนปาร์ตี้</h3>
-    <div class="pd39-card" style="--c:${T.tint}"><span>${T.ic}</span><div><b>${esc(T.n)}</b><small>เลือกให้อัตโนมัติตามเลเวลเฉลี่ยของปาร์ตี้ · แนะนำ Lv.${T.lv[0]}–${T.lv[1]}</small></div></div>
-    <ul class="pd39-rules"><li>3 ชั้น · ชั้น 1–2 ปาร์ตี้ต้องช่วยกันปราบรวม ${RPG_PDNEED} ตัว ประตูถึงจะเปิด</li><li>ระวังกับดักหนามที่โผล่ขึ้นเป็นจังหวะ (ขอบแดงกะพริบ = กำลังจะโผล่)</li><li>ชั้น 3 มีบอส · เลือดบอสใช้ร่วมกันทั้งปาร์ตี้ ใครตีก็ลดให้ทุกคน</li><li>พิชิตแล้วได้ทอง แกนพลังบอส และเศษดาวผู้กล้า (ไว้คราฟต์ชุดเซ็ต)</li></ul>
-    <p class="rp-p">${R.party ? `ปาร์ตี้ตอนนี้: ${(R.party.mem || []).map(m => esc(m.n)).join(', ')}` : 'ยังไม่มีปาร์ตี้ · คลิกตัวละครเพื่อนแล้วกด “ชวนเข้าปาร์ตี้” (หรือจะลุยเดี่ยวก็ได้ รางวัลครึ่งเดียว)'}</p>
-    <div class="rp-ex">${lead ? `<button class="rp-btn primary big" data-r="pd-start">⚔️ ${mates.length ? 'พาปาร์ตี้ลงดันเจี้ยน' : 'ลุยเดี่ยว'}</button>` : '<p class="rp-p">รอหัวหน้าปาร์ตี้กดเริ่ม</p>'}</div>`;
+  return `<h3>⚔️ ดันเจี้ยนทีม</h3>
+    <div class="pd39-card" style="--c:${T.tint}"><span>${T.ic}</span><div><b>${esc(T.n)}</b><small>เลือกให้อัตโนมัติตามเลเวลเฉลี่ยของทีม · แนะนำ Lv.${T.lv[0]}–${T.lv[1]}</small></div></div>
+    <ul class="pd39-rules"><li>3 ชั้น · ชั้น 1–2 ทีมต้องช่วยกันปราบรวม ${RPG_PDNEED} ตัว ประตูถึงจะเปิด</li><li>ระวังกับดักหนามที่โผล่ขึ้นเป็นจังหวะ (ขอบแดงกะพริบ = กำลังจะโผล่)</li><li>ชั้น 3 มีบอส · เลือดบอสใช้ร่วมกันทั้งทีม ใครตีก็ลดให้ทุกคน</li><li>พิชิตแล้วได้ทอง แกนพลังบอส และเศษดาวผู้กล้า (ไว้คราฟต์ชุดเซ็ต)</li></ul>
+    <p class="rp-p">${R.party ? `ทีมตอนนี้: ${(R.party.mem || []).map(m => esc(m.n)).join(', ')}` : 'ยังไม่มีทีม · คลิกตัวละครเพื่อนแล้วกด “ชวนเข้าทีม” (หรือจะลุยเดี่ยวก็ได้ รางวัลครึ่งเดียว)'}</p>
+    <div class="rp-ex">${lead ? `<button class="rp-btn primary big" data-r="pd-start">⚔️ ${mates.length ? 'พาทีมลงดันเจี้ยน' : 'ลุยเดี่ยว'}</button>` : '<p class="rp-p">รอหัวหน้าทีมกดเริ่ม</p>'}</div>`;
 }
 const rpgPanel39c = rpgPanel;
 rpgPanel = function (k) {
@@ -21709,9 +21741,9 @@ rpgClick = function (e) {
   if (a === 'pd-out') { document.querySelector('.pd39-win')?.remove(); RS.pd = null; return rpgScene(R.save.lastCity || 'town'); }
   return rpgClick39c(e);
 };
-rpgOverlay = (f => function () { const r = f.apply(this, arguments), card = document.querySelector('#rpg-more .rm-card'); if (card && !card.querySelector('[data-r=m-pdun]')) card.querySelector('[data-r=m-raid]')?.insertAdjacentHTML('afterend', '<button data-r="m-pdun"><span>🏰</span><small>ดันเจี้ยนปาร์ตี้</small></button>'); return r; })(rpgOverlay);
-// ปุ่มลัดในกรอบปาร์ตี้
-rpgPartyHud = (f => function () { const r = f.apply(this, arguments), el = document.getElementById('rpg-party'); if (el && R.party && !el.querySelector('[data-r=m-pdun]')) el.querySelector('[data-r=pt-leave]')?.insertAdjacentHTML('beforebegin', '<button data-r="m-pdun">⚔️ ดันเจี้ยนปาร์ตี้</button>'); return r; })(rpgPartyHud);
+rpgOverlay = (f => function () { const r = f.apply(this, arguments), card = document.querySelector('#rpg-more .rm-card'); if (card && !card.querySelector('[data-r=m-pdun]')) card.querySelector('[data-r=m-raid]')?.insertAdjacentHTML('afterend', '<button data-r="m-pdun"><span>🏰</span><small>ดันเจี้ยนทีม</small></button>'); return r; })(rpgOverlay);
+// ปุ่มลัดในกรอบทีม
+rpgPartyHud = (f => function () { const r = f.apply(this, arguments), el = document.getElementById('rpg-party'); if (el && R.party && !el.querySelector('[data-r=m-pdun]')) el.querySelector('[data-r=pt-leave]')?.insertAdjacentHTML('beforebegin', '<button data-r="m-pdun">⚔️ ดันเจี้ยนทีม</button>'); return r; })(rpgPartyHud);
 
 /* =========================================================
    SX Realm v40 — ตัวละครขั้นเทพ
@@ -21833,7 +21865,7 @@ rpgDrawHero = function (x, h) {
 
 /* =====================================================================
    SX Realm v41 — หน้าต่างสวมใส่ใหม่ · สายธนูไม่คั่นตัว · Great Sword นักดาบ
-   สกิล 5 อัน (ตี 4 + บัพ 1) ทุกคลาส · บัพปาร์ตี้มีเอฟเฟกต์ · สถานะบัพในปาร์ตี้
+   สกิล 5 อัน (ตี 4 + บัพ 1) ทุกคลาส · บัพทีมมีเอฟเฟกต์ · สถานะบัพในทีม
    ===================================================================== */
 
 /* ---------- 1) หน้าต่างสวมใส่อุปกรณ์ (ออกแบบใหม่) ---------- */
@@ -21877,7 +21909,7 @@ rpgEquipPreview = function () {
     for (let k = 0; k < 10; k++) { const q = (t / 2600 + k / 10) % 1, a = k * 2.3; x.globalAlpha = Math.sin(q * Math.PI) * .8; x.fillStyle = k % 2 ? '#fff' : col; x.beginPath(); x.arc(cx + Math.cos(a) * W * .22, fy - q * H * .6, 2 * d, 0, 7); x.fill(); }
     x.globalAlpha = 1;
     const auto = Math.floor((t - t0) / 900) % 8, dir = RS.eqDirMan ? RS.eqDir : auto;
-    x.translate(cx, fy); const sc = Math.min(W / 96, H / 80); x.scale(sc, sc);
+    x.translate(cx, fy); const sc = Math.min(W / 96, H / 96); x.scale(sc, sc);
     rpgDrawHero(x, { look: rpgLookMe(), d8: (dir % 8 + 8) % 8, t }); requestAnimationFrame(loop); };
   requestAnimationFrame(loop);
 };
@@ -21962,7 +21994,7 @@ WP.D.none = () => {}; GRIP41.none = GRIP41.gsword;
   };
 })();
 
-/* ---------- 3) สกิลอาชีพละ 5: ตี 4 + บัพปาร์ตี้ 1 ---------- */
+/* ---------- 3) สกิลอาชีพละ 5: ตี 4 + บัพทีม 1 ---------- */
 (() => {
   const OLD = {}; Object.entries(RPG_JOBS).forEach(([j, J]) => { OLD[j] = (J.sk || []).slice(); });
   const O = (j, i) => OLD[j][i];
@@ -22017,7 +22049,7 @@ WP.D.none = () => {}; GRIP41.none = GRIP41.gsword;
   Object.entries(S).forEach(([j, L]) => { if (RPG_JOBS[j]) RPG_JOBS[j].sk = L; });
   rpgSkPuaAll();
   Object.entries(S).forEach(([j, L]) => L.forEach((k, i) => { const ch = [...String(k[1])].find(c => RPG_SKPUA[c]); if (!ch) return; const base = RPG_JOBS[j]?.base; RPG_SKPUA[ch].rank = base ? [0, 1, 1, 2, 1][i] : [2, 2, 3, 4, 2][i]; RPG_SKPUA[ch].kind = k[4]; if (typeof RPG_ICANV !== 'undefined') [...RPG_ICANV.keys()].forEach(q => { if (q.startsWith('@sk:' + ch)) RPG_ICANV.delete(q); }); }));
-  // บัพแผนที่ (นาที) ใช้ชื่อ/ไอคอนเดียวกับสกิลบัพ · ให้ทั้งปาร์ตี้ทุกอาชีพ
+  // บัพแผนที่ (นาที) ใช้ชื่อ/ไอคอนเดียวกับสกิลบัพ · ให้ทั้งทีมทุกอาชีพ
   Object.entries(RPG_JOBS).forEach(([j, J]) => { const T = RPG_TBUFF[j], k = J.sk?.[4]; if (!T || !k) return; T.n = k[0]; T.ic = k[1]; T.party = 1; T.heal = k[6]?.heal || 0; });
 })();
 rpgSkPool = function (s = R.save) {
@@ -22034,7 +22066,7 @@ rpgMigrate = function (d) {
   return s;
 };
 
-/* ---------- 4) บัพปาร์ตี้: เอฟเฟกต์บนตัวเรา + เพื่อนในปาร์ตี้ ---------- */
+/* ---------- 4) บัพทีม: เอฟเฟกต์บนตัวเรา + เพื่อนในทีม ---------- */
 function rpgBuffSkill41() { const s = R.save, J = RPG_JOBS[s?.job]; return J?.sk?.[4]; }
 function rpgPartyBuff41(free) {
   const s = R.save, T = RPG_TBUFF[s.job]; if (!T) return false; const now = Date.now();
@@ -22050,17 +22082,17 @@ function rpgPartyBuff41(free) {
   let n = 0; const me = rpgMe().student_id;
   if (R.party) R.party.mem.forEach(m => { if (m.id === me) return; rpgSend({ k: 'buff', to: m.id, b, heal: T.heal || 0 }); n++; const o = RS.others?.[m.id]; if (o && o.m === RS.map?.scene) rpgBuffFx41(o.x, o.y, T.col, T.ic, 0); });
   rpgSend({ k: 'buff', to: 'fx', x: R.save.x, y: R.save.y, m: RS.map?.scene, col: T.col, ic: b.ic });
-  rpgSay(`${T.ic} ${T.n} · ${T.min} นาที${n ? ` · ส่งให้เพื่อนร่วมปาร์ตี้ ${n} คน` : ' · ตั้งปาร์ตี้แล้วเพื่อนจะได้บัพด้วย'}`, 3000);
+  rpgSay(`${T.ic} ${T.n} · ${T.min} นาที${n ? ` · ส่งให้เพื่อนร่วมทีม ${n} คน` : ' · ตั้งทีมแล้วเพื่อนจะได้บัพด้วย'}`, 3000);
   rpgPartyHud(); rpgSave(); return true;
 }
 rpgCastBuff = function () { if (rpgPartyBuff41(false)) rpgTutEvent?.('buff'); };
-// สกิลบัพในการต่อสู้: บัพตัวเอง + ฟื้น HP + ส่งบัพแผนที่ให้ปาร์ตี้
+// สกิลบัพในการต่อสู้: บัพตัวเอง + ฟื้น HP + ส่งบัพแผนที่ให้ทีม
 const rpgBSkillGo41 = rpgBSkillGo;
 rpgBSkillGo = function (idx, ok, lv) {
   const k = rpgJob().sk[idx], ex = k?.[6] || {};
   if (k && k[4] === 'b') { const s = R.save, st = rpgStats();
     if (ex.heal) rpgBLater(350, () => { const h0 = s.hp; s.hp = Math.min(st.mhp, s.hp + Math.round(st.mhp * ex.heal * (ok ? 1.3 : 1))); if (s.hp > h0) rpgBNum(`+${s.hp - h0}`, 'me', 'heal'); rpgBHud(); });
-    rpgBLater(600, () => { if (rpgPartyBuff41(true)) rpgBSay(`${k[1]} ${k[0]} · บัพทั้งปาร์ตี้ ${RPG_TBUFF[s.job]?.min || 5} นาที`); }); }
+    rpgBLater(600, () => { if (rpgPartyBuff41(true)) rpgBSay(`${k[1]} ${k[0]} · บัพทั้งทีม ${RPG_TBUFF[s.job]?.min || 5} นาที`); }); }
   return rpgBSkillGo41.apply(this, arguments);
 };
 // เอฟเฟกต์ร่ายบัพบนแผนที่ (ใหญ่ + ไอคอนสกิลลอยขึ้น)
@@ -22096,7 +22128,7 @@ rpgNetMsg = function (p) {
   const r = rpgNetMsg41.apply(this, arguments); if (p?.k === 'buff') setTimeout(rpgPartyHud, 60); return r;
 };
 
-/* ---------- 5) สถานะบัพในปาร์ตี้ ---------- */
+/* ---------- 5) สถานะบัพในทีม ---------- */
 const rpgSend41 = rpgSend;
 rpgSend = function (payload) { if (payload && payload.l != null && payload.x != null && R.save) { try { const now = Date.now(); payload.bq = rpgBuffs().slice(-5).map(b => ({ i: b.ic, c: b.col, s: Math.round((b.until - now) / 1000), n: b.n })); } catch (e) {} } return rpgSend41.apply(this, arguments); };
 function rpgBfChips41(L) { return (L || []).filter(b => b.s > 0).map(b => { const m = b.s >= 60 ? Math.ceil(b.s / 60) + 'น.' : b.s + 'ว.'; return `<span class="pb41" style="--c:${b.c}" title="${esc(b.n || '')} เหลือ ${m}"><b>${b.i}</b><em>${m}</em></span>`; }).join(''); }
@@ -22108,7 +22140,7 @@ rpgPartyHud = (f => function () {
     const age = o ? (pnow - o.seen) / 1000 : 0, L = (o?.bq || []).map(b => ({ ...b, s: Math.round(b.s - age) }));
     let box = row.querySelector('.pb41-row'); if (!box) { row.querySelector('div')?.insertAdjacentHTML('beforeend', '<div class="pb41-row"></div>'); box = row.querySelector('.pb41-row'); }
     box.innerHTML = L.length ? rpgBfChips41(L) : '<small class="pb41-none">ไม่มีบัพ</small>'; });
-  const head = el.querySelector(':scope > b'); if (head && !el.querySelector('.pb41-me')) head.insertAdjacentHTML('afterend', `<div class="pb41-me"><small>บัพของฉัน</small><div class="pb41-row">${mine.length ? rpgBfChips41(mine) : '<small class="pb41-none">ยังไม่มีบัพ · กดปุ่มบัพเพื่อร่ายให้ทั้งปาร์ตี้</small>'}</div></div>`);
+  const head = el.querySelector(':scope > b'); if (head && !el.querySelector('.pb41-me')) head.insertAdjacentHTML('afterend', `<div class="pb41-me"><small>บัพของฉัน</small><div class="pb41-row">${mine.length ? rpgBfChips41(mine) : '<small class="pb41-none">ยังไม่มีบัพ · กดปุ่มบัพเพื่อร่ายให้ทั้งทีม</small>'}</div></div>`);
   return r;
 })(rpgPartyHud);
 setInterval(() => { if (R.party && document.getElementById('rpg-party')) rpgPartyHud(); }, 5000);
@@ -22867,13 +22899,15 @@ const RPG_WLEN44 = { gsword: 64, sword: 44, shield: 16, bow: 26, staff: 38, fsta
 let RPG_WH44 = null; const RPG_WAX44 = new Map();
 rpgWAxis = function (look, dir) {
   const h = RPG_WH44 || {}, pose = h.pose === 'hurt' || h.pose === 'down' ? 'idle' : h.pose || 'idle';
-  const walkF = h.moving ? Math.floor((((h.anim || 0) % (Math.PI * 2)) + Math.PI * 2) % (Math.PI * 2) / (Math.PI * 2) * 12) : -1, pkF = pose === 'atk' ? Math.round((h.pk || 0) * 6) / 6 : 0;
-  const k = JSON.stringify([look.job, look.wt, look.wtier, look.os || 0, dir, pose, walkF, pkF]); if (RPG_WAX44.has(k)) return RPG_WAX44.get(k);
+  const WN = typeof RPG_WALKN !== 'undefined' ? RPG_WALKN : 12, d8 = h.d8 != null ? (h.d8 > 4 ? 8 - h.d8 : h.d8) : null;
+  const walkF = h.moving ? Math.floor((((h.anim || 0) % (Math.PI * 2)) + Math.PI * 2) % (Math.PI * 2) / (Math.PI * 2) * WN) : -1, pkF = pose === 'atk' || pose === 'cast' ? Math.round((h.pk || 0) * 6) / 6 : 0;
+  const k = JSON.stringify([look.job, look.wt, look.wtier, look.os || 0, dir, d8, pose, walkF, pkF]); if (RPG_WAX44.has(k)) return RPG_WAX44.get(k);
   let r = null;
-  try { const o = rpgArtOpts(look, { dir, pose, pk: pkF, walk: walkF >= 0 ? walkF / 12 * Math.PI * 2 : null }), w = o.wpn;
+  try { const o = rpgArtOpts(look, { dir, d8, pose, pk: pkF, walk: walkF >= 0 ? walkF / WN * Math.PI * 2 : null }), w = o.wpn;
     if (w) { const type = w.type === 'none' ? 'gsword' : w.type, hand = o.pose?.[w.hand || 'R'] || [10, -21], g = (GRIP41[type] || [[0, 0]])[0], sc = w.sc || 1, fs = w.fs || 1, c = Math.cos(w.rot), sn = Math.sin(w.rot);
       const ox = hand[0] - (g[0] * sc * c - g[1] * sc * fs * sn), oy = hand[1] - (g[0] * sc * sn + g[1] * sc * fs * c), len = (RPG_WLEN44[type] || 30) * sc * fs;
-      const at = d => [ox + sn * d, oy - c * d]; r = { a: at(len * .08), b: at(len), type, behind: !!(w.behind || w.pre44) && !w.top }; } } catch (e) {}
+      const A = typeof RPG_ANI !== 'undefined' && !RPG_ANI.chibi && o.P === 'S3' ? RPG_ANI : null, T = p => A ? [p[0] * (A.SX || A.S), p[1] * (A.SY || A.S) + (A.hipL - (A.SY || A.S) * A.hip0)] : p;
+      const mb = o.back && !(w.pre44 || w.post44) ? -1 : 1, at = d => T([(ox + sn * d) * mb, oy - c * d]); r = { a: at(len * .08), b: at(len), type, behind: !!(w.behind || w.pre44) && !w.top }; } } catch (e) {}
   if (RPG_WAX44.size > 600) RPG_WAX44.clear(); RPG_WAX44.set(k, r); return r;
 };
 rpgDrawHero = (f => function (x, h) { const p = RPG_WH44; RPG_WH44 = h; try { return f.apply(this, arguments); } finally { RPG_WH44 = p; } })(rpgDrawHero);
@@ -23111,9 +23145,10 @@ rpgDrawHero = (f => function (x, h) {
 
 /* ---------- 5) ธนูสะพายหลังเห็นชัดขึ้น + เอฟเฟกต์แฟชั่น/ตีบวกเกาะธนูที่สะพายด้วย ---------- */
 rpgWAxis = (f => function (look, dir) { const r = f.apply(this, arguments); if (r) return r;
-  try { const h = RPG_WH44 || {}; const o = rpgArtOpts(look, { dir, pose: 'idle' }), B = o.backBow; if (!B) return null;
+  try { const h = RPG_WH44 || {}; const o = rpgArtOpts(look, { dir, d8: h.d8 != null ? (h.d8 > 4 ? 8 - h.d8 : h.d8) : null, pose: 'idle' }), B = o.backBow; if (!B) return null;
+    const A = typeof RPG_ANI !== 'undefined' && !RPG_ANI.chibi && o.P === 'S3' ? RPG_ANI : null, T = p => A ? [p[0] * (A.SX || A.S), p[1] * (A.SY || A.S) + (A.hipL - (A.SY || A.S) * A.hip0)] : p;
     const rot = B.side ? -.22 : (B.back ? -.48 : .48), cx = B.side ? -6 : (B.back ? -1 : 1), cy = -26, c = Math.cos(rot), s = Math.sin(rot), L = 24;
-    return { a: [cx - s * L, cy + c * L], b: [cx + s * L, cy - c * L], type: 'bow', behind: !B.back }; } catch (e) { return null; } })(rpgWAxis);
+    return { a: T([cx - s * L, cy + c * L]), b: T([cx + s * L, cy - c * L]), type: 'bow', behind: !B.back }; } catch (e) { return null; } })(rpgWAxis);
 
 /* =====================================================================
    SX Realm v46 — หัวสมส่วน · ไม่มีหมวกอาชีพ/หมวกเกราะ (ใส่ได้เฉพาะหมวกแฟชั่น)
@@ -23371,25 +23406,25 @@ function rpgArtGetLazy(key, make, keyOf, f, N) {
 }
 
 /* ---------- สัดส่วนแบบอนิเมะ (ไม่ใช่ chibi): หัวเล็กลง ลำตัว-แขน-ขายาวขึ้น ---------- */
-const RPG_ANI = { S: 1, hip0: -15.5, hipL: -15.5, AL: 1, HK: .9, chibi: 1 };  // v52: กลับเป็น chibi (คงผม/หน้าอนิเมะ)
-RPG_ANI.ty = RPG_ANI.hipL - RPG_ANI.S * RPG_ANI.hip0;
-const rpgAniY = y => y * RPG_ANI.S + RPG_ANI.ty, rpgAniP = p => [p[0] * RPG_ANI.S, rpgAniY(p[1])];
+const RPG_ANI = { S: 1.05, SX: .88, SY: 1.05, hip0: -15.5, hipL: -29, AL: 1.36, HK: .72, chibi: 0 };  // v53: สัดส่วนแบบ Tree of Savior (หัวโต ตัวเพรียว ขายาว)
+RPG_ANI.ty = RPG_ANI.hipL - RPG_ANI.SY * RPG_ANI.hip0;
+const rpgAniY = y => y * RPG_ANI.S + RPG_ANI.ty, rpgAniP = p => [p[0] * RPG_ANI.SX, rpgAniY(p[1])];
 C2.draw = (f => function (x, o) {
   if (!o || o._noAni || o.P !== 'S3' || RPG_ANI.chibi) return f.apply(this, arguments);
-  const A = RPG_ANI; o._T = { S: A.S, ty: A.ty, hipL: A.hipL };
-  x.save(); x.transform(A.S, 0, 0, A.S, 0, A.ty); try { return f.call(this, x, o); } finally { x.restore(); }
+  const A = RPG_ANI; A.S = A.SY; A.ty = A.hipL - A.SY * A.hip0; o._T = { S: A.SY, SX: A.SX, SY: A.SY, ty: A.ty, hipL: A.hipL };
+  x.save(); x.transform(A.SX, 0, 0, A.SY, 0, A.ty); try { return f.call(this, x, o); } finally { x.restore(); }
 })(C2.draw);
 rpgArtOpts = (f => function (L, h = {}) {
   const o = f.apply(this, arguments); o.headK = RPG_ANI.HK;
   // แขนยาวขึ้น: ยืดตำแหน่งมือออกจากหัวไหล่
   if (o.pose) { const sh = (o.g === 'f' ? 7.2 : 8.4) * .92, sy = -31 + 3.2, AL = RPG_ANI.AL;
-    ['R', 'L'].forEach(k => { const p = o.pose[k]; if (!p) return; const sx = (k === 'R' ? 1 : -1) * (sh - .4); o.pose[k] = [sx + (p[0] - sx) * (1 + (AL - 1) * .3), sy + (p[1] - sy) * AL]; }); }
+    ['R', 'L'].forEach(k => { const p = o.pose[k]; if (!p) return; const sx = (k === 'R' ? 1 : -1) * (sh - .4); const dx = p[0] - sx, inward = dx * (k === 'R' ? 1 : -1) < 0; o.pose[k] = [sx + dx * (inward && !o.wpn?.type ? .35 : 1 + (AL - 1) * .3), sy + (p[1] - sy) * AL]; }); }
   // แกว่งแขนตามจังหวะก้าว (มุมข้าง/เฉียง)
   if (o.pose && h.walk != null && (o.turn || o.diag) && !(o.wpn && o.wpn.two)) { const sw = Math.sin(h.walk) * (o.turn ? 4.2 : 2.4); if (!o.wpn || o.wpn.hand !== 'R') o.pose.R[0] += sw; if (!o.wpn || o.wpn.hand !== 'L') o.pose.L[0] -= sw; }
   return o;
 })(rpgArtOpts);
 // เอฟเฟกต์ที่อิงตำแหน่งอาวุธ → แปลงพิกัดตามสัดส่วนใหม่
-if (typeof rpgWAxis === 'function') rpgWAxis = (f => function () { const r = f.apply(this, arguments); if (!r || r._ani) return r; const o = { ...r, _ani: 1 }; ['a', 'b', 'c', 'm'].forEach(k => { if (Array.isArray(r[k])) o[k] = rpgAniP(r[k]); }); if (r.len) o.len = r.len * RPG_ANI.S; return o; })(rpgWAxis);
+if (false) rpgWAxis = (f => function () { const r = f.apply(this, arguments); if (!r || r._ani) return r; const o = { ...r, _ani: 1 }; ['a', 'b', 'c', 'm'].forEach(k => { if (Array.isArray(r[k])) o[k] = rpgAniP(r[k]); }); if (r.len) o.len = r.len * RPG_ANI.S; return o; })(rpgWAxis);
 if (typeof rpgAccFx === 'function') rpgAccFx = (f => function (x, acc) { if (acc?.fx !== 'halo' && acc?.fx !== 'orbs') return f.apply(this, arguments); x.save(); x.translate(0, RPG_ANI.chibi ? 0 : acc.fx === 'halo' ? -13 : -12); try { return f.apply(this, arguments); } finally { x.restore(); } })(rpgAccFx);
 
 /* rpg-v48.js — โลกเปิด: ตีมอนสเตอร์บนแผนที่ได้ทันที ไม่ตัดเข้าฉากต่อสู้
@@ -23805,8 +23840,8 @@ const rpgPanelHTML49 = typeof rpgPanelHTML === 'function' ? rpgPanelHTML : null;
 })();
 
 /* ---------- ปีกให้ตรงแผ่นหลังของสัดส่วนตัวละครใหม่ ---------- */
-if (typeof rpgWingDraw === 'function') rpgWingDraw = (f => function (x) { const A = RPG_ANI; x.save(); x.transform(A.S, 0, 0, A.S, 0, A.ty); try { return f.apply(this, arguments); } finally { x.restore(); } })(rpgWingDraw);
-if (typeof rpgAccFx === 'function') rpgAccFx = (f => function (x, acc) { if (acc?.fx !== 'wings') return f.apply(this, arguments); const A = RPG_ANI; x.save(); x.transform(A.S, 0, 0, A.S, 0, A.ty); try { return f.apply(this, arguments); } finally { x.restore(); } })(rpgAccFx);
+if (typeof rpgWingDraw === 'function') rpgWingDraw = (f => function (x) { const A = RPG_ANI; x.save(); x.transform(A.SX || A.S, 0, 0, A.SY || A.S, 0, A.ty); try { return f.apply(this, arguments); } finally { x.restore(); } })(rpgWingDraw);
+if (typeof rpgAccFx === 'function') rpgAccFx = (f => function (x, acc) { if (acc?.fx !== 'wings') return f.apply(this, arguments); const A = RPG_ANI; x.save(); x.transform(A.SX || A.S, 0, 0, A.SY || A.S, 0, A.ty); try { return f.apply(this, arguments); } finally { x.restore(); } })(rpgAccFx);
 
 /* rpg-v50.js — ตรวจบั๊ก + ปรับสมดุลการต่อสู้บนแผนที่ */
 // 1) สมดุล: มอนสเตอร์บนแผนที่ (ไม่ใช่บอส) เลือดและแรงตีลดลง เหมาะกับสู้แบบเรียลไทม์
@@ -24001,7 +24036,7 @@ function rpgWall3D52(x, mp, i, j, px, py, at, rnd) {
    วิธีทำงาน: แต่ละแผนที่มีช่องสัญญาณของตัวเอง (rpg-mo-<แผนที่>) · ผู้เล่นที่รหัสน้อยสุดในแผนที่เป็น "โฮสต์"
    โฮสต์ควบคุมมอนทั้งหมดแล้วส่งตำแหน่ง/เลือดให้ทุกคน 4 ครั้งต่อวินาที · คนอื่นส่ง "ดาเมจที่ตี" ไปให้โฮสต์
    มอนตายเมื่อโฮสต์ตัดสิน · ทุกคนที่ช่วยตีได้ EXP ตามสัดส่วน · ของดรอปเป็นของคนที่ตีมากที่สุด
-   บอสประจำแผนที่และดันเจี้ยนปาร์ตี้ยังเป็นของใครของมัน (สู้แยกห้อง) */
+   บอสประจำแผนที่และดันเจี้ยนทีมยังเป็นของใครของมัน (สู้แยกห้อง) */
 const NET52 = { on: false, ch: null, scene: null, me: null, host: null, slave: false, peers: {}, joinT: 0, snapT: 0, fullT: 0, hbT: 0, decT: 0, dmg: {}, pred: {} };
 RS.net52 = NET52;
 const rpgNetId52 = () => String(rpgMe()?.student_id || 'me');
@@ -24130,7 +24165,7 @@ rpgSpawn = (f => function () { if (NET52.on && NET52.slave) return; const n0 = R
 rpgUpdate = (f => function () { const s = R.save, hp0 = s?.hp; const r = f.apply(this, arguments); if (NET52.on && s && s.hp < hp0) { const now = performance.now(); if (now - (NET52.mlT || 0) > 600) { NET52.mlT = now; const mo = RS.mon.find(m => m.lunge !== undefined && Math.hypot(m.x - s.x, m.y - s.y) < 1.5); rpgNetSend52({ k: 'ml', u: mo?.uid || 0, to: NET52.me }); } } return r; })(rpgUpdate);
 addEventListener('pagehide', () => { try { rpgNetLeave52(); } catch (e) {} });
 
-/* rpg-v52party.js — เมนูจัดการปาร์ตี้: สมาชิก · ชวน · เตะ · มอบหัวหน้า · ตั้งค่า (ชื่อ · ของดรอป · แบ่ง EXP) */
+/* rpg-v52party.js — เมนูจัดการทีม: สมาชิก · ชวน · เตะ · มอบหัวหน้า · ตั้งค่า (ชื่อ · ของดรอป · แบ่ง EXP) */
 const RPG_PCFG0 = { name: '', loot: 'top', exp: 1 };
 const rpgPCfg = () => ({ ...RPG_PCFG0, ...(R.party?.cfg || {}) });
 const rpgIsLead = () => R.party && R.party.id === rpgMe().student_id;
@@ -24139,15 +24174,15 @@ rpgPartySync = function () { if (!R.party) return; R.party.mem.forEach(m => { if
 rpgNetMsg = (f => function (p) {
   const me = rpgMe().student_id;
   if (p.k === 'party' && (!p.to || p.to === me)) {
-    if (p.a === 'sync' && p.mem && !p.mem.some(m => m.id === me) && R.party && R.party.id === p.id) { R.party = null; rpgSay(p.kick ? '🚪 หัวหน้าเชิญคุณออกจากปาร์ตี้' : 'ปาร์ตี้ถูกยุบแล้ว'); rpgPartyHud(); rpgPresenceSend(); if (RS.panel === 'party') rpgPanel('party'); return; }
-    if (p.a === 'lead') { R.party = { id: me, mem: p.mem, cfg: p.cfg || {} }; rpgSay('👑 คุณได้เป็นหัวหน้าปาร์ตี้'); rpgPartySync(); return; }
+    if (p.a === 'sync' && p.mem && !p.mem.some(m => m.id === me) && R.party && R.party.id === p.id) { R.party = null; rpgSay(p.kick ? '🚪 หัวหน้าเชิญคุณออกจากทีม' : 'ทีมถูกยุบแล้ว'); rpgPartyHud(); rpgPresenceSend(); if (RS.panel === 'party') rpgPanel('party'); return; }
+    if (p.a === 'lead') { R.party = { id: me, mem: p.mem, cfg: p.cfg || {} }; rpgSay('👑 คุณได้เป็นหัวหน้าทีม'); rpgPartySync(); return; }
     const r = f.apply(this, arguments);
     if (p.a === 'sync' && R.party) { R.party.cfg = p.cfg || R.party.cfg || {}; if (RS.panel === 'party') rpgPanel('party'); }
     return r;
   }
   return f.apply(this, arguments);
 })(rpgNetMsg);
-// ชื่อปาร์ตี้ที่ตั้งเอง
+// ชื่อทีมที่ตั้งเอง
 rpgPartyName = (f => function () { const c = R.party?.cfg; return c?.name ? c.name : f.apply(this, arguments); })(rpgPartyName);
 
 function rpgPartyPanelHTML() {
@@ -24161,16 +24196,16 @@ function rpgPartyPanelHTML() {
   const inP = new Set(mem.map(m => m.id));
   const cand = Object.entries(RS.others || {}).filter(([id, o]) => !inP.has(id) && now - o.seen < 20000).sort((a, b) => (a[1].m === RS.map?.scene ? 0 : 1) - (b[1].m === RS.map?.scene ? 0 : 1) || Math.hypot(a[1].x - R.save.x, a[1].y - R.save.y) - Math.hypot(b[1].x - R.save.x, b[1].y - R.save.y)).slice(0, 12);
   const can = !P || lead, full = mem.length >= 4;
-  return `<h3>⚔️ ปาร์ตี้ ${P ? `${mem.length}/4` : ''}</h3>
-    <p class="rp-p">${P ? (lead ? 'คุณเป็นหัวหน้าปาร์ตี้ · ตั้งค่าและจัดการสมาชิกได้' : 'หัวหน้าปาร์ตี้เป็นคนตั้งค่า · ตีมอนตัวเดียวกันได้รับ EXP ร่วมกัน') : 'ยังไม่มีปาร์ตี้ · ชวนเพื่อนที่ออนไลน์ด้านล่างเพื่อสร้างปาร์ตี้'}</p>
+  return `<h3>⚔️ ทีม ${P ? `${mem.length}/4` : ''}</h3>
+    <p class="rp-p">${P ? (lead ? 'คุณเป็นหัวหน้าทีม · ตั้งค่าและจัดการสมาชิกได้' : 'หัวหน้าทีมเป็นคนตั้งค่า · ตีมอนตัวเดียวกันได้รับ EXP ร่วมกัน') : 'ยังไม่มีทีม · ชวนเพื่อนที่ออนไลน์ด้านล่างเพื่อสร้างทีม'}</p>
     <div class="pm52-list">${mem.map(row).join('')}</div>
-    ${P ? `<h4 class="qx-h">⚙️ ตั้งค่าปาร์ตี้</h4><div class="pc52 ${lead ? '' : 'ro'}">
-      <label><span>ชื่อปาร์ตี้</span><input id="pt52-name" maxlength="20" value="${esc(c.name)}" placeholder="${esc(rpgPartyName?.() || 'ปาร์ตี้ของฉัน')}" ${lead ? '' : 'disabled'}></label>
-      <div class="pc52-row"><span>ของดรอป</span><div class="seg52">${[['top', 'คนตีมากสุด'], ['rr', 'หมุนเวียนในปาร์ตี้']].map(([k, l]) => `<button data-r="pt52-cfg" data-k="loot" data-v="${k}" class="${c.loot === k ? 'on' : ''}" ${lead ? '' : 'disabled'}>${l}</button>`).join('')}</div></div>
+    ${P ? `<h4 class="qx-h">⚙️ ตั้งค่าทีม</h4><div class="pc52 ${lead ? '' : 'ro'}">
+      <label><span>ชื่อทีม</span><input id="pt52-name" maxlength="20" value="${esc(c.name)}" placeholder="${esc(rpgPartyName?.() || 'ทีมของฉัน')}" ${lead ? '' : 'disabled'}></label>
+      <div class="pc52-row"><span>ของดรอป</span><div class="seg52">${[['top', 'คนตีมากสุด'], ['rr', 'หมุนเวียนในทีม']].map(([k, l]) => `<button data-r="pt52-cfg" data-k="loot" data-v="${k}" class="${c.loot === k ? 'on' : ''}" ${lead ? '' : 'disabled'}>${l}</button>`).join('')}</div></div>
       <div class="pc52-row"><span>แบ่ง EXP</span><div class="seg52">${[[1, 'แบ่งให้ทุกคนในแผนที่'], [0, 'เฉพาะคนที่ช่วยตี']].map(([k, l]) => `<button data-r="pt52-cfg" data-k="exp" data-v="${k}" class="${+c.exp === k ? 'on' : ''}" ${lead ? '' : 'disabled'}>${l}</button>`).join('')}</div></div>
-      ${lead ? '<button class="rp-btn primary" data-r="pt52-save">💾 บันทึกชื่อปาร์ตี้</button>' : ''}</div>` : ''}
-    ${can && !full ? `<h4 class="qx-h">📨 ชวนผู้เล่นออนไลน์</h4><div class="pi52">${cand.map(([id, o]) => `<div class="pi52-r"><img src="${o.o ? rpgLookImg(o.o, 48, 'bust') : ''}" alt=""><div><b>${esc(o.n || '')}</b><small>Lv.${o.l || '?'} · ${esc(RPG_ZONES[o.m]?.n || '')}${o.pt ? ' · มีปาร์ตี้แล้ว' : ''}</small></div><button class="rp-btn" data-r="pt52-inv" data-id="${id}" data-n="${esc(o.n || '')}" ${o.pt ? 'disabled' : ''}>ชวน</button></div>`).join('') || '<p class="rp-p">ยังไม่มีผู้เล่นออนไลน์คนอื่น</p>'}</div>` : ''}
-    ${P ? `<div class="rp-ex"><button class="rp-btn danger" data-r="pt-leave">${lead ? '🏳️ ยุบปาร์ตี้' : '🚪 ออกจากปาร์ตี้'}</button><button class="rp-btn" data-r="m-pdun">🏰 ดันเจี้ยนปาร์ตี้</button></div>` : ''}`;
+      ${lead ? '<button class="rp-btn primary" data-r="pt52-save">💾 บันทึกชื่อทีม</button>' : ''}</div>` : ''}
+    ${can && !full ? `<h4 class="qx-h">📨 ชวนผู้เล่นออนไลน์</h4><div class="pi52">${cand.map(([id, o]) => `<div class="pi52-r"><img src="${o.o ? rpgLookImg(o.o, 48, 'bust') : ''}" alt=""><div><b>${esc(o.n || '')}</b><small>Lv.${o.l || '?'} · ${esc(RPG_ZONES[o.m]?.n || '')}${o.pt ? ' · มีทีมแล้ว' : ''}</small></div><button class="rp-btn" data-r="pt52-inv" data-id="${id}" data-n="${esc(o.n || '')}" ${o.pt ? 'disabled' : ''}>ชวน</button></div>`).join('') || '<p class="rp-p">ยังไม่มีผู้เล่นออนไลน์คนอื่น</p>'}</div>` : ''}
+    ${P ? `<div class="rp-ex"><button class="rp-btn danger" data-r="pt-leave">${lead ? '🏳️ ยุบทีม' : '🚪 ออกจากทีม'}</button><button class="rp-btn" data-r="m-pdun">🏰 ดันเจี้ยนทีม</button></div>` : ''}`;
 }
 rpgPanel = (f => function (k) {
   if (k === 'party') { const p = document.getElementById('rpg-panel'); if (!p) return; RS.keys = {}; RS.walkTo = null; p.innerHTML = `<div class="rp-card pk-party52"><button class="rp-x" data-r="close" aria-label="ปิด">✕</button>${rpgPartyPanelHTML()}</div>`; p.hidden = false; RS.panel = k; return; }
@@ -24180,17 +24215,17 @@ rpgClick = (f => function (e) {
   const b = e.target.closest?.('[data-r]'), a = b?.dataset.r;
   if (a === 'm-party') { const m = document.getElementById('rpg-more'); if (m) m.hidden = true; return rpgPanel('party'); }
   if (a === 'pt52-inv') { rpgPartyInvite(b.dataset.id, b.dataset.n); setTimeout(() => RS.panel === 'party' && rpgPanel('party'), 300); return; }
-  if (a === 'pt52-kick' && rpgIsLead()) { const id = b.dataset.id, m = R.party.mem.find(q => q.id === id); return rpgAsk(`เชิญ <b>${esc(m?.n || '')}</b> ออกจากปาร์ตี้?`, 'เชิญออก', () => { rpgSend({ k: 'party', a: 'sync', to: id, mem: R.party.mem.filter(q => q.id !== id), kick: 1 }); R.party.mem = R.party.mem.filter(q => q.id !== id); rpgSay(`${m?.n || ''} ออกจากปาร์ตี้แล้ว`); rpgPartySync(); }); }
-  if (a === 'pt52-lead' && rpgIsLead()) { const id = b.dataset.id, m = R.party.mem.find(q => q.id === id); return rpgAsk(`มอบหัวหน้าปาร์ตี้ให้ <b>${esc(m?.n || '')}</b>?`, 'มอบหัวหน้า', () => { rpgSend({ k: 'party', a: 'lead', to: id, mem: R.party.mem, cfg: R.party.cfg || {} }); rpgSay('มอบหัวหน้าแล้ว'); }); }
+  if (a === 'pt52-kick' && rpgIsLead()) { const id = b.dataset.id, m = R.party.mem.find(q => q.id === id); return rpgAsk(`เชิญ <b>${esc(m?.n || '')}</b> ออกจากทีม?`, 'เชิญออก', () => { rpgSend({ k: 'party', a: 'sync', to: id, mem: R.party.mem.filter(q => q.id !== id), kick: 1 }); R.party.mem = R.party.mem.filter(q => q.id !== id); rpgSay(`${m?.n || ''} ออกจากทีมแล้ว`); rpgPartySync(); }); }
+  if (a === 'pt52-lead' && rpgIsLead()) { const id = b.dataset.id, m = R.party.mem.find(q => q.id === id); return rpgAsk(`มอบหัวหน้าทีมให้ <b>${esc(m?.n || '')}</b>?`, 'มอบหัวหน้า', () => { rpgSend({ k: 'party', a: 'lead', to: id, mem: R.party.mem, cfg: R.party.cfg || {} }); rpgSay('มอบหัวหน้าแล้ว'); }); }
   if (a === 'pt52-cfg' && rpgIsLead()) { R.party.cfg = { ...rpgPCfg(), [b.dataset.k]: b.dataset.k === 'exp' ? +b.dataset.v : b.dataset.v }; rpgPartySync(); return; }
   if (a === 'pt52-save' && rpgIsLead()) { const v = rpgClean(document.getElementById('pt52-name')?.value || '').trim().slice(0, 20); R.party.cfg = { ...rpgPCfg(), name: v }; rpgSay('💾 บันทึกแล้ว'); rpgPartySync(); return; }
   const r = f.apply(this, arguments);
   if (a === 'pt-leave' && RS.panel === 'party') setTimeout(() => rpgPanel('party'), 50);
   return r;
 })(rpgClick);
-// ปุ่มในเมนูหลัก + ปุ่มจัดการในกล่องปาร์ตี้มุมจอ
-rpgOverlay = (f => function () { const r = f.apply(this, arguments), card = document.querySelector('#rpg-more .rm-card'); if (card && !card.querySelector('[data-r=m-party]')) card.insertAdjacentHTML('afterbegin', '<button data-r="m-party"><span>⚔️</span>ปาร์ตี้</button>'); return r; })(rpgOverlay);
-rpgPartyHud = (f => function () { const r = f.apply(this, arguments), el = document.getElementById('rpg-party'); if (el && R.party && !el.querySelector('[data-r=m-party]')) el.querySelector('b')?.insertAdjacentHTML('beforeend', ' <button class="pt52-gear" data-r="m-party" aria-label="จัดการปาร์ตี้">⚙️</button>'); return r; })(rpgPartyHud);
+// ปุ่มในเมนูหลัก + ปุ่มจัดการในกล่องทีมมุมจอ
+rpgOverlay = (f => function () { const r = f.apply(this, arguments), card = document.querySelector('#rpg-more .rm-card'); if (card && !card.querySelector('[data-r=m-party]')) card.insertAdjacentHTML('afterbegin', '<button data-r="m-party"><span>⚔️</span>ทีม</button>'); return r; })(rpgOverlay);
+rpgPartyHud = (f => function () { const r = f.apply(this, arguments), el = document.getElementById('rpg-party'); if (el && R.party && !el.querySelector('[data-r=m-party]')) el.querySelector('b')?.insertAdjacentHTML('beforeend', ' <button class="pt52-gear" data-r="m-party" aria-label="จัดการทีม">⚙️</button>'); return r; })(rpgPartyHud);
 
 /* ---------- ใช้ตั้งค่า: ของดรอปหมุนเวียน · แบ่ง EXP ให้ทุกคนในแผนที่ ---------- */
 const rpgHash52 = s => { let h = 0; for (const ch of String(s)) h = (h * 31 + ch.charCodeAt(0)) | 0; return Math.abs(h); };
@@ -24205,6 +24240,154 @@ rpgNetDie52 = (f => function (mo, by) {
   if (mine > 0) { setTimeout(() => rpgSfx('coin'), 250); rpgFcReward52(mo, Math.min(1, Math.max(.4, mine / tot)), looter === me); if (looter !== me) rpgFcNum(mo.x, mo.y - 2, `ของตกเป็นของ ${esc(RS.others?.[looter]?.n || 'เพื่อน')}`, '#C9D2F0'); }
   else if (+c.exp && pids.has(me)) rpgFcReward52(mo, .3, false);
 })(rpgNetDie52);
+
+/* rpg-v53.js — แกนอาวุธสำหรับเอฟเฟกต์ตีบวก: จับตำแหน่งจริงตอนวาดอาวุธ (ตรงทุกอาชีพ ทุกท่า ทุกทิศ) */
+const RPG_CAP53 = { on: false, m: null, t: null };
+Object.keys(WP.D).forEach(k => { const f = WP.D[k]; if (!f || f._cap53) return; const g = function (x) { if (RPG_CAP53.on) { if (!RPG_CAP53.m) { RPG_CAP53.m = x.getTransform(); RPG_CAP53.t = k; } return; } return f.apply(this, arguments); }; Object.keys(f).forEach(p => { g[p] = f[p]; }); g._cap53 = 1; WP.D[k] = g; });
+const RPG_WAX53 = new Map(); let RPG_CAPCV53 = null;
+rpgWAxis = function (look, dir) {
+  const h = RPG_WH44 || {}, pose = h.pose === 'hurt' || h.pose === 'down' ? 'idle' : h.pose || 'idle', WN = typeof RPG_WALKN !== 'undefined' ? RPG_WALKN : 12;
+  const d8 = h.d8 != null ? (h.d8 > 4 ? 8 - h.d8 : h.d8) : null;
+  const walkF = h.moving ? Math.floor((((h.anim || 0) % (Math.PI * 2)) + Math.PI * 2) % (Math.PI * 2) / (Math.PI * 2) * WN) : -1, pkF = pose === 'atk' || pose === 'cast' ? Math.round((h.pk || 0) * 6) / 6 : 0;
+  const k = JSON.stringify([look.job, look.wt, look.wtier, look.os || 0, look.wsk || 0, dir, d8, pose, walkF, pkF]); if (RPG_WAX53.has(k)) return RPG_WAX53.get(k);
+  let r = null;
+  try {
+    const o = rpgArtOpts(look, { dir, d8, pose, pk: pkF, walk: walkF >= 0 ? walkF / WN * Math.PI * 2 : null });
+    if (!RPG_CAPCV53) { RPG_CAPCV53 = document.createElement('canvas'); RPG_CAPCV53.width = RPG_CAPCV53.height = 2; }
+    const x = RPG_CAPCV53.getContext('2d'); x.setTransform(1, 0, 0, 1, 0, 0);
+    RPG_CAP53.on = true; RPG_CAP53.m = null; RPG_CAP53.t = null; try { C2.draw(x, o); } finally { RPG_CAP53.on = false; }
+    const M = RPG_CAP53.m, type = RPG_CAP53.t;
+    if (M && type && type !== 'none') { const L = RPG_WLEN44[type] || 30, P = (px, py) => [M.a * px + M.c * py + M.e, M.b * px + M.d * py + M.f];
+      const behind = o.backBow ? !o.backBow.back : !!(o.wpn && (o.wpn.behind || o.wpn.pre44) && !o.wpn.top);
+      r = { a: P(0, -L * .08), b: P(0, -L), type, behind }; }
+  } catch (e) { r = null; }
+  if (RPG_WAX53.size > 900) RPG_WAX53.clear(); RPG_WAX53.set(k, r); return r;
+};
+
+/* ---------- ปุ่มสกิลเว้นระยะแบบ TOSM: โค้งกว้างขึ้น มีช่องไฟระหว่างปุ่ม ---------- */
+RPG_ACPOS49.splice(0, 5, [244, 39], [228, 117], [184, 184], [117, 228], [39, 244]);
+
+/* ---------- ทีม: กรอบสมาชิกแบบเกมออนไลน์ (เรียบ กระชับ แตะเพื่อจัดการ) ---------- */
+const RPG_TEAMIMG53 = new Map();
+rpgPartyHud = (f => function () {
+  try { f.apply(this, arguments); } catch (e) {}
+  const el = document.getElementById('rpg-party'); if (!el) return;
+  if (!R.party) { el.innerHTML = ''; el.className = 'rpg-party'; return; }
+  const me = rpgMe().student_id, now = performance.now(), lead = R.party.id;
+  const rows = R.party.mem.map(m => { const isMe = m.id === me, o = RS.others?.[m.id], on = isMe || (o && now - o.seen < 15000);
+    const J = RPG_JOBS[isMe ? R.save.job : (o?.k || m.j)] || {}, lv = isMe ? R.save.lvl : (o?.l || m.l || '?');
+    const hp = isMe ? Math.round(R.save.hp / rpgStats().mhp * 100) : Math.max(0, Math.min(100, o?.hp ?? 100));
+    const look = isMe ? rpgLookMe() : o?.o, ck = look ? JSON.stringify(look) : ''; let img = RPG_TEAMIMG53.get(ck); if (look && !img) { try { img = rpgLookImg(look, 64, 'bust'); RPG_TEAMIMG53.set(ck, img); } catch (e) {} }
+    const bf = isMe ? rpgBuffs().slice(0, 4).map(b => b.ic) : (o?.bq || []).slice(0, 4).map(b => b.i);
+    return `<div class="tm53 ${on ? '' : 'off'} ${isMe ? 'me' : ''}" style="--c:${J.col || '#7C5CFF'}"><i class="tm53-av">${img ? `<img src="${img}" alt="">` : '👤'}${m.id === lead ? '<em>👑</em>' : ''}</i>
+      <div><b>${esc((m.n || '').split(' ')[0])}<small>${J.ic || ''} Lv.${lv}</small></b><u><s style="width:${on ? hp : 0}%"></s></u>${bf.length ? `<span>${bf.join('')}</span>` : ''}</div></div>`; }).join('');
+  el.className = 'rpg-party tm53-box';
+  el.innerHTML = `<div class="tm53-h" data-r="m-party"><span>👥 ทีม ${R.party.mem.length}/4</span><button data-r="m-party" aria-label="จัดการทีม">⚙️</button></div>${rows}`;
+})(rpgPartyHud);
+
+/* ---------- ดันเจี้ยนทีม: ย้ายกรอบความคืบหน้าเข้าไปเป็นภารกิจ (ออกจากแผนที่ = หาย) ---------- */
+function rpgPdQuest53(el) {
+  el.querySelector('.qt-pd53')?.remove();
+  const z = typeof rpgPdZ === 'function' ? rpgPdZ() : null; if (!z || !RS.pd || el.classList.contains('hide')) return;
+  const T = RPG_PDT[RS.pd.tier], k = Math.min(RS.pd.kills, RPG_PDNEED), boss = z.floor >= 3;
+  const box = document.createElement('div'); box.className = 'qt-pd53';
+  box.innerHTML = `<small>🏰 ภารกิจดันเจี้ยนทีม · ชั้น ${z.floor}/3</small><b>${T.ic} ${esc(T.n)}</b>
+    <p>${boss ? `ปราบบอส <b>${esc(T.boss?.[0] || 'บอส')}</b> ร่วมกับทีม` : k >= RPG_PDNEED ? '🚪 ประตูเปิดแล้ว · ไปที่มุมขวาล่างเพื่อขึ้นชั้นต่อไป' : `ปราบมอนสเตอร์ร่วมกับทีม <em>${k}/${RPG_PDNEED}</em>`}</p>
+    ${boss ? '' : `<div class="qt-tbar"><i style="width:${k / RPG_PDNEED * 100}%"></i></div>`}<span class="qt-pd53-m">${RS.pd.solo ? 'ลุยเดี่ยว' : `ทีม ${(R.party?.mem || []).length} คน`}</span>`;
+  const head = el.querySelector('.qt-head, [data-r=qt-hide]'); head ? head.after(box) : el.prepend(box);
+}
+rpgQTrack = (f => function () { const r = f.apply(this, arguments), el = document.getElementById('rpg-qt'); if (el) rpgPdQuest53(el); return r; })(rpgQTrack);
+setInterval(() => { document.getElementById('pd39-hud')?.remove(); const el = document.getElementById('rpg-qt'); if (!el) return; const want = !!(typeof rpgPdZ === 'function' && rpgPdZ() && RS.pd), has = !!el.querySelector('.qt-pd53'); if (want || has) rpgPdQuest53(el); }, 700);
+
+/* ---------- นินจา: มือขวาคุไน · มือซ้ายชูริเคน ---------- */
+(() => {
+  const MAT = ['#B8C0CC', '#AEB6C4', '#7FA6D8', '#E6ECF6', '#F2C14E', '#8FEFFF', '#E8395F', '#E6D8FF'], T = t => Math.max(0, Math.min(7, t | 0));
+  const steel = (x, w, c) => { const g = x.createLinearGradient(-w, 0, w, 0); g.addColorStop(0, '#FFFFFF'); g.addColorStop(.45, c); g.addColorStop(1, '#3A3E50'); return g; };
+  WP.D.kunai = function (x, t = 0) { t = T(t); const c = MAT[t], L = 20 + t * 1.2;
+    // ห่วงท้ายด้าม + ด้ามพันผ้า
+    x.strokeStyle = '#2A2236'; x.lineWidth = 1.4; x.beginPath(); x.arc(0, 8.6, 2.4, 0, 7); x.stroke();
+    x.fillStyle = '#3A2E4A'; x.beginPath(); x.roundRect(-1.3, -1, 2.6, 8, 1); x.fill(); x.strokeStyle = '#C0303A'; x.lineWidth = .7; for (let i = 0; i < 4; i++) { x.beginPath(); x.moveTo(-1.3, i * 2); x.lineTo(1.3, i * 2 + 1.2); x.stroke(); }
+    // ใบคุไนทรงข้าวหลามตัด
+    x.fillStyle = steel(x, 4, c); x.beginPath(); x.moveTo(0, -1); x.lineTo(-3.8, -L * .35); x.lineTo(0, -L); x.lineTo(3.8, -L * .35); x.closePath(); x.fill();
+    x.strokeStyle = 'rgba(255,255,255,.75)'; x.lineWidth = .5; x.beginPath(); x.moveTo(0, -2); x.lineTo(0, -L + 1.5); x.stroke();
+    x.fillStyle = '#2A2236'; x.fillRect(-2.6, -2, 5.2, 1.6);
+    if (t >= 4) { x.save(); x.globalCompositeOperation = 'lighter'; x.shadowColor = c; x.shadowBlur = 6; x.strokeStyle = c; x.lineWidth = .6; x.beginPath(); x.moveTo(-3.8, -L * .35); x.lineTo(0, -L); x.lineTo(3.8, -L * .35); x.stroke(); x.restore(); } };
+  WP.D.shuriken = function (x, t = 0) { t = T(t); const c = MAT[t], R = 8 + t * .5, spin = (performance.now() / 260) % (Math.PI * 2) * (WP._spin53 ? 1 : 0);
+    x.save(); x.translate(0, -7); x.rotate(spin); x.fillStyle = steel(x, R, c); x.beginPath();
+    for (let i = 0; i < 8; i++) { const a = i * Math.PI / 4 - Math.PI / 2, r = i % 2 ? R * .32 : R; x.lineTo(Math.cos(a) * r, Math.sin(a) * r); } x.closePath(); x.fill();
+    x.strokeStyle = 'rgba(30,20,40,.7)'; x.lineWidth = .6; x.stroke(); x.fillStyle = '#2A2236'; x.beginPath(); x.arc(0, 0, R * .2, 0, 7); x.fill(); x.fillStyle = '#C0303A'; x.beginPath(); x.arc(0, 0, R * .09, 0, 7); x.fill();
+    if (t >= 4) { x.globalCompositeOperation = 'lighter'; x.shadowColor = c; x.shadowBlur = 8; x.strokeStyle = c; x.lineWidth = .5; x.stroke(); } x.restore(); };
+  Object.assign(GRIP41, { kunai: [[0, 3]], shuriken: [[0, -1]] }); Object.assign(RPG_WLEN44, { kunai: 24, shuriken: 10 });
+  const A = RPG_JOBART.ninja; if (A) { A.w = { ...A.w, type: 'kunai', rot: 2.6, sc: .7 }; A.w2 = { ...A.w2, type: 'shuriken', hand: 'L', rot: -.3, sc: .95 }; }
+  if (RPG_IWPN) { const d = (type, rot, sc, cx, cy) => (x, P) => { const t = Math.max(0, Math.min(7, P.t ?? 4)); x.save(); x.translate(cx, cy); x.rotate(rot); x.scale(sc, sc); WP.D[type](x, t); x.restore(); };
+    RPG_IWPN.dagger = (x, P) => { d('kunai', .6, 1.7, 56, 66)(x, P); d('shuriken', 0, 1.8, 34, 40)(x, P); }; RPG_ICANV?.clear?.(); RPG_IURL?.clear?.(); }
+})();
+
+/* ---------- ท่าโจมตีใหม่ทุกอาชีพ (pk 0→1 = ง้าง → ปล่อย → ตามจังหวะ) ---------- */
+const ease53 = k => 1 - (1 - k) * (1 - k), seg53 = (pk, a, b) => Math.max(0, Math.min(1, (pk - a) / (b - a)));
+rpgArtOpts = (f => function (L, h = {}) {
+  const o = f.apply(this, arguments), pose = h.pose || 'idle', J = RPG_JOBS[L?.job];
+  if (L?.job === 'ninja' && o.wpn && o.wpn.type === 'dagger1') { o.wpn.type = 'kunai'; if (o.wpn2) o.wpn2.type = 'shuriken'; }
+  if (pose !== 'atk' || !o.pose || !o.wpn || !J) return o;
+  const pk = h.pk || 0, side = !!o.turn, back = !!o.back, w = o.wpn, w2 = o.wpn2, t = w.type, R = o.pose.R, Lh = o.pose.L, sx = side ? 1 : 0;
+  const set = (P, x, y) => { P[0] = x; P[1] = y; };
+  if (L.job === 'ninja' || t === 'kunai') {           // ฟันคุไนขวา → ปาชูริเคนซ้าย
+    const a = seg53(pk, 0, .5), b = seg53(pk, .45, 1);
+    if (pk < .5) { const e = ease53(a); w.rot = 2.6 - 3.4 * e; set(R, side ? 4 + e * 10 : 8 + e * 4, -26 + e * 10); }
+    else { w.rot = -.8; set(R, side ? 12 : 11, -16); }
+    if (w2) { const e = ease53(b); if (pk < .45) { w2.rot = -.3; set(Lh, side ? -2 : -9, -18 - a * 6); } else { w2.rot = -.3 + e * 5; set(Lh, side ? -2 + e * 16 : -9 + e * 6, -26 + e * 8); if (e > .55) w2.sc = .72 * (1 - (e - .55) * 1.6); } }
+    return o; }
+  if (t === 'fist') {                                  // หมัดซ้าย → หมัดขวา (ช่วงตัวพุ่ง)
+    const a = Math.sin(seg53(pk, 0, .5) * Math.PI), b = Math.sin(seg53(pk, .45, 1) * Math.PI);
+    set(R, side ? 6 + b * 12 : 10 + b * 2, -14 - b * 6); set(Lh, side ? 2 + a * 12 : -10 - a * 2, -14 - a * 6);
+    if (w) w.sc = (w.sc || .55) * (1 + b * .18); if (w2) w2.sc = (w2.sc || .55) * (1 + a * .18); return o; }
+  if (t === 'hammer') {                                // ยกค้อนเหนือหัว → ทุบลง
+    const up = seg53(pk, 0, .4), dn = ease53(seg53(pk, .4, .75)); w.two = 1;
+    if (pk < .4) { w.rot = -.4 - up * 1.6; set(R, side ? 2 : 12, -24 - up * 14); } else { w.rot = -2 + dn * (side ? 4.4 : 3.9); set(R, side ? 4 + dn * 10 : 8 + dn * 3, -38 + dn * 26); }
+    set(Lh, R[0] - 4, R[1] + 2); return o; }
+  if (t === 'staff' || t === 'fstaff' || t === 'istaff' || t === 'orb') {   // ชูขึ้นร่าย → ชี้ไปข้างหน้า
+    const up = ease53(seg53(pk, 0, .45)), fw = ease53(seg53(pk, .45, .8));
+    if (pk < .45) { w.rot = .12 - up * .3; set(R, side ? 6 : 10, -18 - up * 16); set(Lh, side ? -4 : -10, -20 - up * 8); }
+    else { w.rot = -.18 + fw * (side ? .95 : .55); set(R, side ? 6 + fw * 10 : 10 + fw * 2, -34 + fw * 10); set(Lh, side ? -2 + fw * 8 : -12, -26 + fw * 2); }
+    if (t === 'orb') { set(Lh, -R[0] * .6, R[1]); } return o; }
+  if (t === 'wand') {                                  // ตวัดคทาเป็นวง
+    const e = ease53(pk); w.rot = -.9 + e * 2.4; set(R, side ? 6 + Math.sin(pk * Math.PI) * 10 : 10 + Math.sin(pk * Math.PI) * 3, -30 + e * 12); set(Lh, side ? -4 : -11, -24 - Math.sin(pk * Math.PI) * 6); return o; }
+  if (t === 'lute') {                                  // ดีดสายแรง ๆ
+    const s = Math.sin(pk * Math.PI * 3); set(R, side ? 6 : 4, -16 + s * 4); w.rot = (w.rot || 0) + Math.sin(pk * Math.PI) * .3; return o; }
+  if (t === 'tablet') {                                // ยื่นแท็บเล็ตแล้วแตะหน้าจอ
+    const e = Math.sin(pk * Math.PI); set(R, side ? 8 + e * 6 : 4, -20 - e * 4); set(Lh, R[0] - (side ? 4 : 8), R[1] + 2 - Math.abs(Math.sin(pk * Math.PI * 4)) * 3); return o; }
+  if (L.job === 'knight' || (t === 'sword' && w2)) {   // ดันโล่ → แทงดาบ
+    const e = ease53(seg53(pk, .3, .8)), s = Math.sin(seg53(pk, 0, .5) * Math.PI);
+    w.rot = side ? 1.4 : .3 + e * .6; set(R, side ? 2 + e * 16 : 9 + e * 3, -20 - e * 4); if (Lh) set(Lh, side ? 6 + s * 8 : -9 - s * 2, -18 - s * 3); return o; }
+  return o;
+})(rpgArtOpts);
+// ชูริเคนหมุนเสมอ (ไม่แคชเฟรมเดียวค้าง) — หมุนเฉพาะตอนปาเท่านั้นเพื่อประหยัด
+WP._spin53 = 0;
+// นินจาตีปกติ: ฟันคุไน + ปาชูริเคนหมุนเข้าเป้า
+rpgFcSwing = (f => function (mo) { const r = f.apply(this, arguments); try { if (R.save?.job === 'ninja' && FC.atk && performance.now() - FC.atk.t0 < 40 && mo) { const s = R.save; setTimeout(() => X49.big({ k: 'proj', kind: 'shuriken', x: s.x * TS, y: s.y * TS - 20, x2: mo.x * TS, y2: mo.y * TS - 16, col: '#E8ECF8', dur: 190, trail: 1 }), 200); } } catch (e) {} return r; })(rpgFcSwing);
+
+/* ---------- สกิลเพิ่ม: ทุกอาชีพขั้นสูงได้สกิลขั้น 3 อีก 2 และขั้น 4 อีก 1 ---------- */
+const RPG_SKX53 = {
+  sword:    [['ดาบหมุนพายุคลั่ง', '🌀', 30, 0.8, 'p', 'slash', { hits: 4 }], ['ฟันจันทร์เสี้ยว', '🌙', 34, 3.4, 'p', 'pierce', {}], ['ดาบเทพสังหารมังกร', '🐉', 60, 6.2, 'p', 'thunder', { hits: 2 }]],
+  knight:   [['ค้อนสวรรค์', '🔨', 28, 3.0, 'p', 'light', { stun: .4 }], ['หอกแสงทะลวง', '✴️', 32, 1.2, 'p', 'pierce', { hits: 3 }], ['คำพิพากษาแห่งสวรรค์', '⚖️', 62, 5.8, 'p', 'light', { hits: 2, stun: .3 }]],
+  archer:   [['ศรพิษงู', '🐍', 26, 2.6, 'p', 'arrow', { drain: .2 }], ['ศรทะลวงเกราะ', '🎯', 30, 3.4, 'p', 'pierce', {}], ['ฝนดาวตก', '☄️', 60, 1.2, 'p', 'arrow', { hits: 8 }]],
+  fire:     [['เสาเพลิงนรก', '🔥', 30, 1.1, 'm', 'fire', { hits: 3 }], ['ระเบิดฟีนิกซ์', '🐦‍🔥', 34, 3.4, 'm', 'bomb', {}], ['หายนะภูเขาไฟ', '🌋', 66, 1.6, 'm', 'meteor', { hits: 5 }]],
+  ice:      [['หนามน้ำแข็งพันเล่ม', '🧊', 28, 0.9, 'm', 'ice', { hits: 4 }], ['ลมหายใจเหมันต์', '🌬️', 32, 3.0, 'm', 'wind', { stun: .4 }], ['ราชินีหิมะนิรันดร์', '❄️', 64, 6.0, 'm', 'ice', { hits: 2, stun: .5 }]],
+  priest:   [['สายฟ้าพิพากษา', '⚡', 28, 2.8, 'm', 'thunder', {}], ['วงแหวนชำระบาป', '💫', 32, 1.0, 'm', 'light', { hits: 4, drain: .15 }], ['ปีกเทพบุตร', '👼', 64, 5.6, 'm', 'light', { hits: 2 }]],
+  ninja:    [['คุไนระเบิด', '💥', 26, 3.0, 'p', 'bomb', {}], ['พายุชูริเคน', '✴️', 30, 0.6, 'p', 'star', { hits: 6 }], ['ศิลปะลับ: เงามรณะ', '🌑', 62, 1.4, 'p', 'dark', { hits: 5, drain: .25 }]],
+  monk:     [['เตะพายุหมุน', '🦶', 26, 0.9, 'p', 'wind', { hits: 4 }], ['หมัดคลื่นกระแทก', '💢', 32, 3.4, 'p', 'quake', { stun: .4 }], ['หมัดอสูรร้อยพัน', '👊', 62, 0.7, 'p', 'punch', { hits: 10 }]],
+  bard:     [['บทเพลงพายุ', '🌪️', 28, 2.6, 'm', 'wind', {}], ['คอร์ดสายฟ้า', '🎸', 32, 1.0, 'm', 'thunder', { hits: 3 }], ['บทเพลงแห่งดวงดาว', '🌟', 60, 5.4, 'm', 'music', { hits: 2, stun: .4 }]],
+  summon:   [['อัญเชิญหมีศิลา', '🐻', 30, 3.2, 'm', 'summon', { ic: '🐻', stun: .3 }], ['ฝูงค้างคาวราตรี', '🦇', 30, 0.6, 'm', 'summon', { hits: 5, ic: '🦇' }], ['อัญเชิญฟีนิกซ์', '🐦‍🔥', 64, 6.0, 'm', 'summon', { hits: 2, ic: '🔥' }]],
+  engineer: [['จรวดนำวิถี', '🚀', 28, 1.1, 'p', 'bomb', { hits: 3 }], ['สนามไฟฟ้าสถิต', '⚡', 32, 2.8, 'p', 'thunder', { stun: .35 }], ['ปืนใหญ่เลเซอร์โคจร', '🛰️', 66, 1.5, 'p', 'laser', { hits: 6 }]],
+  hacker:   [['ไวรัสโทรจัน', '🦠', 26, 2.6, 'm', 'glitch', { drain: .2 }], ['สายฟ้าเซิร์ฟเวอร์', '🌩️', 32, 1.0, 'm', 'thunder', { hits: 3 }], ['รีบูตโลก', '♻️', 64, 6.2, 'm', 'glitch', { hits: 2, stun: .4 }]],
+};
+Object.entries(RPG_SKX53).forEach(([j, L]) => { const J = RPG_JOBS[j]; if (!J || J.base || J.sk.length > 5) return; L.forEach(k => J.sk.push(k)); });
+const RPG_SKX53T = { 5: [3, 50, 3], 6: [3, 60, 3], 7: [4, 85, 4] };   // ดัชนี: [ขั้น, เลเวลปลดล็อก, ความแรง]
+rpgSkPool = (f => function (s = R.save) {
+  const out = f.apply(this, arguments).filter(p => { const i = +p.key.split(':')[1]; return i < 5; });
+  if (s?.job && !RPG_JOBS[s.job]?.base) RPG_JOBS[s.job].sk.forEach((k, i) => { const T = RPG_SKX53T[i]; if (T) out.push({ key: s.job + ':' + i, k, tier: T[0], lv: T[1], rank: T[2] }); });
+  return out;
+})(rpgSkPool);
 
 /* =====================================================================
    rpg-net.js — หน้าเกมของครู: จัดการตัวละคร (เลือกชั้น → ห้อง) · คำถามในเกม · ตรวจแชท · กิลด์ · โหมดครู
@@ -24222,7 +24405,7 @@ async function g3TeacherLoad(force) {
 function viewGames() {
   if (!G3T.qs) { g3TeacherLoad(); return `<div class="page-head"><div><h2>เกม SX Realm</h2></div></div><div class="card"><div class="empty"><span class="spin"></span> กำลังโหลด…</div></div>`; }
   const tab = G3T.tab;
-  return `<div class="page-head"><div><h2>เกม SX Realm</h2><p>เกม RPG ออนไลน์ในหน้านักเรียน แท็บ 🎮 · 12 อาชีพ · Lv.1–99 · ${Object.keys(RPG_ZONES).length - 2} แผนที่รวมดันเจี้ยน · ปาร์ตี้ กิลด์ แชท</p></div><span class="spacer"></span>
+  return `<div class="page-head"><div><h2>เกม SX Realm</h2><p>เกม RPG ออนไลน์ในหน้านักเรียน แท็บ 🎮 · 12 อาชีพ · Lv.1–99 · ${Object.keys(RPG_ZONES).length - 2} แผนที่รวมดันเจี้ยน · ทีม กิลด์ แชท</p></div><span class="spacer"></span>
     <div class="row g3t-btns" style="gap:8px;flex-wrap:wrap;justify-content:flex-end"><button class="btn" data-act="g3t-treset">🔄 รีเซ็ตตัวละครครู</button><button class="btn primary" data-act="g3t-play">🎮 เข้าเล่นโหมดครู</button></div></div>
   ${G3T.missing ? '<div class="hint warn">⚠️ ยังไม่ได้รันไฟล์ phase18–20.sql</div>' : ''}${!G3T.chatOk && !G3T.missing ? '<div class="hint warn">⚠️ ยังไม่ได้รัน phase20.sql · กิลด์ แชท และป้าย Top 3 จะยังใช้ไม่ได้</div>' : ''}
   ${g3tTopHTML()}
@@ -24272,7 +24455,7 @@ function g3tChatHTML() {
   const L = G3T.chat || [];
   return `<div class="card"><div class="card-h"><h3>💬 แชทในเกมล่าสุด</h3><span class="spacer"></span><button class="btn sm" data-act="g3t-reload">รีเฟรช</button></div>
     ${L.length ? `<div class="tbl-wrap" style="max-height:520px"><table class="tbl"><thead><tr><th>เวลา</th><th>ช่อง</th><th>ผู้ส่ง</th><th>ข้อความ</th><th class="act"></th></tr></thead><tbody>
-    ${L.map(m => { const st = db.get('students', m.student_id), c = st ? db.get('classrooms', st.classroom_id)?.name : ''; return `<tr class="${m.hidden ? 'muted' : ''}"><td class="small">${new Date(m.created_at).toLocaleString('th-TH', { dateStyle: 'short', timeStyle: 'short' })}</td><td class="small">${m.ch === 'world' ? '🌏 โลก' : m.ch.startsWith('guild') ? '🏰 กิลด์' : '⚔️ ปาร์ตี้'}</td>
+    ${L.map(m => { const st = db.get('students', m.student_id), c = st ? db.get('classrooms', st.classroom_id)?.name : ''; return `<tr class="${m.hidden ? 'muted' : ''}"><td class="small">${new Date(m.created_at).toLocaleString('th-TH', { dateStyle: 'short', timeStyle: 'short' })}</td><td class="small">${m.ch === 'world' ? '🌏 โลก' : m.ch.startsWith('guild') ? '🏰 กิลด์' : '⚔️ ทีม'}</td>
       <td>${esc(m.name)} <span class="small muted">${esc(c || '')}</span></td><td>${m.hidden ? '<s>' : ''}${esc(m.body)}${m.hidden ? '</s>' : ''}</td>
       <td class="act"><button class="btn sm ghost" data-act="g3t-hide" data-id="${m.id}" data-h="${m.hidden ? 0 : 1}">${m.hidden ? 'แสดง' : 'ซ่อน'}</button>${m.student_id ? `<button class="btn sm ghost" data-act="g3t-edit" data-id="${m.student_id}">จัดการ</button>` : ''}</td></tr>`; }).join('')}
     </tbody></table></div>` : '<div class="empty small">ยังไม่มีแชทในเกม</div>'}</div>`;
