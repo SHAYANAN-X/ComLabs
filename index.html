@@ -5911,7 +5911,7 @@ if (typeof module !== 'undefined') module.exports = ExamParser;
 </script>
 <script>
 /* โลโก้: ภาพครูปลื้ม (ไฟล์ต้นฉบับ src/logo.svg ฝังตอน build) */
-const APP_VER = '55.1 · 28 พ.ย. 2569';
+const APP_VER = '55.2 · 28 พ.ย. 2569';
 let LOGO_N = 0;
 function logoSVG() { const k = 'L' + (++LOGO_N); return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><defs><linearGradient id="lgb" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3B9BFF"/><stop offset=".5" stop-color="#0A5BE0"/><stop offset="1" stop-color="#062C78"/></linearGradient><linearGradient id="lgs" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset=".6" stop-color="#FFF4D6"/><stop offset="1" stop-color="#FFD978"/></linearGradient><radialGradient id="lgc" cx=".3" cy=".08" r=".75"><stop offset="0" stop-color="#fff" stop-opacity=".55"/><stop offset=".5" stop-color="#fff" stop-opacity=".08"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient></defs><rect width="48" height="48" rx="13" fill="url(#lgb)"/><rect width="48" height="48" rx="13" fill="url(#lgc)"/><rect x=".75" y=".75" width="46.5" height="46.5" rx="12.3" fill="none" stroke="#fff" stroke-opacity=".45" stroke-width="1.2"/><g fill="none" stroke="#04235F" stroke-opacity=".35" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" transform="translate(0 1.2)"><path d="M21.2 17 C19.8 14.6 17.4 13.6 14.8 13.6 C11 13.6 8.6 15.6 8.6 18.5 C8.6 21.8 11.6 22.9 14.9 23.9 C18.6 25 21.6 26.4 21.6 29.8 C21.6 33 18.8 34.6 15.1 34.6 C12 34.6 9.5 33.4 8 31.1"/><path d="M26.6 14 L39.6 34.2 M39.6 14 L26.6 34.2"/></g><g fill="none" stroke="url(#lgs)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M21.2 17 C19.8 14.6 17.4 13.6 14.8 13.6 C11 13.6 8.6 15.6 8.6 18.5 C8.6 21.8 11.6 22.9 14.9 23.9 C18.6 25 21.6 26.4 21.6 29.8 C21.6 33 18.8 34.6 15.1 34.6 C12 34.6 9.5 33.4 8 31.1"/><path d="M26.6 14 L39.6 34.2 M39.6 14 L26.6 34.2"/></g></svg>`.replace('<svg ', '<svg class="logo" aria-hidden="true" ').replace(/\b(lg[bsc])\b/g, '$1' + k); }
 /* =====================================================================
@@ -24228,9 +24228,9 @@ function rpgNetOtherAtk52(p) {
   const mo = RS.mon.find(m => m.uid === p.u), ox = o?.x ?? p.x, oy = o?.y ?? p.y; if (ox == null) return;
   if (o && mo) { const dx = mo.x - ox, dy = mo.y - oy; o.dir = Math.abs(dx) > Math.abs(dy) ? (dx > 0 ? 'r' : 'l') : (dy > 0 ? 'd' : 'u'); o.d8 = rpgD8From(dx, dy, null); }
   const J = RPG_JOBS[p.j]; if (!J) return;
-  if (p.s >= 0) { const k = J.sk[p.s]; if (!k) return; const col = k.sig55?.c || rpgSkCol49(k[5], J), rank = rpgSkRank49(k, p.s), P = { x: ox * TS, y: oy * TS }, T = mo ? { x: mo.x * TS, y: mo.y * TS } : P;
+  if (p.s >= 0) { const k = J.sk[p.s]; if (!k) return; const col = rpgSig55(k)?.c || rpgSkCol49(k[5], J), rank = rpgSkRank49(k, p.s), P = { x: ox * TS, y: oy * TS }, T = mo ? { x: mo.x * TS, y: mo.y * TS } : P;
     if (k[4] === 'h' || k[4] === 'b') { X49.big({ k: 'pillar', x: P.x, y: P.y, w: 34, h: 160, col: k[4] === 'h' ? '#7CFFB0' : col, dur: 900 }); return; }
-    if (rank >= 1) FX49.circle(P, col, rank); const gen = FX49[k.sig55?.fx || k[5]] || FX49.slash; try { gen.call(FX49, P, T, col, Math.min(rank, 3), Math.max(1, k[6]?.hits || 1), 1.4 * TS, k[6] || {}); } catch (e) {} return; }
+    if (rank >= 1) FX49.circle(P, col, rank); const gen = FX49[rpgSig55(k)?.fx || k[5]] || FX49.slash; try { gen.call(FX49, P, T, col, Math.min(rank, 3), Math.max(1, k[6]?.hits || 1), 1.4 * TS, k[6] || {}); } catch (e) {} return; }
   if (!mo) return; const melee = RPG_MELEE.has(J.wt), col = J.col || '#FFF';
   if (melee) rpgFcFx({ k: 'slash', x: mo.x, y: mo.y - .55, col, dir: Math.sign(mo.x - ox) || 1, dur: 260 });
   else rpgFcFx({ k: 'proj', x: ox, y: oy - .9, x2: mo.x, y2: mo.y - .6, col: J.wt === 'bow' ? '#FFFFFF' : col, dur: 320, arrow: J.wt === 'bow' });
@@ -24717,7 +24717,12 @@ const RPG_SIG55 = {
   'hacker:โค้ดโจมตี': ['floppy', 'fly', '#5AFFB0'], 'hacker:ไฟร์วอลล์': ['wall', 'aura', '#FF8A5A'], 'hacker:DDoS ย้อนกลับ': ['antenna', 'hover', '#5AC8FF'], 'hacker:แพตช์ระบบ': ['bandage', 'aura', '#7CFFB0'], 'hacker:Zero-Day': ['rad', 'stamp', '#C8FF3A'],
   'hacker:ไวรัสโทรจัน': ['virus', 'orbit', '#7AFF5A'], 'hacker:สายฟ้าเซิร์ฟเวอร์': ['serverbolt', 'hover', '#7AC8FF'], 'hacker:รีบูตโลก': ['recycle', 'spin', '#5AFFC8'],
 };
-function rpgSig55(k) { return k?.sig55 || null; }
+function rpgSig55(k) {
+  if (!k) return null; if (k.sig55) return k.sig55; if (k.sig55 === false) return null;
+  // สกิลในช่องสกิลเป็นสำเนา (มี _key = 'อาชีพ:ลำดับ') → หาตามอาชีพ+ชื่อ
+  const jobs = [String(k._key || '').split(':')[0], R.save?.job, typeof RPG_BASEOF !== 'undefined' ? RPG_BASEOF[R.save?.job] : null].filter(Boolean);
+  for (const j of jobs) { const sg = RPG_SIG55[j + ':' + k[0]]; if (sg) { const o = { g: sg[0], m: sg[1], c: sg[2] }; const fx = typeof RPG_BASEFX55 !== 'undefined' ? RPG_BASEFX55[j]?.[k[0]] : null; if (fx) o.fx = fx; try { k.sig55 = o; } catch (e) {} return o; } }
+  try { k.sig55 = false; } catch (e) {} return null; }
 // ผูกตาราง + ลงทะเบียนสกิลใหม่ (v53) ให้ใช้ไอคอนวาด แทนอิโมจิ
 (() => {
   const S53 = typeof RPG_SKX53 !== 'undefined' ? RPG_SKX53 : {};
@@ -24850,7 +24855,7 @@ const RPG_BASEFX55 = {
 (() => { const S53 = typeof RPG_SKX53 !== 'undefined' ? RPG_SKX53 : {}; Object.entries(RPG_JOBS).forEach(([j, J]) => [...(J.sk || []), ...(S53[j] || [])].forEach(k => { const fx = RPG_BASEFX55[j]?.[k[0]]; if (fx && k.sig55) k.sig55.fx = fx; })); })();
 // ร่ายสกิล: ใช้เอฟเฟกต์ฐาน+สีของสกิลนั้นเอง (ขอบเขต/ประชิด คิดจากชนิดเดิม)
 rpgFcCast49 = (f => function (i, k, lv, mo, rank) {
-  const sg = k?.sig55; if (!sg || k[4] === 'h' || k[4] === 'b') return f.apply(this, arguments);
+  const sg = rpgSig55(k); if (!sg || k[4] === 'h' || k[4] === 'b') return f.apply(this, arguments);
   const k2 = [...k]; Object.assign(k2, k); k2[5] = sg.fx || k[5]; k2.aoeFx55 = k[5]; k2.col55 = sg.c; return f.call(this, i, k2, lv, mo, rank); })(rpgFcCast49);
 
 /* rpg-v55snd.js — เสียงชุดใหม่ (สังเคราะห์ในเบราว์เซอร์ทั้งหมด ไม่มีไฟล์ลิขสิทธิ์)
@@ -25038,7 +25043,7 @@ rpgFcSwing = (f => function (mo) { const s0 = rpgSfx; let wt = rpgJob?.()?.wt ||
 rpgFcHit = (f => function (mo) { const r = f.apply(this, arguments); try { const n = performance.now(); if (!mo.dead && n - (SFX55._h || 0) > 110) { SFX55._h = n; SFX55.hurt(mo); } } catch (e) {} return r; })(rpgFcHit);
 rpgFcDeathFx52 = (f => function (mo) { const r = f.apply(this, arguments); try { if (r) SFX55.die(mo); } catch (e) {} return r; })(rpgFcDeathFx52);
 // สกิล: ชั้นเสียงเฉพาะของเอฟเฟกต์ใหม่ + เสียงร้องสัตว์อัญเชิญ
-rpgSigFx55 = (f => function (k) { const r = f.apply(this, arguments); try { const sg = k?.sig55; if (sg) { SFX55.skill(sg.fx); if (/^beast|^swarm/.test(sg.m)) setTimeout(() => SFX55.beast(sg.g), 120); } } catch (e) {} return r; })(rpgSigFx55);
+rpgSigFx55 = (f => function (k) { const r = f.apply(this, arguments); try { const sg = rpgSig55(k); if (sg) { SFX55.skill(sg.fx); if (/^beast|^swarm/.test(sg.m)) setTimeout(() => SFX55.beast(sg.g), 120); } } catch (e) {} return r; })(rpgSigFx55);
 // สู้บอสบนแผนที่ → เปลี่ยนเป็นเพลงต่อสู้ · ไม่ได้สู้บอส 8 วินาที → กลับเพลงแผนที่
 rpgFcHit = (f => function (mo) { const r = f.apply(this, arguments); try { if (mo?.boss) { SND.bossT55 = performance.now(); if (SND.on && SND.mode !== 'battle') rpgBgm('battle'); } } catch (e) {} return r; })(rpgFcHit);
 setInterval(() => { try { if (SND.mode === 'battle' && !RS.battle && SND.bossT55 && performance.now() - SND.bossT55 > 8000) { SND.bossT55 = 0; SND.mode = null; rpgBgm(); } } catch (e) {} }, 2000);
