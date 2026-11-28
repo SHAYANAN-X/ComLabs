@@ -5271,6 +5271,15 @@ img.ii.jic{border-radius:22%}
 #rpg .qt-pd53 .qt-tbar{height:6px;border-radius:4px;background:rgba(0,0,0,.4);overflow:hidden;margin:4px 0}#rpg .qt-pd53 .qt-tbar i{display:block;height:100%;background:linear-gradient(90deg,#B36BFF,#FF8FD8)}
 #rpg .qt-pd53-m{font-size:11px;color:#E8CB90}
 #rpg .pd39-hud{display:none!important}
+/* v54 main menu: team button + collapse */
+#rpg .rpg-menu{display:flex;align-items:flex-start}
+#rpg .rpg-menu .mn54-tog{width:30px!important;min-width:30px;height:58px;padding:0;border-radius:14px 6px 6px 14px!important;font-size:14px;color:#FFE9B8}
+#rpg .rpg-menu .mn54-tog span{font-size:15px!important}
+#rpg .rpg-menu.mn54-col>button:not(.mn54-tog):not([data-r=more]){display:none!important}
+#rpg .rpg-menu [data-r=m-party]{position:relative}
+#rpg .mn54-n{position:absolute;top:-6px;right:-6px;min-width:20px;height:20px;border-radius:10px;background:#E8395F;color:#fff;font:700 12px/20px sans-serif;font-style:normal;text-align:center;box-shadow:0 0 0 2px #2A1406}
+#rpg .rpg-menu{z-index:12!important}#rpg .rpg-tmode{z-index:11}
+@media (min-width:701px){#rpg .rpg-tmode{top:96px!important;left:370px!important;transform:none!important;max-width:calc(100vw - 640px)}}
 
 </style>
 </head>
@@ -5815,7 +5824,7 @@ if (typeof module !== 'undefined') module.exports = ExamParser;
 </script>
 <script>
 /* โลโก้: ภาพครูปลื้ม (ไฟล์ต้นฉบับ src/logo.svg ฝังตอน build) */
-const APP_VER = '54.1 · 28 พ.ย. 2569';
+const APP_VER = '54.2 · 28 พ.ย. 2569';
 let LOGO_N = 0;
 function logoSVG() { const k = 'L' + (++LOGO_N); return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><defs><linearGradient id="lgb" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3B9BFF"/><stop offset=".5" stop-color="#0A5BE0"/><stop offset="1" stop-color="#062C78"/></linearGradient><linearGradient id="lgs" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset=".6" stop-color="#FFF4D6"/><stop offset="1" stop-color="#FFD978"/></linearGradient><radialGradient id="lgc" cx=".3" cy=".08" r=".75"><stop offset="0" stop-color="#fff" stop-opacity=".55"/><stop offset=".5" stop-color="#fff" stop-opacity=".08"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient></defs><rect width="48" height="48" rx="13" fill="url(#lgb)"/><rect width="48" height="48" rx="13" fill="url(#lgc)"/><rect x=".75" y=".75" width="46.5" height="46.5" rx="12.3" fill="none" stroke="#fff" stroke-opacity=".45" stroke-width="1.2"/><g fill="none" stroke="#04235F" stroke-opacity=".35" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" transform="translate(0 1.2)"><path d="M21.2 17 C19.8 14.6 17.4 13.6 14.8 13.6 C11 13.6 8.6 15.6 8.6 18.5 C8.6 21.8 11.6 22.9 14.9 23.9 C18.6 25 21.6 26.4 21.6 29.8 C21.6 33 18.8 34.6 15.1 34.6 C12 34.6 9.5 33.4 8 31.1"/><path d="M26.6 14 L39.6 34.2 M39.6 14 L26.6 34.2"/></g><g fill="none" stroke="url(#lgs)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M21.2 17 C19.8 14.6 17.4 13.6 14.8 13.6 C11 13.6 8.6 15.6 8.6 18.5 C8.6 21.8 11.6 22.9 14.9 23.9 C18.6 25 21.6 26.4 21.6 29.8 C21.6 33 18.8 34.6 15.1 34.6 C12 34.6 9.5 33.4 8 31.1"/><path d="M26.6 14 L39.6 34.2 M39.6 14 L26.6 34.2"/></g></svg>`.replace('<svg ', '<svg class="logo" aria-hidden="true" ').replace(/\b(lg[bsc])\b/g, '$1' + k); }
 /* =====================================================================
@@ -24451,6 +24460,32 @@ rpgSkPool = (f => function (s = R.save) {
 })();
 // ชื่อแฟชั่นอาวุธสายนินจา: กริช → คุไน
 Object.values(RPG_ITEMS).forEach(it => { if (it.t === 'wsk' && it.wt === 'dagger' && it.n) it.n = it.n.replace('กริช', 'คุไน'); });
+
+/* ---------- เมนูหลัก: ปุ่ม "ทีม" + ปุ่มย่อ/ขยายแถบเมนู ---------- */
+(() => {
+  const TEAM_IC = '<svg viewBox="0 0 48 48" aria-hidden="true"><defs><linearGradient id="i54t" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFE08A"/><stop offset="1" stop-color="#F29A2E"/></linearGradient></defs><circle cx="17" cy="16" r="7" fill="url(#i54t)" stroke="#5A3412" stroke-width="2"/><circle cx="31" cy="16" r="7" fill="url(#i54t)" stroke="#5A3412" stroke-width="2"/><path d="M5 38c1-8 6-12 12-12s11 4 12 12z" fill="#7FC7FF" stroke="#244A7A" stroke-width="2"/><path d="M19 38c1-8 6-12 12-12s11 4 12 12z" fill="#FF8FB1" stroke="#7A2440" stroke-width="2"/></svg>';
+  const fix = () => {
+    const m = document.querySelector('#rpg .rpg-menu'); if (!m) return;
+    if (!m.querySelector('[data-r=m-party]')) { const more = m.querySelector('[data-r=more]'); const b = document.createElement('button'); b.dataset.r = 'm-party'; b.title = b.ariaLabel = 'ทีม'; b.innerHTML = `<span><i class="ic33">${TEAM_IC}</i></span><small>ทีม</small>`; m.insertBefore(b, more); }
+    if (!m.querySelector('.mn54-tog')) { const t = document.createElement('button'); t.className = 'mn54-tog'; t.dataset.r = 'mn54-tog'; t.ariaLabel = 'ย่อหรือขยายเมนู'; t.innerHTML = '<span>◀</span>'; m.prepend(t); }
+    let col = false; try { col = localStorage.getItem('rpg-mn54') === '1'; } catch (e) {}
+    m.classList.toggle('mn54-col', col); const ic = m.querySelector('.mn54-tog span'); if (ic) ic.textContent = col ? '◀' : '▶';
+    // ตัวเลขสมาชิกบนปุ่มทีม
+    const tb = m.querySelector('[data-r=m-party]'); if (tb) { let badge = tb.querySelector('.mn54-n'); const n = R.party?.mem?.length || 0; if (n) { if (!badge) { badge = document.createElement('em'); badge.className = 'mn54-n'; tb.appendChild(badge); } badge.textContent = n; } else badge?.remove(); }
+  };
+  rpgOverlay = (f => function () { const r = f.apply(this, arguments); fix(); return r; })(rpgOverlay);
+  setInterval(fix, 1500);
+  rpgClick = (f => function (e) { const b = e.target.closest?.('[data-r]'); if (b?.dataset.r === 'mn54-tog') { let col = false; try { col = localStorage.getItem('rpg-mn54') !== '1'; localStorage.setItem('rpg-mn54', col ? '1' : '0'); } catch (er) { col = !document.querySelector('#rpg .rpg-menu')?.classList.contains('mn54-col'); } fix(); if (!col) {} return; } return f.apply(this, arguments); })(rpgClick);
+})();
+
+/* ---------- เส้นนำทางภารกิจ: แสดงเฉพาะตอนกด "นำทาง" ---------- */
+rpgGuideDraw = (f => function () { if (!RS.autoNav) return; return f.apply(this, arguments); })(rpgGuideDraw);
+
+/* ---------- กดสกิล = โจมตีศัตรูที่อยู่ใกล้ที่สุดเสมอ ---------- */
+rpgFcSkill = (f => function (i) {
+  const k = rpgJob().sk[i]; if (k && k[4] !== 'h' && k[4] !== 'b' && RS.map && !RS.battle) { const mo = rpgFcNearest(9); if (mo) { FC.tgt = mo; FC.pend52 = null; } }
+  return f.apply(this, arguments);
+})(rpgFcSkill);
 
 /* =====================================================================
    rpg-net.js — หน้าเกมของครู: จัดการตัวละคร (เลือกชั้น → ห้อง) · คำถามในเกม · ตรวจแชท · กิลด์ · โหมดครู
