@@ -5919,7 +5919,7 @@ if (typeof module !== 'undefined') module.exports = ExamParser;
 </script>
 <script>
 /* โลโก้: ภาพครูปลื้ม (ไฟล์ต้นฉบับ src/logo.svg ฝังตอน build) */
-const APP_VER = '55.5 · 28 พ.ย. 2569';
+const APP_VER = '55.6 · 28 พ.ย. 2569';
 let LOGO_N = 0;
 function logoSVG() { const k = 'L' + (++LOGO_N); return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><defs><linearGradient id="lgb" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3B9BFF"/><stop offset=".5" stop-color="#0A5BE0"/><stop offset="1" stop-color="#062C78"/></linearGradient><linearGradient id="lgs" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset=".6" stop-color="#FFF4D6"/><stop offset="1" stop-color="#FFD978"/></linearGradient><radialGradient id="lgc" cx=".3" cy=".08" r=".75"><stop offset="0" stop-color="#fff" stop-opacity=".55"/><stop offset=".5" stop-color="#fff" stop-opacity=".08"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient></defs><rect width="48" height="48" rx="13" fill="url(#lgb)"/><rect width="48" height="48" rx="13" fill="url(#lgc)"/><rect x=".75" y=".75" width="46.5" height="46.5" rx="12.3" fill="none" stroke="#fff" stroke-opacity=".45" stroke-width="1.2"/><g fill="none" stroke="#04235F" stroke-opacity=".35" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" transform="translate(0 1.2)"><path d="M21.2 17 C19.8 14.6 17.4 13.6 14.8 13.6 C11 13.6 8.6 15.6 8.6 18.5 C8.6 21.8 11.6 22.9 14.9 23.9 C18.6 25 21.6 26.4 21.6 29.8 C21.6 33 18.8 34.6 15.1 34.6 C12 34.6 9.5 33.4 8 31.1"/><path d="M26.6 14 L39.6 34.2 M39.6 14 L26.6 34.2"/></g><g fill="none" stroke="url(#lgs)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M21.2 17 C19.8 14.6 17.4 13.6 14.8 13.6 C11 13.6 8.6 15.6 8.6 18.5 C8.6 21.8 11.6 22.9 14.9 23.9 C18.6 25 21.6 26.4 21.6 29.8 C21.6 33 18.8 34.6 15.1 34.6 C12 34.6 9.5 33.4 8 31.1"/><path d="M26.6 14 L39.6 34.2 M39.6 14 L26.6 34.2"/></g></svg>`.replace('<svg ', '<svg class="logo" aria-hidden="true" ').replace(/\b(lg[bsc])\b/g, '$1' + k); }
 /* =====================================================================
@@ -24750,17 +24750,19 @@ rpgItemCanvas = (f => function (key, S = 96) {
 
 /* ---------- เอฟเฟกต์ประจำสกิล: วาด "รูปสกิล" ขนาดใหญ่ในโลก แล้วเคลื่อนไหวตามท่า ---------- */
 const SKX55 = []; var RPG_EMB55 = false, RPG_ORIGIN55 = null;
+const RPG_SPIRITMON55 = { bear: '🐻', wolf: '🐺', fox: '🦊', griffon: '🦅', phoenix: '🦚', dragon: '🐉', bat: '🦇', robot: '🤖' };
 const RPG_DIAG55 = new Set(['lance', 'poisonarrow', 'rocket', 'spear', 'kunaibomb', 'arrows', 'skysword', 'sword']);
 const ez = { out: e => 1 - Math.pow(1 - e, 3), in: e => e * e, back: e => { const c = 1.7; return 1 + (c + 1) * Math.pow(e - 1, 3) + c * Math.pow(e - 1, 2); } };
 function rpgDark55(h, f = .45) { const n = parseInt(h.slice(1), 16); return `rgb(${(n >> 16) * f | 0},${(n >> 8 & 255) * f | 0},${(n & 255) * f | 0})`; }
 function rpgLite55(h, f = .45) { const n = parseInt(h.slice(1), 16), m = v => Math.round(v + (255 - v) * f); return `rgb(${m(n >> 16)},${m(n >> 8 & 255)},${m(n & 255)})`; }
 function rpgGly55(o) { if (SKX55.length > 80) SKX55.splice(0, 10); SKX55.push({ t0: performance.now(), d: 0, dur: 900, ghost: 0, ...o }); }
 function rpgSigFx55(k, P, T, rank = 1, aoe = 60, n = 1) {
-  const sg = rpgSig55(k); if (!sg || RS.lowFx === 2) return; const g = sg.g, col = sg.c || '#FFFFFF', R = Math.min(4, rank), big = 1 + R * .12;
+  const sg = rpgSig55(k); if (!sg || RS.lowFx === 2) return; let mm = sg.m; const g = sg.g, col = sg.c || '#FFFFFF', R = Math.min(4, rank), big = 1 + R * .12;
   const ang = Math.atan2(T.y - P.y, T.x - P.x), dist = Math.hypot(T.x - P.x, T.y - P.y), face = T.x < P.x ? -1 : 1;
   const hit = (ms, sh = 6) => X49.later(ms, () => { X49.big({ k: 'ring', x: T.x, y: T.y, r: 60 + R * 14, col, dur: 480, w: 6 }); X49.burst(T.x, T.y - 18, 18 + R * 4, col, 220); rpgShake49(sh + R * 2, 260); });
-  const G = (o) => rpgGly55({ g, col, ...o });
-  let mm = sg.m; if (RPG_EMB55 && ['drop', 'slashx', 'spin', 'stamp', 'mark', 'rise', 'orbit', 'rain', 'hover'].includes(mm)) mm = 'emblem';
+  const LING = { drop: { hold: 2300, peak: .55, sc: 1.6 }, rise: { hold: 2300, peak: .5, sc: 1.6 }, hover: { hold: 2000, peak: .45, sc: 1.5 }, stamp: { hold: 2300, peak: .5, sc: 1.6 }, mark: { hold: 2000, peak: .45, sc: 1.4 } };
+  const G = (o) => rpgGly55({ g, col, ...(LING[mm] || {}), ...(mm === 'drop' && RPG_SPIRITMON55[g] && g === 'robot' ? { mon: RPG_SPIRITMON55[g], sc: 1.9 } : {}), ...o });
+  if (RPG_EMB55 && ['slashx', 'spin', 'orbit', 'rain'].includes(mm)) mm = 'emblem';
   switch (mm) {
     case 'emblem': G({ dur: 520, add: 1, f: e => ({ x: T.x, y: T.y - 34, s: (38 + 44 * ez.out(e)) * big, r: (1 - ez.out(e)) * -.4 * face, a: (e < .12 ? e / .12 : Math.pow(1 - (e - .12) / .88, 1.8)) * .8 }) }); X49.big({ k: 'ring', x: T.x, y: T.y - 30, r: 70 + R * 10, col, dur: 420, flat: 1, w: 5 }); break;
     case 'slashx': G({ dur: 460, ghost: 3, f: e => ({ x: T.x, y: T.y - 24, s: (66 + R * 8), r: -1.7 + ez.out(e) * 3.4, a: e < .75 ? 1 : (1 - e) / .25 }) }); hit(180, 4); break;
@@ -24782,24 +24784,26 @@ function rpgSigFx55(k, P, T, rank = 1, aoe = 60, n = 1) {
       for (let i = 0; i < 3; i++) G({ dur: 1300, d: 120, f: e => { const a = i / 3 * Math.PI * 2 + e * 6; return { x: P.x + Math.cos(a) * 40, y: P.y - 20 + Math.sin(a) * 16 - e * 30, s: 22, r: 0, a: Math.sin(e * Math.PI) }; } });
       if (sg.m === 'shower') for (let i = 0; i < 12; i++) { const ox = (Math.random() - .5) * 120; G({ dur: 700, d: 150 + i * 60, f: e => ({ x: P.x + ox, y: P.y - 140 + e * 140, s: 20, r: Math.sin(e * 8) * .3, a: e < .8 ? 1 : (1 - e) / .2 }) }); }
       X49.big({ k: 'ring', x: P.x, y: P.y, r: 80, col, dur: 700, w: 5 }); break;
-    case 'beast': case 'beastfly': case 'beastbreath': { const fly = sg.m !== 'beast', S0 = (g === 'bat' ? 44 : 70) + R * 7, br = sg.m === 'beastbreath';
-      X49.big({ k: 'circle', x: P.x, y: P.y, r: 46 + R * 8, col, dur: 1300 });
-      G({ dur: br ? 1700 : 1400, ghost: br ? 0 : 2, f: e => {
-        let x, y, s = S0, sy = 1, a = 1;
-        let gy = null, sx = 1, r = 0;
-        if (e < .22) { const q = ez.out(e / .22); x = P.x; y = P.y + 8 - q * (fly ? 54 : 30); s = S0 * (.3 + .7 * q); sy = .6 + .4 * q; gy = P.y; }
-        else if (br) { x = P.x; y = P.y - (fly ? 44 : 30) + Math.sin(e * 14) * 6; gy = P.y; }
-        else if (e < .52) { const q = (e - .22) / .3, k = ez.out(q); x = P.x + (T.x - face * 26 - P.x) * k; y = P.y - (fly ? 54 : 30) + (T.y - 30 - P.y + (fly ? 54 : 30)) * q - Math.sin(q * Math.PI) * (fly ? 110 : 60); gy = P.y + (T.y - P.y) * k; r = face * (q < .5 ? -.25 : .3); sx = 1.15; sy = .9; }
-        else { const q = (e - .52) / .48, land = Math.max(0, 1 - q * 5); x = T.x - face * 26 + Math.sin(q * 30) * 4 * (1 - q); y = T.y - 30 - (fly ? q * 30 : 0); s = S0 * (1 + Math.sin(Math.min(1, q * 3) * Math.PI) * .18); sx = 1 + .25 * land; sy = 1 - .22 * land; gy = T.y; r = face * .12 * Math.sin(q * 18) * (1 - q); }
-        if (fly) sy *= 1 + Math.sin(e * 40) * .12; if (e > .85) a = (1 - e) / .15;
+    case 'beast': case 'beastfly': case 'beastbreath': { const fly = sg.m !== 'beast', br = sg.m === 'beastbreath', mon = RPG_SPIRITMON55[g], S0 = (fly ? 92 : 100) + R * 10, TT = 3000;
+      X49.big({ k: 'circle', x: P.x, y: P.y, r: 50 + R * 8, col, dur: 1400 }); X49.big({ k: 'pillar', x: P.x, y: P.y, w: 34 + R * 6, h: 170, col, dur: 700 }); X49.burst(P.x, P.y - 10, 26, col, 220, { k: 'star', up: 90 });
+      const ax = T.x - face * (br ? 70 : 34), ay = T.y + (fly ? -46 : 0);
+      G({ mon, dur: TT, f: e => { const t = e * TT; let x, y, s = S0, sx = 1, sy = 1, r = 0, a = 1, gy;
+        if (t < 380) { const q = ez.out(t / 380); x = P.x; y = P.y + 10 - q * (fly ? 50 : 10); s = S0 * (.35 + .65 * q); sy = .55 + .45 * q; gy = P.y; a = q; }
+        else if (t < 860) { const q = (t - 380) / 480, k = ez.out(q); x = P.x + (ax - P.x) * k; y = (fly ? P.y - 50 : P.y) + (ay - (fly ? P.y - 50 : P.y)) * q - Math.sin(q * Math.PI) * (fly ? 80 : 46); gy = P.y + (T.y - P.y) * k; sx = 1.12; sy = .92; r = face * (q < .5 ? -.18 : .14); }
+        else if (t < TT - 420) { const tt = t - 860, ph = (tt % 520) / 520, lunge = ph < .3 ? Math.sin(ph / .3 * Math.PI) : 0, land = Math.max(0, 1 - tt / 160);
+          x = ax + face * (br ? 0 : 18) * lunge; y = ay + (fly ? Math.sin(tt / 160) * 7 : -Math.abs(Math.sin(tt / 260)) * 4); gy = T.y; sx = 1 + .22 * land + .08 * lunge; sy = 1 - .2 * land - .05 * lunge; r = face * .08 * lunge; }
+        else { const q = (t - (TT - 420)) / 420; x = ax; y = ay - q * 30; gy = T.y; a = 1 - q; s = S0 * (1 + q * .15); }
         return { x, y, s, sx, sy, r, flip: face < 0, a, gy }; } });
-      X49.big({ k: 'pillar', x: P.x, y: P.y, w: 30 + R * 6, h: 150, col, dur: 600 }); X49.burst(P.x, P.y - 10, 22, col, 200, { k: 'star', up: 80 });
-      if (br) { X49.later(560, () => { X49.big({ k: 'beam', x: P.x - face * 4, y: P.y - 60, x2: T.x, y2: T.y - 18, w: 18 + R * 4, col, dur: 700 }); X49.burst(T.x, T.y - 18, 40, col, 260, { k: 'ember', up: 60 }); rpgShake49(10, 500); }); hit(700, 6); }
-      else { [0, 140, 280].forEach((t, i) => X49.later(760 + t, () => { X49.big({ k: 'slash', x: T.x, y: T.y - 20, r: 40 + R * 6, rot: (i - 1) * .6 + (face < 0 ? Math.PI : 0), col, dur: 300, w: 8 }); X49.burst(T.x, T.y - 18, 10, col, 180); })); hit(760, g === 'bear' ? 14 : 6); }
+      // โจมตีต่อเนื่องระหว่างอยู่บนสนาม (ภาพ)
+      for (let t = 860; t < TT - 420; t += 520) X49.later(t + 60, () => { if (br) { X49.big({ k: 'beam', x: ax + face * 30, y: ay - 40, x2: T.x, y2: T.y - 18, w: 16 + R * 4, col, dur: 420 }); X49.burst(T.x, T.y - 18, 22, col, 240, { k: 'ember', up: 60 }); }
+        else { X49.big({ k: 'slash', x: T.x, y: T.y - 22, r: 44 + R * 6, rot: (Math.random() - .5) * 1.2 + (face < 0 ? Math.PI : 0), col, dur: 280, w: 9 }); X49.burst(T.x, T.y - 18, 12, col, 200); } rpgShake49(g === 'bear' ? 9 : 5, 180); });
       break; }
-    case 'swarm': for (let i = 0; i < 6 + R; i++) { const ph = Math.random() * 6.28, w = 30 + Math.random() * 30; G({ dur: 1300, d: i * 60, f: e => { const q = Math.min(1, e / .5); let x = P.x + (T.x - P.x) * q, y = P.y - 40 + (T.y - 20 - P.y + 40) * q + Math.sin(q * 9 + ph) * w * (1 - q);
-        if (e > .5) { const a = ph + e * 14; x = T.x + Math.cos(a) * 34; y = T.y - 26 + Math.sin(a) * 16; } return { x, y, s: 34, sy: 1 + Math.sin(e * 50) * .25, r: 0, flip: face < 0, a: e < .85 ? 1 : (1 - e) / .15 }; } }); }
-      hit(700, 4); hit(1000, 4); break;
+    case 'swarm': { const TT = 2800, mon = RPG_SPIRITMON55[g]; for (let i = 0; i < 6 + R; i++) { const ph = Math.random() * 6.28, w = 30 + Math.random() * 30, rad = 30 + Math.random() * 26; G({ mon, dur: TT, d: i * 70, f: e => { const t = e * TT; let x, y;
+        if (t < 700) { const q = t / 700; x = P.x + (T.x - P.x) * q; y = P.y - 40 + (T.y - 26 - P.y + 40) * q + Math.sin(q * 9 + ph) * w * (1 - q); }
+        else { const a = ph + t / 260; x = T.x + Math.cos(a) * rad; y = T.y - 30 + Math.sin(a) * rad * .45; }
+        return { x, y, s: 44 + R * 3, sy: 1, r: 0, flip: face < 0, a: e < .88 ? Math.min(1, t / 200) : (1 - e) / .12 }; } }); }
+      for (let t = 700; t < TT - 300; t += 380) X49.later(t, () => { X49.burst(T.x + (Math.random() - .5) * 30, T.y - 20, 8, col, 160); });
+      hit(700, 4); hit(1100, 4); break; }
   }
 }
 // สไปรต์พลังงานโปร่งแสง (ซีทรู): ตัวโปร่งสีจาง + ขอบ/เส้นในเรืองแสงขาวร้อน + บลูมสีสกิล · แคชต่อรูป+สี
@@ -24828,16 +24832,19 @@ function rpgEnergySprite55(g, col) {
   const r = { c: out, W, S }; RPG_ESPR55.set(key, r); if (RPG_ESPR55.size > 160) RPG_ESPR55.delete(RPG_ESPR55.keys().next().value); return r;
 }
 function rpgSkxDraw55(x) {
-  const now = performance.now(); for (let i = SKX55.length - 1; i >= 0; i--) if (now - SKX55[i].t0 > SKX55[i].dur + SKX55[i].d) SKX55.splice(i, 1);
-  SKX55.forEach(o => { const e = (now - o.t0 - o.d) / o.dur; if (e < 0) return; const sp = rpgEnergySprite55(o.g, o.col);
-    for (let gh = o.ghost; gh >= 0; gh--) { const ee = e - gh * .035; if (ee < 0) continue; const q = o.f(Math.min(1, ee)); if (!q || q.a <= 0 || !(q.s > 0)) continue;
+  const now = performance.now(); for (let i = SKX55.length - 1; i >= 0; i--) if (now - SKX55[i].t0 > SKX55[i].dur + SKX55[i].d + (SKX55[i].hold || 0)) SKX55.splice(i, 1);
+  SKX55.forEach(o => { const tt = now - o.t0 - o.d; if (tt < 0) return; let e = tt / o.dur, idle = -1;
+    if (o.hold) { const pk = o.peak * o.dur; if (tt >= pk && tt < pk + o.hold) { e = o.peak; idle = tt - pk; } else if (tt >= pk + o.hold) e = (tt - o.hold) / o.dur; }
+    const sp = o.mon ? rpgSpirit55(o.mon, Math.floor(now / 95) % 8, o.col) : rpgEnergySprite55(o.g, o.col); if (!sp) return;
+    for (let gh = idle >= 0 ? 0 : o.ghost; gh >= 0; gh--) { const ee = e - gh * .035; if (ee < 0) continue; const q0 = o.f(Math.min(1, ee)); if (!q0 || q0.a <= 0 || !(q0.s > 0)) continue;
+      const q = { ...q0 }; if (o.sc) q.s *= o.sc; if (idle >= 0) { q.y += Math.sin(idle / 320) * 4 - 2; q.a = Math.max(q.a, .9); q.s *= 1 + Math.sin(idle / 260) * .025; }
       const al = Math.max(0, Math.min(1, q.a)), flick = .86 + .14 * Math.sin(now / 55 + o.t0) * Math.sin(now / 23);
       // วงแสงบนพื้น (แทนเงาดำ)
       if (q.gy != null && !gh) { x.save(); x.globalCompositeOperation = 'lighter'; x.globalAlpha = .45 * al; const w = q.s * .42 * Math.max(.4, 1 - (q.gy - q.y - 30) / 220), gr = x.createRadialGradient(q.x, q.gy + 2, 0, q.x, q.gy + 2, w); gr.addColorStop(0, o.col); gr.addColorStop(1, 'rgba(0,0,0,0)'); x.fillStyle = gr; x.beginPath(); x.ellipse(q.x, q.gy + 2, w, w * .32, 0, 0, 7); x.fill(); x.restore(); }
       x.save(); if (q.clipY != null) { x.beginPath(); x.rect(q.x - 400, q.clipY - 900, 800, 900); x.clip(); }
-      x.globalCompositeOperation = 'lighter'; x.globalAlpha = al * (gh ? .3 / gh : flick);
-      x.translate(q.x, q.y); x.rotate(q.r || 0); const k = q.s / sp.S; x.scale(k * (q.flip ? -1 : 1) * (q.sx || 1), k * (q.sy || 1));
-      x.drawImage(sp.c, -sp.W / 2, -sp.W / 2); x.restore();
+      x.globalCompositeOperation = sp.mon ? 'source-over' : 'lighter'; x.globalAlpha = al * (gh ? .3 / gh : flick);
+      x.translate(q.x, q.y); x.rotate(q.r || 0); const k = sp.mon ? q.s / sp.bh : q.s / sp.S; x.scale(k * (q.flip ? -1 : 1) * (q.sx || 1), k * (q.sy || 1));
+      if (sp.mon) x.drawImage(sp.c, -sp.cx, -sp.cy); else x.drawImage(sp.c, -sp.W / 2, -sp.W / 2); x.restore();
       // ละอองพลังงานหลุดจากวัตถุ
       if (!gh && al > .3 && Math.random() < .4 && SKX49.pt.length < 600) { const a = Math.random() * 6.283, rr = q.s * .35 * Math.random(); X49.pt({ x: q.x + Math.cos(a) * rr, y: q.y + Math.sin(a) * rr, vx: (Math.random() - .5) * 20, vy: -30 - Math.random() * 40, g: -10, col: Math.random() < .5 ? o.col : '#FFFFFF', r: 1.6 + Math.random() * 1.6, life: 520, k: 'star' }); }
     } });
@@ -24899,6 +24906,25 @@ const RPG_BASEFX55 = {
 rpgFcCast49 = (f => function (i, k, lv, mo, rank) {
   const sg = rpgSig55(k); if (!sg || k[4] === 'h' || k[4] === 'b') return f.apply(this, arguments);
   const k2 = [...k]; Object.assign(k2, k); k2[5] = sg.fx || k[5]; k2.aoeFx55 = k[5]; k2.col55 = sg.c; return f.call(this, i, k2, lv, mo, rank); })(rpgFcCast49);
+// สัตว์/หุ่นวิญญาณเต็มตัว: ใช้ภาพมอนสเตอร์จริง (เคลื่อนไหว 8 เฟรม) → ย้อมสีสกิล โปร่งแสง ขอบเรือง
+const RPG_SPRITS55 = new Map();
+function rpgSpirit55(ic, fr, col) {
+  const key = ic + fr + col; if (RPG_SPRITS55.has(key)) return RPG_SPRITS55.get(key);
+  let im = null; try { im = rpgMonImg(ic, fr); } catch (e) {} if (!im) return null;
+  const W = 300, H = 300, S = 150, mk = () => { const c = document.createElement('canvas'); c.width = W; c.height = H; return [c, c.getContext('2d')]; };
+  const [A, a] = mk(); a.translate(W / 2, H * .8); const k = S / 40 * .5; a.scale(k, k); try { rpgArtBlit(a, im, false); } catch (e) { a.drawImage(im, -im.width / 2, -im.height); }
+  // ย้อมสี (คงแสงเงาเดิม) แล้วตัดตามรูปตัว
+  const [T, t] = mk(); t.drawImage(A, 0, 0); t.globalCompositeOperation = 'color'; t.fillStyle = col; t.fillRect(0, 0, W, H); t.globalCompositeOperation = 'screen'; t.fillStyle = 'rgba(' + [1, 3, 5].map(i => Math.round(parseInt(col.slice(i, i + 2), 16) * .35)).join(',') + ',1)'; t.fillRect(0, 0, W, H); t.globalCompositeOperation = 'destination-in'; t.drawImage(A, 0, 0);
+  const [O, o] = mk();
+  // เรืองแสงรอบตัว
+  const [Sl, sl] = mk(); sl.drawImage(A, 0, 0); sl.globalCompositeOperation = 'source-in'; sl.fillStyle = col; sl.fillRect(0, 0, W, H);
+  o.shadowColor = col; o.shadowBlur = 26; o.globalAlpha = .75; o.drawImage(Sl, 0, 0); o.shadowBlur = 0;
+  // ตัวโปร่งแสง + เส้นสแกน
+  o.globalAlpha = .78; o.drawImage(T, 0, 0); o.globalCompositeOperation = 'destination-out'; o.globalAlpha = 1; o.fillStyle = 'rgba(0,0,0,.18)'; for (let y = 0; y < H; y += 5) o.fillRect(0, y, W, 1.6);
+  o.globalCompositeOperation = 'lighter'; o.globalAlpha = .28; o.drawImage(T, 0, 0);
+  let bx0 = W, by0 = H, bx1 = 0, by1 = 0; try { const d = a.getImageData(0, 0, W, H).data; for (let y = 0; y < H; y += 2) for (let x = 0; x < W; x += 2) if (d[(y * W + x) * 4 + 3] > 40) { if (x < bx0) bx0 = x; if (x > bx1) bx1 = x; if (y < by0) by0 = y; if (y > by1) by1 = y; } } catch (e) { bx0 = 0; by0 = 0; bx1 = W; by1 = H; }
+  const r = { c: O, W, H, mon: 1, cx: (bx0 + bx1) / 2, cy: (by0 + by1) / 2, bh: Math.max(20, Math.max(by1 - by0, (bx1 - bx0) * .8)) }; RPG_SPRITS55.set(key, r); if (RPG_SPRITS55.size > 260) RPG_SPRITS55.delete(RPG_SPRITS55.keys().next().value); return r;
+}
 
 /* rpg-v55snd.js — เสียงชุดใหม่ (สังเคราะห์ในเบราว์เซอร์ทั้งหมด ไม่มีไฟล์ลิขสิทธิ์)
    · เพลงประจำแผนที่: เรียบเรียงจากเพลงคลาสสิกที่หมดลิขสิทธิ์แล้ว (ประพันธ์ก่อน ค.ศ. 1929 / ผู้ประพันธ์เสียชีวิตเกิน 70 ปี) + ทำนองแต่งเอง
