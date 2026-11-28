@@ -5815,7 +5815,7 @@ if (typeof module !== 'undefined') module.exports = ExamParser;
 </script>
 <script>
 /* โลโก้: ภาพครูปลื้ม (ไฟล์ต้นฉบับ src/logo.svg ฝังตอน build) */
-const APP_VER = '54.0 · 28 พ.ย. 2569';
+const APP_VER = '54.1 · 28 พ.ย. 2569';
 let LOGO_N = 0;
 function logoSVG() { const k = 'L' + (++LOGO_N); return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><defs><linearGradient id="lgb" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3B9BFF"/><stop offset=".5" stop-color="#0A5BE0"/><stop offset="1" stop-color="#062C78"/></linearGradient><linearGradient id="lgs" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset=".6" stop-color="#FFF4D6"/><stop offset="1" stop-color="#FFD978"/></linearGradient><radialGradient id="lgc" cx=".3" cy=".08" r=".75"><stop offset="0" stop-color="#fff" stop-opacity=".55"/><stop offset=".5" stop-color="#fff" stop-opacity=".08"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient></defs><rect width="48" height="48" rx="13" fill="url(#lgb)"/><rect width="48" height="48" rx="13" fill="url(#lgc)"/><rect x=".75" y=".75" width="46.5" height="46.5" rx="12.3" fill="none" stroke="#fff" stroke-opacity=".45" stroke-width="1.2"/><g fill="none" stroke="#04235F" stroke-opacity=".35" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" transform="translate(0 1.2)"><path d="M21.2 17 C19.8 14.6 17.4 13.6 14.8 13.6 C11 13.6 8.6 15.6 8.6 18.5 C8.6 21.8 11.6 22.9 14.9 23.9 C18.6 25 21.6 26.4 21.6 29.8 C21.6 33 18.8 34.6 15.1 34.6 C12 34.6 9.5 33.4 8 31.1"/><path d="M26.6 14 L39.6 34.2 M39.6 14 L26.6 34.2"/></g><g fill="none" stroke="url(#lgs)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M21.2 17 C19.8 14.6 17.4 13.6 14.8 13.6 C11 13.6 8.6 15.6 8.6 18.5 C8.6 21.8 11.6 22.9 14.9 23.9 C18.6 25 21.6 26.4 21.6 29.8 C21.6 33 18.8 34.6 15.1 34.6 C12 34.6 9.5 33.4 8 31.1"/><path d="M26.6 14 L39.6 34.2 M39.6 14 L26.6 34.2"/></g></svg>`.replace('<svg ', '<svg class="logo" aria-hidden="true" ').replace(/\b(lg[bsc])\b/g, '$1' + k); }
 /* =====================================================================
@@ -24388,6 +24388,69 @@ rpgSkPool = (f => function (s = R.save) {
   if (s?.job && !RPG_JOBS[s.job]?.base) RPG_JOBS[s.job].sk.forEach((k, i) => { const T = RPG_SKX53T[i]; if (T) out.push({ key: s.job + ':' + i, k, tier: T[0], lv: T[1], rank: T[2] }); });
   return out;
 })(rpgSkPool);
+
+/* rpg-v54.js — แฟชั่นอาวุธกาชาสายนินจา: คุไน + ชูริเคน ดีไซน์ใหม่ 8 ธีม */
+(() => {
+  const TH = RPG_SKW46.TH, PI = Math.PI;
+  const LG = (x, x0, y0, x1, y1, st) => { const g = x.createLinearGradient(x0, y0, x1, y1); st.forEach(([o, c]) => g.addColorStop(o, c)); return g; };
+  const glow = (x, c, b, fn) => { x.save(); x.shadowColor = c; x.shadowBlur = b; fn(); x.restore(); };
+  const gem = (x, cx, cy, R, c) => { const g = x.createRadialGradient(cx - R * .3, cy - R * .3, 0, cx, cy, R); g.addColorStop(0, '#FFFFFF'); g.addColorStop(.35, c); g.addColorStop(1, '#1A0E24'); x.fillStyle = g; x.beginPath(); x.arc(cx, cy, R, 0, 7); x.fill(); };
+  const petal = (x, cx, cy, a, len, w, c1, c2) => { x.save(); x.translate(cx, cy); x.rotate(a); x.fillStyle = LG(x, 0, 0, 0, -len, [[0, c1], [1, c2]]); x.beginPath(); x.moveTo(0, 0); x.quadraticCurveTo(w, -len * .55, 0, -len); x.quadraticCurveTo(-w, -len * .55, 0, 0); x.fill(); x.restore(); };
+  // ด้ามคุไน (ห่วง + พันผ้าสีตามธีม)
+  const handle = (x, P, wrap) => { x.strokeStyle = P.m; x.lineWidth = 1.5; x.beginPath(); x.arc(0, 8.6, 2.5, 0, 7); x.stroke(); x.fillStyle = P.c; x.beginPath(); x.roundRect(-1.4, -1, 2.8, 8, 1); x.fill(); x.strokeStyle = wrap; x.lineWidth = .8; for (let i = 0; i < 4; i++) { x.beginPath(); x.moveTo(-1.4, i * 2); x.lineTo(1.4, i * 2 + 1.2); x.stroke(); } };
+
+  function kunai(x, k, t) {
+    const P = TH[k], L = 24 + t * .6; x.save();
+    if (k === 'fire') { handle(x, P, '#FFB020'); glow(x, P.g, 8, () => { x.fillStyle = LG(x, -4, 0, 4, 0, [[0, P.b], [.5, P.a], [1, P.c]]); x.beginPath(); x.moveTo(0, -1); x.quadraticCurveTo(-6, -L * .3, -2.5, -L * .55); x.quadraticCurveTo(-4.5, -L * .7, 0, -L - 3); x.quadraticCurveTo(2, -L * .75, 4.5, -L * .62); x.quadraticCurveTo(2, -L * .45, 4.8, -L * .3); x.quadraticCurveTo(3, -L * .12, 0, -1); x.fill(); }); x.fillStyle = 'rgba(255,240,170,.85)'; x.beginPath(); x.moveTo(0, -3); x.lineTo(-1, -L * .5); x.lineTo(0, -L * .8); x.lineTo(1, -L * .5); x.fill(); x.fillStyle = '#2A1A1A'; x.fillRect(-3.2, -2.4, 6.4, 1.8); gem(x, 0, -1.5, 1.2, '#FF4D2A'); }
+    else if (k === 'ice') { handle(x, P, '#9FE4FF'); glow(x, P.g, 7, () => { x.globalAlpha = .92; x.fillStyle = LG(x, -4, 0, 4, 0, [[0, '#FFFFFF'], [.5, P.a], [1, P.c]]); x.beginPath(); x.moveTo(0, -1); x.lineTo(-4.2, -L * .3); x.lineTo(-2.4, -L * .45); x.lineTo(-3.4, -L * .62); x.lineTo(0, -L - 2); x.lineTo(3.2, -L * .58); x.lineTo(2, -L * .42); x.lineTo(4.4, -L * .28); x.closePath(); x.fill(); }); x.strokeStyle = '#FFFFFF'; x.lineWidth = .5; x.beginPath(); x.moveTo(0, -2); x.lineTo(0, -L); x.stroke(); [-1, 1].forEach(s => { x.fillStyle = '#DFF6FF'; x.beginPath(); x.moveTo(s * 1.5, -2); x.lineTo(s * 5, -4.5); x.lineTo(s * 2.4, -2.6); x.fill(); }); }
+    else if (k === 'sakura') { handle(x, P, P.a); x.fillStyle = LG(x, -4, 0, 4, 0, [[0, '#FFFFFF'], [.5, '#F2D6E4'], [1, '#B87A98']]); x.beginPath(); x.moveTo(0, -1); x.lineTo(-3.8, -L * .35); x.lineTo(0, -L); x.lineTo(3.8, -L * .35); x.closePath(); x.fill(); x.strokeStyle = P.a; x.lineWidth = .8; x.beginPath(); x.moveTo(-2.2, -L * .3); x.quadraticCurveTo(0, -L * .55, 1.2, -L * .7); x.stroke(); for (let i = 0; i < 5; i++) petal(x, 0, -2, i * 1.257, 4.2, 2.2, '#FFE4F0', P.a); x.fillStyle = '#FFD23F'; x.beginPath(); x.arc(0, -2, 1, 0, 7); x.fill(); }
+    else if (k === 'neon') { x.fillStyle = '#2A2E44'; x.beginPath(); x.roundRect(-1.6, -1, 3.2, 8, 1.2); x.fill(); glow(x, P.g, 6, () => { x.strokeStyle = P.g; x.lineWidth = .9; x.beginPath(); x.arc(0, 8.6, 2.5, 0, 7); x.stroke(); x.beginPath(); x.moveTo(-1.6, 3); x.lineTo(1.6, 3); x.stroke(); });
+      glow(x, P.g, 12, () => { x.fillStyle = LG(x, -4, 0, 4, 0, [[0, 'rgba(0,255,224,.3)'], [.4, P.a], [.5, '#FFFFFF'], [.6, P.a], [1, 'rgba(0,255,224,.3)']]); x.beginPath(); x.moveTo(0, -1.5); x.lineTo(-3.6, -L * .35); x.lineTo(0, -L - 1); x.lineTo(3.6, -L * .35); x.closePath(); x.fill(); }); x.fillStyle = '#B36BFF'; x.fillRect(-3, -2.4, 6, 1.4); }
+    else if (k === 'gold') { handle(x, P, '#8A1E2A'); x.fillStyle = LG(x, -4, 0, 4, 0, [[0, '#FFF8D8'], [.45, P.a], [1, P.c]]); x.beginPath(); x.moveTo(0, -1); x.lineTo(-4.4, -L * .32); x.quadraticCurveTo(-2, -L * .7, 0, -L - 2); x.quadraticCurveTo(2, -L * .7, 4.4, -L * .32); x.closePath(); x.fill(); x.strokeStyle = 'rgba(120,70,0,.6)'; x.lineWidth = .45; x.beginPath(); x.arc(-1, -L * .3, 1.6, 0, PI * 1.5); x.arc(1, -L * .5, 1.4, PI, PI * 2.5); x.stroke(); x.fillStyle = P.b; x.beginPath(); x.moveTo(-4, -1); [-4, -2, 0, 2, 4].forEach((px, i) => x.lineTo(px, -2.4 - (i % 2 ? 0 : 2))); x.lineTo(4, -1); x.fill(); gem(x, 0, -L * .32, 1.4, '#E8323A'); }
+    else if (k === 'abyss') { handle(x, P, '#B36BFF'); glow(x, P.g, 7, () => { x.fillStyle = LG(x, -4, 0, 4, 0, [[0, '#4A3A6A'], [.5, '#241838'], [1, '#0A0614']]); x.beginPath(); x.moveTo(0, -1); x.lineTo(-5, -L * .25); x.lineTo(-2.4, -L * .35); x.lineTo(-4.4, -L * .55); x.lineTo(0, -L - 2); x.lineTo(2.4, -L * .6); x.lineTo(1.4, -L * .45); x.lineTo(4.6, -L * .3); x.closePath(); x.fill(); }); glow(x, P.g, 5, () => { x.strokeStyle = P.g; x.lineWidth = .6; x.beginPath(); x.moveTo(0, -3); x.lineTo(-.6, -L * .55); x.lineTo(.4, -L * .8); x.stroke(); }); x.fillStyle = '#140A24'; x.beginPath(); x.ellipse(0, -L * .3, 1.8, 1.1, 0, 0, 7); x.fill(); x.fillStyle = '#FF2E63'; x.beginPath(); x.ellipse(0, -L * .3, .6, 1, 0, 0, 7); x.fill(); }
+    else if (k === 'holy') { handle(x, P, '#F2C14E'); x.fillStyle = LG(x, -4, 0, 4, 0, [[0, '#FFFFFF'], [.5, '#F4EEE2'], [1, '#C8B890']]); x.beginPath(); x.moveTo(0, -1); x.lineTo(-3.8, -L * .35); x.lineTo(0, -L - 1); x.lineTo(3.8, -L * .35); x.closePath(); x.fill(); glow(x, '#FFE680', 8, () => { x.fillStyle = '#FFF6C0'; x.fillRect(-.6, -L * .78, 1.2, L * .66); x.fillRect(-2, -L * .5, 4, 1); }); glow(x, '#FFE27A', 6, () => { x.strokeStyle = '#FFE27A'; x.lineWidth = .8; x.beginPath(); x.arc(0, 8.6, 3.4, 0, 7); x.stroke(); }); }
+    else { handle(x, P, '#B98BFF'); x.fillStyle = LG(x, -4, 0, 4, 0, [[0, '#FFFFFF'], [.6, P.a], [1, P.c]]); x.beginPath(); x.moveTo(0, -1); x.bezierCurveTo(-6, -L * .3, -4, -L * .8, 0, -L - 2); x.bezierCurveTo(4.5, -L * .75, 5, -L * .3, 0, -1); x.fill(); x.strokeStyle = 'rgba(185,139,255,.6)'; x.lineWidth = .35; for (let i = 1; i < 7; i++) { const y = -1 - i * L / 7; [-1, 1].forEach(s => { x.beginPath(); x.moveTo(0, y); x.lineTo(s * 3.4 * Math.sin(i / 7 * PI), y - 1.5); x.stroke(); }); } [-1, 1].forEach(s => petal(x, s * 1.2, -2, s * 1.3, 5, 2, '#FFFFFF', P.a)); gem(x, 0, -2.2, 1.2, '#FF6FA8'); }
+    x.restore();
+  }
+
+  function shuriken(x, k, t) {
+    const P = TH[k], R = 9 + t * .3, spin = WP._spin53 ? (performance.now() / 260) % (PI * 2) : 0; x.save(); x.translate(0, -7); x.rotate(spin);
+    const star = (n, r1, r2, fill, rot = 0) => { x.fillStyle = fill; x.beginPath(); for (let i = 0; i < n * 2; i++) { const a = i * PI / n - PI / 2 + rot, r = i % 2 ? r2 : r1; x.lineTo(Math.cos(a) * r, Math.sin(a) * r); } x.closePath(); x.fill(); };
+    const hub = (c1, c2) => { x.fillStyle = c1; x.beginPath(); x.arc(0, 0, R * .22, 0, 7); x.fill(); x.fillStyle = c2; x.beginPath(); x.arc(0, 0, R * .1, 0, 7); x.fill(); };
+    if (k === 'fire') { glow(x, P.g, 10, () => { for (let i = 0; i < 6; i++) { x.save(); x.rotate(i * PI / 3); x.fillStyle = LG(x, 0, 0, 0, -R * 1.2, [[0, P.a], [.6, '#FF9A3A'], [1, 'rgba(255,230,120,.4)']]); x.beginPath(); x.moveTo(-R * .28, 0); x.quadraticCurveTo(-R * .4, -R * .7, R * .15, -R * 1.2); x.quadraticCurveTo(R * .05, -R * .6, R * .28, 0); x.fill(); x.restore(); } }); hub('#2A1A1A', '#FFB020'); }
+    else if (k === 'ice') { glow(x, P.g, 8, () => { x.strokeStyle = LG(x, -R, 0, R, 0, [[0, '#FFFFFF'], [1, P.a]]); x.lineWidth = 2.2; x.lineCap = 'round'; for (let i = 0; i < 6; i++) { x.save(); x.rotate(i * PI / 3); x.beginPath(); x.moveTo(0, 0); x.lineTo(0, -R * 1.1); x.moveTo(0, -R * .6); x.lineTo(-R * .3, -R * .85); x.moveTo(0, -R * .6); x.lineTo(R * .3, -R * .85); x.stroke(); x.restore(); } }); hub('#DFF6FF', '#5AB8E8'); }
+    else if (k === 'sakura') { for (let i = 0; i < 5; i++) petal(x, 0, 0, i * 1.257, R * 1.15, R * .55, '#FFE4F0', P.a); star(5, R * .95, R * .3, 'rgba(255,255,255,.55)', PI / 5); hub('#FFD23F', '#FF8AC0'); }
+    else if (k === 'neon') { glow(x, P.g, 12, () => { x.strokeStyle = P.a; x.lineWidth = 1.6; x.beginPath(); for (let i = 0; i <= 6; i++) { const a = i * PI / 3; x.lineTo(Math.cos(a) * R, Math.sin(a) * R); } x.stroke(); star(3, R * 1.15, R * .25, P.a); }); star(3, R * .8, R * .2, '#FFFFFF'); hub('#2A2E44', '#B36BFF'); }
+    else if (k === 'gold') { star(4, R * 1.2, R * .35, LG(x, -R, -R, R, R, [[0, '#FFF8D8'], [.5, P.a], [1, P.c]])); star(4, R * .75, R * .25, P.b, PI / 4); x.strokeStyle = 'rgba(120,70,0,.6)'; x.lineWidth = .5; x.beginPath(); x.arc(0, 0, R * .5, 0, 7); x.stroke(); gem(x, 0, 0, R * .22, '#E8323A'); }
+    else if (k === 'abyss') { glow(x, P.g, 8, () => { for (let i = 0; i < 3; i++) { x.save(); x.rotate(i * 2.094); x.fillStyle = LG(x, 0, 0, R, -R, [[0, '#4A3A6A'], [1, '#0A0614']]); x.beginPath(); x.moveTo(0, -R * .2); x.bezierCurveTo(R * .9, -R * .5, R * .8, -R * 1.2, -R * .2, -R * 1.25); x.quadraticCurveTo(R * .5, -R * .7, -R * .15, -R * .15); x.fill(); x.restore(); } }); x.fillStyle = '#140A24'; x.beginPath(); x.ellipse(0, 0, R * .3, R * .2, 0, 0, 7); x.fill(); x.fillStyle = '#FF2E63'; x.beginPath(); x.ellipse(0, 0, R * .09, R * .18, 0, 0, 7); x.fill(); }
+    else if (k === 'holy') { glow(x, '#FFE27A', 10, () => { star(8, R * 1.2, R * .45, LG(x, 0, -R, 0, R, [[0, '#FFFFFF'], [1, '#F2C14E']])); }); x.strokeStyle = '#FFE27A'; x.lineWidth = .8; x.beginPath(); x.arc(0, 0, R * .55, 0, 7); x.stroke(); gem(x, 0, 0, R * .22, '#7FD0FF'); }
+    else { for (let i = 0; i < 4; i++) { petal(x, 0, 0, i * PI / 2, R * 1.25, R * .42, '#FFFFFF', P.a); x.save(); x.rotate(i * PI / 2); x.strokeStyle = 'rgba(185,139,255,.6)'; x.lineWidth = .4; x.beginPath(); x.moveTo(0, -1); x.lineTo(0, -R * 1.1); x.stroke(); x.restore(); } x.fillStyle = LG(x, 0, -R * .3, 0, R * .3, [[0, '#FFB8DC'], [1, '#FF5A9A']]); x.beginPath(); x.moveTo(0, R * .25); x.bezierCurveTo(-R * .4, 0, -R * .2, -R * .35, 0, -R * .12); x.bezierCurveTo(R * .2, -R * .35, R * .4, 0, 0, R * .25); x.fill(); }
+    x.restore();
+  }
+
+  // ต่อเข้ากับตัววาดแฟชั่นอาวุธเดิม
+  const d0 = RPG_SKW46.draw;
+  RPG_SKW46.draw = function (x, type, t, sk) {
+    if (type === 'kunai' || type === 'shuriken') { const k = RPG_WSK[sk]?.k; if (!k || !TH[k]) return false; const T = Math.max(4, t | 0); try { (type === 'kunai' ? kunai : shuriken)(x, k, T); return true; } catch (e) { return false; } }
+    return d0.apply(this, arguments);
+  };
+  // คุไน/ชูริเคนถูกเพิ่มหลังตัวครอบแฟชั่น → ครอบให้ครบ (แฟชั่น + จับตำแหน่งเอฟเฟกต์)
+  ['kunai', 'shuriken'].forEach(k => { const f = WP.D[k]; if (!f || f._skw54) return;
+    const g = function (x, t) { if (RPG_CAP53.on) { if (!RPG_CAP53.m) { RPG_CAP53.m = x.getTransform(); RPG_CAP53.t = k; } return; } const sk = RPG_WSK_NOW; if (sk != null && !x._wsk && RPG_SKW46.draw(x, k, t, sk)) return; return f.apply(this, arguments); };
+    g._skw54 = g._cap53 = g._skw46 = 1; WP.D[k] = g; });
+  // ไอคอนในตู้กาชา/กระเป๋า: คุไน + ชูริเคน
+  const ic0 = rpgItemCanvas;
+  rpgItemCanvas = function (key, S = 96) { const it = RPG_ITEMS[key]; if (it?.t !== 'wsk' || it.wt !== 'dagger') return ic0.apply(this, arguments);
+    const ck = key + '@54@' + S; if (RPG_ICANV.has(ck)) return RPG_ICANV.get(ck);
+    const c = document.createElement('canvas'); c.width = c.height = S; const x = c.getContext('2d'), Sk = RPG_WSK[it.wsk], kS = S / 96;
+    const g = x.createRadialGradient(S / 2, S / 2, 3, S / 2, S / 2, S / 2); g.addColorStop(0, rpgHexA(Sk.hi, .55)); g.addColorStop(1, 'rgba(0,0,0,0)'); x.fillStyle = g; x.fillRect(0, 0, S, S);
+    x.save(); x.translate(S * .6, S * .72); x.rotate(.55); x.scale(1.55 * kS, 1.55 * kS); RPG_SKW46.draw(x, 'kunai', 6, it.wsk); x.restore();
+    x.save(); x.translate(S * .34, S * .42); x.scale(1.6 * kS, 1.6 * kS); RPG_SKW46.draw(x, 'shuriken', 6, it.wsk); x.restore();
+    RPG_ICANV.set(ck, c); return c; };
+  RPG_ICANV.clear(); RPG_IURL.clear(); if (typeof RPG_WAX53 !== 'undefined') RPG_WAX53.clear();
+})();
+// ชื่อแฟชั่นอาวุธสายนินจา: กริช → คุไน
+Object.values(RPG_ITEMS).forEach(it => { if (it.t === 'wsk' && it.wt === 'dagger' && it.n) it.n = it.n.replace('กริช', 'คุไน'); });
 
 /* =====================================================================
    rpg-net.js — หน้าเกมของครู: จัดการตัวละคร (เลือกชั้น → ห้อง) · คำถามในเกม · ตรวจแชท · กิลด์ · โหมดครู
