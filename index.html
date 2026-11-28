@@ -5921,7 +5921,7 @@ if (typeof module !== 'undefined') module.exports = ExamParser;
 </script>
 <script>
 /* โลโก้: ภาพครูปลื้ม (ไฟล์ต้นฉบับ src/logo.svg ฝังตอน build) */
-const APP_VER = '56.4 · 28 พ.ย. 2569';
+const APP_VER = '56.5 · 28 พ.ย. 2569';
 let LOGO_N = 0;
 function logoSVG() { const k = 'L' + (++LOGO_N); return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><defs><linearGradient id="lgb" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3B9BFF"/><stop offset=".5" stop-color="#0A5BE0"/><stop offset="1" stop-color="#062C78"/></linearGradient><linearGradient id="lgs" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset=".6" stop-color="#FFF4D6"/><stop offset="1" stop-color="#FFD978"/></linearGradient><radialGradient id="lgc" cx=".3" cy=".08" r=".75"><stop offset="0" stop-color="#fff" stop-opacity=".55"/><stop offset=".5" stop-color="#fff" stop-opacity=".08"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient></defs><rect width="48" height="48" rx="13" fill="url(#lgb)"/><rect width="48" height="48" rx="13" fill="url(#lgc)"/><rect x=".75" y=".75" width="46.5" height="46.5" rx="12.3" fill="none" stroke="#fff" stroke-opacity=".45" stroke-width="1.2"/><g fill="none" stroke="#04235F" stroke-opacity=".35" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" transform="translate(0 1.2)"><path d="M21.2 17 C19.8 14.6 17.4 13.6 14.8 13.6 C11 13.6 8.6 15.6 8.6 18.5 C8.6 21.8 11.6 22.9 14.9 23.9 C18.6 25 21.6 26.4 21.6 29.8 C21.6 33 18.8 34.6 15.1 34.6 C12 34.6 9.5 33.4 8 31.1"/><path d="M26.6 14 L39.6 34.2 M39.6 14 L26.6 34.2"/></g><g fill="none" stroke="url(#lgs)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M21.2 17 C19.8 14.6 17.4 13.6 14.8 13.6 C11 13.6 8.6 15.6 8.6 18.5 C8.6 21.8 11.6 22.9 14.9 23.9 C18.6 25 21.6 26.4 21.6 29.8 C21.6 33 18.8 34.6 15.1 34.6 C12 34.6 9.5 33.4 8 31.1"/><path d="M26.6 14 L39.6 34.2 M39.6 14 L26.6 34.2"/></g></svg>`.replace('<svg ', '<svg class="logo" aria-hidden="true" ').replace(/\b(lg[bsc])\b/g, '$1' + k); }
 /* =====================================================================
@@ -25612,8 +25612,60 @@ function rpgMissileWing56(x, n, t, moving) {
     x.restore(); });
   x.restore();
 }
-rpgWingDraw = (f => function (x, n, t, moving, form) { if (RPG_WJOB56 === 'engineer' && n) return rpgMissileWing56(x, n, t, moving); return f.apply(this, arguments); })(rpgWingDraw);
-rpgDrawHero = (f => function (x, h) { const j0 = RPG_WJOB56; RPG_WJOB56 = h?.look?.job || null; try { return f.apply(this, arguments); } finally { RPG_WJOB56 = j0; } })(rpgDrawHero);
+// ครูคอมพิวเตอร์: ไม่มีปีก → ออร่าโค้ด (C / Java) หมุนรอบตัว + จอคอมวิญญาณ (ซ้าย) + โลกวิญญาณ (ขวา)
+const RPG_CODE56 = ['#include <stdio.h>', 'int main() {', 'printf("Hello");', 'for (i=0; i<n; i++)', 'return 0;', 'public class Main', 'System.out.println();', 'if (x > max) max = x;', 'while (lo <= hi)', 'void sort(int a[])', 'String s = "Java";', '} // end'];
+function rpgCodeAura56(x, t, front, moving) {
+  const m = x.getTransform(); x.save(); if (m.a < 0) x.scale(-1, 1);   // ไม่ให้ตัวหนังสือกลับด้านตอนหันซ้าย
+  x.globalCompositeOperation = 'source-over'; x.font = '700 5.8px ui-monospace, Menlo, Consolas, monospace'; x.lineJoin = 'round'; x.textAlign = 'center'; x.textBaseline = 'middle';
+  const N = 8, spin = t / 2400;
+  for (let i = 0; i < N; i++) { const a = spin * Math.PI * 2 + i / N * Math.PI * 2, z = Math.sin(a), isFront = z > 0; if (isFront !== front) continue;
+    const px = Math.cos(a) * 30, py = -26 + Math.sin(a) * 9 + Math.sin(t / 500 + i) * 1.5, al = .35 + .5 * (front ? z : -z * .4), txt = RPG_CODE56[(i + Math.floor(t / 3000)) % RPG_CODE56.length];
+    x.globalAlpha = Math.min(1, al + .15); x.shadowColor = i % 2 ? '#2EC8FF' : '#3AE87A'; x.shadowBlur = 5; x.strokeStyle = 'rgba(6,30,50,.75)'; x.lineWidth = 1.8; x.strokeText(txt, px, py); x.shadowBlur = 0; x.fillStyle = i % 2 ? '#7FDCFF' : '#8CFFB8'; x.fillText(txt, px, py); }
+  if (!front) { // จอคอมวิญญาณ (ซ้าย) · โลกวิญญาณ (ขวา) ลอยขึ้นลง
+    const b1 = Math.sin(t / 620) * 3, b2 = Math.sin(t / 700 + 1.4) * 3;
+    x.globalAlpha = .82; x.shadowColor = '#2EC8FF'; x.shadowBlur = 10; x.strokeStyle = '#2EA8E8'; x.lineWidth = 1.4; x.fillStyle = 'rgba(30,120,200,.28)';
+    x.save(); x.translate(-40, -46 + b1); x.beginPath(); x.roundRect(-11, -8, 22, 15, 2); x.fill(); x.stroke(); x.beginPath(); x.moveTo(-3, 7); x.lineTo(-4.5, 11); x.lineTo(4.5, 11); x.lineTo(3, 7); x.stroke();
+    x.fillStyle = '#A8FFCC'; for (let r = 0; r < 4; r++) x.fillRect(-8, -5 + r * 3, 4 + ((r * 5 + Math.floor(t / 160)) % 11), 1); x.restore();
+    x.save(); x.translate(40, -46 + b2); x.fillStyle = 'rgba(30,120,200,.26)'; x.beginPath(); x.arc(0, 0, 10, 0, 7); x.fill(); x.stroke(); x.beginPath(); x.ellipse(0, 0, 10, 3.6, 0, 0, 7); x.stroke(); x.beginPath(); x.moveTo(-10, 0); x.lineTo(10, 0); x.stroke();
+    const ph = (t / 900) % 1; for (let k = 0; k < 2; k++) { const w = Math.abs(Math.cos((ph + k * .5) * Math.PI)) * 10; x.beginPath(); x.ellipse(0, 0, w, 10, 0, 0, 7); x.stroke(); } x.restore(); }
+  x.restore();
+}
+rpgWingDraw = (f => function (x, n, t, moving, form) { if (RPG_WJOB56 === 'engineer') return; return f.apply(this, arguments); })(rpgWingDraw);
+rpgDrawHero = (f => function (x, h) { const j0 = RPG_WJOB56; RPG_WJOB56 = h?.look?.job || null; const T = performance.now(), on = RPG_WJOB56 === 'engineer' && !RS.eco55;
+  try { if (on) rpgCodeAura56(x, T, false, h?.moving); const r = f.apply(this, arguments); if (on) rpgCodeAura56(x, T, true, h?.moving); return r; } finally { RPG_WJOB56 = j0; } })(rpgDrawHero);
+
+
+/* ---------- มือถือแนวนอน: ปรับ viewport อัตโนมัติ (ไม่ต้องกดอะไร) ---------- */
+(() => { const fit = () => { const touch = matchMedia('(pointer: coarse)').matches || 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+    const sw = screen.width, sh = screen.height, W = Math.max(sw, sh), H = Math.min(sw, sh), land = typeof orientation === 'number' ? Math.abs(orientation) === 90 : matchMedia('(orientation: landscape)').matches;
+    let c = 'width=device-width, initial-scale=1';
+    if (touch && land && H <= 540) { const k = H / 660; c = `width=${Math.round(W / k)}, initial-scale=${k.toFixed(3)}, minimum-scale=${k.toFixed(3)}, maximum-scale=${k.toFixed(3)}, user-scalable=no`; }
+    document.querySelectorAll('meta[name=viewport]').forEach(m => { if (m.content !== c) m.content = c; }); document.documentElement.classList.toggle('land56', c !== 'width=device-width, initial-scale=1'); };
+  fit(); addEventListener('orientationchange', () => setTimeout(fit, 250)); addEventListener('resize', () => setTimeout(fit, 50)); })();
+
+/* ---------- ชุดปกติขาวข้าราชการไทย (ครูคอมพิวเตอร์) ---------- */
+(() => { const O = C2.OUTFIT; if (!O || O.pakkhao) return;
+  O.pakkhao = { name: 'ชุดปกติขาวข้าราชการ', g: 'm', c1: '#F7F8FA', c2: '#D9A441', pants: '#F2F3F6', boot: '#17171C', cuff: '#FFFFFF',
+    over(x, L) {
+      // คอตั้ง
+      x.fillStyle = '#FFFFFF'; x.strokeStyle = 'rgba(90,100,120,.55)'; x.lineWidth = .5; x.beginPath(); x.roundRect(-3.2, L.neck - 1.6, 6.4, 2.6, 1); x.fill(); x.stroke();
+      // แนวผ่าอก + กระดุมทอง 5 เม็ด
+      x.strokeStyle = 'rgba(120,130,150,.55)'; x.lineWidth = .45; x.beginPath(); x.moveTo(0, L.neck + 1); x.lineTo(0, L.hip + 3); x.stroke();
+      const n = 5, y0 = L.neck + 2.2, y1 = L.hip + 1.6; for (let i = 0; i < n; i++) { const y = y0 + (y1 - y0) * i / (n - 1); x.fillStyle = '#F2C14E'; x.beginPath(); x.arc(.6, y, .62, 0, 7); x.fill(); x.fillStyle = '#9A6A10'; x.beginPath(); x.arc(.75, y + .15, .25, 0, 7); x.fill(); }
+      // กระเป๋าบนมีฝา (ซ้าย/ขวา)
+      x.strokeStyle = 'rgba(120,130,150,.6)'; x.lineWidth = .45; [-1, 1].forEach(s => { const cx = s * (L.waist * .55 + .6); x.beginPath(); x.roundRect(cx - 1.7, L.neck + 3.2, 3.4, 3, .5); x.stroke(); x.beginPath(); x.moveTo(cx - 1.8, L.neck + 4.2); x.lineTo(cx + 1.8, L.neck + 4.2); x.stroke(); x.fillStyle = '#F2C14E'; x.beginPath(); x.arc(cx, L.neck + 3.8, .28, 0, 7); x.fill(); });
+      // กระเป๋าล่าง
+      [-1, 1].forEach(s => { const cx = s * (L.waist * .6 + .4); x.beginPath(); x.moveTo(cx - 1.9, L.hip - .6); x.lineTo(cx + 1.9, L.hip - .6); x.stroke(); });
+      // แพรแถบย่อเครื่องราชฯ (อกซ้าย)
+      const rb = ['#FFD23F', '#E8395F', '#2E6AD8', '#FFFFFF', '#3FA24A']; rb.forEach((c, i) => { x.fillStyle = c; x.fillRect(-L.waist * .55 - 2 + (i % 3) * 1.4, L.neck + 1.5 + Math.floor(i / 3) * .9, 1.3, .8); });
+      // อินทรธนู (บ่า) สีดำแถบทอง
+      [-1, 1].forEach(s => { x.save(); x.translate(s * (L.sh - 1.8), L.neck + .6); x.rotate(s * .18); x.fillStyle = '#1E2230'; x.beginPath(); x.roundRect(-1.8, -.9, 3.6, 1.9, .5); x.fill(); x.fillStyle = '#E8B84A'; x.fillRect(-1.6, -.25, 3.2, .45); x.beginPath(); x.arc(s * -1.1, .55, .3, 0, 7); x.fill(); x.restore(); });
+      // เข็มตราหน่วยงานที่คอ
+      x.fillStyle = '#E8B84A'; [-1, 1].forEach(s => { x.beginPath(); x.arc(s * 2.2, L.neck - .3, .42, 0, 7); x.fill(); });
+    } };
+  const fix = A => { if (A) { A.out = 'pakkhao'; A.arm = '#F4F5F7'; A.bracer = '#FFFFFF'; A.glove = '#F4F5F7'; } };
+  fix(RPG_JOBART.engineer); try { RPG_ARTC?.clear?.(); } catch (e) {}
+})();
 
 /* =====================================================================
    rpg-net.js — หน้าเกมของครู: จัดการตัวละคร (เลือกชั้น → ห้อง) · คำถามในเกม · ตรวจแชท · กิลด์ · โหมดครู
