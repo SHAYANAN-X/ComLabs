@@ -5919,7 +5919,7 @@ if (typeof module !== 'undefined') module.exports = ExamParser;
 </script>
 <script>
 /* โลโก้: ภาพครูปลื้ม (ไฟล์ต้นฉบับ src/logo.svg ฝังตอน build) */
-const APP_VER = '55.4 · 28 พ.ย. 2569';
+const APP_VER = '55.5 · 28 พ.ย. 2569';
 let LOGO_N = 0;
 function logoSVG() { const k = 'L' + (++LOGO_N); return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><defs><linearGradient id="lgb" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3B9BFF"/><stop offset=".5" stop-color="#0A5BE0"/><stop offset="1" stop-color="#062C78"/></linearGradient><linearGradient id="lgs" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset=".6" stop-color="#FFF4D6"/><stop offset="1" stop-color="#FFD978"/></linearGradient><radialGradient id="lgc" cx=".3" cy=".08" r=".75"><stop offset="0" stop-color="#fff" stop-opacity=".55"/><stop offset=".5" stop-color="#fff" stop-opacity=".08"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient></defs><rect width="48" height="48" rx="13" fill="url(#lgb)"/><rect width="48" height="48" rx="13" fill="url(#lgc)"/><rect x=".75" y=".75" width="46.5" height="46.5" rx="12.3" fill="none" stroke="#fff" stroke-opacity=".45" stroke-width="1.2"/><g fill="none" stroke="#04235F" stroke-opacity=".35" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" transform="translate(0 1.2)"><path d="M21.2 17 C19.8 14.6 17.4 13.6 14.8 13.6 C11 13.6 8.6 15.6 8.6 18.5 C8.6 21.8 11.6 22.9 14.9 23.9 C18.6 25 21.6 26.4 21.6 29.8 C21.6 33 18.8 34.6 15.1 34.6 C12 34.6 9.5 33.4 8 31.1"/><path d="M26.6 14 L39.6 34.2 M39.6 14 L26.6 34.2"/></g><g fill="none" stroke="url(#lgs)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M21.2 17 C19.8 14.6 17.4 13.6 14.8 13.6 C11 13.6 8.6 15.6 8.6 18.5 C8.6 21.8 11.6 22.9 14.9 23.9 C18.6 25 21.6 26.4 21.6 29.8 C21.6 33 18.8 34.6 15.1 34.6 C12 34.6 9.5 33.4 8 31.1"/><path d="M26.6 14 L39.6 34.2 M39.6 14 L26.6 34.2"/></g></svg>`.replace('<svg ', '<svg class="logo" aria-hidden="true" ').replace(/\b(lg[bsc])\b/g, '$1' + k); }
 /* =====================================================================
@@ -24802,16 +24802,45 @@ function rpgSigFx55(k, P, T, rank = 1, aoe = 60, n = 1) {
       hit(700, 4); hit(1000, 4); break;
   }
 }
+// สไปรต์พลังงานโปร่งแสง (ซีทรู): ตัวโปร่งสีจาง + ขอบ/เส้นในเรืองแสงขาวร้อน + บลูมสีสกิล · แคชต่อรูป+สี
+const RPG_ESPR55 = new Map();
+function rpgEnergySprite55(g, col) {
+  const key = g + '|' + col + '|2'; if (RPG_ESPR55.has(key)) return RPG_ESPR55.get(key);
+  const G = SKI34.G, fn = G[g] || G.star, S = 150, W = Math.round(S * 1.7), k = S / 60, mk = () => { const c = document.createElement('canvas'); c.width = c.height = W; const x = c.getContext('2d'); x.translate(W / 2, W / 2); x.scale(k, k); x.lineJoin = 'round'; x.lineCap = 'round'; return [c, x]; };
+  const [A, a] = mk(); a.fillStyle = '#FFFFFF'; a.strokeStyle = '#FFFFFF'; a.lineWidth = 2.6; try { fn(a); } catch (e) {}
+  const [B, b] = mk(); b.fillStyle = 'rgba(0,0,0,0)'; b.strokeStyle = '#FFFFFF'; b.lineWidth = 2.1; try { fn(b); } catch (e) {}
+  // สีซีดมาก → เลื่อนเป็นฟ้าวิญญาณ/ทองอ่อน ให้ยังเห็นเป็นพลังงานมีสี
+  let n = parseInt(col.slice(1), 16), R0 = n >> 16, G0 = n >> 8 & 255, B0 = n & 255; const mx = Math.max(R0, G0, B0), mn = Math.min(R0, G0, B0);
+  if (mx - mn < 95) { const warm = R0 >= B0; [R0, G0, B0] = warm ? [255, 214, 110] : [120, 210, 255]; } else { const k2 = 1.25; const avg = (R0 + G0 + B0) / 3; [R0, G0, B0] = [R0, G0, B0].map(v => Math.max(0, Math.min(255, Math.round(avg + (v - avg) * k2)))); }
+  const rgb = `${R0},${G0},${B0}`, lite = `rgb(${Math.round(R0 + (255 - R0) * .45)},${Math.round(G0 + (255 - G0) * .45)},${Math.round(B0 + (255 - B0) * .45)})`;
+  const out = document.createElement('canvas'); out.width = out.height = W; const o = out.getContext('2d');
+  const Bc = document.createElement('canvas'); Bc.width = Bc.height = W; const bc = Bc.getContext('2d'); bc.drawImage(B, 0, 0); bc.globalCompositeOperation = 'source-in'; bc.fillStyle = lite; bc.fillRect(0, 0, W, W);
+  // ตัวโปร่งแสง: ไล่สีจากกลางสว่าง → ขอบจาง
+  const body = document.createElement('canvas'); body.width = body.height = W; const bx = body.getContext('2d'); bx.drawImage(A, 0, 0); bx.globalCompositeOperation = 'source-in';
+  const gr = bx.createRadialGradient(W / 2, W * .44, 0, W / 2, W / 2, S * .62); gr.addColorStop(0, `rgba(${rgb},.5)`); gr.addColorStop(.45, `rgba(${rgb},.34)`); gr.addColorStop(1, `rgba(${rgb},.14)`); bx.fillStyle = gr; bx.fillRect(0, 0, W, W);
+  // เส้นสแกนบาง ๆ แบบโฮโลแกรม
+  bx.globalCompositeOperation = 'destination-out'; bx.fillStyle = 'rgba(0,0,0,.22)'; for (let y = 0; y < W; y += 5) bx.fillRect(0, y, W, 1.6);
+  o.drawImage(body, 0, 0);
+  // บลูมสีรอบตัว + ขอบเรืองแสง
+  o.globalCompositeOperation = 'lighter'; o.shadowColor = `rgba(${rgb},1)`; o.shadowBlur = S * .16; o.globalAlpha = .95; o.drawImage(Bc, 0, 0);
+  o.shadowBlur = S * .05; o.globalAlpha = .8; o.drawImage(Bc, 0, 0);
+  o.shadowBlur = 0; o.globalAlpha = .35; o.drawImage(B, 0, 0);
+  const r = { c: out, W, S }; RPG_ESPR55.set(key, r); if (RPG_ESPR55.size > 160) RPG_ESPR55.delete(RPG_ESPR55.keys().next().value); return r;
+}
 function rpgSkxDraw55(x) {
   const now = performance.now(); for (let i = SKX55.length - 1; i >= 0; i--) if (now - SKX55[i].t0 > SKX55[i].dur + SKX55[i].d) SKX55.splice(i, 1);
-  const G = SKI34.G;
-  SKX55.forEach(o => { const e = (now - o.t0 - o.d) / o.dur; if (e < 0) return;
+  SKX55.forEach(o => { const e = (now - o.t0 - o.d) / o.dur; if (e < 0) return; const sp = rpgEnergySprite55(o.g, o.col);
     for (let gh = o.ghost; gh >= 0; gh--) { const ee = e - gh * .035; if (ee < 0) continue; const q = o.f(Math.min(1, ee)); if (!q || q.a <= 0 || !(q.s > 0)) continue;
-      if (q.gy != null && !gh) { x.save(); x.globalAlpha = .3 * Math.max(0, Math.min(1, q.a)); x.fillStyle = '#000'; const w = q.s * .38 * Math.max(.4, 1 - (q.gy - q.y - 30) / 220); x.beginPath(); x.ellipse(q.x, q.gy + 2, w, w * .3, 0, 0, 7); x.fill(); x.restore(); }
+      const al = Math.max(0, Math.min(1, q.a)), flick = .86 + .14 * Math.sin(now / 55 + o.t0) * Math.sin(now / 23);
+      // วงแสงบนพื้น (แทนเงาดำ)
+      if (q.gy != null && !gh) { x.save(); x.globalCompositeOperation = 'lighter'; x.globalAlpha = .45 * al; const w = q.s * .42 * Math.max(.4, 1 - (q.gy - q.y - 30) / 220), gr = x.createRadialGradient(q.x, q.gy + 2, 0, q.x, q.gy + 2, w); gr.addColorStop(0, o.col); gr.addColorStop(1, 'rgba(0,0,0,0)'); x.fillStyle = gr; x.beginPath(); x.ellipse(q.x, q.gy + 2, w, w * .32, 0, 0, 7); x.fill(); x.restore(); }
       x.save(); if (q.clipY != null) { x.beginPath(); x.rect(q.x - 400, q.clipY - 900, 800, 900); x.clip(); }
-      x.globalAlpha = Math.max(0, Math.min(1, q.a)) * (gh ? .28 / gh : 1); x.translate(q.x, q.y); x.rotate(q.r || 0); const k = q.s / 60; x.scale(k * (q.flip ? -1 : 1) * (q.sx || 1), k * (q.sy || 1));
-      if (o.add) x.globalCompositeOperation = 'lighter'; x.shadowColor = o.col; x.shadowBlur = gh ? 0 : 16; x.fillStyle = o.fill || (o.fill = rpgLite55(o.col)); x.strokeStyle = rpgDark55(o.col, .42); x.lineWidth = 2.8; x.lineJoin = 'round'; x.lineCap = 'round';
-      try { (G[o.g] || G.star)(x); } catch (err) {} x.restore(); } });
+      x.globalCompositeOperation = 'lighter'; x.globalAlpha = al * (gh ? .3 / gh : flick);
+      x.translate(q.x, q.y); x.rotate(q.r || 0); const k = q.s / sp.S; x.scale(k * (q.flip ? -1 : 1) * (q.sx || 1), k * (q.sy || 1));
+      x.drawImage(sp.c, -sp.W / 2, -sp.W / 2); x.restore();
+      // ละอองพลังงานหลุดจากวัตถุ
+      if (!gh && al > .3 && Math.random() < .4 && SKX49.pt.length < 600) { const a = Math.random() * 6.283, rr = q.s * .35 * Math.random(); X49.pt({ x: q.x + Math.cos(a) * rr, y: q.y + Math.sin(a) * rr, vx: (Math.random() - .5) * 20, vy: -30 - Math.random() * 40, g: -10, col: Math.random() < .5 ? o.col : '#FFFFFF', r: 1.6 + Math.random() * 1.6, life: 520, k: 'star' }); }
+    } });
 }
 rpgMapFxDraw = (f => function (x) { f.apply(this, arguments); const cam = RS.cam; if (!cam || !SKX55.length) return; x.save(); x.setTransform(cam.sc, 0, 0, cam.sc, -cam.cx * cam.sc, -cam.cy * cam.sc); try { rpgSkxDraw55(x); } finally { x.restore(); } })(rpgMapFxDraw);
 // ผูกเข้ากับการร่ายสกิล (ของเรา + ผู้เล่นอื่นออนไลน์ + บัพ/ฮีล)
