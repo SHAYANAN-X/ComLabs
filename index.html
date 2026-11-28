@@ -5911,7 +5911,7 @@ if (typeof module !== 'undefined') module.exports = ExamParser;
 </script>
 <script>
 /* โลโก้: ภาพครูปลื้ม (ไฟล์ต้นฉบับ src/logo.svg ฝังตอน build) */
-const APP_VER = '55.2 · 28 พ.ย. 2569';
+const APP_VER = '55.3 · 28 พ.ย. 2569';
 let LOGO_N = 0;
 function logoSVG() { const k = 'L' + (++LOGO_N); return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><defs><linearGradient id="lgb" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3B9BFF"/><stop offset=".5" stop-color="#0A5BE0"/><stop offset="1" stop-color="#062C78"/></linearGradient><linearGradient id="lgs" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset=".6" stop-color="#FFF4D6"/><stop offset="1" stop-color="#FFD978"/></linearGradient><radialGradient id="lgc" cx=".3" cy=".08" r=".75"><stop offset="0" stop-color="#fff" stop-opacity=".55"/><stop offset=".5" stop-color="#fff" stop-opacity=".08"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient></defs><rect width="48" height="48" rx="13" fill="url(#lgb)"/><rect width="48" height="48" rx="13" fill="url(#lgc)"/><rect x=".75" y=".75" width="46.5" height="46.5" rx="12.3" fill="none" stroke="#fff" stroke-opacity=".45" stroke-width="1.2"/><g fill="none" stroke="#04235F" stroke-opacity=".35" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" transform="translate(0 1.2)"><path d="M21.2 17 C19.8 14.6 17.4 13.6 14.8 13.6 C11 13.6 8.6 15.6 8.6 18.5 C8.6 21.8 11.6 22.9 14.9 23.9 C18.6 25 21.6 26.4 21.6 29.8 C21.6 33 18.8 34.6 15.1 34.6 C12 34.6 9.5 33.4 8 31.1"/><path d="M26.6 14 L39.6 34.2 M39.6 14 L26.6 34.2"/></g><g fill="none" stroke="url(#lgs)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M21.2 17 C19.8 14.6 17.4 13.6 14.8 13.6 C11 13.6 8.6 15.6 8.6 18.5 C8.6 21.8 11.6 22.9 14.9 23.9 C18.6 25 21.6 26.4 21.6 29.8 C21.6 33 18.8 34.6 15.1 34.6 C12 34.6 9.5 33.4 8 31.1"/><path d="M26.6 14 L39.6 34.2 M39.6 14 L26.6 34.2"/></g></svg>`.replace('<svg ', '<svg class="logo" aria-hidden="true" ').replace(/\b(lg[bsc])\b/g, '$1' + k); }
 /* =====================================================================
@@ -24741,7 +24741,7 @@ rpgItemCanvas = (f => function (key, S = 96) {
   return f(key, S); })(rpgItemCanvas);
 
 /* ---------- เอฟเฟกต์ประจำสกิล: วาด "รูปสกิล" ขนาดใหญ่ในโลก แล้วเคลื่อนไหวตามท่า ---------- */
-const SKX55 = [];
+const SKX55 = []; var RPG_EMB55 = false;
 const RPG_DIAG55 = new Set(['lance', 'poisonarrow', 'rocket', 'spear', 'kunaibomb', 'arrows', 'skysword', 'sword']);
 const ez = { out: e => 1 - Math.pow(1 - e, 3), in: e => e * e, back: e => { const c = 1.7; return 1 + (c + 1) * Math.pow(e - 1, 3) + c * Math.pow(e - 1, 2); } };
 function rpgDark55(h, f = .45) { const n = parseInt(h.slice(1), 16); return `rgb(${(n >> 16) * f | 0},${(n >> 8 & 255) * f | 0},${(n & 255) * f | 0})`; }
@@ -24752,7 +24752,9 @@ function rpgSigFx55(k, P, T, rank = 1, aoe = 60, n = 1) {
   const ang = Math.atan2(T.y - P.y, T.x - P.x), dist = Math.hypot(T.x - P.x, T.y - P.y), face = T.x < P.x ? -1 : 1;
   const hit = (ms, sh = 6) => X49.later(ms, () => { X49.big({ k: 'ring', x: T.x, y: T.y, r: 60 + R * 14, col, dur: 480, w: 6 }); X49.burst(T.x, T.y - 18, 18 + R * 4, col, 220); rpgShake49(sh + R * 2, 260); });
   const G = (o) => rpgGly55({ g, col, ...o });
-  switch (sg.m) {
+  let mm = sg.m; if (RPG_EMB55 && ['drop', 'slashx', 'spin', 'stamp', 'mark', 'rise', 'orbit', 'rain', 'hover'].includes(mm)) mm = 'emblem';
+  switch (mm) {
+    case 'emblem': G({ dur: 520, add: 1, f: e => ({ x: T.x, y: T.y - 34, s: (38 + 44 * ez.out(e)) * big, r: (1 - ez.out(e)) * -.4 * face, a: (e < .12 ? e / .12 : Math.pow(1 - (e - .12) / .88, 1.8)) * .8 }) }); X49.big({ k: 'ring', x: T.x, y: T.y - 30, r: 70 + R * 10, col, dur: 420, flat: 1, w: 5 }); break;
     case 'slashx': G({ dur: 460, ghost: 3, f: e => ({ x: T.x, y: T.y - 24, s: (66 + R * 8), r: -1.7 + ez.out(e) * 3.4, a: e < .75 ? 1 : (1 - e) / .25 }) }); hit(180, 4); break;
     case 'spin': G({ dur: 1000, ghost: 2, f: e => ({ x: T.x, y: T.y - 22, s: (40 + 56 * Math.min(1, e * 3)) * big, r: e * 16, a: e < .8 ? 1 : (1 - e) / .2 }) }); hit(300, 3); hit(650, 3); break;
     case 'stamp': G({ dur: 760, f: e => { const q = Math.min(1, e * 2.6); return { x: T.x, y: T.y - 26, s: (150 - 86 * ez.back(q)) * big, r: (1 - q) * .5, a: e < .7 ? Math.min(1, e * 8) : (1 - e) / .3 }; } }); hit(260, 8); break;
@@ -24797,7 +24799,7 @@ function rpgSkxDraw55(x) {
     for (let gh = o.ghost; gh >= 0; gh--) { const ee = e - gh * .035; if (ee < 0) continue; const q = o.f(Math.min(1, ee)); if (!q || q.a <= 0 || !(q.s > 0)) continue;
       x.save(); if (q.clipY != null) { x.beginPath(); x.rect(q.x - 400, q.clipY - 900, 800, 900); x.clip(); }
       x.globalAlpha = Math.max(0, Math.min(1, q.a)) * (gh ? .28 / gh : 1); x.translate(q.x, q.y); x.rotate(q.r || 0); const k = q.s / 60; x.scale(k * (q.flip ? -1 : 1) * (q.sx || 1), k * (q.sy || 1));
-      x.shadowColor = o.col; x.shadowBlur = gh ? 0 : 16; x.fillStyle = o.fill || (o.fill = rpgLite55(o.col)); x.strokeStyle = rpgDark55(o.col, .42); x.lineWidth = 2.8; x.lineJoin = 'round'; x.lineCap = 'round';
+      if (o.add) x.globalCompositeOperation = 'lighter'; x.shadowColor = o.col; x.shadowBlur = gh ? 0 : 16; x.fillStyle = o.fill || (o.fill = rpgLite55(o.col)); x.strokeStyle = rpgDark55(o.col, .42); x.lineWidth = 2.8; x.lineJoin = 'round'; x.lineCap = 'round';
       try { (G[o.g] || G.star)(x); } catch (err) {} x.restore(); } });
 }
 rpgMapFxDraw = (f => function (x) { f.apply(this, arguments); const cam = RS.cam; if (!cam || !SKX55.length) return; x.save(); x.setTransform(cam.sc, 0, 0, cam.sc, -cam.cx * cam.sc, -cam.cy * cam.sc); try { rpgSkxDraw55(x); } finally { x.restore(); } })(rpgMapFxDraw);
@@ -25047,6 +25049,140 @@ rpgSigFx55 = (f => function (k) { const r = f.apply(this, arguments); try { cons
 // สู้บอสบนแผนที่ → เปลี่ยนเป็นเพลงต่อสู้ · ไม่ได้สู้บอส 8 วินาที → กลับเพลงแผนที่
 rpgFcHit = (f => function (mo) { const r = f.apply(this, arguments); try { if (mo?.boss) { SND.bossT55 = performance.now(); if (SND.on && SND.mode !== 'battle') rpgBgm('battle'); } } catch (e) {} return r; })(rpgFcHit);
 setInterval(() => { try { if (SND.mode === 'battle' && !RS.battle && SND.bossT55 && performance.now() - SND.bossT55 > 8000) { SND.bossT55 = 0; SND.mode = null; rpgBgm(); } } catch (e) {} }, 2000);
+
+/* rpg-v55act.js — ท่าทางร่ายสกิลแบบเกมแอ็กชัน (ตัวละครเคลื่อนไหวสอดคล้องกับเอฟเฟกต์)
+   กระโดดฟาด · พุ่งทะลวง · หมุนพายุ · แทงพุ่ง · คอมโบรัว · ขว้าง · ง้างธนูยิง · ยิงขึ้นฟ้า · หายตัว · ร่ายเวท · ร่ายใหญ่ · อัญเชิญ · เพิ่มพลัง
+   · ดาเมจ/เอฟเฟกต์เกิด "ตรงจังหวะกระทบ" ของท่า + หยุดภาพ (hit-stop) + ภาพติดตา + รอยฟันตามอาวุธ + ประจุพลังที่มือ */
+const ACT55 = {
+  // [ระยะเวลา ms, จังหวะกระทบ (สัดส่วน)]
+  T: { leap: [780, .5], dash: [560, .32], spin: [920, .3], lunge: [440, .36], combo: [860, .2], throw: [560, .4], shoot: [640, .47], sky: [680, .45], vanish: [720, .45], cast: [740, .44], big: [1050, .52], summon: [820, .42], power: [820, 0] },
+  ez: { o: e => 1 - Math.pow(1 - e, 3), io: e => e < .5 ? 4 * e * e * e : 1 - Math.pow(-2 * e + 2, 3) / 2, i: e => e * e },
+};
+const RPG_RANGEDWT55 = new Set(['bow']), RPG_MAGWT55 = new Set(['staff', 'wand', 'orb', 'lute', 'tablet']);
+function rpgActOf55(k, j, rank) {
+  const sg = rpgSig55(k), m = sg?.m || '', wt = j?.wt || 'sword', g = sg?.g || '';
+  if (k[4] === 'b' || k[4] === 'h') return 'power';
+  if (/^beast|^swarm/.test(m)) return 'summon';
+  if (RPG_MAGWT55.has(wt)) return rank >= 4 || /pillar|hover/.test(m) && rank >= 3 ? 'big' : 'cast';
+  if (RPG_RANGEDWT55.has(wt)) return /rain|hover|drop/.test(m) ? 'sky' : 'shoot';
+  // ประชิด / ขว้าง
+  if (/rocket|laser|satellite|tesla|bomb|robot/.test(g) && wt === 'hammer') return /drop/.test(m) ? 'leap' : /hover|rise/.test(m) ? 'cast' : 'throw';
+  if (g === 'shadow' || (j && R.save?.job === 'ninja' && /dark/.test(sg?.fx || ''))) return 'vanish';
+  if (/fly|fan|lob|flyspin/.test(m)) return g === 'lance' ? 'dash' : /dragon|phoenix/.test(g) ? 'lunge' : 'throw';
+  if (m === 'drop' || m === 'rise') return 'leap';
+  if (m === 'slashx') return 'dash';
+  if (m === 'spin') return 'spin';
+  if (m === 'rain' || m === 'orbit') return 'combo';
+  if (m === 'hover') return rank >= 3 ? 'leap' : 'lunge';
+  return 'lunge';
+}
+// เวลาที่ใช้คำนวณท่า (รวม hit-stop)
+function rpgActE55(A, now) { const tI = A.t0 + A.dur * A.hit, hs = A.hs || 0; let t = now < tI ? now : now < tI + hs ? tI : now - hs; return (t - A.t0) / A.dur; }
+function rpgActPose55(A, e) {
+  const Z = ACT55.ez, f = A.face, H = A.h || 64; let ox = 0, oy = 0, rot = 0, sx = 1, sy = 1, pose = 'atk', pk = 0, alpha = 1, trail = false, smear = null, charge = 0;
+  const travel = q => { const k = Z.io(Math.max(0, Math.min(1, q))); ox += A.fx0 * (1 - k); oy += A.fy0 * (1 - k); };
+  switch (A.type) {
+    case 'leap': if (e < .16) { const q = e / .16; sy = 1 - .2 * q; sx = 1 + .14 * q; pk = 0; travel(0); }
+      else if (e < .5) { const q = (e - .16) / .34; travel(q); oy -= H * Math.sin(Math.min(1, q * 1.15) * Math.PI * .5) * (q < .87 ? 1 : (1 - q) / .13); sy = 1.12 - .12 * q; sx = .92 + .08 * q; rot = f * (-.25 + q * .75); pk = q * .35; trail = true; }
+      else if (e < .64) { const q = (e - .5) / .14; sy = .78 + .22 * q; sx = 1.22 - .22 * q; pk = .7 + q * .3; rot = f * .25 * (1 - q); smear = { a0: -1.6, a1: 1.2, q, r: 30 }; }
+      else { pk = 1; } break;
+    case 'dash': if (e < .18) { const q = e / .18; rot = -f * .18 * q; sx = 1 - .06 * q; pk = q * .2; travel(0); }
+      else if (e < .38) { const q = (e - .18) / .2; travel(q); sx = 1.28; sy = .9; rot = f * .12; pk = .2 + q * .8; trail = true; smear = { a0: -2.2, a1: 1.6, q, r: 34, wide: 1 }; }
+      else { const q = Math.min(1, (e - .38) / .3); rot = f * .2 * (1 - q); pk = 1; } break;
+    case 'spin': if (e < .12) { const q = e / .12; travel(q); sy = 1 - .1 * q; trail = true; }
+      else if (e < .86) { const q = (e - .12) / .74; rot = f * Z.io(q) * Math.PI * 4; pk = .5 + .5 * Math.sin(q * 20); oy = -6 * Math.sin(q * Math.PI); smear = { ring: 1, q, r: 34 }; }
+      else { pk = 1; } break;
+    case 'lunge': if (e < .28) { const q = e / .28; travel(q * .6); ox -= f * 8 * q; rot = -f * .12 * q; sx = 1 - .05 * q; pk = q * .15; }
+      else if (e < .46) { const q = (e - .28) / .18; travel(.6 + q * .4); ox += f * (-8 + 22 * Z.o(q)); sx = 1.2; sy = .92; rot = f * .14; pk = .3 + q * .7; trail = true; smear = { a0: -1.2, a1: .9, q, r: 28, thrust: 1 }; }
+      else { const q = Math.min(1, (e - .46) / .4); ox += f * 14 * (1 - q); pk = 1; } break;
+    case 'combo': { travel(Math.min(1, e / .12)); const n = 5, q = e * n % 1, i = Math.floor(e * n); if (e < .92) { ox += f * (i % 2 ? 10 : 4) * Math.sin(q * Math.PI); oy = -10 * Math.sin(q * Math.PI) * (i % 2); rot = f * (i % 2 ? .18 : -.1) * Math.sin(q * Math.PI); pk = q; smear = { a0: i % 2 ? 1.2 : -1.6, a1: i % 2 ? -1.6 : 1.2, q, r: 26 }; trail = true; } else pk = 1; break; }
+    case 'throw': if (e < .4) { const q = e / .4; ox = -f * 6 * q; rot = -f * .2 * q; pk = 0; charge = q; }
+      else if (e < .55) { const q = (e - .4) / .15; ox = f * (-6 + 16 * Z.o(q)); rot = f * .22; pk = q; sx = 1.12; smear = { a0: -2, a1: .6, q, r: 26 }; }
+      else { const q = (e - .55) / .45; ox = f * 10 * (1 - q); pk = 1; } break;
+    case 'shoot': if (e < .47) { const q = e / .47; ox = -f * 4 * q; rot = -f * .08 * q; pk = .18 * q; charge = q; }
+      else if (e < .6) { const q = (e - .47) / .13; ox = -f * (4 + 12 * Z.o(q)); rot = -f * .16; pk = 1; sx = .94; }
+      else { const q = (e - .6) / .4; ox = -f * 16 * (1 - Z.o(q)); pk = 1; } break;
+    case 'sky': if (e < .45) { const q = e / .45; rot = -f * .5 * q; pk = .18 * q; charge = q; oy = -4 * q; }
+      else if (e < .62) { const q = (e - .45) / .17; rot = -f * .5; oy = -4 - 16 * Math.sin(q * Math.PI); pk = 1; }
+      else { const q = (e - .62) / .38; rot = -f * .5 * (1 - q); pk = 1; } break;
+    case 'vanish': if (e < .3) { const q = e / .3; alpha = 1 - q; sx = 1 + .3 * q; sy = 1 - .3 * q; pk = 0; }
+      else if (e < .42) { alpha = 0; travel(1); }
+      else if (e < .6) { const q = (e - .42) / .18; alpha = q; pk = .3 + q * .7; rot = f * .15; smear = { a0: -2.4, a1: 1.8, q, r: 36, wide: 1 }; }
+      else pk = 1; break;
+    case 'cast': case 'summon': case 'big': { const B = A.type === 'big', hit = A.hit; pose = 'cast';
+      if (e < hit) { const q = e / hit; oy = -(B ? 22 : 10) * Z.o(q); pk = .25 * q; charge = q; sy = 1 + .04 * Math.sin(q * 30); }
+      else if (e < hit + .14) { const q = (e - hit) / .14; oy = -(B ? 22 : 10) * (1 - q * .4); ox = f * 6 * Math.sin(q * Math.PI); pk = .3 + q * .7; sx = 1.08; }
+      else { const q = (e - hit - .14) / (1 - hit - .14); oy = -(B ? 13 : 6) * (1 - Z.o(q)); pk = 1; } break; }
+    case 'power': pose = 'cast'; oy = -10 * Math.sin(Math.min(1, e * 1.4) * Math.PI); sx = sy = 1 + .08 * Math.sin(e * Math.PI); pk = .6; charge = e < .5 ? e * 2 : 0; break;
+  }
+  return { ox, oy, rot, sx, sy, pose, pk, alpha, trail, smear, charge };
+}
+// เริ่มท่า: ย้ายตำแหน่งจริงทันที (ให้ภาพเลื่อนตามแบบนุ่มนวล) แล้วคืนค่าเวลาจังหวะกระทบ (ms)
+function rpgActStart55(type, mo, col, rank) {
+  const s = R.save, [dur, hit] = ACT55.T[type], t0 = performance.now();
+  const x0 = s.x, y0 = s.y; let face = mo ? (mo.x < s.x ? -1 : 1) : (s.dir === 'l' ? -1 : 1);
+  if (mo && ['leap', 'dash', 'spin', 'lunge', 'combo', 'vanish'].includes(type)) {
+    const dx = mo.x - s.x, dy = mo.y - s.y, L = Math.hypot(dx, dy) || 1, ux = dx / L, uy = dy / L;
+    const goal = type === 'dash' || type === 'vanish' ? [mo.x + ux * .95, mo.y + uy * .55] : [mo.x - ux * .8, mo.y - uy * .45];
+    const ok = (gx, gy) => !rpgSolid(gx, gy) && !rpgSolid(gx, gy + .2);
+    let [gx, gy] = goal; if (!ok(gx, gy)) { gx = mo.x - ux * .8; gy = mo.y - uy * .45; } if (!ok(gx, gy)) { gx = s.x; gy = s.y; }
+    if (L > 6.5) { gx = s.x + ux * (L - .8); gy = s.y + uy * (L - .8); if (!ok(gx, gy)) { gx = s.x; gy = s.y; } }
+    s.x = gx; s.y = gy; if (type === 'dash' || type === 'vanish') face = mo.x < s.x ? -1 : 1;
+  }
+  if (mo) rpgFcFace(mo.x - s.x, mo.y - s.y);
+  const A = { type, t0, dur, hit, face, col: col || '#FFFFFF', rank, fx0: (x0 - s.x) * TS, fy0: (y0 - s.y) * TS, h: type === 'leap' ? 70 + rank * 8 : 0, hs: ['leap', 'dash', 'lunge', 'vanish'].includes(type) ? 85 : type === 'big' ? 60 : 40, ghosts: [], lx: s.x, ly: s.y };
+  RS.act55 = A;
+  // ประจุพลังที่มือ/วงเวทใต้เท้า
+  const P = { x: s.x * TS, y: s.y * TS };
+  if (['cast', 'big', 'summon', 'power'].includes(type)) { X49.big({ k: 'circle', x: P.x, y: P.y, r: 34 + rank * 8 + (type === 'big' ? 20 : 0), col, dur: dur * .9 }); if (type === 'big') X49.big({ k: 'pillar', x: P.x, y: P.y, w: 30, h: 170, col, dur: dur * .7 }); }
+  if (['cast', 'big', 'summon', 'shoot', 'sky', 'throw'].includes(type)) { const hx = P.x + face * 14, hy = P.y - 30, n = type === 'big' ? 26 : 14;
+    for (let i = 0; i < n; i++) X49.later(i * (dur * hit * .8 / n), () => { const a = Math.random() * 6.283, r = 40 + Math.random() * 30; X49.pt({ x: hx + Math.cos(a) * r, y: hy + Math.sin(a) * r * .7, vx: -Math.cos(a) * r * 2.6, vy: -Math.sin(a) * r * 1.8, g: 0, drag: .9, col: i % 3 ? col : '#FFFFFF', r: 2.6, life: 380, k: 'star' }); }); }
+  if (type === 'leap') X49.later(dur * .16, () => { X49.burst(P.x - A.fx0 * 0, P.y, 10, '#D8C8A8', 120, { g: 300, r: 3 }); });
+  if (type === 'vanish') { for (let i = 0; i < 18; i++) X49.pt({ x: P.x + A.fx0 + (Math.random() - .5) * 30, y: P.y + A.fy0 - Math.random() * 40, vx: (Math.random() - .5) * 60, vy: -40 - Math.random() * 40, g: 0, col: '#4A2A7A', r: 7, life: 600, }); }
+  // จังหวะกระทบ: แฟลช + ฝุ่น + กล้องสั่น
+  X49.later(dur * hit, () => { const Q = { x: s.x * TS, y: s.y * TS };
+    if (type === 'leap') { X49.big({ k: 'ring', x: Q.x + face * 20, y: Q.y, r: 90 + rank * 14, col, dur: 520, w: 8 }); X49.burst(Q.x + face * 18, Q.y, 26, '#D8C8A8', 220, { g: 380, r: 3.4, up: 120 }); rpgShake49(12 + rank * 2, 380); }
+    else if (['dash', 'lunge', 'combo', 'vanish', 'spin'].includes(type)) rpgShake49(6 + rank * 2, 220);
+    else if (type === 'big') rpgFlash49(`radial-gradient(circle,${col}66,transparent 70%)`, 380);
+    if (['shoot', 'sky', 'throw', 'cast', 'big', 'summon'].includes(type)) X49.big({ k: 'impact', x: Q.x + face * 16, y: Q.y - (type === 'sky' ? 44 : 30), r: 16 + rank * 4, col, dur: 220 }); });
+  return dur * hit;
+}
+// วาดตัวผู้เล่นตามท่า (+ภาพติดตา, เงาพื้น, รอยฟัน, ประจุพลัง)
+rpgCharAt = (f => function (x, c) {
+  const A = RS.act55; if (!c?.me || !A) return f.apply(this, arguments);
+  const now = performance.now(); if (now > A.t0 + A.dur + (A.hs || 0)) { RS.act55 = null; return f.apply(this, arguments); }
+  const e = Math.min(1, rpgActE55(A, now)), P = rpgActPose55(A, e), K = .86, px = c.x * TS, py = c.y * TS, f0 = RS.fcPose, k0 = RS.fcPk;
+  const c2 = { ...c, pose: P.pose, pk: P.pk, moving: false };
+  const draw = (ox, oy, al, ghost) => { x.save(); x.globalAlpha = al; if (ghost) x.globalCompositeOperation = 'lighter';
+    x.translate(px + ox, py + oy - 18); x.rotate(P.rot); x.scale(P.sx, P.sy); x.translate(-px, -(py - 18)); RS.fcPose = P.pose; RS.fcPk = P.pk; try { f.call(this, x, c2); } finally { RS.fcPose = f0; RS.fcPk = k0; } x.restore(); };
+  // เงาพื้นตอนลอย
+  if (P.oy < -3) { x.save(); x.globalAlpha = .35; x.fillStyle = '#000'; const k = Math.max(.4, 1 + P.oy / 120); x.beginPath(); x.ellipse(px + P.ox, py + 2, 16 * k, 5 * k, 0, 0, 7); x.fill(); x.restore(); }
+  // ภาพติดตา
+  if (P.trail) { A.ghosts.push([P.ox, P.oy]); if (A.ghosts.length > 4) A.ghosts.shift(); } else if (A.ghosts.length) A.ghosts.shift();
+  A.ghosts.forEach(([gx, gy], i) => draw(gx, gy, .12 + i * .07, true));
+  // ประจุพลังที่มือ
+  if (P.charge > 0) { const hx = px + P.ox + A.face * 14, hy = py + P.oy - 30, r = 4 + P.charge * (8 + A.rank * 2); x.save(); x.globalCompositeOperation = 'lighter'; const g = x.createRadialGradient(hx, hy, 0, hx, hy, r * 2.2); g.addColorStop(0, '#FFFFFF'); g.addColorStop(.3, A.col); g.addColorStop(1, 'rgba(0,0,0,0)'); x.fillStyle = g; x.beginPath(); x.arc(hx, hy, r * 2.2, 0, 7); x.fill(); x.restore(); }
+  draw(P.ox, P.oy, P.alpha, false);
+  // รอยฟัน/รอยหมุนของอาวุธ (smear)
+  const S = P.smear; if (S && S.q > 0 && S.q < 1.05) { const cx = px + P.ox + A.face * 10, cy = py + P.oy - 24; x.save(); x.globalCompositeOperation = 'lighter'; x.translate(cx, cy); x.scale(A.face, 1);
+    if (S.ring) { x.rotate(now / 60); for (let i = 0; i < 2; i++) { x.globalAlpha = .55 - i * .2; x.strokeStyle = i ? '#FFFFFF' : A.col; x.lineWidth = 9 - i * 5; x.beginPath(); x.ellipse(0, 6, S.r * 1.3, S.r * .55, 0, 0, Math.PI * 1.6); x.stroke(); } }
+    else { const a0 = S.a0, a1 = S.a0 + (S.a1 - S.a0) * Math.min(1, S.q * 1.25), R0 = S.r * (S.wide ? 1.3 : 1), w = S.thrust ? 10 : 14; x.globalAlpha = Math.max(0, 1 - Math.max(0, S.q - .7) / .35);
+      const g = x.createLinearGradient(Math.cos(a0) * R0, Math.sin(a0) * R0, Math.cos(a1) * R0, Math.sin(a1) * R0); g.addColorStop(0, 'rgba(255,255,255,0)'); g.addColorStop(.6, A.col); g.addColorStop(1, '#FFFFFF');
+      x.fillStyle = g; x.beginPath(); x.arc(0, 0, R0 + w * .5, Math.min(a0, a1), Math.max(a0, a1)); x.arc(0, 0, R0 - w * .5, Math.max(a0, a1), Math.min(a0, a1), true); x.closePath(); x.fill(); }
+    x.restore(); }
+})(rpgCharAt);
+// ระหว่างออกท่า: ล็อกการเดิน (ตำแหน่งขยับตามท่าเท่านั้น)
+rpgUpdate = (f => function () { const A = RS.act55, s = R.save; if (!A || !s) return f.apply(this, arguments); const x0 = s.x, y0 = s.y, d0 = s.dir, d80 = s.d8; const r = f.apply(this, arguments); if (RS.act55 && performance.now() < A.t0 + A.dur * .9) { s.x = x0; s.y = y0; s.dir = d0; s.d8 = d80; } return r; })(rpgUpdate);
+// ร่ายสกิล: เริ่มท่า → ดาเมจ/เอฟเฟกต์เกิดตรงจังหวะกระทบ
+rpgFcCast49 = (f => function (i, k, lv, mo, rank) {
+  const j = rpgJob(), sg = rpgSig55(k), type = rpgActOf55(k, j, rank), col = sg?.c || rpgSkCol49(k[5], j);
+  if (type === 'power') { try { rpgActStart55('power', null, col, rank); } catch (e) {} return f.apply(this, arguments); }
+  if (RS.lowFx === 2) return f.apply(this, arguments);
+  const melee = ['leap', 'dash', 'spin', 'lunge', 'combo', 'vanish'].includes(type), D = rpgActStart55(type, mo, col, rank), args = arguments, self = this;
+  if (rank >= 2) try { rpgCutin49(k, col, rank, lv); } catch (e) {}
+  setTimeout(() => { if (!RS.map) return; RPG_EMB55 = melee; const c0 = rpgCutin49; rpgCutin49 = () => {}; try { f.apply(self, args); } catch (e) {} finally { RPG_EMB55 = false; rpgCutin49 = c0; } }, D);
+})(rpgFcCast49);
+rpgBuffFx49 = (f => function (k, j) { try { rpgActStart55('power', null, rpgSig55(k)?.c || j.col, 3); } catch (e) {} return f.apply(this, arguments); })(rpgBuffFx49);
 
 /* =====================================================================
    rpg-net.js — หน้าเกมของครู: จัดการตัวละคร (เลือกชั้น → ห้อง) · คำถามในเกม · ตรวจแชท · กิลด์ · โหมดครู
