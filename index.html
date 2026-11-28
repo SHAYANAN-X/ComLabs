@@ -5921,7 +5921,7 @@ if (typeof module !== 'undefined') module.exports = ExamParser;
 </script>
 <script>
 /* โลโก้: ภาพครูปลื้ม (ไฟล์ต้นฉบับ src/logo.svg ฝังตอน build) */
-const APP_VER = '55.9 · 28 พ.ย. 2569';
+const APP_VER = '56.0 · 28 พ.ย. 2569';
 let LOGO_N = 0;
 function logoSVG() { const k = 'L' + (++LOGO_N); return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><defs><linearGradient id="lgb" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3B9BFF"/><stop offset=".5" stop-color="#0A5BE0"/><stop offset="1" stop-color="#062C78"/></linearGradient><linearGradient id="lgs" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset=".6" stop-color="#FFF4D6"/><stop offset="1" stop-color="#FFD978"/></linearGradient><radialGradient id="lgc" cx=".3" cy=".08" r=".75"><stop offset="0" stop-color="#fff" stop-opacity=".55"/><stop offset=".5" stop-color="#fff" stop-opacity=".08"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient></defs><rect width="48" height="48" rx="13" fill="url(#lgb)"/><rect width="48" height="48" rx="13" fill="url(#lgc)"/><rect x=".75" y=".75" width="46.5" height="46.5" rx="12.3" fill="none" stroke="#fff" stroke-opacity=".45" stroke-width="1.2"/><g fill="none" stroke="#04235F" stroke-opacity=".35" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" transform="translate(0 1.2)"><path d="M21.2 17 C19.8 14.6 17.4 13.6 14.8 13.6 C11 13.6 8.6 15.6 8.6 18.5 C8.6 21.8 11.6 22.9 14.9 23.9 C18.6 25 21.6 26.4 21.6 29.8 C21.6 33 18.8 34.6 15.1 34.6 C12 34.6 9.5 33.4 8 31.1"/><path d="M26.6 14 L39.6 34.2 M39.6 14 L26.6 34.2"/></g><g fill="none" stroke="url(#lgs)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M21.2 17 C19.8 14.6 17.4 13.6 14.8 13.6 C11 13.6 8.6 15.6 8.6 18.5 C8.6 21.8 11.6 22.9 14.9 23.9 C18.6 25 21.6 26.4 21.6 29.8 C21.6 33 18.8 34.6 15.1 34.6 C12 34.6 9.5 33.4 8 31.1"/><path d="M26.6 14 L39.6 34.2 M39.6 14 L26.6 34.2"/></g></svg>`.replace('<svg ', '<svg class="logo" aria-hidden="true" ').replace(/\b(lg[bsc])\b/g, '$1' + k); }
 /* =====================================================================
@@ -24714,8 +24714,8 @@ const RPG_SIG55 = {
   'ice:หนามน้ำแข็งพันเล่ม': ['icespikes', 'rise', '#7FD8FF'], 'ice:ลมหายใจเหมันต์': ['frostbreath', 'fly', '#CFF4FF'], 'ice:ราชินีหิมะนิรันดร์': ['icequeen', 'hover', '#E6F8FF'],
   'priest:แสงศักดิ์สิทธิ์': ['star', 'rise', '#FFF1A0'], 'priest:รักษา': ['healheart', 'aura', '#7CFFB0'], 'priest:พรคุ้มกัน': ['holyshield', 'aura', '#FFE6A0'], 'priest:ฟื้นฟูมหาศาล': ['hearts', 'shower', '#FF9AC8'], 'priest:ลำแสงสวรรค์': ['beam', 'hover', '#FFF6C8'],
   'priest:สายฟ้าพิพากษา': ['holybolt', 'drop', '#FFF07A'], 'priest:วงแหวนชำระบาป': ['rings', 'orbit', '#FFE7A8'], 'priest:ปีกเทพบุตร': ['angel', 'hover', '#FFFFFF'],
-  'ninja:ดาวกระจาย': ['mixstar', 'fanmix', '#7A4CC8', 'throw', 'dark'], 'ninja:เงาสังหาร': ['kunai', 'fly', '#6A2AB8', 'throw', 'dark'], 'ninja:ร่างแยก': ['clones', 'aura', '#5A3A9A', null, 'dark'], 'ninja:พิษงูเห่า': ['poisonkunai', 'fly', '#4F9A3A', 'throw', 'dark'], 'ninja:ฟันเงาพันเล่ม': ['mixstorm', 'orbitmix', '#6A3AC8', 'throw', 'dark'],
-  'ninja:โซ่ฟาดเงา': ['chain', 'whip', '#7A4CC8', 'throw', 'dark'], 'ninja:โซ่พันธนาการ': ['chainbind', 'bind', '#6A4AB8', 'throw', 'dark'], 'ninja:โซ่อีกามรณะ': ['chaincrow', 'crows', '#5A2A9A', 'throw', 'dark'],
+  'ninja:ดาวกระจาย': ['mixstar', 'fanmix', '#8CFF3A', 'throw', 'dark'], 'ninja:เงาสังหาร': ['kunai', 'fly', '#6CFF4A', 'throw', 'dark'], 'ninja:ร่างแยก': ['clones', 'aura', '#5AE85A', null, 'dark'], 'ninja:พิษงูเห่า': ['poisonkunai', 'fly', '#C8FF3A', 'throw', 'dark'], 'ninja:ฟันเงาพันเล่ม': ['mixstorm', 'orbitmix', '#7CFF3A', 'throw', 'dark'],
+  'ninja:โซ่ฟาดเงา': ['chain', 'whip', '#7CFF5A', 'throw', 'dark'], 'ninja:โซ่พันธนาการ': ['chainbind', 'bind', '#5AFF8A', 'throw', 'dark'], 'ninja:โซ่อีกามรณะ': ['chaincrow', 'crows', '#7CFF3A', 'throw', 'dark'],
   'monk:หมัดเหล็ก': ['fist', 'stamp', '#FFB35A'], 'monk:หมัดพันทิศ': ['fists', 'orbit', '#FFC870'], 'monk:สมาธิ': ['lotus', 'aura', '#FFB8E0'], 'monk:ฝ่ามือพิฆาต': ['palm', 'drop', '#FFA040'], 'monk:หมัดเทพสวรรค์': ['dragon', 'fly', '#FFD23F'],
   'monk:เตะพายุหมุน': ['foot', 'spin', '#8CFFC8'], 'monk:หมัดคลื่นกระแทก': ['shock', 'stamp', '#FF8A5A'], 'monk:หมัดอสูรร้อยพัน': ['fistrain', 'rain', '#FF6A3A'],
   'bard:โน้ตคม': ['notes', 'fly', '#FF8FD8'], 'bard:เพลงปลุกใจ': ['horn', 'aura', '#FFD25A'], 'bard:เพลงกล่อมนิทรา': ['moon', 'hover', '#B8A8FF'], 'bard:เพลงเยียวยา': ['music', 'aura', '#7CFFB0'], 'bard:ซิมโฟนีสวรรค์': ['symph', 'hover', '#FFE8A0'],
@@ -24971,13 +24971,13 @@ rpgSigFx55 = (f => function (k, P, T, rank = 1, aoe = 60, n = 1) {
       const cx = (H.x + ex) / 2 - Math.sin(ang) * bend, cy = (H.y + ey) / 2 - 40 * (1 - ext) + Math.cos(ang) * bend * .4, L = Math.hypot(ex - H.x, ey - H.y), nL = Math.max(3, Math.floor(L / 12));
       x.save(); x.save(); x.globalCompositeOperation = 'lighter'; x.shadowColor = col; x.shadowBlur = 14; x.strokeStyle = col; x.globalAlpha = .35; x.lineWidth = 10; x.beginPath(); x.moveTo(H.x, H.y); x.quadraticCurveTo(cx, cy, ex, ey); x.stroke(); x.restore(); x.shadowBlur = 0;
       for (let i = 0; i <= nL; i++) { const t = i / nL, px = (1 - t) * (1 - t) * H.x + 2 * (1 - t) * t * cx + t * t * ex, py = (1 - t) * (1 - t) * H.y + 2 * (1 - t) * t * cy + t * t * ey, dx = 2 * (1 - t) * (cx - H.x) + 2 * t * (ex - cx), dy = 2 * (1 - t) * (cy - H.y) + 2 * t * (ey - cy), a = Math.atan2(dy, dx) + (i % 2 ? Math.PI / 2 : 0);
-        x.save(); x.translate(px, py); x.rotate(a); const rx = i % 2 ? 4.5 : 8, ry = i % 2 ? 2.6 : 4.6; x.beginPath(); x.ellipse(0, 0, rx, ry, 0, 0, 7); x.globalAlpha = .9; x.strokeStyle = '#0A0412'; x.lineWidth = 5.6; x.stroke(); x.strokeStyle = '#2A1446'; x.lineWidth = 3.4; x.stroke(); x.beginPath(); x.ellipse(0, -.6, rx, ry, 0, 3.6, 5.6); x.strokeStyle = col; x.lineWidth = 1.6; x.stroke(); x.restore(); }
+        x.save(); x.translate(px, py); x.rotate(a); const rx = i % 2 ? 4.5 : 8, ry = i % 2 ? 2.6 : 4.6; x.beginPath(); x.ellipse(0, 0, rx, ry, 0, 0, 7); x.globalAlpha = .9; x.strokeStyle = '#050805'; x.lineWidth = 5.6; x.stroke(); x.strokeStyle = '#1A2A18'; x.lineWidth = 3.4; x.stroke(); x.beginPath(); x.ellipse(0, -.6, rx, ry, 0, 3.6, 5.6); x.strokeStyle = col; x.lineWidth = 1.6; x.stroke(); x.restore(); }
       x.shadowBlur = 0; x.globalCompositeOperation = 'source-over'; const sp = rpgShadowSprite55('kunai', col), da = Math.atan2(ey - cy, ex - cx); x.translate(ex, ey); x.rotate(da + Math.PI / 4 - .78 + .78); x.scale(.42, .42); x.drawImage(sp.c, -sp.W / 2, -sp.W / 2); x.restore(); } });
     X49.later(dur * .45, () => { X49.big({ k: 'slash', x: T.x, y: T.y - 20, r: 46 + R * 6, rot: face < 0 ? Math.PI - .4 : .4, col, dur: 300, w: 9 }); }); hit(dur * .45, 8); }
   if (sg.m === 'bind') { // โซ่พันธนาการ: โซ่หลายวงหมุนรัดรอบตัวศัตรู ค้างไว้
     SKX55.push({ t0: performance.now(), d: 0, dur: 1100, g: 'chain', col, f: () => ({ a: 1, s: 1, x: 0, y: 0 }), draw: (x, e) => { const tight = ez(Math.min(1, e / .35)), al = e < .85 ? 1 : (1 - e) / .15; x.save(); x.shadowBlur = 0;
       [[-38, 36, 12, .25], [-20, 32, 11, -.3], [-4, 28, 10, .15]].forEach(([oy, rx, ry, tilt], k) => { const r1 = rx * (1.9 - .9 * tight), r2 = ry * (1.9 - .9 * tight), rot = performance.now() / (240 + k * 60) * (k % 2 ? -1 : 1); for (let i = 0; i < 12; i++) { const a = i / 12 * Math.PI * 2 + rot, px = Math.cos(a) * r1, py = Math.sin(a) * r2;
-        x.save(); x.translate(T.x + px * Math.cos(tilt) - py * Math.sin(tilt), T.y + oy + px * Math.sin(tilt) + py * Math.cos(tilt)); x.rotate(a + Math.PI / 2 + (i % 2 ? Math.PI / 2 : 0)); const rx = i % 2 ? 4 : 7.5, ry = i % 2 ? 2.4 : 4.2; x.globalAlpha = .92 * al; x.beginPath(); x.ellipse(0, 0, rx, ry, 0, 0, 7); x.strokeStyle = '#0A0412'; x.lineWidth = 5.2; x.stroke(); x.strokeStyle = '#2A1446'; x.lineWidth = 3.2; x.stroke(); x.beginPath(); x.ellipse(0, -.5, rx, ry, 0, 3.6, 5.6); x.strokeStyle = col; x.lineWidth = 1.5; x.stroke(); x.restore(); } }); x.restore(); } });
+        x.save(); x.translate(T.x + px * Math.cos(tilt) - py * Math.sin(tilt), T.y + oy + px * Math.sin(tilt) + py * Math.cos(tilt)); x.rotate(a + Math.PI / 2 + (i % 2 ? Math.PI / 2 : 0)); const rx = i % 2 ? 4 : 7.5, ry = i % 2 ? 2.4 : 4.2; x.globalAlpha = .92 * al; x.beginPath(); x.ellipse(0, 0, rx, ry, 0, 0, 7); x.strokeStyle = '#050805'; x.lineWidth = 5.2; x.stroke(); x.strokeStyle = '#1A2A18'; x.lineWidth = 3.2; x.stroke(); x.beginPath(); x.ellipse(0, -.5, rx, ry, 0, 3.6, 5.6); x.strokeStyle = col; x.lineWidth = 1.5; x.stroke(); x.restore(); } }); x.restore(); } });
     for (let i = 0; i < 3; i++) X49.later(80 + i * 90, () => X49.big({ k: 'beam', x: T.x + Math.cos(i * 2.1) * 120, y: T.y - 20 + Math.sin(i * 2.1) * 50, x2: T.x, y2: T.y - 20, w: 5, col, dur: 260 }));
     hit(360, 7); X49.later(700, () => X49.burst(T.x, T.y - 20, 18, col, 220)); }
   if (sg.m === 'crows') { // ปาคุไนเงา → กลางทางกลายเป็นอีกาดำตัวเล็ก → บินไปรุมจิกศัตรู
@@ -25010,7 +25010,7 @@ function rpgShadowSprite55(g, col) {
   o.shadowColor = col; o.shadowBlur = S * .12; o.globalAlpha = .55; o.drawImage(glow, 0, 0); o.shadowBlur = 0;
   // ตัวดำโปร่ง (ไล่จากดำสนิทกลางตัว → ม่วงเข้มขอบ)
   const body = document.createElement('canvas'); body.width = body.height = W2; const bx = body.getContext('2d'); bx.drawImage(A, 0, 0); bx.globalCompositeOperation = 'source-in';
-  const gr = bx.createRadialGradient(W2 / 2, W2 / 2, 0, W2 / 2, W2 / 2, S * .6); gr.addColorStop(0, 'rgba(6,2,12,.92)'); gr.addColorStop(.6, 'rgba(20,8,36,.85)'); gr.addColorStop(1, 'rgba(46,20,80,.75)'); bx.fillStyle = gr; bx.fillRect(0, 0, W2, W2);
+  const gr = bx.createRadialGradient(W2 / 2, W2 / 2, 0, W2 / 2, W2 / 2, S * .6); gr.addColorStop(0, 'rgba(4,6,4,.92)'); gr.addColorStop(.6, 'rgba(12,20,12,.86)'); gr.addColorStop(1, 'rgba(24,46,20,.78)'); bx.fillStyle = gr; bx.fillRect(0, 0, W2, W2);
   o.globalAlpha = 1; o.drawImage(body, 0, 0);
   // เส้นขอบ/รายละเอียดสีม่วงเรือง
   const rim = document.createElement('canvas'); rim.width = rim.height = W2; const rx = rim.getContext('2d'); rx.drawImage(B, 0, 0); rx.globalCompositeOperation = 'source-in'; rx.fillStyle = col; rx.fillRect(0, 0, W2, W2);
@@ -25021,16 +25021,43 @@ function rpgShadowSprite55(g, col) {
 function rpgShadowSmoke55(x0, y0, n = 9, size = 1, col = '#5A2A9A') {
   const puffs = Array.from({ length: n }, () => ({ a: Math.random() * 6.283, d: 6 + Math.random() * 26 * size, r: (14 + Math.random() * 14) * size, up: 14 + Math.random() * 26 }));
   SKX55.push({ t0: performance.now(), d: 0, dur: 760, g: 'star', col, f: () => ({ a: 1, s: 1, x: 0, y: 0 }), draw: (x, e) => { x.save(); x.globalCompositeOperation = 'source-over';
-    puffs.forEach(p => { const k = 1 - Math.pow(1 - e, 2), px = x0 + Math.cos(p.a) * p.d * (.4 + k), py = y0 - 14 + Math.sin(p.a) * p.d * .45 * (.4 + k) - p.up * k, r = p.r * (.5 + k * .9), al = (1 - e) * .62;
-      const g = x.createRadialGradient(px, py, 0, px, py, r); g.addColorStop(0, `rgba(10,4,20,${al})`); g.addColorStop(.55, `rgba(34,14,60,${al * .7})`); g.addColorStop(1, 'rgba(34,14,60,0)'); x.fillStyle = g; x.beginPath(); x.arc(px, py, r, 0, 7); x.fill(); });
+    puffs.forEach(p => { const k = 1 - Math.pow(1 - e, 2), px = x0 + Math.cos(p.a) * p.d * (.4 + k), py = y0 - 14 + Math.sin(p.a) * p.d * .45 * (.4 + k) - p.up * k, r = p.r * (.5 + k * .9), al = (1 - e) * .45;
+      const g = x.createRadialGradient(px, py, 0, px, py, r); g.addColorStop(0, `rgba(6,10,6,${al})`); g.addColorStop(.55, `rgba(18,40,16,${al * .7})`); g.addColorStop(1, 'rgba(18,40,16,0)'); x.fillStyle = g; x.beginPath(); x.arc(px, py, r, 0, 7); x.fill(); });
     x.restore(); } });
 }
 // ละอองเงาลอยขึ้นจากวัตถุ
 function rpgWisp55(x0, y0, col) { if (SKX55.length > 90) return; const vx = (Math.random() - .5) * 14, r = 3 + Math.random() * 4;
-  SKX55.push({ t0: performance.now(), d: 0, dur: 520, g: 'star', col, f: () => ({ a: 1, s: 1, x: 0, y: 0 }), draw: (x, e) => { const px = x0 + vx * e, py = y0 - 26 * e, rr = r * (1 + e); x.save(); const g = x.createRadialGradient(px, py, 0, px, py, rr * 1.8); g.addColorStop(0, `rgba(14,6,26,${(1 - e) * .55})`); g.addColorStop(1, 'rgba(30,12,54,0)'); x.fillStyle = g; x.beginPath(); x.arc(px, py, rr * 1.8, 0, 7); x.fill(); x.restore(); } });
+  SKX55.push({ t0: performance.now(), d: 0, dur: 520, g: 'star', col, f: () => ({ a: 1, s: 1, x: 0, y: 0 }), draw: (x, e) => { const px = x0 + vx * e, py = y0 - 26 * e, rr = r * (1 + e); x.save(); const g = x.createRadialGradient(px, py, 0, px, py, rr * 1.8); g.addColorStop(0, `rgba(8,14,8,${(1 - e) * .55})`); g.addColorStop(1, 'rgba(18,40,16,0)'); x.fillStyle = g; x.beginPath(); x.arc(px, py, rr * 1.8, 0, 7); x.fill(); x.restore(); } });
 }
 // นินจา: ควันเงาตอนกระทบทุกสกิล + ตอนออกท่า
-rpgSigFx55 = (f => function (k, P, T) { const r = f.apply(this, arguments); try { const sg = rpgSig55(k); if (sg?.dark) { const col = sg.c; rpgShadowSmoke55(P.x, P.y, 6, .7, col); [260, 520].forEach(t => X49.later(t, () => rpgShadowSmoke55(T.x, T.y, 10, 1.1, col))); } } catch (e) {} return r; })(rpgSigFx55);
+rpgSigFx55 = (f => function (k, P, T) { const r = f.apply(this, arguments); try { const sg = rpgSig55(k); if (sg?.dark) { const col = sg.c; rpgShadowSmoke55(P.x, P.y, 6, .7, col); X49.later(260, () => rpgShadowSmoke55(T.x, T.y, 5, .75, col)); } } catch (e) {} return r; })(rpgSigFx55);
+
+/* ---------- สไตล์ Raven: ใบมีดพลังงานเขียวโค้งหมุนรอบเป้า + รอยลมขาว + อีกาตัวเล็กรุมจิก ---------- */
+function rpgRavenSlash55(T, col = '#7CFF3A', n = 3, R = 2, big = 1) {
+  const C = Array.from({ length: n }, (_, i) => ({ a0: Math.random() * 6.28, dir: i % 2 ? -1 : 1, rad: (38 + Math.random() * 30 + R * 6) * big, w: (10 + Math.random() * 6) * big, tilt: (Math.random() - .5) * .9, d: i * 70, white: i % 3 === 2 }));
+  SKX55.push({ t0: performance.now(), d: 0, dur: 520 + n * 70, g: 'star', col, f: () => ({ a: 1, s: 1, x: 0, y: 0 }), draw: (x, e0, now) => {
+    const t = e0 * (520 + n * 70); x.save(); x.globalCompositeOperation = 'lighter';
+    C.forEach(c => { const e = Math.max(0, Math.min(1, (t - c.d) / 480)); if (e <= 0 || e >= 1) return; const k = 1 - Math.pow(1 - e, 3), sweep = 3.6 * k, a1 = c.a0 + c.dir * sweep, tail = Math.min(sweep, 2.4), al = e < .7 ? 1 : (1 - e) / .3;
+      x.save(); x.translate(T.x, T.y - 26); x.rotate(c.tilt); x.scale(1, .5); const N = 22;
+      for (let pass = 0; pass < 2; pass++) { x.beginPath(); for (let i = 0; i <= N; i++) { const q = i / N, a = a1 - c.dir * tail * q, ww = c.w * (1 - q) * (pass ? .35 : 1); x.lineTo(Math.cos(a) * (c.rad + ww), Math.sin(a) * (c.rad + ww)); } for (let i = N; i >= 0; i--) { const q = i / N, a = a1 - c.dir * tail * q, ww = c.w * (1 - q) * (pass ? .35 : 1); x.lineTo(Math.cos(a) * (c.rad - ww * .4), Math.sin(a) * (c.rad - ww * .4)); }
+        x.closePath(); x.globalAlpha = al * (pass ? .95 : .7); x.fillStyle = pass ? '#FFFFFF' : (c.white ? '#E8FFE0' : col); if (!pass) { x.shadowColor = col; x.shadowBlur = 18; } else x.shadowBlur = 0; x.fill(); }
+      x.restore(); });
+    x.restore(); } });
+}
+function rpgCrowSwarm55(T, n = 6, R = 2, from = null, dur = 1150) {
+  for (let i = 0; i < n; i++) { const side = i % 2 ? 1 : -1, ph = Math.random() * 6.28, rad = 20 + Math.random() * 18, per = 160 + Math.random() * 80, d0 = i * 45, sx = from ? from.x : T.x + Math.cos(ph) * 120, sy = from ? from.y : T.y - 60 + Math.sin(ph) * 40;
+    rpgGly55({ dark: 1, g: 'crow', col: '#4A5A44', dur, d: d0, f: e => { const t = e * dur; let x, y, flip, peck = 0;
+      if (t < 240) { const q = t / 240, k = 1 - Math.pow(1 - q, 2); x = sx + (T.x + side * rad - sx) * k; y = sy + (T.y - 34 - sy) * k - Math.sin(q * Math.PI) * 20; flip = T.x < sx; }
+      else { const tt = t - 240, cyc = (tt + ph * 40) % per / per; peck = cyc < .35 ? Math.sin(cyc / .35 * Math.PI) : 0; const a = ph + tt / 380 * side, r0 = rad * (1 - peck * .75); x = T.x + Math.cos(a) * r0; y = T.y - 30 + Math.sin(a) * r0 * .45 + peck * 9; flip = Math.cos(a) > 0; }
+      return { x, y, s: 18 + R, sy: 1 + Math.sin(t / 34) * .25, r: peck * (flip ? -.5 : .5), flip, a: e < .86 ? Math.min(1, t / 120) : (1 - e) / .14 }; } }); }
+  for (let t = 300; t < dur; t += 120) X49.later(t, () => X49.burst(T.x + (Math.random() - .5) * 24, T.y - 26 + (Math.random() - .5) * 12, 3, '#B8FF7A', 110, { r: 1.6 }));
+}
+// นินจา: ทุกสกิลโจมตีมีใบมีดเขียวหมุน + อีการุมจิก
+rpgSigFx55 = (f => function (k, P, T, rank = 1) { const r = f.apply(this, arguments); try { const sg = rpgSig55(k); if (sg?.dark && sg.m !== 'aura' && T !== P) { const R = Math.min(4, rank), col = sg.c;
+  X49.later(240, () => rpgRavenSlash55(T, col, 2 + Math.min(2, R), R)); X49.later(520, () => rpgRavenSlash55(T, col, 2, R, 1.25));
+  if (sg.m !== 'crows') X49.later(300, () => rpgCrowSwarm55(T, 4 + R, R)); } } catch (e) {} return r; })(rpgSigFx55);
+// ตีธรรมดาของนินจา: ใบมีดเขียวเล็ก ๆ ตอนโดน
+rpgFcSwing = (f => function (mo) { const r = f.apply(this, arguments); try { if (R.save?.job === 'ninja' && mo && FC.atk && performance.now() - FC.atk.t0 < 40) X49.later(330, () => { if (!mo.dead) rpgRavenSlash55({ x: mo.x * TS, y: mo.y * TS }, '#7CFF3A', 1, 1, .8); }); } catch (e) {} return r; })(rpgFcSwing);
 
 /* rpg-v55snd.js — เสียงชุดใหม่ (สังเคราะห์ในเบราว์เซอร์ทั้งหมด ไม่มีไฟล์ลิขสิทธิ์)
    · เพลงประจำแผนที่: เรียบเรียงจากเพลงคลาสสิกที่หมดลิขสิทธิ์แล้ว (ประพันธ์ก่อน ค.ศ. 1929 / ผู้ประพันธ์เสียชีวิตเกิน 70 ปี) + ทำนองแต่งเอง
