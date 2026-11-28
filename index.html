@@ -5921,7 +5921,7 @@ if (typeof module !== 'undefined') module.exports = ExamParser;
 </script>
 <script>
 /* โลโก้: ภาพครูปลื้ม (ไฟล์ต้นฉบับ src/logo.svg ฝังตอน build) */
-const APP_VER = '56.1 · 28 พ.ย. 2569';
+const APP_VER = '56.2 · 28 พ.ย. 2569';
 let LOGO_N = 0;
 function logoSVG() { const k = 'L' + (++LOGO_N); return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><defs><linearGradient id="lgb" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3B9BFF"/><stop offset=".5" stop-color="#0A5BE0"/><stop offset="1" stop-color="#062C78"/></linearGradient><linearGradient id="lgs" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset=".6" stop-color="#FFF4D6"/><stop offset="1" stop-color="#FFD978"/></linearGradient><radialGradient id="lgc" cx=".3" cy=".08" r=".75"><stop offset="0" stop-color="#fff" stop-opacity=".55"/><stop offset=".5" stop-color="#fff" stop-opacity=".08"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient></defs><rect width="48" height="48" rx="13" fill="url(#lgb)"/><rect width="48" height="48" rx="13" fill="url(#lgc)"/><rect x=".75" y=".75" width="46.5" height="46.5" rx="12.3" fill="none" stroke="#fff" stroke-opacity=".45" stroke-width="1.2"/><g fill="none" stroke="#04235F" stroke-opacity=".35" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" transform="translate(0 1.2)"><path d="M21.2 17 C19.8 14.6 17.4 13.6 14.8 13.6 C11 13.6 8.6 15.6 8.6 18.5 C8.6 21.8 11.6 22.9 14.9 23.9 C18.6 25 21.6 26.4 21.6 29.8 C21.6 33 18.8 34.6 15.1 34.6 C12 34.6 9.5 33.4 8 31.1"/><path d="M26.6 14 L39.6 34.2 M39.6 14 L26.6 34.2"/></g><g fill="none" stroke="url(#lgs)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M21.2 17 C19.8 14.6 17.4 13.6 14.8 13.6 C11 13.6 8.6 15.6 8.6 18.5 C8.6 21.8 11.6 22.9 14.9 23.9 C18.6 25 21.6 26.4 21.6 29.8 C21.6 33 18.8 34.6 15.1 34.6 C12 34.6 9.5 33.4 8 31.1"/><path d="M26.6 14 L39.6 34.2 M39.6 14 L26.6 34.2"/></g></svg>`.replace('<svg ', '<svg class="logo" aria-hidden="true" ').replace(/\b(lg[bsc])\b/g, '$1' + k); }
 /* =====================================================================
@@ -23559,7 +23559,7 @@ function rpgFcAttack(target) {
   FC.tgt = mo; FC.auto = true; rpgFcMs(mo);
 }
 function rpgFcSwing(mo, now) {
-  const s = R.save, st = rpgStats(), j = rpgJob(), melee = RPG_MELEE.has(j.wt) && s.job !== 'ninja', mag = RPG_WT[j.wt]?.mag;
+  const s = R.save, st = rpgStats(), j = rpgJob(), melee = RPG_MELEE.has(j.wt) && s.job !== 'ninja' && !RPG_MIDJOB55.has(s.job), mag = RPG_WT[j.wt]?.mag;
   rpgFcFace(mo.x - s.x, mo.y - s.y); RS.walkTo = null;
   FC.atk = { t0: now, dur: melee ? 360 : 420 }; FC.cd = now + (melee ? 560 : 680);
   const crit = Math.random() * 100 < st.crit, pow = mag ? Math.max(st.atk, st.matk * .8) : st.atk, ms = rpgFcMs(mo);
@@ -23568,7 +23568,8 @@ function rpgFcSwing(mo, now) {
   const col = rpgTierCol(Math.max(0, rpgGear().wtier));
   rpgSfx(j.wt === 'bow' ? 'bow' : mag ? 'magic' : 'slash');
   const land = melee ? 150 : 320;
-  if (!melee && s.job !== 'ninja') rpgFcFx({ k: 'proj', x: s.x, y: s.y - .9, x2: mo.x, y2: mo.y - .6, col: j.wt === 'bow' ? '#FFFFFF' : (j.col || col), dur: land, arrow: j.wt === 'bow' });
+  if (!melee && s.job === 'sword') rpgCrescentWave55({ x: s.x * TS, y: s.y * TS }, { x: mo.x * TS, y: mo.y * TS }, '#6FA0FF', 1, 1, .75);
+  else if (!melee && s.job !== 'ninja') rpgFcFx({ k: 'proj', x: s.x, y: s.y - .9, x2: mo.x, y2: mo.y - .6, col: j.wt === 'bow' ? '#FFFFFF' : (j.col || col), dur: land, arrow: j.wt === 'bow' });
   setTimeout(() => { if (!RS.mon.includes(mo) || mo.dead) return; if (melee) rpgFcFx({ k: 'slash', x: mo.x, y: mo.y - .55, col, dir: Math.sign(mo.x - s.x) || 1, dur: 260 }); rpgFcHit(mo, d, crit ? 'crit' : '', col); }, land);
 }
 function rpgFcHit(mo, d, kind, col) {
@@ -23844,7 +23845,7 @@ function rpgFcCast49(i, k, lv, mo, rank) {
   if (rank >= 2) rpgCutin49(k, col, rank, lv);
   if (type === 'h') { const h0 = s.hp; s.hp = Math.min(st.mhp, s.hp + Math.round(st.matk * mult * 1.3 + st.mhp * .08)); const P = { x: s.x * TS, y: s.y * TS }; X49.big({ k: 'pillar', x: P.x, y: P.y, w: 40, h: 200, col: '#7CFFB0', dur: 1000 }); FX49.circle(P, '#7CFFB0', 3); rpgFcNum(s.x, s.y - 1.6, `+${s.hp - h0}`, '#7CFFB0', 1); rpgHud(); return; }
   // สายประชิด: พุ่งเข้าหาเป้าพร้อมเงาร่าง
-  const melee = RPG_MELEE.has(j.wt) && R.save.job !== 'ninja' && ['slash', 'pierce', 'punch', 'dark', 'quake'].includes(fxA);
+  const melee = RPG_MELEE.has(j.wt) && R.save.job !== 'ninja' && !RPG_MIDJOB55.has(R.save.job) && ['slash', 'pierce', 'punch', 'dark', 'quake'].includes(fxA);
   if (melee) { const dx = mo.x - s.x, dy = mo.y - s.y, L = Math.hypot(dx, dy); if (L > 1.1) { const nx = mo.x - dx / L * .9, ny = mo.y - dy / L * .9; if (!rpgSolid(nx, ny)) { for (let q = 0; q < 5; q++) X49.pt({ x: (s.x + (nx - s.x) * q / 5) * TS, y: (s.y + (ny - s.y) * q / 5) * TS - 24, col, r: 14, life: 380, k: 'ghost' }); s.x = nx; s.y = ny; } } }
   rpgFcFace(mo.x - s.x, mo.y - s.y);
   const P = RPG_ORIGIN55 || { x: s.x * TS, y: s.y * TS }, T = { x: mo.x * TS, y: mo.y * TS };
@@ -24041,7 +24042,8 @@ rpgFcBar = (f => function () { const host = document.getElementById('rpg-act'); 
 
 /* ---------- 2) ระยะโจมตี/สกิลตามอาชีพ + ยิงข้ามสิ่งกีดขวางไม่ได้ ---------- */
 const RPG_RANGE52 = { bow: 6.2, staff: 5.4, fstaff: 5.4, istaff: 5.4, wand: 5, orb: 5, lute: 4.6, tablet: 5, hammer: 1.45 };
-rpgFcRange = function () { if (R.save?.job === 'ninja') return 5.6; const wt = rpgJob().wt, t = RPG_WT2?.[wt] || wt; return RPG_RANGE52[t] || RPG_RANGE52[wt] || (RPG_MELEE.has(wt) ? 1.35 : 4.6); };
+var RPG_MIDJOB55 = new Set(['sword', 'engineer']);   // ตีไกลระดับกลาง
+rpgFcRange = function () { if (R.save?.job === 'ninja') return 5.6; if (RPG_MIDJOB55.has(R.save?.job)) return 3.2; const wt = rpgJob().wt, t = RPG_WT2?.[wt] || wt; return RPG_RANGE52[t] || RPG_RANGE52[wt] || (RPG_MELEE.has(wt) ? 1.35 : 4.6); };
 const rpgIsRanged52 = () => rpgFcRange() > 2;
 function rpgLOS52(ax, ay, bx, by) { const L = Math.hypot(bx - ax, by - ay), n = Math.ceil(L / .2); for (let i = 1; i < n; i++) { const t = i / n; if (rpgSolid(ax + (bx - ax) * t, ay + (by - ay) * t)) return false; } return true; }
 function rpgSkRange52(k) { if (!k) return 0; if (k[4] === 'h' || k[4] === 'b') return 99; if (!rpgIsRanged52()) return ['slash', 'pierce', 'punch', 'dark', 'quake'].includes(k[5]) ? 3.2 : 1.9; return rpgFcRange() + .4; }
@@ -25370,7 +25372,7 @@ function rpgActPose55(A, e) {
 function rpgActStart55(type, mo, col, rank, sg) {
   const s = R.save, [dur, hit] = ACT55.T[type], t0 = performance.now();
   const x0 = s.x, y0 = s.y; let face = mo ? (mo.x < s.x ? -1 : 1) : (s.dir === 'l' ? -1 : 1);
-  if (mo && ['leap', 'dash', 'spin', 'lunge', 'combo', 'vanish'].includes(type)) {
+  if (mo && !RPG_MIDJOB55.has(R.save?.job) && R.save?.job !== 'ninja' && ['leap', 'dash', 'spin', 'lunge', 'combo', 'vanish'].includes(type)) {
     const dx = mo.x - s.x, dy = mo.y - s.y, L = Math.hypot(dx, dy) || 1, ux = dx / L, uy = dy / L;
     const goal = type === 'dash' || type === 'vanish' ? [mo.x + ux * .95, mo.y + uy * .55] : [mo.x - ux * .8, mo.y - uy * .45];
     const ok = (gx, gy) => !rpgSolid(gx, gy) && !rpgSolid(gx, gy + .2);
