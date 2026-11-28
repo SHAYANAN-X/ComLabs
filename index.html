@@ -5921,7 +5921,7 @@ if (typeof module !== 'undefined') module.exports = ExamParser;
 </script>
 <script>
 /* โลโก้: ภาพครูปลื้ม (ไฟล์ต้นฉบับ src/logo.svg ฝังตอน build) */
-const APP_VER = '56.2 · 28 พ.ย. 2569';
+const APP_VER = '56.3 · 28 พ.ย. 2569';
 let LOGO_N = 0;
 function logoSVG() { const k = 'L' + (++LOGO_N); return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><defs><linearGradient id="lgb" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3B9BFF"/><stop offset=".5" stop-color="#0A5BE0"/><stop offset="1" stop-color="#062C78"/></linearGradient><linearGradient id="lgs" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset=".6" stop-color="#FFF4D6"/><stop offset="1" stop-color="#FFD978"/></linearGradient><radialGradient id="lgc" cx=".3" cy=".08" r=".75"><stop offset="0" stop-color="#fff" stop-opacity=".55"/><stop offset=".5" stop-color="#fff" stop-opacity=".08"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient></defs><rect width="48" height="48" rx="13" fill="url(#lgb)"/><rect width="48" height="48" rx="13" fill="url(#lgc)"/><rect x=".75" y=".75" width="46.5" height="46.5" rx="12.3" fill="none" stroke="#fff" stroke-opacity=".45" stroke-width="1.2"/><g fill="none" stroke="#04235F" stroke-opacity=".35" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" transform="translate(0 1.2)"><path d="M21.2 17 C19.8 14.6 17.4 13.6 14.8 13.6 C11 13.6 8.6 15.6 8.6 18.5 C8.6 21.8 11.6 22.9 14.9 23.9 C18.6 25 21.6 26.4 21.6 29.8 C21.6 33 18.8 34.6 15.1 34.6 C12 34.6 9.5 33.4 8 31.1"/><path d="M26.6 14 L39.6 34.2 M39.6 14 L26.6 34.2"/></g><g fill="none" stroke="url(#lgs)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M21.2 17 C19.8 14.6 17.4 13.6 14.8 13.6 C11 13.6 8.6 15.6 8.6 18.5 C8.6 21.8 11.6 22.9 14.9 23.9 C18.6 25 21.6 26.4 21.6 29.8 C21.6 33 18.8 34.6 15.1 34.6 C12 34.6 9.5 33.4 8 31.1"/><path d="M26.6 14 L39.6 34.2 M39.6 14 L26.6 34.2"/></g></svg>`.replace('<svg ', '<svg class="logo" aria-hidden="true" ').replace(/\b(lg[bsc])\b/g, '$1' + k); }
 /* =====================================================================
@@ -12167,7 +12167,7 @@ const RPG_JOBS = {
     sk: [['โน้ตคม', '🎶', 5, 1.7, 'm', 'music'], ['เพลงปลุกใจ', '🎺', 14, 0, 'b', 'buff', { buff: { k: 'atk', v: .45, n: 3 } }], ['เพลงกล่อมนิทรา', '🌙', 16, 1.5, 'm', 'music', { stun: .55 }], ['เพลงเยียวยา', '🎻', 24, .45, 'h', 'heal'], ['ซิมโฟนีสวรรค์', '🎼', 48, 4.4, 'm', 'music']] },
   summon: { n: 'ผู้อัญเชิญ', ic: '🐉', col: '#14B8A6', wt: 'orb', st: { str: 3, int: 9, vit: 5, agi: 5 }, d: 'เรียกสัตว์วิญญาณมาช่วย สัตว์เลี้ยงแรงขึ้น 50%', petBoost: .5,
     sk: [['วิญญาณจิ้งจอก', '🦊', 6, 1.8, 'm', 'summon', { ic: '🦊' }], ['สายสัมพันธ์', '💞', 14, .4, 'h', 'heal'], ['อัญเชิญกริฟฟอน', '🦅', 22, 2.8, 'm', 'summon', { ic: '🦅' }], ['พลังฝูงสัตว์', '🐾', 18, 0, 'b', 'buff', { buff: { k: 'atk', v: .4, n: 3 } }], ['มังกรวิญญาณ', '🐲', 50, 5.0, 'm', 'summon', { ic: '🐲' }]] },
-  engineer: { n: 'วิศวกรไซเบอร์', ic: '🔧', col: '#F59E0B', wt: 'hammer', st: { str: 7, int: 6, vit: 7, agi: 3 }, d: 'สร้างระเบิดและป้อมปืน ทนและแรงสมดุล',
+  engineer: { n: 'ครูคอมพิวเตอร์', ic: '👨‍🏫', col: '#2EC8FF', wt: 'hammer', st: { str: 7, int: 6, vit: 7, agi: 3 }, d: 'ใช้พลังการสอนเขียนเว็บ อัลกอริทึม และเทคโนโลยี EV ทนและแรงสมดุล',
     sk: [['ค้อนเหล็ก', '🔨', 5, 1.8, 'p', 'quake'], ['ระเบิดกระป๋อง', '💣', 12, 2.4, 'p', 'bomb'], ['ป้อมปืนเลเซอร์', '🔫', 22, .8, 'p', 'laser', { hits: 4 }], ['โล่พลังงาน', '🔋', 16, 0, 'b', 'buff', { buff: { k: 'def', v: .55, n: 3 } }], ['หุ่นยักษ์ถล่ม', '🤖', 50, 4.8, 'p', 'bomb']] },
   hacker: { n: 'แฮกเกอร์หมวกขาว', ic: '💻', col: '#10B981', wt: 'tablet', st: { str: 3, int: 10, vit: 4, agi: 7 }, d: 'ใช้โค้ดป้องกันภัยไซเบอร์ เจาะจุดอ่อนมอนสเตอร์',
     sk: [['โค้ดโจมตี', '💾', 5, 1.8, 'm', 'glitch'], ['ไฟร์วอลล์', '🧱', 14, 0, 'b', 'buff', { buff: { k: 'def', v: .5, n: 3 } }], ['DDoS ย้อนกลับ', '📡', 22, .65, 'm', 'glitch', { hits: 5 }], ['แพตช์ระบบ', '🩹', 20, .4, 'h', 'heal'], ['Zero-Day', '☢️', 50, 5.2, 'm', 'glitch', { stun: .3 }]] },
@@ -17150,7 +17150,7 @@ const RPG_CLASS = {
   monk: [['นักสู้หมัด', 'Brawler'], ['นักศิลปะการต่อสู้', 'Martial Artist'], ['แกรนด์มาสเตอร์', 'Grandmaster'], ['อสูรหมัดเทพ', 'Asura']],
   bard: [['กวีดนตรี', 'Bard'], ['มินสเตรล', 'Minstrel'], ['มาเอสโตร', 'Maestro'], ['เทพแห่งบทเพลง', 'Song Deity']],
   summon: [['ผู้อัญเชิญ', 'Summoner'], ['ผู้ฝึกสัตว์', 'Beast Tamer'], ['ผู้เรียกวิญญาณ', 'Spirit Caller'], ['จอมมังกร', 'Dragon Lord']],
-  engineer: [['วิศวกรไซเบอร์', 'Engineer'], ['ช่างกล', 'Mechanic'], ['จอมเฟือง', 'Gearmaster'], ['ผู้บัญชาการเมคา', 'Mecha Commander']],
+  engineer: [['ครูคอมพิวเตอร์', 'Computer Teacher'], ['ครูชำนาญการ', 'Senior Teacher'], ['ครูเชี่ยวชาญ', 'Expert Teacher'], ['ปรมาจารย์โค้ด', 'Code Grandmaster']],
   hacker: [['แฮกเกอร์หมวกขาว', 'White-Hat Hacker'], ['ผู้พิทักษ์ไซเบอร์', 'Cyber Guardian'], ['สถาปนิกโค้ด', 'Code Architect'], ['ผู้คุมควอนตัม', 'Quantum Sentinel']],
 };
 const RPG_CQ = { 2: { z: 'cave2', kill: 15, quiz: 5, m: 'gale' }, 3: { z: 'ice3', kill: 20, quiz: 6, m: 'orin' }, 4: { z: 'volcano2', kill: 25, quiz: 8, m: 'aldric' } };
@@ -17623,7 +17623,7 @@ rpgEnter = function () { if (R.teacher && R.save?.job && R.save.tmax !== 28) rpg
 
 /* ---------- เปลี่ยนคลาส 2: เลือกอาชีพย่อย ---------- */
 const RPG_BRDESC = { sword: 'ดาบสองมือ ฟันแรงต่อเนื่อง', knight: 'โล่ + ดาบ ทนทาน บัพป้องกันให้ทีม', monk: 'หมัดหนักหลายครั้ง ฟื้นตัวเองได้', archer: 'ยิงไกล คริติคอลสูง', ninja: 'โจมตีหลายครั้ง หลบเก่ง', bard: 'เพลงบัพทีม ทำให้ศัตรูหลับ',
-  fire: 'เวทไฟแรงที่สุด', ice: 'เวทน้ำแข็ง แช่แข็งศัตรู', summon: 'เรียกสัตว์วิญญาณ บัพทีม', priest: 'รักษาเก่งสุด บัพทีม', engineer: 'ระเบิด ป้อมปืน โล่พลังงาน', hacker: 'โค้ดโจมตี ไฟร์วอลล์ทีม' };
+  fire: 'เวทไฟแรงที่สุด', ice: 'เวทน้ำแข็ง แช่แข็งศัตรู', summon: 'เรียกสัตว์วิญญาณ บัพทีม', priest: 'รักษาเก่งสุด บัพทีม', engineer: 'ครูคอมพิวเตอร์ สอนเขียนเว็บ อัลกอริทึม และเทคโนโลยี EV', hacker: 'โค้ดโจมตี ไฟร์วอลล์ทีม' };
 function rpgBranchTo(job) {
   const s = R.save; s.base = rpgBaseOf(s); s.job = job; s.ctier = 2; s.cq = null; s.skp = (s.skp || 0) + 5; R.gold += 6000;
   const g = rpgGear(), wt = RPG_JOBS[job].wt, tier = Math.max(0, g.wtier ?? 0), nid = `w_${wt}_${Math.min(7, tier)}`;
@@ -17649,7 +17649,7 @@ const RPG_TBUFF = {
   ninja: { n: 'เงาพราง', ic: '🌑', k: { eva: 10, atk: .05 }, min: 6, col: '#9A6BFF' }, bard: { n: 'บทเพลงแห่งชัยชนะ', ic: '🎶', k: { atk: .12, matk: .12 }, min: 8, col: '#FF7AC8', party: 1 },
   fire: { n: 'เปลวไฟในใจ', ic: '🔥', k: { matk: .18 }, min: 6, col: '#FF7A1F' }, ice: { n: 'เกราะน้ำแข็ง', ic: '💎', k: { def: .12, matk: .08 }, min: 6, col: '#9FE4FF' },
   summon: { n: 'พันธะวิญญาณ', ic: '🐾', k: { matk: .1, mhp: .08 }, min: 8, col: '#3DE0C4', party: 1 }, priest: { n: 'พรแห่งแสง', ic: '✨', k: { mhp: .15, def: .1 }, min: 10, col: '#FFF08A', party: 1 },
-  engineer: { n: 'โล่พลังงาน', ic: '🔋', k: { def: .15 }, min: 8, col: '#FFC23D', party: 1 }, hacker: { n: 'ไฟร์วอลล์', ic: '🧱', k: { def: .1, eva: 5 }, min: 8, col: '#3DFFA0', party: 1 },
+  engineer: { n: 'พลังการสอน', ic: '📚', k: { def: .15 }, min: 8, col: '#2EC8FF', party: 1 }, hacker: { n: 'ไฟร์วอลล์', ic: '🧱', k: { def: .1, eva: 5 }, min: 8, col: '#3DFFA0', party: 1 },
 };
 function rpgBuffs(s = R.save) { const now = Date.now(); s.buffs = (s.buffs || []).filter(b => b.until > now); return s.buffs; }
 function rpgBuffAdd(b) { const s = R.save; rpgBuffs(); const i = s.buffs.findIndex(x => x.id === b.id); if (i >= 0) s.buffs[i] = b; else s.buffs.push(b); RS.dirty = true; rpgBuffUI(); rpgHud(); }
@@ -24724,8 +24724,8 @@ const RPG_SIG55 = {
   'bard:บทเพลงพายุ': ['songstorm', 'spin', '#9AF0FF'], 'bard:คอร์ดสายฟ้า': ['guitar', 'stamp', '#FFE94A'], 'bard:บทเพลงแห่งดวงดาว': ['starsong', 'rain', '#FFE27A'],
   'summon:วิญญาณจิ้งจอก': ['fox', 'beast', '#FFA35A'], 'summon:สายสัมพันธ์': ['hearts', 'aura', '#FF9AC8'], 'summon:อัญเชิญกริฟฟอน': ['griffon', 'beastfly', '#FFD25A'], 'summon:พลังฝูงสัตว์': ['paw', 'aura', '#FFC07A'], 'summon:มังกรวิญญาณ': ['dragon', 'beastbreath', '#7AE8FF'],
   'summon:อัญเชิญหมีศิลา': ['bear', 'beast', '#C89A6A'], 'summon:ฝูงค้างคาวราตรี': ['bat', 'swarm', '#B06BFF'], 'summon:อัญเชิญฟีนิกซ์': ['phoenix', 'beastfly', '#FF8A2A'],
-  'engineer:ค้อนเหล็ก': ['hammer', 'stamp', '#C8D0E0'], 'engineer:ระเบิดกระป๋อง': ['bomb', 'lob', '#FF8A3A'], 'engineer:ป้อมปืนเลเซอร์': ['laser', 'rise', '#FF5A8A'], 'engineer:โล่พลังงาน': ['battery', 'aura', '#7CFFE0'], 'engineer:หุ่นยักษ์ถล่ม': ['robot', 'drop', '#9AB0FF'],
-  'engineer:จรวดนำวิถี': ['rocket', 'fly', '#FF7A5A'], 'engineer:สนามไฟฟ้าสถิต': ['tesla', 'rise', '#FFE94A'], 'engineer:ปืนใหญ่เลเซอร์โคจร': ['satellite', 'hover', '#FF6A9A'],
+  'engineer:ฟาดแท็ก </>': ['htmltag', 'stamp', '#FF8A3A', 'lunge'], 'engineer:บั๊กบอมบ์': ['bugbomb', 'lob', '#9CFF3A', 'throw'], 'engineer:สถานีชาร์จ EV': ['evcharger', 'none', '#3AE8FF', 'deploy'], 'engineer:โล่แบตเตอรี่ EV': ['battery', 'aura', '#7CFFB0'], 'engineer:รถ EV พุ่งชน': ['evcar', 'drive', '#3AC8FF', 'throw'],
+  'engineer:อัลกอริทึมค้นหา': ['algo', 'fanalgo', '#B88CFF', 'shoot'], 'engineer:Bubble Sort ถล่ม': ['sortbars', 'rise', '#FFD23F', 'cast'], 'engineer:Deploy ขึ้นคลาวด์': ['cloudup', 'hover', '#5AB8FF', 'callsky'],
   'hacker:โค้ดโจมตี': ['floppy', 'fly', '#5AFFB0'], 'hacker:ไฟร์วอลล์': ['wall', 'aura', '#FF8A5A'], 'hacker:DDoS ย้อนกลับ': ['antenna', 'hover', '#5AC8FF'], 'hacker:แพตช์ระบบ': ['bandage', 'aura', '#7CFFB0'], 'hacker:Zero-Day': ['rad', 'stamp', '#C8FF3A'],
   'hacker:ไวรัสโทรจัน': ['virus', 'orbit', '#7AFF5A'], 'hacker:สายฟ้าเซิร์ฟเวอร์': ['serverbolt', 'hover', '#7AC8FF'], 'hacker:รีบูตโลก': ['recycle', 'spin', '#5AFFC8'],
 };
@@ -24735,6 +24735,9 @@ function rpgSig55(k) {
   const jobs = [String(k._key || '').split(':')[0], R.save?.job, typeof RPG_BASEOF !== 'undefined' ? RPG_BASEOF[R.save?.job] : null].filter(Boolean);
   for (const j of jobs) { const sg = RPG_SIG55[j + ':' + k[0]]; if (sg) { const o = { g: sg[0], m: sg[1], c: sg[2], act: sg[3] || undefined, dark: sg[4] === 'dark', lunar: sg[4] === 'lunar' }; const fx = typeof RPG_BASEFX55 !== 'undefined' ? RPG_BASEFX55[j]?.[k[0]] : null; if (fx) o.fx = fx; try { k.sig55 = o; } catch (e) {} return o; } }
   try { k.sig55 = false; } catch (e) {} return null; }
+// ครูคอมพิวเตอร์: เปลี่ยนชื่อสกิลวิศวกรเดิม
+(() => { const RN = { 'ค้อนเหล็ก': 'ฟาดแท็ก </>', 'ระเบิดกระป๋อง': 'บั๊กบอมบ์', 'ป้อมปืนเลเซอร์': 'สถานีชาร์จ EV', 'โล่พลังงาน': 'โล่แบตเตอรี่ EV', 'หุ่นยักษ์ถล่ม': 'รถ EV พุ่งชน', 'จรวดนำวิถี': 'อัลกอริทึมค้นหา', 'สนามไฟฟ้าสถิต': 'Bubble Sort ถล่ม', 'ปืนใหญ่เลเซอร์โคจร': 'Deploy ขึ้นคลาวด์' };
+  const S53 = typeof RPG_SKX53 !== 'undefined' ? RPG_SKX53 : {}; [...(RPG_JOBS.engineer?.sk || []), ...(S53.engineer || [])].forEach(k => { if (RN[k[0]]) k[0] = RN[k[0]]; }); })();
 // ผูกตาราง + ลงทะเบียนสกิลใหม่ (v53) ให้ใช้ไอคอนวาด แทนอิโมจิ
 (() => {
   const S53 = typeof RPG_SKX53 !== 'undefined' ? RPG_SKX53 : {};
@@ -24904,7 +24907,7 @@ const RPG_BASEFX55 = {
   ice: { 'หอกน้ำแข็ง': 'pierce', 'ผนึกน้ำแข็ง': 'nova', 'พายุหิมะ': 'wind', 'ยุคน้ำแข็ง': 'quake', 'หนามน้ำแข็งพันเล่ม': 'ice', 'ลมหายใจเหมันต์': 'laser', 'ราชินีหิมะนิรันดร์': 'light' },
   scholar: { 'แสงศักดิ์สิทธิ์': 'pierce', 'ลูกบอลแสง': 'orbs', 'สายฟ้าปัญญา': 'chain', 'หน้ากระดาษคม': 'star' },
   priest: { 'แสงศักดิ์สิทธิ์': 'light', 'กางเขนแสง': 'rays', 'ฝนแสงศักดิ์สิทธิ์': 'arrow', 'ลำแสงสวรรค์': 'pillar', 'สายฟ้าพิพากษา': 'thunder', 'วงแหวนชำระบาป': 'spiral', 'ปีกเทพบุตร': 'shards' },
-  engineer: { 'ค้อนเหล็ก': 'quake', 'ระเบิดกระป๋อง': 'bomb', 'ป้อมปืนเลเซอร์': 'laser', 'หุ่นยักษ์ถล่ม': 'meteor', 'จรวดนำวิถี': 'fire', 'สนามไฟฟ้าสถิต': 'thunder', 'ปืนใหญ่เลเซอร์โคจร': 'pillar' },
+  engineer: { 'ฟาดแท็ก </>': 'quake', 'บั๊กบอมบ์': 'bomb', 'สถานีชาร์จ EV': 'thunder', 'รถ EV พุ่งชน': 'meteor', 'อัลกอริทึมค้นหา': 'laser', 'Bubble Sort ถล่ม': 'fire', 'Deploy ขึ้นคลาวด์': 'pillar' },
   hacker: { 'โค้ดโจมตี': 'glitch', 'DDoS ย้อนกลับ': 'arrow', 'Zero-Day': 'nova', 'ไวรัสโทรจัน': 'dark', 'สายฟ้าเซิร์ฟเวอร์': 'thunder', 'รีบูตโลก': 'spiral', 'ไฟกระชากระบบ': 'shards' },
 };
 (() => { const S53 = typeof RPG_SKX53 !== 'undefined' ? RPG_SKX53 : {}; Object.entries(RPG_JOBS).forEach(([j, J]) => [...(J.sk || []), ...(S53[j] || [])].forEach(k => { const fx = RPG_BASEFX55[j]?.[k[0]]; if (fx && k.sig55) k.sig55.fx = fx; })); })();
@@ -25102,6 +25105,43 @@ rpgSigFx55 = (f => function (k, P, T, rank = 1) {
     X49.later(240, () => rpgRavenSlash55(T, col, 2 + Math.min(2, R), R)); X49.later(500, () => rpgRavenSlash55(T, '#A8C4FF', 2, R, 1.2));
     for (let i = 0; i < 10; i++) X49.later(250 + i * 40, () => X49.pt({ x: T.x + (Math.random() - .5) * 90, y: T.y - 30 + (Math.random() - .5) * 50, vx: 0, vy: -20, g: 0, col: '#FFFFFF', r: 2.2, life: 520, k: 'star' }));
   } catch (e) {} return r; })(rpgSigFx55);
+
+/* ---------- ครูคอมพิวเตอร์: เว็บ · อัลกอริทึม · EV ---------- */
+(() => {
+  const G = SKI34.G, T = Math.PI * 2;
+  const P = (x, pts) => { x.beginPath(); pts.forEach(([a, b], i) => i ? x.lineTo(a, b) : x.moveTo(a, b)); x.closePath(); x.fill(); x.stroke(); };
+  const RR = (x, a, b, w, h, r) => { x.beginPath(); x.roundRect(a, b, w, h, r); x.fill(); x.stroke(); };
+  const L = (x, pts, w = 3.4) => { x.save(); x.lineWidth = w + 2.6; x.beginPath(); pts.forEach(([a, b], i) => i ? x.lineTo(a, b) : x.moveTo(a, b)); x.stroke(); x.strokeStyle = '#fff'; x.lineWidth = w; x.stroke(); x.restore(); };
+  const bolt = (x, cx, cy, s) => P(x, [[cx + 6 * s, cy - 28 * s], [cx - 16 * s, cy + 4 * s], [cx - 2 * s, cy + 4 * s], [cx - 8 * s, cy + 28 * s], [cx + 16 * s, cy - 6 * s], [cx + 2 * s, cy - 6 * s]]);
+  Object.assign(G, {
+    htmltag: x => { L(x, [[-12, -16], [-26, 0], [-12, 16]], 4.4); L(x, [[12, -16], [26, 0], [12, 16]], 4.4); L(x, [[6, -20], [-6, 20]], 4); },
+    bugbomb: x => { x.beginPath(); x.arc(0, 6, 16, 0, T); x.fill(); x.stroke(); x.save(); x.lineWidth = 2; x.beginPath(); x.moveTo(0, -10); x.lineTo(0, 22); x.stroke(); [[-16, -2, -26, -8], [16, -2, 26, -8], [-16, 8, -27, 8], [16, 8, 27, 8], [-14, 16, -24, 24], [14, 16, 24, 24]].forEach(([a, b, c, d]) => { x.beginPath(); x.moveTo(a, b); x.lineTo(c, d); x.stroke(); }); x.restore();
+      x.beginPath(); x.arc(0, -12, 7, 0, T); x.fill(); x.stroke(); x.save(); x.lineWidth = 1.6; x.beginPath(); x.moveTo(-3, -18); x.quadraticCurveTo(-8, -26, -12, -26); x.moveTo(3, -18); x.quadraticCurveTo(8, -26, 12, -26); x.stroke(); x.restore(); x.save(); x.fillStyle = '#FFE27A'; P(x, [[12, -26], [16, -30], [14, -24], [19, -24]]); x.restore(); },
+    evcharger: x => { RR(x, -14, -26, 22, 50, 4); RR(x, -10, -20, 14, 12, 2); x.save(); x.fillStyle = '#7CFFB0'; bolt(x, -3, -14, .2); x.restore(); x.save(); x.fillStyle = 'rgba(0,0,0,0)'; x.lineWidth = 3; x.beginPath(); x.moveTo(8, -4); x.bezierCurveTo(26, -4, 26, 20, 14, 22); x.stroke(); x.restore(); RR(x, 10, 18, 10, 8, 2); RR(x, -18, 22, 30, 5, 2); },
+    evcar: x => { x.beginPath(); x.moveTo(-28, 10); x.lineTo(-26, -2); x.quadraticCurveTo(-14, -6, -8, -16); x.lineTo(12, -16); x.quadraticCurveTo(20, -6, 28, -2); x.lineTo(28, 10); x.closePath(); x.fill(); x.stroke();
+      x.save(); x.fillStyle = 'rgba(160,220,255,.9)'; P(x, [[-5, -13], [10, -13], [16, -4], [-11, -4]]); x.restore(); [[-15, 11], [16, 11]].forEach(([a, b]) => { x.beginPath(); x.arc(a, b, 7, 0, T); x.fill(); x.stroke(); x.save(); x.fillStyle = 'rgba(0,0,0,0)'; x.beginPath(); x.arc(a, b, 3, 0, T); x.stroke(); x.restore(); });
+      x.save(); x.fillStyle = '#7CFFB0'; bolt(x, 2, 2, .22); x.restore(); },
+    algo: x => { RR(x, -10, -28, 20, 11, 3); L(x, [[0, -17], [0, -11]], 2); P(x, [[0, -11], [14, 0], [0, 11], [-14, 0]]); L(x, [[14, 0], [24, 0], [24, 14]], 2); L(x, [[0, 11], [0, 17]], 2); RR(x, -10, 17, 20, 11, 3); RR(x, 16, 14, 14, 9, 3); x.save(); x.fillStyle = '#5A3A8A'; x.font = 'bold 9px sans-serif'; x.textAlign = 'center'; x.textBaseline = 'middle'; x.fillText('?', 0, 0.5); x.restore(); },
+    sortbars: x => { [[-24, 8], [-12, 16], [0, 26], [12, 36], [-24 + 48, 46]].forEach(([a, h], i) => RR(x, a - 4.5, 24 - h, 9, h, 2)); L(x, [[-26, -18], [18, -30]], 2.4); P(x, [[18, -30], [10, -32], [14, -25]]); },
+    cloudup: x => { x.beginPath(); x.moveTo(-20, 8); x.bezierCurveTo(-30, 8, -30, -8, -18, -8); x.bezierCurveTo(-16, -22, 4, -24, 8, -12); x.bezierCurveTo(22, -16, 30, -2, 22, 8); x.closePath(); x.fill(); x.stroke(); L(x, [[0, 24], [0, -4]], 3); P(x, [[0, -10], [-7, -1], [7, -1]]); RR(x, -14, 14, 28, 10, 2); },
+  });
+  Object.keys(G).forEach(g => { SKI34.MAP['§' + g] = g; });
+})();
+rpgSigFx55 = (f => function (k, P, T, rank = 1) {
+  const sg = rpgSig55(k); if (!sg || !['drive', 'fanalgo'].includes(sg.m)) return f.apply(this, arguments);
+  const col = sg.c, R = Math.min(4, rank), face = T.x < P.x ? -1 : 1, ang = Math.atan2(T.y - P.y, T.x - P.x), dist = Math.hypot(T.x - P.x, T.y - P.y);
+  const hit = (ms, sh = 6) => X49.later(ms, () => { X49.big({ k: 'ring', x: T.x, y: T.y, r: 60 + R * 14, col, dur: 420, w: 6 }); X49.burst(T.x, T.y - 18, 16 + R * 4, col, 220); rpgShake49(sh + R * 2, 260); });
+  if (sg.m === 'drive') { // รถ EV พุ่งจากข้างตัว → ชนศัตรู → ทะลุไป · มีสายฟ้าตามหลัง
+    const sx = P.x - face * 40, sy = P.y + 4, ex = T.x + face * 120, ey = T.y + 4, dur = 900;
+    rpgGly55({ g: 'evcar', col, dur, ghost: 3, f: e => { const q = e < .2 ? 0 : Math.min(1, Math.pow((e - .2) / .55, 1.6)); const x0 = sx + (ex - sx) * q, y0 = sy + (ey - sy) * q - 22; return { x: x0, y: y0 + (e < .2 ? Math.sin(e * 60) * 1.5 : 0), s: 62 + R * 6, r: 0, flip: face < 0, a: e < .1 ? e / .1 : e < .88 ? 1 : (1 - e) / .12, gy: y0 + 22 }; } });
+    for (let t = 200; t < 700; t += 50) X49.later(t, () => { const q = Math.min(1, Math.pow((t / dur - .2) / .55, 1.6)), x0 = sx + (ex - sx) * q, y0 = sy + (ey - sy) * q; X49.big({ k: 'beam', x: x0 - face * 30, y: y0 - 12, x2: x0 - face * (60 + Math.random() * 30), y2: y0 - 12 + (Math.random() - .5) * 20, w: 4, col, dur: 200 }); X49.burst(x0 - face * 20, y0 - 4, 3, '#FFFFFF', 120, { r: 1.6 }); });
+    hit(520, 10); X49.later(540, () => X49.big({ k: 'impact', x: T.x, y: T.y - 20, r: 44, col, dur: 320 })); return; }
+  if (sg.m === 'fanalgo') { // ผังงานอัลกอริทึมหลายชิ้น บินโค้งหาเป้า
+    const m = 4 + Math.min(2, R); for (let i = 0; i < m; i++) { const side = (i - (m - 1) / 2) * 50, d0 = i * 70;
+      rpgGly55({ g: 'algo', col, dur: 620, d: d0, ghost: 2, f: e => { const q = Math.min(1, e / .7), bx = P.x + (T.x - P.x) * q, by = P.y - 30 + (T.y - 20 - P.y + 30) * q - Math.sin(q * Math.PI) * side; return { x: bx - Math.sin(ang) * Math.sin(q * Math.PI) * side * .4, y: by, s: 30 + R * 3, r: Math.sin(e * 12) * .2, a: e < .74 ? 1 : (1 - e) / .26 }; } });
+      X49.later(d0 + 440, () => { X49.burst(T.x, T.y - 18, 8, col, 160); X49.big({ k: 'ring', x: T.x, y: T.y - 18, r: 30, col, dur: 240, flat: 1, w: 3 }); }); }
+    hit(500, 4); return; }
+})(rpgSigFx55);
 
 /* rpg-v55snd.js — เสียงชุดใหม่ (สังเคราะห์ในเบราว์เซอร์ทั้งหมด ไม่มีไฟล์ลิขสิทธิ์)
    · เพลงประจำแผนที่: เรียบเรียงจากเพลงคลาสสิกที่หมดลิขสิทธิ์แล้ว (ประพันธ์ก่อน ค.ศ. 1929 / ผู้ประพันธ์เสียชีวิตเกิน 70 ปี) + ทำนองแต่งเอง
@@ -25469,7 +25509,7 @@ const RPG_ROLE55 = {
   // สายปัญญา
   scholar:  { r: 'ผู้ฝึกปัญญาพื้นฐาน · สมดุล',            hp: .95,  mp: 1.15, atk: .8, matk: 1.05, def: .95, eva: 0,  crit: 0 },
   priest:   { r: 'ฮีลเลอร์ · รักษาทีม MP เยอะ ทนดี',        hp: 1.02, mp: 1.45, atk: .7, matk: 1.0,  def: 1.12, eva: 0,  crit: 0 },
-  engineer: { r: 'ช่างกล · ป้อมปืน/อุปกรณ์ ทนดี',          hp: 1.12, mp: 1.05, atk: 1.1, matk: 1.05, def: 1.15, eva: -2, crit: 2 },
+  engineer: { r: 'ครูคอมพิวเตอร์ · สอนเว็บ/อัลกอริทึม/EV ทนดี',          hp: 1.12, mp: 1.05, atk: 1.1, matk: 1.05, def: 1.15, eva: -2, crit: 2 },
   hacker:   { r: 'ดาเมจเวทดิจิทัล · คริสูง บาง',           hp: .8,   mp: 1.2, atk: .7,  matk: 1.26, def: .75, eva: 4,  crit: 8 },
 };
 rpgStats = (f => function () {
